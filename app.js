@@ -146,54 +146,11 @@ const laneLabels = {
   prevention: "Prevention"
 };
 
-const incidentKeywords = [
-  "terror",
-  "terrorism",
-  "attack",
-  "attacks",
-  "bomb",
-  "bombing",
-  "explosion",
-  "explosive",
-  "device",
-  "ramming",
-  "stabbing",
-  "shooting",
-  "hostage",
-  "plot",
-  "suspect",
-  "arrest",
-  "charged",
-  "charged with",
-  "parcel",
-  "radicalised",
-  "extremist",
-  "isis",
-  "islamic state",
-  "al-qaeda",
-  "threat"
-];
-
-const trustedMajorSources = new Set([
-  "Counter Terrorism Policing",
-  "Eurojust",
-  "GOV.UK",
-  "Europol",
-  "Reuters",
-  "The Guardian",
-  "BBC News",
-  "Associated Press"
-]);
-
+const incidentKeywords = ["terror","terrorism","attack","attacks","bomb","bombing","explosion","explosive","device","ramming","stabbing","shooting","hostage","plot","suspect","arrest","charged","charged with","parcel","radicalised","extremist","isis","islamic state","al-qaeda","threat"];
+const trustedMajorSources = new Set(["Counter Terrorism Policing","Eurojust","GOV.UK","Europol","Reuters","The Guardian","BBC News","Associated Press"]);
 const notes = [
-  {
-    title: "Morning posture",
-    body: "Maintain focus on transport hubs, symbolic sites, and fast-moving public order environments with terrorism indicators."
-  },
-  {
-    title: "Cross-border watch",
-    body: "Track whether any developing European incidents show common method, travel pathway, or propaganda overlap with UK activity."
-  }
+  { title: "Morning posture", body: "Maintain focus on transport hubs, symbolic sites, and fast-moving public order environments with terrorism indicators." },
+  { title: "Cross-border watch", body: "Track whether any developing European incidents show common method, travel pathway, or propaganda overlap with UK activity." }
 ];
 
 let activeRegion = "all";
@@ -221,7 +178,6 @@ const tabbar = document.getElementById("tabbar");
 const albertCard = document.getElementById("albert-card");
 const albertQuote = document.getElementById("albert-quote");
 const albertNote = document.getElementById("albert-note");
-
 const modal = document.getElementById("detail-modal");
 const closeModal = document.getElementById("close-modal");
 const copyBriefing = document.getElementById("copy-briefing");
@@ -238,49 +194,15 @@ const modalBriefing = document.getElementById("modal-briefing");
 const modalLink = document.getElementById("modal-link");
 
 function filteredAlerts() {
-  return alerts.filter((alert) => {
-    const regionMatch = activeRegion === "all" || alert.region === activeRegion;
-    const laneMatch = activeLane === "all" || alert.lane === activeLane;
-    return regionMatch && laneMatch;
-  });
+  return alerts.filter((alert) => (activeRegion === "all" || alert.region === activeRegion) && (activeLane === "all" || alert.lane === activeLane));
 }
-
-function responderAlerts() {
-  return filteredAlerts().filter(isLiveIncidentCandidate);
-}
-
-function contextAlerts() {
-  return filteredAlerts().filter((alert) => !isLiveIncidentCandidate(alert));
-}
-
-function severityLabel(severity) {
-  return severity.charAt(0).toUpperCase() + severity.slice(1);
-}
-
-function regionLabel(region) {
-  return region === "uk" ? "UK" : "EU";
-}
-
-function keywordMatches(alert) {
-  const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary}`.toLowerCase();
-  return incidentKeywords.filter((keyword) => haystack.includes(keyword));
-}
-
-function incidentScore(alert) {
-  const matches = keywordMatches(alert);
-  let score = matches.length;
-  if (alert.lane === "incidents") score += 3;
-  if (alert.severity === "critical") score += 3;
-  if (alert.severity === "high") score += 2;
-  if (alert.major) score += 2;
-  if (trustedMajorSources.has(alert.source)) score += 2;
-  return score;
-}
-
-function isLiveIncidentCandidate(alert) {
-  return alert.lane === "incidents" && incidentScore(alert) >= 6;
-}
-
+function responderAlerts() { return filteredAlerts().filter(isLiveIncidentCandidate); }
+function contextAlerts() { return filteredAlerts().filter((alert) => !isLiveIncidentCandidate(alert)); }
+function severityLabel(severity) { return severity.charAt(0).toUpperCase() + severity.slice(1); }
+function regionLabel(region) { return region === "uk" ? "UK" : "EU"; }
+function keywordMatches(alert) { const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary}`.toLowerCase(); return incidentKeywords.filter((keyword) => haystack.includes(keyword)); }
+function incidentScore(alert) { const matches = keywordMatches(alert); let score = matches.length; if (alert.lane === "incidents") score += 3; if (alert.severity === "critical") score += 3; if (alert.severity === "high") score += 2; if (alert.major) score += 2; if (trustedMajorSources.has(alert.source)) score += 2; return score; }
+function isLiveIncidentCandidate(alert) { return alert.lane === "incidents" && incidentScore(alert) >= 6; }
 function buildBriefing(alert, summaryText) {
   const matches = keywordMatches(alert);
   return [
@@ -302,18 +224,11 @@ function buildBriefing(alert, summaryText) {
     `ORIGINAL LINK: ${alert.sourceUrl}`
   ].join("\n");
 }
-
 function topPriority() {
   const ranking = { critical: 4, high: 3, elevated: 2, moderate: 1 };
   const pool = responderAlerts().length ? responderAlerts() : contextAlerts();
-  return [...pool].sort((a, b) => {
-    const scoreGap = incidentScore(b) - incidentScore(a);
-    if (scoreGap !== 0) return scoreGap;
-    if (a.major !== b.major) return a.major ? -1 : 1;
-    return ranking[b.severity] - ranking[a.severity];
-  })[0];
+  return [...pool].sort((a, b) => { const scoreGap = incidentScore(b) - incidentScore(a); if (scoreGap !== 0) return scoreGap; if (a.major !== b.major) return a.major ? -1 : 1; return ranking[b.severity] - ranking[a.severity]; })[0];
 }
-
 function openDetail(alert) {
   modalTitle.textContent = alert.title;
   modalMeta.textContent = `${alert.location} | ${alert.time}`;
@@ -328,23 +243,13 @@ function openDetail(alert) {
   copyBriefing.dataset.briefing = buildBriefing(alert, alert.aiSummary);
   modal.classList.remove("hidden");
 }
-
-function closeDetailPanel() {
-  modal.classList.add("hidden");
-}
-
+function closeDetailPanel() { modal.classList.add("hidden"); }
 function renderPriority() {
   const alert = topPriority();
-  if (!alert) {
-    priorityCard.classList.remove("context-priority");
-    priorityCard.innerHTML = "<p>No alerts available for this filter.</p>";
-    return;
-  }
-
+  if (!alert) { priorityCard.classList.remove("context-priority"); priorityCard.innerHTML = "<p>No alerts available for this filter.</p>"; return; }
   const liveCandidate = isLiveIncidentCandidate(alert);
   const matches = keywordMatches(alert);
   priorityCard.classList.toggle("context-priority", !liveCandidate);
-
   priorityCard.innerHTML = `
     <div class="eyebrow">${liveCandidate ? "Live Terror Incident Trigger" : "Context Item"}</div>
     <h2>${alert.title}</h2>
@@ -354,80 +259,36 @@ function renderPriority() {
       <span>${alert.source}</span>
       <span>${matches.length ? `${matches.length} keyword hits` : "No incident keyword hit"}</span>
       <span>${alert.time}</span>
-    </div>
-  `;
-
+    </div>`;
   priorityCard.onclick = () => openDetail(alert);
 }
-
 function responderCardMarkup(alert) {
   return `
     <article class="feed-card actionable" data-id="${alert.id}">
       <div class="feed-top">
-        <div>
-          <h4>${alert.title}</h4>
-          <p>${alert.location}</p>
-        </div>
+        <div><h4>${alert.title}</h4><p>${alert.location}</p></div>
         <div class="feed-actions">
           <button class="star-button ${watched.has(alert.id) ? "active" : ""}" data-star="${alert.id}">${watched.has(alert.id) ? "Watch" : "Track"}</button>
           <span class="severity severity-${alert.severity}">${severityLabel(alert.severity)}</span>
         </div>
       </div>
       <p>${alert.summary}</p>
-      <div class="meta-row">
-        <span>${alert.source}</span>
-        <span>${alert.status}</span>
-      </div>
-    </article>
-  `;
+      <div class="meta-row"><span>${alert.source}</span><span>${alert.status}</span></div>
+    </article>`;
 }
-
 function renderFeed() {
   const items = responderAlerts();
-  feedList.innerHTML = items.length
-    ? items.map(responderCardMarkup).join("")
-    : "<p class='panel-copy'>No live incident triggers in this filter.</p>";
-
+  feedList.innerHTML = items.length ? items.map(responderCardMarkup).join("") : "<p class='panel-copy'>No live incident triggers in this filter.</p>";
   watchedCount.textContent = `${watched.size} watched`;
-
-  feedList.querySelectorAll(".feed-card").forEach((card) => {
-    card.addEventListener("click", () => {
-      const alert = alerts.find((item) => item.id === card.dataset.id);
-      openDetail(alert);
-    });
-  });
-
-  feedList.querySelectorAll(".star-button").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const id = button.dataset.star;
-      if (watched.has(id)) watched.delete(id);
-      else watched.add(id);
-      renderAll();
-    });
-  });
+  feedList.querySelectorAll(".feed-card").forEach((card) => card.addEventListener("click", () => openDetail(alerts.find((item) => item.id === card.dataset.id))));
+  feedList.querySelectorAll(".star-button").forEach((button) => button.addEventListener("click", (event) => { event.stopPropagation(); const id = button.dataset.star; watched.has(id) ? watched.delete(id) : watched.add(id); renderAll(); }));
 }
-
 function renderContext() {
   const items = contextAlerts().slice(0, 4);
   contextCount.textContent = `${items.length} contextual items`;
-  contextList.innerHTML = items.length
-    ? items.map((alert) => `
-      <article class="context-pill actionable" data-context="${alert.id}">
-        <h4>${alert.title}</h4>
-        <p>${laneLabels[alert.lane]} | ${alert.source}</p>
-      </article>
-    `).join("")
-    : "<p class='panel-copy'>No contextual items in this filter.</p>";
-
-  contextList.querySelectorAll("[data-context]").forEach((card) => {
-    card.addEventListener("click", () => {
-      const alert = alerts.find((item) => item.id === card.dataset.context);
-      openDetail(alert);
-    });
-  });
+  contextList.innerHTML = items.length ? items.map((alert) => `<article class="context-pill actionable" data-context="${alert.id}"><h4>${alert.title}</h4><p>${laneLabels[alert.lane]} | ${alert.source}</p></article>`).join("") : "<p class='panel-copy'>No contextual items in this filter.</p>";
+  contextList.querySelectorAll("[data-context]").forEach((card) => card.addEventListener("click", () => openDetail(alerts.find((item) => item.id === card.dataset.context))));
 }
-
 function renderMap() {
   mapGrid.querySelectorAll(".pin").forEach((pin) => pin.remove());
   filteredAlerts().forEach((alert) => {
@@ -440,45 +301,15 @@ function renderMap() {
     pin.addEventListener("click", () => openDetail(alert));
     mapGrid.appendChild(pin);
   });
-
   mapSummary.textContent = `${responderAlerts().length} responder items | ${contextAlerts().length} context`;
 }
-
 function renderWatchlist() {
   const tracked = alerts.filter((alert) => watched.has(alert.id));
   watchlistSummary.textContent = tracked.length ? `${tracked.length} tracked incidents` : "No tracked incidents";
-  watchlistList.innerHTML = tracked.length
-    ? tracked.map((alert) => `
-      <article class="feed-card actionable" data-watch="${alert.id}">
-        <div class="feed-top">
-          <div>
-            <h4>${alert.title}</h4>
-            <p>${alert.location}</p>
-          </div>
-          <span class="severity severity-${alert.severity}">${laneLabels[alert.lane]}</span>
-        </div>
-        <p>${alert.summary}</p>
-      </article>
-    `).join("")
-    : "<p class='panel-copy'>Track incidents in F.O.C to pin them here.</p>";
-
-  watchlistList.querySelectorAll("[data-watch]").forEach((card) => {
-    card.addEventListener("click", () => {
-      const alert = alerts.find((item) => item.id === card.dataset.watch);
-      openDetail(alert);
-    });
-  });
+  watchlistList.innerHTML = tracked.length ? tracked.map((alert) => `<article class="feed-card actionable" data-watch="${alert.id}"><div class="feed-top"><div><h4>${alert.title}</h4><p>${alert.location}</p></div><span class="severity severity-${alert.severity}">${laneLabels[alert.lane]}</span></div><p>${alert.summary}</p></article>`).join("") : "<p class='panel-copy'>Track incidents in F.O.C to pin them here.</p>";
+  watchlistList.querySelectorAll("[data-watch]").forEach((card) => card.addEventListener("click", () => openDetail(alerts.find((item) => item.id === card.dataset.watch))));
 }
-
-function renderNotes() {
-  notesList.innerHTML = notes.map((note) => `
-    <article class="note-card">
-      <strong>${note.title}</strong>
-      <p>${note.body}</p>
-    </article>
-  `).join("");
-}
-
+function renderNotes() { notesList.innerHTML = notes.map((note) => `<article class="note-card"><strong>${note.title}</strong><p>${note.body}</p></article>`).join(""); }
 function renderHero() {
   const regionCopy = activeRegion === "all" ? "All feeds" : `${regionLabel(activeRegion)} feeds`;
   const laneCopy = activeLane === "all" ? "Responder posture" : laneLabels[activeLane];
@@ -486,99 +317,17 @@ function renderHero() {
   heroPolling.textContent = `Trusted incident sources / ${Math.round(POLL_INTERVAL_MS / 1000)}s`;
   heroUpdated.textContent = lastPolledAt.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
 }
-
-function renderAll() {
-  renderHero();
-  renderPriority();
-  renderFeed();
-  renderContext();
-  renderMap();
-  renderWatchlist();
-  renderNotes();
-}
-
-function runPollingCycle() {
-  lastPolledAt = new Date();
-  renderAll();
-}
-
-filters.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-region]");
-  if (!button) return;
-  activeRegion = button.dataset.region;
-  filters.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
-  button.classList.add("active");
-  renderAll();
-});
-
-laneFilters.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-lane]");
-  if (!button) return;
-  activeLane = button.dataset.lane;
-  laneFilters.querySelectorAll(".filter").forEach((item) => item.classList.remove("active"));
-  button.classList.add("active");
-  renderAll();
-});
-
-tabbar.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-tab]");
-  if (!button) return;
-
-  const next = button.dataset.tab;
-  tabbar.querySelectorAll(".tab").forEach((item) => item.classList.remove("active"));
-  button.classList.add("active");
-
-  document.querySelectorAll(".tab-panel").forEach((panel) => {
-    panel.classList.toggle("active", panel.dataset.panel === next);
-  });
-});
-
-document.getElementById("note-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const title = document.getElementById("note-title");
-  const body = document.getElementById("note-body");
-  notes.unshift({ title: title.value.trim(), body: body.value.trim() });
-  title.value = "";
-  body.value = "";
-  renderNotes();
-});
-
-copyBriefing.addEventListener("click", async () => {
-  const briefing = copyBriefing.dataset.briefing || "";
-  try {
-    await navigator.clipboard.writeText(briefing);
-    copyBriefing.textContent = "Copied";
-    setTimeout(() => {
-      copyBriefing.textContent = "Copy Briefing";
-    }, 1200);
-  } catch {
-    copyBriefing.textContent = "Copy failed";
-    setTimeout(() => {
-      copyBriefing.textContent = "Copy Briefing";
-    }, 1200);
-  }
-});
-
+function renderAll() { renderHero(); renderPriority(); renderFeed(); renderContext(); renderMap(); renderWatchlist(); renderNotes(); }
+function runPollingCycle() { lastPolledAt = new Date(); renderAll(); }
+filters.addEventListener("click", (event) => { const button = event.target.closest("[data-region]"); if (!button) return; activeRegion = button.dataset.region; filters.querySelectorAll(".filter").forEach((item) => item.classList.remove("active")); button.classList.add("active"); renderAll(); });
+laneFilters.addEventListener("click", (event) => { const button = event.target.closest("[data-lane]"); if (!button) return; activeLane = button.dataset.lane; laneFilters.querySelectorAll(".filter").forEach((item) => item.classList.remove("active")); button.classList.add("active"); renderAll(); });
+tabbar.addEventListener("click", (event) => { const button = event.target.closest("[data-tab]"); if (!button) return; const next = button.dataset.tab; tabbar.querySelectorAll(".tab").forEach((item) => item.classList.remove("active")); button.classList.add("active"); document.querySelectorAll(".tab-panel").forEach((panel) => panel.classList.toggle("active", panel.dataset.panel === next)); });
+document.getElementById("note-form").addEventListener("submit", (event) => { event.preventDefault(); const title = document.getElementById("note-title"); const body = document.getElementById("note-body"); notes.unshift({ title: title.value.trim(), body: body.value.trim() }); title.value = ""; body.value = ""; renderNotes(); });
+copyBriefing.addEventListener("click", async () => { const briefing = copyBriefing.dataset.briefing || ""; try { await navigator.clipboard.writeText(briefing); copyBriefing.textContent = "Copied"; setTimeout(() => { copyBriefing.textContent = "Copy Briefing"; }, 1200); } catch { copyBriefing.textContent = "Copy failed"; setTimeout(() => { copyBriefing.textContent = "Copy Briefing"; }, 1200); } });
 closeModal.addEventListener("click", closeDetailPanel);
 modalBackdrop.addEventListener("click", closeDetailPanel);
-document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") closeDetailPanel();
-});
-
-albertCard.addEventListener("click", () => {
-  albertIndex = (albertIndex + 1) % albertQuotes.length;
-  albertQuote.textContent = albertQuotes[albertIndex];
-});
-
-document.querySelector(".bulldog-card").addEventListener("dblclick", () => {
-  albertNote.classList.toggle("hidden");
-});
-
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
-  });
-}
-
+document.addEventListener("keydown", (event) => { if (event.key === "Escape") closeDetailPanel(); });
+albertCard.addEventListener("click", () => { albertIndex = (albertIndex + 1) % albertQuotes.length; albertQuote.textContent = albertQuotes[albertIndex]; });
+document.querySelector(".bulldog-card").addEventListener("dblclick", () => { albertNote.classList.toggle("hidden"); });
 runPollingCycle();
 setInterval(runPollingCycle, POLL_INTERVAL_MS);
