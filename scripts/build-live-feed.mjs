@@ -130,8 +130,9 @@ function makeSummary(source, item) {
             : 'a terrorism-related update';
     return [
       `${source.provider} published ${type} linked to ${where} on ${when}.`,
-      summary ? `The source text says: ${summary}` : `The source headline is: ${title}.`,
-      'This should be assessed for whether it reflects an active scene, a recently disrupted plot, or a later judicial or recognition-stage development.'
+      summary ? `What the source gives us at this stage is: ${summary}` : `The available source line is limited to the headline: ${title}.`,
+      'Initial read should focus on whether this reflects an active scene, a recently disrupted plot, or a later judicial, commemorative, or recognition-stage development.',
+      'Immediate follow-up should check for corroboration, current public-safety posture, casualties or scene control, and any references to suspects, arrests, devices, ideology, or linked actors.'
     ].join(' ');
   }
   if (source.lane === 'sanctions') {
