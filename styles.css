@@ -15,6 +15,7 @@ body {
   margin: 0;
   min-height: 100vh;
   overflow-y: auto;
+  overscroll-behavior-y: none;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: var(--text);
   background:
@@ -28,7 +29,7 @@ button { cursor: pointer; }
   display: grid;
   justify-items: center;
   align-items: start;
-  padding: 24px 12px;
+  padding: max(12px, env(safe-area-inset-top)) 12px max(18px, env(safe-area-inset-bottom)) 12px;
 }
 .phone-shell {
   width: min(430px, 100%);
@@ -52,7 +53,7 @@ button { cursor: pointer; }
   position: relative;
   overflow: hidden;
   border-radius: 34px;
-  padding: 22px 16px 26px;
+  padding: calc(22px + env(safe-area-inset-top)) 16px calc(26px + env(safe-area-inset-bottom)) 16px;
   background: linear-gradient(160deg, rgba(7, 9, 20, 0.98), rgba(22, 28, 41, 0.94) 60%, rgba(61, 28, 25, 0.90));
   min-height: 860px;
 }
@@ -128,8 +129,9 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
 .lane-filters { margin-top: 0; }
 .filter, .severity, .star-button, .tab, .primary-button {
   border-radius: 999px;
-  padding: 8px 12px;
-  font-size: 12px;
+  min-height: 42px;
+  padding: 10px 14px;
+  font-size: 13px;
   font-weight: 700;
   border: 0;
 }
@@ -249,8 +251,9 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
   gap: 8px;
 }
 .map-control {
-  min-width: 40px;
-  padding: 8px 12px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 10px 14px;
   border: 0;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.08);
@@ -366,7 +369,7 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
   inset: 0;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: max(12px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom)) 14px;
   overflow-y: auto;
   z-index: 20;
 }
@@ -431,4 +434,43 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
   .map-surface { height: 260px; }
   .map-toolbar { align-items: stretch; flex-direction: column; }
   .map-controls { width: 100%; justify-content: space-between; }
+}
+@media (max-width: 640px) {
+  .phone-shell {
+    width: 100%;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .phone-notch {
+    display: none;
+  }
+  .screen {
+    border-radius: 0;
+    min-height: 100dvh;
+  }
+  .hero-card {
+    min-height: 200px;
+    background:
+      linear-gradient(180deg, rgba(7, 9, 20, 0.90), rgba(7, 9, 20, 0.56) 46%, rgba(7, 9, 20, 0.30)),
+      url("/Brialert/assets/owl-night.gif") center top / cover no-repeat;
+  }
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .briefing-panel .section-heading {
+    gap: 12px;
+  }
+  .copy-button,
+  .primary-link,
+  .primary-button {
+    width: 100%;
+    justify-self: stretch;
+    text-align: center;
+  }
+  .bulldog-card {
+    align-items: flex-start;
+  }
 }
