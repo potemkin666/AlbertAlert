@@ -153,6 +153,26 @@ function buildIncidentSummary(alert) {
   }
   return alert.title;
 }
+function extractPeopleInvolved(alert) {
+  const sourceText = clean([alert.title, alert.summary].filter(Boolean).join('. '));
+  const sentences = sourceText.split(/(?<=[.!?])\s+/).map((part) => clean(part)).filter(Boolean);
+  const blocked = [
+    'The Telegraph', 'The Guardian', 'Daily Mail', 'The Sun', 'Reuters', 'Europol', 'Eurojust', 'GOV.UK',
+    'Counter Terrorism Policing', 'Crown Prosecution Service', 'Bank Of America', 'United Kingdom', 'Middle East',
+    'St James’ Hospital', 'St James Hospital', 'Paris', 'Leeds', 'Europe', 'Iran', 'Lebanon', 'Israel'
+  ];
+  const matches = [...sourceText.matchAll(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z'’-]+){1,2})\b/g)]
+    .map((match) => clean(match[1]))
+    .filter((name, index, all) => all.indexOf(name) === index)
+    .filter((name) => !blocked.includes(name));
+
+  const people = matches.slice(0, 4).map((name) => {
+    const context = sentences.find((sentence) => sentence.includes(name));
+    return context ? `${name}: ${context}` : name;
+  });
+
+  return people.length ? people : ['No named individuals were identified in the captured source text.'];
+}
 function effectiveSummary(alert) { return looksGenericSummary(alert.aiSummary) ? buildIncidentSummary(alert) : alert.aiSummary; }
 function incidentScore(alert) { const matches = keywordMatches(alert); let score = matches.length; if (alert.lane === 'incidents') score += 3; if (alert.severity === 'critical') score += 3; if (alert.severity === 'high') score += 2; if (alert.major) score += 2; if (trustedMajorSources.has(alert.source)) score += 2; return score; }
 function isLiveIncidentCandidate(alert) { return alert.lane === 'incidents' && incidentScore(alert) >= 6; }
@@ -164,14 +184,17 @@ function topPriority() { const ranking = { critical: 4, high: 3, elevated: 2, mo
 function buildBriefing(alert, summaryText) {
   const matches = keywordMatches(alert);
   const sourceExtract = clean(alert.summary && alert.summary !== alert.title ? alert.summary : '');
+  const peopleInvolved = extractPeopleInvolved(alert);
   return [
-    `WHO: ${alert.subject || alert.source}`,
     `WHAT: ${alert.title}`,
     `WHERE: ${alert.location}`,
     `WHEN: ${alert.happenedWhen || alert.time}`,
     `SOURCE: ${alert.source}`,
     `CONFIDENCE: ${alert.confidence}`,
     `LANE: ${laneLabels[alert.lane] || alert.lane}`,
+    '',
+    'PEOPLE INVOLVED:',
+    ...peopleInvolved,
     '',
     'SUMMARY:',
     summaryText,
