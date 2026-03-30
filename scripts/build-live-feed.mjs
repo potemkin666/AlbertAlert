@@ -174,6 +174,25 @@ function summariseTextBlock(text, maxParts = 8) {
     .slice(0, maxParts);
 }
 
+function extractPeopleFromText(text) {
+  const blockedTerms = new Set([
+    'France', 'Iranian', 'Proxies', 'Foiled', 'Paris', 'Terror', 'Attack', 'Bank', 'America', 'United Kingdom',
+    'Europe', 'Middle East', 'The Guardian', 'The Telegraph', 'Daily Mail', 'The Sun', 'Reuters', 'Europol',
+    'Eurojust', 'GOV UK', 'Counter Terrorism', 'Crown Prosecution', 'Police'
+  ]);
+  const matches = [...clean(text).matchAll(/\b([A-Z][a-z'’.-]+(?:\s+[A-Z][a-z'’.-]+){1,2})\b/g)]
+    .map((match) => clean(match[1]))
+    .filter((name, index, all) => all.indexOf(name) === index)
+    .filter((name) => name.split(' ').every((word) => !blockedTerms.has(word)));
+  return matches.slice(0, 6);
+}
+
+function chooseArticleDetail(metaDescription, articleParagraphs) {
+  if (articleParagraphs.length >= Math.max(320, metaDescription.length + 120)) return articleParagraphs;
+  if (metaDescription.length >= 220) return metaDescription;
+  return articleParagraphs || metaDescription;
+}
+
 function coordFor(location, title, summary, region) {
   const haystack = clean(`${location} ${title} ${summary}`).toLowerCase();
   const match = geoLookup.find((entry) => entry.terms.some((term) => haystack.includes(term)));
@@ -372,9 +391,10 @@ function extractArticleMeta(html, url) {
     $('title').first().text()
   );
   const articleParagraphs = clean(
-    $('article p').slice(0, 6).map((_, el) => $(el).text()).get().join(' ') ||
-    $('main p').slice(0, 6).map((_, el) => $(el).text()).get().join(' ')
-  ).slice(0, 1200);
+    $('article p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ') ||
+    $('main p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ') ||
+    $('[itemprop="articleBody"] p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ')
+  ).slice(0, 2200);
 
   let jsonLdDate = '';
   let jsonLdDescription = '';
@@ -395,18 +415,25 @@ function extractArticleMeta(html, url) {
     }
   });
 
+  const detailText = chooseArticleDetail(jsonLdDescription || metaDescription, articleParagraphs);
   return {
     title: jsonLdHeadline || metaTitle || clean($('h1').first().text()),
-    summary: jsonLdDescription || metaDescription || articleParagraphs,
+    summary: detailText || jsonLdDescription || metaDescription || articleParagraphs,
+    sourceExtract: detailText,
+    peopleInvolved: extractPeopleFromText(detailText),
     published: jsonLdDate || metaDate,
     link: url
   };
 }
 
-async function enrichHtmlItems(items) {
+async function enrichHtmlItems(source, items) {
   const enriched = [];
-  for (const item of items) {
-    if (parseSourceDate(item.published)) {
+  for (const [index, item] of items.entries()) {
+    const shouldHydrate =
+      !parseSourceDate(item.published) ||
+      clean(item.summary).length < 380 ||
+      (source.lane === 'incidents' && index < 2);
+    if (!shouldHydrate) {
       enriched.push(item);
       continue;
     }
@@ -417,6 +444,8 @@ async function enrichHtmlItems(items) {
         ...item,
         title: meta.title || item.title,
         summary: meta.summary || item.summary,
+        sourceExtract: meta.sourceExtract || item.sourceExtract || item.summary,
+        peopleInvolved: meta.peopleInvolved || item.peopleInvolved || [],
         published: meta.published || item.published
       });
       await sleep(150);
@@ -462,6 +491,8 @@ function buildAlert(source, item, idx) {
     confidenceScore,
     summary: clean(item.summary || item.title).slice(0, 260),
     aiSummary: makeSummary(source, item),
+    sourceExtract: clean(item.sourceExtract || item.summary || item.title).slice(0, 1800),
+    peopleInvolved: Array.isArray(item.peopleInvolved) ? item.peopleInvolved.slice(0, 6) : [],
     source: source.provider,
     sourceUrl: item.link,
     time: displayWhen,
@@ -499,7 +530,7 @@ async function main() {
       const body = await fetchText(source.endpoint);
       const parsed = source.kind === 'rss' || source.kind === 'atom' ? parseFeedItems(source, body) : parseHtmlItems(source, body);
       const filtered = parsed.filter((item) => shouldKeepItem(source, item)).slice(0, source.lane === 'incidents' ? 4 : 2);
-      const kept = source.kind === 'html' ? await enrichHtmlItems(filtered) : filtered;
+      const kept = source.kind === 'html' ? await enrichHtmlItems(source, filtered) : filtered;
       kept.forEach((item, idx) => items.push(buildAlert(source, item, idx)));
       checked += 1;
       await sleep(250);

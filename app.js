@@ -232,13 +232,13 @@ function incidentTypeLabel(alert) {
   return 'a terrorism-related source update';
 }
 function articleBodyBits(alert) {
-  const base = clean(alert.summary && alert.summary !== alert.title ? alert.summary : '');
+  const base = clean(alert.sourceExtract || (alert.summary && alert.summary !== alert.title ? alert.summary : ''));
   return base
     .split(/(?<=[.!?])\s+|\s{2,}/)
     .map((part) => clean(part))
     .filter(Boolean)
     .filter((part, index, all) => all.indexOf(part) === index)
-    .slice(0, 8);
+    .slice(0, 14);
 }
 function buildIncidentSummary(alert) {
   const bodyBits = articleBodyBits(alert);
@@ -248,24 +248,29 @@ function buildIncidentSummary(alert) {
   return alert.title;
 }
 function extractPeopleInvolved(alert) {
-  const sourceText = clean([alert.title, alert.summary].filter(Boolean).join('. '));
+  if (Array.isArray(alert.peopleInvolved) && alert.peopleInvolved.length) {
+    return alert.peopleInvolved;
+  }
+  const sourceText = clean(alert.sourceExtract || alert.summary || '');
   const sentences = sourceText.split(/(?<=[.!?])\s+/).map((part) => clean(part)).filter(Boolean);
   const blocked = [
     'The Telegraph', 'The Guardian', 'Daily Mail', 'The Sun', 'Reuters', 'Europol', 'Eurojust', 'GOV.UK',
     'Counter Terrorism Policing', 'Crown Prosecution Service', 'Bank Of America', 'United Kingdom', 'Middle East',
-    'St James’ Hospital', 'St James Hospital', 'Paris', 'Leeds', 'Europe', 'Iran', 'Lebanon', 'Israel'
+    'St James’ Hospital', 'St James Hospital', 'Paris', 'Leeds', 'Europe', 'Iran', 'Lebanon', 'Israel',
+    'France', 'Iranian', 'Proxies', 'Foiled', 'Terror', 'Attack'
   ];
   const matches = [...sourceText.matchAll(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z'’-]+){1,2})\b/g)]
     .map((match) => clean(match[1]))
     .filter((name, index, all) => all.indexOf(name) === index)
-    .filter((name) => !blocked.includes(name));
+    .filter((name) => !blocked.includes(name))
+    .filter((name) => name.split(' ').every((word) => !blocked.includes(word)));
 
   const people = matches.slice(0, 4).map((name) => {
     const context = sentences.find((sentence) => sentence.includes(name));
     return context ? `${name}: ${context}` : name;
   });
 
-  return people.length ? people : ['No named individuals were identified in the captured source text.'];
+  return people.length ? people : [];
 }
 function effectiveSummary(alert) { return looksGenericSummary(alert.aiSummary) ? buildIncidentSummary(alert) : alert.aiSummary; }
 function incidentScore(alert) {
@@ -296,7 +301,6 @@ function topPriority() { const ranking = { critical: 4, high: 3, elevated: 2, mo
 
 function buildBriefing(alert, summaryText) {
   const matches = keywordMatches(alert);
-  const sourceExtract = clean(alert.summary && alert.summary !== alert.title ? alert.summary : '');
   const peopleInvolved = extractPeopleInvolved(alert);
   return [
     `WHAT: ${alert.title}`,
@@ -308,12 +312,9 @@ function buildBriefing(alert, summaryText) {
     alert.eventType ? `EVENT TYPE: ${clean(alert.eventType).replace(/_/g, ' ')}` : '',
     alert.geoPrecision ? `GEO PRECISION: ${alert.geoPrecision}` : '',
     '',
-    'PEOPLE INVOLVED:',
-    ...peopleInvolved,
-    '',
+    peopleInvolved.length ? ['PEOPLE INVOLVED:', ...peopleInvolved, ''] : [],
     'SUMMARY:',
     summaryText,
-    sourceExtract ? ['', 'SOURCE EXTRACT:', sourceExtract] : '',
     '',
     matches.length ? `TRIGGER KEYWORDS: ${matches.join(', ')}` : '',
     `ORIGINAL LINK: ${alert.sourceUrl}`
@@ -336,6 +337,8 @@ function normaliseAlert(alert, index) {
     confidence: clean(alert.confidence) || 'Source update',
     summary: clean(alert.summary) || clean(alert.title),
     aiSummary: clean(alert.aiSummary) || clean(alert.summary) || clean(alert.title),
+    sourceExtract: clean(alert.sourceExtract),
+    peopleInvolved: Array.isArray(alert.peopleInvolved) ? alert.peopleInvolved.filter(Boolean) : [],
     source: clean(alert.source) || 'Unknown source',
     sourceUrl: clean(alert.sourceUrl) || '#',
     time: clean(alert.time) || clean(alert.happenedWhen) || 'Now',
