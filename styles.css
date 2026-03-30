@@ -60,23 +60,18 @@ button { cursor: pointer; }
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, rgba(3, 7, 16, 0.14), rgba(7, 9, 20, 0.62) 44%, rgba(7, 9, 20, 0.86)),
-    url("/Brialert/assets/owl-night.gif") center top / cover no-repeat;
-  opacity: 0.56;
+  background: url("/Brialert/assets/owl-night.gif") center top / cover no-repeat;
+  opacity: 0.78;
+  filter: saturate(1.05) contrast(1.08) brightness(0.95);
   pointer-events: none;
 }
 .screen::after {
   content: "";
   position: absolute;
-  right: -18px;
-  top: 88px;
-  width: 170px;
-  height: 230px;
-  background: url("/Brialert/assets/owl-night.gif") center / contain no-repeat;
-  opacity: 0.42;
-  filter: drop-shadow(0 20px 28px rgba(0, 0, 0, 0.45));
-  mix-blend-mode: screen;
+  inset: 0;
+  background:
+    radial-gradient(circle at 78% 18%, rgba(243, 109, 58, 0.12), transparent 16%),
+    linear-gradient(180deg, rgba(4, 7, 16, 0.12), rgba(7, 9, 20, 0.48) 34%, rgba(7, 9, 20, 0.78) 62%, rgba(7, 9, 20, 0.90));
   pointer-events: none;
 }
 .screen > * {
