@@ -107,6 +107,7 @@ function topPriority() { const ranking = { critical: 4, high: 3, elevated: 2, mo
 
 function buildBriefing(alert, summaryText) {
   const matches = keywordMatches(alert);
+  const sourceExtract = clean(alert.summary && alert.summary !== alert.title ? alert.summary : '');
   return [
     `WHO: ${alert.subject || alert.source}`,
     `WHAT: ${alert.title}`,
@@ -118,13 +119,14 @@ function buildBriefing(alert, summaryText) {
     '',
     'SUMMARY:',
     summaryText,
+    sourceExtract ? ['', 'SOURCE EXTRACT:', sourceExtract] : '',
     '',
     'FLAG REASON:',
     `This item sits in the ${(laneLabels[alert.lane] || alert.lane || 'monitoring').toLowerCase()} lane and should be read as ${isLiveIncidentCandidate(alert) ? 'a live incident responder candidate' : 'a contextual monitoring item'}.`,
     matches.length ? `TRIGGER KEYWORDS: ${matches.join(', ')}` : 'TRIGGER KEYWORDS: none matched',
     '',
     `ORIGINAL LINK: ${alert.sourceUrl}`
-  ].join('\n');
+  ].flat().filter(Boolean).join('\n');
 }
 
 function normaliseAlert(alert, index) {
@@ -271,7 +273,7 @@ function openDetail(alert) {
   modalTitle.textContent = alert.title;
   modalMeta.textContent = `${alert.location} | ${alert.time}`;
   modalAiSummary.textContent = summaryText;
-  modalSummary.textContent = alert.summary;
+  modalSummary.textContent = '';
   modalSeverity.textContent = severityLabel(alert.severity);
   modalStatus.textContent = alert.status;
   modalSource.textContent = alert.source;
