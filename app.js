@@ -220,11 +220,23 @@ function terrorismMatches(alert) {
   const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary} ${alert.sourceExtract}`.toLowerCase();
   return terrorismKeywords.filter((keyword) => haystack.includes(keyword));
 }
-function sourceHasTerrorFocus(alert) {
-  const text = `${clean(alert.source)} ${clean(alert.sourceUrl)} ${clean(alert.title)}`.toLowerCase();
+function sourceHasTerrorTopic(alert) {
+  const text = `${clean(alert.sourceUrl)} ${clean(alert.title)}`.toLowerCase();
   return [
-    'terror', 'counterterror', 'counter-terror', 'extremis', 'radicalis', 'mi5', 'protectuk',
-    'nactso', 'interpol', 'eurojust', 'europol', 'proscribed'
+    'counterterrorism.police.uk',
+    'actioncounters',
+    'terrorism-threat-levels',
+    '/terrorism',
+    '/counter-terrorism',
+    '/counterterrorism',
+    '/terrorist',
+    'counter-terrorism-register',
+    'terrorism-convictions-monitor',
+    'proscribed-terror',
+    'sanctions-against-terrorism',
+    'terrorist-list',
+    'terror offences',
+    'terrorism offences'
   ].some((term) => text.includes(term));
 }
 function isTerrorRelevant(alert) {
@@ -232,7 +244,7 @@ function isTerrorRelevant(alert) {
   if (alert.lane !== 'incidents') return true;
   const terrorHits = terrorismMatches(alert);
   if (terrorHits.length) return true;
-  return sourceHasTerrorFocus(alert) && keywordMatches(alert).length >= 2;
+  return sourceHasTerrorTopic(alert) && keywordMatches(alert).length >= 1;
 }
 function looksGenericSummary(text) {
   const summary = clean(text).toLowerCase();
@@ -241,14 +253,6 @@ function looksGenericSummary(text) {
     summary.includes('the immediate value is source validation') ||
     summary.includes('should be read as') ||
     summary.includes('contextual monitoring item');
-}
-function incidentTypeLabel(alert) {
-  const text = `${alert.title} ${alert.summary}`.toLowerCase();
-  if (text.includes('charged') || text.includes('sentenced') || text.includes('convicted')) return 'a prosecution-stage development';
-  if (text.includes('arrest') || text.includes('raid') || text.includes('disrupt') || text.includes('foiled')) return 'a disrupted plot or enforcement action';
-  if (text.includes('attack') || text.includes('bomb') || text.includes('explosion') || text.includes('shooting') || text.includes('stabbing') || text.includes('ramming') || text.includes('hostage')) return 'a reported attack-related development';
-  if (text.includes('threat')) return 'a threat-related development';
-  return 'a terrorism-related source update';
 }
 function articleBodyBits(alert) {
   const base = clean(alert.sourceExtract || (alert.summary && alert.summary !== alert.title ? alert.summary : ''));
@@ -319,6 +323,14 @@ function freshnessBucketForAlert(alert) {
   if (ageHours <= 168) return 1;
   return 0;
 }
+function sourceTierRank(alert) {
+  const tier = clean(alert.sourceTier).toLowerCase();
+  if (tier === 'trigger') return 4;
+  if (tier === 'corroboration') return 3;
+  if (tier === 'context') return 2;
+  if (tier === 'research') return 1;
+  return 0;
+}
 function incidentScore(alert) {
   if (Number.isFinite(alert.priorityScore)) return alert.priorityScore;
   if (!isTerrorRelevant(alert)) return -1;
@@ -334,6 +346,7 @@ function incidentScore(alert) {
 function isLiveIncidentCandidate(alert) {
   if (alert.lane !== 'incidents') return false;
   if (!isTerrorRelevant(alert)) return false;
+  if (clean(alert.sourceTier) === 'context' || clean(alert.sourceTier) === 'research') return false;
   if (alertAgeHours(alert) > 72) return false;
   if (alert.freshUntil) {
     const freshUntil = new Date(alert.freshUntil);
@@ -349,6 +362,8 @@ function sortAlertsByFreshness(alertList) {
   return [...alertList].sort((a, b) => {
     const freshnessGap = freshnessBucketForAlert(b) - freshnessBucketForAlert(a);
     if (freshnessGap !== 0) return freshnessGap;
+    const tierGap = sourceTierRank(b) - sourceTierRank(a);
+    if (tierGap !== 0) return tierGap;
     const timeGap = alertPublishedTime(b) - alertPublishedTime(a);
     if (timeGap !== 0) return timeGap;
     const scoreGap = incidentScore(b) - incidentScore(a);
@@ -415,6 +430,7 @@ function normaliseAlert(alert, index) {
     eventType: clean(alert.eventType),
     geoPrecision: clean(alert.geoPrecision),
     isOfficial: !!alert.isOfficial,
+    sourceTier: clean(alert.sourceTier),
     isDuplicateOf: clean(alert.isDuplicateOf),
     freshUntil: clean(alert.freshUntil),
     needsHumanReview: !!alert.needsHumanReview,

@@ -25,12 +25,6 @@ const terrorismKeywords = [
 ];
 const criticalKeywords = ['attack', 'bomb', 'bombing', 'explosion', 'explosive', 'ramming', 'shooting', 'stabbing', 'hostage'];
 const highKeywords = ['plot', 'charged', 'arrest', 'arrested', 'parcel', 'raid', 'disrupt', 'suspect'];
-const laneWords = {
-  sanctions: ['sanction', 'designation', 'designations', 'listing', 'listed', 'delisting', 'alias'],
-  oversight: ['review', 'report', 'response', 'inspection', 'oversight', 'legislation'],
-  border: ['border', 'document', 'fraud', 'etias', 'travel', 'screening', 'migration'],
-  prevention: ['radicalisation', 'prevention', 'extremism', 'newsletter', 'research']
-};
 const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
 const englishFriendlyPatterns = [
   '/en/', '/english', 'english.', '/eng', 'dw.com/en', 'ansa.it/english', 'nzz.ch/english',
@@ -129,13 +123,41 @@ function inferStatus(source, itemText) {
   return 'New source item';
 }
 
-function sourceHasTerrorFocus(source) {
-  const text = clean(`${source.name} ${source.provider} ${source.endpoint}`).toLowerCase();
+function sourceHasTerrorTopic(source) {
+  const text = clean(`${source.name} ${source.endpoint}`).toLowerCase();
   return [
-    'terror', 'counterterror', 'counter-terror', 'extremis', 'radicalis', 'mi5', 'protectuk',
-    'nactso', 'interpol', 'eurojust', 'europol', 'independent reviewer of terrorism legislation',
-    'proscribed', 'sanctions against terrorism'
+    'counterterrorism.police.uk',
+    'actioncounters',
+    'terrorism-threat-levels',
+    '/terrorism',
+    '/counter-terrorism',
+    '/counterterrorism',
+    '/terrorist',
+    'counter-terrorism-register',
+    'terrorism-convictions-monitor',
+    'proscribed-terror',
+    'sanctions-against-terrorism',
+    'terrorist-list',
+    'terror offences',
+    'terrorism offences'
   ].some((term) => text.includes(term));
+}
+
+function inferSourceTier(source) {
+  if (source.lane === 'incidents') {
+    if (sourceHasTerrorTopic(source)) return source.isTrustedOfficial ? 'trigger' : 'corroboration';
+    return 'corroboration';
+  }
+  if (source.lane === 'sanctions' || source.lane === 'oversight' || source.lane === 'border') return 'context';
+  return source.isTrustedOfficial ? 'context' : 'research';
+}
+
+function sourceTierRankValue(sourceTier) {
+  if (sourceTier === 'trigger') return 4;
+  if (sourceTier === 'corroboration') return 3;
+  if (sourceTier === 'context') return 2;
+  if (sourceTier === 'research') return 1;
+  return 0;
 }
 
 function isTerrorRelevantIncident(source, item) {
@@ -143,9 +165,9 @@ function isTerrorRelevantIncident(source, item) {
   const text = clean(`${item.title} ${item.summary} ${item.sourceExtract || ''}`).toLowerCase();
   const terrorHits = matchesKeywords(text, terrorismKeywords);
   if (terrorHits.length) return true;
-  if (sourceHasTerrorFocus(source)) {
+  if (sourceHasTerrorTopic(source)) {
     const incidentHits = matchesKeywords(text, incidentKeywords);
-    return incidentHits.length >= 2;
+    return incidentHits.length >= 1;
   }
   return false;
 }
@@ -567,6 +589,7 @@ function shouldKeepItem(source, item) {
 
 function buildAlert(source, item, idx) {
   const text = `${item.title} ${item.summary}`;
+  const sourceTier = inferSourceTier(source);
   const location = inferLocation(source, item.title);
   const coords = geoFor(location, item.title, item.summary, source.region);
   const publishedIso = formatWhen(item.published);
@@ -596,6 +619,7 @@ function buildAlert(source, item, idx) {
     peopleInvolved: Array.isArray(item.peopleInvolved) ? item.peopleInvolved.slice(0, 6) : [],
     source: source.provider,
     sourceUrl: item.link,
+    sourceTier,
     time: displayWhen,
     lat: coords.lat,
     lng: coords.lng,
@@ -653,7 +677,12 @@ async function main() {
     if (seen.has(key)) {
       const existingIndex = seen.get(key);
       const incumbent = deduped[existingIndex];
-      if ((item.priorityScore || 0) > (incumbent.priorityScore || 0)) {
+      const itemTier = sourceTierRankValue(item.sourceTier);
+      const incumbentTier = sourceTierRankValue(incumbent.sourceTier);
+      if (
+        itemTier > incumbentTier ||
+        (itemTier === incumbentTier && (item.priorityScore || 0) > (incumbent.priorityScore || 0))
+      ) {
         item.isDuplicateOf = incumbent.id;
         deduped[existingIndex] = item;
         seen.set(key, existingIndex);
@@ -670,6 +699,7 @@ async function main() {
     const timeA = parseSourceDate(a.publishedAt)?.getTime() || 0;
     const timeB = parseSourceDate(b.publishedAt)?.getTime() || 0;
     if ((b.freshnessBucket || 0) !== (a.freshnessBucket || 0)) return (b.freshnessBucket || 0) - (a.freshnessBucket || 0);
+    if (sourceTierRankValue(b.sourceTier) !== sourceTierRankValue(a.sourceTier)) return sourceTierRankValue(b.sourceTier) - sourceTierRankValue(a.sourceTier);
     if (timeB !== timeA) return timeB - timeA;
     if ((b.priorityScore || 0) !== (a.priorityScore || 0)) return (b.priorityScore || 0) - (a.priorityScore || 0);
     if ((b.confidenceScore || 0) !== (a.confidenceScore || 0)) return (b.confidenceScore || 0) - (a.confidenceScore || 0);
