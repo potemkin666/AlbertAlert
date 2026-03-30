@@ -129,6 +129,19 @@ const modalBriefing = document.getElementById('modal-briefing');
 const modalLink = document.getElementById('modal-link');
 
 const clean = (value) => String(value || '').trim();
+function formatAgeFrom(dateLike) {
+  if (!dateLike) return 'age unknown';
+  const stamp = dateLike instanceof Date ? dateLike : new Date(dateLike);
+  if (Number.isNaN(stamp.getTime())) return 'age unknown';
+  const diffMinutes = Math.max(0, Math.round((Date.now() - stamp.getTime()) / 60000));
+  if (diffMinutes < 1) return 'just now';
+  if (diffMinutes < 60) return `${diffMinutes}m ago`;
+  const hours = Math.floor(diffMinutes / 60);
+  const minutes = diffMinutes % 60;
+  if (hours < 24) return minutes ? `${hours}h ${minutes}m ago` : `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
 function loadWatched() {
   try {
     const raw = localStorage.getItem(WATCHED_STORAGE_KEY);
@@ -460,7 +473,8 @@ function renderHero() {
   const regionCopy = activeRegion === 'all' ? 'All feeds' : `${regionLabel(activeRegion)} feeds`;
   const laneCopy = activeLane === 'all' ? 'Responder posture' : laneLabels[activeLane];
   heroRegion.textContent = `${regionCopy} | ${laneCopy}`;
-  heroPolling.textContent = `Phone refresh 60s | source pull ~${SOURCE_PULL_MINUTES}m`;
+  const sourceAge = liveFeedGeneratedAt ? formatAgeFrom(liveFeedGeneratedAt) : 'waiting';
+  heroPolling.textContent = `UI checks 60s | feed build ~${SOURCE_PULL_MINUTES}m | source age ${sourceAge}`;
   const stamp = liveFeedGeneratedAt || lastBrowserPollAt;
   const sourceSuffix = liveSourceCount ? ` | ${liveSourceCount} sources` : ' | awaiting live pull';
   heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
