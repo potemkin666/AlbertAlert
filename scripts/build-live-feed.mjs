@@ -272,11 +272,23 @@ function priorityScoreFor(source, severity, keywordHits, publishedIso) {
   score += Math.min(keywordHits.length, 5) * 0.6;
   if (publishedIso) {
     const ageHours = Math.max(0, (now.getTime() - new Date(publishedIso).getTime()) / 3600000);
-    if (ageHours <= 6) score += 2;
-    else if (ageHours <= 24) score += 1;
-    else if (ageHours > 168) score -= 2;
+    if (source.lane === 'incidents') {
+      if (ageHours <= 2) score += 6;
+      else if (ageHours <= 6) score += 5;
+      else if (ageHours <= 12) score += 4;
+      else if (ageHours <= 24) score += 3;
+      else if (ageHours <= 48) score += 1.5;
+      else if (ageHours <= 72) score += 0.5;
+      else if (ageHours <= 96) score -= 2;
+      else if (ageHours <= 168) score -= 5;
+      else score -= 9;
+    } else {
+      if (ageHours <= 24) score += 1.5;
+      else if (ageHours <= 72) score += 0.75;
+      else if (ageHours > 720) score -= 2;
+    }
   } else {
-    score -= 0.5;
+    score -= source.lane === 'incidents' ? 3 : 1;
   }
   return Number(score.toFixed(2));
 }
@@ -286,6 +298,23 @@ function needsHumanReviewFor(source, severity, keywordHits, publishedIso) {
   if (!source.isTrustedOfficial && severity === 'critical') return true;
   if (!publishedIso) return true;
   return keywordHits.length < 2;
+}
+
+function freshnessBucket(source, publishedIso) {
+  if (!publishedIso) return source.lane === 'incidents' ? 0 : 1;
+  const ageHours = Math.max(0, (now.getTime() - new Date(publishedIso).getTime()) / 3600000);
+  if (source.lane === 'incidents') {
+    if (ageHours <= 2) return 5;
+    if (ageHours <= 6) return 4;
+    if (ageHours <= 12) return 3;
+    if (ageHours <= 24) return 2;
+    if (ageHours <= 72) return 1;
+    return 0;
+  }
+  if (ageHours <= 24) return 3;
+  if (ageHours <= 72) return 2;
+  if (ageHours <= 168) return 1;
+  return 0;
 }
 
 function sameStoryKey(item) {
@@ -302,8 +331,9 @@ function recencyOkay(source, rawDate) {
   const parsed = new Date(rawDate);
   if (Number.isNaN(parsed.getTime())) return true;
   const ageDays = (now.getTime() - parsed.getTime()) / 86400000;
-  if (source.lane === 'incidents') return ageDays <= 45;
-  return ageDays <= 180;
+  if (source.lane === 'incidents') return ageDays <= 7;
+  if (source.lane === 'border' || source.lane === 'sanctions') return ageDays <= 30;
+  return ageDays <= 120;
 }
 
 function makeSummary(source, item) {
@@ -546,6 +576,7 @@ function buildAlert(source, item, idx) {
     geoPrecision: inferGeoPrecision(location),
     isOfficial: !!source.isTrustedOfficial,
     priorityScore,
+    freshnessBucket: freshnessBucket(source, publishedIso),
     freshUntil: freshUntilFor(source, publishedIso, severity),
     needsHumanReview: needsHumanReviewFor(source, severity, keywordHits, publishedIso),
     isDuplicateOf: null
@@ -606,10 +637,12 @@ async function main() {
   deduped.sort((a, b) => {
     const timeA = parseSourceDate(a.publishedAt)?.getTime() || 0;
     const timeB = parseSourceDate(b.publishedAt)?.getTime() || 0;
+    if ((b.freshnessBucket || 0) !== (a.freshnessBucket || 0)) return (b.freshnessBucket || 0) - (a.freshnessBucket || 0);
+    if (timeB !== timeA) return timeB - timeA;
     if ((b.priorityScore || 0) !== (a.priorityScore || 0)) return (b.priorityScore || 0) - (a.priorityScore || 0);
     if ((b.confidenceScore || 0) !== (a.confidenceScore || 0)) return (b.confidenceScore || 0) - (a.confidenceScore || 0);
     if (severityRank[b.severity] !== severityRank[a.severity]) return severityRank[b.severity] - severityRank[a.severity];
-    return timeB - timeA;
+    return 0;
   });
 
   const payload = {

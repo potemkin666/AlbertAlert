@@ -273,6 +273,33 @@ function extractPeopleInvolved(alert) {
   return people.length ? people : [];
 }
 function effectiveSummary(alert) { return looksGenericSummary(alert.aiSummary) ? buildIncidentSummary(alert) : alert.aiSummary; }
+function alertPublishedTime(alert) {
+  const raw = clean(alert.publishedAt || alert.happenedWhen || alert.time);
+  if (!raw) return 0;
+  const stamp = new Date(raw);
+  return Number.isNaN(stamp.getTime()) ? 0 : stamp.getTime();
+}
+function alertAgeHours(alert) {
+  const publishedTime = alertPublishedTime(alert);
+  if (!publishedTime) return Infinity;
+  return Math.max(0, (Date.now() - publishedTime) / 3600000);
+}
+function freshnessBucketForAlert(alert) {
+  if (Number.isFinite(alert.freshnessBucket)) return alert.freshnessBucket;
+  const ageHours = alertAgeHours(alert);
+  if (alert.lane === 'incidents') {
+    if (ageHours <= 2) return 5;
+    if (ageHours <= 6) return 4;
+    if (ageHours <= 12) return 3;
+    if (ageHours <= 24) return 2;
+    if (ageHours <= 72) return 1;
+    return 0;
+  }
+  if (ageHours <= 24) return 3;
+  if (ageHours <= 72) return 2;
+  if (ageHours <= 168) return 1;
+  return 0;
+}
 function incidentScore(alert) {
   if (Number.isFinite(alert.priorityScore)) return alert.priorityScore;
   const matches = keywordMatches(alert);
@@ -286,6 +313,7 @@ function incidentScore(alert) {
 }
 function isLiveIncidentCandidate(alert) {
   if (alert.lane !== 'incidents') return false;
+  if (alertAgeHours(alert) > 72) return false;
   if (alert.freshUntil) {
     const freshUntil = new Date(alert.freshUntil);
     if (!Number.isNaN(freshUntil.getTime()) && freshUntil.getTime() < Date.now()) return false;
@@ -295,9 +323,22 @@ function isLiveIncidentCandidate(alert) {
   return incidentScore(alert) >= 6;
 }
 function filteredAlerts() { return alerts.filter((alert) => (activeRegion === 'all' || alert.region === activeRegion) && (activeLane === 'all' || alert.lane === activeLane)); }
-function responderAlerts() { return filteredAlerts().filter(isLiveIncidentCandidate); }
-function contextAlerts() { return filteredAlerts().filter((alert) => !isLiveIncidentCandidate(alert)); }
-function topPriority() { const ranking = { critical: 4, high: 3, elevated: 2, moderate: 1 }; const pool = responderAlerts().length ? responderAlerts() : contextAlerts(); return [...pool].sort((a, b) => { const scoreGap = incidentScore(b) - incidentScore(a); if (scoreGap !== 0) return scoreGap; if (!!a.major !== !!b.major) return a.major ? -1 : 1; return ranking[b.severity] - ranking[a.severity]; })[0]; }
+function sortAlertsByFreshness(alertList) {
+  const ranking = { critical: 4, high: 3, elevated: 2, moderate: 1 };
+  return [...alertList].sort((a, b) => {
+    const freshnessGap = freshnessBucketForAlert(b) - freshnessBucketForAlert(a);
+    if (freshnessGap !== 0) return freshnessGap;
+    const timeGap = alertPublishedTime(b) - alertPublishedTime(a);
+    if (timeGap !== 0) return timeGap;
+    const scoreGap = incidentScore(b) - incidentScore(a);
+    if (scoreGap !== 0) return scoreGap;
+    if (!!a.major !== !!b.major) return a.major ? -1 : 1;
+    return ranking[b.severity] - ranking[a.severity];
+  });
+}
+function responderAlerts() { return sortAlertsByFreshness(filteredAlerts().filter(isLiveIncidentCandidate)); }
+function contextAlerts() { return sortAlertsByFreshness(filteredAlerts().filter((alert) => !isLiveIncidentCandidate(alert))); }
+function topPriority() { const pool = responderAlerts().length ? responderAlerts() : contextAlerts(); return pool[0]; }
 
 function buildBriefing(alert, summaryText) {
   const matches = keywordMatches(alert);
@@ -352,7 +393,9 @@ function normaliseAlert(alert, index) {
     freshUntil: clean(alert.freshUntil),
     needsHumanReview: !!alert.needsHumanReview,
     priorityScore: Number.isFinite(alert.priorityScore) ? alert.priorityScore : null,
-    confidenceScore: Number.isFinite(alert.confidenceScore) ? alert.confidenceScore : null
+    confidenceScore: Number.isFinite(alert.confidenceScore) ? alert.confidenceScore : null,
+    publishedAt: clean(alert.publishedAt),
+    freshnessBucket: Number.isFinite(alert.freshnessBucket) ? alert.freshnessBucket : null
   };
 }
 
