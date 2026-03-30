@@ -28,6 +28,7 @@ const laneWords = {
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const clean = (value) => (value || '').replace(/\s+/g, ' ').trim();
 const titleCase = (value) => clean(value).replace(/\b\w/g, (m) => m.toUpperCase());
+const SOURCE_TIMEZONE = 'Europe/London';
 
 function arrayify(value) {
   if (!value) return [];
@@ -45,6 +46,12 @@ function absoluteUrl(href, base) {
 function matchesKeywords(text, words = incidentKeywords) {
   const haystack = (text || '').toLowerCase();
   return words.filter((word) => haystack.includes(word));
+}
+
+function parseSourceDate(rawDate) {
+  if (!rawDate) return null;
+  const parsed = new Date(rawDate);
+  return Number.isNaN(parsed.getTime()) ? null : parsed;
 }
 
 function inferSeverity(source, text) {
@@ -92,15 +99,23 @@ function coordFor(region, seed) {
 }
 
 function formatWhen(rawDate) {
-  const parsed = rawDate ? new Date(rawDate) : now;
-  if (Number.isNaN(parsed.getTime())) return now.toISOString();
+  const parsed = parseSourceDate(rawDate);
+  if (!parsed) return null;
   return parsed.toISOString();
 }
 
 function formatDisplayDate(rawDate) {
-  const parsed = rawDate ? new Date(rawDate) : now;
-  if (Number.isNaN(parsed.getTime())) return now.toISOString().slice(0, 10);
-  return parsed.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const parsed = parseSourceDate(rawDate);
+  if (!parsed) return 'Source date unconfirmed';
+  return parsed.toLocaleString('en-GB', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+    timeZone: SOURCE_TIMEZONE
+  });
 }
 
 function recencyOkay(source, rawDate) {
@@ -209,6 +224,90 @@ function parseHtmlItems(source, html) {
   return candidates.slice(0, 15);
 }
 
+function collectJsonLd(node, collected = []) {
+  if (!node) return collected;
+  if (Array.isArray(node)) {
+    node.forEach((item) => collectJsonLd(item, collected));
+    return collected;
+  }
+  if (typeof node === 'object') {
+    collected.push(node);
+    Object.values(node).forEach((value) => collectJsonLd(value, collected));
+  }
+  return collected;
+}
+
+function extractArticleMeta(html, url) {
+  const $ = cheerio.load(html);
+  const metaDate = clean(
+    $('meta[property="article:published_time"]').attr('content') ||
+    $('meta[name="article:published_time"]').attr('content') ||
+    $('meta[name="publish-date"]').attr('content') ||
+    $('meta[name="pubdate"]').attr('content') ||
+    $('meta[property="og:published_time"]').attr('content') ||
+    $('time[datetime]').first().attr('datetime') ||
+    $('time').first().text()
+  );
+  const metaDescription = clean(
+    $('meta[name="description"]').attr('content') ||
+    $('meta[property="og:description"]').attr('content')
+  );
+  const metaTitle = clean(
+    $('meta[property="og:title"]').attr('content') ||
+    $('title').first().text()
+  );
+
+  let jsonLdDate = '';
+  let jsonLdDescription = '';
+  let jsonLdHeadline = '';
+
+  $('script[type="application/ld+json"]').each((_, el) => {
+    try {
+      const raw = $(el).contents().text();
+      const parsed = JSON.parse(raw);
+      const objects = collectJsonLd(parsed);
+      for (const obj of objects) {
+        if (!jsonLdDate) jsonLdDate = clean(obj.datePublished || obj.dateCreated || obj.uploadDate || obj.dateModified);
+        if (!jsonLdDescription) jsonLdDescription = clean(obj.description);
+        if (!jsonLdHeadline) jsonLdHeadline = clean(obj.headline || obj.name);
+      }
+    } catch {
+      return;
+    }
+  });
+
+  return {
+    title: jsonLdHeadline || metaTitle || clean($('h1').first().text()),
+    summary: jsonLdDescription || metaDescription || clean($('article p').slice(0, 3).text()).slice(0, 420),
+    published: jsonLdDate || metaDate,
+    link: url
+  };
+}
+
+async function enrichHtmlItems(items) {
+  const enriched = [];
+  for (const item of items) {
+    if (parseSourceDate(item.published)) {
+      enriched.push(item);
+      continue;
+    }
+    try {
+      const articleHtml = await fetchText(item.link);
+      const meta = extractArticleMeta(articleHtml, item.link);
+      enriched.push({
+        ...item,
+        title: meta.title || item.title,
+        summary: meta.summary || item.summary,
+        published: meta.published || item.published
+      });
+      await sleep(150);
+    } catch {
+      enriched.push(item);
+    }
+  }
+  return enriched;
+}
+
 function shouldKeepItem(source, item) {
   const text = `${item.title} ${item.summary}`;
   if (!recencyOkay(source, item.published)) return false;
@@ -222,6 +321,7 @@ function buildAlert(source, item, idx) {
   const text = `${item.title} ${item.summary}`;
   const coords = coordFor(source.region, `${source.id}-${item.title}-${idx}`);
   const publishedIso = formatWhen(item.published);
+  const displayWhen = formatDisplayDate(item.published);
   return {
     id: `${source.id}-${idx}`,
     title: titleCase(item.title),
@@ -232,13 +332,13 @@ function buildAlert(source, item, idx) {
     status: inferStatus(source, text),
     actor: source.provider,
     subject: source.provider,
-    happenedWhen: formatDisplayDate(item.published),
+    happenedWhen: displayWhen,
     confidence: inferConfidence(source),
     summary: clean(item.summary || item.title).slice(0, 260),
     aiSummary: makeSummary(source, item),
     source: source.provider,
     sourceUrl: item.link,
-    time: formatDisplayDate(item.published),
+    time: displayWhen,
     x: coords.x,
     y: coords.y,
     major: source.lane === 'incidents' && ['critical', 'high'].includes(inferSeverity(source, text)),
@@ -265,7 +365,8 @@ async function main() {
     try {
       const body = await fetchText(source.endpoint);
       const parsed = source.kind === 'rss' || source.kind === 'atom' ? parseFeedItems(source, body) : parseHtmlItems(source, body);
-      const kept = parsed.filter((item) => shouldKeepItem(source, item)).slice(0, source.lane === 'incidents' ? 4 : 2);
+      const filtered = parsed.filter((item) => shouldKeepItem(source, item)).slice(0, source.lane === 'incidents' ? 4 : 2);
+      const kept = source.kind === 'html' ? await enrichHtmlItems(filtered) : filtered;
       kept.forEach((item, idx) => items.push(buildAlert(source, item, idx)));
       checked += 1;
       await sleep(250);
@@ -285,7 +386,9 @@ async function main() {
 
   deduped.sort((a, b) => {
     const rank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
-    const timeGap = new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime();
+    const timeA = parseSourceDate(a.publishedAt)?.getTime() || 0;
+    const timeB = parseSourceDate(b.publishedAt)?.getTime() || 0;
+    const timeGap = timeB - timeA;
     if (rank[b.severity] !== rank[a.severity]) return rank[b.severity] - rank[a.severity];
     return timeGap;
   });
