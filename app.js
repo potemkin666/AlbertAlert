@@ -6,6 +6,7 @@ const NOTES_STORAGE_KEY = 'brialert.notes';
 
 const laneLabels = { all: 'All lanes', incidents: 'Incidents', sanctions: 'Sanctions', oversight: 'Oversight', border: 'Border', prevention: 'Prevention' };
 const incidentKeywords = ['terror','terrorism','attack','attacks','bomb','bombing','explosion','explosive','device','ramming','stabbing','shooting','hostage','plot','suspect','arrest','charged','charged with','parcel','radicalised','extremist','isis','islamic state','al-qaeda','threat'];
+const terrorismKeywords = ['terror','terrorism','counter-terror','counter terrorism','terrorist','extremist','extremism','radicalised','radicalized','radicalisation','radicalization','jihadist','jihad','isis','islamic state','al-qaeda','far-right extremist','far right extremist','neo-nazi','proscribed organisation','proscribed organization','bomb hoax','ira','dissident republican','loyalist paramilitary','terror offences','terrorism offences','terrorist propaganda'];
 const trustedMajorSources = new Set(['Counter Terrorism Policing','Eurojust','GOV.UK','Europol','Reuters','The Guardian','BBC News','Associated Press','INTERPOL','National Crime Agency']);
 const albertQuoteOpeners = [
   'Stay steady',
@@ -215,6 +216,24 @@ function inferGeoPoint(alert) {
   return null;
 }
 function keywordMatches(alert) { const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary}`.toLowerCase(); return incidentKeywords.filter((keyword) => haystack.includes(keyword)); }
+function terrorismMatches(alert) {
+  const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary} ${alert.sourceExtract}`.toLowerCase();
+  return terrorismKeywords.filter((keyword) => haystack.includes(keyword));
+}
+function sourceHasTerrorFocus(alert) {
+  const text = `${clean(alert.source)} ${clean(alert.sourceUrl)} ${clean(alert.title)}`.toLowerCase();
+  return [
+    'terror', 'counterterror', 'counter-terror', 'extremis', 'radicalis', 'mi5', 'protectuk',
+    'nactso', 'interpol', 'eurojust', 'europol', 'proscribed'
+  ].some((term) => text.includes(term));
+}
+function isTerrorRelevant(alert) {
+  if (typeof alert.isTerrorRelevant === 'boolean') return alert.isTerrorRelevant;
+  if (alert.lane !== 'incidents') return true;
+  const terrorHits = terrorismMatches(alert);
+  if (terrorHits.length) return true;
+  return sourceHasTerrorFocus(alert) && keywordMatches(alert).length >= 2;
+}
 function looksGenericSummary(text) {
   const summary = clean(text).toLowerCase();
   return !summary ||
@@ -302,6 +321,7 @@ function freshnessBucketForAlert(alert) {
 }
 function incidentScore(alert) {
   if (Number.isFinite(alert.priorityScore)) return alert.priorityScore;
+  if (!isTerrorRelevant(alert)) return -1;
   const matches = keywordMatches(alert);
   let score = matches.length;
   if (alert.lane === 'incidents') score += 3;
@@ -313,6 +333,7 @@ function incidentScore(alert) {
 }
 function isLiveIncidentCandidate(alert) {
   if (alert.lane !== 'incidents') return false;
+  if (!isTerrorRelevant(alert)) return false;
   if (alertAgeHours(alert) > 72) return false;
   if (alert.freshUntil) {
     const freshUntil = new Date(alert.freshUntil);
@@ -337,11 +358,16 @@ function sortAlertsByFreshness(alertList) {
   });
 }
 function responderAlerts() { return sortAlertsByFreshness(filteredAlerts().filter(isLiveIncidentCandidate)); }
-function contextAlerts() { return sortAlertsByFreshness(filteredAlerts().filter((alert) => !isLiveIncidentCandidate(alert))); }
+function contextAlerts() {
+  return sortAlertsByFreshness(filteredAlerts().filter((alert) => {
+    if (alert.lane === 'incidents' && !isTerrorRelevant(alert)) return false;
+    return !isLiveIncidentCandidate(alert);
+  }));
+}
 function topPriority() { const pool = responderAlerts().length ? responderAlerts() : contextAlerts(); return pool[0]; }
 
 function buildBriefing(alert, summaryText) {
-  const matches = keywordMatches(alert);
+  const matches = Array.isArray(alert.terrorismHits) && alert.terrorismHits.length ? alert.terrorismHits : terrorismMatches(alert);
   const peopleInvolved = extractPeopleInvolved(alert);
   return [
     `WHAT: ${alert.title}`,
@@ -395,7 +421,9 @@ function normaliseAlert(alert, index) {
     priorityScore: Number.isFinite(alert.priorityScore) ? alert.priorityScore : null,
     confidenceScore: Number.isFinite(alert.confidenceScore) ? alert.confidenceScore : null,
     publishedAt: clean(alert.publishedAt),
-    freshnessBucket: Number.isFinite(alert.freshnessBucket) ? alert.freshnessBucket : null
+    freshnessBucket: Number.isFinite(alert.freshnessBucket) ? alert.freshnessBucket : null,
+    terrorismHits: Array.isArray(alert.terrorismHits) ? alert.terrorismHits.filter(Boolean) : [],
+    isTerrorRelevant: typeof alert.isTerrorRelevant === 'boolean' ? alert.isTerrorRelevant : null
   };
 }
 

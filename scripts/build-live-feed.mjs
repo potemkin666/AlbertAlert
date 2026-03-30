@@ -16,6 +16,13 @@ const incidentKeywords = [
   'ramming', 'stabbing', 'shooting', 'hostage', 'plot', 'suspect', 'arrest', 'arrested', 'charged',
   'parcel', 'extremist', 'isis', 'islamic state', 'al-qaeda', 'threat', 'jihadist', 'radicalised'
 ];
+const terrorismKeywords = [
+  'terror', 'terrorism', 'counter-terror', 'counter terrorism', 'terrorist', 'extremist', 'extremism',
+  'radicalised', 'radicalized', 'radicalisation', 'radicalization', 'jihadist', 'jihad', 'isis',
+  'islamic state', 'al-qaeda', 'far-right extremist', 'far right extremist', 'neo-nazi',
+  'proscribed organisation', 'proscribed organization', 'bomb hoax', 'ira', 'dissident republican',
+  'loyalist paramilitary', 'terror offences', 'terrorism offences', 'terrorist propaganda'
+];
 const criticalKeywords = ['attack', 'bomb', 'bombing', 'explosion', 'explosive', 'ramming', 'shooting', 'stabbing', 'hostage'];
 const highKeywords = ['plot', 'charged', 'arrest', 'arrested', 'parcel', 'raid', 'disrupt', 'suspect'];
 const laneWords = {
@@ -120,6 +127,27 @@ function inferStatus(source, itemText) {
   if (text.includes('sentenced')) return 'Sentenced';
   if (text.includes('threat')) return 'Threat update';
   return 'New source item';
+}
+
+function sourceHasTerrorFocus(source) {
+  const text = clean(`${source.name} ${source.provider} ${source.endpoint}`).toLowerCase();
+  return [
+    'terror', 'counterterror', 'counter-terror', 'extremis', 'radicalis', 'mi5', 'protectuk',
+    'nactso', 'interpol', 'eurojust', 'europol', 'independent reviewer of terrorism legislation',
+    'proscribed', 'sanctions against terrorism'
+  ].some((term) => text.includes(term));
+}
+
+function isTerrorRelevantIncident(source, item) {
+  if (source.lane !== 'incidents') return true;
+  const text = clean(`${item.title} ${item.summary} ${item.sourceExtract || ''}`).toLowerCase();
+  const terrorHits = matchesKeywords(text, terrorismKeywords);
+  if (terrorHits.length) return true;
+  if (sourceHasTerrorFocus(source)) {
+    const incidentHits = matchesKeywords(text, incidentKeywords);
+    return incidentHits.length >= 2;
+  }
+  return false;
 }
 
 function inferLocation(source, title) {
@@ -530,6 +558,7 @@ function shouldKeepItem(source, item) {
   const text = `${item.title} ${item.summary}`;
   if (item.language && !isEnglishLanguage(item.language)) return false;
   if (!recencyOkay(source, item.published)) return false;
+  if (!isTerrorRelevantIncident(source, item)) return false;
   if (source.requiresKeywordMatch) {
     return matchesKeywords(text).length > 0;
   }
@@ -543,6 +572,7 @@ function buildAlert(source, item, idx) {
   const publishedIso = formatWhen(item.published);
   const displayWhen = formatDisplayDate(item.published);
   const keywordHits = matchesKeywords(text);
+  const terrorismHits = matchesKeywords(text, terrorismKeywords);
   const severity = inferSeverity(source, text);
   const eventType = inferEventType(source, text);
   const confidenceScore = inferConfidenceScore(source, text, publishedIso);
@@ -572,6 +602,7 @@ function buildAlert(source, item, idx) {
     major: source.lane === 'incidents' && ['critical', 'high'].includes(severity),
     publishedAt: publishedIso,
     keywordHits,
+    terrorismHits,
     eventType,
     geoPrecision: inferGeoPrecision(location),
     isOfficial: !!source.isTrustedOfficial,
@@ -579,6 +610,7 @@ function buildAlert(source, item, idx) {
     freshnessBucket: freshnessBucket(source, publishedIso),
     freshUntil: freshUntilFor(source, publishedIso, severity),
     needsHumanReview: needsHumanReviewFor(source, severity, keywordHits, publishedIso),
+    isTerrorRelevant: isTerrorRelevantIncident(source, item),
     isDuplicateOf: null
   };
 }
