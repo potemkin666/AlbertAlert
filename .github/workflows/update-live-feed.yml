@@ -13,15 +13,22 @@ on:
   schedule:
     - cron: '*/15 * * * *'
 
+concurrency:
+  group: brialert-live-feed
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   build-live-feed:
     runs-on: ubuntu-latest
+    timeout-minutes: 12
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -29,10 +36,15 @@ jobs:
           node-version: '20'
 
       - name: Install feed builder dependencies
-        run: npm install
+        run: npm install --no-audit --no-fund
 
       - name: Build live alert feed
         run: npm run build:feeds
+
+      - name: Sync with latest main before commit
+        run: |
+          git fetch origin main
+          git rebase origin/main
 
       - name: Commit refreshed feed data
         run: |
@@ -44,4 +56,4 @@ jobs:
             exit 0
           fi
           git commit -m 'Refresh live alert feed'
-          git push
+          git push origin HEAD:main
