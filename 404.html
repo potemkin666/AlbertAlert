@@ -4,9 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Brialert redirect</title>
-  <meta http-equiv="refresh" content="0; url=/Brialert/index.html">
+  <meta http-equiv="refresh" content="0; url=/index.html">
   <script>
-    const canonicalTarget = '/Brialert/index.html';
+    const canonicalTarget = location.pathname.toLowerCase().includes('/brialert')
+      ? '/Brialert/index.html'
+      : '/index.html';
     const query = location.search || '';
     const hash = location.hash || '';
     if (location.pathname.toLowerCase() !== canonicalTarget.toLowerCase()) {
@@ -41,7 +43,7 @@
   <div class="card">
     <h1>Opening Brialert</h1>
     <p>If you are not redirected automatically, tap below.</p>
-    <p><a href="/Brialert/index.html">Open the app</a></p>
+    <p><a href="./index.html">Open the app</a></p>
   </div>
 </body>
 </html>

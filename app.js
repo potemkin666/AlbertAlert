@@ -1,4 +1,4 @@
-const LIVE_FEED_URL = '/Brialert/live-alerts.json';
+const LIVE_FEED_URL = 'live-alerts.json';
 const POLL_INTERVAL_MS = 60_000;
 const SOURCE_PULL_MINUTES = 15;
 const WATCHED_STORAGE_KEY = 'brialert.watched';
