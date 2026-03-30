@@ -26,7 +26,10 @@ const laneWords = {
 };
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const clean = (value) => (value || '').replace(/\s+/g, ' ').trim();
+const clean = (value) => (value || '')
+  .replace(/([a-z0-9])([A-Z][a-z])/g, '$1. $2')
+  .replace(/\s+/g, ' ')
+  .trim();
 const titleCase = (value) => clean(value).replace(/\b\w/g, (m) => m.toUpperCase());
 const SOURCE_TIMEZONE = 'Europe/London';
 
@@ -143,23 +146,8 @@ function makeSummary(source, item) {
   const where = inferLocation(source, title);
   const text = `${title} ${summary}`.toLowerCase();
   if (source.lane === 'incidents') {
-    const type = text.includes('charged') || text.includes('sentenced') || text.includes('convicted')
-      ? 'a prosecution-stage development'
-      : text.includes('arrest') || text.includes('raid') || text.includes('foiled') || text.includes('disrupt')
-        ? 'a disrupted plot or enforcement action'
-        : text.includes('attack') || text.includes('bomb') || text.includes('explosion') || text.includes('shooting') || text.includes('stabbing') || text.includes('ramming') || text.includes('hostage')
-          ? 'an attack-related development'
-          : text.includes('threat')
-            ? 'a threat-related development'
-            : 'a terrorism-related update';
       const factualBits = summariseTextBlock(summary);
-      return [
-        `${source.provider} published ${type} linked to ${where} on ${when}.`,
-        `The headline is: ${title}.`,
-        factualBits.length
-          ? factualBits.join(' ')
-          : 'No fuller article extract was available from this pull, so the currently captured facts are limited to the headline, source, and date metadata.'
-      ].join(' ');
+      return factualBits.length ? factualBits.join(' ') : title;
     }
   if (source.lane === 'sanctions') {
     return `${source.provider} has published a sanctions-related update. The value here is legal and entity-resolution context, including designations, aliases, listing changes, and notice-level movement.`;

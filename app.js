@@ -84,18 +84,11 @@ function articleBodyBits(alert) {
     .slice(0, 8);
 }
 function buildIncidentSummary(alert) {
-  const type = incidentTypeLabel(alert);
   const bodyBits = articleBodyBits(alert);
-  const lines = [
-    `${alert.source} published ${type} linked to ${alert.location} on ${alert.time}.`,
-    `The headline is: ${alert.title}.`
-  ];
   if (bodyBits.length) {
-    lines.push(bodyBits.join(' '));
-  } else {
-    lines.push('No fuller article extract was available from the source pull, so the currently captured facts are limited to the headline, source, and date metadata.');
+    return bodyBits.join(' ');
   }
-  return lines.join(' ');
+  return alert.title;
 }
 function effectiveSummary(alert) { return looksGenericSummary(alert.aiSummary) ? buildIncidentSummary(alert) : alert.aiSummary; }
 function incidentScore(alert) { const matches = keywordMatches(alert); let score = matches.length; if (alert.lane === 'incidents') score += 3; if (alert.severity === 'critical') score += 3; if (alert.severity === 'high') score += 2; if (alert.major) score += 2; if (trustedMajorSources.has(alert.source)) score += 2; return score; }
@@ -274,6 +267,7 @@ function openDetail(alert) {
   modalMeta.textContent = `${alert.location} | ${alert.time}`;
   modalAiSummary.textContent = summaryText;
   modalSummary.textContent = '';
+  modalSummary.hidden = true;
   modalSeverity.textContent = severityLabel(alert.severity);
   modalStatus.textContent = alert.status;
   modalSource.textContent = alert.source;
