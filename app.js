@@ -81,7 +81,7 @@ function articleBodyBits(alert) {
     .map((part) => clean(part))
     .filter(Boolean)
     .filter((part, index, all) => all.indexOf(part) === index)
-    .slice(0, 4);
+    .slice(0, 8);
 }
 function buildIncidentSummary(alert) {
   const type = incidentTypeLabel(alert);
@@ -93,7 +93,7 @@ function buildIncidentSummary(alert) {
   if (bodyBits.length) {
     lines.push(bodyBits.join(' '));
   } else {
-    lines.push('The source page did not expose a fuller body extract in the feed pull, so the available facts are currently limited to the headline and source metadata.');
+    lines.push('No fuller article extract was available from the source pull, so the currently captured facts are limited to the headline, source, and date metadata.');
   }
   return lines.join(' ');
 }

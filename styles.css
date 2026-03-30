@@ -85,6 +85,27 @@ button { cursor: pointer; }
   backdrop-filter: blur(16px);
 }
 .hero-card, .priority-card, .feed-card, .panel { padding: 20px; }
+.hero-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  background:
+    linear-gradient(90deg, rgba(7, 9, 20, 0.90), rgba(7, 9, 20, 0.62) 46%, rgba(7, 9, 20, 0.28)),
+    url("/Brialert/assets/owl-night.gif") right center / cover no-repeat;
+}
+.hero-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 82% 24%, rgba(245, 126, 73, 0.22), transparent 14%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+.hero-card > * {
+  position: relative;
+  z-index: 1;
+}
 .eyebrow, .detail-label {
   margin: 0 0 8px;
   font-size: 12px;

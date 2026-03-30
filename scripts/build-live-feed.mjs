@@ -88,7 +88,7 @@ function inferLocation(source, title) {
   return source.region === 'uk' ? 'United Kingdom' : 'Europe';
 }
 
-function summariseTextBlock(text, maxParts = 4) {
+function summariseTextBlock(text, maxParts = 8) {
   return clean(text)
     .split(/(?<=[.!?])\s+|\s{2,}/)
     .map((part) => clean(part))
@@ -152,15 +152,15 @@ function makeSummary(source, item) {
           : text.includes('threat')
             ? 'a threat-related development'
             : 'a terrorism-related update';
-    const factualBits = summariseTextBlock(summary);
-    return [
-      `${source.provider} published ${type} linked to ${where} on ${when}.`,
-      `The headline is: ${title}.`,
-      factualBits.length
-        ? factualBits.join(' ')
-        : 'The source page did not expose a fuller body extract in this pull, so the available facts are currently limited to the headline and source metadata.'
-    ].join(' ');
-  }
+      const factualBits = summariseTextBlock(summary);
+      return [
+        `${source.provider} published ${type} linked to ${where} on ${when}.`,
+        `The headline is: ${title}.`,
+        factualBits.length
+          ? factualBits.join(' ')
+          : 'No fuller article extract was available from this pull, so the currently captured facts are limited to the headline, source, and date metadata.'
+      ].join(' ');
+    }
   if (source.lane === 'sanctions') {
     return `${source.provider} has published a sanctions-related update. The value here is legal and entity-resolution context, including designations, aliases, listing changes, and notice-level movement.`;
   }
