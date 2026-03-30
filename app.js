@@ -77,17 +77,11 @@ function incidentTypeLabel(alert) {
 function buildIncidentSummary(alert) {
   const base = clean(alert.summary && alert.summary !== alert.title ? alert.summary : '');
   const type = incidentTypeLabel(alert);
-  const matches = keywordMatches(alert);
   const firstLine = `${alert.source} published ${type} linked to ${alert.location} on ${alert.time}.`;
   const secondLine = base
     ? `What we have from the source so far is: ${base}`
     : `At this stage the available source line is limited to the headline: ${alert.title}.`;
-  const thirdLine = `Operationally, this sits in the ${laneLabels[alert.lane].toLowerCase()} lane with ${alert.confidence.toLowerCase()} confidence, so it should be read as ${isLiveIncidentCandidate(alert) ? 'a responder-facing item' : 'a contextual development'} until stronger corroboration lands.`;
-  const fourthLine = matches.length
-    ? `The item tripped the incident watch because it contains ${matches.join(', ')} indicators, which suggests either an attack-related event, an enforcement action, or a later prosecution-stage update.`
-    : 'The item did not trip strong explicit incident terms, so follow-up should focus on validating whether this is an active event, a linked disruption, or background context only.';
-  const fifthLine = 'Next checks should be source corroboration, whether there is any active public-safety posture, whether casualties or scene control are mentioned, and whether there are references to arrests, charges, devices, ideology, or linked suspects.';
-  return [firstLine, secondLine, thirdLine, fourthLine, fifthLine].join(' ');
+  return [firstLine, secondLine].join(' ');
 }
 function effectiveSummary(alert) { return looksGenericSummary(alert.aiSummary) ? buildIncidentSummary(alert) : alert.aiSummary; }
 function incidentScore(alert) { const matches = keywordMatches(alert); let score = matches.length; if (alert.lane === 'incidents') score += 3; if (alert.severity === 'critical') score += 3; if (alert.severity === 'high') score += 2; if (alert.major) score += 2; if (trustedMajorSources.has(alert.source)) score += 2; return score; }
