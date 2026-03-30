@@ -82,6 +82,8 @@ let lastBrowserPollAt = new Date();
 let liveFeedGeneratedAt = null;
 let liveSourceCount = 0;
 let albertIndex = -1;
+let mapTransform = { scale: 1, x: 0, y: 0 };
+let mapDrag = { active: false, startX: 0, startY: 0, originX: 0, originY: 0 };
 
 const priorityCard = document.getElementById('priority-card');
 const feedList = document.getElementById('feed-list');
@@ -95,7 +97,13 @@ const heroRegion = document.getElementById('hero-region');
 const heroUpdated = document.getElementById('hero-updated');
 const heroPolling = document.getElementById('hero-polling');
 const mapGrid = document.getElementById('map-grid');
+const mapViewport = document.getElementById('map-viewport');
+const mapStage = document.getElementById('map-stage');
+const mapMarkerLayer = document.getElementById('map-marker-layer');
 const mapSummary = document.getElementById('map-summary');
+const mapZoomIn = document.getElementById('map-zoom-in');
+const mapZoomOut = document.getElementById('map-zoom-out');
+const mapReset = document.getElementById('map-reset');
 const filters = document.getElementById('filters');
 const laneFilters = document.getElementById('lane-filters');
 const tabbar = document.getElementById('tabbar');
@@ -311,8 +319,20 @@ function renderContext() {
   contextList.querySelectorAll('[data-context]').forEach((card) => card.addEventListener('click', () => openDetail(alerts.find((item) => item.id === card.dataset.context))));
 }
 
+function clampMapTransform() {
+  const maxX = ((mapTransform.scale - 1) * mapGrid.clientWidth) / 2;
+  const maxY = ((mapTransform.scale - 1) * mapGrid.clientHeight) / 2;
+  mapTransform.x = Math.max(-maxX, Math.min(maxX, mapTransform.x));
+  mapTransform.y = Math.max(-maxY, Math.min(maxY, mapTransform.y));
+}
+
+function applyMapTransform() {
+  clampMapTransform();
+  mapStage.style.transform = `translate(${mapTransform.x}px, ${mapTransform.y}px) scale(${mapTransform.scale})`;
+}
+
 function renderMap() {
-  mapGrid.querySelectorAll('.pin').forEach((pin) => pin.remove());
+  mapMarkerLayer.querySelectorAll('.pin').forEach((pin) => pin.remove());
   filteredAlerts().forEach((alert) => {
     const pin = document.createElement('button');
     pin.className = `pin actionable severity-${alert.severity}`;
@@ -321,9 +341,10 @@ function renderMap() {
     pin.dataset.pin = alert.id;
     pin.setAttribute('aria-label', alert.title);
     pin.addEventListener('click', () => openDetail(alert));
-    mapGrid.appendChild(pin);
+    mapMarkerLayer.appendChild(pin);
   });
   mapSummary.textContent = `${responderAlerts().length} responder items | ${contextAlerts().length} context`;
+  applyMapTransform();
 }
 
 function renderWatchlist() {
@@ -361,6 +382,11 @@ function nextAlbertQuote() {
   return albertQuotes[nextIndex];
 }
 
+function zoomMap(scaleDelta) {
+  mapTransform.scale = Math.max(1, Math.min(2.4, mapTransform.scale + scaleDelta));
+  applyMapTransform();
+}
+
 function openDetail(alert) {
   const summaryText = effectiveSummary(alert);
   modalTitle.textContent = alert.title;
@@ -388,6 +414,26 @@ copyBriefing.addEventListener('click', async () => { const briefing = copyBriefi
 closeModal.addEventListener('click', closeDetailPanel);
 modalBackdrop.addEventListener('click', closeDetailPanel);
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeDetailPanel(); });
+mapZoomIn.addEventListener('click', () => zoomMap(0.22));
+mapZoomOut.addEventListener('click', () => zoomMap(-0.22));
+mapReset.addEventListener('click', () => {
+  mapTransform = { scale: 1, x: 0, y: 0 };
+  applyMapTransform();
+});
+mapViewport.addEventListener('pointerdown', (event) => {
+  mapDrag = { active: true, startX: event.clientX, startY: event.clientY, originX: mapTransform.x, originY: mapTransform.y };
+  mapViewport.classList.add('is-dragging');
+});
+window.addEventListener('pointermove', (event) => {
+  if (!mapDrag.active) return;
+  mapTransform.x = mapDrag.originX + (event.clientX - mapDrag.startX);
+  mapTransform.y = mapDrag.originY + (event.clientY - mapDrag.startY);
+  applyMapTransform();
+});
+window.addEventListener('pointerup', () => {
+  mapDrag.active = false;
+  mapViewport.classList.remove('is-dragging');
+});
 albertQuote.textContent = nextAlbertQuote();
 albertCard.addEventListener('click', () => { albertQuote.textContent = nextAlbertQuote(); });
 document.querySelector('.bulldog-card').addEventListener('dblclick', () => { albertNote.classList.toggle('hidden'); });
