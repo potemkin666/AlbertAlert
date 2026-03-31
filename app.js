@@ -174,25 +174,20 @@ function filteredAlerts() {
     (activeLane === 'all' || alert.lane === activeLane)
   );
 }
-function responderAlerts() {
-  return sortAlertsByFreshness(filteredAlerts().filter(isLiveIncidentCandidate));
-}
-function contextAlerts() {
-  return sortAlertsByFreshness(filteredAlerts().filter((alert) => {
+function deriveView() {
+  const filtered = filteredAlerts();
+  const responder = sortAlertsByFreshness(filtered.filter(isLiveIncidentCandidate));
+  const context = sortAlertsByFreshness(filtered.filter((alert) => {
     if (isQuarantineCandidate(alert)) return false;
     if (alert.lane === 'incidents' && !isTerrorRelevant(alert)) return false;
     return !isLiveIncidentCandidate(alert);
   }));
-}
-function quarantineAlerts() {
-  return sortAlertsByFreshness(filteredAlerts().filter(isQuarantineCandidate)).slice(0, 6);
-}
-function topPriority() {
-  if (strictResponderMode) {
-    return responderAlerts().filter(isStrictTopAlertCandidate)[0] || null;
-  }
-  const pool = responderAlerts().length ? responderAlerts() : contextAlerts();
-  return pool[0];
+  const quarantine = sortAlertsByFreshness(filtered.filter(isQuarantineCandidate)).slice(0, 6);
+  const topPriority = strictResponderMode
+    ? responder.filter(isStrictTopAlertCandidate)[0] || null
+    : (responder[0] || context[0] || null);
+
+  return { filtered, responder, context, quarantine, topPriority };
 }
 
 function setActiveTab(next) {
@@ -202,7 +197,7 @@ function setActiveTab(next) {
   if (next === 'map') {
     setTimeout(() => {
       ensureMap();
-      renderMap(true);
+      renderMap(deriveView(), true);
     }, 60);
   }
 }
@@ -241,8 +236,8 @@ async function loadLiveFeed() {
   renderAll();
 }
 
-function renderPriority() {
-  const alert = topPriority();
+function renderPriority(view) {
+  const alert = view.topPriority;
   if (!alert) {
     priorityCard.classList.remove('context-priority');
     priorityCard.innerHTML = `
@@ -272,14 +267,14 @@ function renderPriority() {
     </div>`;
   priorityCard.onclick = () => openDetail(alert);
 }
-function renderBriefingMode() {
+function renderBriefingMode(view) {
   if (!briefingMode) {
     briefingModePanel.classList.add('hidden');
     return;
   }
 
   briefingModePanel.classList.remove('hidden');
-  const alert = topPriority();
+  const alert = view.topPriority;
   if (!alert) {
     briefingModeTitle.textContent = 'Waiting for a verified source pull';
     briefingModeMeta.textContent = strictResponderMode
@@ -316,22 +311,22 @@ function responderCardMarkup(alert) {
       </article>`;
 }
 
-function renderFeed() {
-  const items = responderAlerts();
+function renderFeed(view) {
+  const items = view.responder;
   feedList.innerHTML = items.length ? items.map(responderCardMarkup).join('') : "<p class='panel-copy'>No verified responder triggers are currently in this filter.</p>";
   watchedCount.textContent = `${watched.size} watched`;
   feedList.querySelectorAll('.feed-card').forEach((card) => card.addEventListener('click', () => openDetail(alerts.find((item) => item.id === card.dataset.id))));
   feedList.querySelectorAll('.star-button').forEach((button) => button.addEventListener('click', (event) => { event.stopPropagation(); const id = button.dataset.star; watched.has(id) ? watched.delete(id) : watched.add(id); saveWatched(); renderAll(); }));
 }
 
-function renderContext() {
-  const items = contextAlerts().slice(0, 4);
+function renderContext(view) {
+  const items = view.context.slice(0, 4);
   contextCount.textContent = `${items.length} contextual items`;
   contextList.innerHTML = items.length ? items.map((alert) => `<article class="context-pill actionable" data-context="${alert.id}"><h4>${alert.title}</h4><p>${contextLabel(alert)} | ${alert.source}</p></article>`).join('') : "<p class='panel-copy'>No contextual items have been published into this filter yet.</p>";
   contextList.querySelectorAll('[data-context]').forEach((card) => card.addEventListener('click', () => openDetail(alerts.find((item) => item.id === card.dataset.context))));
 }
-function renderQuarantine() {
-  const items = quarantineAlerts();
+function renderQuarantine(view) {
+  const items = view.quarantine;
   quarantineCount.textContent = `${items.length} doubtful items`;
   quarantineList.innerHTML = items.length ? items.map((alert) => `
     <article class="quarantine-card actionable" data-quarantine="${alert.id}">
@@ -386,7 +381,7 @@ function watchSiteIcon(category) {
   });
 }
 
-function renderMap(forceFit = false) {
+function renderMap(view, forceFit = false) {
   ensureMap();
   if (!liveMap) return;
   liveMarkers.forEach((marker) => marker.remove());
@@ -394,7 +389,7 @@ function renderMap(forceFit = false) {
   liveMarkers = [];
   watchSiteMarkers = [];
 
-  const items = filteredAlerts().filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
+  const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
   const sites = visibleWatchSites();
   const signature = [
     items.map((alert) => `${alert.id}:${alert.lat.toFixed(3)},${alert.lng.toFixed(3)}`).join('|'),
@@ -426,7 +421,7 @@ function renderMap(forceFit = false) {
     bounds.push([site.lat, site.lng]);
   });
 
-  mapSummary.textContent = `${responderAlerts().length} responder items | ${contextAlerts().length} context | ${quarantineAlerts().length} quarantine | ${items.length} plotted alerts`;
+  mapSummary.textContent = `${view.responder.length} responder items | ${view.context.length} context | ${view.quarantine.length} quarantine | ${items.length} plotted alerts`;
   mapLayerSummary.textContent = `${sites.length} watch sites visible`;
 
   if (items.length && (forceFit || signature !== lastMapSignature)) {
@@ -467,7 +462,18 @@ function renderHero() {
   heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
 }
 
-function renderAll() { renderHero(); renderBriefingMode(); renderPriority(); renderFeed(); renderContext(); renderQuarantine(); renderMap(); renderWatchlist(); renderNotes(); }
+function renderAll() {
+  const view = deriveView();
+  renderHero();
+  renderBriefingMode(view);
+  renderPriority(view);
+  renderFeed(view);
+  renderContext(view);
+  renderQuarantine(view);
+  renderMap(view);
+  renderWatchlist();
+  renderNotes();
+}
 
 function nextAlbertQuote() {
   if (!albertQuotes.length) return '';
@@ -491,7 +497,9 @@ function zoomMap(direction) {
 }
 
 function openDetail(alert) {
+  if (!alert) return;
   const summaryText = effectiveSummary(alert);
+  const briefing = buildBriefing(alert, summaryText);
   modalTitle.textContent = alert.title;
   modalMeta.textContent = `${alert.location} | ${alert.time}`;
   modalAiSummary.textContent = summaryText;
@@ -507,9 +515,9 @@ function openDetail(alert) {
   modalStatus.textContent = alert.status;
   modalSource.textContent = alert.source;
   modalRegion.textContent = alert.region === 'uk' ? 'United Kingdom' : 'Europe';
-  modalBriefing.textContent = buildBriefing(alert, summaryText);
+  modalBriefing.textContent = briefing;
   modalLink.href = alert.sourceUrl;
-  copyBriefing.dataset.briefing = buildBriefing(alert, summaryText);
+  copyBriefing.dataset.briefing = briefing;
   modal.classList.remove('hidden');
 }
 
@@ -533,7 +541,7 @@ tabbar.addEventListener('click', (event) => {
   if (!button) return;
   setActiveTab(button.dataset.tab);
 });
-document.getElementById('note-form').addEventListener('submit', (event) => { event.preventDefault(); const title = document.getElementById('note-title'); const body = document.getElementById('note-body'); notes.unshift({ title: title.value.trim(), body: body.value.trim() }); saveNotes(); title.value = ''; body.value = ''; renderNotes(); });
+document.getElementById('note-form')?.addEventListener('submit', (event) => { event.preventDefault(); const title = document.getElementById('note-title'); const body = document.getElementById('note-body'); if (!title || !body) return; notes.unshift({ title: title.value.trim(), body: body.value.trim() }); saveNotes(); title.value = ''; body.value = ''; renderNotes(); });
 copyBriefing.addEventListener('click', async () => { const briefing = copyBriefing.dataset.briefing || ''; if (!briefing) return; await copyTextToButton(briefing, copyBriefing, 'Copy Briefing'); });
 briefingModeToggle.addEventListener('click', () => { briefingMode = !briefingMode; saveBriefingMode(); applyBriefingMode(); renderAll(); });
 strictResponderModeToggle.addEventListener('click', () => { strictResponderMode = !strictResponderMode; saveStrictResponderMode(); applyStrictResponderMode(); renderAll(); });
@@ -543,7 +551,7 @@ modalBackdrop.addEventListener('click', closeDetailPanel);
 document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeDetailPanel(); });
 mapZoomIn.addEventListener('click', () => zoomMap(1));
 mapZoomOut.addEventListener('click', () => zoomMap(-1));
-mapReset.addEventListener('click', () => renderMap(true));
+mapReset.addEventListener('click', () => renderMap(deriveView(), true));
 mapLayerToggles.addEventListener('click', (event) => {
   const button = event.target.closest('[data-watch-layer]');
   if (!button) return;
@@ -554,7 +562,7 @@ mapLayerToggles.addEventListener('click', (event) => {
     activeWatchLayers.add(layer);
   }
   button.classList.toggle('active', activeWatchLayers.has(layer));
-  renderMap(true);
+  renderMap(deriveView(), true);
 });
 window.addEventListener('resize', () => {
   if (!liveMap) return;
@@ -565,8 +573,8 @@ notes = loadNotes();
 briefingMode = loadBriefingMode();
 strictResponderMode = loadStrictResponderMode();
 albertQuote.textContent = nextAlbertQuote();
-albertCard.addEventListener('click', () => { albertQuote.textContent = nextAlbertQuote(); });
-document.querySelector('.bulldog-card').addEventListener('dblclick', () => { albertNote.classList.toggle('hidden'); });
+albertCard?.addEventListener('click', () => { albertQuote.textContent = nextAlbertQuote(); });
+document.querySelector('.bulldog-card')?.addEventListener('dblclick', () => { albertNote.classList.toggle('hidden'); });
 
 applyBriefingMode();
 applyStrictResponderMode();
