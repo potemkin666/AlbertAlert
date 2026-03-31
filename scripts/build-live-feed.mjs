@@ -5,6 +5,7 @@ import * as cheerio from 'cheerio';
 import { XMLParser } from 'fast-xml-parser';
 import {
   clean,
+  plainText,
   terrorismKeywords,
   matchesKeywords,
   normaliseSourceTier,
@@ -396,15 +397,15 @@ async function fetchText(url) {
 function parseFeedItems(source, xml) {
   const doc = parser.parse(xml);
   const rssItems = arrayify(doc?.rss?.channel?.item).map((item) => ({
-    title: clean(item.title),
+    title: plainText(item.title),
     link: clean(typeof item.link === 'string' ? item.link : item.link?.href),
-    summary: clean(item.description || item['content:encoded'] || item.summary),
+    summary: plainText(item.description || item['content:encoded'] || item.summary),
     published: clean(item.pubDate || item.isoDate)
   }));
   const atomItems = arrayify(doc?.feed?.entry).map((item) => ({
-    title: clean(item.title?.['#text'] || item.title),
+    title: plainText(item.title?.['#text'] || item.title),
     link: clean(item.link?.href || arrayify(item.link).find((x) => x.rel === 'alternate')?.href || ''),
-    summary: clean(item.summary?.['#text'] || item.summary || item.content?.['#text'] || item.content),
+    summary: plainText(item.summary?.['#text'] || item.summary || item.content?.['#text'] || item.content),
     published: clean(item.updated || item.published)
   }));
   return [...rssItems, ...atomItems].filter((item) => item.title && item.link);
@@ -420,7 +421,7 @@ function parseHtmlItems(source, html) {
     $(selector).each((_, el) => {
       if (candidates.length >= 40) return false;
       const href = $(el).attr('href');
-      const title = clean($(el).text() || $(el).closest('article,li,section').find('h1,h2,h3').first().text());
+      const title = plainText($(el).text() || $(el).closest('article,li,section').find('h1,h2,h3').first().text());
       if (!href || !title || title.length < 18) return;
       if (href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:')) return;
       const url = absoluteUrl(href, source.endpoint);
@@ -428,7 +429,7 @@ function parseHtmlItems(source, html) {
       if (seen.has(key)) return;
       seen.add(key);
       const container = $(el).closest('article,li,section,div');
-      const summary = clean(container.text()).slice(0, 420);
+      const summary = plainText(container.text()).slice(0, 420);
       const published = clean(container.find('time').attr('datetime') || container.find('time').text());
       candidates.push({ title, link: url, summary, published });
     });
@@ -468,15 +469,15 @@ function extractArticleMeta(html, url) {
     $('time[datetime]').first().attr('datetime') ||
     $('time').first().text()
   );
-  const metaDescription = clean(
+  const metaDescription = plainText(
     $('meta[name="description"]').attr('content') ||
     $('meta[property="og:description"]').attr('content')
   );
-  const metaTitle = clean(
+  const metaTitle = plainText(
     $('meta[property="og:title"]').attr('content') ||
     $('title').first().text()
   );
-  const articleParagraphs = clean(
+  const articleParagraphs = plainText(
     $('article p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ') ||
     $('main p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ') ||
     $('[itemprop="articleBody"] p').slice(0, 12).map((_, el) => $(el).text()).get().join(' ')
@@ -493,8 +494,8 @@ function extractArticleMeta(html, url) {
       const objects = collectJsonLd(parsed);
       for (const obj of objects) {
         if (!jsonLdDate) jsonLdDate = clean(obj.datePublished || obj.dateCreated || obj.uploadDate || obj.dateModified);
-        if (!jsonLdDescription) jsonLdDescription = clean(obj.description);
-        if (!jsonLdHeadline) jsonLdHeadline = clean(obj.headline || obj.name);
+        if (!jsonLdDescription) jsonLdDescription = plainText(obj.description);
+        if (!jsonLdHeadline) jsonLdHeadline = plainText(obj.headline || obj.name);
       }
     } catch {
       return;
@@ -503,7 +504,7 @@ function extractArticleMeta(html, url) {
 
   const detailText = chooseArticleDetail(jsonLdDescription || metaDescription, articleParagraphs);
   return {
-    title: jsonLdHeadline || metaTitle || clean($('h1').first().text()),
+    title: jsonLdHeadline || metaTitle || plainText($('h1').first().text()),
     summary: detailText || jsonLdDescription || metaDescription || articleParagraphs,
     sourceExtract: detailText,
     peopleInvolved: extractPeopleFromText(detailText),
@@ -627,9 +628,9 @@ function buildAlert(source, item, idx) {
       happenedWhen: displayWhen,
       confidence: inferConfidence(source, reliabilityProfile),
       confidenceScore,
-      summary: clean(item.summary || item.title).slice(0, 260),
+      summary: plainText(item.summary || item.title).slice(0, 260),
       aiSummary: makeSummary(source, item),
-      sourceExtract: clean(item.sourceExtract || item.summary || item.title).slice(0, 1800),
+      sourceExtract: plainText(item.sourceExtract || item.summary || item.title).slice(0, 1800),
       peopleInvolved,
       source: source.provider,
       sourceUrl: item.link,

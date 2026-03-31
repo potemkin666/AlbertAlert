@@ -65,6 +65,19 @@ export function clean(value) {
     .trim();
 }
 
+export function plainText(value) {
+  return clean(
+    String(value || '')
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/&nbsp;/gi, ' ')
+      .replace(/&amp;/gi, '&')
+      .replace(/&quot;/gi, '"')
+      .replace(/&#39;/gi, "'")
+      .replace(/&lt;/gi, '<')
+      .replace(/&gt;/gi, '>')
+  );
+}
+
 export function matchesKeywords(text, words = incidentKeywords) {
   const haystack = clean(text).toLowerCase();
   return words.filter((word) => haystack.includes(word));
