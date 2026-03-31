@@ -33,8 +33,23 @@ const geoLookupPath = path.join(repoRoot, 'data', 'geo-lookup.json');
 const outputPath = path.join(repoRoot, 'live-alerts.json');
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
 const now = new Date();
-const geoLookup = JSON.parse(await fs.readFile(geoLookupPath, 'utf8'));
 const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
+
+function stripBom(text) {
+  return typeof text === 'string' ? text.replace(/^\uFEFF/, '') : text;
+}
+
+async function readJsonFile(jsonPath) {
+  const raw = stripBom(await fs.readFile(jsonPath, 'utf8'));
+  try {
+    return JSON.parse(raw);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    throw new Error(`Failed to parse JSON at ${path.relative(repoRoot, jsonPath)}: ${message}`);
+  }
+}
+
+const geoLookup = await readJsonFile(geoLookupPath);
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const titleCase = (value) => clean(value).replace(/\b\w/g, (m) => m.toUpperCase());
@@ -646,15 +661,14 @@ function buildAlert(source, item, idx) {
 
 async function readExisting() {
   try {
-    const raw = await fs.readFile(outputPath, 'utf8');
-    return JSON.parse(raw);
+    return await readJsonFile(outputPath);
   } catch {
     return null;
   }
 }
 
 async function main() {
-  const sources = JSON.parse(await fs.readFile(sourcePath, 'utf8'));
+  const sources = await readJsonFile(sourcePath);
   const items = [];
   let checked = 0;
 
