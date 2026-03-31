@@ -1,5 +1,6 @@
 ﻿import fs from 'node:fs/promises';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
 import { XMLParser } from 'fast-xml-parser';
@@ -34,6 +35,13 @@ const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const titleCase = (value) => clean(value).replace(/\b\w/g, (m) => m.toUpperCase());
 const SOURCE_TIMEZONE = 'Europe/London';
+const fusionStopwords = new Set([
+  'the', 'a', 'an', 'and', 'of', 'to', 'in', 'for', 'on', 'with', 'from', 'at', 'by', 'over', 'under',
+  'after', 'before', 'into', 'outside', 'inside', 'near', 'amid', 'during', 'update', 'updates', 'live',
+  'breaking', 'latest', 'terror', 'terrorism', 'attack', 'attacks', 'incident', 'incidents', 'plot', 'plots',
+  'threat', 'threats', 'suspect', 'suspects', 'arrest', 'arrested', 'charges', 'charged', 'case', 'court',
+  'police', 'officials', 'official', 'man', 'woman', 'group'
+]);
 
 function arrayify(value) {
   if (!value) return [];
@@ -290,6 +298,39 @@ function sameStoryKey(item) {
     .trim();
 }
 
+function stableFusionTerms(item) {
+  const titleTokens = sameStoryKey({ title: item.title })
+    .split(' ')
+    .filter(Boolean)
+    .filter((token) => token.length >= 4 && !fusionStopwords.has(token));
+
+  const summaryTokens = clean(`${item.summary || ''} ${item.sourceExtract || ''}`)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]+/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((token) => token.length >= 5 && !fusionStopwords.has(token));
+
+  return [...new Set([...titleTokens, ...summaryTokens])]
+    .sort()
+    .slice(0, 10);
+}
+
+function fusedIncidentIdFor(item) {
+  const signature = [
+    clean(item.location).toLowerCase(),
+    clean(item.eventType).toLowerCase(),
+    clean(item.incidentTrack).toLowerCase(),
+    ...stableFusionTerms(item)
+  ]
+    .filter(Boolean)
+    .join('|');
+
+  const fallback = clean(`${item.title} ${item.location} ${item.eventType} ${item.incidentTrack}`).toLowerCase();
+  const digest = crypto.createHash('sha1').update(signature || fallback).digest('hex').slice(0, 16);
+  return `fusion-${digest}`;
+}
+
 function recencyOkay(source, rawDate) {
   if (!rawDate) return true;
   const parsed = new Date(rawDate);
@@ -367,6 +408,7 @@ function queueReasonFor(source, {
 
 function sourceReferenceFor(alert) {
   return {
+    fusedIncidentId: alert.fusedIncidentId,
     source: alert.source,
     sourceUrl: alert.sourceUrl,
     sourceTier: alert.sourceTier,
@@ -609,8 +651,17 @@ function buildAlert(source, item, idx) {
     needsHumanReview,
     isTerrorRelevant
   });
+  const fusedIncidentId = fusedIncidentIdFor({
+    title: item.title,
+    summary: item.summary,
+    sourceExtract: item.sourceExtract,
+    location,
+    eventType,
+    incidentTrack
+  });
   return {
       id: `${source.id}-${idx}`,
+      fusedIncidentId,
       title: titleCase(item.title),
       location,
       region: source.region,
@@ -688,7 +739,7 @@ async function main() {
   const deduped = [];
   const seen = new Map();
   for (const item of items) {
-    const key = `${sameStoryKey(item)}|${item.location}|${item.eventType}`;
+    const key = item.fusedIncidentId || `${sameStoryKey(item)}|${item.location}|${item.eventType}`;
       if (seen.has(key)) {
         const existingIndex = seen.get(key);
         const incumbent = deduped[existingIndex];
@@ -701,7 +752,8 @@ async function main() {
           (itemTrack === incumbentTrack && itemTier > incumbentTier) ||
           (itemTrack === incumbentTrack && itemTier === incumbentTier && (item.priorityScore || 0) > (incumbent.priorityScore || 0))
         ) {
-          item.isDuplicateOf = incumbent.id;
+          item.isDuplicateOf = incumbent.fusedIncidentId || incumbent.id;
+          item.fusedIncidentId = incumbent.fusedIncidentId || item.fusedIncidentId;
           item.corroboratingSources = mergeCorroboratingSources(item, incumbent);
           item.corroborationCount = item.corroboratingSources.length;
           deduped[existingIndex] = item;
@@ -709,7 +761,7 @@ async function main() {
         } else {
           incumbent.corroboratingSources = mergeCorroboratingSources(incumbent, item);
           incumbent.corroborationCount = incumbent.corroboratingSources.length;
-          incumbent.isDuplicateOf = incumbent.isDuplicateOf || item.id;
+          incumbent.isDuplicateOf = incumbent.isDuplicateOf || item.fusedIncidentId || item.id;
         }
         continue;
       }

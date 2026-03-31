@@ -442,6 +442,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     sourceTier,
     reliabilityProfile,
     incidentTrack,
+    fusedIncidentId: clean(alert.fusedIncidentId),
     isDuplicateOf: clean(alert.isDuplicateOf),
     freshUntil: clean(alert.freshUntil),
     needsHumanReview: !!alert.needsHumanReview,
@@ -454,6 +455,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     laneReason: clean(alert.laneReason),
     queueReason: clean(alert.queueReason),
     corroboratingSources: Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources.filter(Boolean).map((entry) => ({
+      fusedIncidentId: clean(entry.fusedIncidentId),
       source: clean(entry.source),
       sourceUrl: clean(entry.sourceUrl),
       sourceTier: normaliseSourceTier(entry.sourceTier),
