@@ -486,14 +486,15 @@ function filteredMapView(view) {
 
 function renderAll() {
   const view = currentView();
-  const mapView = filteredMapView(view);
   renderHero();
   renderBriefingMode(view);
   renderPriority(view);
   renderFeed(view);
   renderContext(view);
   renderQuarantine(view);
-  mapController.renderMap(state, mapView);
+  if (state.activeTab === 'map') {
+    mapController.renderMap(state, filteredMapView(view));
+  }
   renderWatchlist();
   renderNotes();
 }

@@ -12,7 +12,8 @@ export function createMapController(config) {
   let watchSiteMarkers = [];
   let watchZoneLayers = [];
   let fusionLayers = [];
-  let lastMapSignature = '';
+  let lastDataSignature = '';
+  let lastRenderZoom = null;
   let lastState = null;
   let lastView = null;
 
@@ -64,7 +65,7 @@ export function createMapController(config) {
       attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
     }).addTo(liveMap);
 
-    liveMap.on('zoomend moveend', () => {
+    liveMap.on('zoomend', () => {
       if (!lastState || !lastView) return;
       renderMap(lastState, lastView, false);
     });
@@ -222,6 +223,7 @@ export function createMapController(config) {
   }
 
   function renderFusionForAlert(alert) {
+    if (!liveMap || liveMap.getZoom() < 5) return;
     const satellites = fusionSatellitesFor(alert);
     satellites.forEach(({ source, lat, lng }) => {
       const line = L.polyline(
@@ -320,6 +322,20 @@ export function createMapController(config) {
     lastState = state;
     lastView = view;
 
+    const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
+    const sites = visibleWatchSites(state);
+    const dataSignature = [
+      items.map((alert) => `${alert.id}:${alert.lat.toFixed(3)},${alert.lng.toFixed(3)}`).join('|'),
+      sites.map((site) => `${site.id}:${site.category}`).join('|')
+    ].join('::');
+    const zoom = liveMap.getZoom();
+    const dataChanged = dataSignature !== lastDataSignature;
+    const zoomChanged = zoom !== lastRenderZoom;
+
+    if (!forceFit && !dataChanged && !zoomChanged) {
+      return;
+    }
+
     liveMarkers.forEach((marker) => marker.remove());
     watchSiteMarkers.forEach((marker) => marker.remove());
     watchZoneLayers.forEach((layer) => layer.remove());
@@ -329,15 +345,11 @@ export function createMapController(config) {
     watchZoneLayers = [];
     fusionLayers = [];
 
-    const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
     const clusteredItems = clusterAlerts(items);
-    const sites = visibleWatchSites(state);
-    const signature = [
-      items.map((alert) => `${alert.id}:${alert.lat.toFixed(3)},${alert.lng.toFixed(3)}`).join('|'),
-      String(liveMap.getZoom()),
-      sites.map((site) => `${site.id}:${site.category}`).join('|')
-    ].join('::');
     const bounds = [];
+    const zoomLevel = liveMap.getZoom();
+    const showWatchZones = zoomLevel >= 4;
+    const showFusion = zoomLevel >= 5 && items.length <= 30;
 
     clusteredItems.forEach((entry) => {
       if (entry.type === 'single') {
@@ -368,7 +380,9 @@ export function createMapController(config) {
         });
         marker.addTo(liveMap);
         liveMarkers.push(marker);
-        renderFusionForAlert(alert);
+        if (showFusion) {
+          renderFusionForAlert(alert);
+        }
         bounds.push([alert.lat, alert.lng]);
         return;
       }
@@ -397,9 +411,11 @@ export function createMapController(config) {
     });
 
     sites.forEach((site) => {
-      const zone = watchZoneForSite(site);
-      zone.addTo(liveMap);
-      watchZoneLayers.push(zone);
+      if (showWatchZones) {
+        const zone = watchZoneForSite(site);
+        zone.addTo(liveMap);
+        watchZoneLayers.push(zone);
+      }
 
       const marker = L.marker([site.lat, site.lng], {
         icon: watchSiteIcon(site.category),
@@ -419,24 +435,27 @@ export function createMapController(config) {
     mapSummary.textContent = `${items.length} plotted alerts${clusterCount ? ` | ${clusterCount} clusters` : ''}${filterSuffix}`;
     mapLayerSummary.textContent = `${sites.length} watch sites visible`;
 
-    if (items.length && (forceFit || signature !== lastMapSignature)) {
+    if (items.length && (forceFit || dataChanged)) {
       liveMap.fitBounds(bounds, {
         padding: [28, 28],
         maxZoom: items.length === 1 ? 6 : 5
       });
-    } else if (!items.length && sites.length && (forceFit || signature !== lastMapSignature)) {
+    } else if (!items.length && sites.length && (forceFit || dataChanged)) {
       liveMap.fitBounds(bounds, {
         padding: [28, 28],
         maxZoom: 5
       });
-    } else if (!items.length && lastState?.activeRegion === 'london' && (forceFit || lastMapSignature)) {
+    } else if (!items.length && state.activeRegion === 'london' && (forceFit || dataChanged)) {
       liveMap.setView([51.5072, -0.1276], 10);
-    } else if (!items.length && (forceFit || lastMapSignature)) {
+    } else if (!items.length && (forceFit || dataChanged)) {
       liveMap.setView([20, 10], 2);
     }
 
-    lastMapSignature = signature;
-    requestAnimationFrame(() => liveMap.invalidateSize());
+    lastDataSignature = dataSignature;
+    lastRenderZoom = liveMap.getZoom();
+    if (forceFit || dataChanged) {
+      requestAnimationFrame(() => liveMap.invalidateSize());
+    }
   }
 
   function zoomMap(direction) {
