@@ -100,6 +100,33 @@ export function createMapController(config) {
     });
   }
 
+  function previewSummary(alert) {
+    return String(alert.summary || alert.aiSummary || alert.title || '')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 180);
+  }
+
+  function markerPreviewTooltip(alert) {
+    return `<div class="map-preview-tooltip"><strong>${alert.title}</strong><span>${alert.source} | ${alert.time}</span></div>`;
+  }
+
+  function markerPreviewPopup(alert) {
+    const summary = previewSummary(alert);
+    return `
+      <div class="map-preview-card">
+        <p class="map-preview-eyebrow">${alert.lane} | ${alert.location}</p>
+        <strong>${alert.title}</strong>
+        <p>${summary}${summary.length >= 180 ? '...' : ''}</p>
+        <div class="map-preview-meta">
+          <span>${alert.source}</span>
+          <span>${alert.status}</span>
+          <span>${alert.time}</span>
+        </div>
+        <button class="map-preview-button" type="button" data-open-detail="${alert.id}">Open full detail</button>
+      </div>`;
+  }
+
   function watchZoneForSite(site) {
     const config = watchZoneConfig[site.category] || watchZoneConfig.government;
     return L.circle([site.lat, site.lng], {
@@ -266,7 +293,25 @@ export function createMapController(config) {
           keyboard: true,
           title: alert.title
         });
-        marker.on('click', () => openDetail(alert));
+        marker.bindTooltip(markerPreviewTooltip(alert), {
+          direction: 'top',
+          offset: [0, -24],
+          opacity: 0.96,
+          className: 'map-preview-tooltip-shell'
+        });
+        marker.bindPopup(markerPreviewPopup(alert), {
+          closeButton: true,
+          autoPan: true,
+          className: 'map-preview-popup-shell'
+        });
+        marker.on('mouseover', () => marker.openTooltip());
+        marker.on('mouseout', () => marker.closeTooltip());
+        marker.on('popupopen', (event) => {
+          const popupElement = event.popup?.getElement();
+          const button = popupElement?.querySelector(`[data-open-detail="${alert.id}"]`);
+          if (!button) return;
+          button.addEventListener('click', () => openDetail(alert), { once: true });
+        });
         marker.addTo(liveMap);
         liveMarkers.push(marker);
         renderFusionForAlert(alert);
