@@ -1,4 +1,4 @@
-﻿import { watchLayerLabels, watchGeographySites, laneLabels, albertQuotes, defaultNotes } from './shared/ui-data.mjs';
+﻿import { watchLayerLabels, laneLabels, albertQuotes, defaultNotes } from './shared/ui-data.mjs';
 import {
   formatAgeFrom,
   severityLabel,
@@ -21,6 +21,7 @@ import {
 
 const LIVE_FEED_URL = 'live-alerts.json';
 const GEO_LOOKUP_URL = 'data/geo-lookup.json';
+const WATCH_GEOGRAPHY_URL = 'data/watch-geography.json';
 const POLL_INTERVAL_MS = 60_000;
 const SOURCE_PULL_MINUTES = 15;
 const WATCHED_STORAGE_KEY = 'brialert.watched';
@@ -45,6 +46,7 @@ let liveMarkers = [];
 let watchSiteMarkers = [];
 let lastMapSignature = '';
 let geoLookup = [];
+let watchGeographySites = [];
 
 const priorityCard = document.getElementById('priority-card');
 const screen = document.querySelector('.screen');
@@ -160,6 +162,16 @@ async function loadGeoLookup() {
     geoLookup = Array.isArray(data) ? data : [];
   } catch {
     geoLookup = [];
+  }
+}
+async function loadWatchGeography() {
+  try {
+    const response = await fetch(`${WATCH_GEOGRAPHY_URL}?t=${Date.now()}`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const data = await response.json();
+    watchGeographySites = Array.isArray(data) ? data : [];
+  } catch {
+    watchGeographySites = [];
   }
 }
 function visibleWatchSites() {
@@ -583,8 +595,9 @@ document.querySelector('.bulldog-card')?.addEventListener('dblclick', () => { al
 applyBriefingMode();
 applyStrictResponderMode();
 renderAll();
-loadGeoLookup().finally(() => {
+Promise.allSettled([loadGeoLookup(), loadWatchGeography()]).finally(() => {
   loadLiveFeed();
 });
 setInterval(loadLiveFeed, POLL_INTERVAL_MS);
+
 
