@@ -136,6 +136,10 @@ button { cursor: pointer; }
 .device-desktop .hero-card {
   border-radius: 30px;
 }
+.device-desktop .map-surface {
+  height: 620px;
+  min-height: 620px;
+}
 .screen::before {
   content: "";
   position: absolute;
@@ -338,7 +342,8 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
 .severity-moderate { background: rgba(31, 142, 144, 0.22); }
 .map-surface {
   margin-top: 12px;
-  height: 300px;
+  height: 420px;
+  min-height: 420px;
   border-radius: 22px;
   position: relative;
   background:
@@ -779,7 +784,10 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
     font-size: clamp(34px, 10vw, 42px);
   }
   .modal-grid > div { min-width: 100%; }
-  .map-surface { height: 260px; }
+  .map-surface {
+    height: 360px;
+    min-height: 360px;
+  }
   .map-toolbar { align-items: stretch; flex-direction: column; }
   .map-layer-panel .section-heading { gap: 8px; }
   .map-controls { width: 100%; justify-content: space-between; }
@@ -861,5 +869,9 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
   }
   .bulldog-card {
     align-items: flex-start;
+  }
+  .map-surface {
+    height: 400px;
+    min-height: 400px;
   }
 }
