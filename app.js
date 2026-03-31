@@ -55,6 +55,11 @@ const state = {
   alerts: [],
   activeRegion: 'all',
   activeLane: 'all',
+  mapFilters: {
+    liveOnly: false,
+    officialOnly: false,
+    strictResponder: false
+  },
   activeWatchLayers: new Set(Object.keys(watchLayerLabels)),
   watched: new Set(),
   lastBrowserPollAt: new Date(),
@@ -106,6 +111,7 @@ const elements = {
   mapElement: document.getElementById('leaflet-map'),
   mapSummary: document.getElementById('map-summary'),
   mapLayerSummary: document.getElementById('map-layer-summary'),
+  mapPostureFilters: document.getElementById('map-posture-filters'),
   mapZoomIn: document.getElementById('map-zoom-in'),
   mapZoomOut: document.getElementById('map-zoom-out'),
   mapReset: document.getElementById('map-reset'),
@@ -223,7 +229,7 @@ function setActiveTab(next) {
       if (tab === 'map') {
         setTimeout(() => {
           mapController.ensureMap();
-          mapController.renderMap(state, currentView(), true);
+          mapController.renderMap(state, filteredMapView(currentView()), true);
         }, 60);
       }
     }
@@ -400,15 +406,42 @@ function renderHero() {
   elements.heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
 }
 
+function filteredMapView(view) {
+  const activeFilters = Object.entries(state.mapFilters)
+    .filter(([, enabled]) => enabled)
+    .map(([key]) => key);
+
+  const filtered = view.filtered.filter((alert) => {
+    if (state.mapFilters.strictResponder) {
+      return isStrictTopAlertCandidate(alert);
+    }
+    if (state.mapFilters.liveOnly && !isLiveIncidentCandidate(alert)) return false;
+    if (state.mapFilters.officialOnly && !alert.isOfficial) return false;
+    return true;
+  });
+
+  return {
+    ...view,
+    filtered,
+    mapFilterLabels: activeFilters.map((key) => {
+      if (key === 'liveOnly') return 'live only';
+      if (key === 'officialOnly') return 'official only';
+      if (key === 'strictResponder') return 'strict responder';
+      return key;
+    })
+  };
+}
+
 function renderAll() {
   const view = currentView();
+  const mapView = filteredMapView(view);
   renderHero();
   renderBriefingMode(view);
   renderPriority(view);
   renderFeed(view);
   renderContext(view);
   renderQuarantine(view);
-  mapController.renderMap(state, view);
+  mapController.renderMap(state, mapView);
   renderWatchlist();
   renderNotes();
 }
@@ -556,7 +589,31 @@ function bindEvents() {
 
   elements.mapZoomIn.addEventListener('click', () => mapController.zoomMap(1));
   elements.mapZoomOut.addEventListener('click', () => mapController.zoomMap(-1));
-  elements.mapReset.addEventListener('click', () => mapController.renderMap(state, currentView(), true));
+  elements.mapReset.addEventListener('click', () => mapController.renderMap(state, filteredMapView(currentView()), true));
+  elements.mapPostureFilters.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-map-filter]');
+    if (!button) return;
+    const filterKey = button.dataset.mapFilter;
+    if (!Object.prototype.hasOwnProperty.call(state.mapFilters, filterKey)) return;
+
+    if (filterKey === 'strictResponder') {
+      state.mapFilters.strictResponder = !state.mapFilters.strictResponder;
+      if (state.mapFilters.strictResponder) {
+        state.mapFilters.liveOnly = false;
+        state.mapFilters.officialOnly = false;
+      }
+    } else {
+      state.mapFilters[filterKey] = !state.mapFilters[filterKey];
+      if (state.mapFilters[filterKey]) {
+        state.mapFilters.strictResponder = false;
+      }
+    }
+
+    elements.mapPostureFilters.querySelectorAll('[data-map-filter]').forEach((item) => {
+      item.classList.toggle('active', !!state.mapFilters[item.dataset.mapFilter]);
+    });
+    mapController.renderMap(state, filteredMapView(currentView()), true);
+  });
   elements.mapLayerToggles.addEventListener('click', (event) => {
     const button = event.target.closest('[data-watch-layer]');
     if (!button) return;
@@ -567,7 +624,7 @@ function bindEvents() {
       state.activeWatchLayers.add(layer);
     }
     button.classList.toggle('active', state.activeWatchLayers.has(layer));
-    mapController.renderMap(state, currentView(), true);
+    mapController.renderMap(state, filteredMapView(currentView()), true);
   });
 
   window.addEventListener('resize', () => {

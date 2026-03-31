@@ -209,7 +209,10 @@ export function createMapController(config) {
     });
 
     const clusterCount = clusteredItems.filter((entry) => entry.type === 'cluster').length;
-    mapSummary.textContent = `${view.responder.length} responder items | ${view.context.length} context | ${view.quarantine.length} quarantine | ${items.length} plotted alerts${clusterCount ? ` | ${clusterCount} clusters` : ''}`;
+    const filterSuffix = Array.isArray(view.mapFilterLabels) && view.mapFilterLabels.length
+      ? ` | ${view.mapFilterLabels.join(' + ')}`
+      : '';
+    mapSummary.textContent = `${items.length} plotted alerts${clusterCount ? ` | ${clusterCount} clusters` : ''}${filterSuffix}`;
     mapLayerSummary.textContent = `${sites.length} watch sites visible`;
 
     if (items.length && (forceFit || signature !== lastMapSignature)) {
