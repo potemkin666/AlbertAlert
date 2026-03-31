@@ -156,6 +156,22 @@ function extractPeopleFromText(text) {
   return results;
 }
 
+function shouldKeepPeopleInvolved(reliabilityProfile, confidenceScore, needsHumanReview, peopleInvolved) {
+  if (!Array.isArray(peopleInvolved) || !peopleInvolved.length) return false;
+  if (needsHumanReview) return false;
+  if (!Number.isFinite(confidenceScore) || confidenceScore <= 0) return false;
+
+  if (['official_ct', 'official_general'].includes(reliabilityProfile)) {
+    return confidenceScore >= 0.7;
+  }
+
+  if (reliabilityProfile === 'major_media') {
+    return confidenceScore >= 0.9;
+  }
+
+  return false;
+}
+
 function chooseArticleDetail(metaDescription, articleParagraphs) {
   if (articleParagraphs.length >= Math.max(320, metaDescription.length + 120)) return articleParagraphs;
   if (metaDescription.length >= 220) return metaDescription;
@@ -575,6 +591,14 @@ function buildAlert(source, item, idx) {
   const priorityScore = priorityScoreFor(source, severity, keywordHits, publishedIso, incidentTrack, reliabilityProfile);
   const isTerrorRelevant = isTerrorRelevantIncident(source, item);
   const needsHumanReview = needsHumanReviewFor(source, severity, keywordHits, publishedIso, reliabilityProfile, incidentTrack);
+  const peopleInvolved = shouldKeepPeopleInvolved(
+    reliabilityProfile,
+    confidenceScore,
+    needsHumanReview,
+    item.peopleInvolved
+  )
+    ? item.peopleInvolved.slice(0, 6)
+    : [];
   const queueReason = queueReasonFor(source, {
     sourceTier,
     reliabilityProfile,
@@ -601,7 +625,7 @@ function buildAlert(source, item, idx) {
       summary: clean(item.summary || item.title).slice(0, 260),
       aiSummary: makeSummary(source, item),
       sourceExtract: clean(item.sourceExtract || item.summary || item.title).slice(0, 1800),
-      peopleInvolved: Array.isArray(item.peopleInvolved) ? item.peopleInvolved.slice(0, 6) : [],
+      peopleInvolved,
       source: source.provider,
       sourceUrl: item.link,
       sourceTier,

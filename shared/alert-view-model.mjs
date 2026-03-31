@@ -99,6 +99,16 @@ function extractPeopleInvolved(alert) {
     return [];
   }
 
+  const confidenceScore = Number(alert.confidenceScore || 0);
+  const reliabilityProfile = resolvedReliabilityProfile(alert);
+  if (alert.needsHumanReview) return [];
+  if (!Number.isFinite(confidenceScore) || confidenceScore <= 0) return [];
+
+  const strongOfficial =
+    ['official_ct', 'official_general'].includes(reliabilityProfile) && confidenceScore >= 0.7;
+  const strongMajorMedia = reliabilityProfile === 'major_media' && confidenceScore >= 0.9;
+  if (!strongOfficial && !strongMajorMedia) return [];
+
   return alert.peopleInvolved
     .map((entry) => clean(entry))
     .filter(Boolean)
