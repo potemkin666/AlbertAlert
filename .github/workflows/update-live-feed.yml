@@ -2,16 +2,6 @@ name: Update live feeds
 
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - main
-    paths:
-      - package.json
-      - package-lock.json
-      - data/sources.json
-      - data/geo-lookup.json
-      - scripts/build-live-feed.mjs
-      - .github/workflows/update-live-feed.yml
   schedule:
     - cron: '*/15 * * * *'
 
