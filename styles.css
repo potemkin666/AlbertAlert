@@ -512,6 +512,35 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
 .map-pin--moderate {
   background: linear-gradient(180deg, #4fd2d0, #1d8381);
 }
+.map-cluster-icon {
+  background: transparent;
+  border: 0;
+}
+.map-cluster {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.92);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.08), 0 12px 22px rgba(0, 0, 0, 0.35);
+}
+.map-cluster--critical {
+  background: radial-gradient(circle at 35% 30%, #ff8c77, #bf2f22 72%);
+}
+.map-cluster--high {
+  background: radial-gradient(circle at 35% 30%, #ffbe67, #c96a10 72%);
+}
+.map-cluster--elevated {
+  background: radial-gradient(circle at 35% 30%, #f3df79, #b89a21 72%);
+  color: #111827;
+}
+.map-cluster--moderate {
+  background: radial-gradient(circle at 35% 30%, #75ece8, #1d8381 72%);
+}
 .watch-site-icon {
   background: transparent;
   border: 0;
