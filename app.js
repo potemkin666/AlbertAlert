@@ -1,3 +1,16 @@
+import {
+  clean,
+  incidentKeywords,
+  terrorismKeywords,
+  matchesKeywords,
+  sourceHasTerrorTopic,
+  normaliseSourceTier,
+  normaliseReliabilityProfile,
+  inferReliabilityProfile,
+  inferIncidentTrack,
+  isTerrorRelevantIncident
+} from './shared/taxonomy.mjs';
+
 const LIVE_FEED_URL = 'live-alerts.json';
 const GEO_LOOKUP_URL = 'data/geo-lookup.json';
 const POLL_INTERVAL_MS = 60_000;
@@ -36,10 +49,6 @@ const watchGeographySites = [
 ];
 
 const laneLabels = { all: 'All lanes', incidents: 'Incidents', sanctions: 'Sanctions', oversight: 'Oversight', border: 'Border', prevention: 'Prevention' };
-const incidentKeywords = ['terror','terrorism','attack','attacks','bomb','bombing','explosion','explosive','device','ramming','stabbing','shooting','hostage','plot','suspect','arrest','charged','charged with','parcel','radicalised','extremist','isis','islamic state','al-qaeda','threat'];
-const terrorismKeywords = ['terror','terrorism','counter-terror','counter terrorism','terrorist','extremist','extremism','radicalised','radicalized','radicalisation','radicalization','jihadist','jihad','isis','islamic state','al-qaeda','far-right extremist','far right extremist','neo-nazi','proscribed organisation','proscribed organization','bomb hoax','ira','dissident republican','loyalist paramilitary','terror offences','terrorism offences','terrorist propaganda'];
-const majorMediaSources = new Set(['Reuters','The Guardian','BBC News','Associated Press','AP News','The Telegraph','Financial Times','France 24','DW','Politico Europe','Euronews','Brussels Times','The Independent','Irish Times','Politico','Kyiv Post','RFE/RL']);
-const tabloidSources = new Set(['The Sun','Daily Mail','Daily Record','Belfast Telegraph','iNews']);
 const albertQuoteOpeners = [
   'Stay steady',
   'Hold your nerve',
@@ -181,7 +190,6 @@ const modalRegion = document.getElementById('modal-region');
 const modalBriefing = document.getElementById('modal-briefing');
 const modalLink = document.getElementById('modal-link');
 
-const clean = (value) => String(value || '').trim();
 function formatAgeFrom(dateLike) {
   if (!dateLike) return 'age unknown';
   const stamp = dateLike instanceof Date ? dateLike : new Date(dateLike);
@@ -252,36 +260,28 @@ function inferGeoPoint(alert) {
   if (match) return { lat: match.lat, lng: match.lng };
   return null;
 }
-function keywordMatches(alert) { const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary}`.toLowerCase(); return incidentKeywords.filter((keyword) => haystack.includes(keyword)); }
+function keywordMatches(alert) { return matchesKeywords(`${alert.title} ${alert.summary} ${alert.aiSummary}`, incidentKeywords); }
 function terrorismMatches(alert) {
-  const haystack = `${alert.title} ${alert.summary} ${alert.aiSummary} ${alert.sourceExtract}`.toLowerCase();
-  return terrorismKeywords.filter((keyword) => haystack.includes(keyword));
-}
-function sourceHasTerrorTopic(alert) {
-  const text = `${clean(alert.sourceUrl)} ${clean(alert.title)}`.toLowerCase();
-  return [
-    'counterterrorism.police.uk',
-    'actioncounters',
-    'terrorism-threat-levels',
-    '/terrorism',
-    '/counter-terrorism',
-    '/counterterrorism',
-    '/terrorist',
-    'counter-terrorism-register',
-    'terrorism-convictions-monitor',
-    'proscribed-terror',
-    'sanctions-against-terrorism',
-    'terrorist-list',
-    'terror offences',
-    'terrorism offences'
-  ].some((term) => text.includes(term));
+  return matchesKeywords(`${alert.title} ${alert.summary} ${alert.aiSummary} ${alert.sourceExtract}`, terrorismKeywords);
 }
 function isTerrorRelevant(alert) {
   if (typeof alert.isTerrorRelevant === 'boolean') return alert.isTerrorRelevant;
-  if (alert.lane !== 'incidents') return true;
-  const terrorHits = terrorismMatches(alert);
-  if (terrorHits.length) return true;
-  return sourceHasTerrorTopic(alert) && keywordMatches(alert).length >= 1;
+  return isTerrorRelevantIncident(
+    {
+      lane: alert.lane,
+      sourceTier: alert.sourceTier,
+      reliabilityProfile: alert.reliabilityProfile,
+      isOfficial: alert.isOfficial,
+      source: alert.source,
+      sourceUrl: alert.sourceUrl,
+      title: alert.title
+    },
+    {
+      title: alert.title,
+      summary: alert.summary,
+      sourceExtract: alert.sourceExtract
+    }
+  );
 }
 function looksGenericSummary(text) {
   const summary = clean(text).toLowerCase();
@@ -368,38 +368,6 @@ function sourceTierRank(alert) {
   if (tier === 'research') return 1;
   return 0;
 }
-function normaliseSourceTier(value) {
-  const tier = clean(value).toLowerCase();
-  return ['trigger', 'corroboration', 'context', 'research'].includes(tier) ? tier : '';
-}
-function normaliseReliabilityProfile(value) {
-  const profile = clean(value).toLowerCase();
-  return ['official_ct', 'official_general', 'official_context', 'major_media', 'general_media', 'tabloid', 'specialist_research'].includes(profile) ? profile : '';
-}
-function inferReliabilityProfile(alert) {
-  const declared = normaliseReliabilityProfile(alert.reliabilityProfile);
-  if (declared) return declared;
-  const tier = normaliseSourceTier(alert.sourceTier);
-  if (tier === 'trigger') return 'official_ct';
-  if (alert.isOfficial && alert.lane === 'incidents') return 'official_general';
-  if (alert.isOfficial) return 'official_context';
-  if (tabloidSources.has(alert.source)) return 'tabloid';
-  if (majorMediaSources.has(alert.source)) return 'major_media';
-  if (tier === 'research' || alert.lane === 'prevention') return 'specialist_research';
-  return 'general_media';
-}
-function normaliseIncidentTrack(value) {
-  const track = clean(value).toLowerCase();
-  return ['live', 'case'].includes(track) ? track : '';
-}
-function inferIncidentTrack(alert) {
-  const declared = normaliseIncidentTrack(alert.incidentTrack);
-  if (declared) return declared;
-  const eventType = clean(alert.eventType).toLowerCase();
-  if (['charge', 'arrest', 'sentencing', 'recognition', 'feature'].includes(eventType)) return 'case';
-  if (['active_attack', 'disrupted_plot', 'threat_update'].includes(eventType)) return 'live';
-  return '';
-}
 function incidentScore(alert) {
   if (Number.isFinite(alert.priorityScore)) return alert.priorityScore;
   if (!isTerrorRelevant(alert)) return -1;
@@ -417,7 +385,7 @@ function incidentScore(alert) {
   return score;
 }
 function incidentTrackRank(alert) {
-  const track = inferIncidentTrack(alert);
+  const track = inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` });
   if (track === 'live') return 2;
   if (track === 'case') return 1;
   return 0;
@@ -427,7 +395,7 @@ function isLiveIncidentCandidate(alert) {
   if (!isTerrorRelevant(alert)) return false;
   const tier = normaliseSourceTier(alert.sourceTier);
   if (tier === 'context' || tier === 'research') return false;
-  const incidentTrack = inferIncidentTrack(alert);
+  const incidentTrack = inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` });
   if (incidentTrack && incidentTrack !== 'live') return false;
   if (alertAgeHours(alert) > 72) return false;
   if (alert.freshUntil) {
@@ -497,7 +465,7 @@ function quarantineAlerts() {
   return sortAlertsByFreshness(filteredAlerts().filter(isQuarantineCandidate)).slice(0, 6);
 }
 function contextLabel(alert) {
-  if (alert.lane === 'incidents' && inferIncidentTrack(alert) === 'case') return 'Case / Prosecution';
+  if (alert.lane === 'incidents' && inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) === 'case') return 'Case / Prosecution';
   return laneLabels[alert.lane] || alert.lane;
 }
 function reliabilityLabel(profile) {
@@ -654,7 +622,7 @@ function buildBriefing(alert, summaryText) {
       `SOURCE: ${alert.source}`,
       `CONFIDENCE: ${alert.confidence}`,
       `LANE: ${laneLabels[alert.lane] || alert.lane}`,
-      alert.lane === 'incidents' && inferIncidentTrack(alert) ? `INCIDENT TRACK: ${inferIncidentTrack(alert) === 'live' ? 'Live incident' : 'Case / prosecution'}` : '',
+      alert.lane === 'incidents' && inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) ? `INCIDENT TRACK: ${inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) === 'live' ? 'Live incident' : 'Case / prosecution'}` : '',
       alert.eventType ? `EVENT TYPE: ${clean(alert.eventType).replace(/_/g, ' ')}` : '',
       alert.geoPrecision ? `GEO PRECISION: ${alert.geoPrecision}` : '',
       Number(alert.corroborationCount || 0) ? `CORROBORATION COUNT: ${alert.corroborationCount}` : '',
@@ -683,7 +651,11 @@ function normaliseAlert(alert, index) {
     lane: ['incidents','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
     source: clean(alert.source) || 'Unknown source'
   });
-  const incidentTrack = inferIncidentTrack(alert);
+  const incidentTrack = inferIncidentTrack({
+    ...alert,
+    lane: ['incidents','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    text: `${clean(alert.title)} ${clean(alert.summary)} ${clean(alert.sourceExtract)}`
+  });
   return {
     id: clean(alert.id) || `live-${index}`,
     title: clean(alert.title) || 'Untitled source item',

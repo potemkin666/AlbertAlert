@@ -3,6 +3,23 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
 import { XMLParser } from 'fast-xml-parser';
+import {
+  clean,
+  incidentKeywords,
+  terrorismKeywords,
+  criticalKeywords,
+  highKeywords,
+  matchesKeywords,
+  sourceHasTerrorTopic,
+  normaliseSourceTier,
+  normaliseReliabilityProfile,
+  inferSourceTier,
+  inferReliabilityProfile,
+  inferIncidentTrack,
+  isTerrorRelevantIncident,
+  majorMediaProviders,
+  tabloidProviders
+} from '../shared/taxonomy.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -12,21 +29,6 @@ const outputPath = path.join(repoRoot, 'live-alerts.json');
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '' });
 const now = new Date();
 const geoLookup = JSON.parse(await fs.readFile(geoLookupPath, 'utf8'));
-
-const incidentKeywords = [
-  'terror', 'terrorism', 'attack', 'attacks', 'bomb', 'bombing', 'explosion', 'explosive', 'device',
-  'ramming', 'stabbing', 'shooting', 'hostage', 'plot', 'suspect', 'arrest', 'arrested', 'charged',
-  'parcel', 'extremist', 'isis', 'islamic state', 'al-qaeda', 'threat', 'jihadist', 'radicalised'
-];
-const terrorismKeywords = [
-  'terror', 'terrorism', 'counter-terror', 'counter terrorism', 'terrorist', 'extremist', 'extremism',
-  'radicalised', 'radicalized', 'radicalisation', 'radicalization', 'jihadist', 'jihad', 'isis',
-  'islamic state', 'al-qaeda', 'far-right extremist', 'far right extremist', 'neo-nazi',
-  'proscribed organisation', 'proscribed organization', 'bomb hoax', 'ira', 'dissident republican',
-  'loyalist paramilitary', 'terror offences', 'terrorism offences', 'terrorist propaganda'
-];
-const criticalKeywords = ['attack', 'bomb', 'bombing', 'explosion', 'explosive', 'ramming', 'shooting', 'stabbing', 'hostage'];
-const highKeywords = ['plot', 'charged', 'arrest', 'arrested', 'parcel', 'raid', 'disrupt', 'suspect'];
 const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
 const englishFriendlyPatterns = [
   '/en/', '/english', 'english.', '/eng', 'dw.com/en', 'ansa.it/english', 'nzz.ch/english',
@@ -42,20 +44,8 @@ const nonEnglishEndpointPatterns = [
   'liberation.fr', 'repubblica.it', 'lastampa.it', 'ilsole24ore.com', 'nrc.nl', 'standard.be', 'lesoir.be',
   'dewereldmorgen.be', 'svd.se', 'pravda.sk', 'polisen.se/', 'cathimerini.gr', 'pst.no/kunnskapsbank/'
 ];
-const majorMediaProviders = new Set([
-  'Reuters', 'The Guardian', 'BBC News', 'Associated Press', 'AP News', 'The Telegraph',
-  'Financial Times', 'France 24', 'DW', 'Politico Europe', 'Euronews', 'Brussels Times',
-  'The Independent', 'Irish Times', 'Politico', 'Kyiv Post', 'RFE/RL'
-]);
-const tabloidProviders = new Set([
-  'The Sun', 'Daily Mail', 'Daily Record', 'Belfast Telegraph', 'iNews'
-]);
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-const clean = (value) => (value || '')
-  .replace(/([a-z0-9])([A-Z][a-z])/g, '$1. $2')
-  .replace(/\s+/g, ' ')
-  .trim();
 const titleCase = (value) => clean(value).replace(/\b\w/g, (m) => m.toUpperCase());
 const SOURCE_TIMEZONE = 'Europe/London';
 
@@ -70,11 +60,6 @@ function absoluteUrl(href, base) {
   } catch {
     return base;
   }
-}
-
-function matchesKeywords(text, words = incidentKeywords) {
-  const haystack = (text || '').toLowerCase();
-  return words.filter((word) => haystack.includes(word));
 }
 
 function parseSourceDate(rawDate) {
@@ -133,59 +118,6 @@ function inferStatus(source, itemText) {
   return 'New source item';
 }
 
-function sourceHasTerrorTopic(source) {
-  const text = clean(`${source.name} ${source.endpoint}`).toLowerCase();
-  return [
-    'counterterrorism.police.uk',
-    'actioncounters',
-    'terrorism-threat-levels',
-    '/terrorism',
-    '/counter-terrorism',
-    '/counterterrorism',
-    '/terrorist',
-    'counter-terrorism-register',
-    'terrorism-convictions-monitor',
-    'proscribed-terror',
-    'sanctions-against-terrorism',
-    'terrorist-list',
-    'terror offences',
-    'terrorism offences'
-  ].some((term) => text.includes(term));
-}
-
-function normaliseSourceTier(value) {
-  const tier = clean(value).toLowerCase();
-  return ['trigger', 'corroboration', 'context', 'research'].includes(tier) ? tier : '';
-}
-
-function normaliseReliabilityProfile(value) {
-  const profile = clean(value).toLowerCase();
-  return ['official_ct', 'official_general', 'official_context', 'major_media', 'general_media', 'tabloid', 'specialist_research'].includes(profile) ? profile : '';
-}
-
-function inferSourceTier(source) {
-  const declaredTier = normaliseSourceTier(source.sourceTier);
-  if (declaredTier) return declaredTier;
-  if (source.lane === 'incidents') {
-    if (sourceHasTerrorTopic(source)) return source.isTrustedOfficial ? 'trigger' : 'corroboration';
-    return 'corroboration';
-  }
-  if (source.lane === 'sanctions' || source.lane === 'oversight' || source.lane === 'border') return 'context';
-  return source.isTrustedOfficial ? 'context' : 'research';
-}
-
-function inferReliabilityProfile(source, sourceTier = inferSourceTier(source)) {
-  const declaredProfile = normaliseReliabilityProfile(source.reliabilityProfile);
-  if (declaredProfile) return declaredProfile;
-  if (sourceTier === 'trigger') return 'official_ct';
-  if (source.isTrustedOfficial && source.lane === 'incidents') return 'official_general';
-  if (source.isTrustedOfficial) return 'official_context';
-  if (tabloidProviders.has(source.provider)) return 'tabloid';
-  if (majorMediaProviders.has(source.provider)) return 'major_media';
-  if (sourceTier === 'research' || source.lane === 'prevention') return 'specialist_research';
-  return 'general_media';
-}
-
 function sourceTierRankValue(sourceTier) {
   if (sourceTier === 'trigger') return 4;
   if (sourceTier === 'corroboration') return 3;
@@ -220,21 +152,6 @@ function inferConfidence(source, reliabilityProfile) {
   return 'Secondary source signal';
 }
 
-function isTerrorRelevantIncident(source, item, reliabilityProfile = inferReliabilityProfile(source)) {
-  if (source.lane !== 'incidents') return true;
-  const text = clean(`${item.title} ${item.summary} ${item.sourceExtract || ''}`).toLowerCase();
-  const terrorHits = matchesKeywords(text, terrorismKeywords);
-  const incidentHits = matchesKeywords(text, incidentKeywords);
-  const terrorTopic = sourceHasTerrorTopic(source);
-  if (reliabilityProfile === 'official_ct') return terrorHits.length >= 1 || (terrorTopic && incidentHits.length >= 1);
-  if (reliabilityProfile === 'official_general') return terrorHits.length >= 1 && incidentHits.length >= 1;
-  if (reliabilityProfile === 'major_media') return terrorHits.length >= 1 && incidentHits.length >= 2;
-  if (reliabilityProfile === 'general_media') return terrorHits.length >= 2 && incidentHits.length >= 2;
-  if (reliabilityProfile === 'tabloid') return terrorHits.length >= 2 && incidentHits.length >= 3;
-  if (reliabilityProfile === 'specialist_research') return terrorHits.length >= 2 || terrorTopic;
-  return terrorHits.length > 0;
-}
-
 function inferLocation(source, title) {
   const text = title || '';
   const patterns = ['Leeds', 'London', 'Manchester', 'Birmingham', 'Liverpool', 'Glasgow', 'Belfast', 'Northumberland', 'Paris', 'Brussels', 'Berlin', 'Madrid', 'Rome', 'Amsterdam', 'Stockholm', 'Copenhagen', 'Dublin', 'Athens', 'Vienna', 'Vilnius', 'Warsaw', 'Kyiv', 'Tehran', 'Beirut', 'Jerusalem', 'Tel Aviv', 'Yemen', 'Iraq', 'Iran', 'Israel', 'Lebanon', 'Nigeria', 'Pakistan', 'California', 'Yosemite'];
@@ -258,15 +175,6 @@ function inferEventType(source, text) {
   if (lower.includes('threat level') || lower.includes('threat')) return 'threat_update';
   if (matchesKeywords(lower, criticalKeywords).length) return 'active_attack';
   return 'incident_update';
-}
-
-function inferIncidentTrack(source, text, eventType) {
-  if (source.lane !== 'incidents') return '';
-  if (['charge', 'arrest', 'sentencing', 'recognition', 'feature'].includes(eventType)) return 'case';
-  if (['active_attack', 'disrupted_plot', 'threat_update'].includes(eventType)) return 'live';
-  const lower = text.toLowerCase();
-  if (lower.includes('police cordon') || lower.includes('evacuated') || lower.includes('explosive device') || lower.includes('ongoing')) return 'live';
-  return 'case';
 }
 
 function inferGeoPrecision(location) {
@@ -666,7 +574,7 @@ function shouldKeepItem(source, item) {
   const reliabilityProfile = inferReliabilityProfile(source);
   if (item.language && !isEnglishLanguage(item.language)) return false;
   if (!recencyOkay(source, item.published)) return false;
-  if (!isTerrorRelevantIncident(source, item, reliabilityProfile)) return false;
+  if (!isTerrorRelevantIncident(source, item)) return false;
   if (source.requiresKeywordMatch) {
     return matchesKeywords(text).length > 0;
   }
@@ -685,7 +593,7 @@ function buildAlert(source, item, idx) {
   const terrorismHits = matchesKeywords(text, terrorismKeywords);
   const severity = inferSeverity(source, text);
   const eventType = inferEventType(source, text);
-  const incidentTrack = inferIncidentTrack(source, text, eventType);
+  const incidentTrack = inferIncidentTrack({ ...source, eventType, text });
   const confidenceScore = inferConfidenceScore(source, text, publishedIso, reliabilityProfile);
   const priorityScore = priorityScoreFor(source, severity, keywordHits, publishedIso, incidentTrack, reliabilityProfile);
   return {
@@ -725,7 +633,7 @@ function buildAlert(source, item, idx) {
       freshnessBucket: freshnessBucket(source, publishedIso),
       freshUntil: freshUntilFor(source, publishedIso, severity, incidentTrack),
       needsHumanReview: needsHumanReviewFor(source, severity, keywordHits, publishedIso, reliabilityProfile, incidentTrack),
-      isTerrorRelevant: isTerrorRelevantIncident(source, item, reliabilityProfile),
+      isTerrorRelevant: isTerrorRelevantIncident(source, item),
       corroboratingSources: [],
       corroborationCount: 0,
       isDuplicateOf: null
