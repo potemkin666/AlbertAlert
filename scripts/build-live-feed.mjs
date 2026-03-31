@@ -323,6 +323,32 @@ function laneReasonFor(source, incidentTrack) {
   return 'Prevention, radicalisation, or analytical context source.';
 }
 
+function queueReasonFor(source, {
+  sourceTier,
+  reliabilityProfile,
+  incidentTrack,
+  keywordHits,
+  terrorismHits,
+  confidenceScore,
+  needsHumanReview,
+  isTerrorRelevant
+}) {
+  if (source.lane !== 'incidents') {
+    return laneReasonFor(source, incidentTrack);
+  }
+  if (needsHumanReview) return 'Needs human review';
+  if (!isTerrorRelevant && keywordHits.length) return 'Incident wording without clear terrorism signal';
+  if (!terrorismHits.length && keywordHits.length >= 2) return 'Keyword-led match from a broad source';
+  if (sourceTier !== 'trigger') return 'Non-trigger source awaiting corroboration';
+  if (!source.isTrustedOfficial && confidenceScore > 0 && confidenceScore < 0.8) {
+    return reliabilityProfile === 'tabloid'
+      ? 'Tabloid source requires corroboration'
+      : 'Secondary source with weak confidence';
+  }
+  if (incidentTrack === 'case') return 'Case or prosecution update kept out of the live trigger lane';
+  return 'Trigger-tier terrorism incident candidate';
+}
+
 function sourceReferenceFor(alert) {
   return {
     source: alert.source,
@@ -547,6 +573,18 @@ function buildAlert(source, item, idx) {
   const incidentTrack = inferIncidentTrack({ ...source, eventType, text });
   const confidenceScore = inferConfidenceScore(source, text, publishedIso, reliabilityProfile);
   const priorityScore = priorityScoreFor(source, severity, keywordHits, publishedIso, incidentTrack, reliabilityProfile);
+  const isTerrorRelevant = isTerrorRelevantIncident(source, item);
+  const needsHumanReview = needsHumanReviewFor(source, severity, keywordHits, publishedIso, reliabilityProfile, incidentTrack);
+  const queueReason = queueReasonFor(source, {
+    sourceTier,
+    reliabilityProfile,
+    incidentTrack,
+    keywordHits,
+    terrorismHits,
+    confidenceScore,
+    needsHumanReview,
+    isTerrorRelevant
+  });
   return {
       id: `${source.id}-${idx}`,
       title: titleCase(item.title),
@@ -570,6 +608,7 @@ function buildAlert(source, item, idx) {
       reliabilityProfile,
       incidentTrack,
       laneReason: laneReasonFor(source, incidentTrack),
+      queueReason,
       time: displayWhen,
       lat: coords.lat,
       lng: coords.lng,
@@ -583,8 +622,8 @@ function buildAlert(source, item, idx) {
       priorityScore,
       freshnessBucket: freshnessBucket(source, publishedIso),
       freshUntil: freshUntilFor(source, publishedIso, severity, incidentTrack),
-      needsHumanReview: needsHumanReviewFor(source, severity, keywordHits, publishedIso, reliabilityProfile, incidentTrack),
-      isTerrorRelevant: isTerrorRelevantIncident(source, item),
+      needsHumanReview,
+      isTerrorRelevant,
       corroboratingSources: [],
       corroborationCount: 0,
       isDuplicateOf: null

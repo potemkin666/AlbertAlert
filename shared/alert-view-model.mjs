@@ -6,8 +6,6 @@ import {
   normaliseSourceTier,
   normaliseReliabilityProfile,
   normaliseIncidentTrack,
-  inferReliabilityProfile,
-  inferIncidentTrack,
   isTerrorRelevantIncident
 } from './taxonomy.mjs';
 import { laneLabels } from './ui-data.mjs';
@@ -152,21 +150,11 @@ function sourceTierRank(alert) {
 }
 
 export function resolvedIncidentTrack(alert) {
-  return normaliseIncidentTrack(alert.incidentTrack) || inferIncidentTrack({
-    ...alert,
-    lane: ['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention'].includes(alert.lane) ? alert.lane : 'incidents',
-    text: `${clean(alert.title)} ${clean(alert.summary)} ${clean(alert.sourceExtract)}`
-  });
+  return normaliseIncidentTrack(alert.incidentTrack);
 }
 
 export function resolvedReliabilityProfile(alert) {
-  return normaliseReliabilityProfile(alert.reliabilityProfile) || inferReliabilityProfile({
-    ...alert,
-    sourceTier: normaliseSourceTier(alert.sourceTier),
-    isOfficial: !!alert.isOfficial,
-    lane: ['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention'].includes(alert.lane) ? alert.lane : 'incidents',
-    source: clean(alert.source) || 'Unknown source'
-  });
+  return normaliseReliabilityProfile(alert.reliabilityProfile);
 }
 
 function incidentScore(alert) {
@@ -211,6 +199,7 @@ export function isLiveIncidentCandidate(alert) {
 }
 
 export function quarantineReason(alert) {
+  if (clean(alert.queueReason)) return clean(alert.queueReason);
   const terrorHits = Array.isArray(alert.terrorismHits) && alert.terrorismHits.length ? alert.terrorismHits : terrorismMatches(alert);
   const incidentHits = keywordMatches(alert);
   if (alert.needsHumanReview) return 'Needs human review';
@@ -361,6 +350,7 @@ export function buildAuditBlock(alert) {
     `RELIABILITY PROFILE: ${reliabilityLabel(resolvedReliabilityProfile(alert))}`,
     `AGE: ${age}`,
     `LANE REASON: ${clean(alert.laneReason) || contextLabel(alert)}`,
+    `QUEUE REASON: ${clean(alert.queueReason) || quarantineReason(alert)}`,
     terrorTerms.length ? `TERROR TERMS HIT: ${terrorTerms.join(', ')}` : 'TERROR TERMS HIT: none',
     `CORROBORATION COUNT: ${Number(alert.corroborationCount || 0)}`
   ].join('\n');
@@ -412,18 +402,8 @@ export function normaliseAlert(alert, index, geoLookup = []) {
   const geoPoint = inferGeoPoint(alert, geoLookup);
   const lane = ['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention'].includes(alert.lane) ? alert.lane : 'incidents';
   const sourceTier = normaliseSourceTier(alert.sourceTier);
-  const reliabilityProfile = normaliseReliabilityProfile(alert.reliabilityProfile) || inferReliabilityProfile({
-    ...alert,
-    sourceTier,
-    isOfficial: !!alert.isOfficial,
-    lane,
-    source: clean(alert.source) || 'Unknown source'
-  });
-  const incidentTrack = normaliseIncidentTrack(alert.incidentTrack) || inferIncidentTrack({
-    ...alert,
-    lane,
-    text: `${clean(alert.title)} ${clean(alert.summary)} ${clean(alert.sourceExtract)}`
-  });
+  const reliabilityProfile = normaliseReliabilityProfile(alert.reliabilityProfile);
+  const incidentTrack = normaliseIncidentTrack(alert.incidentTrack);
   return {
     id: clean(alert.id) || `live-${index}`,
     title: clean(alert.title) || 'Untitled source item',
@@ -462,6 +442,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     terrorismHits: Array.isArray(alert.terrorismHits) ? alert.terrorismHits.filter(Boolean) : [],
     isTerrorRelevant: typeof alert.isTerrorRelevant === 'boolean' ? alert.isTerrorRelevant : null,
     laneReason: clean(alert.laneReason),
+    queueReason: clean(alert.queueReason),
     corroboratingSources: Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources.filter(Boolean).map((entry) => ({
       source: clean(entry.source),
       sourceUrl: clean(entry.sourceUrl),
