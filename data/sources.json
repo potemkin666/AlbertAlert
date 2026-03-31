@@ -1,4 +1,4 @@
-ï»¿[
+[
     {
         "id":  "frontex-document-fraud",
         "name":  "Frontex Document Fraud",
@@ -521,8 +521,8 @@
     },
     {
         "id":  "elpais-english",
-        "name":  "El PaÃ­s English",
-        "provider":  "El PaÃ­s",
+        "name":  "El País English",
+        "provider":  "El País",
         "kind":  "html",
         "endpoint":  "https://english.elpais.com/",
         "region":  "europe",
@@ -578,11 +578,11 @@
         "kind":  "html",
         "endpoint":  "https://www.eurojust.europa.eu/news/launch-judicial-counter-terrorism-register-eurojust",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "eurojust-press-releases",
@@ -617,11 +617,11 @@
         "kind":  "html",
         "endpoint":  "https://www.eurojust.europa.eu/crime-types-and-cases/crime-types/terrorism",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "euronews-europe",
@@ -669,11 +669,11 @@
         "kind":  "html",
         "endpoint":  "https://counterterrorism.ec.europa.eu/",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "ec-homemade-explosives-legislation",
@@ -682,11 +682,11 @@
         "kind":  "html",
         "endpoint":  "https://home-affairs.ec.europa.eu/policies/internal-security/counter-terrorism-and-radicalisation/protection/legislation-chemicals-used-home-made-explosives_en",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  true,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "eeas-counter-terrorism",
@@ -695,11 +695,11 @@
         "kind":  "html",
         "endpoint":  "https://www.eeas.europa.eu/eeas/counter-terrorism_en",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "europol-main-reports",
@@ -859,8 +859,8 @@
     },
     {
         "id":  "hurriyet-daily-news",
-        "name":  "HÃ¼rriyet Daily News",
-        "provider":  "HÃ¼rriyet Daily News",
+        "name":  "Hürriyet Daily News",
+        "provider":  "Hürriyet Daily News",
         "kind":  "html",
         "endpoint":  "https://www.hurriyetdailynews.com/",
         "region":  "europe",
@@ -1119,8 +1119,8 @@
     },
     {
         "id":  "liberation-home",
-        "name":  "LibÃ©ration",
-        "provider":  "LibÃ©ration",
+        "name":  "Libération",
+        "provider":  "Libération",
         "kind":  "html",
         "endpoint":  "https://www.liberation.fr/",
         "region":  "europe",
@@ -1215,11 +1215,11 @@
         "kind":  "html",
         "endpoint":  "https://english.nctv.nl/themes/counterterrorism",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "nctv-home",
@@ -1384,11 +1384,11 @@
         "kind":  "html",
         "endpoint":  "https://polisen.se/utsatt-for-brott/polisanmalan/sakerhet-och-ordning-i-samhallet/terrorism/",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "politico-czech-page",
@@ -1574,8 +1574,8 @@
     },
     {
         "id":  "sueddeutsche-home",
-        "name":  "SÃ¼ddeutsche Zeitung",
-        "provider":  "SÃ¼ddeutsche Zeitung",
+        "name":  "Süddeutsche Zeitung",
+        "provider":  "Süddeutsche Zeitung",
         "kind":  "html",
         "endpoint":  "https://www.sueddeutsche.de/",
         "region":  "europe",
@@ -1735,11 +1735,11 @@
         "kind":  "html",
         "endpoint":  "https://www.un.org/counterterrorism/",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "un-ctitf-news",
@@ -1748,11 +1748,11 @@
         "kind":  "html",
         "endpoint":  "https://www.un.org/counterterrorism/ctitf/en/news",
         "region":  "europe",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "un-news-all",
@@ -3074,11 +3074,11 @@
         "kind":  "html",
         "endpoint":  "https://www.counterterrorism.police.uk/search/",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "oversight",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "ctp-protective-security-register",
@@ -3087,11 +3087,11 @@
         "kind":  "html",
         "endpoint":  "https://www.counterterrorism.police.uk/new-national-register-and-qualification-to-strengthen-uk-protective-security/",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "context",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "ctp-northeast-news",
@@ -3269,11 +3269,11 @@
         "kind":  "html",
         "endpoint":  "https://www.gov.uk/government/collections/counter-terrorism-statistics",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "prevention",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "inews-home",
@@ -3308,11 +3308,11 @@
         "kind":  "html",
         "endpoint":  "https://www.mi5.gov.uk/threats-and-advice/terrorism-threat-levels",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "prevention",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "nactso-home",
@@ -3906,11 +3906,11 @@
         "kind":  "html",
         "endpoint":  "https://www.mi5.gov.uk/threats-and-advice/terrorism",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "prevention",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "mi5-extremism-radicalisation",
@@ -3932,11 +3932,11 @@
         "kind":  "html",
         "endpoint":  "https://act.campaign.gov.uk/",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "prevention",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "act-report-suspicious-activity",
@@ -3945,11 +3945,11 @@
         "kind":  "html",
         "endpoint":  "https://act.campaign.gov.uk/report-suspicious-activity/",
         "region":  "uk",
-        "lane":  "incidents",
+        "lane":  "prevention",
         "isTrustedOfficial":  true,
         "requiresKeywordMatch":  false,
-        "sourceTier":  "trigger",
-        "reliabilityProfile":  "official_ct"
+        "sourceTier":  "context",
+        "reliabilityProfile":  "official_context"
     },
     {
         "id":  "home-office-prevent-duty-guidance",
@@ -3991,4 +3991,3 @@
         "reliabilityProfile":  "official_context"
     }
 ]
-
