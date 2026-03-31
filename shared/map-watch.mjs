@@ -43,25 +43,36 @@ export function createMapController(config) {
     });
   }
 
-  function mapRingKind(alert) {
+  function mapMarkerKind(alert) {
     if (!alert) return '';
+    if (alert.lane === 'context' || alert.eventType === 'context_update' || ['context', 'research'].includes(alert.sourceTier)) {
+      return 'context';
+    }
     if (alert.incidentTrack === 'case' || ['charge', 'arrest', 'sentencing', 'recognition', 'feature'].includes(alert.eventType)) {
-      return 'case';
+      return 'arrest';
     }
     if (alert.eventType === 'disrupted_plot') return 'disrupted';
     if (['active_attack', 'threat_update', 'incident_update'].includes(alert.eventType) || alert.incidentTrack === 'live') {
       return 'active';
     }
-    return '';
+    return alert.lane === 'incidents' ? 'active' : 'context';
+  }
+
+  function markerGlyph(kind) {
+    if (kind === 'disrupted') return 'X';
+    if (kind === 'arrest') return 'A';
+    if (kind === 'context') return 'i';
+    return '!';
   }
 
   function mapIconForAlert(alert) {
     const safeSeverity = ['critical', 'high', 'elevated', 'moderate'].includes(alert?.severity) ? alert.severity : 'moderate';
-    const ringKind = mapRingKind(alert);
-    const ringMarkup = ringKind ? `<span class="map-ring map-ring--${ringKind}"></span>` : '';
+    const markerKind = mapMarkerKind(alert);
+    const ringMarkup = markerKind ? `<span class="map-ring map-ring--${markerKind}"></span>` : '';
+    const glyphMarkup = `<span class="map-pin-glyph map-pin-glyph--${markerKind}" aria-hidden="true">${markerGlyph(markerKind)}</span>`;
     return L.divIcon({
       className: 'map-pin-icon',
-      html: `<span class="map-pin-shell">${ringMarkup}<span class="map-pin map-pin--${safeSeverity}"></span></span>`,
+      html: `<span class="map-pin-shell map-pin-shell--${markerKind}">${ringMarkup}<span class="map-pin map-pin--${safeSeverity} map-pin--${markerKind}"></span>${glyphMarkup}</span>`,
       iconSize: [42, 42],
       iconAnchor: [21, 32],
       popupAnchor: [0, -24]
