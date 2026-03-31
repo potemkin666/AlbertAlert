@@ -43,6 +43,7 @@ import {
 const LIVE_FEED_URL = 'live-alerts.json';
 const GEO_LOOKUP_URL = 'data/geo-lookup.json';
 const WATCH_GEOGRAPHY_URL = 'data/watch-geography.json';
+const LONG_BRIEF_API_URL = globalThis.BRIALERT_LONG_BRIEF_API_URL || '';
 const POLL_INTERVAL_MS = 60_000;
 const SOURCE_PULL_MINUTES = 15;
 const WATCHED_STORAGE_KEY = 'brialert.watched';
@@ -144,6 +145,10 @@ const elements = {
   modalRegion: document.getElementById('modal-region'),
   modalBriefing: document.getElementById('modal-briefing'),
   modalLink: document.getElementById('modal-link'),
+  expandedBriefPanel: document.getElementById('expanded-brief-panel'),
+  modalExpandedBrief: document.getElementById('modal-expanded-brief'),
+  generateExpandedBrief: document.getElementById('generate-expanded-brief'),
+  copyExpandedBrief: document.getElementById('copy-expanded-brief'),
   noteForm: document.getElementById('note-form'),
   noteTitle: document.getElementById('note-title'),
   noteBody: document.getElementById('note-body')
@@ -177,7 +182,11 @@ const modalController = createModalController({
   modalRegion: elements.modalRegion,
   modalBriefing: elements.modalBriefing,
   modalLink: elements.modalLink,
-  copyBriefing: elements.copyBriefing
+  copyBriefing: elements.copyBriefing,
+  expandedBriefPanel: elements.expandedBriefPanel,
+  modalExpandedBrief: elements.modalExpandedBrief,
+  generateExpandedBrief: elements.generateExpandedBrief,
+  copyExpandedBrief: elements.copyExpandedBrief
 }, {
   effectiveSummary,
   buildBriefing,
@@ -404,6 +413,61 @@ function renderAll() {
   renderNotes();
 }
 
+function longBriefUnavailableMessage(alert) {
+  return [
+    `LONG BRIEF UNAVAILABLE`,
+    '',
+    `The static site has the source text for "${alert.title}", but this button needs a server-side AI endpoint to generate a long original brief safely.`,
+    '',
+    `Why: the public web app should not call the model directly with an exposed API key.`,
+    '',
+    `Next step: host the existing proxy and set window.BRIALERT_LONG_BRIEF_API_URL to that endpoint.`
+  ].join('\n');
+}
+
+async function generateLongBrief() {
+  const alert = modalController.getCurrentAlert();
+  if (!alert || !elements.generateExpandedBrief || !elements.modalExpandedBrief || !elements.copyExpandedBrief) return;
+
+  elements.generateExpandedBrief.disabled = true;
+  elements.generateExpandedBrief.textContent = 'Generating...';
+
+  if (!LONG_BRIEF_API_URL) {
+    modalController.setExpandedBrief(longBriefUnavailableMessage(alert));
+    elements.generateExpandedBrief.disabled = false;
+    return;
+  }
+
+  try {
+    const response = await fetch(LONG_BRIEF_API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        title: alert.title,
+        location: alert.location,
+        region: alert.region,
+        source: alert.source,
+        sourceUrl: alert.sourceUrl,
+        summary: effectiveSummary(alert),
+        sourceExtract: alert.sourceExtract,
+        confidence: alert.confidence,
+        lane: alert.lane,
+        eventType: alert.eventType,
+        peopleInvolved: alert.peopleInvolved
+      })
+    });
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    const payload = await response.json();
+    const brief = String(payload.brief || payload.longBrief || '').trim();
+    modalController.setExpandedBrief(brief || 'Long brief generation returned no text.');
+  } catch (error) {
+    modalController.setExpandedBrief(`LONG BRIEF FAILED\n\n${error instanceof Error ? error.message : 'Unknown error'}`);
+  } finally {
+    elements.generateExpandedBrief.disabled = false;
+  }
+}
+
 function refreshAlbertQuote() {
   const next = nextAlbertQuote(albertQuotes, state.albertIndex);
   state.albertIndex = next.index;
@@ -454,6 +518,13 @@ function bindEvents() {
     const briefing = elements.copyBriefing.dataset.briefing || '';
     if (!briefing) return;
     await modalController.copyTextToButton(briefing, elements.copyBriefing, 'Copy Briefing');
+  });
+
+  elements.generateExpandedBrief?.addEventListener('click', generateLongBrief);
+  elements.copyExpandedBrief?.addEventListener('click', async () => {
+    const brief = elements.copyExpandedBrief.dataset.brief || '';
+    if (!brief) return;
+    await modalController.copyTextToButton(brief, elements.copyExpandedBrief, 'Copy Long Brief');
   });
 
   elements.briefingModeToggle.addEventListener('click', () => {

@@ -19,11 +19,18 @@ export function createModalController(elements, deps) {
     modalRegion,
     modalBriefing,
     modalLink,
-    copyBriefing
+    copyBriefing,
+    expandedBriefPanel,
+    modalExpandedBrief,
+    generateExpandedBrief,
+    copyExpandedBrief
   } = elements;
+
+  let currentAlert = null;
 
   function openDetail(alert) {
     if (!alert) return;
+    currentAlert = alert;
     const summaryText = deps.effectiveSummary(alert);
     const briefing = deps.buildBriefing(alert, summaryText);
     modalTitle.textContent = alert.title;
@@ -44,6 +51,19 @@ export function createModalController(elements, deps) {
     modalSource.textContent = alert.source;
     modalRegion.textContent = alert.region === 'uk' ? 'United Kingdom' : 'Europe';
     modalBriefing.textContent = briefing;
+    if (modalExpandedBrief) {
+      modalExpandedBrief.textContent = 'Press Generate Long Brief to create a longer AI-written factual brief from the captured source text.';
+    }
+    if (expandedBriefPanel) expandedBriefPanel.hidden = false;
+    if (generateExpandedBrief) {
+      generateExpandedBrief.disabled = false;
+      generateExpandedBrief.textContent = 'Generate Long Brief';
+    }
+    if (copyExpandedBrief) {
+      copyExpandedBrief.disabled = true;
+      copyExpandedBrief.dataset.brief = '';
+      copyExpandedBrief.textContent = 'Copy Long Brief';
+    }
     modalLink.href = alert.sourceUrl;
     copyBriefing.dataset.briefing = briefing;
     document.body.classList.add('modal-open');
@@ -51,6 +71,7 @@ export function createModalController(elements, deps) {
   }
 
   function closeDetailPanel() {
+    currentAlert = null;
     document.body.classList.remove('modal-open');
     modal.classList.add('hidden');
   }
@@ -70,6 +91,20 @@ export function createModalController(elements, deps) {
   return {
     openDetail,
     closeDetailPanel,
-    copyTextToButton
+    copyTextToButton,
+    getCurrentAlert() {
+      return currentAlert;
+    },
+    setExpandedBrief(text) {
+      if (!modalExpandedBrief || !copyExpandedBrief || !generateExpandedBrief) return;
+      modalExpandedBrief.textContent = text;
+      copyExpandedBrief.disabled = !cleanText(text);
+      copyExpandedBrief.dataset.brief = text || '';
+      generateExpandedBrief.textContent = 'Regenerate Long Brief';
+    }
   };
+}
+
+function cleanText(value) {
+  return String(value || '').trim();
 }
