@@ -327,6 +327,51 @@ function sourceStack(alert) {
   ].filter((entry) => clean(entry.publishedAt));
 }
 
+function buildConfidenceLadder(alert) {
+  const stack = sourceStack(alert);
+  const officialEntries = stack.filter((entry) => isOfficialProfile(entry.reliabilityProfile));
+  const officialCtEntries = officialEntries.filter((entry) => clean(entry.reliabilityProfile) === 'official_ct');
+  const corroboratingEntries = stack.filter((entry) => !entry.isPrimary);
+
+  const score = Math.max(
+    officialCtEntries.length ? 4 : 0,
+    officialEntries.length >= 2 ? 3 : 0,
+    officialEntries.length >= 1 || corroboratingEntries.length >= 2 ? 2 : 0,
+    stack.length ? 1 : 0
+  );
+
+  const steps = [
+    {
+      label: 'Initial signal',
+      active: score >= 1,
+      detail: stack.length ? `${stack[0].source || 'Primary source'} opened the incident.` : 'No incident signal yet.'
+    },
+    {
+      label: 'Corroborated',
+      active: score >= 2,
+      detail: corroboratingEntries.length
+        ? `${corroboratingEntries.length} corroborating source${corroboratingEntries.length === 1 ? '' : 's'} attached.`
+        : 'Waiting for a second source or official corroboration.'
+    },
+    {
+      label: 'Official confirmation',
+      active: score >= 3,
+      detail: officialEntries.length
+        ? `${officialEntries.length} official source${officialEntries.length === 1 ? '' : 's'} in the source stack.`
+        : 'No official source has landed yet.'
+    },
+    {
+      label: 'CT-grade confidence',
+      active: score >= 4,
+      detail: officialCtEntries.length
+        ? `${officialCtEntries.length} counter-terror source${officialCtEntries.length === 1 ? '' : 's'} attached.`
+        : 'No official CT source attached yet.'
+    }
+  ];
+
+  return { score, steps };
+}
+
 export function buildSceneClock(alert) {
   const stack = sourceStack(alert);
   const timed = stack
@@ -336,6 +381,23 @@ export function buildSceneClock(alert) {
   const lastOfficial = timed.filter((entry) => isOfficialProfile(entry.reliabilityProfile)).sort((a, b) => b.timeMs - a.timeMs)[0] || null;
   const lastCorroboration = timed.filter((entry) => !entry.isPrimary).sort((a, b) => b.timeMs - a.timeMs)[0] || null;
   return { firstReport, lastOfficial, lastCorroboration };
+}
+
+export function renderConfidenceLadder(alert) {
+  const ladder = buildConfidenceLadder(alert);
+  return `<div class="confidence-ladder">
+    <div class="confidence-ladder-bars" aria-label="Confidence ladder level ${ladder.score} of 4">
+      ${ladder.steps.map((step, index) => `
+        <span class="confidence-rung${step.active ? ' active' : ''}" aria-hidden="true">${index + 1}</span>`).join('')}
+    </div>
+    <div class="confidence-ladder-steps">
+      ${ladder.steps.map((step, index) => `
+        <article class="confidence-step${step.active ? ' active' : ''}">
+          <strong>${index + 1}. ${step.label}</strong>
+          <p>${step.detail}</p>
+        </article>`).join('')}
+    </div>
+  </div>`;
 }
 
 export function renderSceneClock(alert) {

@@ -530,13 +530,27 @@ async function enrichHtmlItems(source, items) {
 }
 
 function shouldKeepItem(source, item) {
-  const text = `${item.title} ${item.summary}`;
-  const reliabilityProfile = inferReliabilityProfile(source);
+  const sourceTier = inferSourceTier(source);
+  const reliabilityProfile = inferReliabilityProfile(source, sourceTier);
+  const text = `${item.title} ${item.summary} ${item.sourceExtract || ''}`;
+  const incidentHits = matchesKeywords(text);
+  const terrorHits = matchesKeywords(text, terrorismKeywords);
+  const terrorRelevant = isTerrorRelevantIncident(source, item);
   if (item.language && !isEnglishLanguage(item.language)) return false;
   if (!recencyOkay(source, item.published)) return false;
-  if (!isTerrorRelevantIncident(source, item)) return false;
+  if (source.lane === 'incidents' && !terrorRelevant) return false;
+  if (source.lane === 'context' && !source.isTrustedOfficial) {
+    const requiredTerrorHits = reliabilityProfile === 'tabloid' ? 2 : 1;
+    if (terrorHits.length < requiredTerrorHits) return false;
+  }
+  if (reliabilityProfile === 'tabloid') {
+    const titleTerrorHits = matchesKeywords(item.title || '', terrorismKeywords);
+    if (titleTerrorHits.length < 1) return false;
+    if (terrorHits.length < 2) return false;
+    if (incidentHits.length < 3) return false;
+  }
   if (source.requiresKeywordMatch) {
-    return matchesKeywords(text).length > 0;
+    return incidentHits.length > 0;
   }
   return true;
 }
@@ -651,8 +665,11 @@ async function main() {
     try {
       const body = await fetchText(source.endpoint);
       const parsed = source.kind === 'rss' || source.kind === 'atom' ? parseFeedItems(source, body) : parseHtmlItems(source, body);
-      const filtered = parsed.filter((item) => shouldKeepItem(source, item)).slice(0, source.lane === 'incidents' ? 4 : 2);
-      const kept = source.kind === 'html' ? await enrichHtmlItems(source, filtered) : filtered;
+      const preLimited = parsed.slice(0, source.kind === 'html' ? 8 : 6);
+      const hydrated = source.kind === 'html' ? await enrichHtmlItems(source, preLimited) : preLimited;
+      const reliabilityProfile = inferReliabilityProfile(source, inferSourceTier(source));
+      const itemLimit = reliabilityProfile === 'tabloid' ? 1 : source.lane === 'incidents' ? 4 : 2;
+      const kept = hydrated.filter((item) => shouldKeepItem(source, item)).slice(0, itemLimit);
       kept.forEach((item, idx) => items.push(buildAlert(source, item, idx)));
       checked += 1;
       await sleep(250);

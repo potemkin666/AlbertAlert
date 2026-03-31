@@ -85,6 +85,57 @@ button { cursor: pointer; }
   min-height: 860px;
   min-height: 100%;
 }
+.device-iphone .phone-shell {
+  width: min(430px, 100%);
+  border-radius: 44px;
+}
+.device-iphone .phone-notch {
+  display: block;
+}
+.device-android .phone-shell {
+  width: min(440px, 100%);
+  border-radius: 28px;
+  padding: 12px;
+  background: linear-gradient(180deg, #171b24, #05070d);
+}
+.device-android .phone-notch {
+  display: none;
+}
+.device-android .screen {
+  border-radius: 24px;
+}
+.device-desktop .page {
+  padding: 24px;
+}
+.device-desktop .phone-shell {
+  width: min(1180px, 100%);
+  border-radius: 36px;
+  padding: 18px;
+}
+.device-desktop .phone-notch {
+  display: none;
+}
+.device-desktop .screen {
+  min-height: auto;
+  padding: 24px 24px 32px;
+}
+.device-desktop .hero-card {
+  min-height: 240px;
+  background:
+    linear-gradient(90deg, rgba(7, 9, 20, 0.92), rgba(7, 9, 20, 0.62) 40%, rgba(7, 9, 20, 0.18)),
+    url("assets/owl-night.gif") right center / cover no-repeat;
+}
+.device-desktop .tabbar,
+.device-desktop .filters,
+.device-desktop .hero-metrics {
+  gap: 12px;
+}
+.device-desktop .feed-card,
+.device-desktop .panel,
+.device-desktop .priority-card,
+.device-desktop .hero-card {
+  border-radius: 30px;
+}
 .screen::before {
   content: "";
   position: absolute;
@@ -598,6 +649,59 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
   margin-bottom: 6px;
 }
 .scene-clock-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.confidence-ladder {
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+.confidence-ladder-bars {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+.confidence-rung {
+  display: grid;
+  place-items: center;
+  min-height: 42px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+.confidence-rung.active {
+  border-color: rgba(241, 178, 21, 0.45);
+  background: linear-gradient(180deg, rgba(241, 178, 21, 0.28), rgba(241, 178, 21, 0.12));
+  color: var(--text);
+  box-shadow: 0 8px 18px rgba(241, 178, 21, 0.14);
+}
+.confidence-ladder-steps {
+  display: grid;
+  gap: 10px;
+}
+.confidence-step {
+  padding: 12px 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.confidence-step.active {
+  border-color: rgba(241, 178, 21, 0.28);
+  background: rgba(241, 178, 21, 0.08);
+}
+.confidence-step strong {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+.confidence-step p {
   margin: 0;
   color: var(--muted);
   font-size: 13px;

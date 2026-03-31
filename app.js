@@ -13,6 +13,7 @@ import {
   isStrictTopAlertCandidate,
   contextLabel,
   renderSceneClock,
+  renderConfidenceLadder,
   buildAuditBlock,
   renderCorroboratingSources,
   buildBriefing,
@@ -70,6 +71,22 @@ const state = {
 let derivedViewCache = null;
 let derivedViewDirty = true;
 
+function detectDeviceProfile() {
+  const ua = navigator.userAgent || '';
+  const isIphone = /iPhone/i.test(ua);
+  const isAndroidPhone = /Android/i.test(ua) && /Mobile/i.test(ua);
+  if (isIphone) return 'iphone';
+  if (isAndroidPhone) return 'android';
+  return 'desktop';
+}
+
+function applyDeviceProfile() {
+  const profile = detectDeviceProfile();
+  document.body.dataset.device = profile;
+  document.body.classList.remove('device-iphone', 'device-android', 'device-desktop');
+  document.body.classList.add(`device-${profile}`);
+}
+
 const elements = {
   priorityCard: document.getElementById('priority-card'),
   screen: document.querySelector('.screen'),
@@ -114,9 +131,11 @@ const elements = {
   modalAiSummary: document.getElementById('modal-ai-summary'),
   modalSummary: document.getElementById('modal-summary'),
   modalSceneClock: document.getElementById('modal-scene-clock'),
+  modalConfidenceLadder: document.getElementById('modal-confidence-ladder'),
   modalAudit: document.getElementById('modal-audit'),
   modalCorroboration: document.getElementById('modal-corroboration'),
   sceneClockPanel: document.getElementById('scene-clock-panel'),
+  confidenceLadderPanel: document.getElementById('confidence-ladder-panel'),
   auditPanel: document.getElementById('audit-panel'),
   corroborationPanel: document.getElementById('corroboration-panel'),
   modalSeverity: document.getElementById('modal-severity'),
@@ -145,7 +164,9 @@ const modalController = createModalController({
   modalAiSummary: elements.modalAiSummary,
   modalSummary: elements.modalSummary,
   modalSceneClock: elements.modalSceneClock,
+  modalConfidenceLadder: elements.modalConfidenceLadder,
   sceneClockPanel: elements.sceneClockPanel,
+  confidenceLadderPanel: elements.confidenceLadderPanel,
   modalAudit: elements.modalAudit,
   modalCorroboration: elements.modalCorroboration,
   auditPanel: elements.auditPanel,
@@ -161,6 +182,7 @@ const modalController = createModalController({
   effectiveSummary,
   buildBriefing,
   renderSceneClock,
+  renderConfidenceLadder,
   buildAuditBlock,
   renderCorroboratingSources,
   severityLabel
@@ -478,6 +500,7 @@ function bindEvents() {
   });
 
   window.addEventListener('resize', () => {
+    applyDeviceProfile();
     mapController.invalidateSize();
   });
 
@@ -488,6 +511,7 @@ function bindEvents() {
 }
 
 async function initialise() {
+  applyDeviceProfile();
   state.watched = loadSet(WATCHED_STORAGE_KEY);
   state.notes = loadArray(NOTES_STORAGE_KEY, defaultNotes);
   state.briefingMode = loadBoolean(BRIEFING_MODE_STORAGE_KEY);

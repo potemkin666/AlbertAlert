@@ -6,7 +6,9 @@ export function createModalController(elements, deps) {
     modalAiSummary,
     modalSummary,
     modalSceneClock,
+    modalConfidenceLadder,
     sceneClockPanel,
+    confidenceLadderPanel,
     modalAudit,
     modalCorroboration,
     auditPanel,
@@ -31,6 +33,8 @@ export function createModalController(elements, deps) {
     modalSummary.hidden = true;
     modalSceneClock.innerHTML = deps.renderSceneClock(alert);
     sceneClockPanel.hidden = false;
+    modalConfidenceLadder.innerHTML = deps.renderConfidenceLadder(alert);
+    confidenceLadderPanel.hidden = false;
     modalAudit.textContent = deps.buildAuditBlock(alert);
     modalCorroboration.innerHTML = deps.renderCorroboratingSources(alert);
     auditPanel.hidden = false;
