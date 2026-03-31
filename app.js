@@ -131,10 +131,12 @@ const priorityCard = document.getElementById('priority-card');
 const screen = document.querySelector('.screen');
 const feedList = document.getElementById('feed-list');
 const contextList = document.getElementById('context-list');
+const quarantineList = document.getElementById('quarantine-list');
 const watchlistList = document.getElementById('watchlist-list');
 const notesList = document.getElementById('notes-list');
 const watchedCount = document.getElementById('watched-count');
 const contextCount = document.getElementById('context-count');
+const quarantineCount = document.getElementById('quarantine-count');
 const watchlistSummary = document.getElementById('watchlist-summary');
 const heroRegion = document.getElementById('hero-region');
 const heroUpdated = document.getElementById('hero-updated');
@@ -437,6 +439,29 @@ function isLiveIncidentCandidate(alert) {
   return incidentScore(alert) >= 6;
 }
 function filteredAlerts() { return alerts.filter((alert) => (activeRegion === 'all' || alert.region === activeRegion) && (activeLane === 'all' || alert.lane === activeLane)); }
+function quarantineReason(alert) {
+  const terrorHits = Array.isArray(alert.terrorismHits) && alert.terrorismHits.length ? alert.terrorismHits : terrorismMatches(alert);
+  const incidentHits = keywordMatches(alert);
+  if (alert.needsHumanReview) return 'Needs human review';
+  if (!isTerrorRelevant(alert) && incidentHits.length) return 'Incident wording without clear terrorism signal';
+  if (!alert.isOfficial && Number(alert.confidenceScore || 0) > 0 && Number(alert.confidenceScore || 0) < 0.8) return 'Secondary source with weak confidence';
+  if (!terrorHits.length && incidentHits.length >= 2) return 'Keyword-led match from a broad source';
+  if (normaliseSourceTier(alert.sourceTier) !== 'trigger' && alert.lane === 'incidents') return 'Non-trigger source awaiting corroboration';
+  return 'Borderline incident relevance';
+}
+function isQuarantineCandidate(alert) {
+  if (alert.lane !== 'incidents') return false;
+  if (isLiveIncidentCandidate(alert)) return false;
+  const incidentHits = keywordMatches(alert);
+  const terrorHits = Array.isArray(alert.terrorismHits) && alert.terrorismHits.length ? alert.terrorismHits : terrorismMatches(alert);
+  const confidence = Number(alert.confidenceScore || 0);
+  const tier = normaliseSourceTier(alert.sourceTier);
+  const notClearlyTerror = !isTerrorRelevant(alert) && incidentHits.length > 0;
+  const weakSecondarySignal = !alert.isOfficial && ((confidence > 0 && confidence < 0.8) || alert.needsHumanReview);
+  const broadSourceKeywordMatch = tier !== 'trigger' && incidentHits.length >= 2;
+  const thinTerrorCase = terrorHits.length > 0 && incidentScore(alert) < 6;
+  return notClearlyTerror || weakSecondarySignal || broadSourceKeywordMatch || thinTerrorCase;
+}
 function visibleWatchSites() {
   return watchGeographySites.filter((site) =>
     activeWatchLayers.has(site.category) &&
@@ -463,9 +488,13 @@ function sortAlertsByFreshness(alertList) {
 function responderAlerts() { return sortAlertsByFreshness(filteredAlerts().filter(isLiveIncidentCandidate)); }
 function contextAlerts() {
   return sortAlertsByFreshness(filteredAlerts().filter((alert) => {
+    if (isQuarantineCandidate(alert)) return false;
     if (alert.lane === 'incidents' && !isTerrorRelevant(alert)) return false;
     return !isLiveIncidentCandidate(alert);
   }));
+}
+function quarantineAlerts() {
+  return sortAlertsByFreshness(filteredAlerts().filter(isQuarantineCandidate)).slice(0, 6);
 }
 function contextLabel(alert) {
   if (alert.lane === 'incidents' && inferIncidentTrack(alert) === 'case') return 'Case / Prosecution';
@@ -807,6 +836,24 @@ function renderContext() {
   contextList.innerHTML = items.length ? items.map((alert) => `<article class="context-pill actionable" data-context="${alert.id}"><h4>${alert.title}</h4><p>${contextLabel(alert)} | ${alert.source}</p></article>`).join('') : "<p class='panel-copy'>No contextual items have been published into this filter yet.</p>";
   contextList.querySelectorAll('[data-context]').forEach((card) => card.addEventListener('click', () => openDetail(alerts.find((item) => item.id === card.dataset.context))));
 }
+function renderQuarantine() {
+  const items = quarantineAlerts();
+  quarantineCount.textContent = `${items.length} doubtful items`;
+  quarantineList.innerHTML = items.length ? items.map((alert) => `
+    <article class="quarantine-card actionable" data-quarantine="${alert.id}">
+      <div class="section-heading">
+        <h4>${alert.title}</h4>
+        <span class="quarantine-badge">Quarantine</span>
+      </div>
+      <p>${alert.summary}</p>
+      <div class="meta-row">
+        <span>${alert.source}</span>
+        <span>${quarantineReason(alert)}</span>
+        <span>${alert.time}</span>
+      </div>
+    </article>`).join('') : "<p class='panel-copy'>No doubtful items are parked in quarantine for this filter.</p>";
+  quarantineList.querySelectorAll('[data-quarantine]').forEach((card) => card.addEventListener('click', () => openDetail(alerts.find((item) => item.id === card.dataset.quarantine))));
+}
 
 function ensureMap() {
   if (liveMap || !mapElement || typeof L === 'undefined') return;
@@ -885,7 +932,7 @@ function renderMap(forceFit = false) {
     bounds.push([site.lat, site.lng]);
   });
 
-  mapSummary.textContent = `${responderAlerts().length} responder items | ${contextAlerts().length} context | ${items.length} plotted alerts`;
+  mapSummary.textContent = `${responderAlerts().length} responder items | ${contextAlerts().length} context | ${quarantineAlerts().length} quarantine | ${items.length} plotted alerts`;
   mapLayerSummary.textContent = `${sites.length} watch sites visible`;
 
   if (items.length && (forceFit || signature !== lastMapSignature)) {
@@ -926,7 +973,7 @@ function renderHero() {
   heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
 }
 
-function renderAll() { renderHero(); renderBriefingMode(); renderPriority(); renderFeed(); renderContext(); renderMap(); renderWatchlist(); renderNotes(); }
+function renderAll() { renderHero(); renderBriefingMode(); renderPriority(); renderFeed(); renderContext(); renderQuarantine(); renderMap(); renderWatchlist(); renderNotes(); }
 
 function nextAlbertQuote() {
   if (!albertQuotes.length) return '';
