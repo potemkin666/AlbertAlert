@@ -776,17 +776,36 @@ h1 { font-size: 42px; line-height: 1; margin-bottom: 10px; }
 .watch-site-marker {
   display: grid;
   place-items: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06), 0 8px 16px rgba(0, 0, 0, 0.28);
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.86);
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.06), 0 10px 18px rgba(0, 0, 0, 0.30);
 }
 .watch-site-marker--transport { background: #53b6ff; }
 .watch-site-marker--embassy { background: #c46bff; }
 .watch-site-marker--hospital { background: #48c97d; }
 .watch-site-marker--worship { background: #f0c95e; }
 .watch-site-marker--government { background: #ff7a64; }
+.watch-site-glyph {
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+}
+.watch-site-glyph svg {
+  width: 16px;
+  height: 16px;
+  stroke: rgba(9, 14, 25, 0.92);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+.watch-site-marker--worship .watch-site-glyph svg,
+.watch-site-marker--government .watch-site-glyph svg {
+  fill: rgba(9, 14, 25, 0.10);
+}
 .watch-site-popup strong {
   display: block;
   margin-bottom: 4px;

@@ -91,12 +91,50 @@ export function createMapController(config) {
   }
 
   function watchSiteIcon(category) {
+    const glyphs = {
+      transport: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="6" y="5.5" width="12" height="9" rx="2.5"></rect>
+          <path d="M8.5 16.5h7"></path>
+          <path d="M9 9h2.5"></path>
+          <path d="M12.5 9h2.5"></path>
+          <path d="M9.5 18.5l-1.5 2"></path>
+          <path d="M14.5 18.5l1.5 2"></path>
+          <circle cx="9.5" cy="15.5" r="1"></circle>
+          <circle cx="14.5" cy="15.5" r="1"></circle>
+        </svg>`,
+      embassy: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M5 9.5L12 6l7 3.5"></path>
+          <path d="M6.5 9.5h11"></path>
+          <path d="M7.5 10v6"></path>
+          <path d="M11 10v6"></path>
+          <path d="M13 10v6"></path>
+          <path d="M16.5 10v6"></path>
+          <path d="M6 17h12"></path>
+        </svg>`,
+      hospital: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 6.5v11"></path>
+          <path d="M6.5 12h11"></path>
+        </svg>`,
+      worship: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5.5l1.8 4 4.2.4-3.2 2.8 1 4.3-3.8-2.2-3.8 2.2 1-4.3-3.2-2.8 4.2-.4z"></path>
+        </svg>`,
+      government: `
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 5.5l6.5 2.5v4.5c0 3.7-2.4 5.9-6.5 7.8-4.1-1.9-6.5-4.1-6.5-7.8V8z"></path>
+          <path d="M9 11.5h6"></path>
+          <path d="M9 14.5h4.5"></path>
+        </svg>`
+    };
     return L.divIcon({
       className: 'watch-site-icon',
-      html: `<span class="watch-site-marker watch-site-marker--${category}"></span>`,
-      iconSize: [16, 16],
-      iconAnchor: [8, 8],
-      popupAnchor: [0, -8]
+      html: `<span class="watch-site-marker watch-site-marker--${category}"><span class="watch-site-glyph">${glyphs[category] || glyphs.government}</span></span>`,
+      iconSize: [24, 24],
+      iconAnchor: [12, 12],
+      popupAnchor: [0, -12]
     });
   }
 
