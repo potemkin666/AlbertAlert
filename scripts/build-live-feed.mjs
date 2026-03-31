@@ -1,4 +1,4 @@
-import fs from 'node:fs/promises';
+﻿import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import * as cheerio from 'cheerio';
@@ -200,16 +200,45 @@ function summariseTextBlock(text, maxParts = 8) {
 }
 
 function extractPeopleFromText(text) {
-  const blockedTerms = new Set([
-    'France', 'Iranian', 'Proxies', 'Foiled', 'Paris', 'Terror', 'Attack', 'Bank', 'America', 'United Kingdom',
-    'Europe', 'Middle East', 'The Guardian', 'The Telegraph', 'Daily Mail', 'The Sun', 'Reuters', 'Europol',
-    'Eurojust', 'GOV UK', 'Counter Terrorism', 'Crown Prosecution', 'Police'
+  const sourceText = clean(text);
+  if (!sourceText) return [];
+
+  const blockedNames = new Set([
+    'The Guardian', 'The Telegraph', 'Daily Mail', 'The Sun', 'Reuters', 'Europol', 'Eurojust',
+    'Counter Terrorism Policing', 'Crown Prosecution Service', 'Bank Of America',
+    'United Kingdom', 'Europe', 'Middle East', 'Paris', 'Leeds', 'France', 'Iran', 'Israel', 'Lebanon'
   ]);
-  const matches = [...clean(text).matchAll(/\b([A-Z][a-z'’.-]+(?:\s+[A-Z][a-z'’.-]+){1,2})\b/g)]
-    .map((match) => clean(match[1]))
-    .filter((name, index, all) => all.indexOf(name) === index)
-    .filter((name) => name.split(' ').every((word) => !blockedTerms.has(word)));
-  return matches.slice(0, 6);
+  const rolePatterns = [
+    { role: 'Official', regex: /\b(?:Mr|Mrs|Ms|Dr|Sir|Dame)\s+([A-Z][a-z''’-]+(?:\s+[A-Z][a-z''’-]+){0,2})\b/g },
+    { role: 'Official', regex: /\b(?:Prime Minister|Security Minister|Ambassador|Commissioner|Prosecutor|Judge|Chief Constable|Commander|Minister|President)\s+([A-Z][a-z''’-]+(?:\s+[A-Z][a-z''’-]+){0,2})\b/g },
+    { role: 'Suspect', regex: /\b([A-Z][a-z''’-]+(?:\s+[A-Z][a-z''’-]+){1,2}),?\s+(?:was|is)\s+(?:charged|accused|arrested|jailed|sentenced)\b/g },
+    { role: 'Victim', regex: /\b([A-Z][a-z''’-]+(?:\s+[A-Z][a-z''’-]+){1,2}),?\s+(?:who\s+)?(?:was|were)\s+(?:killed|injured|wounded|targeted)\b/g },
+    { role: 'Witness', regex: /\b([A-Z][a-z''’-]+(?:\s+[A-Z][a-z''’-]+){1,2})\s+(?:said|told|described|reported)\b/g }
+  ];
+
+  const sentences = sourceText
+    .split(/(?<=[.!?])\s+/)
+    .map((part) => clean(part))
+    .filter(Boolean);
+
+  const results = [];
+  const seen = new Set();
+
+  for (const sentence of sentences) {
+    for (const { role, regex } of rolePatterns) {
+      const matches = sentence.matchAll(regex);
+      for (const match of matches) {
+        const name = clean(match[1]);
+        if (!name || seen.has(name) || blockedNames.has(name)) continue;
+        if (name.split(' ').length < 2) continue;
+        seen.add(name);
+        results.push(`${name}: ${role}. ${sentence}`);
+        if (results.length >= 6) return results;
+      }
+    }
+  }
+
+  return results;
 }
 
 function chooseArticleDetail(metaDescription, articleParagraphs) {
@@ -746,3 +775,5 @@ main().catch((error) => {
   console.error(error);
   process.exitCode = 1;
 });
+
+

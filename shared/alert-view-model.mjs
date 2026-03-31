@@ -97,29 +97,15 @@ function buildIncidentSummary(alert) {
 }
 
 function extractPeopleInvolved(alert) {
-  if (Array.isArray(alert.peopleInvolved) && alert.peopleInvolved.length) {
-    return alert.peopleInvolved;
+  if (!Array.isArray(alert.peopleInvolved) || !alert.peopleInvolved.length) {
+    return [];
   }
-  const sourceText = clean(alert.sourceExtract || alert.summary || '');
-  const sentences = sourceText.split(/(?<=[.!?])\s+/).map((part) => clean(part)).filter(Boolean);
-  const blocked = [
-    'The Telegraph', 'The Guardian', 'Daily Mail', 'The Sun', 'Reuters', 'Europol', 'Eurojust', 'GOV.UK',
-    'Counter Terrorism Policing', 'Crown Prosecution Service', 'Bank Of America', 'United Kingdom', 'Middle East',
-    "St James's Hospital", 'St James Hospital', 'Paris', 'Leeds', 'Europe', 'Iran', 'Lebanon', 'Israel',
-    'France', 'Iranian', 'Proxies', 'Foiled', 'Terror', 'Attack'
-  ];
-  const matches = [...sourceText.matchAll(/\b([A-Z][a-z]+(?:\s+[A-Z][a-z'-]+){1,2})\b/g)]
-    .map((match) => clean(match[1]))
-    .filter((name, index, all) => all.indexOf(name) === index)
-    .filter((name) => !blocked.includes(name))
-    .filter((name) => name.split(' ').every((word) => !blocked.includes(word)));
 
-  const people = matches.slice(0, 4).map((name) => {
-    const context = sentences.find((sentence) => sentence.includes(name));
-    return context ? `${name}: ${context}` : name;
-  });
-
-  return people.length ? people : [];
+  return alert.peopleInvolved
+    .map((entry) => clean(entry))
+    .filter(Boolean)
+    .filter((entry, index, all) => all.indexOf(entry) === index)
+    .slice(0, 6);
 }
 
 export function effectiveSummary(alert) {
