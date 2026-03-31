@@ -129,6 +129,8 @@ button { cursor: pointer; }
 .hero-actions {
   display: flex;
   justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
   margin-bottom: 12px;
 }
 .eyebrow, .detail-label {

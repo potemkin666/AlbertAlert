@@ -6,6 +6,7 @@ import {
   sourceHasTerrorTopic,
   normaliseSourceTier,
   normaliseReliabilityProfile,
+  normaliseIncidentTrack,
   inferReliabilityProfile,
   inferIncidentTrack,
   isTerrorRelevantIncident
@@ -18,6 +19,7 @@ const SOURCE_PULL_MINUTES = 15;
 const WATCHED_STORAGE_KEY = 'brialert.watched';
 const NOTES_STORAGE_KEY = 'brialert.notes';
 const BRIEFING_MODE_STORAGE_KEY = 'brialert.briefingMode';
+const STRICT_RESPONDER_MODE_STORAGE_KEY = 'brialert.strictResponderMode';
 const watchLayerLabels = {
   transport: 'Transport hubs',
   embassy: 'Embassies',
@@ -129,6 +131,7 @@ let liveSourceCount = 0;
 let albertIndex = -1;
 let notes = [];
 let briefingMode = false;
+let strictResponderMode = false;
 let activeTab = 'firstalert';
 let liveMap = null;
 let liveMarkers = [];
@@ -161,6 +164,7 @@ const filters = document.getElementById('filters');
 const laneFilters = document.getElementById('lane-filters');
 const tabbar = document.getElementById('tabbar');
 const briefingModeToggle = document.getElementById('briefing-mode-toggle');
+const strictResponderModeToggle = document.getElementById('strict-responder-mode-toggle');
 const briefingModePanel = document.getElementById('briefing-mode-panel');
 const briefingModeTitle = document.getElementById('briefing-mode-title');
 const briefingModeMeta = document.getElementById('briefing-mode-meta');
@@ -232,6 +236,13 @@ function loadBriefingMode() {
     return false;
   }
 }
+function loadStrictResponderMode() {
+  try {
+    return localStorage.getItem(STRICT_RESPONDER_MODE_STORAGE_KEY) === 'true';
+  } catch {
+    return false;
+  }
+}
 function saveNotes() {
   try {
     localStorage.setItem(NOTES_STORAGE_KEY, JSON.stringify(notes));
@@ -240,6 +251,11 @@ function saveNotes() {
 function saveBriefingMode() {
   try {
     localStorage.setItem(BRIEFING_MODE_STORAGE_KEY, String(briefingMode));
+  } catch {}
+}
+function saveStrictResponderMode() {
+  try {
+    localStorage.setItem(STRICT_RESPONDER_MODE_STORAGE_KEY, String(strictResponderMode));
   } catch {}
 }
 async function loadGeoLookup() {
@@ -464,8 +480,29 @@ function contextAlerts() {
 function quarantineAlerts() {
   return sortAlertsByFreshness(filteredAlerts().filter(isQuarantineCandidate)).slice(0, 6);
 }
+function isStrictTopAlertCandidate(alert) {
+  return isLiveIncidentCandidate(alert)
+    && normaliseSourceTier(alert.sourceTier) === 'trigger'
+    && normaliseReliabilityProfile(alert.reliabilityProfile) === 'official_ct';
+}
+function resolvedIncidentTrack(alert) {
+  return normaliseIncidentTrack(alert.incidentTrack) || inferIncidentTrack({
+    ...alert,
+    lane: ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    text: `${clean(alert.title)} ${clean(alert.summary)} ${clean(alert.sourceExtract)}`
+  });
+}
+function resolvedReliabilityProfile(alert) {
+  return normaliseReliabilityProfile(alert.reliabilityProfile) || inferReliabilityProfile({
+    ...alert,
+    sourceTier: normaliseSourceTier(alert.sourceTier),
+    isOfficial: !!alert.isOfficial,
+    lane: ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    source: clean(alert.source) || 'Unknown source'
+  });
+}
 function contextLabel(alert) {
-  if (alert.lane === 'incidents' && inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) === 'case') return 'Case / Prosecution';
+  if (alert.lane === 'incidents' && resolvedIncidentTrack(alert) === 'case') return 'Case / Prosecution';
   if (alert.lane === 'context') return 'Context / Corroboration';
   return laneLabels[alert.lane] || alert.lane;
 }
@@ -571,7 +608,7 @@ function buildAuditBlock(alert) {
   const age = alert.publishedAt ? formatAgeFrom(alert.publishedAt) : 'age unknown';
   return [
     `SOURCE TIER: ${normaliseSourceTier(alert.sourceTier) || 'unclassified'}`,
-    `RELIABILITY PROFILE: ${reliabilityLabel(inferReliabilityProfile(alert))}`,
+    `RELIABILITY PROFILE: ${reliabilityLabel(resolvedReliabilityProfile(alert))}`,
     `AGE: ${age}`,
     `LANE REASON: ${clean(alert.laneReason) || contextLabel(alert)}`,
     terrorTerms.length ? `TERROR TERMS HIT: ${terrorTerms.join(', ')}` : 'TERROR TERMS HIT: none',
@@ -589,7 +626,13 @@ function renderCorroboratingSources(alert) {
       <p>${reliabilityLabel(normaliseReliabilityProfile(entry.reliabilityProfile))} | ${clean(entry.sourceTier) || 'source tier unknown'} | ${clean(entry.publishedAt) ? formatAgeFrom(entry.publishedAt) : 'age unknown'}</p>
     </article>`).join('')}</div>`;
 }
-function topPriority() { const pool = responderAlerts().length ? responderAlerts() : contextAlerts(); return pool[0]; }
+function topPriority() {
+  if (strictResponderMode) {
+    return responderAlerts().filter(isStrictTopAlertCandidate)[0] || null;
+  }
+  const pool = responderAlerts().length ? responderAlerts() : contextAlerts();
+  return pool[0];
+}
 function setActiveTab(next) {
   activeTab = next;
   tabbar.querySelectorAll('.tab').forEach((item) => item.classList.toggle('active', item.dataset.tab === next));
@@ -611,6 +654,11 @@ function applyBriefingMode() {
     closeDetailPanel();
   }
 }
+function applyStrictResponderMode() {
+  strictResponderModeToggle.classList.toggle('active', strictResponderMode);
+  strictResponderModeToggle.setAttribute('aria-pressed', strictResponderMode ? 'true' : 'false');
+  strictResponderModeToggle.textContent = strictResponderMode ? 'Strict responder on' : 'Strict responder off';
+}
 
 function buildBriefing(alert, summaryText) {
   const matches = Array.isArray(alert.terrorismHits) && alert.terrorismHits.length ? alert.terrorismHits : terrorismMatches(alert);
@@ -623,7 +671,7 @@ function buildBriefing(alert, summaryText) {
       `SOURCE: ${alert.source}`,
       `CONFIDENCE: ${alert.confidence}`,
       `LANE: ${laneLabels[alert.lane] || alert.lane}`,
-      alert.lane === 'incidents' && inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) ? `INCIDENT TRACK: ${inferIncidentTrack({ ...alert, text: `${alert.title} ${alert.summary} ${alert.sourceExtract || ''}` }) === 'live' ? 'Live incident' : 'Case / prosecution'}` : '',
+      alert.lane === 'incidents' && resolvedIncidentTrack(alert) ? `INCIDENT TRACK: ${resolvedIncidentTrack(alert) === 'live' ? 'Live incident' : 'Case / prosecution'}` : '',
       alert.eventType ? `EVENT TYPE: ${clean(alert.eventType).replace(/_/g, ' ')}` : '',
       alert.geoPrecision ? `GEO PRECISION: ${alert.geoPrecision}` : '',
       Number(alert.corroborationCount || 0) ? `CORROBORATION COUNT: ${alert.corroborationCount}` : '',
@@ -644,17 +692,18 @@ function buildBriefing(alert, summaryText) {
 
 function normaliseAlert(alert, index) {
   const geoPoint = inferGeoPoint(alert);
+  const lane = ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents';
   const sourceTier = normaliseSourceTier(alert.sourceTier);
-  const reliabilityProfile = inferReliabilityProfile({
+  const reliabilityProfile = normaliseReliabilityProfile(alert.reliabilityProfile) || inferReliabilityProfile({
     ...alert,
     sourceTier,
     isOfficial: !!alert.isOfficial,
-    lane: ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    lane,
     source: clean(alert.source) || 'Unknown source'
   });
-  const incidentTrack = inferIncidentTrack({
+  const incidentTrack = normaliseIncidentTrack(alert.incidentTrack) || inferIncidentTrack({
     ...alert,
-    lane: ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    lane,
     text: `${clean(alert.title)} ${clean(alert.summary)} ${clean(alert.sourceExtract)}`
   });
   return {
@@ -662,7 +711,7 @@ function normaliseAlert(alert, index) {
     title: clean(alert.title) || 'Untitled source item',
     location: clean(alert.location) || (alert.region === 'uk' ? 'United Kingdom' : 'Europe'),
     region: alert.region === 'uk' ? 'uk' : 'europe',
-    lane: ['incidents','context','sanctions','oversight','border','prevention'].includes(alert.lane) ? alert.lane : 'incidents',
+    lane,
     severity: ['critical','high','elevated','moderate'].includes(alert.severity) ? alert.severity : 'moderate',
     status: clean(alert.status) || 'Update',
     actor: clean(alert.actor) || clean(alert.source),
@@ -731,11 +780,11 @@ function renderPriority() {
     priorityCard.innerHTML = `
       <div class="eyebrow">Live Feed Status</div>
       <h2>Waiting for a verified source pull</h2>
-      <p class="muted">The app is not showing placeholder incidents anymore. Once the feed builder publishes live items, responder candidates will appear here automatically.</p>
+      <p class="muted">${strictResponderMode ? 'Strict responder mode is on, so only trigger-tier official CT sources can drive this top alert.' : 'The app is not showing placeholder incidents anymore. Once the feed builder publishes live items, responder candidates will appear here automatically.'}</p>
       <div class="meta-row">
         <span>${activeRegion === 'all' ? 'All feeds' : `${regionLabel(activeRegion)} feeds`}</span>
         <span>${activeLane === 'all' ? 'All lanes' : laneLabels[activeLane]}</span>
-        <span>${liveSourceCount ? `${liveSourceCount} sources checked` : 'No live feed yet'}</span>
+        <span>${strictResponderMode ? 'Strict responder gate on' : (liveSourceCount ? `${liveSourceCount} sources checked` : 'No live feed yet')}</span>
       </div>`;
     priorityCard.onclick = null;
     return;
@@ -765,8 +814,12 @@ function renderBriefingMode() {
   const alert = topPriority();
   if (!alert) {
     briefingModeTitle.textContent = 'Waiting for a verified source pull';
-    briefingModeMeta.textContent = 'The briefing screen will lock onto the top live responder item as soon as one arrives.';
-    briefingModeSummary.textContent = 'No live responder candidate is available yet, so the app is holding on a clean standby state rather than surfacing stale or placeholder material.';
+    briefingModeMeta.textContent = strictResponderMode
+      ? 'Strict responder mode is active, so this view waits for a trigger-tier official CT alert.'
+      : 'The briefing screen will lock onto the top live responder item as soon as one arrives.';
+    briefingModeSummary.textContent = strictResponderMode
+      ? 'No trigger-tier official CT candidate is available yet, so the app is holding a clean standby state instead of promoting broader corroboration or media-led material.'
+      : 'No live responder candidate is available yet, so the app is holding on a clean standby state rather than surfacing stale or placeholder material.';
     briefingModeCopy.disabled = true;
     briefingModeCopy.dataset.briefing = '';
     return;
@@ -940,7 +993,7 @@ function renderHero() {
   const laneCopy = briefingMode ? 'Briefing posture' : (activeLane === 'all' ? 'Responder posture' : laneLabels[activeLane]);
   heroRegion.textContent = `${regionCopy} | ${laneCopy}`;
   const sourceAge = liveFeedGeneratedAt ? formatAgeFrom(liveFeedGeneratedAt) : 'waiting';
-  heroPolling.textContent = `UI checks 60s | feed build ~${SOURCE_PULL_MINUTES}m | source age ${sourceAge}`;
+  heroPolling.textContent = `UI checks 60s | feed build ~${SOURCE_PULL_MINUTES}m | source age ${sourceAge}${strictResponderMode ? ' | strict trigger gate' : ''}`;
   const stamp = liveFeedGeneratedAt || lastBrowserPollAt;
   const sourceSuffix = liveSourceCount ? ` | ${liveSourceCount} sources` : ' | awaiting live pull';
   heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
@@ -1015,6 +1068,7 @@ tabbar.addEventListener('click', (event) => {
 document.getElementById('note-form').addEventListener('submit', (event) => { event.preventDefault(); const title = document.getElementById('note-title'); const body = document.getElementById('note-body'); notes.unshift({ title: title.value.trim(), body: body.value.trim() }); saveNotes(); title.value = ''; body.value = ''; renderNotes(); });
 copyBriefing.addEventListener('click', async () => { const briefing = copyBriefing.dataset.briefing || ''; if (!briefing) return; await copyTextToButton(briefing, copyBriefing, 'Copy Briefing'); });
 briefingModeToggle.addEventListener('click', () => { briefingMode = !briefingMode; saveBriefingMode(); applyBriefingMode(); renderAll(); });
+strictResponderModeToggle.addEventListener('click', () => { strictResponderMode = !strictResponderMode; saveStrictResponderMode(); applyStrictResponderMode(); renderAll(); });
 briefingModeCopy.addEventListener('click', async () => { const briefing = briefingModeCopy.dataset.briefing || ''; if (!briefing) return; await copyTextToButton(briefing, briefingModeCopy, 'Copy Briefing'); });
 closeModal.addEventListener('click', closeDetailPanel);
 modalBackdrop.addEventListener('click', closeDetailPanel);
@@ -1041,11 +1095,13 @@ window.addEventListener('resize', () => {
 watched = loadWatched();
 notes = loadNotes();
 briefingMode = loadBriefingMode();
+strictResponderMode = loadStrictResponderMode();
 albertQuote.textContent = nextAlbertQuote();
 albertCard.addEventListener('click', () => { albertQuote.textContent = nextAlbertQuote(); });
 document.querySelector('.bulldog-card').addEventListener('dblclick', () => { albertNote.classList.toggle('hidden'); });
 
 applyBriefingMode();
+applyStrictResponderMode();
 renderAll();
 loadGeoLookup().finally(() => {
   loadLiveFeed();
