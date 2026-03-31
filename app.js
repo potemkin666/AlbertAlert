@@ -77,6 +77,7 @@ const state = {
 
 let derivedViewCache = null;
 let derivedViewDirty = true;
+let resizeTimer = null;
 
 function escapeHtml(value) {
   return String(value ?? '')
@@ -694,7 +695,10 @@ function bindEvents() {
 
   window.addEventListener('resize', () => {
     applyDeviceProfile();
-    mapController.invalidateSize();
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      mapController.invalidateSize();
+    }, 120);
   });
 
   elements.albertCard?.addEventListener('click', refreshAlbertQuote);

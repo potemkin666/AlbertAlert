@@ -47,6 +47,9 @@ export async function loadWatchGeography(state, url) {
 
 export async function loadLiveFeed(state, options) {
   const { liveFeedUrl, normaliseAlert, onAfterLoad } = options;
+  const previousAlerts = state.alerts;
+  const previousGeneratedAt = state.liveFeedGeneratedAt;
+  const previousSourceCount = state.liveSourceCount;
   try {
     const response = await fetch(`${liveFeedUrl}?t=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -57,9 +60,9 @@ export async function loadLiveFeed(state, options) {
     state.liveFeedGeneratedAt = data.generatedAt ? new Date(data.generatedAt) : new Date();
     state.liveSourceCount = Number(data.sourceCount || 0);
   } catch {
-    state.alerts = [];
-    state.liveFeedGeneratedAt = null;
-    state.liveSourceCount = 0;
+    state.alerts = previousAlerts;
+    state.liveFeedGeneratedAt = previousGeneratedAt;
+    state.liveSourceCount = previousSourceCount;
   }
   state.lastBrowserPollAt = new Date();
   if (typeof onAfterLoad === 'function') onAfterLoad();
