@@ -41,6 +41,15 @@ jobs:
       - name: Build live alert feed
         run: npm run build:feeds
 
+      - name: Show build output
+        run: |
+          echo "==== git status before commit ===="
+          git status --short
+          echo "==== live-alerts head ===="
+          head -n 20 live-alerts.json || true
+          echo "==== live-alerts modified time ===="
+          ls -l live-alerts.json || true
+
       - name: Commit refreshed feed data
         run: |
           git config user.name 'github-actions[bot]'
