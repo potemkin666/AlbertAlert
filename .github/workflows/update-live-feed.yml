@@ -19,14 +19,14 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: '20.18.1'
+          node-version: '24'
           cache: 'npm'
 
       - name: Ensure package lockfile exists
@@ -42,6 +42,7 @@ jobs:
         run: npm run build:feeds
 
       - name: Show build output
+        if: always()
         run: |
           echo "==== git status before commit ===="
           git status --short
