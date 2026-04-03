@@ -63,25 +63,25 @@ function highSignalTokens(tokens, minimumOccurrences = 2) {
 }
 
 export function stableFusionTerms(item) {
-  const titleTokens = informativeTokens(item.title || '', 4);
-  const summaryTokens = informativeTokens(item.summary || '', 4);
-  const extractTokens = informativeTokens(item.sourceExtract || '', 4);
+  const titleTokens = uniqueTokens(informativeTokens(item.title || '', 4));
+  const summaryTokens = uniqueTokens(informativeTokens(item.summary || '', 4));
+  const extractTokens = uniqueTokens(informativeTokens(item.sourceExtract || '', 4));
 
-  const titleSummaryShared = sortedIntersection(titleTokens, summaryTokens);
-  const titleExtractShared = sortedIntersection(titleTokens, extractTokens);
-  const summaryExtractShared = sortedIntersection(summaryTokens, extractTokens);
-  const repeatedAcrossNarrative = highSignalTokens([...titleTokens, ...summaryTokens, ...extractTokens], 2);
-  const fallbackInformative = uniqueTokens([...titleTokens, ...summaryTokens, ...extractTokens]).sort();
+  const allTokens = [...titleTokens, ...summaryTokens, ...extractTokens];
+  const strongestShared = highSignalTokens(allTokens, 2);
+  const titleDetailShared = sortedIntersection(
+    titleTokens,
+    uniqueTokens([...summaryTokens, ...extractTokens])
+  );
+  const detailShared = sortedIntersection(summaryTokens, extractTokens);
+  const fallbackInformative = uniqueTokens(allTokens).sort();
 
-  const chosen = [
-    ...titleSummaryShared,
-    ...titleExtractShared,
-    ...summaryExtractShared,
-    ...repeatedAcrossNarrative,
+  return uniqueTokens([
+    ...strongestShared,
+    ...titleDetailShared,
+    ...detailShared,
     ...fallbackInformative
-  ];
-
-  return uniqueTokens(chosen).slice(0, 6);
+  ]).slice(0, 6);
 }
 
 export function fusedIncidentIdFor(item) {
