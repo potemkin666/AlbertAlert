@@ -42,6 +42,8 @@ const DEFAULT_TIMEOUT_MS = 12000;
 const MAX_SOURCE_ERRORS_TO_REPORT = 25;
 const FEED_SOURCE_CONCURRENCY = 4;
 const HTML_HYDRATION_CONCURRENCY = 3;
+const EXPECTED_REFRESH_MINUTES = 15;
+const STALE_AFTER_MINUTES = 22;
 const RETRYABLE_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504]);
 const HARD_SKIP_SOURCE_IDS = new Set([
   'globalsecurity-terror-news',
@@ -847,6 +849,28 @@ function normaliseSourcesPayload(rawSources) {
   throw new Error('Expected sources.json to contain an array or { sources: [] }.');
 }
 
+function buildHealthBlock({ generatedAt, checked, sourceErrors, buildWarning }) {
+  const runId = clean(process.env.GITHUB_RUN_ID);
+  const runNumber = clean(process.env.GITHUB_RUN_NUMBER);
+  const runAttempt = clean(process.env.GITHUB_RUN_ATTEMPT);
+  const headSha = clean(process.env.GITHUB_SHA);
+  const eventName = clean(process.env.GITHUB_EVENT_NAME);
+
+  return {
+    expectedRefreshMinutes: EXPECTED_REFRESH_MINUTES,
+    staleAfterMinutes: STALE_AFTER_MINUTES,
+    lastSuccessfulRefreshTime: generatedAt,
+    lastSuccessfulRunId: runId || null,
+    lastSuccessfulRunNumber: runNumber || null,
+    lastSuccessfulRunAttempt: runAttempt || null,
+    lastSuccessfulHeadSha: headSha || null,
+    lastSuccessfulEvent: eventName || null,
+    lastSuccessfulSourceCount: checked,
+    sourceErrorCount: sourceErrors.length,
+    hasWarnings: Boolean(buildWarning) || sourceErrors.length > 0
+  };
+}
+
 async function main() {
   const existing = await readExisting();
   const geoLookupFallbackNote = await safeLoadGeoLookup(existing);
@@ -858,10 +882,12 @@ async function main() {
     const message = error instanceof Error ? error.message : String(error);
     console.error(`Source catalog load failed: ${message}`);
     if (existing) {
+      const generatedAt = new Date().toISOString();
+      const buildWarning = `Source catalog load failed; preserved previous alerts. ${message}`;
       const fallbackPayload = {
         ...existing,
-        generatedAt: new Date().toISOString(),
-        buildWarning: `Source catalog load failed; preserved previous alerts. ${message}`,
+        generatedAt,
+        buildWarning,
         sourceErrors: [
           {
             id: 'sources-json',
@@ -869,7 +895,13 @@ async function main() {
             endpoint: sourcePath,
             message
           }
-        ]
+        ],
+        health: buildHealthBlock({
+          generatedAt,
+          checked: Number(existing?.sourceCount || 0),
+          sourceErrors: [{ message }],
+          buildWarning
+        })
       };
       await fs.writeFile(outputPath, JSON.stringify(fallbackPayload, null, 2) + '\n', 'utf8');
       console.log('Preserved previous live-alerts.json because sources.json could not be loaded.');
@@ -1026,15 +1058,22 @@ async function main() {
     geoLookupFallbackNote,
     preservedAlerts ? 'Build produced no fresh alerts; preserved previous alert set.' : null
   ].filter(Boolean).join(' | ') || null;
+  const generatedAt = new Date().toISOString();
 
   const payload = {
-    generatedAt: new Date().toISOString(),
+    generatedAt,
     sourceCount: checked,
     alertCount: finalAlerts.length,
     alerts: finalAlerts,
     sourceErrors: sourceErrors.slice(0, MAX_SOURCE_ERRORS_TO_REPORT),
     geoLookupSnapshot: geoLookup,
-    buildWarning
+    buildWarning,
+    health: buildHealthBlock({
+      generatedAt,
+      checked,
+      sourceErrors,
+      buildWarning
+    })
   };
 
   const currentComparable = JSON.stringify(existing?.alerts || []);

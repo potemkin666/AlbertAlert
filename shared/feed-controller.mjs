@@ -48,6 +48,7 @@ export async function loadLiveFeed(state, options) {
   const previousAlerts = state.alerts;
   const previousGeneratedAt = state.liveFeedGeneratedAt;
   const previousSourceCount = state.liveSourceCount;
+  const previousHealth = state.liveFeedHealth;
   try {
     const response = await fetch(`${liveFeedUrl}?t=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -57,10 +58,14 @@ export async function loadLiveFeed(state, options) {
       : [];
     state.liveFeedGeneratedAt = data.generatedAt ? new Date(data.generatedAt) : new Date();
     state.liveSourceCount = Number(data.sourceCount || 0);
+    state.liveFeedHealth = data && typeof data.health === 'object' && data.health
+      ? data.health
+      : null;
   } catch {
     state.alerts = previousAlerts;
     state.liveFeedGeneratedAt = previousGeneratedAt;
     state.liveSourceCount = previousSourceCount;
+    state.liveFeedHealth = previousHealth;
   }
   state.lastBrowserPollAt = new Date();
   if (typeof onAfterLoad === 'function') onAfterLoad();

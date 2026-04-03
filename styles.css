@@ -473,6 +473,48 @@ h1 {
   margin-top: 16px;
 }
 
+.hero-health {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(72, 187, 120, 0.35);
+  background: rgba(17, 24, 39, 0.42);
+}
+
+.hero-health.hidden {
+  display: none;
+}
+
+.hero-health-stale {
+  border-color: rgba(229, 62, 62, 0.45);
+  background: rgba(120, 18, 18, 0.24);
+}
+
+.hero-health-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #b9f5cc;
+}
+
+.hero-health-stale .hero-health-label {
+  color: #ffd0d0;
+}
+
+.hero-health-meta {
+  font-size: 12px;
+  color: rgba(246, 247, 251, 0.82);
+  background: transparent;
+  padding: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  white-space: normal;
+}
+
 .briefing-panel {
   margin: 16px 0;
   padding: 16px;

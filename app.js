@@ -61,6 +61,7 @@ const state = {
   lastBrowserPollAt: new Date(),
   liveFeedGeneratedAt: null,
   liveSourceCount: 0,
+  liveFeedHealth: null,
   albertIndex: -1,
   notes: [],
   briefingMode: false,
@@ -168,6 +169,9 @@ const elements = {
   heroRegion: document.getElementById('hero-region'),
   heroUpdated: document.getElementById('hero-updated'),
   heroPolling: document.getElementById('hero-polling'),
+  heroHealth: document.getElementById('hero-health'),
+  heroHealthLabel: document.getElementById('hero-health-label'),
+  heroHealthMeta: document.getElementById('hero-health-meta'),
   mapElement: document.getElementById('leaflet-map'),
   mapSummary: document.getElementById('map-summary'),
   mapLayerSummary: document.getElementById('map-layer-summary'),
@@ -463,6 +467,27 @@ function renderHero() {
   const stamp = state.liveFeedGeneratedAt || state.lastBrowserPollAt;
   const sourceSuffix = state.liveSourceCount ? ` | ${state.liveSourceCount} sources` : ' | awaiting live pull';
   elements.heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
+
+  const health = state.liveFeedHealth || {};
+  const staleAfterMinutes = Number(health.staleAfterMinutes || (SOURCE_PULL_MINUTES + 7));
+  const lastRefresh = health.lastSuccessfulRefreshTime ? new Date(health.lastSuccessfulRefreshTime) : state.liveFeedGeneratedAt;
+  const lastRefreshMs = lastRefresh instanceof Date ? lastRefresh.getTime() : NaN;
+  const isStale = Number.isFinite(lastRefreshMs)
+    ? (Date.now() - lastRefreshMs) > staleAfterMinutes * 60_000
+    : false;
+  const runId = health.lastSuccessfulRunId || 'unknown';
+  const healthSourceCount = Number(health.lastSuccessfulSourceCount || state.liveSourceCount || 0);
+  const warningSuffix = health.hasWarnings ? ' | warnings present' : '';
+
+  if (!lastRefresh) {
+    elements.heroHealth.classList.add('hidden');
+    return;
+  }
+
+  elements.heroHealth.classList.remove('hidden');
+  elements.heroHealth.classList.toggle('hero-health-stale', isStale);
+  elements.heroHealthLabel.textContent = isStale ? 'Stale feed alarm' : 'Feed healthy';
+  elements.heroHealthMeta.textContent = `last cron ${formatAgeFrom(lastRefresh)} | run ${runId} | ${healthSourceCount} sources${warningSuffix}`;
 }
 
 function alertTimeMsForMap(alert) {
