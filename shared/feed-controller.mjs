@@ -78,19 +78,33 @@ function coerceLiveFeedPayload(raw) {
   const alerts = Array.isArray(payload.alerts) ? payload.alerts : [];
   const generatedAt = payload.generatedAt || payload.updatedAt || payload.alertData?.timestamp || null;
   const sourceCount = Number(payload.sourceCount ?? payload.alertData?.sourceCount ?? 0);
-  const hasRenderableAlerts = !alerts.length || alerts.some((alert) =>
-    alert &&
-    typeof alert === 'object' &&
-    (
-      typeof alert.title === 'string' ||
-      typeof alert.summary === 'string' ||
-      typeof alert.source === 'string' ||
-      typeof alert.actor === 'string'
-    )
-  );
+  const validLanes = new Set(['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention']);
+  const validRegions = new Set(['uk', 'europe']);
+  const isValidTimestamp = typeof generatedAt === 'string' && !Number.isNaN(new Date(generatedAt).getTime());
+  const hasNumericSourceCount = Number.isFinite(sourceCount) && sourceCount >= 0;
+  const hasRenderableAlerts = alerts.every((alert) => {
+    if (!alert || typeof alert !== 'object') return false;
+    if (typeof alert.id !== 'string' || !alert.id.trim()) return false;
+    if (typeof alert.title !== 'string' || !alert.title.trim()) return false;
+    if (typeof alert.summary !== 'string' || !alert.summary.trim()) return false;
+    if (typeof alert.source !== 'string' || !alert.source.trim()) return false;
+    if (typeof alert.sourceUrl !== 'string' || !alert.sourceUrl.trim()) return false;
+    if (typeof alert.location !== 'string' || !alert.location.trim()) return false;
+    if (!validLanes.has(alert.lane)) return false;
+    if (!validRegions.has(alert.region)) return false;
+    return true;
+  });
 
   if (!Array.isArray(payload.alerts)) {
     throw new Error('Live feed payload is missing an alerts array.');
+  }
+
+  if (!isValidTimestamp) {
+    throw new Error('Live feed payload is missing a valid generatedAt timestamp.');
+  }
+
+  if (!hasNumericSourceCount) {
+    throw new Error('Live feed payload is missing a valid sourceCount.');
   }
 
   if (!hasRenderableAlerts) {
