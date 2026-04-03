@@ -22,6 +22,17 @@
       "comment": "MI5 does not publish a general public RSS for news; using the main news listing page."
     },
     {
+      "id": "mi5-terrorism-news",
+      "provider": "MI5 (Security Service) – Terrorism News",
+      "endpoint": "https://www.mi5.gov.uk/news-categories/terrorism",
+      "kind": "html",
+      "lane": "context",
+      "region": "uk",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": false,
+      "comment": "MI5 terrorism category page used as a tighter terrorism-specific official source."
+    },
+    {
       "id": "ct-policing-uk-latest-news",
       "provider": "Counter Terrorism Policing UK – Latest News",
       "endpoint": "https://www.counterterrorism.police.uk/latest-news/",
@@ -86,6 +97,39 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
       "comment": "No RSS endpoint published; using the main news page."
+    },
+    {
+      "id": "tfl-press-releases",
+      "provider": "Transport for London – Press Releases",
+      "endpoint": "https://tfl.gov.uk/info-for/media/press-releases",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": true,
+      "comment": "TfL press releases used for transport-security and disruption corroboration in London."
+    },
+    {
+      "id": "london-fire-brigade-news",
+      "provider": "London Fire Brigade – News",
+      "endpoint": "https://www.london-fire.gov.uk/news/",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": true,
+      "comment": "London Fire Brigade news used for London incident corroboration and scene context."
+    },
+    {
+      "id": "london-ambulance-news",
+      "provider": "London Ambulance Service – News",
+      "endpoint": "https://www.londonambulance.nhs.uk/news/",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": true,
+      "comment": "London Ambulance Service news used for London emergency-response corroboration."
     },
     {
       "id": "national-crime-agency-news",
@@ -215,6 +259,17 @@
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false
+    },
+    {
+      "id": "gchq-counter-terrorism",
+      "provider": "GCHQ – Counter-Terrorism",
+      "endpoint": "https://www.gchq.gov.uk/section/mission/counter-terrorism",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "uk",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": false,
+      "comment": "GCHQ mission page used as official counter-terrorism context and prevention source."
     },
     {
       "id": "uk-ofsi-blog",
@@ -693,6 +748,50 @@
       "region": "uk",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true
+    },
+    {
+      "id": "telegraph-world-news",
+      "provider": "The Telegraph – World News",
+      "endpoint": "https://www.telegraph.co.uk/world-news/",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Major media corroboration source for Europe and wider international terrorism-related coverage."
+    },
+    {
+      "id": "financial-times-world",
+      "provider": "Financial Times – World",
+      "endpoint": "https://www.ft.com/world",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Financial Times world coverage used as corroborating context rather than a trigger feed."
+    },
+    {
+      "id": "euronews-europe",
+      "provider": "Euronews – Europe",
+      "endpoint": "https://www.euronews.com/news/europe",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Euronews Europe page used for corroborating continent-wide context and follow-on reporting."
+    },
+    {
+      "id": "politico-europe",
+      "provider": "Politico Europe",
+      "endpoint": "https://www.politico.eu/",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Politico Europe used as corroborating political-security context rather than live trigger input."
     },
     {
       "id": "bellingcat",
