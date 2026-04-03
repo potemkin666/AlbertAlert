@@ -454,7 +454,7 @@ export function buildAuditBlock(alert) {
 export function renderCorroboratingSources(alert) {
   const sources = Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources : [];
   if (!sources.length) {
-    return "<p class='panel-copy'>No additional corroborating sources are attached to this incident yet.</p>";
+    return '';
   }
   return `<div class="corroboration-list">${sources.map((entry) => `
     <article class="corroboration-item">

@@ -43,9 +43,10 @@ export function createModalController(elements, deps) {
     modalConfidenceLadder.innerHTML = deps.renderConfidenceLadder(alert);
     confidenceLadderPanel.hidden = false;
     modalAudit.textContent = deps.buildAuditBlock(alert);
-    modalCorroboration.innerHTML = deps.renderCorroboratingSources(alert);
+    const corroborationMarkup = deps.renderCorroboratingSources(alert);
+    modalCorroboration.innerHTML = corroborationMarkup;
     auditPanel.hidden = false;
-    corroborationPanel.hidden = false;
+    corroborationPanel.hidden = !corroborationMarkup;
     modalSeverity.textContent = deps.severityLabel(alert.severity);
     modalStatus.textContent = alert.status;
     modalSource.textContent = alert.source;
