@@ -165,6 +165,35 @@ function recencyOkay(source, rawDate) {
   return ageDays <= 120;
 }
 
+function providerHeadlineTokens(value) {
+  const stopwords = new Set([
+    'news', 'latest', 'update', 'updates', 'press', 'release', 'releases',
+    'rss', 'feed', 'feeds', 'official', 'service'
+  ]);
+  return clean(value)
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]+/g, ' ')
+    .split(/\s+/)
+    .filter(Boolean)
+    .filter((token) => token.length >= 4 && !stopwords.has(token));
+}
+
+function looksLikeProviderHeadline(source, item) {
+  const title = clean(item?.title);
+  if (!title) return true;
+
+  const titleLower = title.toLowerCase();
+  const providerLower = clean(source?.provider).toLowerCase();
+  if (titleLower === providerLower) return true;
+
+  const titleTokens = providerHeadlineTokens(title);
+  const providerTokens = new Set(providerHeadlineTokens(source?.provider));
+  if (!titleTokens.length) return true;
+
+  const overlapCount = titleTokens.filter((token) => providerTokens.has(token)).length;
+  return titleTokens.length <= 6 && overlapCount / titleTokens.length >= 0.8;
+}
+
 function summariseTextBlock(text, maxParts = 8) {
   return clean(text)
     .split(/(?<=[.!?])\s+|\s{2,}/)
@@ -227,11 +256,14 @@ export function shouldKeepItem(source, item) {
   const sourceTier = inferSourceTier(source);
   const reliabilityProfile = inferReliabilityProfile(source, sourceTier);
   const text = `${item.title} ${item.summary} ${item.sourceExtract || ''}`;
+  const eventType = inferEventType(source, text);
   const incidentHits = matchesKeywords(text);
   const terrorHits = matchesKeywords(text, terrorismKeywords);
   const terrorRelevant = isTerrorRelevantIncident(source, item);
 
   if (item.language && !isEnglishLanguage(item.language)) return false;
+  if (looksLikeProviderHeadline(source, item)) return false;
+  if (source.lane === 'incidents' && ['feature', 'recognition'].includes(eventType)) return false;
   if (!item.published && source.lane === 'incidents' && !source.isTrustedOfficial) return false;
   if (!recencyOkay(source, item.published)) return false;
   if (source.lane === 'incidents' && !terrorRelevant) return false;

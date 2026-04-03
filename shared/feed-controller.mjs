@@ -79,7 +79,7 @@ function coerceLiveFeedPayload(raw) {
   const generatedAt = payload.generatedAt || payload.updatedAt || payload.alertData?.timestamp || null;
   const sourceCount = Number(payload.sourceCount ?? payload.alertData?.sourceCount ?? 0);
   const validLanes = new Set(['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention']);
-  const validRegions = new Set(['uk', 'europe']);
+  const validRegions = new Set(['uk', 'europe', 'london', 'eu', 'international', 'us']);
   const validSourceTiers = new Set(['trigger', 'corroboration', 'context', 'research']);
   const validReliabilityProfiles = new Set([
     'official_ct',

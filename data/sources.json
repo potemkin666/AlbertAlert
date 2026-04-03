@@ -5,7 +5,7 @@
       "provider": "MI5 (Security Service) – UK Threat Level",
       "endpoint": "https://www.mi5.gov.uk/UKThreatLevel/UKThreatLevel.xml",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "prevention",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false
@@ -136,7 +136,7 @@
       "provider": "National Crime Agency – News",
       "endpoint": "https://www.nationalcrimeagency.gov.uk/news",
       "kind": "html",
-      "lane": "incidents",
+      "lane": "context",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
@@ -297,7 +297,7 @@
       "provider": "Europol – Newsroom (RSS)",
       "endpoint": "https://www.europol.europa.eu/rss.xml",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true
@@ -307,7 +307,7 @@
       "provider": "Eurojust – Press Releases (RSS)",
       "endpoint": "https://www.eurojust.europa.eu/rss/press-releases.xml",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true
@@ -393,17 +393,6 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "FRA provides RSS options from this page; using the RSS landing page when direct feed URLs vary by topic."
-    },
-    {
-      "id": "nctv-netherlands-rss",
-      "provider": "Netherlands NCTV – RSS (National Coordinator for Security and Counterterrorism)",
-      "endpoint": "https://english.nctv.nl/service/rss",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "europe",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "RSS directory page; individual feeds may be selected from the page."
     },
     {
       "id": "eu-cellar-rss-atom",
@@ -508,7 +497,7 @@
       "provider": "FBI – National Press Releases (RSS)",
       "endpoint": "https://www.fbi.gov/feeds/national-press-releases/RSS",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "us",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true
@@ -560,7 +549,7 @@
       "provider": "U.S. Department of State – Rewards for Justice",
       "endpoint": "https://rewardsforjustice.net/rewards/",
       "kind": "html",
-      "lane": "incidents",
+      "lane": "context",
       "region": "us",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
@@ -582,7 +571,7 @@
       "provider": "U.S. Department of Justice – National Security Division Press Releases",
       "endpoint": "https://www.justice.gov/nsd/press-releases",
       "kind": "html",
-      "lane": "incidents",
+      "lane": "context",
       "region": "us",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
@@ -703,7 +692,7 @@
       "provider": "BBC News – UK",
       "endpoint": "https://feeds.bbci.co.uk/news/uk/rss.xml",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "uk",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true
@@ -713,7 +702,7 @@
       "provider": "BBC News – World",
       "endpoint": "https://feeds.bbci.co.uk/news/world/rss.xml",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true
@@ -723,7 +712,7 @@
       "provider": "Reuters – UK News",
       "endpoint": "https://www.reuters.com/world/uk/",
       "kind": "html",
-      "lane": "incidents",
+      "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
@@ -734,7 +723,7 @@
       "provider": "Associated Press – Top News",
       "endpoint": "https://apnews.com/index.rss",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true
@@ -744,7 +733,7 @@
       "provider": "The Guardian – UK News",
       "endpoint": "https://www.theguardian.com/uk-news/rss",
       "kind": "rss",
-      "lane": "incidents",
+      "lane": "context",
       "region": "uk",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true
