@@ -18,22 +18,46 @@ export function sameStoryKey(item) {
     .trim();
 }
 
-export function stableFusionTerms(item) {
-  const titleTokens = sameStoryKey({ title: item.title })
-    .split(' ')
-    .filter(Boolean)
-    .filter((token) => token.length >= 4 && !fusionStopwords.has(token));
+function normaliseFusionToken(token) {
+  const value = clean(token).toLowerCase();
+  if (!value) return '';
+  if (value.endsWith('ing') && value.length > 6) return value.slice(0, -3);
+  if (value.endsWith('ed') && value.length > 5) return value.slice(0, -2);
+  if (value.endsWith('es') && value.length > 5 && !value.endsWith('ses')) return value.slice(0, -2);
+  if (value.endsWith('s') && value.length > 5 && !value.endsWith('is')) return value.slice(0, -1);
+  return value;
+}
 
-  const summaryTokens = clean(`${item.summary || ''} ${item.sourceExtract || ''}`)
+function informativeTokens(text, minLength) {
+  return clean(text)
     .toLowerCase()
     .replace(/[^a-z0-9\s]+/g, ' ')
     .split(/\s+/)
+    .map(normaliseFusionToken)
     .filter(Boolean)
-    .filter((token) => token.length >= 5 && !fusionStopwords.has(token));
+    .filter((token) => token.length >= minLength && !fusionStopwords.has(token));
+}
 
-  return [...new Set([...titleTokens, ...summaryTokens])]
-    .sort()
-    .slice(0, 10);
+export function stableFusionTerms(item) {
+  const weightedCounts = new Map();
+  const titleTokens = informativeTokens(item.title || '', 4);
+  const summaryTokens = informativeTokens(`${item.summary || ''} ${item.sourceExtract || ''}`, 5);
+
+  for (const token of titleTokens) {
+    weightedCounts.set(token, (weightedCounts.get(token) || 0) + 3);
+  }
+  for (const token of summaryTokens) {
+    weightedCounts.set(token, (weightedCounts.get(token) || 0) + 1);
+  }
+
+  return [...weightedCounts.entries()]
+    .sort((a, b) => {
+      if (b[1] !== a[1]) return b[1] - a[1];
+      return a[0].localeCompare(b[0]);
+    })
+    .slice(0, 6)
+    .map(([token]) => token)
+    .sort();
 }
 
 export function fusedIncidentIdFor(item) {
