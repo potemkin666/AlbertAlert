@@ -238,14 +238,6 @@ button {
   z-index: 1;
 }
 
-.hero-actions {
-  display: flex;
-  justify-content: flex-end;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
 .eyebrow,
 .detail-label {
   margin: 0 0 8px;
@@ -1593,7 +1585,6 @@ body.device-iphone {
   white-space: nowrap;
 }
 
-.device-iphone .hero-actions,
 .device-iphone .detail-actions,
 .device-iphone .map-toolbar,
 .device-iphone .section-heading {
@@ -1812,10 +1803,6 @@ body.device-iphone {
   .filter {
     flex: 0 0 auto;
     white-space: nowrap;
-  }
-
-  .hero-actions {
-    justify-content: stretch;
   }
 
   .mode-toggle {
