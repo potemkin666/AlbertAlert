@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import * as cheerio from 'cheerio';
 import { XMLParser } from 'fast-xml-parser';
 import {
@@ -849,23 +849,49 @@ function normaliseSourcesPayload(rawSources) {
   throw new Error('Expected sources.json to contain an array or { sources: [] }.');
 }
 
-function buildHealthBlock({ generatedAt, checked, sourceErrors, buildWarning }) {
+export function buildHealthBlock({
+  generatedAt,
+  checked,
+  sourceErrors,
+  buildWarning,
+  previousHealth = null,
+  successfulRefresh = true,
+  usedFallback = false
+}) {
   const runId = clean(process.env.GITHUB_RUN_ID);
   const runNumber = clean(process.env.GITHUB_RUN_NUMBER);
   const runAttempt = clean(process.env.GITHUB_RUN_ATTEMPT);
   const headSha = clean(process.env.GITHUB_SHA);
   const eventName = clean(process.env.GITHUB_EVENT_NAME);
+  const prior = previousHealth && typeof previousHealth === 'object' ? previousHealth : {};
+  const successfulSourceCount = successfulRefresh
+    ? checked
+    : Number(prior.lastSuccessfulSourceCount || 0);
 
   return {
     expectedRefreshMinutes: EXPECTED_REFRESH_MINUTES,
     staleAfterMinutes: STALE_AFTER_MINUTES,
-    lastSuccessfulRefreshTime: generatedAt,
-    lastSuccessfulRunId: runId || null,
-    lastSuccessfulRunNumber: runNumber || null,
-    lastSuccessfulRunAttempt: runAttempt || null,
-    lastSuccessfulHeadSha: headSha || null,
-    lastSuccessfulEvent: eventName || null,
-    lastSuccessfulSourceCount: checked,
+    lastAttemptedRefreshTime: generatedAt,
+    usedFallback,
+    lastSuccessfulRefreshTime: successfulRefresh
+      ? generatedAt
+      : clean(prior.lastSuccessfulRefreshTime) || null,
+    lastSuccessfulRunId: successfulRefresh
+      ? (runId || null)
+      : clean(prior.lastSuccessfulRunId) || null,
+    lastSuccessfulRunNumber: successfulRefresh
+      ? (runNumber || null)
+      : clean(prior.lastSuccessfulRunNumber) || null,
+    lastSuccessfulRunAttempt: successfulRefresh
+      ? (runAttempt || null)
+      : clean(prior.lastSuccessfulRunAttempt) || null,
+    lastSuccessfulHeadSha: successfulRefresh
+      ? (headSha || null)
+      : clean(prior.lastSuccessfulHeadSha) || null,
+    lastSuccessfulEvent: successfulRefresh
+      ? (eventName || null)
+      : clean(prior.lastSuccessfulEvent) || null,
+    lastSuccessfulSourceCount: successfulSourceCount,
     sourceErrorCount: sourceErrors.length,
     hasWarnings: Boolean(buildWarning) || sourceErrors.length > 0
   };
@@ -900,7 +926,10 @@ async function main() {
           generatedAt,
           checked: Number(existing?.sourceCount || 0),
           sourceErrors: [{ message }],
-          buildWarning
+          buildWarning,
+          previousHealth: existing?.health,
+          successfulRefresh: false,
+          usedFallback: true
         })
       };
       await fs.writeFile(outputPath, JSON.stringify(fallbackPayload, null, 2) + '\n', 'utf8');
@@ -1072,7 +1101,10 @@ async function main() {
       generatedAt,
       checked,
       sourceErrors,
-      buildWarning
+      buildWarning,
+      previousHealth: existing?.health,
+      successfulRefresh: !preservedAlerts,
+      usedFallback: preservedAlerts || Boolean(geoLookupFallbackNote)
     })
   };
 
@@ -1088,7 +1120,11 @@ async function main() {
   console.log(`Wrote ${payload.alertCount} alerts from ${payload.sourceCount} sources.`);
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isDirectRun) {
+  main().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+  });
+}

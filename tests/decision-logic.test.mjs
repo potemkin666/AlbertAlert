@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 
-import { deriveView } from '../shared/feed-controller.mjs';
+import { deriveFeedHealthStatus, deriveView } from '../shared/feed-controller.mjs';
 import {
   isLiveIncidentCandidate,
   isQuarantineCandidate,
@@ -15,6 +15,7 @@ import {
   fusedIncidentIdFor,
   mergeCorroboratingSources
 } from '../shared/fusion.mjs';
+import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 
 function isoMinutesAgo(minutes) {
   return new Date(Date.now() - (minutes * 60 * 1000)).toISOString();
@@ -194,4 +195,90 @@ test('corroboration merge dedupes repeated sources and keeps newest first', () =
     { ...secondary, publishedAt: isoMinutesAgo(5) }
   );
   assert.equal(deduped.length, 2);
+});
+
+test('health block preserves last successful refresh when fallback output is reused', () => {
+  const prior = {
+    lastSuccessfulRefreshTime: '2026-04-03T12:00:00.000Z',
+    lastSuccessfulRunId: '111',
+    lastSuccessfulRunNumber: '22',
+    lastSuccessfulRunAttempt: '1',
+    lastSuccessfulHeadSha: 'abc123',
+    lastSuccessfulEvent: 'schedule',
+    lastSuccessfulSourceCount: 88
+  };
+
+  const health = buildHealthBlock({
+    generatedAt: '2026-04-03T12:15:00.000Z',
+    checked: 0,
+    sourceErrors: [{ message: 'sources failed' }],
+    buildWarning: 'Preserved previous alerts',
+    previousHealth: prior,
+    successfulRefresh: false,
+    usedFallback: true
+  });
+
+  assert.equal(health.lastAttemptedRefreshTime, '2026-04-03T12:15:00.000Z');
+  assert.equal(health.lastSuccessfulRefreshTime, '2026-04-03T12:00:00.000Z');
+  assert.equal(health.lastSuccessfulRunId, '111');
+  assert.equal(health.lastSuccessfulSourceCount, 88);
+  assert.equal(health.usedFallback, true);
+});
+
+test('health block records a fresh success when the builder completes normally', () => {
+  const health = buildHealthBlock({
+    generatedAt: '2026-04-03T12:15:00.000Z',
+    checked: 42,
+    sourceErrors: [],
+    buildWarning: null,
+    successfulRefresh: true,
+    usedFallback: false
+  });
+
+  assert.equal(health.lastAttemptedRefreshTime, '2026-04-03T12:15:00.000Z');
+  assert.equal(health.lastSuccessfulRefreshTime, '2026-04-03T12:15:00.000Z');
+  assert.equal(health.lastSuccessfulSourceCount, 42);
+  assert.equal(health.usedFallback, false);
+});
+
+test('feed health status flags stale fallback data honestly', () => {
+  const snapshot = deriveFeedHealthStatus({
+    health: {
+      staleAfterMinutes: 22,
+      lastSuccessfulRefreshTime: '2026-04-03T10:00:00.000Z',
+      lastSuccessfulRunId: '555',
+      lastSuccessfulSourceCount: 120,
+      hasWarnings: true,
+      usedFallback: true
+    },
+    generatedAt: new Date('2026-04-03T10:15:00.000Z'),
+    sourceCount: 120,
+    fetchError: null,
+    now: new Date('2026-04-03T10:30:01.000Z').getTime()
+  });
+
+  assert.equal(snapshot.visible, true);
+  assert.equal(snapshot.isStale, true);
+  assert.equal(snapshot.usedFallback, true);
+  assert.equal(snapshot.runId, '555');
+  assert.equal(snapshot.sourceCount, 120);
+});
+
+test('feed health status surfaces fetch failure even when last good data exists', () => {
+  const snapshot = deriveFeedHealthStatus({
+    health: {
+      staleAfterMinutes: 22,
+      lastSuccessfulRefreshTime: '2026-04-03T12:00:00.000Z',
+      lastSuccessfulRunId: '777',
+      lastSuccessfulSourceCount: 95
+    },
+    generatedAt: new Date('2026-04-03T12:00:00.000Z'),
+    sourceCount: 95,
+    fetchError: { message: 'HTTP 503', at: '2026-04-03T12:05:00.000Z' },
+    now: new Date('2026-04-03T12:05:10.000Z').getTime()
+  });
+
+  assert.equal(snapshot.visible, true);
+  assert.equal(snapshot.isFetchError, true);
+  assert.equal(snapshot.isStale, false);
 });

@@ -38,12 +38,6 @@ jobs:
           node-version: '20.18.1'
           cache: 'npm'
 
-      - name: Ensure package lockfile exists
-        run: |
-          if [ ! -f package-lock.json ]; then
-            npm install --package-lock-only --no-audit --no-fund
-          fi
-
       - name: Install dependencies
         run: npm ci --no-audit --no-fund
 

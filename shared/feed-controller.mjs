@@ -21,6 +21,36 @@ export function deriveView(state, deps) {
   return { filtered, responder, context, quarantine, topPriority };
 }
 
+export function deriveFeedHealthStatus({
+  health,
+  generatedAt,
+  sourceCount,
+  fetchError,
+  now = Date.now(),
+  defaultStaleAfterMinutes = 22
+}) {
+  const feedHealth = health && typeof health === 'object' ? health : {};
+  const staleAfterMinutes = Number(feedHealth.staleAfterMinutes || defaultStaleAfterMinutes);
+  const lastRefresh = feedHealth.lastSuccessfulRefreshTime
+    ? new Date(feedHealth.lastSuccessfulRefreshTime)
+    : generatedAt || null;
+  const lastRefreshMs = lastRefresh instanceof Date ? lastRefresh.getTime() : NaN;
+  const isStale = Number.isFinite(lastRefreshMs)
+    ? (now - lastRefreshMs) > staleAfterMinutes * 60_000
+    : false;
+
+  return {
+    visible: Boolean(lastRefresh || fetchError),
+    isStale,
+    isFetchError: Boolean(fetchError),
+    hasWarnings: Boolean(feedHealth.hasWarnings),
+    usedFallback: Boolean(feedHealth.usedFallback),
+    lastRefresh,
+    runId: feedHealth.lastSuccessfulRunId || 'unknown',
+    sourceCount: Number(feedHealth.lastSuccessfulSourceCount || sourceCount || 0)
+  };
+}
+
 export async function loadGeoLookup(state, url) {
   try {
     const response = await fetch(`${url}?t=${Date.now()}`, { cache: 'no-store' });
@@ -61,11 +91,16 @@ export async function loadLiveFeed(state, options) {
     state.liveFeedHealth = data && typeof data.health === 'object' && data.health
       ? data.health
       : null;
-  } catch {
+    state.liveFeedFetchError = null;
+  } catch (error) {
     state.alerts = previousAlerts;
     state.liveFeedGeneratedAt = previousGeneratedAt;
     state.liveSourceCount = previousSourceCount;
     state.liveFeedHealth = previousHealth;
+    state.liveFeedFetchError = {
+      message: error instanceof Error ? error.message : String(error),
+      at: new Date().toISOString()
+    };
   }
   state.lastBrowserPollAt = new Date();
   if (typeof onAfterLoad === 'function') onAfterLoad();

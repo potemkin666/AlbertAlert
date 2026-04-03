@@ -20,6 +20,7 @@ import {
 } from './shared/alert-view-model.mjs';
 import {
   deriveView,
+  deriveFeedHealthStatus,
   loadGeoLookup,
   loadWatchGeography,
   loadLiveFeed
@@ -62,6 +63,7 @@ const state = {
   liveFeedGeneratedAt: null,
   liveSourceCount: 0,
   liveFeedHealth: null,
+  liveFeedFetchError: null,
   albertIndex: -1,
   notes: [],
   briefingMode: false,
@@ -468,26 +470,32 @@ function renderHero() {
   const sourceSuffix = state.liveSourceCount ? ` | ${state.liveSourceCount} sources` : ' | awaiting live pull';
   elements.heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;
 
-  const health = state.liveFeedHealth || {};
-  const staleAfterMinutes = Number(health.staleAfterMinutes || (SOURCE_PULL_MINUTES + 7));
-  const lastRefresh = health.lastSuccessfulRefreshTime ? new Date(health.lastSuccessfulRefreshTime) : state.liveFeedGeneratedAt;
-  const lastRefreshMs = lastRefresh instanceof Date ? lastRefresh.getTime() : NaN;
-  const isStale = Number.isFinite(lastRefreshMs)
-    ? (Date.now() - lastRefreshMs) > staleAfterMinutes * 60_000
-    : false;
-  const runId = health.lastSuccessfulRunId || 'unknown';
-  const healthSourceCount = Number(health.lastSuccessfulSourceCount || state.liveSourceCount || 0);
-  const warningSuffix = health.hasWarnings ? ' | warnings present' : '';
+  const healthStatus = deriveFeedHealthStatus({
+    health: state.liveFeedHealth,
+    generatedAt: state.liveFeedGeneratedAt,
+    sourceCount: state.liveSourceCount,
+    fetchError: state.liveFeedFetchError,
+    defaultStaleAfterMinutes: SOURCE_PULL_MINUTES + 7
+  });
+  const warningSuffix = healthStatus.hasWarnings ? ' | warnings present' : '';
+  const fallbackSuffix = healthStatus.usedFallback ? ' | fallback in use' : '';
 
-  if (!lastRefresh) {
+  if (!healthStatus.visible) {
     elements.heroHealth.classList.add('hidden');
     return;
   }
 
   elements.heroHealth.classList.remove('hidden');
-  elements.heroHealth.classList.toggle('hero-health-stale', isStale);
-  elements.heroHealthLabel.textContent = isStale ? 'Stale feed alarm' : 'Feed healthy';
-  elements.heroHealthMeta.textContent = `last cron ${formatAgeFrom(lastRefresh)} | run ${runId} | ${healthSourceCount} sources${warningSuffix}`;
+  elements.heroHealth.classList.toggle('hero-health-stale', healthStatus.isStale || healthStatus.isFetchError);
+
+  if (healthStatus.isFetchError) {
+    elements.heroHealthLabel.textContent = 'Feed fetch error';
+    elements.heroHealthMeta.textContent = `using last good data | ${state.liveFeedFetchError?.message || 'unknown error'}${healthStatus.lastRefresh ? ` | last cron ${formatAgeFrom(healthStatus.lastRefresh)}` : ''}`;
+    return;
+  }
+
+  elements.heroHealthLabel.textContent = healthStatus.isStale ? 'Stale feed alarm' : 'Feed healthy';
+  elements.heroHealthMeta.textContent = `last cron ${formatAgeFrom(healthStatus.lastRefresh)} | run ${healthStatus.runId} | ${healthStatus.sourceCount} sources${warningSuffix}${fallbackSuffix}`;
 }
 
 function alertTimeMsForMap(alert) {
