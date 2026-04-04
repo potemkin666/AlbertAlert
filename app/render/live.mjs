@@ -1,7 +1,6 @@
 import {
   buildBriefing,
   effectiveSummary,
-  formatAgeFrom,
   isLiveIncidentCandidate,
   keywordMatches,
   regionLabel
@@ -113,12 +112,10 @@ export function renderQuarantine({ elements, view, state, modalController }) {
   });
 }
 
-export function renderHero({ state, elements, sourcePullMinutes }) {
+export function renderHero({ state, elements }) {
   const regionCopy = state.briefingMode ? 'Top alert only' : (state.activeRegion === 'all' ? 'All feeds' : `${regionLabel(state.activeRegion)} feeds`);
   const laneCopy = state.briefingMode ? 'Briefing posture' : (state.activeLane === 'all' ? 'Responder posture' : laneLabels[state.activeLane]);
   elements.heroRegion.textContent = `${regionCopy} | ${laneCopy}`;
-  const sourceAge = state.liveFeedGeneratedAt ? formatAgeFrom(state.liveFeedGeneratedAt) : 'waiting';
-  elements.heroPolling.textContent = `UI checks 60s | feed build ~${sourcePullMinutes}m | source age ${sourceAge}`;
   const stamp = state.liveFeedGeneratedAt || state.lastBrowserPollAt;
   const sourceSuffix = state.liveSourceCount ? ` | ${state.liveSourceCount} sources` : ' | awaiting live pull';
   elements.heroUpdated.textContent = `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`;

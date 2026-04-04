@@ -61,7 +61,6 @@ function createElements() {
     watchlistSummary: document.getElementById('watchlist-summary'),
     heroRegion: document.getElementById('hero-region'),
     heroUpdated: document.getElementById('hero-updated'),
-    heroPolling: document.getElementById('hero-polling'),
     heroHealth: document.getElementById('hero-health'),
     heroHealthLabel: document.getElementById('hero-health-label'),
     heroHealthMeta: document.getElementById('hero-health-meta'),
@@ -166,7 +165,7 @@ export function initialiseApp() {
 
   function renderAll() {
     const view = currentView();
-    renderHero({ state, elements, sourcePullMinutes: SOURCE_PULL_MINUTES });
+    renderHero({ state, elements });
     renderBriefingMode({ state, elements, view, modalController });
     renderPriority({ state, elements, view, modalController });
     renderFeed({
