@@ -77,12 +77,16 @@ async function generateRemoteLongBrief(alert) {
     }
   }
 
-  throw lastError || new Error('Long brief generation failed');
+  if (lastError) {
+    const detail = lastError instanceof Error ? lastError.message : String(lastError);
+    throw new Error(`Long brief generation failed after ${payloadAttempts.length} attempts: ${detail}`);
+  }
+  throw new Error(`Long brief generation failed after ${payloadAttempts.length} attempts`);
 }
 
 function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS) {
   const sourceExtract = cleanTextBlock(alert.sourceExtract ?? alert.extract ?? alert.summary ?? '');
-  const trimmedSourceExtract = sourceExtract.slice(0, maxSourceExtractChars);
+  const trimmedSourceExtract = truncateAtWordBoundary(sourceExtract, maxSourceExtractChars);
   return {
     sourceName: String(alert.sourceName ?? alert.source ?? ''),
     headline: String(alert.headline ?? alert.title ?? ''),
@@ -95,6 +99,17 @@ function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MA
     corroborationStatus: String(alert.corroborationStatus ?? ''),
     recencyText: String(alert.recencyText ?? '')
   };
+}
+
+function truncateAtWordBoundary(value, maxChars) {
+  const text = String(value || '');
+  if (text.length <= maxChars) return text;
+  const candidate = text.slice(0, maxChars + 1);
+  const boundary = candidate.lastIndexOf(' ');
+  if (boundary > Math.floor(maxChars * 0.7)) {
+    return candidate.slice(0, boundary).trim();
+  }
+  return text.slice(0, maxChars).trim();
 }
 
 export function createModalRuntime(elements) {
