@@ -12,7 +12,11 @@ import { createModalController } from '../../shared/modal-briefing.mjs';
 import { cleanTextBlock, splitLongBriefSentences } from '../utils/text.mjs';
 
 const LONG_BRIEF_API_URL = 'https://brialertbackend.vercel.app/api/generate-brief';
-const LONG_BRIEF_TIMEOUT_MS = 15_000;
+const LONG_BRIEF_TIMEOUT_MS = 25_000;
+const LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS = 8_000;
+const LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS = 3_500;
+// Require a boundary near the end so truncation does not collapse into an overly short fragment.
+const WORD_BOUNDARY_MIN_RATIO = 0.7;
 
 function buildLocalLongBrief(alert) {
   const summary = cleanTextBlock(effectiveSummary(alert));
@@ -42,46 +46,70 @@ function buildLocalLongBrief(alert) {
     ...bits.map((paragraph) => paragraph.trim()),
     '',
     'NOTE',
-    'This version was generated locally from the captured source text and alert metadata because no server-side AI endpoint is configured for the public site.'
+    'This version was generated locally from the captured source text and alert metadata because the remote AI brief endpoint was unavailable or timed out.'
   ].join('\n\n');
 }
 
 async function generateRemoteLongBrief(alert) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), LONG_BRIEF_TIMEOUT_MS);
-  const payload = mapAlertToLongBriefPayload(alert);
+  const primaryPayload = mapAlertToLongBriefPayload(alert, LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS);
+  const fallbackPayload = mapAlertToLongBriefPayload(alert, LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS);
+  const payloadAttempts = [primaryPayload, fallbackPayload];
 
-  try {
-    const response = await fetch(LONG_BRIEF_API_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      signal: controller.signal,
-      body: JSON.stringify(payload)
-    });
+  let lastError = null;
+  for (const payload of payloadAttempts) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), LONG_BRIEF_TIMEOUT_MS);
+    try {
+      const response = await fetch(LONG_BRIEF_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify(payload)
+      });
 
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const responseData = await response.json();
-    const brief = String(responseData?.brief || '').trim();
-    if (!brief) throw new Error('Invalid brief response');
-    return brief;
-  } finally {
-    clearTimeout(timeout);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const responseData = await response.json();
+      const brief = String(responseData?.brief || '').trim();
+      if (!brief) throw new Error('Invalid brief response');
+      return brief;
+    } catch (error) {
+      lastError = error;
+    } finally {
+      clearTimeout(timeout);
+    }
   }
+
+  const detail = lastError instanceof Error ? lastError.message : String(lastError);
+  throw new Error(`Long brief generation failed after ${payloadAttempts.length} attempts: ${detail}`);
 }
 
-function mapAlertToLongBriefPayload(alert) {
+function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS) {
+  const sourceExtract = alert.sourceExtract ?? alert.extract ?? alert.summary ?? '';
+  const trimmedSourceExtract = cleanTextBlock(truncateAtWordBoundary(sourceExtract, maxSourceExtractChars));
   return {
-    sourceName: alert.sourceName ?? alert.source ?? '',
-    headline: alert.headline ?? alert.title ?? '',
-    sourceExtract: alert.sourceExtract ?? alert.extract ?? alert.summary ?? '',
-    originalUrl: alert.originalUrl ?? alert.url ?? alert.sourceUrl ?? '',
-    timestamp: alert.timestamp ?? alert.publishedAt ?? alert.time ?? '',
-    geography: alert.geography ?? alert.location ?? '',
-    lane: alert.lane ?? alert.track ?? '',
-    confidenceLabel: alert.confidenceLabel ?? alert.confidence ?? '',
-    corroborationStatus: alert.corroborationStatus ?? '',
-    recencyText: alert.recencyText ?? ''
+    sourceName: String(alert.sourceName ?? alert.source ?? ''),
+    headline: String(alert.headline ?? alert.title ?? ''),
+    sourceExtract: trimmedSourceExtract,
+    originalUrl: String(alert.originalUrl ?? alert.url ?? alert.sourceUrl ?? ''),
+    timestamp: String(alert.timestamp ?? alert.publishedAt ?? alert.time ?? ''),
+    geography: String(alert.geography ?? alert.location ?? ''),
+    lane: String(alert.lane ?? alert.track ?? ''),
+    confidenceLabel: String(alert.confidenceLabel ?? alert.confidence ?? ''),
+    corroborationStatus: String(alert.corroborationStatus ?? ''),
+    recencyText: String(alert.recencyText ?? '')
   };
+}
+
+function truncateAtWordBoundary(value, maxChars) {
+  const text = String(value || '');
+  if (text.length <= maxChars) return text;
+  const candidate = text.slice(0, maxChars);
+  const boundary = candidate.lastIndexOf(' ');
+  // Avoid chopping too aggressively when the nearest whitespace is far from the limit.
+  if (boundary > Math.floor(maxChars * WORD_BOUNDARY_MIN_RATIO)) {
+    return candidate.slice(0, boundary).trim();
+  }
+  return text.slice(0, maxChars).trim();
 }
 
 export function createModalRuntime(elements) {
