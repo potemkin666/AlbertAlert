@@ -1,6 +1,8 @@
+// Keep this short so the hero metric updates quickly without stalling the initial UX.
 const GEOLOCATION_TIMEOUT_MS = 5000;
 const GEOLOCATION_MAX_AGE_MS = 300000;
 const LOCATION_CACHE_KEY = 'brialert.userLocationLabel.v1';
+// Public reverse-geocoding endpoint; treat failures/rate limits as non-fatal and fall back.
 const GEOCODE_API_URL = 'https://geocode.maps.co/reverse';
 
 function geocodeApiKey() {
@@ -103,11 +105,6 @@ export async function detectUserLocationLabel(nav = navigator, fetchImpl = fetch
     if (key) url.searchParams.set('api_key', key);
     const response = await fetchImpl(url.toString(), { headers: { Accept: 'application/json' } });
     if (!response.ok) {
-      if (response.status === 401 || response.status === 403 || response.status === 429) {
-        const fallback = fallbackLabel(nav);
-        saveCachedLocation(fallback, cache);
-        return fallback;
-      }
       const fallback = fallbackLabel(nav);
       saveCachedLocation(fallback, cache);
       return fallback;
