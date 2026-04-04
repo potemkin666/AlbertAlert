@@ -328,6 +328,25 @@ test('live feed coercion keeps valid alerts and drops malformed ones', () => {
   assert.equal(payload.alerts[0].id, 'good-1');
 });
 
+test('live feed coercion allows empty renderable alerts for standby posture', () => {
+  const payload = coerceLiveFeedPayload({
+    generatedAt: '2026-04-04T10:00:00.000Z',
+    sourceCount: 1,
+    alerts: [
+      {
+        id: 'bad-1',
+        title: 'Broken alert missing core fields',
+        source: 'Broken Source',
+        location: 'Unknown',
+        region: 'europe',
+        lane: 'incidents'
+      }
+    ]
+  });
+
+  assert.equal(payload.alerts.length, 0);
+});
+
 test('matchesKeywords uses word-boundary matching and does not match substrings', () => {
   // 'threat' must not match 'threatening'
   assert.deepEqual(matchesKeywords('he was threatening schoolchildren', terrorismKeywords), []);
