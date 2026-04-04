@@ -1854,3 +1854,208 @@ body.device-iphone {
     min-height: 420px;
   }
 }
+
+@media (max-width: 768px) and (pointer: coarse) {
+  .page {
+    padding:
+      max(0px, env(safe-area-inset-top))
+      max(0px, env(safe-area-inset-right))
+      max(0px, env(safe-area-inset-bottom))
+      max(0px, env(safe-area-inset-left));
+  }
+
+  .phone-shell {
+    width: 100%;
+    max-width: 100%;
+    min-height: 100svh;
+    min-height: 100dvh;
+    border-radius: 0;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .phone-notch {
+    display: none;
+  }
+
+  .screen {
+    width: 100%;
+    min-width: 0;
+    min-height: 100svh;
+    min-height: 100dvh;
+    border-radius: 0;
+    padding:
+      calc(12px + env(safe-area-inset-top))
+      calc(14px + env(safe-area-inset-right))
+      calc(18px + env(safe-area-inset-bottom))
+      calc(14px + env(safe-area-inset-left));
+  }
+
+  .hero-card,
+  .bulldog-card,
+  .priority-card,
+  .feed-card,
+  .panel,
+  .modal-card,
+  .note-card,
+  .context-pill,
+  .quarantine-card {
+    border-radius: 22px;
+  }
+
+  .hero-card {
+    min-height: 176px;
+    padding: 18px;
+    background:
+      linear-gradient(180deg, rgba(7, 9, 20, 0.92), rgba(7, 9, 20, 0.64) 48%, rgba(7, 9, 20, 0.38)),
+      url("assets/foc-background.gif") center top / cover no-repeat;
+  }
+
+  h1 {
+    font-size: clamp(30px, 9.5vw, 40px);
+    line-height: 0.96;
+    word-break: break-word;
+  }
+
+  .hero-metrics {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .metric {
+    min-width: 0;
+    padding: 12px 13px;
+  }
+
+  .tabbar,
+  .filters,
+  .map-timeline-filters,
+  .map-layer-toggles {
+    display: grid;
+    gap: 8px;
+    overflow: visible;
+    padding-bottom: 0;
+  }
+
+  .tabbar {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  #filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .lane-filters {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lane-filters .filter:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .map-timeline-filters {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .map-layer-toggles {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tab,
+  .filter,
+  .map-layer-toggle,
+  .map-timeline-toggle,
+  .map-control,
+  .primary-button,
+  .secondary-button,
+  .primary-link {
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 12px 10px;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: normal;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .bulldog-card {
+    align-items: flex-start;
+  }
+
+  .priority-card h2 {
+    font-size: clamp(24px, 7vw, 30px);
+  }
+
+  .meta-row,
+  .section-heading,
+  .map-toolbar,
+  .detail-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .meta-row {
+    gap: 6px;
+  }
+
+  .map-chip {
+    width: 100%;
+    min-height: 44px;
+    justify-content: center;
+    text-align: center;
+    white-space: normal;
+  }
+
+  .map-controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    width: 100%;
+  }
+
+  .map-surface {
+    height: min(56vh, 480px);
+    min-height: 340px;
+  }
+
+  #context-list {
+    scroll-snap-type: x proximity;
+  }
+
+  .context-pill {
+    min-width: min(82vw, 260px);
+    scroll-snap-align: start;
+  }
+
+  .modal {
+    align-items: end;
+    padding:
+      max(8px, env(safe-area-inset-top))
+      max(8px, env(safe-area-inset-right))
+      max(8px, env(safe-area-inset-bottom))
+      max(8px, env(safe-area-inset-left));
+  }
+
+  .modal-card {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100dvh - env(safe-area-inset-top) - 8px);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 20px 16px calc(20px + env(safe-area-inset-bottom)) 16px;
+  }
+
+  .modal-grid > div {
+    min-width: 100%;
+  }
+
+  .summary-panel pre,
+  .briefing-panel pre {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+}
