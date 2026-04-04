@@ -1209,6 +1209,16 @@
       "comment": "No consistent RSS endpoint; using the CTC news page and relying on keyword filtering."
     },
     {
+      "id": "unsc-consolidated-list-rss",
+      "provider": "UN Security Council – Consolidated Sanctions List (RSS)",
+      "endpoint": "https://main.un.org/securitycouncil/en/rss-updates-unsc-consolidated-list",
+      "kind": "rss",
+      "lane": "sanctions",
+      "region": "international",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": false
+    },
+    {
       "id": "unoct-news",
       "provider": "UN Office of Counter‑Terrorism (UNOCT) – News",
       "endpoint": "https://www.un.org/counterterrorism/news",
@@ -1463,6 +1473,68 @@
       "region": "uk",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-research-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) – Updates (RSS)",
+      "endpoint": "https://gnet-research.org/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-radicalisation-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) – Radicalisation (RSS)",
+      "endpoint": "https://gnet-research.org/tag/radicalisation/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "international",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-artificial-intelligence-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) – Artificial Intelligence (RSS)",
+      "endpoint": "https://gnet-research.org/tag/artificial-intelligence/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "international",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-youth-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) – Youth (RSS)",
+      "endpoint": "https://gnet-research.org/tag/youth/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "international",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "long-war-journal-rss",
+      "provider": "Long War Journal – News (RSS)",
+      "endpoint": "http://feeds.feedburner.com/LongWarJournal",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Long War Journal FeedBurner RSS used for tracking jihadist conflict reporting and operational context."
+    },
+    {
+      "id": "start-baad-database",
+      "provider": "National Consortium for the Study of Terrorism (START) – Big Allied and Dangerous (BAAD) Database",
+      "endpoint": "https://www.start.umd.edu/baad/database/",
+      "kind": "html",
+      "lane": "context",
+      "region": "us",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false,
+      "comment": "START BAAD database of designated terrorist organisations used for group identification context."
     },
     {
       "id": "icsr-kcl",
