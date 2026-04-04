@@ -87,7 +87,7 @@ async function generateRemoteLongBrief(alert) {
 
 function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS) {
   const sourceExtract = cleanTextBlock(alert.sourceExtract ?? alert.extract ?? alert.summary ?? '');
-  const trimmedSourceExtract = truncateAtWordBoundary(sourceExtract, maxSourceExtractChars);
+  const trimmedSourceExtract = cleanTextBlock(truncateAtWordBoundary(sourceExtract, maxSourceExtractChars));
   return {
     sourceName: String(alert.sourceName ?? alert.source ?? ''),
     headline: String(alert.headline ?? alert.title ?? ''),
@@ -107,6 +107,7 @@ function truncateAtWordBoundary(value, maxChars) {
   if (text.length <= maxChars) return text;
   const candidate = text.slice(0, maxChars);
   const boundary = candidate.lastIndexOf(' ');
+  // Avoid chopping too aggressively when the nearest whitespace is far from the limit.
   if (boundary > Math.floor(maxChars * WORD_BOUNDARY_MIN_RATIO)) {
     return candidate.slice(0, boundary).trim();
   }
