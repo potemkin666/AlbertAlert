@@ -112,8 +112,8 @@ function truncateAtWordBoundary(value, maxChars) {
   return text.slice(0, maxChars).trim();
 }
 
-export function createModalRuntime(elements) {
-  const modalController = createModalController({
+export function createModalRuntime(elements, options = {}) {
+  const baseController = createModalController({
     modal: elements.modal,
     modalTitle: elements.modalTitle,
     modalMeta: elements.modalMeta,
@@ -147,6 +147,20 @@ export function createModalRuntime(elements) {
     renderCorroboratingSources,
     severityLabel
   });
+
+  const modalController = {
+    openDetail(alert) {
+      baseController.openDetail(alert);
+      options?.onAlertChange?.(baseController.getCurrentAlert());
+    },
+    closeDetailPanel() {
+      baseController.closeDetailPanel();
+      options?.onAlertChange?.(null);
+    },
+    copyTextToButton: baseController.copyTextToButton,
+    getCurrentAlert: baseController.getCurrentAlert,
+    setExpandedBrief: baseController.setExpandedBrief
+  };
 
   async function generateLongBrief() {
     const alert = modalController.getCurrentAlert();

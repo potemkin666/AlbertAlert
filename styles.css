@@ -1560,6 +1560,10 @@ h1 {
 
 .modal-actions {
   margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
 .primary-link {
@@ -1571,6 +1575,12 @@ h1 {
   font-weight: 700;
   background: var(--amber);
   color: black;
+}
+
+.modal-watch-toggle.active {
+  border-color: rgba(241, 178, 21, 0.34);
+  background: rgba(241, 178, 21, 0.16);
+  color: #fff5d1;
 }
 
 /* ===== iPhone / iOS app-shell hardening ===== */

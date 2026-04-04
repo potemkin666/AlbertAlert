@@ -108,6 +108,7 @@ function createElements() {
     modalRegion: document.getElementById('modal-region'),
     modalBriefing: document.getElementById('modal-briefing'),
     modalLink: document.getElementById('modal-link'),
+    modalWatchToggle: document.getElementById('modal-watch-toggle'),
     expandedBriefPanel: document.getElementById('expanded-brief-panel'),
     modalExpandedBrief: document.getElementById('modal-expanded-brief'),
     generateExpandedBrief: document.getElementById('generate-expanded-brief'),
@@ -128,7 +129,25 @@ export function initialiseApp() {
   };
   const derivedViewStore = createDerivedViewStore(deriveView, feedDeps);
   const elements = createElements();
-  const { modalController, generateLongBrief } = createModalRuntime(elements);
+  let modalController = null;
+  function syncModalWatchToggle() {
+    const button = elements.modalWatchToggle;
+    if (!button) return;
+    const alert = modalController?.getCurrentAlert?.() || null;
+    if (!alert) {
+      button.disabled = true;
+      button.classList.remove('active');
+      button.textContent = 'Follow story';
+      return;
+    }
+    const isWatching = state.watched.has(alert.id);
+    button.disabled = false;
+    button.classList.toggle('active', isWatching);
+    button.textContent = isWatching ? 'Following story' : 'Follow story';
+  }
+  const modalRuntime = createModalRuntime(elements, { onAlertChange: syncModalWatchToggle });
+  modalController = modalRuntime.modalController;
+  const { generateLongBrief } = modalRuntime;
   const mapController = createMapController({
     mapElement: elements.mapElement,
     mapSummary: elements.mapSummary,
@@ -185,6 +204,7 @@ export function initialiseApp() {
     renderMapIfActive({ state, view, mapController });
     renderWatchlist({ state, elements, modalController });
     renderNotes({ state, elements });
+    syncModalWatchToggle();
   }
 
   function refreshAlbertQuote() {
@@ -248,6 +268,16 @@ export function initialiseApp() {
       const briefing = elements.copyBriefing.dataset.briefing || '';
       if (!briefing) return;
       await modalController.copyTextToButton(briefing, elements.copyBriefing, 'Copy Briefing');
+    });
+
+    elements.modalWatchToggle?.addEventListener('click', () => {
+      const alert = modalController.getCurrentAlert();
+      if (!alert) return;
+      if (state.watched.has(alert.id)) state.watched.delete(alert.id);
+      else state.watched.add(alert.id);
+      saveSet(WATCHED_STORAGE_KEY, state.watched);
+      invalidateDerivedView();
+      renderAll();
     });
 
     elements.generateExpandedBrief?.addEventListener('click', generateLongBrief);
