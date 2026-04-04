@@ -180,6 +180,34 @@ export function resolvedReliabilityProfile(alert) {
   return normaliseReliabilityProfile(alert.reliabilityProfile);
 }
 
+function sourceEvidenceCount(alert) {
+  const corroborating = Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources.length : 0;
+  return 1 + corroborating;
+}
+
+export function trustSignal(alert) {
+  const score = Number(alert.confidenceScore || 0);
+  const hasScore = Number.isFinite(score) && score > 0;
+  const profile = resolvedReliabilityProfile(alert);
+  const corroborating = Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources : [];
+  const officialCorroboration = corroborating.some((entry) => clean(normaliseReliabilityProfile(entry?.reliabilityProfile)).startsWith('official_'));
+  const officialSignal = clean(profile).startsWith('official_') || !!alert.isOfficial || officialCorroboration;
+
+  if (!hasScore) return { key: 'unverified', label: 'UNVERIFIED' };
+  if (officialSignal) return { key: 'confirmed', label: 'CONFIRMED' };
+  if (sourceEvidenceCount(alert) >= 2) return { key: 'multi-source', label: 'MULTI-SOURCE' };
+  return { key: 'single-source', label: 'SINGLE-SOURCE' };
+}
+
+export function confidenceScoreLabel(alert) {
+  const score = Number(alert.confidenceScore || 0);
+  if (!Number.isFinite(score) || score <= 0) return 'CONFIDENCE: UNAVAILABLE';
+  const clamped = Math.max(0, Math.min(1, score));
+  const points = Math.round(clamped * 100);
+  const band = points >= 90 ? 'VERY HIGH' : points >= 80 ? 'HIGH' : points >= 65 ? 'MEDIUM' : 'LOW';
+  return `CONFIDENCE: ${points}/100 (${band})`;
+}
+
 function incidentScore(alert) {
   if (Number.isFinite(alert.priorityScore)) return alert.priorityScore;
   let score = 0;
@@ -421,7 +449,10 @@ export function renderSceneClock(alert) {
 export function buildAuditBlock(alert) {
   const terrorTerms = terrorismMatches(alert);
   const age = alert.publishedAt ? formatAgeFrom(alert.publishedAt) : 'age unknown';
+  const trust = trustSignal(alert);
   return [
+    `TRUST SIGNAL: ${trust.label}`,
+    confidenceScoreLabel(alert),
     `SOURCE TIER: ${normaliseSourceTier(alert.sourceTier) || 'unclassified'}`,
     `RELIABILITY PROFILE: ${reliabilityLabel(resolvedReliabilityProfile(alert))}`,
     `AGE: ${age}`,
@@ -448,12 +479,15 @@ export function buildBriefing(alert, summaryText) {
   const matches = terrorismMatches(alert);
   const peopleInvolved = extractPeopleInvolved(alert);
   const sceneClock = buildSceneClock(alert);
+  const trust = trustSignal(alert);
   return [
     `WHAT: ${alert.title}`,
     `WHERE: ${alert.location}`,
     `WHEN: ${alert.happenedWhen || alert.time}`,
     `SOURCE: ${alert.source}`,
-    `CONFIDENCE: ${alert.confidence}`,
+    `TRUST SIGNAL: ${trust.label}`,
+    confidenceScoreLabel(alert),
+    `SOURCE CONFIDENCE TEXT: ${alert.confidence}`,
     `LANE: ${laneLabels[alert.lane] || alert.lane}`,
     alert.lane === 'incidents' && resolvedIncidentTrack(alert) ? `INCIDENT TRACK: ${resolvedIncidentTrack(alert) === 'live' ? 'Live incident' : 'Case / prosecution'}` : '',
     alert.eventType ? `EVENT TYPE: ${clean(alert.eventType).replace(/_/g, ' ')}` : '',
