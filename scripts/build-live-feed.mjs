@@ -113,11 +113,14 @@ async function main() {
 
       try {
         await sleep(sourceIndex * 60);
-        const body = await fetchText(source.endpoint);
+        const body = await fetchText(source.endpoint, 1, { source });
         const parsed = source.kind === 'rss' || source.kind === 'atom'
           ? parseFeedItems(source, body)
           : parseHtmlItems(source, body);
-        if (!parsed.length) discardReasons.parseNoItems += 1;
+        if (!parsed.length) {
+          discardReasons.parseNoItems += 1;
+          localErrors.push(summariseSourceError(source, new Error('No items parsed from source endpoint')));
+        }
         const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
         const preLimited = parsed.slice(0, preLimit);
         const hydrated = source.kind === 'html' ? await enrichHtmlItems(source, preLimited) : preLimited;
