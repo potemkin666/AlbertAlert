@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-04-04T08:48:42.129Z",
-  "sourceCount": 118,
-  "alertCount": 66,
+  "generatedAt": "2026-04-04T08:44:40.430Z",
+  "sourceCount": 0,
+  "alertCount": 75,
   "alerts": [
     {
       "id": "met-police-news-0",
@@ -3194,58 +3194,94 @@
   ],
   "sourceErrors": [
     {
+      "id": "mi5-uk-threat-level",
+      "provider": "MI5 (Security Service) – UK Threat Level",
+      "endpoint": "https://www.mi5.gov.uk/UKThreat. Level/UKThreat. Level.xml",
+      "message": "fetch failed"
+    },
+    {
       "id": "mi5-news",
       "provider": "MI5 (Security Service) – News",
       "endpoint": "https://www.mi5.gov.uk/news",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "mi5-terrorism-news",
       "provider": "MI5 (Security Service) – Terrorism News",
       "endpoint": "https://www.mi5.gov.uk/news-categories/terrorism",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "ct-policing-uk-latest-news",
+      "provider": "Counter Terrorism Policing UK – Latest News",
+      "endpoint": "https://www.counterterrorism.police.uk/latest-news/",
+      "message": "fetch failed"
     },
     {
       "id": "npsa-national-protective-security-authority",
       "provider": "National Protective Security Authority (NPSA) – Updates",
       "endpoint": "https://www.npsa.gov.uk/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "protectuk",
+      "provider": "ProtectUK (NPSA) – Protective Security Guidance",
+      "endpoint": "https://www.protectuk.police.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "met-police-news",
+      "provider": "Metropolitan Police Service – News",
+      "endpoint": "https://news.met.police.uk/news",
+      "message": "fetch failed"
     },
     {
       "id": "city-of-london-police-news",
       "provider": "City of London Police – News",
       "endpoint": "https://www.cityoflondon.police.uk/news/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "british-transport-police-news",
       "provider": "British Transport Police – News",
       "endpoint": "https://www.btp.police.uk/news/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "tfl-press-releases",
       "provider": "Transport for London – Press Releases",
       "endpoint": "https://tfl.gov.uk/info-for/media/press-releases",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "london-fire-brigade-news",
+      "provider": "London Fire Brigade – News",
+      "endpoint": "https://www.london-fire.gov.uk/news/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "london-ambulance-news",
+      "provider": "London Ambulance Service – News",
+      "endpoint": "https://www.londonambulance.nhs.uk/news/",
+      "message": "fetch failed"
     },
     {
       "id": "mayor-of-london-press-releases",
       "provider": "Mayor of London – Press Releases",
       "endpoint": "https://www.london.gov.uk/media-centre/mayors-press-release",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "london-assembly-press-releases",
       "provider": "London Assembly – Press Releases",
       "endpoint": "https://www.london.gov.uk/media-centre/assembly-press-release",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "london-resilience",
       "provider": "London Resilience – Updates",
       "endpoint": "https://www.london.gov.uk/programmes-strategies/london-resilience",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "westminster-city-council-news",
@@ -3254,10 +3290,34 @@
       "message": "fetch failed"
     },
     {
+      "id": "camden-council-news",
+      "provider": "Camden Council – News",
+      "endpoint": "https://news.camden.gov.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "islington-council-news",
+      "provider": "Islington Council – News",
+      "endpoint": "https://www.islington.media/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "hackney-council-news",
+      "provider": "Hackney Council – News",
+      "endpoint": "https://news.hackney.gov.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "newham-council-news",
+      "provider": "Newham Council – News",
+      "endpoint": "https://www.newham.gov.uk/news",
+      "message": "fetch failed"
+    },
+    {
       "id": "tower-hamlets-council-news",
       "provider": "Tower Hamlets Council – News",
       "endpoint": "https://www.towerhamlets.gov.uk/News_events/News/News.aspx",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "southwark-newsroom",
@@ -3266,82 +3326,22 @@
       "message": "fetch failed"
     },
     {
-      "id": "royal-greenwich-news",
-      "provider": "Royal Borough of Greenwich – News",
-      "endpoint": "https://www.royalgreenwich.gov.uk/news",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "bromley-council-news",
-      "provider": "Bromley Council – Newsroom",
-      "endpoint": "https://www.bromley.gov.uk/newsroom",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "enfield-council-news",
-      "provider": "Enfield Council – News and Events",
-      "endpoint": "https://www.enfield.gov.uk/news-and-events",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "london-city-airport-media-centre",
-      "provider": "London City Airport – Media Centre",
-      "endpoint": "https://www.londoncityairport.com/corporate/media-centre",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "barking-dagenham-council-news",
-      "provider": "Barking and Dagenham Council – News",
-      "endpoint": "https://www.lbbd.gov.uk/news",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "lewisham-council-news",
-      "provider": "Lewisham Council – News",
-      "endpoint": "https://news.lewisham.gov.uk/",
+      "id": "lambeth-council-news",
+      "provider": "Lambeth Council – News",
+      "endpoint": "https://love.lambeth.gov.uk/",
       "message": "fetch failed"
     },
     {
-      "id": "barts-health-news",
-      "provider": "Barts Health NHS Trust – News",
-      "endpoint": "https://www.bartshealth.nhs.uk/latest-news",
-      "message": "HTTP 404"
+      "id": "wandsworth-council-news",
+      "provider": "Wandsworth Council – News",
+      "endpoint": "https://www.wandsworth.gov.uk/news/",
+      "message": "fetch failed"
     },
     {
-      "id": "imperial-healthcare-news",
-      "provider": "Imperial College Healthcare NHS Trust – News",
-      "endpoint": "https://www.imperial.nhs.uk/about-us/news",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "homerton-healthcare-news",
-      "provider": "Homerton Healthcare NHS Foundation Trust – News",
-      "endpoint": "https://www.homerton.nhs.uk/latest-news/",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "whittington-health-news",
-      "provider": "Whittington Health – News",
-      "endpoint": "https://www.whittington.nhs.uk/news/default.asp",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "moorfields-news",
-      "provider": "Moorfields Eye Hospital NHS Foundation Trust – News",
-      "endpoint": "https://www.moorfields.nhs.uk/news",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "slam-news",
-      "provider": "South London and Maudsley NHS Foundation Trust – News",
-      "endpoint": "https://slam.nhs.uk/news/",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "nhs-london-sel-news",
-      "provider": "NHS South East London – News",
-      "endpoint": "https://www.selondonics.org/latest-news/",
-      "message": "HTTP 404"
+      "id": "kensington-chelsea-newsroom",
+      "provider": "Royal Borough of Kensington and Chelsea – Newsroom",
+      "endpoint": "https://www.rbkc.gov.uk/newsroom",
+      "message": "fetch failed"
     }
   ],
   "geoLookupSnapshot": [
@@ -4439,7 +4439,7 @@
       "lng": 133.7751
     }
   ],
-  "buildWarning": null,
+  "buildWarning": "Build produced no fresh alerts; preserved previous alert set.",
   "health": {
     "expectedRefreshMinutes": 60,
     "staleAfterMinutes": 75,
