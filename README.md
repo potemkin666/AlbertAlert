@@ -1,98 +1,77 @@
 # Brialert
 
-Brialert is a terrorism monitoring web app built to be fast, blunt, and actually useful on a phone.
+[![Feed validation](https://github.com/potemkin666/Brialert/actions/workflows/ci-feed-validation.yml/badge.svg)](https://github.com/potemkin666/Brialert/actions/workflows/ci-feed-validation.yml)
+[![Update live feeds](https://github.com/potemkin666/Brialert/actions/workflows/update-live-feed.yml/badge.svg)](https://github.com/potemkin666/Brialert/actions/workflows/update-live-feed.yml)
 
-The idea is simple: too much of this stuff comes in as noise, half-signals, duplicated reporting, or articles that look urgent but are really just stale courtroom sludge wearing fresh timestamps. Brialert tries to cut through that. It pulls from trusted sources, weighs what matters, pushes likely live incidents to the top, and lets you turn that into a usable briefing block without having to fight the interface.
+Brialert is a GitHub Pages web app for fast, phone-friendly terrorism monitoring with a UK, London, and Europe bias.
 
-It is built first for iPhone Safari and home-screen use because that is where it needed to work, not because “mobile-first” sounds nice in a README.
+The product is built around one idea: the feed builder decides what an alert is, how trustworthy it is, whether it belongs in the live incident lane, and how it should be grouped. The browser then validates that payload, renders it quickly, and stays out of the classification business.
 
 ## Live site
 
-https://potemkin666.github.io/Brialert/
+[https://potemkin666.github.io/Brialert/](https://potemkin666.github.io/Brialert/)
 
 ## What it does
 
-Brialert monitors a broad UK and Europe-focused source set, with some wider international coverage where it is operationally relevant.
+- pulls from a curated source catalog focused on official, policing, transport, prosecution, resilience, and tightly relevant corroboration sources
+- ranks likely live incidents above slower context and case-stage material
+- keeps source-tier, reliability, incident-track, and queue-reason decisions upstream in the feed builder
+- provides a mobile-first live dashboard, map, watchlists, notes, and briefing modal
+- refreshes the generated feed on an hourly GitHub Actions schedule
 
-It sorts sources into rough roles:
+## Architecture
 
-- trigger
-- corroboration
-- context
-- research
+### Frontend
 
-It also keeps explicit reliability profiles so everything is not treated as morally or operationally equivalent, which is a mistake people make constantly:
+- `index.html`
+  App shell and modal layout.
+- `styles.css`
+  Site styling, mobile layout, and map presentation.
+- `app/`
+  Frontend boot, state, render, and utility modules.
+- `shared/`
+  Shared view-model, taxonomy, fusion, and feed-derivation logic used by the browser.
 
-- official_ct
-- official_general
-- official_context
-- major_media
-- general_media
-- tabloid
-- specialist_research
+### Feed pipeline
 
-The app is incident-first. That is the whole point.  
-If something looks live, serious, or fast-moving, it should not have to compete visually with slower policy or prosecution-stage material.
+- `data/sources.json`
+  Source catalog and source metadata.
+- `data/geo-lookup.json`
+  Location term lookup for map placement and geographic enrichment.
+- `scripts/build-live-feed/`
+  Feed builder modules for config, IO, parsing, alert assembly, and health metadata.
+- `scripts/build-live-feed.mjs`
+  Feed build orchestration entrypoint.
+- `live-alerts.json`
+  Generated alert payload consumed by the frontend.
 
-There are also lane filters for:
+### Validation and automation
 
-- Incidents
-- Sanctions
-- Oversight
-- Border
-- Prevention
+- `.github/workflows/ci-feed-validation.yml`
+  CI validation for feed data, source health, tests, and builder smoke path.
+- `.github/workflows/update-live-feed.yml`
+  Scheduled feed refresh workflow that rebuilds and commits `live-alerts.json`.
+- `tests/`
+  Lightweight decision-logic and feed-health regression tests.
 
-Other bits:
+## Local development
 
-- interactive map with alert markers
-- persistent local watchlist
-- persistent analyst notes
-- mobile-friendly PWA shell
+Requires Node `20.18.1` or newer.
 
-## How it works
+```bash
+npm ci
+npm run validate:feed-data
+npm run validate:source-health
+npm test
+npm run build:feeds
+```
 
-The flow is intentionally narrow:
+## Operational notes
 
-1. pull source updates on a schedule
-2. rank and filter for likely live incidents
-3. open a dense incident summary
-4. copy a briefing block for email, notes, or whatever else needs feeding
+- The browser should trust the feed payload rather than re-inferring terrorism relevance or source reliability.
+- The feed builder is designed to fail soft per source and preserve last-known-good output when possible.
+- London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.
 
-That is it.  
-It is not trying to be a bloated intel platform. It is trying to be the bit you actually reach for.
+## Status
 
-## Project structure
-
-```text
-index.html
-  app shell and modal layout
-
-styles.css
-  mobile-first styling and map presentation
-
-app.js
-  rendering, filtering, briefing generation, persistence
-
-data/sources.json
-  active source catalog
-
-data/geo-lookup.json
-  location term matching for map placement
-
-scripts/build-live-feed.mjs
-  feed build, extraction, ranking, dedupe, and normalisation
-
-live-alerts.json
-  generated alert payload consumed by the frontend
-
-.github/workflows/update-live-feed.yml
-  scheduled feed refresh workflow
-
-
-Notes
-This is a web app, not a native iOS app.
-GitHub Actions refreshes live-alerts.json on a schedule and on relevant pushes.
-data/sources.json is the source of truth for lane and source tier metadata.
-Incident alerts are split into live vs case tracks so old prosecution-stage material stops clogging the live queue.
-UK and Europe are weighted more heavily because that is the actual operational centre of gravity here.
-Albert stays.
+The repo currently deploys directly from `main` to GitHub Pages and refreshes feed data through GitHub Actions. If you are inspecting the live app and the data looks stale, check the latest `Update live feeds` workflow run first.
