@@ -26,6 +26,7 @@ import {
 } from '../shared/fusion.mjs';
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
+import { shouldRefreshSourceThisRun } from '../scripts/build-live-feed/config.mjs';
 import { renderHero, renderSupporting } from '../app/render/live.mjs';
 import { addSourceRequest } from '../app/render/notes.mjs';
 import {
@@ -624,6 +625,28 @@ test('normaliseSourcesPayload drops duplicate source IDs and keeps first occurre
   assert.equal(normalised[0].id, 'a');
   assert.equal(normalised[0].endpoint, 'https://a.example');
   assert.equal(normalised[1].id, 'b');
+});
+
+test('source refresh cadence keeps incidents hourly and rotates lower-yield lanes', () => {
+  const incidentsSource = {
+    id: 'met-police-news',
+    lane: 'incidents',
+    kind: 'html'
+  };
+  const contextSource = {
+    id: 'official-context-feed',
+    lane: 'context',
+    kind: 'html'
+  };
+  const fixedHour = new Date('2026-04-05T10:00:00.000Z');
+  const nextHour = new Date('2026-04-05T11:00:00.000Z');
+
+  assert.equal(shouldRefreshSourceThisRun(incidentsSource, fixedHour), true);
+  assert.equal(shouldRefreshSourceThisRun(incidentsSource, nextHour), true);
+  assert.notEqual(
+    shouldRefreshSourceThisRun(contextSource, fixedHour),
+    shouldRefreshSourceThisRun(contextSource, nextHour)
+  );
 });
 
 test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {

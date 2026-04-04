@@ -36,6 +36,18 @@ function validateSource(source, index) {
   if (source.quarantined != null && typeof source.quarantined !== 'boolean') {
     throw new Error(`${prefix}: "quarantined" must be a boolean when present`);
   }
+  if (source.refreshEveryHours != null) {
+    const cadence = Number(source.refreshEveryHours);
+    if (!Number.isInteger(cadence) || cadence < 1) {
+      throw new Error(`${prefix}: "refreshEveryHours" must be a positive integer when present`);
+    }
+  }
+  if (source.refreshOffset != null) {
+    const offset = Number(source.refreshOffset);
+    if (!Number.isInteger(offset) || offset < 0) {
+      throw new Error(`${prefix}: "refreshOffset" must be a non-negative integer when present`);
+    }
+  }
 }
 
 const targets = [

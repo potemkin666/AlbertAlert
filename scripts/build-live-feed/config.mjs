@@ -45,6 +45,15 @@ export const EXPECTED_REFRESH_MINUTES = 60;
 export const STALE_AFTER_MINUTES = 75;
 export const SOURCE_TIMEZONE = 'Europe/London';
 export const RETRYABLE_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504]);
+export const DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE = Object.freeze({
+  incidents: 1,
+  context: 2,
+  sanctions: 3,
+  oversight: 4,
+  border: 2,
+  prevention: 4,
+  default: 3
+});
 export const HARD_SKIP_SOURCE_IDS = new Set([
   'globalsecurity-terror-news',
   'un-ctitf-news',
@@ -63,4 +72,34 @@ export const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
 
 export function titleCase(value) {
   return clean(value).replace(/\b\w/g, (match) => match.toUpperCase());
+}
+
+function deterministicSourceHash(value) {
+  return clean(value)
+    .split('')
+    .reduce((sum, char, index) => sum + (char.charCodeAt(0) * (index + 1)), 0);
+}
+
+export function sourceRefreshEveryHours(source) {
+  const explicit = Math.floor(Number(source?.refreshEveryHours));
+  if (Number.isFinite(explicit) && explicit >= 1) return explicit;
+
+  const byLane = DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE[source?.lane] || DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE.default;
+  if (source?.lane === 'incidents') return 1;
+  if (source?.kind === 'html') return Math.max(byLane, 3);
+  return byLane;
+}
+
+export function sourceRefreshOffset(source) {
+  const cadence = sourceRefreshEveryHours(source);
+  const explicit = Math.floor(Number(source?.refreshOffset));
+  if (Number.isFinite(explicit) && explicit >= 0) return explicit % cadence;
+  return deterministicSourceHash(source?.id || source?.endpoint || source?.provider || '') % cadence;
+}
+
+export function shouldRefreshSourceThisRun(source, buildDate = new Date()) {
+  const cadence = sourceRefreshEveryHours(source);
+  if (cadence <= 1) return true;
+  const hourSlot = Math.floor(buildDate.getTime() / 3600000);
+  return hourSlot % cadence === sourceRefreshOffset(source);
 }

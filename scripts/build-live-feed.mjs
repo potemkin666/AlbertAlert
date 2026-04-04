@@ -9,6 +9,7 @@ import {
   MAX_HTML_PREFETCH_ITEMS,
   MAX_STORED_ALERTS,
   SOURCE_ITEM_LIMITS,
+  shouldRefreshSourceThisRun,
   outputPath,
   sourcePath,
   sourceRequestsPath
@@ -48,6 +49,7 @@ import {
 export { buildHealthBlock } from './build-live-feed/health.mjs';
 
 async function main() {
+  const buildDate = new Date();
   const existing = await readExisting();
   const geoLookupFallbackNote = await safeLoadGeoLookup(existing);
 
@@ -115,9 +117,11 @@ async function main() {
     }
     return true;
   });
+  const scheduledSources = eligibleSources.filter((source) => shouldRefreshSourceThisRun(source, buildDate));
+  const deferredSources = Math.max(0, eligibleSources.length - scheduledSources.length);
 
   const sourceResults = await mapWithConcurrency(
-    eligibleSources,
+    scheduledSources,
     FEED_SOURCE_CONCURRENCY,
     async (source, sourceIndex) => {
       const localErrors = [];
@@ -285,6 +289,8 @@ async function main() {
   console.log([
     'Feed build summary:',
     `eligible=${eligibleSources.length}`,
+    `scheduled=${scheduledSources.length}`,
+    `deferred=${deferredSources}`,
     `checked=${checked}`,
     `successfulWithAlerts=${successfulSources}`,
     `failed=${failedSources}`,
