@@ -20,6 +20,7 @@ export function createMapController(config) {
   let lastView = null;
 
   const LONDON_VIEW = Object.freeze({ center: [51.5074, -0.1278], zoom: 10 });
+  const MAP_POPUP_SUMMARY_MAX = 120;
   const UK_BOUNDS = Object.freeze([
     [49.8, -8.7],
     [60.95, 1.9]
@@ -222,7 +223,7 @@ export function createMapController(config) {
       <div class="map-preview-card">
         <p class="map-preview-eyebrow">${escapeHtml(alert.lane)} | ${escapeHtml(alert.location)}</p>
         <strong>${escapeHtml(alert.title)}</strong>
-        <p>${escapeHtml(summary.slice(0, 120))}${summary.length > 120 ? '...' : ''}</p>
+        <p>${escapeHtml(summary.slice(0, MAP_POPUP_SUMMARY_MAX))}${summary.length > MAP_POPUP_SUMMARY_MAX ? '...' : ''}</p>
         <div class="map-preview-meta">
           <span>${escapeHtml(alert.source)}</span>
           <span>${escapeHtml(alert.time)}</span>
