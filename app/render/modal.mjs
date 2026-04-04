@@ -15,6 +15,7 @@ const LONG_BRIEF_API_URL = 'https://brialertbackend.vercel.app/api/generate-brie
 const LONG_BRIEF_TIMEOUT_MS = 25_000;
 const LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS = 8_000;
 const LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS = 3_500;
+const WORD_BOUNDARY_MIN_RATIO = 0.7;
 
 function buildLocalLongBrief(alert) {
   const summary = cleanTextBlock(effectiveSummary(alert));
@@ -104,9 +105,9 @@ function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MA
 function truncateAtWordBoundary(value, maxChars) {
   const text = String(value || '');
   if (text.length <= maxChars) return text;
-  const candidate = text.slice(0, maxChars + 1);
+  const candidate = text.slice(0, maxChars);
   const boundary = candidate.lastIndexOf(' ');
-  if (boundary > Math.floor(maxChars * 0.7)) {
+  if (boundary > Math.floor(maxChars * WORD_BOUNDARY_MIN_RATIO)) {
     return candidate.slice(0, boundary).trim();
   }
   return text.slice(0, maxChars).trim();
