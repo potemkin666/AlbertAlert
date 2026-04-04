@@ -44,6 +44,9 @@ jobs:
       - name: Validate feed data files
         run: npm run validate:feed-data
 
+      - name: Validate London source health
+        run: npm run validate:source-health
+
       - name: Run decision-logic tests
         run: npm test
 
