@@ -1187,6 +1187,16 @@
       "comment": "UN sanctions committee press releases are presented as an HTML list; using the official listing page."
     },
     {
+      "id": "unsc-consolidated-list-rss",
+      "provider": "UN Security Council – Consolidated Sanctions List (RSS Updates)",
+      "endpoint": "https://main.un.org/securitycouncil/en/rss-updates-unsc-consolidated-list",
+      "kind": "rss",
+      "lane": "sanctions",
+      "region": "international",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": false
+    },
+    {
       "id": "unsc-counter-terrorism-committee",
       "provider": "UN Security Council – Counter‑Terrorism Committee (CTC) Updates",
       "endpoint": "https://www.un.org/securitycouncil/ctc/news",
@@ -1392,15 +1402,54 @@
       "comment": "CTC Sentinel is published as web pages; using the current issue/archive surface."
     },
     {
+      "id": "fdd-long-war-journal",
+      "provider": "Foundation for Defense of Democracies – Long War Journal (RSS)",
+      "endpoint": "https://feeds.feedburner.com/LongWarJournal",
+      "kind": "rss",
+      "lane": "context",
+      "region": "us",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
       "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) – Updates",
-      "endpoint": "https://gnet-research.org/",
-      "kind": "html",
+      "provider": "Global Network on Extremism & Technology (GNET) – Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "kind": "rss",
       "lane": "prevention",
       "region": "uk",
       "isTrustedOfficial": false,
-      "requiresKeywordMatch": false,
-      "comment": "No single RSS endpoint is prominently published; using the main updates surface."
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-radicalisation",
+      "provider": "Global Network on Extremism & Technology (GNET) – Radicalisation",
+      "endpoint": "https://gnet-research.org/tag/radicalisation/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-artificial-intelligence",
+      "provider": "Global Network on Extremism & Technology (GNET) – Artificial Intelligence",
+      "endpoint": "https://gnet-research.org/tag/artificial-intelligence/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
+    },
+    {
+      "id": "gnet-youth",
+      "provider": "Global Network on Extremism & Technology (GNET) – Youth",
+      "endpoint": "https://gnet-research.org/tag/youth/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": false
     },
     {
       "id": "icsr-kcl",
