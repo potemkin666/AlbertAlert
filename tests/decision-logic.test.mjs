@@ -8,9 +8,11 @@ import { fileURLToPath } from 'node:url';
 
 import { coerceLiveFeedPayload, deriveFeedHealthStatus, deriveView, loadLiveFeed } from '../shared/feed-controller.mjs';
 import {
+  confidenceScoreLabel,
   isLiveIncidentCandidate,
   isQuarantineCandidate,
-  normaliseAlert
+  normaliseAlert,
+  trustSignal
 } from '../shared/alert-view-model.mjs';
 import {
   inferIncidentTrack,
@@ -212,6 +214,49 @@ test('corroboration merge dedupes repeated sources and keeps newest first', () =
     { ...secondary, publishedAt: isoMinutesAgo(5) }
   );
   assert.equal(deduped.length, 2);
+});
+
+test('trust signal reports confirmed for official-backed items', () => {
+  const alert = makeAlert({
+    reliabilityProfile: 'official_ct',
+    isOfficial: true,
+    confidenceScore: 0.96,
+    publishedAt: isoMinutesAgo(20),
+    corroboratingSources: [],
+    corroborationCount: 0
+  });
+
+  assert.equal(trustSignal(alert).label, 'CONFIRMED');
+});
+
+test('trust signal reports multi-source for non-official corroborated items', () => {
+  const alert = makeAlert({
+    reliabilityProfile: 'major_media',
+    isOfficial: false,
+    confidenceScore: 0.84,
+    publishedAt: isoMinutesAgo(20),
+    corroboratingSources: [
+      {
+        source: 'Sky News',
+        sourceUrl: 'https://example.test/sky',
+        sourceTier: 'corroboration',
+        reliabilityProfile: 'major_media',
+        publishedAt: isoMinutesAgo(10)
+      }
+    ],
+    corroborationCount: 1
+  });
+
+  assert.equal(trustSignal(alert).label, 'MULTI-SOURCE');
+});
+
+test('trust signal reports unverified when confidence score is missing', () => {
+  const alert = makeAlert({
+    confidenceScore: null
+  });
+
+  assert.equal(trustSignal(alert).label, 'UNVERIFIED');
+  assert.equal(confidenceScoreLabel(alert), 'CONFIDENCE: UNAVAILABLE');
 });
 
 test('health block preserves last successful refresh when fallback output is reused', () => {

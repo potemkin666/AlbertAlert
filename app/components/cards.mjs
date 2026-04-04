@@ -1,8 +1,10 @@
-import { contextLabel, quarantineReason, severityLabel } from '../../shared/alert-view-model.mjs';
+import { confidenceScoreLabel, contextLabel, quarantineReason, severityLabel, trustSignal } from '../../shared/alert-view-model.mjs';
 import { laneLabels } from '../../shared/ui-data.mjs';
 import { escapeHtml } from '../utils/text.mjs';
 
 export function responderCardMarkup(alert, watched) {
+  const trust = trustSignal(alert);
+  const confidence = confidenceScoreLabel(alert);
   return `
     <article class="feed-card actionable" data-id="${alert.id}">
       <div class="feed-top">
@@ -13,7 +15,15 @@ export function responderCardMarkup(alert, watched) {
         </div>
       </div>
       <p>${escapeHtml(alert.summary)}</p>
-      <div class="meta-row"><span>${escapeHtml(alert.source)}</span><span>${escapeHtml(alert.status)}</span><span>${Number(alert.corroborationCount || 0)} corroborating</span></div>
+      <div class="meta-row">
+        <span class="trust-signal trust-signal-${escapeHtml(trust.key)}">${escapeHtml(trust.label)}</span>
+        <span>${escapeHtml(confidence)}</span>
+        <span>${Number(alert.corroborationCount || 0)} corroborating</span>
+      </div>
+      <div class="meta-row">
+        <span>${escapeHtml(alert.source)}</span>
+        <span>${escapeHtml(alert.status)}</span>
+      </div>
     </article>`;
 }
 

@@ -457,6 +457,40 @@ h1 {
   color: rgba(255, 255, 255, 0.68);
   font-size: 13px;
   margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.trust-signal {
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  padding: 5px 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.trust-signal-confirmed {
+  background: rgba(52, 211, 153, 0.24);
+  border-color: rgba(52, 211, 153, 0.52);
+  color: #d1fae5;
+}
+
+.trust-signal-multi-source {
+  background: rgba(59, 130, 246, 0.24);
+  border-color: rgba(59, 130, 246, 0.52);
+  color: #dbeafe;
+}
+
+.trust-signal-single-source {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: rgba(245, 158, 11, 0.5);
+  color: #fde68a;
+}
+
+.trust-signal-unverified {
+  background: rgba(239, 68, 68, 0.24);
+  border-color: rgba(239, 68, 68, 0.52);
+  color: #fecaca;
 }
 
 .feed-card + .feed-card,
