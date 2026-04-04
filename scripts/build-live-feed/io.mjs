@@ -1,6 +1,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
+  DEFAULT_MAX_RETRIES,
   DEFAULT_TIMEOUT_MS,
   RETRYABLE_STATUS_CODES,
   outputPath,
@@ -80,7 +81,7 @@ function mergedHeaders(source = null) {
 }
 
 function classifyBodyBlock(text = '') {
-  const lower = String(text || '').toLowerCase();
+  const lower = String(text).toLowerCase();
   if (!lower) return '';
   if (
     lower.includes('attention required') ||
@@ -101,7 +102,7 @@ function classifyBodyBlock(text = '') {
 export async function fetchText(url, attempt = 1, options = {}) {
   const source = options?.source || null;
   const timeoutMs = Number(source?.timeoutMs) > 0 ? Number(source.timeoutMs) : DEFAULT_TIMEOUT_MS;
-  const maxAttempts = Number(source?.maxRetries) > 0 ? Number(source.maxRetries) : 3;
+  const maxAttempts = Number(source?.maxRetries) > 0 ? Number(source.maxRetries) : DEFAULT_MAX_RETRIES;
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
@@ -165,7 +166,6 @@ export function summariseSourceError(source, error) {
   const message = error instanceof Error ? error.message : String(error);
   let category = 'unknown';
   if (/HTTP 404|HTTP 410/i.test(message)) category = 'dead-or-moved-url';
-  else if (/HTTP 301|HTTP 302|HTTP 307|HTTP 308/i.test(message)) category = 'moved-url';
   else if (/HTTP 403|HTTP 401|access denied|blocked/i.test(message)) category = 'blocked-or-auth';
   else if (/anti-bot|captcha|cloudflare|javascript and cookies/i.test(message)) category = 'anti-bot-protection';
   else if (/abort|timeout|timed out|ETIMEDOUT/i.test(message)) category = 'timeout';
