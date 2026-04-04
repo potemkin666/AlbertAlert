@@ -398,6 +398,46 @@ test('loadLiveFeed accepts empty renderable payload and clears alerts into stand
   assert.equal(state.liveSourceCount, 1);
 });
 
+test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload sourceCount is zero', async () => {
+  const state = {
+    alerts: [],
+    geoLookup: [],
+    liveFeedGeneratedAt: null,
+    liveSourceCount: 0,
+    liveFeedHealth: null,
+    liveFeedFetchError: null,
+    lastBrowserPollAt: null
+  };
+
+  const previousFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: true,
+    async json() {
+      return {
+        generatedAt: '2026-04-04T10:00:00.000Z',
+        sourceCount: 0,
+        alerts: [],
+        health: {
+          lastSuccessfulSourceCount: 118
+        }
+      };
+    }
+  });
+
+  try {
+    await loadLiveFeed(state, {
+      liveFeedUrl: 'live-alerts.json',
+      normaliseAlert,
+      onAfterLoad: () => {}
+    });
+  } finally {
+    globalThis.fetch = previousFetch;
+  }
+
+  assert.equal(state.liveSourceCount, 118);
+  assert.equal(state.liveFeedFetchError, null);
+});
+
 test('matchesKeywords uses word-boundary matching and does not match substrings', () => {
   // 'threat' must not match 'threatening'
   assert.deepEqual(matchesKeywords('he was threatening schoolchildren', terrorismKeywords), []);
