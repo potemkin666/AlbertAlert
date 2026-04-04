@@ -13,9 +13,18 @@ import {
 } from '../components/cards.mjs';
 import { escapeHtml } from '../utils/text.mjs';
 
+function displaySourceCount(state) {
+  const liveCount = Number(state.liveSourceCount);
+  if (Number.isFinite(liveCount) && liveCount > 0) return liveCount;
+  const lastSuccessfulCount = Number(state.liveFeedHealth?.lastSuccessfulSourceCount);
+  if (Number.isFinite(lastSuccessfulCount) && lastSuccessfulCount > 0) return lastSuccessfulCount;
+  return 0;
+}
+
 export function renderPriority({ state, elements, view, modalController }) {
   const alert = view.topPriority;
   if (!alert) {
+    const sourceCount = displaySourceCount(state);
     elements.priorityCard.classList.remove('context-priority');
     elements.priorityCard.innerHTML = `
       <div class="eyebrow">Live Feed Status</div>
@@ -24,7 +33,7 @@ export function renderPriority({ state, elements, view, modalController }) {
       <div class="meta-row">
         <span>${state.activeRegion === 'all' ? 'All feeds' : `${regionLabel(state.activeRegion)} feeds`}</span>
         <span>${state.activeLane === 'all' ? 'All lanes' : laneLabels[state.activeLane]}</span>
-        <span>${state.liveSourceCount ? `${state.liveSourceCount} sources checked` : 'No live feed yet'}</span>
+        <span>${sourceCount ? `${sourceCount} sources checked` : 'No live feed yet'}</span>
       </div>`;
     elements.priorityCard.onclick = null;
     return;
@@ -124,7 +133,8 @@ export function renderHero({ state, elements }) {
   const healthRefresh = state.liveFeedHealth?.lastSuccessfulRefreshTime;
   const stamp = healthRefresh ? new Date(healthRefresh) : state.liveFeedGeneratedAt;
   const hasValidStamp = stamp instanceof Date && !Number.isNaN(stamp.getTime());
+  const sourceCount = displaySourceCount(state);
   elements.heroUpdated.textContent = hasValidStamp
-    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${state.liveSourceCount || 0} sources`
+    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${sourceCount} sources`
     : 'Waiting for first live update';
 }

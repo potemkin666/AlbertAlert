@@ -490,5 +490,27 @@ test("renderHero shows requested fallback copy when live pull hasn't happened ye
 
   renderHero({ state, elements });
 
-  assert.equal(elements.heroUpdated.textContent, "Loading | it's time");
+  assert.equal(elements.heroUpdated.textContent, 'Waiting for first live update');
+});
+
+test('renderHero uses last successful source count when current source count is zero', () => {
+  const state = {
+    briefingMode: false,
+    activeRegion: 'all',
+    activeLane: 'all',
+    liveFeedGeneratedAt: new Date('2026-04-04T08:00:00.000Z'),
+    lastBrowserPollAt: null,
+    liveSourceCount: 0,
+    liveFeedHealth: {
+      lastSuccessfulSourceCount: 118
+    }
+  };
+  const elements = {
+    heroRegion: { textContent: '' },
+    heroUpdated: { textContent: '' }
+  };
+
+  renderHero({ state, elements });
+
+  assert.match(elements.heroUpdated.textContent, /\| 118 sources$/);
 });
