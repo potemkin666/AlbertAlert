@@ -1,6 +1,12 @@
 const GEOLOCATION_TIMEOUT_MS = 5000;
 const GEOLOCATION_MAX_AGE_MS = 300000;
 const LOCATION_CACHE_KEY = 'brialert.userLocationLabel.v1';
+const GEOCODE_API_URL = 'https://geocode.maps.co/reverse';
+
+function geocodeApiKey() {
+  const runtimeKey = globalThis?.BRIALERT_GEOCODE_API_KEY;
+  return typeof runtimeKey === 'string' && runtimeKey.trim() ? runtimeKey.trim() : null;
+}
 
 function titleCase(value) {
   return String(value || '')
@@ -90,9 +96,18 @@ export async function detectUserLocationLabel(nav = navigator, fetchImpl = fetch
       return fallback;
     }
 
-    const url = `https://geocode.maps.co/reverse?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}`;
-    const response = await fetchImpl(url, { headers: { Accept: 'application/json' } });
+    const key = geocodeApiKey();
+    const url = new URL(GEOCODE_API_URL);
+    url.searchParams.set('lat', String(lat));
+    url.searchParams.set('lon', String(lon));
+    if (key) url.searchParams.set('api_key', key);
+    const response = await fetchImpl(url.toString(), { headers: { Accept: 'application/json' } });
     if (!response.ok) {
+      if (response.status === 401 || response.status === 403 || response.status === 429) {
+        const fallback = fallbackLabel(nav);
+        saveCachedLocation(fallback, cache);
+        return fallback;
+      }
       const fallback = fallbackLabel(nav);
       saveCachedLocation(fallback, cache);
       return fallback;
