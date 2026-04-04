@@ -12,6 +12,7 @@ import { createModalController } from '../../shared/modal-briefing.mjs';
 import { cleanTextBlock, splitLongBriefSentences } from '../utils/text.mjs';
 
 const LONG_BRIEF_API_URL = 'https://brialertbackend.vercel.app/api/generate-brief';
+const LONG_BRIEF_TIMEOUT_MS = 15_000;
 
 function buildLocalLongBrief(alert) {
   const summary = cleanTextBlock(effectiveSummary(alert));
@@ -47,25 +48,15 @@ function buildLocalLongBrief(alert) {
 
 async function generateRemoteLongBrief(alert) {
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 15_000);
+  const timeout = setTimeout(() => controller.abort(), LONG_BRIEF_TIMEOUT_MS);
+  const payload = mapAlertToLongBriefPayload(alert);
 
   try {
     const response = await fetch(LONG_BRIEF_API_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: controller.signal,
-      body: JSON.stringify({
-        sourceName: alert.sourceName ?? alert.source ?? '',
-        headline: alert.headline ?? alert.title ?? '',
-        sourceExtract: alert.sourceExtract ?? alert.extract ?? alert.summary ?? '',
-        originalUrl: alert.originalUrl ?? alert.url ?? alert.sourceUrl ?? '',
-        timestamp: alert.timestamp ?? alert.publishedAt ?? alert.time ?? '',
-        geography: alert.geography ?? alert.location ?? '',
-        lane: alert.lane ?? alert.track ?? '',
-        confidenceLabel: alert.confidenceLabel ?? alert.confidence ?? '',
-        corroborationStatus: alert.corroborationStatus ?? '',
-        recencyText: alert.recencyText ?? ''
-      })
+      body: JSON.stringify(payload)
     });
 
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -76,6 +67,21 @@ async function generateRemoteLongBrief(alert) {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+function mapAlertToLongBriefPayload(alert) {
+  return {
+    sourceName: alert.sourceName ?? alert.source ?? '',
+    headline: alert.headline ?? alert.title ?? '',
+    sourceExtract: alert.sourceExtract ?? alert.extract ?? alert.summary ?? '',
+    originalUrl: alert.originalUrl ?? alert.url ?? alert.sourceUrl ?? '',
+    timestamp: alert.timestamp ?? alert.publishedAt ?? alert.time ?? '',
+    geography: alert.geography ?? alert.location ?? '',
+    lane: alert.lane ?? alert.track ?? '',
+    confidenceLabel: alert.confidenceLabel ?? alert.confidence ?? '',
+    corroborationStatus: alert.corroborationStatus ?? '',
+    recencyText: alert.recencyText ?? ''
+  };
 }
 
 export function createModalRuntime(elements) {
