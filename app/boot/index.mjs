@@ -62,9 +62,6 @@ function createElements() {
     watchlistSummary: document.getElementById('watchlist-summary'),
     heroRegion: document.getElementById('hero-region'),
     heroUpdated: document.getElementById('hero-updated'),
-    heroHealth: document.getElementById('hero-health'),
-    heroHealthLabel: document.getElementById('hero-health-label'),
-    heroHealthMeta: document.getElementById('hero-health-meta'),
     mapElement: document.getElementById('leaflet-map'),
     mapSummary: document.getElementById('map-summary'),
     mapLayerSummary: document.getElementById('map-layer-summary'),
@@ -76,7 +73,6 @@ function createElements() {
     filters: document.getElementById('filters'),
     laneFilters: document.getElementById('lane-filters'),
     tabbar: document.getElementById('tabbar'),
-    briefingModeToggle: document.getElementById('briefing-mode-toggle'),
     briefingModePanel: document.getElementById('briefing-mode-panel'),
     briefingModeTitle: document.getElementById('briefing-mode-title'),
     briefingModeMeta: document.getElementById('briefing-mode-meta'),
@@ -156,8 +152,7 @@ export function initialiseApp() {
 
   function applyBriefingMode() {
     syncBriefingMode(state.briefingMode, {
-      screen: elements.screen,
-      briefingModeToggle: elements.briefingModeToggle
+      screen: elements.screen
     }, {
       setActiveTab,
       closeDetailPanel: modalController.closeDetailPanel
@@ -245,13 +240,6 @@ export function initialiseApp() {
       await modalController.copyTextToButton(brief, elements.copyExpandedBrief, 'Copy Long Brief');
     });
 
-    elements.briefingModeToggle?.addEventListener('click', () => {
-      state.briefingMode = !state.briefingMode;
-      saveBoolean(BRIEFING_MODE_STORAGE_KEY, state.briefingMode);
-      applyBriefingMode();
-      renderAll();
-    });
-
     elements.briefingModeCopy?.addEventListener('click', async () => {
       const briefing = elements.briefingModeCopy.dataset.briefing || '';
       if (!briefing) return;
@@ -303,10 +291,7 @@ export function initialiseApp() {
   applyDeviceProfile();
   state.watched = loadSet(WATCHED_STORAGE_KEY);
   state.notes = loadArray(NOTES_STORAGE_KEY, defaultNotes);
-  state.briefingMode = loadBoolean(BRIEFING_MODE_STORAGE_KEY);
-  if (!elements.briefingModeToggle) {
-    state.briefingMode = false;
-  }
+  state.briefingMode = false;
 
   refreshAlbertQuote();
   applyBriefingMode();

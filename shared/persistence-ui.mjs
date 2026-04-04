@@ -63,13 +63,8 @@ export function setActiveTab(next, elements, callbacks) {
 }
 
 export function applyBriefingMode(briefingMode, elements, callbacks) {
-  const { screen, briefingModeToggle } = elements;
+  const { screen } = elements;
   screen.classList.toggle('briefing-mode', briefingMode);
-  if (briefingModeToggle) {
-    briefingModeToggle.classList.toggle('active', briefingMode);
-    briefingModeToggle.setAttribute('aria-pressed', briefingMode ? 'true' : 'false');
-    briefingModeToggle.textContent = briefingMode ? 'Briefing mode on' : 'Briefing mode off';
-  }
   if (briefingMode) {
     callbacks?.setActiveTab?.('firstalert');
     callbacks?.closeDetailPanel?.();
