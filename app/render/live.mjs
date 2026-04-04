@@ -73,7 +73,8 @@ export function renderBriefingMode({ state, elements, view, modalController }) {
 
 export function renderFeed({ state, elements, view, modalController, invalidateDerivedView, renderAll, saveSet, watchedStorageKey }) {
   const items = view.responder;
-  elements.feedList.innerHTML = items.length ? items.map((alert) => responderCardMarkup(alert, state.watched.has(alert.id))).join('') : "<p class='panel-copy'>No verified responder triggers are currently in this filter.</p>";
+  elements.responderSection?.classList.toggle('hidden', !items.length);
+  elements.feedList.innerHTML = items.length ? items.map((alert) => responderCardMarkup(alert, state.watched.has(alert.id))).join('') : '';
   elements.watchedCount.textContent = `${state.watched.size} watched`;
   elements.feedList.querySelectorAll('.feed-card').forEach((card) => {
     card.addEventListener('click', () => modalController.openDetail(state.alerts.find((item) => item.id === card.dataset.id)));

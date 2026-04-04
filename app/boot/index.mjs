@@ -49,6 +49,7 @@ import { applyDeviceProfile } from '../utils/device.mjs';
 function createElements() {
   return {
     priorityCard: document.getElementById('priority-card'),
+    responderSection: document.getElementById('responder-section'),
     screen: document.querySelector('.screen'),
     feedList: document.getElementById('feed-list'),
     contextList: document.getElementById('context-list'),
