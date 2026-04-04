@@ -121,9 +121,10 @@ export function renderHero({ state, elements }) {
       : `${regionLabel(state.activeRegion)} feeds`);
   const locationCopy = state.userLocationLabel || 'Local user';
   elements.heroRegion.textContent = `${regionCopy} | ${locationCopy}`;
-  const stamp = state.liveFeedGeneratedAt || state.lastBrowserPollAt;
-  const sourceSuffix = state.liveSourceCount ? ` | ${state.liveSourceCount} sources` : ` | it's time`;
-  elements.heroUpdated.textContent = stamp
-    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}${sourceSuffix}`
-    : `Loading${sourceSuffix}`;
+  const healthRefresh = state.liveFeedHealth?.lastSuccessfulRefreshTime;
+  const stamp = healthRefresh ? new Date(healthRefresh) : state.liveFeedGeneratedAt;
+  const hasValidStamp = stamp instanceof Date && !Number.isNaN(stamp.getTime());
+  elements.heroUpdated.textContent = hasValidStamp
+    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${state.liveSourceCount || 0} sources`
+    : 'Waiting for first live update';
 }
