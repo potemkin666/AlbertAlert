@@ -1,7 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { coerceLiveFeedPayload, deriveFeedHealthStatus, deriveView, loadLiveFeed } from '../shared/feed-controller.mjs';
@@ -21,6 +23,7 @@ import {
   mergeCorroboratingSources
 } from '../shared/fusion.mjs';
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
+import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
 import { renderHero } from '../app/render/live.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -395,6 +398,46 @@ test('loadLiveFeed accepts empty renderable payload and clears alerts into stand
   assert.equal(state.liveSourceCount, 1);
 });
 
+test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload sourceCount is zero', async () => {
+  const state = {
+    alerts: [],
+    geoLookup: [],
+    liveFeedGeneratedAt: null,
+    liveSourceCount: 0,
+    liveFeedHealth: null,
+    liveFeedFetchError: null,
+    lastBrowserPollAt: null
+  };
+
+  const previousFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: true,
+    async json() {
+      return {
+        generatedAt: '2026-04-04T10:00:00.000Z',
+        sourceCount: 0,
+        alerts: [],
+        health: {
+          lastSuccessfulSourceCount: 118
+        }
+      };
+    }
+  });
+
+  try {
+    await loadLiveFeed(state, {
+      liveFeedUrl: 'live-alerts.json',
+      normaliseAlert,
+      onAfterLoad: () => {}
+    });
+  } finally {
+    globalThis.fetch = previousFetch;
+  }
+
+  assert.equal(state.liveSourceCount, 118);
+  assert.equal(state.liveFeedFetchError, null);
+});
+
 test('matchesKeywords uses word-boundary matching and does not match substrings', () => {
   // 'threat' must not match 'threatening'
   assert.deepEqual(matchesKeywords('he was threatening schoolchildren', terrorismKeywords), []);
@@ -490,5 +533,77 @@ test("renderHero shows requested fallback copy when live pull hasn't happened ye
 
   renderHero({ state, elements });
 
-  assert.equal(elements.heroUpdated.textContent, "Loading | it's time");
+  assert.equal(elements.heroUpdated.textContent, 'Waiting for first live update');
+});
+
+test('renderHero uses last successful source count when current source count is zero', () => {
+  const state = {
+    briefingMode: false,
+    activeRegion: 'all',
+    activeLane: 'all',
+    liveFeedGeneratedAt: new Date('2026-04-04T08:00:00.000Z'),
+    lastBrowserPollAt: null,
+    liveSourceCount: 0,
+    liveFeedHealth: {
+      lastSuccessfulSourceCount: 118
+    }
+  };
+  const elements = {
+    heroRegion: { textContent: '' },
+    heroUpdated: { textContent: '' }
+  };
+
+  renderHero({ state, elements });
+
+  assert.match(elements.heroUpdated.textContent, /\| 118 sources$/);
+});
+
+test('normaliseSourcesPayload drops duplicate source IDs and keeps first occurrence', () => {
+  const payload = {
+    sources: [
+      { id: 'a', endpoint: 'https://a.example', provider: 'A' },
+      { id: 'b', endpoint: 'https://b.example', provider: 'B' },
+      { id: 'a', endpoint: 'https://a2.example', provider: 'A2' }
+    ]
+  };
+
+  const normalised = normaliseSourcesPayload(payload);
+
+  assert.equal(normalised.length, 2);
+  assert.equal(normalised[0].id, 'a');
+  assert.equal(normalised[0].endpoint, 'https://a.example');
+  assert.equal(normalised[1].id, 'b');
+});
+
+test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {
+  const tmpRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'brialert-live-feed-'));
+  const scriptsDir = path.join(tmpRoot, 'scripts');
+  fs.mkdirSync(scriptsDir, { recursive: true });
+  fs.copyFileSync(
+    path.join(__dirname, '..', 'scripts', 'validate-live-feed-output.mjs'),
+    path.join(scriptsDir, 'validate-live-feed-output.mjs')
+  );
+
+  const validPayload = {
+    generatedAt: '2026-04-04T09:00:00.000Z',
+    sourceCount: 3,
+    alerts: [],
+    health: {
+      lastSuccessfulSourceCount: 3,
+      lastAttemptedRefreshTime: '2026-04-04T09:00:00.000Z'
+    }
+  };
+  fs.writeFileSync(path.join(tmpRoot, 'live-alerts.json'), JSON.stringify(validPayload));
+  assert.doesNotThrow(() => {
+    execFileSync('node', [path.join(scriptsDir, 'validate-live-feed-output.mjs')], { cwd: tmpRoot, stdio: 'pipe' });
+  });
+
+  const invalidPayload = {
+    ...validPayload,
+    sourceCount: -1
+  };
+  fs.writeFileSync(path.join(tmpRoot, 'live-alerts.json'), JSON.stringify(invalidPayload));
+  assert.throws(() => {
+    execFileSync('node', [path.join(scriptsDir, 'validate-live-feed-output.mjs')], { cwd: tmpRoot, stdio: 'pipe' });
+  }, /sourceCount must be a non-negative number/);
 });

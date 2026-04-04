@@ -151,8 +151,12 @@ export async function loadLiveFeed(state, options) {
     const data = coerceLiveFeedPayload(await response.json());
     state.alerts = data.alerts.map((alert, index) => normaliseAlert(alert, index, state.geoLookup));
     state.liveFeedGeneratedAt = data.generatedAt ? new Date(data.generatedAt) : new Date();
-    state.liveSourceCount = data.sourceCount;
     state.liveFeedHealth = data.health;
+    const sourceCount = Number(data.sourceCount);
+    const successfulSourceCount = Number(data.health?.lastSuccessfulSourceCount);
+    state.liveSourceCount = Number.isFinite(sourceCount) && sourceCount > 0
+      ? sourceCount
+      : (Number.isFinite(successfulSourceCount) && successfulSourceCount > 0 ? successfulSourceCount : 0);
     state.liveFeedFetchError = null;
   } catch (error) {
     state.alerts = previousAlerts;

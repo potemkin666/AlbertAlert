@@ -69,8 +69,11 @@ npm run build:feeds
 ## Operational notes
 
 - The browser should trust the feed payload rather than re-inferring terrorism relevance or source reliability.
-- The feed builder is designed to fail soft per source and preserve last-known-good output when possible.
+- The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
 - London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.
+- Both CI and the hourly workflow now run `validate:live-feed-output` after feed generation to fail fast on malformed publish output.
+- The hourly publish step retries once after rebasing `origin/main` if `git push` hits a non-fast-forward race.
+- If a refresh preserves prior alerts and reports `sourceCount: 0`, the app now falls back to `health.lastSuccessfulSourceCount` so the hero source count does not stick at zero.
 
 ## Status
 

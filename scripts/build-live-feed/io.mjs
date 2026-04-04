@@ -140,7 +140,33 @@ export function summariseSourceError(source, error) {
 }
 
 export function normaliseSourcesPayload(rawSources) {
-  if (Array.isArray(rawSources)) return rawSources;
-  if (Array.isArray(rawSources?.sources)) return rawSources.sources;
-  throw new Error('Expected sources.json to contain an array or { sources: [] }.');
+  const sources = Array.isArray(rawSources)
+    ? rawSources
+    : Array.isArray(rawSources?.sources)
+      ? rawSources.sources
+      : null;
+  if (!sources) {
+    throw new Error('Expected sources.json to contain an array or { sources: [] }.');
+  }
+  const seen = new Set();
+  const duplicates = [];
+  const unique = [];
+  for (const source of sources) {
+    const id = clean(source?.id);
+    if (!id) {
+      unique.push(source);
+      continue;
+    }
+    if (seen.has(id)) {
+      duplicates.push(id);
+      continue;
+    }
+    seen.add(id);
+    unique.push(source);
+  }
+  if (duplicates.length) {
+    const uniqueDuplicates = [...new Set(duplicates)];
+    console.warn(`Skipped ${duplicates.length} duplicate source entries across ${uniqueDuplicates.length} source id(s): ${uniqueDuplicates.join(', ')}`);
+  }
+  return unique;
 }
