@@ -36,6 +36,8 @@ import {
   CONTEXT_LOAD_STEP,
   GEO_LOOKUP_URL,
   INITIAL_CONTEXT_VISIBLE,
+  MAP_INIT_FALLBACK_DELAY_MS,
+  MAP_INIT_IDLE_TIMEOUT_MS,
   INITIAL_QUARANTINE_VISIBLE,
   INITIAL_RESPONDER_VISIBLE,
   LIVE_FEED_URL,
@@ -330,9 +332,9 @@ export function initialiseApp() {
 
   applyDeviceProfile();
   if (window.requestIdleCallback) {
-    window.requestIdleCallback(() => mapController.ensureMap(), { timeout: 1500 });
+    window.requestIdleCallback(() => mapController.ensureMap(), { timeout: MAP_INIT_IDLE_TIMEOUT_MS });
   } else {
-    setTimeout(() => mapController.ensureMap(), 300);
+    setTimeout(() => mapController.ensureMap(), MAP_INIT_FALLBACK_DELAY_MS);
   }
   state.watched = loadSet(WATCHED_STORAGE_KEY);
   state.notes = loadArray(NOTES_STORAGE_KEY, defaultNotes);

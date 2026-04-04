@@ -13,6 +13,8 @@ export const INITIAL_CONTEXT_VISIBLE = 16;
 export const CONTEXT_LOAD_STEP = 16;
 export const INITIAL_QUARANTINE_VISIBLE = 12;
 export const QUARANTINE_LOAD_STEP = 12;
+export const MAP_INIT_IDLE_TIMEOUT_MS = 1500;
+export const MAP_INIT_FALLBACK_DELAY_MS = 300;
 
 export function createState(watchLayerLabels) {
   return {

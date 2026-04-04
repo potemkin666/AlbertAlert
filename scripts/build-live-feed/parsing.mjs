@@ -4,6 +4,7 @@ import {
   HTML_HYDRATION_CONCURRENCY,
   MAX_FEED_CANDIDATES_PER_SOURCE,
   MAX_HTML_CANDIDATES_PER_SOURCE,
+  MAX_HTML_PARSING_THRESHOLD,
   parser
 } from './config.mjs';
 import {
@@ -106,7 +107,7 @@ export function parseHtmlItems(source, html) {
 
   for (const selector of selectors) {
     $(selector).each((_, el) => {
-      if (candidates.length >= MAX_HTML_CANDIDATES_PER_SOURCE * 2) return false;
+      if (candidates.length >= MAX_HTML_PARSING_THRESHOLD) return false;
       const href = $(el).attr('href');
       const title = plainText($(el).text() || $(el).closest('article,li,section').find('h1,h2,h3').first().text());
       if (!href || !title || title.length < 18) return;

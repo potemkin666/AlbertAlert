@@ -24,6 +24,7 @@ export const FEED_SOURCE_CONCURRENCY = 4;
 export const HTML_HYDRATION_CONCURRENCY = 3;
 export const MAX_HTML_CANDIDATES_PER_SOURCE = 18;
 export const MAX_FEED_CANDIDATES_PER_SOURCE = 10;
+export const MAX_HTML_PARSING_THRESHOLD = MAX_HTML_CANDIDATES_PER_SOURCE * 2;
 export const MAX_HTML_PREFETCH_ITEMS = 12;
 export const MAX_FEED_PREFETCH_ITEMS = 8;
 export const SOURCE_ITEM_LIMITS = Object.freeze({
@@ -37,6 +38,7 @@ export const SOURCE_ITEM_LIMITS = Object.freeze({
   default: 3
 });
 export const MAX_STORED_ALERTS = 120;
+export const MAX_FAILING_SOURCES_TO_LOG = 10;
 export const EXPECTED_REFRESH_MINUTES = 60;
 export const STALE_AFTER_MINUTES = 75;
 export const SOURCE_TIMEZONE = 'Europe/London';

@@ -3,6 +3,7 @@ import { pathToFileURL } from 'node:url';
 import {
   FEED_SOURCE_CONCURRENCY,
   HARD_SKIP_SOURCE_IDS,
+  MAX_FAILING_SOURCES_TO_LOG,
   MAX_FEED_PREFETCH_ITEMS,
   MAX_SOURCE_ERRORS_TO_REPORT,
   MAX_HTML_PREFETCH_ITEMS,
@@ -213,7 +214,7 @@ async function main() {
   const topFailingSources = sourceStats
     .filter((stat) => stat.errors > 0)
     .sort((a, b) => b.errors - a.errors)
-    .slice(0, 10)
+    .slice(0, MAX_FAILING_SOURCES_TO_LOG)
     .map((stat) => `${stat.id}(${stat.errors})`)
     .join(', ');
   const buildWarning = [
