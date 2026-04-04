@@ -1498,6 +1498,50 @@
       "requiresKeywordMatch": true
     },
     {
+      "id": "the-sun-all",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/all/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "The Sun aggregate feed; tabloid – strict keyword and terrorism-hit thresholds apply before inclusion."
+    },
+    {
+      "id": "the-sun-homepage",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/favourite-homepage/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "The Sun curated homepage feed; tabloid – strict keyword and terrorism-hit thresholds apply before inclusion."
+    },
+    {
+      "id": "the-sun-news-english",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/news-app-english-007-news/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "The Sun English news app feed; tabloid – strict keyword and terrorism-hit thresholds apply before inclusion."
+    },
+    {
+      "id": "the-sun-all-english",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/news-app-english-001-all/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "The Sun all English app feed; tabloid – strict keyword and terrorism-hit thresholds apply before inclusion."
+    },
+    {
       "id": "telegraph-world-news",
       "provider": "The Telegraph – World News",
       "endpoint": "https://www.telegraph.co.uk/world-news/",
