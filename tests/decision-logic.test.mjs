@@ -21,6 +21,7 @@ import {
   mergeCorroboratingSources
 } from '../shared/fusion.mjs';
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
+import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
 import { renderHero } from '../app/render/live.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -513,4 +514,21 @@ test('renderHero uses last successful source count when current source count is 
   renderHero({ state, elements });
 
   assert.match(elements.heroUpdated.textContent, /\| 118 sources$/);
+});
+
+test('normaliseSourcesPayload drops duplicate source IDs and keeps first occurrence', () => {
+  const payload = {
+    sources: [
+      { id: 'a', endpoint: 'https://a.example', provider: 'A' },
+      { id: 'b', endpoint: 'https://b.example', provider: 'B' },
+      { id: 'a', endpoint: 'https://a2.example', provider: 'A2' }
+    ]
+  };
+
+  const normalised = normaliseSourcesPayload(payload);
+
+  assert.equal(normalised.length, 2);
+  assert.equal(normalised[0].id, 'a');
+  assert.equal(normalised[0].endpoint, 'https://a.example');
+  assert.equal(normalised[1].id, 'b');
 });
