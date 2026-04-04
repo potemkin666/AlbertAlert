@@ -304,7 +304,9 @@ export function initialiseApp() {
     if (!label) return;
     state.userLocationLabel = label;
     renderHero({ state, elements });
-  }).catch(() => {});
+  }).catch((error) => {
+    console.warn('Location detection skipped:', error instanceof Error ? error.message : String(error));
+  });
 
   loadInitialResources(
     state,
