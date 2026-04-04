@@ -1418,7 +1418,14 @@ h1 {
   margin-top: 12px;
 }
 
+.source-request-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 12px;
+}
+
 .note-form input,
+.source-request-form input,
 .note-form textarea {
   width: 100%;
   border: 1px solid var(--line);
@@ -1432,6 +1439,43 @@ h1 {
 .note-form textarea {
   min-height: 120px;
   resize: vertical;
+}
+
+#source-request-list {
+  display: grid;
+  gap: 12px;
+}
+
+.source-request-card {
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.source-request-card strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.source-request-card p {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.source-request-status {
+  margin-top: 12px;
+}
+
+.source-request-status.is-error {
+  color: #ffd0d0;
+}
+
+.source-request-status.is-success {
+  color: #c8f6d1;
 }
 
 .primary-button {
@@ -2152,7 +2196,7 @@ body.device-iphone {
   }
 
   .tabbar {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
   #filters {

@@ -7,6 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export const repoRoot = path.resolve(__dirname, '..', '..');
 export const sourcePath = path.join(repoRoot, 'data', 'sources.json');
+export const sourceRequestsPath = path.join(repoRoot, 'data', 'source-requests.json');
 export const geoLookupPath = path.join(repoRoot, 'data', 'geo-lookup.json');
 export const outputPath = path.join(repoRoot, 'live-alerts.json');
 

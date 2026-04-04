@@ -213,3 +213,43 @@ export function normaliseSourcesPayload(rawSources) {
   }
   return unique;
 }
+
+export function normaliseSourceRequestsPayload(rawRequests) {
+  if (rawRequests == null) return [];
+  const requests = Array.isArray(rawRequests)
+    ? rawRequests
+    : Array.isArray(rawRequests?.requests)
+      ? rawRequests.requests
+      : null;
+  if (!requests) {
+    throw new Error('Expected source-requests.json to contain an array or { requests: [] }.');
+  }
+  return normaliseSourcesPayload(requests);
+}
+
+function normalisedEndpointKey(endpoint) {
+  try {
+    const url = new URL(clean(endpoint));
+    url.hash = '';
+    return url.toString().replace(/\/$/, '');
+  } catch {
+    return clean(endpoint).replace(/\/$/, '');
+  }
+}
+
+export function mergeSourceCatalogs(baseSources, requestedSources) {
+  const merged = [];
+  const seenIds = new Set();
+  const seenEndpoints = new Set();
+
+  for (const source of [...(Array.isArray(baseSources) ? baseSources : []), ...(Array.isArray(requestedSources) ? requestedSources : [])]) {
+    const id = clean(source?.id);
+    const endpointKey = normalisedEndpointKey(source?.endpoint);
+    if ((id && seenIds.has(id)) || (endpointKey && seenEndpoints.has(endpointKey))) continue;
+    if (id) seenIds.add(id);
+    if (endpointKey) seenEndpoints.add(endpointKey);
+    merged.push(source);
+  }
+
+  return merged;
+}

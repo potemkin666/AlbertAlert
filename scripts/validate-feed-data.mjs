@@ -64,6 +64,32 @@ const targets = [
     }
   },
   {
+    label: 'source requests',
+    relativePath: 'data/source-requests.json',
+    validate(parsed) {
+      const requests = Array.isArray(parsed) ? parsed : Array.isArray(parsed?.requests) ? parsed.requests : null;
+      if (!requests) {
+        throw new Error('expected a top-level array or an object with a requests array');
+      }
+      const ids = new Set();
+      const fieldErrors = [];
+      for (let i = 0; i < requests.length; i++) {
+        try {
+          validateSource(requests[i], i);
+        } catch (error) {
+          fieldErrors.push(error instanceof Error ? error.message : String(error));
+        }
+        if (requests[i]?.id) {
+          if (ids.has(requests[i].id)) fieldErrors.push(`duplicate requested source id: ${JSON.stringify(requests[i].id)}`);
+          ids.add(requests[i].id);
+        }
+      }
+      if (fieldErrors.length) {
+        throw new Error(`${fieldErrors.length} requested source(s) failed validation:\n  ${fieldErrors.join('\n  ')}`);
+      }
+    }
+  },
+  {
     label: 'geo lookup',
     relativePath: 'data/geo-lookup.json',
     validate(parsed) {

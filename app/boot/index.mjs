@@ -20,21 +20,12 @@ import {
   setActiveTab as applyTabState
 } from '../../shared/persistence-ui.mjs';
 import { loadInitialResources, startFeedPolling } from '../feed/index.mjs';
+import { submitSourceRequest, syncSourceRequests } from '../feed/source-requests.mjs';
 import { filteredMapView, renderMapIfActive } from '../render/map.mjs';
 import { createModalRuntime } from '../render/modal.mjs';
-import {
-  renderBriefingMode,
-  renderFeed,
-  renderHero,
-  renderPriority,
-  renderSupporting
-} from '../render/live.mjs';
-import {
-  addSourceRequest,
-  renderNotes,
-  renderSourceRequests,
-  renderWatchlist
-} from '../render/notes.mjs';
+import { renderBriefingMode, renderFeed, renderHero, renderPriority, renderSupporting } from '../render/live.mjs';
+import { renderNotes, renderWatchlist } from '../render/notes.mjs';
+import { renderSourceRequests } from '../render/source-requests.mjs';
 import {
   BRIEFING_MODE_STORAGE_KEY,
   GEO_LOOKUP_URL,
@@ -46,8 +37,8 @@ import {
   NOTES_STORAGE_KEY,
   POLL_INTERVAL_MS,
   RESPONDER_LOAD_STEP,
+  SOURCE_REQUEST_API_URL,
   SOURCE_REQUESTS_STORAGE_KEY,
-  SOURCE_PULL_MINUTES,
   SUPPORTING_LOAD_STEP,
   WATCHED_STORAGE_KEY,
   WATCH_GEOGRAPHY_URL,
@@ -118,8 +109,13 @@ function createElements() {
     noteForm: document.getElementById('note-form'),
     noteTitle: document.getElementById('note-title'),
     noteBody: document.getElementById('note-body'),
-    addSourceButton: document.getElementById('add-source-button'),
-    sourceRequestsList: document.getElementById('source-requests-list')
+    sourceRequestForm: document.getElementById('source-request-form'),
+    sourceRequestUrl: document.getElementById('source-request-url'),
+    sourceRequestSubmit: document.getElementById('source-request-submit'),
+    sourceRequestStatus: document.getElementById('source-request-status'),
+    sourceRequestList: document.getElementById('source-request-list'),
+    sourceRequestCount: document.getElementById('source-request-count'),
+    sourceRequestHint: document.getElementById('source-request-hint')
   };
 }
 
@@ -268,17 +264,38 @@ export function initialiseApp() {
       renderNotes({ state, elements });
     });
 
-    elements.addSourceButton?.addEventListener('click', () => {
-      const raw = window.prompt('Paste the full website link you want to add as a source:');
-      if (raw == null) return;
-      const result = addSourceRequest(state.sourceRequests, raw);
-      if (!result.ok) {
-        window.alert(result.message);
-        return;
-      }
-      saveArray(SOURCE_REQUESTS_STORAGE_KEY, state.sourceRequests);
+    elements.sourceRequestForm?.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const url = String(elements.sourceRequestUrl?.value || '').trim();
+      if (!url) return;
+      state.sourceRequestSubmitting = true;
+      state.sourceRequestStatus = {
+        kind: 'info',
+        message: 'Validating source and queuing it for the next run...'
+      };
       renderSourceRequests({ state, elements });
-      window.alert(result.message);
+      try {
+        const regionHint = state.activeRegion === 'all' ? 'uk' : state.activeRegion;
+        const payload = await submitSourceRequest(state, {
+          apiUrl: SOURCE_REQUEST_API_URL,
+          url,
+          regionHint
+        });
+        saveArray(SOURCE_REQUESTS_STORAGE_KEY, state.sourceRequests);
+        state.sourceRequestStatus = {
+          kind: 'success',
+          message: payload?.detail || 'Source validated and queued for the next run.'
+        };
+        if (elements.sourceRequestUrl) elements.sourceRequestUrl.value = '';
+      } catch (error) {
+        state.sourceRequestStatus = {
+          kind: 'error',
+          message: error instanceof Error ? error.message : String(error)
+        };
+      } finally {
+        state.sourceRequestSubmitting = false;
+        renderSourceRequests({ state, elements });
+      }
     });
 
     elements.copyBriefing?.addEventListener('click', async () => {
@@ -393,5 +410,10 @@ export function initialiseApp() {
   startFeedPolling(state, POLL_INTERVAL_MS, LIVE_FEED_URL, normaliseAlert, () => {
     invalidateDerivedView();
     renderAll();
+  });
+
+  syncSourceRequests(state, SOURCE_REQUEST_API_URL, () => {
+    saveArray(SOURCE_REQUESTS_STORAGE_KEY, state.sourceRequests);
+    renderSourceRequests({ state, elements });
   });
 }

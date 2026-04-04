@@ -10,7 +10,8 @@ import {
   MAX_STORED_ALERTS,
   SOURCE_ITEM_LIMITS,
   outputPath,
-  sourcePath
+  sourcePath,
+  sourceRequestsPath
 } from './build-live-feed/config.mjs';
 import {
   buildAlert,
@@ -26,7 +27,9 @@ import {
   mapWithConcurrency,
   readExisting,
   readJsonFile,
+  mergeSourceCatalogs,
   normaliseSourcesPayload,
+  normaliseSourceRequestsPayload,
   sleep,
   summariseSourceError,
   fetchText
@@ -84,6 +87,17 @@ async function main() {
       return;
     }
     throw error;
+  }
+
+  try {
+    const requestedSources = normaliseSourceRequestsPayload(await readJsonFile(sourceRequestsPath));
+    if (requestedSources.length) {
+      sources = mergeSourceCatalogs(sources, requestedSources);
+      console.log(`Merged ${requestedSources.length} requested source(s) into the active source catalog.`);
+    }
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn(`Source request catalog load skipped: ${message}`);
   }
 
   const items = [];
