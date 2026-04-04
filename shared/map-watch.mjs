@@ -213,6 +213,10 @@ export function createMapController(config) {
       .slice(0, 180);
   }
 
+  function truncatedSummary(summary, max = MAP_POPUP_SUMMARY_MAX) {
+    return `${escapeHtml(summary.slice(0, max))}${summary.length > max ? '...' : ''}`;
+  }
+
   function markerPreviewTooltip(alert) {
     return `<div class="map-preview-tooltip"><strong>${escapeHtml(alert.title)}</strong><span>${escapeHtml(alert.source)} | ${escapeHtml(alert.time)}</span></div>`;
   }
@@ -223,7 +227,7 @@ export function createMapController(config) {
       <div class="map-preview-card">
         <p class="map-preview-eyebrow">${escapeHtml(alert.lane)} | ${escapeHtml(alert.location)}</p>
         <strong>${escapeHtml(alert.title)}</strong>
-        <p>${escapeHtml(summary.slice(0, MAP_POPUP_SUMMARY_MAX))}${summary.length > MAP_POPUP_SUMMARY_MAX ? '...' : ''}</p>
+        <p>${truncatedSummary(summary)}</p>
         <div class="map-preview-meta">
           <span>${escapeHtml(alert.source)}</span>
           <span>${escapeHtml(alert.time)}</span>
