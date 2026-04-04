@@ -25,12 +25,11 @@
       "id": "mi5-terrorism-news",
       "provider": "MI5 (Security Service) – Terrorism News",
       "endpoint": "https://www.mi5.gov.uk/News/News.xml",
-      "kind": "html",
+      "kind": "rss",
       "lane": "context",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "kind": "rss",
       "comment": "Replaced failing category HTML page with MI5 official news XML feed and keyword gating for terrorism-specific retention."
     },
     {
@@ -92,12 +91,11 @@
       "id": "british-transport-police-news",
       "provider": "British Transport Police – News",
       "endpoint": "https://www.btp.police.uk/news/btp/news/?output=rss",
-      "kind": "html",
+      "kind": "rss",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
-      "kind": "rss",
       "comment": "Switched to BTP RSS output endpoint to avoid brittle HTML parsing."
     },
     {
@@ -164,7 +162,8 @@
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Updated to current London Resilience page path; no dedicated RSS appears to be published."
+      "comment": "Updated to current London Resilience page path; no dedicated RSS appears to be published.",
+      "quarantined": true
     },
     {
       "id": "london-gov-rss-80603",

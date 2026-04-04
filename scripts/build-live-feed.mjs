@@ -91,6 +91,10 @@ async function main() {
   const sourceStats = [];
   const eligibleSources = sources.filter((source) => {
     if (!sourceLooksEnglish(source)) return false;
+    if (source?.quarantined) {
+      console.warn(`Skipping quarantined source: ${source.id}`);
+      return false;
+    }
     if (HARD_SKIP_SOURCE_IDS.has(source.id)) {
       console.warn(`Skipping disabled source: ${source.id}`);
       return false;
@@ -220,6 +224,16 @@ async function main() {
     .slice(0, MAX_FAILING_SOURCES_TO_LOG)
     .map((stat) => `${stat.id}(${stat.errors})`)
     .join(', ');
+  const failuresByCategory = sourceErrors.reduce((acc, err) => {
+    const category = err?.category || 'unknown';
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {});
+  const failingCategorySummary = Object.entries(failuresByCategory)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6)
+    .map(([category, count]) => `${category}:${count}`)
+    .join(', ');
   const buildWarning = [
     geoLookupFallbackNote,
     preservedAlerts ? 'Build produced no fresh alerts; preserved previous alert set.' : null
@@ -271,6 +285,9 @@ async function main() {
   ].join(' | '));
   if (topFailingSources) {
     console.log(`Top failing sources by error count: ${topFailingSources}`);
+  }
+  if (failingCategorySummary) {
+    console.log(`Failure categories: ${failingCategorySummary}`);
   }
 }
 
