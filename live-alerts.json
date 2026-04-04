@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-04T07:14:22.534Z",
-  "sourceCount": 79,
+  "generatedAt": "2026-04-04T08:44:40.430Z",
+  "sourceCount": 0,
   "alertCount": 75,
   "alerts": [
     {
@@ -3696,154 +3696,154 @@
   ],
   "sourceErrors": [
     {
+      "id": "mi5-uk-threat-level",
+      "provider": "MI5 (Security Service) – UK Threat Level",
+      "endpoint": "https://www.mi5.gov.uk/UKThreat. Level/UKThreat. Level.xml",
+      "message": "fetch failed"
+    },
+    {
       "id": "mi5-news",
       "provider": "MI5 (Security Service) – News",
       "endpoint": "https://www.mi5.gov.uk/news",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "mi5-terrorism-news",
       "provider": "MI5 (Security Service) – Terrorism News",
       "endpoint": "https://www.mi5.gov.uk/news-categories/terrorism",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "ct-policing-uk-latest-news",
+      "provider": "Counter Terrorism Policing UK – Latest News",
+      "endpoint": "https://www.counterterrorism.police.uk/latest-news/",
+      "message": "fetch failed"
     },
     {
       "id": "npsa-national-protective-security-authority",
       "provider": "National Protective Security Authority (NPSA) – Updates",
       "endpoint": "https://www.npsa.gov.uk/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "protectuk",
+      "provider": "ProtectUK (NPSA) – Protective Security Guidance",
+      "endpoint": "https://www.protectuk.police.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "met-police-news",
+      "provider": "Metropolitan Police Service – News",
+      "endpoint": "https://news.met.police.uk/news",
+      "message": "fetch failed"
     },
     {
       "id": "city-of-london-police-news",
       "provider": "City of London Police – News",
       "endpoint": "https://www.cityoflondon.police.uk/news/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "british-transport-police-news",
       "provider": "British Transport Police – News",
       "endpoint": "https://www.btp.police.uk/news/",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "tfl-press-releases",
       "provider": "Transport for London – Press Releases",
       "endpoint": "https://tfl.gov.uk/info-for/media/press-releases",
-      "message": "HTTP 403"
+      "message": "fetch failed"
+    },
+    {
+      "id": "london-fire-brigade-news",
+      "provider": "London Fire Brigade – News",
+      "endpoint": "https://www.london-fire.gov.uk/news/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "london-ambulance-news",
+      "provider": "London Ambulance Service – News",
+      "endpoint": "https://www.londonambulance.nhs.uk/news/",
+      "message": "fetch failed"
     },
     {
       "id": "mayor-of-london-press-releases",
-      "provider": "Mayor of London â€“ Press Releases",
+      "provider": "Mayor of London – Press Releases",
       "endpoint": "https://www.london.gov.uk/media-centre/mayors-press-release",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "london-assembly-press-releases",
-      "provider": "London Assembly â€“ Press Releases",
+      "provider": "London Assembly – Press Releases",
       "endpoint": "https://www.london.gov.uk/media-centre/assembly-press-release",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "london-resilience",
-      "provider": "London Resilience â€“ Updates",
+      "provider": "London Resilience – Updates",
       "endpoint": "https://www.london.gov.uk/programmes-strategies/london-resilience",
-      "message": "HTTP 403"
+      "message": "fetch failed"
     },
     {
       "id": "westminster-city-council-news",
-      "provider": "Westminster City Council â€“ News",
+      "provider": "Westminster City Council – News",
       "endpoint": "https://news.westminster.gov.uk/",
       "message": "fetch failed"
     },
     {
+      "id": "camden-council-news",
+      "provider": "Camden Council – News",
+      "endpoint": "https://news.camden.gov.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "islington-council-news",
+      "provider": "Islington Council – News",
+      "endpoint": "https://www.islington.media/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "hackney-council-news",
+      "provider": "Hackney Council – News",
+      "endpoint": "https://news.hackney.gov.uk/",
+      "message": "fetch failed"
+    },
+    {
+      "id": "newham-council-news",
+      "provider": "Newham Council – News",
+      "endpoint": "https://www.newham.gov.uk/news",
+      "message": "fetch failed"
+    },
+    {
       "id": "tower-hamlets-council-news",
-      "provider": "Tower Hamlets Council â€“ News",
+      "provider": "Tower Hamlets Council – News",
       "endpoint": "https://www.towerhamlets.gov.uk/News_events/News/News.aspx",
-      "message": "HTTP 404"
+      "message": "fetch failed"
     },
     {
       "id": "southwark-newsroom",
-      "provider": "Southwark Council â€“ Newsroom",
+      "provider": "Southwark Council – Newsroom",
       "endpoint": "https://www.southwarknewsroom.com/",
       "message": "fetch failed"
     },
     {
-      "id": "royal-greenwich-news",
-      "provider": "Royal Borough of Greenwich â€“ News",
-      "endpoint": "https://www.royalgreenwich.gov.uk/news",
-      "message": "HTTP 403"
+      "id": "lambeth-council-news",
+      "provider": "Lambeth Council – News",
+      "endpoint": "https://love.lambeth.gov.uk/",
+      "message": "fetch failed"
     },
     {
-      "id": "bromley-council-news",
-      "provider": "Bromley Council â€“ Newsroom",
-      "endpoint": "https://www.bromley.gov.uk/newsroom",
-      "message": "HTTP 404"
+      "id": "wandsworth-council-news",
+      "provider": "Wandsworth Council – News",
+      "endpoint": "https://www.wandsworth.gov.uk/news/",
+      "message": "fetch failed"
     },
     {
-      "id": "enfield-council-news",
-      "provider": "Enfield Council â€“ News and Events",
-      "endpoint": "https://www.enfield.gov.uk/news-and-events",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "london-city-airport-media-centre",
-      "provider": "London City Airport â€“ Media Centre",
-      "endpoint": "https://www.londoncityairport.com/corporate/media-centre",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "national-crime-agency-news",
-      "provider": "National Crime Agency – News",
-      "endpoint": "https://www.nationalcrimeagency.gov.uk/news",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "uk-parliament-home-affairs-committee",
-      "provider": "UK Parliament – Home Affairs Committee (News)",
-      "endpoint": "https://committees.parliament.uk/committee/83/home-affairs-committee/news/",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "uk-parliament-isc",
-      "provider": "UK Parliament – Intelligence and Security Committee (Reports & News)",
-      "endpoint": "https://isc.independent.gov.uk/",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "frontex-news-releases",
-      "provider": "Frontex – News Releases",
-      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "interpol-news-events",
-      "provider": "INTERPOL – News and Events",
-      "endpoint": "https://www.interpol.int/News-and-Events",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "fatf-news",
-      "provider": "Financial Action Task Force (FATF) – News",
-      "endpoint": "https://www.fatf-gafi.org/en/publications.html",
-      "message": "HTTP 403"
-    },
-    {
-      "id": "gctf-news",
-      "provider": "Global Counterterrorism Forum (GCTF) – News",
-      "endpoint": "https://www.thegctf.org/News/",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "nato-news-rss",
-      "provider": "NATO – News (RSS)",
-      "endpoint": "https://www.nato.int/cps/en/natohq/rss/news.rss",
-      "message": "HTTP 404"
-    },
-    {
-      "id": "doj-nsd-press-releases",
-      "provider": "U.S. Department of Justice – National Security Division Press Releases",
-      "endpoint": "https://www.justice.gov/nsd/press-releases",
-      "message": "HTTP 404"
+      "id": "kensington-chelsea-newsroom",
+      "provider": "Royal Borough of Kensington and Chelsea – Newsroom",
+      "endpoint": "https://www.rbkc.gov.uk/newsroom",
+      "message": "fetch failed"
     }
   ],
   "geoLookupSnapshot": [
@@ -4941,12 +4941,12 @@
       "lng": 133.7751
     }
   ],
-  "buildWarning": null,
+  "buildWarning": "Build produced no fresh alerts; preserved previous alert set.",
   "health": {
     "expectedRefreshMinutes": 60,
     "staleAfterMinutes": 75,
-    "lastAttemptedRefreshTime": "2026-04-04T07:14:22.534Z",
-    "usedFallback": false,
+    "lastAttemptedRefreshTime": "2026-04-04T08:44:40.430Z",
+    "usedFallback": 75,
     "lastSuccessfulRefreshTime": "2026-04-04T07:14:22.534Z",
     "lastSuccessfulRunId": "23973947759",
     "lastSuccessfulRunNumber": "162",
@@ -4954,7 +4954,7 @@
     "lastSuccessfulHeadSha": "9e4adea66b5ec94a5ccb222fec1f5c8eb827e02b",
     "lastSuccessfulEvent": "schedule",
     "lastSuccessfulSourceCount": 79,
-    "sourceErrorCount": 28,
+    "sourceErrorCount": 227,
     "hasWarnings": true
   }
 }
