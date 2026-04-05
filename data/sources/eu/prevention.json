@@ -1,17 +1,6 @@
 {
   "sources": [
     {
-      "id": "europol-ectc-news",
-      "provider": "Europol Newsroom RSS",
-      "endpoint": "https://www.europol.europa.eu/rss.xml",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "europe",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "Europol newsroom RSS feed for press releases, news and updates; used as replacement for ECTC news page."
-    },
-    {
       "id": "europol-eu-iru",
       "provider": "Europol a EU Internet Referral Unit (EU IRU)",
       "endpoint": "https://www.europol.europa.eu/about-europol/european-counter-terrorism-centre-ectc/eu-internet-referal-unit-eu-iru",
