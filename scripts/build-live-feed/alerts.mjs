@@ -510,19 +510,63 @@ export function selectStoredAlerts(items, maxStored) {
   if (!Array.isArray(items) || maxStored <= 0) return [];
   if (items.length <= maxStored) return items.slice();
 
-  const retainedIndices = new Set(
-    items
-      .map((item, index) => ({
-        index,
-        retentionScore: retentionScoreFor(item)
-      }))
-      .sort((left, right) => {
-        if (right.retentionScore !== left.retentionScore) return right.retentionScore - left.retentionScore;
-        return left.index - right.index;
-      })
-      .slice(0, maxStored)
-      .map((entry) => entry.index)
-  );
+  const ranked = items
+    .map((item, index) => ({
+      index,
+      item,
+      retentionScore: retentionScoreFor(item)
+    }))
+    .sort((left, right) => {
+      if (right.retentionScore !== left.retentionScore) return right.retentionScore - left.retentionScore;
+      return left.index - right.index;
+    });
+
+  const retainedIndices = new Set();
+  const fusedCounts = new Map();
+  const sourceUrlCounts = new Map();
+
+  function fusedKeyFor(item) {
+    return clean(item?.fusedIncidentId || item?.sourceUrl || item?.id || '');
+  }
+
+  function sourceKeyFor(item) {
+    return clean(item?.sourceUrl || item?.id || '');
+  }
+
+  function canTake(entry, maxPerFused, maxPerSource) {
+    const fusedKey = fusedKeyFor(entry.item);
+    const sourceKey = sourceKeyFor(entry.item);
+    const fusedCount = fusedKey ? (fusedCounts.get(fusedKey) || 0) : 0;
+    const sourceCount = sourceKey ? (sourceUrlCounts.get(sourceKey) || 0) : 0;
+    if (fusedKey && fusedCount >= maxPerFused) return false;
+    if (sourceKey && sourceCount >= maxPerSource) return false;
+    return true;
+  }
+
+  function take(entry) {
+    const fusedKey = fusedKeyFor(entry.item);
+    const sourceKey = sourceKeyFor(entry.item);
+    retainedIndices.add(entry.index);
+    if (fusedKey) fusedCounts.set(fusedKey, (fusedCounts.get(fusedKey) || 0) + 1);
+    if (sourceKey) sourceUrlCounts.set(sourceKey, (sourceUrlCounts.get(sourceKey) || 0) + 1);
+  }
+
+  for (const entry of ranked) {
+    if (retainedIndices.size >= maxStored) break;
+    if (canTake(entry, 1, 1)) take(entry);
+  }
+
+  for (const entry of ranked) {
+    if (retainedIndices.size >= maxStored) break;
+    if (retainedIndices.has(entry.index)) continue;
+    if (canTake(entry, 2, 1)) take(entry);
+  }
+
+  for (const entry of ranked) {
+    if (retainedIndices.size >= maxStored) break;
+    if (retainedIndices.has(entry.index)) continue;
+    if (canTake(entry, 2, 2)) take(entry);
+  }
 
   return items.filter((_, index) => retainedIndices.has(index));
 }
