@@ -74,7 +74,7 @@ export function isEnglishLanguage(value) {
 function mergedHeaders(source = null) {
   return {
     'user-agent': clean(source?.headers?.['user-agent']) || 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)',
-    accept: clean(source?.headers?.accept) || 'application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8',
+    accept: clean(source?.headers?.accept) || 'application/feed+json, application/json;q=0.95, application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8',
     'accept-language': clean(source?.headers?.['accept-language']) || 'en-GB,en;q=0.9',
     'cache-control': clean(source?.headers?.['cache-control']) || 'no-cache'
   };
