@@ -4578,6 +4578,116 @@
                         "isTrustedOfficial":  false,
                         "requiresKeywordMatch":  true,
                         "comment":  "Wiltshire emergency services news site for local incident corroboration and public reporting."
+                    },
+                    {
+                        "id":  "gwent-police-news",
+                        "provider":  "Gwent Police - News",
+                        "endpoint":  "https://www.gwent.police.uk/news/gwent/news/",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Gwent Police news page for Welsh regional incidents, arrests and operational notices."
+                    },
+                    {
+                        "id":  "north-wales-police-news",
+                        "provider":  "North Wales Police - News",
+                        "endpoint":  "https://www.northwales.police.uk/news/north-wales/news/",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "North Wales Police news page for regional incidents, coastal policing and operational reporting."
+                    },
+                    {
+                        "id":  "south-wales-police-news",
+                        "provider":  "South Wales Police - News",
+                        "endpoint":  "https://www.south-wales.police.uk/news/south-wales/news/",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "South Wales Police news page for Cardiff-area and regional incidents, arrests and appeals."
+                    },
+                    {
+                        "id":  "dutch-police-rss-index",
+                        "provider":  "Politie.nl - RSS",
+                        "endpoint":  "https://www.politie.nl/rss",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Dutch police RSS overview page for official national and regional police feed discovery."
+                    },
+                    {
+                        "id":  "dutch-police-news-no-trailing-slash",
+                        "provider":  "Politie.nl - Nieuws",
+                        "endpoint":  "https://www.politie.nl/nieuws",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Dutch police news listing variant for official policing incidents and notices."
+                    },
+                    {
+                        "id":  "paris-prefecture-police-rss-page",
+                        "provider":  "Paris Prefecture of Police - RSS",
+                        "endpoint":  "https://www.prefecturedepolice.interieur.gouv.fr/presentation/les-directions-et-services/le-cabinet-du-prefet-de-police/service-de-la-communication/abonnez-vous-aux-flux-rss",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Paris Prefecture of Police RSS subscription page for official press and public-information feed discovery."
+                    },
+                    {
+                        "id":  "paris-prefecture-police-press-releases",
+                        "provider":  "Paris Prefecture of Police - Press Releases",
+                        "endpoint":  "https://www.prefecturedepolice.interieur.gouv.fr/actualites-et-presse/communiques-de-presse/communiques-de-presse",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Paris Prefecture of Police press releases page for official public-order, terrorism and security statements."
+                    },
+                    {
+                        "id":  "austria-interior-ministry-rss-index",
+                        "provider":  "Austrian Interior Ministry - RSS Index",
+                        "endpoint":  "https://www.bmi.gv.at/rss_feed/start.aspx",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Austrian Interior Ministry RSS directory page for official feeds on policing, border security and public safety."
+                    },
+                    {
+                        "id":  "german-bka-press-releases-de",
+                        "provider":  "BKA Germany - Press Releases",
+                        "endpoint":  "https://www.bka.de/DE/AktuelleInformationen/AktuelleMeldungen/Pressemeldungen/pressemitteilungen_node.html",
+                        "kind":  "html",
+                        "lane":  "incidents",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "German Federal Criminal Police Office press releases page in German for operational and security updates."
+                    },
+                    {
+                        "id":  "bdk-rss",
+                        "provider":  "Bund Deutscher Kriminalbeamter - RSS",
+                        "endpoint":  "https://www.bdk.de/rss",
+                        "kind":  "rss",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "German detectives association RSS feed for investigative and policing commentary; treat as non-official specialist context."
                     }
                 ]
 }
