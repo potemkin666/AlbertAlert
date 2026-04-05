@@ -93,14 +93,19 @@ function resolveLongBriefApiUrls() {
     ? globalThis.BRIALERT_LONG_BRIEF_API_URLS
     : [];
   const runtimeUrl = String(globalThis?.BRIALERT_LONG_BRIEF_API_URL || '').trim();
-  return [...new Set([
+  const allCandidates = [
     ...runtimeUrls.map((value) => String(value || '').trim()).filter(Boolean),
     runtimeUrl,
     ...LONG_BRIEF_API_URLS
-  ].filter(Boolean))];
+  ].filter(Boolean);
+  return [...new Set(allCandidates.filter(isSafeAbsoluteHttpUrl))];
 }
 
 function extractRemoteBrief(responseData) {
+  // Support multiple backend payload variants to avoid false local fallback when AI output exists:
+  // - { brief } (current backend contract)
+  // - { longBrief }, { text }, { output_text }, { content }, { data: { brief } } (legacy/proxy variants)
+  // - { choices: [{ message: { content } }] } or { choices: [{ text }] } (LLM direct wrappers)
   const directBrief = String(
     responseData?.brief
     ?? responseData?.longBrief
@@ -118,6 +123,16 @@ function extractRemoteBrief(responseData) {
     ?? ''
   ).trim();
   return choiceContent;
+}
+
+function isSafeAbsoluteHttpUrl(value) {
+  try {
+    const parsed = new URL(String(value || '').trim());
+    if (!/^https?:$/.test(parsed.protocol)) return false;
+    return Boolean(parsed.hostname);
+  } catch {
+    return false;
+  }
 }
 
 function mapAlertToLongBriefPayload(alert, maxSourceExtractChars = LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS) {
