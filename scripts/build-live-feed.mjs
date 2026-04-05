@@ -10,6 +10,7 @@ import {
   AUTO_SKIP_FAILURE_THRESHOLD,
   FEED_SOURCE_CONCURRENCY,
   HARD_SKIP_SOURCE_IDS,
+  MAX_HTML_SOURCES_PER_RUN,
   MAX_FAILING_SOURCES_TO_LOG,
   MAX_FEED_PREFETCH_ITEMS,
   MAX_SOURCE_ERRORS_TO_REPORT,
@@ -18,6 +19,7 @@ import {
   SOURCE_EMPTY_COOLDOWN_HOURS,
   SOURCE_FAILURE_COOLDOWN_HOURS,
   SOURCE_ITEM_LIMITS,
+  isMachineReadableSourceKind,
   shouldRefreshSourceThisRun,
   outputPath,
   quarantinedSourcesPath,
@@ -240,6 +242,20 @@ function buildAlertChurnRows(previousAlerts, nextAlerts) {
   return rows;
 }
 
+function sourceSchedulingPriority(source) {
+  if (isMachineReadableSourceKind(source?.kind)) {
+    if (source?.lane === 'incidents') return 100;
+    if (source?.isTrustedOfficial) return 90;
+    return 80;
+  }
+
+  let score = 10;
+  if (source?.lane === 'incidents') score += 15;
+  if (source?.isTrustedOfficial) score += 10;
+  if (source?.lane === 'prevention') score += 4;
+  return score;
+}
+
 function buildQuarantinedSourceEntries(sources, sourceHealth) {
   const healthMap = sourceHealth && typeof sourceHealth === 'object' ? sourceHealth : {};
   return (Array.isArray(sources) ? sources : [])
@@ -460,10 +476,38 @@ async function main() {
     }
     return shouldRefreshSourceThisRun(source, buildDate);
   });
+  const rankedScheduledSources = scheduledSources
+    .map((source, index) => ({
+      source,
+      index,
+      priority: sourceSchedulingPriority(source)
+    }))
+    .sort((left, right) => {
+      if (right.priority !== left.priority) return right.priority - left.priority;
+      return left.index - right.index;
+    });
+  const machineReadableScheduled = rankedScheduledSources
+    .filter((entry) => isMachineReadableSourceKind(entry.source?.kind))
+    .map((entry) => entry.source);
+  const htmlScheduled = rankedScheduledSources
+    .filter((entry) => entry.source?.kind === 'html')
+    .slice(0, MAX_HTML_SOURCES_PER_RUN)
+    .map((entry) => entry.source);
+  const scheduledSourceIds = new Set([...machineReadableScheduled, ...htmlScheduled].map((source) => source.id));
+  const scheduledSourcesFinal = [...machineReadableScheduled, ...htmlScheduled];
+  const htmlDeferredForBudget = scheduledSources.filter((source) => source?.kind === 'html' && !scheduledSourceIds.has(source.id));
+  for (const source of htmlDeferredForBudget) {
+    autoDeferredSources.push({
+      id: source.id,
+      provider: source.provider,
+      reason: 'html-budget',
+      until: null
+    });
+  }
   const deferredSources = Math.max(0, eligibleSources.length - scheduledSources.length);
 
   const sourceResults = await mapWithConcurrency(
-    scheduledSources,
+    scheduledSourcesFinal,
     FEED_SOURCE_CONCURRENCY,
     async (source, sourceIndex) => {
       const localErrors = [];
@@ -697,8 +741,8 @@ async function main() {
   console.log([
     'Feed build summary:',
     `eligible=${eligibleSources.length}`,
-    `scheduled=${scheduledSources.length}`,
-    `deferred=${deferredSources}`,
+    `scheduled=${scheduledSourcesFinal.length}`,
+    `deferred=${deferredSources + htmlDeferredForBudget.length}`,
     `cooldownDeferred=${autoDeferredSources.length}`,
     `checked=${checked}`,
     `successfulWithAlerts=${successfulSources}`,

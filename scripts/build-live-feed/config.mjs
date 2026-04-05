@@ -32,6 +32,7 @@ export const MAX_FEED_CANDIDATES_PER_SOURCE = 10;
 export const MAX_HTML_PARSING_THRESHOLD = MAX_HTML_CANDIDATES_PER_SOURCE * 2;
 export const MAX_HTML_PREFETCH_ITEMS = 12;
 export const MAX_FEED_PREFETCH_ITEMS = 8;
+export const MAX_HTML_SOURCES_PER_RUN = 24;
 export const SOURCE_ITEM_LIMITS = Object.freeze({
   tabloid: 1,
   incidents: 6,
@@ -96,6 +97,10 @@ export function sourceRefreshEveryHours(source) {
   if (source?.lane === 'incidents') return 1;
   if (source?.kind === 'html') return Math.max(byLane, 3);
   return byLane;
+}
+
+export function isMachineReadableSourceKind(kind) {
+  return kind === 'rss' || kind === 'atom' || kind === 'json';
 }
 
 export function sourceRefreshOffset(source) {
