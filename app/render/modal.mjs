@@ -59,8 +59,8 @@ async function generateRemoteLongBrief(alert) {
   const payloadAttempts = [primaryPayload, fallbackPayload];
 
   const errors = [];
-  for (const apiUrl of apiUrls) {
-    for (const payload of payloadAttempts) {
+  for (const payload of payloadAttempts) {
+    for (const apiUrl of apiUrls) {
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), LONG_BRIEF_TIMEOUT_MS);
       try {
@@ -102,10 +102,11 @@ function resolveLongBriefApiUrls() {
 }
 
 function extractRemoteBrief(responseData) {
-  // Support multiple backend payload variants to avoid false local fallback when AI output exists:
-  // - { brief } (current backend contract)
-  // - { longBrief }, { text }, { output_text }, { content }, { data: { brief } } (legacy/proxy variants)
-  // - { choices: [{ message: { content } }] } or { choices: [{ text }] } (LLM direct wrappers)
+  // We intentionally support multiple response shapes because the deployed endpoint may be:
+  // - the direct Brialert API contract { brief }
+  // - a compatibility/proxy contract { longBrief } / { text } / { output_text } / { content } / { data: { brief } }
+  // - a pass-through LLM wrapper with OpenAI-style choices[].message.content or choices[].text
+  // This prevents false local fallback when Vercel is up but a different response adapter is in front.
   const directBrief = String(
     responseData?.brief
     ?? responseData?.longBrief
