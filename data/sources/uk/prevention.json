@@ -67,17 +67,6 @@
       "comment": "Devon and Cornwall Police alerts portal for local warning, prevention and community messaging."
     },
     {
-      "id": "gchq-counter-terrorism",
-      "provider": "NCSC All Feed",
-      "endpoint": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "uk",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": false,
-      "comment": "Comprehensive RSS feed from the National Cyber Security Centre (NCSC) including news, guidance and advisories; serves as accessible alternative to GCHQ Counter-Terrorism mission page."
-    },
-    {
       "id": "gnet-research",
       "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
       "endpoint": "https://gnet-research.org/feed/",

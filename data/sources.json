@@ -624,17 +624,6 @@
       "comment": "EU Commission Home Affairs news on counter-terrorism legislation, Schengen, and security union updates."
     },
     {
-      "id": "eu-home-affairs-rss",
-      "provider": "Council of the EU Justice and Home Affairs meetings",
-      "endpoint": "https://www.consilium.europa.eu/en/rss/meetings.ashx?cat=jha",
-      "kind": "rss",
-      "lane": "oversight",
-      "region": "eu",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": false,
-      "comment": "Official RSS feed of the Council of the EU for Justice and Home Affairs (JHA) meetings, providing agendas and outcomes; used as replacement for EU Home Affairs RSS feed."
-    },
-    {
       "id": "eu-olaf-news",
       "provider": "OLAF (EU Anti-Fraud Office) a News",
       "endpoint": "https://anti-fraud.ec.europa.eu/media-corner/news_en",
@@ -750,17 +739,6 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Official FRA RSS feed for rights, justice and security-related updates."
-    },
-    {
-      "id": "europol-ectc-news",
-      "provider": "Europol Newsroom RSS",
-      "endpoint": "https://www.europol.europa.eu/rss.xml",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "europe",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "Europol newsroom RSS feed for press releases, news and updates; used as replacement for ECTC news page."
     },
     {
       "id": "europol-eu-iru",
@@ -3578,17 +3556,6 @@
       "comment": "Police Scotland 'What's happening' news page listing official appeals and news; accessible replacement for the news URL that was blocked."
     },
     {
-      "id": "police-scotland-whats-happening-news",
-      "provider": "Police Scotland news",
-      "endpoint": "https://www.scotland.police.uk/what-s-happening/news/",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "uk",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": false,
-      "comment": "Police Scotland 'What's happening' news page listing official appeals and incidents; replacement for the blocked 'What's happening news' source."
-    },
-    {
       "id": "psni-latest-news",
       "provider": "Police Service of Northern Ireland - Latest News",
       "endpoint": "https://www.psni.police.uk/latest-news",
@@ -4106,17 +4073,6 @@
       "comment": "Judiciary UK announcements feed for official statements and legal system updates."
     },
     {
-      "id": "judiciary-uk-appointments-feed",
-      "provider": "Judiciary UK general feed",
-      "endpoint": "https://www.judiciary.uk/feed/",
-      "kind": "rss",
-      "lane": "oversight",
-      "region": "uk",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "General RSS feed from judiciary.uk containing news and announcements including appointments and retirements; replacement for the dedicated appointments feed."
-    },
-    {
       "id": "judiciary-uk-judgments-feed",
       "provider": "Judiciary UK - Judgments Feed",
       "endpoint": "https://www.judiciary.uk/judgments/feed/",
@@ -4147,17 +4103,6 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Judiciary UK publications feed for reports, guidance and justice oversight materials."
-    },
-    {
-      "id": "judiciary-uk-speeches-feed",
-      "provider": "Judiciary UK general feed",
-      "endpoint": "https://www.judiciary.uk/feed/",
-      "kind": "rss",
-      "lane": "oversight",
-      "region": "uk",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "General RSS feed from judiciary.uk containing news, announcements and speeches; used as accessible replacement for the dedicated speeches feed."
     },
     {
       "id": "lords-in-focus-rss",
@@ -4585,17 +4530,6 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Devon and Cornwall Police alerts portal for local warning, prevention and community messaging."
-    },
-    {
-      "id": "gchq-counter-terrorism",
-      "provider": "NCSC All Feed",
-      "endpoint": "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "uk",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": false,
-      "comment": "Comprehensive RSS feed from the National Cyber Security Centre (NCSC) including news, guidance and advisories; serves as accessible alternative to GCHQ Counter-Terrorism mission page."
     },
     {
       "id": "gnet-research",
