@@ -79,6 +79,12 @@ export const GUARDRAIL_MIN_SUCCESSFUL_SOURCES = Math.max(
     ? Math.floor(Number(process.env.BRIALERT_GUARDRAIL_MIN_SUCCESSFUL_SOURCES))
     : 8
 );
+export const TARGET_SUCCESSFUL_SOURCES_PER_RUN = Math.max(
+  1,
+  Number.isFinite(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))
+    ? Math.floor(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))
+    : 30
+);
 export const SOURCE_ITEM_LIMITS = Object.freeze({
   tabloid: 1,
   incidents: 6,
