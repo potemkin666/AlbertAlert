@@ -3412,6 +3412,72 @@
                         "isTrustedOfficial":  true,
                         "requiresKeywordMatch":  true,
                         "comment":  "Romanian Police news for arrests, organised-crime overlap and regional security incident corroboration."
+                    },
+                    {
+                        "id":  "mi5-news-rss-direct",
+                        "provider":  "MI5 - News RSS",
+                        "endpoint":  "https://www.mi5.gov.uk/news/rss.xml",
+                        "kind":  "rss",
+                        "lane":  "context",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Direct MI5 RSS endpoint for official security and terrorism-adjacent updates."
+                    },
+                    {
+                        "id":  "uk-ncsc-all-rss",
+                        "provider":  "UK NCSC - All Updates RSS",
+                        "endpoint":  "https://www.ncsc.gov.uk/api/1/services/v1/all-rss-feed.xml",
+                        "kind":  "rss",
+                        "lane":  "prevention",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Aggregate NCSC feed for cyber, resilience and hostile-state context with keyword gating."
+                    },
+                    {
+                        "id":  "ct-policing-uk-rss-feed",
+                        "provider":  "Counter Terrorism Policing UK - RSS Feed",
+                        "endpoint":  "https://www.counterterrorism.police.uk/feed/",
+                        "kind":  "rss",
+                        "lane":  "incidents",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "Direct Counter Terrorism Policing RSS feed for operational incident and investigation updates."
+                    },
+                    {
+                        "id":  "nctv-english-rss",
+                        "provider":  "NCTV Netherlands - English RSS",
+                        "endpoint":  "https://english.nctv.nl/actueel/rss.xml",
+                        "kind":  "rss",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "English NCTV RSS feed for Dutch threat posture, terrorism and national security updates."
+                    },
+                    {
+                        "id":  "ncsc-nl-rss",
+                        "provider":  "NCSC Netherlands - RSS",
+                        "endpoint":  "https://www.ncsc.nl/rss",
+                        "kind":  "rss",
+                        "lane":  "prevention",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Dutch NCSC RSS feed for cyber-threat, resilience and protective-security context."
+                    },
+                    {
+                        "id":  "eu-home-affairs-rss",
+                        "provider":  "European Commission Home Affairs - News RSS",
+                        "endpoint":  "https://home-affairs.ec.europa.eu/news/rss_en",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "EU Home Affairs RSS feed for internal security, migration and counter-terror policy updates."
                     }
                 ]
 }
