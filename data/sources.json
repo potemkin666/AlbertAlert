@@ -4688,6 +4688,160 @@
                         "isTrustedOfficial":  false,
                         "requiresKeywordMatch":  true,
                         "comment":  "German detectives association RSS feed for investigative and policing commentary; treat as non-official specialist context."
+                    },
+                    {
+                        "id":  "judiciary-uk-judgments-feed",
+                        "provider":  "Judiciary UK - Judgments Feed",
+                        "endpoint":  "https://www.judiciary.uk/judgments/feed/",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Judiciary UK judgments feed for court decisions, sentencing context and legal oversight."
+                    },
+                    {
+                        "id":  "judiciary-uk-announcements-feed",
+                        "provider":  "Judiciary UK - Announcements Feed",
+                        "endpoint":  "https://www.judiciary.uk/announcements/feed/",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Judiciary UK announcements feed for official statements and legal system updates."
+                    },
+                    {
+                        "id":  "judiciary-uk-publications-feed",
+                        "provider":  "Judiciary UK - Publications Feed",
+                        "endpoint":  "https://www.judiciary.uk/publications/feed/",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Judiciary UK publications feed for reports, guidance and justice oversight materials."
+                    },
+                    {
+                        "id":  "judiciary-uk-appointments-feed",
+                        "provider":  "Judiciary UK - Appointments and Retirements Feed",
+                        "endpoint":  "https://www.judiciary.uk/announcement-type/appointments-and-retirements/feed/",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Judiciary UK feed for appointments and retirements, useful for institutional oversight context."
+                    },
+                    {
+                        "id":  "judiciary-uk-speeches-feed",
+                        "provider":  "Judiciary UK - Speeches Feed",
+                        "endpoint":  "https://www.judiciary.uk/announcement-type/speeches/feed/",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Judiciary UK speeches feed for senior judicial commentary and policy framing."
+                    },
+                    {
+                        "id":  "scotcourts-judgments-rss",
+                        "provider":  "Scottish Courts - Judgments RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/Judgments",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts judgments RSS for published court decisions and justice oversight context."
+                    },
+                    {
+                        "id":  "scotcourts-high-court-justiciary-judgments-rss",
+                        "provider":  "Scottish Courts - High Court of Justiciary Judgments RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/Judgments/?Court=High+Court+of+Justiciary",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "High Court of Justiciary judgments RSS for serious criminal case outcomes and sentencing context."
+                    },
+                    {
+                        "id":  "scotcourts-fai-hearings-rss",
+                        "provider":  "Scottish Courts - Fatal Accident Inquiry Hearings RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/FatalAccidentInquiryHearings",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts Fatal Accident Inquiry hearings RSS for serious case and custody-related oversight context."
+                    },
+                    {
+                        "id":  "scotcourts-fai-determinations-rss",
+                        "provider":  "Scottish Courts - Fatal Accident Inquiry Determinations RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/FatalAccidentInquiryDeterminations",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts Fatal Accident Inquiry determinations RSS for legal findings and institutional accountability context."
+                    },
+                    {
+                        "id":  "scotcourts-news-articles-rss",
+                        "provider":  "Scottish Courts - News Articles RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/NewsArticles",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts news articles RSS for official justice system updates and notices."
+                    },
+                    {
+                        "id":  "scotcourts-publications-rss",
+                        "provider":  "Scottish Courts - Publications RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/Publications",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts publications RSS for official reports, guidance and court service materials."
+                    },
+                    {
+                        "id":  "scotcourts-high-court-practice-notes-rss",
+                        "provider":  "Scottish Courts - High Court of Justiciary Practice Notes RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/PracticeNotesAndDirections/?Category=High+Court+of+Justiciary",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts practice notes RSS for High Court of Justiciary procedure and criminal justice updates."
+                    },
+                    {
+                        "id":  "scotcourts-sheriff-criminal-practice-notes-rss",
+                        "provider":  "Scottish Courts - Sheriff Court Criminal Practice Notes RSS",
+                        "endpoint":  "https://api.pa.web.scotcourts.gov.uk/web/rss/PracticeNotesAndDirections/?Category=Sheriff+Court+Criminal",
+                        "kind":  "rss",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Scottish Courts practice notes RSS for Sheriff Court criminal procedure and justice administration."
+                    },
+                    {
+                        "id":  "police-ombudsman-current-investigations",
+                        "provider":  "Police Ombudsman - Current Investigations",
+                        "endpoint":  "https://www.policeombudsman.org/investigation-reports/current-investigations",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Police Ombudsman investigations page for current oversight cases involving policing conduct and accountability."
                     }
                 ]
 }
