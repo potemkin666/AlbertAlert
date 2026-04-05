@@ -156,6 +156,33 @@ export async function fetchText(url, attempt = 1, options = {}) {
   }
 }
 
+export async function fetchTextWithPlaywright(url, options = {}) {
+  const timeoutMs = Math.max(5000, Number(options?.timeoutMs || DEFAULT_TIMEOUT_MS));
+  const playwright = await import('playwright').catch(() => null);
+  if (!playwright?.chromium) {
+    throw new Error('Playwright fallback unavailable');
+  }
+  const browser = await playwright.chromium.launch({ headless: true });
+  try {
+    const context = await browser.newContext({
+      userAgent: clean(options?.source?.headers?.['user-agent']) || 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)'
+    });
+    const page = await context.newPage();
+    await page.goto(url, {
+      waitUntil: 'domcontentloaded',
+      timeout: timeoutMs
+    });
+    const html = await page.content();
+    const blockedClass = classifyBodyBlock(html);
+    if (blockedClass) {
+      throw new Error(`Blocked by ${blockedClass}`);
+    }
+    return html;
+  } finally {
+    await browser.close().catch(() => {});
+  }
+}
+
 export async function readExisting() {
   try {
     return await readJsonFile(outputPath);
@@ -170,6 +197,7 @@ export function summariseSourceError(source, error) {
   if (/HTTP 404|HTTP 410/i.test(message)) category = 'dead-or-moved-url';
   else if (/HTTP 403|HTTP 401|access denied|blocked/i.test(message)) category = 'blocked-or-auth';
   else if (/anti-bot|captcha|cloudflare|javascript and cookies/i.test(message)) category = 'anti-bot-protection';
+  else if (/HTTP \d{3}/i.test(message)) category = 'http-status-error';
   else if (/abort|timeout|timed out|ETIMEDOUT/i.test(message)) category = 'timeout';
   else if (/fetch failed|ECONNRESET|ENOTFOUND/i.test(message)) category = 'network-failure';
   else if (/no items parsed|selector/i.test(message)) category = 'brittle-selectors-or-js-rendering';

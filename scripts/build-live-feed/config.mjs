@@ -32,7 +32,53 @@ export const MAX_FEED_CANDIDATES_PER_SOURCE = 10;
 export const MAX_HTML_PARSING_THRESHOLD = MAX_HTML_CANDIDATES_PER_SOURCE * 2;
 export const MAX_HTML_PREFETCH_ITEMS = 12;
 export const MAX_FEED_PREFETCH_ITEMS = 8;
-export const MAX_HTML_SOURCES_PER_RUN = 24;
+export const MAX_HTML_SOURCES_PER_RUN = 32;
+export const CONTROL_MAX_HTML_SOURCES_PER_RUN = 24;
+export const HTML_DOMAIN_CAP_PER_RUN = 3;
+export const SCHEDULER_AB_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'candidate').toLowerCase() === 'control'
+  ? 'control'
+  : 'candidate';
+export const PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS = new Set([
+  'met-police-news',
+  'ct-policing-london',
+  ...clean(process.env.BRIALERT_PLAYWRIGHT_ALLOWLIST || '')
+    .split(',')
+    .map((value) => clean(value))
+    .filter(Boolean)
+]);
+export const PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN = Math.max(
+  0,
+  Number.isFinite(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
+    ? Math.floor(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
+    : 2
+);
+export const PLAYWRIGHT_FALLBACK_TIMEOUT_MS = Math.max(
+  5000,
+  Number.isFinite(Number(process.env.BRIALERT_PLAYWRIGHT_TIMEOUT_MS))
+    ? Math.floor(Number(process.env.BRIALERT_PLAYWRIGHT_TIMEOUT_MS))
+    : 12000
+);
+export const GUARDRAIL_MAX_RUNTIME_MS = Math.max(
+  60_000,
+  Number.isFinite(Number(process.env.BRIALERT_GUARDRAIL_MAX_RUNTIME_MS))
+    ? Math.floor(Number(process.env.BRIALERT_GUARDRAIL_MAX_RUNTIME_MS))
+    : 12 * 60_000
+);
+export const GUARDRAIL_MAX_FAILED_SOURCE_RATE = Math.max(
+  0,
+  Math.min(
+    1,
+    Number.isFinite(Number(process.env.BRIALERT_GUARDRAIL_MAX_FAILED_SOURCE_RATE))
+      ? Number(process.env.BRIALERT_GUARDRAIL_MAX_FAILED_SOURCE_RATE)
+      : 0.65
+  )
+);
+export const GUARDRAIL_MIN_SUCCESSFUL_SOURCES = Math.max(
+  1,
+  Number.isFinite(Number(process.env.BRIALERT_GUARDRAIL_MIN_SUCCESSFUL_SOURCES))
+    ? Math.floor(Number(process.env.BRIALERT_GUARDRAIL_MIN_SUCCESSFUL_SOURCES))
+    : 8
+);
 export const SOURCE_ITEM_LIMITS = Object.freeze({
   tabloid: 1,
   incidents: 6,
@@ -87,6 +133,10 @@ function deterministicSourceHash(value) {
   return clean(value)
     .split('')
     .reduce((sum, char, index) => sum + (char.charCodeAt(0) * (index + 1)), 0);
+}
+
+export function sourceDeterministicHash(value) {
+  return deterministicSourceHash(value);
 }
 
 export function sourceRefreshEveryHours(source) {
