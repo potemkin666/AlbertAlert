@@ -1,8 +1,12 @@
 import { chromium } from 'playwright';
 import { clean, plainText } from '../../shared/taxonomy.mjs';
 import {
+  DEFAULT_PLAYWRIGHT_PAGE_SETTLE_MS,
   DEFAULT_PLAYWRIGHT_TIMEOUT_MS,
-  MAX_HTML_CANDIDATES_PER_SOURCE
+  MAX_HTML_CANDIDATES_PER_SOURCE,
+  MAX_PLAYWRIGHT_ITEM_SUMMARY_CHARS,
+  MAX_PLAYWRIGHT_RAW_CANDIDATES,
+  PLAYWRIGHT_SCRAPER_USER_AGENT
 } from './config.mjs';
 import { absoluteUrl } from './io.mjs';
 
@@ -11,7 +15,7 @@ function collectCandidateFromElement(endpoint, element) {
   const title = plainText(element?.title || element?.text || '');
   if (!href || !title || title.length < 18) return null;
 
-  const summary = plainText(element?.summary || element?.containerText || '').slice(0, 420);
+  const summary = plainText(element?.summary || element?.containerText || '').slice(0, MAX_PLAYWRIGHT_ITEM_SUMMARY_CHARS);
   const published = clean(element?.published || '');
   return {
     title,
@@ -21,16 +25,16 @@ function collectCandidateFromElement(endpoint, element) {
   };
 }
 
-export async function scrapePlaywrightHtmlItems(source) {
+export async function scrapePlaywrightHtmlItems(source, browser = null) {
   const configuredTimeoutMs = Number(source?.timeoutMs);
   const timeoutMs = configuredTimeoutMs > 0 ? configuredTimeoutMs : DEFAULT_PLAYWRIGHT_TIMEOUT_MS;
   const endpoint = clean(source?.endpoint);
   if (!endpoint) return [];
 
-  const browser = await chromium.launch({ headless: true });
+  const localBrowser = browser || await chromium.launch({ headless: true });
   try {
-    const context = await browser.newContext({
-      userAgent: clean(source?.headers?.['user-agent']) || 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    const context = await localBrowser.newContext({
+      userAgent: clean(source?.headers?.['user-agent']) || PLAYWRIGHT_SCRAPER_USER_AGENT,
       viewport: { width: 1366, height: 900 },
       locale: 'en-GB'
     });
@@ -39,9 +43,9 @@ export async function scrapePlaywrightHtmlItems(source) {
       waitUntil: 'domcontentloaded',
       timeout: timeoutMs
     });
-    await page.waitForTimeout(1200);
+    await page.waitForTimeout(DEFAULT_PLAYWRIGHT_PAGE_SETTLE_MS);
 
-    const rawCandidates = await page.evaluate((selectors) => {
+    const rawCandidates = await page.evaluate(({ selectors, maxRawCandidates }) => {
       const unique = new Set();
       const result = [];
       for (const selector of selectors) {
@@ -61,13 +65,14 @@ export async function scrapePlaywrightHtmlItems(source) {
           if (unique.has(key)) continue;
           unique.add(key);
           result.push({ href, text, containerText, published });
-          if (result.length >= 60) return result;
+          if (result.length >= maxRawCandidates) return result;
         }
       }
       return result;
-    }, Array.isArray(source?.selectors) && source.selectors.length
-      ? source.selectors
-      : [
+    }, {
+      selectors: Array.isArray(source?.selectors) && source.selectors.length
+        ? source.selectors
+        : [
           'article a[href]',
           '[class*="article"] a[href]',
           '[class*="story"] a[href]',
@@ -76,7 +81,9 @@ export async function scrapePlaywrightHtmlItems(source) {
           'h2 a[href]',
           'h3 a[href]',
           'a[href]'
-        ]);
+        ],
+      maxRawCandidates: MAX_PLAYWRIGHT_RAW_CANDIDATES
+    });
 
     const candidates = [];
     for (const raw of rawCandidates) {
@@ -89,6 +96,6 @@ export async function scrapePlaywrightHtmlItems(source) {
     await context.close();
     return candidates;
   } finally {
-    await browser.close();
+    if (!browser) await localBrowser.close();
   }
 }

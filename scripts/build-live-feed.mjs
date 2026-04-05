@@ -4,6 +4,7 @@ import path from 'node:path';
 import { execFile as execFileCallback } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { promisify } from 'node:util';
+import { chromium } from 'playwright';
 import {
   AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD,
   AUTO_SKIP_EMPTY_THRESHOLD,
@@ -497,8 +498,8 @@ async function main() {
     .filter((entry) => entry.source?.kind === 'html')
     .slice(0, MAX_HTML_SOURCES_PER_RUN)
     .map((entry) => entry.source);
-  const playwrightEnabled = clean(process.env[PLAYWRIGHT_FEATURE_FLAG]).toLowerCase() === '1'
-    || clean(process.env[PLAYWRIGHT_FEATURE_FLAG]).toLowerCase() === 'true';
+  const playwrightFlag = clean(process.env[PLAYWRIGHT_FEATURE_FLAG]).toLowerCase();
+  const playwrightEnabled = playwrightFlag === '1' || playwrightFlag === 'true';
   const playwrightScheduled = playwrightEnabled
     ? rankedScheduledSources
       .filter((entry) => entry.source?.kind === 'playwright_html')
@@ -514,13 +515,25 @@ async function main() {
     autoDeferredSources.push({
       id: source.id,
       provider: source.provider,
-      reason: source?.kind === 'playwright_html' ? 'playwright-budget' : 'html-budget',
+      reason: 'html-budget',
       until: null
     });
   }
+  if (playwrightEnabled) {
+    const playwrightDeferredForBudget = scheduledSources.filter((source) =>
+      source?.kind === 'playwright_html' && !scheduledSourceIds.has(source.id)
+    );
+    for (const source of playwrightDeferredForBudget) {
+      autoDeferredSources.push({
+        id: source.id,
+        provider: source.provider,
+        reason: 'playwright-budget',
+        until: null
+      });
+    }
+  }
   if (!playwrightEnabled) {
     for (const source of scheduledSources.filter((entry) => entry?.kind === 'playwright_html')) {
-      if (scheduledSourceIds.has(source.id)) continue;
       autoDeferredSources.push({
         id: source.id,
         provider: source.provider,
@@ -531,6 +544,9 @@ async function main() {
   }
   const deferredSources = Math.max(0, eligibleSources.length - scheduledSources.length);
 
+  const sharedPlaywrightBrowser = playwrightScheduled.length
+    ? await chromium.launch({ headless: true })
+    : null;
   const sourceResults = await mapWithConcurrency(
     scheduledSourcesFinal,
     FEED_SOURCE_CONCURRENCY,
@@ -550,7 +566,7 @@ async function main() {
         let mode = 'fetch';
         if (source.kind === 'playwright_html') {
           mode = 'playwright';
-          parsed = await scrapePlaywrightHtmlItems(source);
+          parsed = await scrapePlaywrightHtmlItems(source, sharedPlaywrightBrowser);
         } else {
           const body = await fetchText(source.endpoint, 1, { source });
           parsed = source.kind === 'rss' || source.kind === 'atom' || source.kind === 'json'
@@ -640,6 +656,9 @@ async function main() {
       }
     }
   );
+  if (sharedPlaywrightBrowser) {
+    await sharedPlaywrightBrowser.close();
+  }
 
   let checked = 0;
   for (const result of sourceResults) {
