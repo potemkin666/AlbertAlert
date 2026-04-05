@@ -4303,6 +4303,149 @@
                         "isTrustedOfficial":  true,
                         "requiresKeywordMatch":  true,
                         "comment":  "Police Scotland news page variant for incidents, appeals and operational updates."
+                    },
+                    {
+                        "id":  "europol-newsroom-html",
+                        "provider":  "Europol - Newsroom",
+                        "endpoint":  "https://www.europol.europa.eu/media-press/newsroom",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Europol newsroom page variant for press releases, operational updates and EU policing statements."
+                    },
+                    {
+                        "id":  "europol-tesat-report",
+                        "provider":  "Europol - TESAT Report",
+                        "endpoint":  "https://www.europol.europa.eu/publications-events/main-reports/tesat-report",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "Europol Terrorism Situation and Trend Report page for structured EU terrorism assessment and annual trend context."
+                    },
+                    {
+                        "id":  "eurojust-press-news-html",
+                        "provider":  "Eurojust - Press Releases and News",
+                        "endpoint":  "https://www.eurojust.europa.eu/media-and-events/press-releases-and-news",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Eurojust press and news page for prosecutions, judicial cooperation and terrorism-case updates."
+                    },
+                    {
+                        "id":  "eurojust-rss-feeds-page",
+                        "provider":  "Eurojust - RSS Feeds",
+                        "endpoint":  "https://www.eurojust.europa.eu/rss-feeds",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Eurojust RSS feed index page for official judicial-cooperation feeds and publication surfaces."
+                    },
+                    {
+                        "id":  "eulisa-news-events",
+                        "provider":  "eu-LISA - News and Events",
+                        "endpoint":  "https://www.eulisa.europa.eu/news-and-events",
+                        "kind":  "html",
+                        "lane":  "border",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "eu-LISA news and events page for EU large-scale justice, migration and border IT systems context."
+                    },
+                    {
+                        "id":  "eu-commission-counter-terrorism-measures-2026",
+                        "provider":  "European Commission - Counter Terrorism Measures 2026",
+                        "endpoint":  "https://commission.europa.eu/news-and-media/news/commission-proposes-new-measures-prevent-and-counter-terrorism-2026-02-26_en",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "Specific European Commission announcement on new EU measures to prevent and counter terrorism."
+                    },
+                    {
+                        "id":  "eu-commission-home-affairs-topic",
+                        "provider":  "European Commission - Home Affairs",
+                        "endpoint":  "https://commission.europa.eu/topics/home-affairs_en",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "European Commission Home Affairs topic page for migration, internal security and terrorism-policy context."
+                    },
+                    {
+                        "id":  "eu-commission-presscorner-home",
+                        "provider":  "European Commission - Press Corner",
+                        "endpoint":  "https://ec.europa.eu/commission/presscorner/home/en",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "European Commission Press Corner home for official releases, statements and security-related announcements."
+                    },
+                    {
+                        "id":  "eu-council-fight-against-terrorism",
+                        "provider":  "Council of the EU - Fight Against Terrorism",
+                        "endpoint":  "https://www.consilium.europa.eu/en/policies/fight-against-terrorism/",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "Council of the EU policy page covering the EU fight against terrorism."
+                    },
+                    {
+                        "id":  "eu-council-terrorism-sanctions",
+                        "provider":  "Council of the EU - Sanctions Against Terrorism",
+                        "endpoint":  "https://www.consilium.europa.eu/en/policies/sanctions-against-terrorism/",
+                        "kind":  "html",
+                        "lane":  "sanctions",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "Council of the EU policy page for sanctions against terrorism and terrorist entities."
+                    },
+                    {
+                        "id":  "eu-council-press-releases-html",
+                        "provider":  "Council of the EU - Press Releases",
+                        "endpoint":  "https://www.consilium.europa.eu/en/press/press-releases/",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Council of the EU press releases page for official announcements, JHA outcomes and sanctions statements."
+                    },
+                    {
+                        "id":  "eu-council-rss-index",
+                        "provider":  "Council of the EU - RSS Index",
+                        "endpoint":  "https://www.consilium.europa.eu/en/about-site/rss/",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Council of the EU RSS index page for official feed discovery and source maintenance."
+                    },
+                    {
+                        "id":  "enisa-rss-transition-page",
+                        "provider":  "ENISA - RSS Feeds Transition Notice",
+                        "endpoint":  "https://www.enisa.europa.eu/rss-feeds-discontinued-new-subscription-mechanism-coming-soon",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "ENISA notice page documenting RSS feed changes and subscription transition."
                     }
                 ]
 }
