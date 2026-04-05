@@ -336,7 +336,7 @@ async function main() {
       try {
         await sleep(sourceIndex * 60);
         const body = await fetchText(source.endpoint, 1, { source });
-        const parsed = source.kind === 'rss' || source.kind === 'atom'
+        const parsed = source.kind === 'rss' || source.kind === 'atom' || source.kind === 'json'
           ? parseFeedItems(source, body)
           : parseHtmlItems(source, body);
         if (!parsed.length) {
