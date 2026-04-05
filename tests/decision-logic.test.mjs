@@ -31,6 +31,8 @@ import {
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
 import {
+  CONTROL_MAX_HTML_SOURCES_PER_RUN,
+  MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
   sourceRefreshEveryHours,
   sourceRefreshOffset
@@ -317,7 +319,7 @@ test('health block carries source cooldown metadata for low-yield sources', () =
     generatedAt: '2026-04-05T09:00:00.000Z',
     checked: 18,
     sourceErrors: [],
-    buildWarning: 'Deferred 2 low-yield source(s) on health cooldown.',
+    buildWarning: 'Deferred 1 low-yield source(s) on health cooldown. | Deferred 2 source(s) due to run budget or disabled Playwright fallback.',
     successfulRefresh: true,
     usedFallback: false,
     autoDeferredSources: [
@@ -325,6 +327,18 @@ test('health block carries source cooldown metadata for low-yield sources', () =
         id: 'weak-context-source',
         reason: 'empty-cooldown',
         until: '2026-04-06T09:00:00.000Z'
+      }
+    ],
+    operationalDeferredSources: [
+      {
+        id: 'budgeted-html-source',
+        reason: 'html-budget',
+        until: null
+      },
+      {
+        id: 'playwright-source',
+        reason: 'playwright-disabled',
+        until: null
       }
     ],
     sourceHealth: {
@@ -338,7 +352,27 @@ test('health block carries source cooldown metadata for low-yield sources', () =
 
   assert.equal(health.autoDeferredSourceCount, 1);
   assert.equal(health.autoDeferredSources[0].id, 'weak-context-source');
+  assert.equal(health.operationalDeferredSourceCount, 2);
+  assert.equal(health.operationalDeferredSources[0].id, 'budgeted-html-source');
   assert.equal(health.sourceHealth['weak-context-source'].autoSkipReason, 'empty-cooldown');
+});
+
+test('health block stores extra scheduler metrics when provided', () => {
+  const health = buildHealthBlock({
+    generatedAt: '2026-04-05T09:00:00.000Z',
+    checked: 12,
+    sourceErrors: [],
+    buildWarning: null,
+    successfulRefresh: true,
+    usedFallback: false,
+    extraMetrics: {
+      schedulerMode: 'candidate',
+      coverage: { eligible: 100, checked: 12 }
+    }
+  });
+
+  assert.equal(health.extraMetrics.schedulerMode, 'candidate');
+  assert.equal(health.extraMetrics.coverage.checked, 12);
 });
 
 test('feed health status flags stale fallback data honestly', () => {
@@ -607,7 +641,7 @@ test('sources catalog passes structural and per-field validation', () => {
   assert.ok(Array.isArray(sources), 'sources should be an array');
   assert.ok(sources.length > 0, 'sources array should not be empty');
 
-  const VALID_KINDS = new Set(['rss', 'atom', 'json', 'html']);
+  const VALID_KINDS = new Set(['rss', 'atom', 'json', 'html', 'playwright_html']);
   const VALID_LANES = new Set(['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention']);
   const VALID_REGIONS = new Set(['uk', 'europe', 'london', 'eu', 'international', 'us']);
   const ids = new Set();
@@ -787,6 +821,14 @@ test('source refresh cadence keeps incidents hourly and rotates lower-yield lane
 
   assert.equal(shouldRefreshSourceThisRun(contextSource, refreshHour), true);
   assert.equal(shouldRefreshSourceThisRun(contextSource, nonRefreshHour), false);
+});
+
+test('html source run cap is increased for candidate scheduler mode', () => {
+  assert.equal(MAX_HTML_SOURCES_PER_RUN, 32);
+});
+
+test('html source run cap keeps control scheduler budget at legacy value', () => {
+  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 24);
 });
 
 test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {

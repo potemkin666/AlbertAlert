@@ -8,18 +8,28 @@ import {
   AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD,
   AUTO_SKIP_EMPTY_THRESHOLD,
   AUTO_SKIP_FAILURE_THRESHOLD,
+  CONTROL_MAX_HTML_SOURCES_PER_RUN,
   FEED_SOURCE_CONCURRENCY,
+  GUARDRAIL_MAX_FAILED_SOURCE_RATE,
+  GUARDRAIL_MAX_RUNTIME_MS,
+  GUARDRAIL_MIN_SUCCESSFUL_SOURCES,
   HARD_SKIP_SOURCE_IDS,
+  HTML_DOMAIN_CAP_PER_RUN,
   MAX_HTML_SOURCES_PER_RUN,
   MAX_FAILING_SOURCES_TO_LOG,
   MAX_FEED_PREFETCH_ITEMS,
   MAX_SOURCE_ERRORS_TO_REPORT,
   MAX_HTML_PREFETCH_ITEMS,
   MAX_STORED_ALERTS,
+  PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS,
+  PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN,
+  PLAYWRIGHT_FALLBACK_TIMEOUT_MS,
+  SCHEDULER_MODE,
   SOURCE_EMPTY_COOLDOWN_HOURS,
   SOURCE_FAILURE_COOLDOWN_HOURS,
   SOURCE_ITEM_LIMITS,
   isMachineReadableSourceKind,
+  sourceDeterministicHash,
   shouldRefreshSourceThisRun,
   outputPath,
   quarantinedSourcesPath,
@@ -48,7 +58,8 @@ import {
   normaliseSourceRequestsPayload,
   sleep,
   summariseSourceError,
-  fetchText
+  fetchText,
+  fetchTextWithPlaywright
 } from './build-live-feed/io.mjs';
 import {
   enrichHtmlItems,
@@ -256,24 +267,116 @@ function sourceSchedulingPriority(source) {
   return score;
 }
 
-function stableHash(value) {
-  return clean(value)
-    .split('')
-    .reduce((sum, char, index) => sum + (char.charCodeAt(0) * (index + 1)), 0);
+function schedulingTier(source) {
+  const priority = sourceSchedulingPriority(source);
+  if (priority >= 90) return 'high';
+  if (priority >= 25) return 'medium';
+  return 'low';
 }
 
-function rotateHtmlSchedule(entries, buildDate) {
-  if (!Array.isArray(entries) || entries.length <= 1) return Array.isArray(entries) ? entries : [];
-  const hourSlot = Math.floor(buildDate.getTime() / 3600000);
-  const weekSlot = Math.floor(hourSlot / 168);
-  return [...entries].sort((left, right) => {
-    const leftSeed = stableHash(`${left?.source?.id || ''}:${weekSlot}`);
-    const rightSeed = stableHash(`${right?.source?.id || ''}:${weekSlot}`);
-    const leftScore = (leftSeed + hourSlot) % entries.length;
-    const rightScore = (rightSeed + hourSlot) % entries.length;
-    if (leftScore !== rightScore) return leftScore - rightScore;
-    return (left?.index || 0) - (right?.index || 0);
-  });
+function sourceDomain(source) {
+  try {
+    return new URL(source?.endpoint || '').hostname.toLowerCase();
+  } catch {
+    return '';
+  }
+}
+
+function selectHtmlSourcesForRun(rankedHtmlEntries, buildDate, maxSources) {
+  const safeEntries = Array.isArray(rankedHtmlEntries) ? rankedHtmlEntries : [];
+  const runSeed = Math.floor(buildDate.getTime() / 3600000);
+  const ROTATION_WEIGHT_BUCKETS = 7;
+  const runCap = Math.max(0, Number(maxSources || 0));
+  const domainUse = new Map();
+  const domainCappedSourceIds = new Set();
+  const selected = [];
+
+  const high = [];
+  const medium = [];
+  const low = [];
+  for (const entry of safeEntries) {
+    const tier = schedulingTier(entry?.source);
+    if (tier === 'high') high.push(entry);
+    else if (tier === 'medium') medium.push(entry);
+    else low.push(entry);
+  }
+
+  const rotateTier = (entries, weighted = false) => {
+    const sorted = [...entries].sort((left, right) => {
+      const leftSource = left?.source || {};
+      const rightSource = right?.source || {};
+      const leftWeight = weighted
+        ? sourceDeterministicHash(`${leftSource.id || leftSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
+        : 0;
+      const rightWeight = weighted
+        ? sourceDeterministicHash(`${rightSource.id || rightSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
+        : 0;
+      if (rightWeight !== leftWeight) return rightWeight - leftWeight;
+      return left.index - right.index;
+    });
+    if (!sorted.length) return [];
+    const offset = runSeed % sorted.length;
+    return [...sorted.slice(offset), ...sorted.slice(0, offset)];
+  };
+
+  const ordered = [
+    ...rotateTier(high, false),
+    ...rotateTier(medium, false),
+    ...rotateTier(low, true)
+  ];
+
+  for (const entry of ordered) {
+    if (selected.length >= runCap) break;
+    const source = entry?.source;
+    if (!source) continue;
+    const domain = sourceDomain(source);
+    const currentDomainCount = domain ? (domainUse.get(domain) || 0) : 0;
+    if (domain && currentDomainCount >= HTML_DOMAIN_CAP_PER_RUN) {
+      if (source?.id) domainCappedSourceIds.add(source.id);
+      continue;
+    }
+    selected.push(source);
+    if (domain) domainUse.set(domain, currentDomainCount + 1);
+  }
+
+  return {
+    selected,
+    domainUsage: Object.fromEntries(domainUse.entries()),
+    domainCappedSourceIds
+  };
+}
+
+function freshnessMinutes(entry, nowMs) {
+  const lastSuccessfulMs = parseIsoMs(entry?.lastSuccessfulAt);
+  if (!lastSuccessfulMs) return null;
+  return Math.max(0, Math.round((nowMs - lastSuccessfulMs) / 60000));
+}
+
+function buildFetchError(message, category) {
+  const error = new Error(message);
+  error.__brialertCategory = category;
+  return error;
+}
+
+function classifyFetchFailure(summary) {
+  const category = clean(summary?.category || '').toLowerCase();
+  if (category === 'anti-bot-protection') return 'bot-block';
+  if (category === 'blocked-or-auth') return 'bot-block';
+  if (category === 'timeout') return 'timeout';
+  if (category === 'brittle-selectors-or-js-rendering') return 'parser-error';
+  if (category === 'dead-or-moved-url') return 'http-error';
+  if (category === 'http-status-error') return 'http-error';
+  if (category === 'network-failure') return 'network-error';
+  return 'unknown';
+}
+
+function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
+  if (!source || source.kind !== 'html') return false;
+  if (!PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS.has(source.id)) return false;
+  if (!summary) return false;
+  if ((playwrightBudget?.attempts || 0) >= (playwrightBudget?.maxAttempts || 0)) return false;
+  const reason = classifyFetchFailure(summary);
+  return reason === 'bot-block';
 }
 
 function buildQuarantinedSourceEntries(sources, sourceHealth) {
@@ -413,6 +516,7 @@ async function syncBuilderSQLite(snapshot) {
 }
 
 async function main() {
+  const runStartedAtMs = Date.now();
   const buildDate = new Date();
   const existing = await readExisting();
   const geoLookupFallbackNote = await safeLoadGeoLookup(existing);
@@ -509,28 +613,24 @@ async function main() {
   const machineReadableScheduled = rankedScheduledSources
     .filter((entry) => isMachineReadableSourceKind(entry.source?.kind))
     .map((entry) => entry.source);
-  const htmlPrioritySources = rankedScheduledSources.filter((entry) =>
-    entry.source?.kind === 'html' &&
-    (entry.source?.lane === 'incidents' || entry.source?.isTrustedOfficial)
-  );
-  const htmlRotatingPool = rotateHtmlSchedule(
-    rankedScheduledSources.filter((entry) =>
-      entry.source?.kind === 'html' &&
-      !htmlPrioritySources.some((priorityEntry) => priorityEntry.source?.id === entry.source?.id)
-    ),
-    buildDate
-  );
-  const htmlScheduled = [...htmlPrioritySources, ...htmlRotatingPool]
-    .slice(0, MAX_HTML_SOURCES_PER_RUN)
-    .map((entry) => entry.source);
+  const htmlRankedEntries = rankedScheduledSources.filter((entry) => entry.source?.kind === 'html');
+  const htmlBudget = SCHEDULER_MODE === 'control' ? CONTROL_MAX_HTML_SOURCES_PER_RUN : MAX_HTML_SOURCES_PER_RUN;
+  const htmlSelection = selectHtmlSourcesForRun(htmlRankedEntries, buildDate, htmlBudget);
+  const htmlScheduled = htmlSelection.selected;
+  const playwrightBudget = {
+    attempts: 0,
+    successes: 0,
+    maxAttempts: PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN
+  };
   const scheduledSourceIds = new Set([...machineReadableScheduled, ...htmlScheduled].map((source) => source.id));
   const scheduledSourcesFinal = [...machineReadableScheduled, ...htmlScheduled];
   const htmlDeferredForBudget = scheduledSources.filter((source) => source?.kind === 'html' && !scheduledSourceIds.has(source.id));
   for (const source of htmlDeferredForBudget) {
+    const reason = htmlSelection.domainCappedSourceIds.has(source.id) ? 'domain-cap' : 'html-budget';
     autoDeferredSources.push({
       id: source.id,
       provider: source.provider,
-      reason: 'html-budget',
+      reason,
       until: null
     });
   }
@@ -542,6 +642,14 @@ async function main() {
     async (source, sourceIndex) => {
       const localErrors = [];
       const builtAlerts = [];
+      const failureReasonCounts = {
+        timeout: 0,
+        'bot-block': 0,
+        'parser-error': 0,
+        'http-error': 0,
+        'network-error': 0,
+        unknown: 0
+      };
       const discardReasons = {
         parseNoItems: 0,
         droppedByFilter: 0,
@@ -551,13 +659,36 @@ async function main() {
 
       try {
         await sleep(sourceIndex * 60);
-        const body = await fetchText(source.endpoint, 1, { source });
+        let body;
+        let usedPlaywrightFallback = false;
+        try {
+          body = await fetchText(source.endpoint, 1, { source });
+        } catch (error) {
+          const summary = summariseSourceError(source, error);
+          const reason = classifyFetchFailure(summary);
+          failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
+          if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
+            playwrightBudget.attempts += 1;
+            body = await fetchTextWithPlaywright(source.endpoint, {
+              source,
+              timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS
+            });
+            usedPlaywrightFallback = true;
+            playwrightBudget.successes += 1;
+          } else {
+            throw error;
+          }
+        }
         const parsed = source.kind === 'rss' || source.kind === 'atom' || source.kind === 'json'
           ? parseFeedItems(source, body)
           : parseHtmlItems(source, body);
         if (!parsed.length) {
           discardReasons.parseNoItems += 1;
-          localErrors.push(summariseSourceError(source, new Error('No items parsed from source endpoint')));
+          const parseError = buildFetchError('No items parsed from source endpoint', 'brittle-selectors-or-js-rendering');
+          const parseSummary = summariseSourceError(source, parseError);
+          localErrors.push(parseSummary);
+          const reason = classifyFetchFailure(parseSummary);
+          failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
         }
         const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
         const preLimited = parsed.slice(0, preLimit);
@@ -606,12 +737,16 @@ async function main() {
             errors: localErrors.length,
             lastErrorCategory: localErrors[0]?.category || null,
             lastErrorMessage: localErrors[0]?.message || null,
+            usedPlaywrightFallback,
+            failureReasonCounts,
             discardReasons
           }
         };
       } catch (error) {
         const summary = summariseSourceError(source, error);
         localErrors.push(summary);
+        const reason = classifyFetchFailure(summary);
+        failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
         console.error(`Source failed: ${summary.id} [${source.kind}/${source.lane}] - ${summary.message}`);
         return {
           checked: 0,
@@ -630,6 +765,8 @@ async function main() {
             errors: localErrors.length,
             lastErrorCategory: localErrors[0]?.category || null,
             lastErrorMessage: localErrors[0]?.message || null,
+            usedPlaywrightFallback: false,
+            failureReasonCounts,
             discardReasons
           }
         };
@@ -672,10 +809,19 @@ async function main() {
     .slice(0, 6)
     .map(([category, count]) => `${category}:${count}`)
     .join(', ');
+  const runDurationMs = Date.now() - runStartedAtMs;
+  const failedRate = scheduledSourcesFinal.length
+    ? failedSources / scheduledSourcesFinal.length
+    : 0;
+  const guardrailViolations = [];
+  if (runDurationMs > GUARDRAIL_MAX_RUNTIME_MS) guardrailViolations.push('runtime-exceeded');
+  if (failedRate > GUARDRAIL_MAX_FAILED_SOURCE_RATE) guardrailViolations.push('failure-rate-exceeded');
+  if (successfulSources < GUARDRAIL_MIN_SUCCESSFUL_SOURCES) guardrailViolations.push('successful-source-floor-breached');
   const buildWarning = [
     geoLookupFallbackNote,
     autoDeferredSources.length ? `Deferred ${autoDeferredSources.length} low-yield source(s) on health cooldown.` : null,
-    preservedAlerts ? 'Build produced no fresh alerts; preserved previous alert set.' : null
+    preservedAlerts ? 'Build produced no fresh alerts; preserved previous alert set.' : null,
+    guardrailViolations.length ? `Guardrails breached: ${guardrailViolations.join(', ')}` : null
   ].filter(Boolean).join(' | ') || null;
   const generatedAt = new Date().toISOString();
   const nextSourceHealth = {};
@@ -717,6 +863,44 @@ async function main() {
     nextSourceHealth[source.id] = nextSourceHealthEntry(source, stat, priorEntry, generatedAt);
   }
 
+  const failureReasons = sourceStats.reduce((acc, stat) => {
+    const reasonCounts = stat?.failureReasonCounts || {};
+    for (const [reason, count] of Object.entries(reasonCounts)) {
+      if (!Number.isFinite(Number(count)) || Number(count) <= 0) continue;
+      acc[reason] = (acc[reason] || 0) + Number(count);
+    }
+    return acc;
+  }, {});
+  const nowMs = Date.now();
+  const sourceById = new Map(eligibleSources.map((source) => [source.id, source]));
+  const freshnessByTier = Object.entries(nextSourceHealth).reduce((acc, [sourceId, entry]) => {
+    const source = sourceById.get(sourceId) || entry;
+    const tier = schedulingTier(source);
+    const minutes = freshnessMinutes(entry, nowMs);
+    if (minutes === null) return acc;
+    if (!acc[tier]) acc[tier] = [];
+    acc[tier].push(minutes);
+    return acc;
+  }, {});
+  const freshnessSlaByTier = Object.fromEntries(
+    Object.entries(freshnessByTier).map(([tier, values]) => {
+      const sorted = [...values].sort((a, b) => a - b);
+      const p95Index = Math.min(sorted.length - 1, Math.floor(sorted.length * 0.95));
+      return [tier, {
+        count: sorted.length,
+        avgMinutes: Math.round(sorted.reduce((sum, value) => sum + value, 0) / Math.max(sorted.length, 1)),
+        p95Minutes: sorted[p95Index]
+      }];
+    })
+  );
+  const coverage = {
+    eligible: eligibleSources.length,
+    scheduled: scheduledSourcesFinal.length,
+    checked,
+    eligibleCheckedRate: eligibleSources.length ? Number((checked / eligibleSources.length).toFixed(3)) : 0,
+    scheduledCheckedRate: scheduledSourcesFinal.length ? Number((checked / scheduledSourcesFinal.length).toFixed(3)) : 0
+  };
+
   const payload = {
     generatedAt,
     sourceCount: checked,
@@ -725,6 +909,30 @@ async function main() {
     sourceErrors: sourceErrors.slice(0, MAX_SOURCE_ERRORS_TO_REPORT),
     geoLookupSnapshot: geoLookupSnapshot(),
     buildWarning,
+    runMetrics: {
+      schedulerMode: SCHEDULER_MODE,
+      htmlBudget,
+      htmlDomainCapPerRun: HTML_DOMAIN_CAP_PER_RUN,
+      htmlDomainUsage: htmlSelection.domainUsage,
+      coverage,
+      freshnessSlaByTier,
+      failureReasons,
+      runDurationMs,
+      playwrightFallback: {
+        attempts: playwrightBudget.attempts,
+        successes: playwrightBudget.successes,
+        maxAttempts: playwrightBudget.maxAttempts,
+        timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS
+      },
+      guardrails: {
+        maxRuntimeMs: GUARDRAIL_MAX_RUNTIME_MS,
+        maxFailedSourceRate: GUARDRAIL_MAX_FAILED_SOURCE_RATE,
+        minSuccessfulSources: GUARDRAIL_MIN_SUCCESSFUL_SOURCES,
+        failedSourceRate: Number(failedRate.toFixed(3)),
+        successfulSources,
+        violations: guardrailViolations
+      }
+    },
     health: buildHealthBlock({
       generatedAt,
       checked,
@@ -734,7 +942,18 @@ async function main() {
       successfulRefresh: !preservedAlerts,
       usedFallback: preservedAlerts || Boolean(geoLookupFallbackNote),
       sourceHealth: nextSourceHealth,
-      autoDeferredSources
+      autoDeferredSources,
+      extraMetrics: {
+        schedulerMode: SCHEDULER_MODE,
+        coverage,
+        freshnessSlaByTier,
+        failureReasons,
+        playwrightFallback: {
+          attempts: playwrightBudget.attempts,
+          successes: playwrightBudget.successes
+        },
+        guardrailViolations
+      }
     })
   };
   const sqliteSnapshot = {
@@ -793,6 +1012,7 @@ async function main() {
   if (failingCategorySummary) {
     console.log(`Failure categories: ${failingCategorySummary}`);
   }
+  console.log(`Scheduler mode=${SCHEDULER_MODE} | htmlBudget=${htmlBudget} | coverage=${coverage.checked}/${coverage.eligible} | playwrightFallback=${playwrightBudget.successes}/${playwrightBudget.attempts} | guardrailViolations=${guardrailViolations.length}`);
 }
 
 const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
