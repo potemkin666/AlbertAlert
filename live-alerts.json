@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-05T10:26:56.048Z",
+  "generatedAt": "2026-04-05T10:38:33.331Z",
   "sourceCount": 60,
   "alertCount": 23,
   "alerts": [
@@ -233,7 +233,7 @@
       "isOfficial": true,
       "priorityScore": 2.8,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-09T10:25:24.598Z",
+      "freshUntil": "2026-04-09T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -280,7 +280,7 @@
       "isOfficial": true,
       "priorityScore": 2.8,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-09T10:25:24.598Z",
+      "freshUntil": "2026-04-09T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -326,7 +326,7 @@
       "isOfficial": true,
       "priorityScore": 2.2,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-09T10:25:24.598Z",
+      "freshUntil": "2026-04-09T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -372,7 +372,7 @@
       "isOfficial": true,
       "priorityScore": 2.2,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-09T10:25:24.598Z",
+      "freshUntil": "2026-04-09T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -418,7 +418,7 @@
       "isOfficial": true,
       "priorityScore": 2.2,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -462,7 +462,7 @@
       "isOfficial": true,
       "priorityScore": 1.6,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -506,7 +506,7 @@
       "isOfficial": true,
       "priorityScore": 1.6,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -550,7 +550,7 @@
       "isOfficial": true,
       "priorityScore": 1.6,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -594,7 +594,7 @@
       "isOfficial": true,
       "priorityScore": 1.6,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -638,7 +638,7 @@
       "isOfficial": true,
       "priorityScore": 1.6,
       "freshnessBucket": 1,
-      "freshUntil": "2026-04-13T10:25:24.598Z",
+      "freshUntil": "2026-04-13T10:36:30.651Z",
       "needsHumanReview": false,
       "isTerrorRelevant": true,
       "corroboratingSources": [],
@@ -2389,14 +2389,14 @@
   "health": {
     "expectedRefreshMinutes": 60,
     "staleAfterMinutes": 75,
-    "lastAttemptedRefreshTime": "2026-04-05T10:26:56.048Z",
+    "lastAttemptedRefreshTime": "2026-04-05T10:38:33.331Z",
     "usedFallback": false,
-    "lastSuccessfulRefreshTime": "2026-04-05T10:26:56.048Z",
-    "lastSuccessfulRunId": "23999592626",
-    "lastSuccessfulRunNumber": "185",
+    "lastSuccessfulRefreshTime": "2026-04-05T10:38:33.331Z",
+    "lastSuccessfulRunId": "23999764109",
+    "lastSuccessfulRunNumber": "186",
     "lastSuccessfulRunAttempt": "1",
-    "lastSuccessfulHeadSha": "fb8e5d72dc74b72c245aa35ee236403074f228d9",
-    "lastSuccessfulEvent": "workflow_dispatch",
+    "lastSuccessfulHeadSha": "c26dcb8fb0982446fa0360741a3b4a8896d7cc0a",
+    "lastSuccessfulEvent": "schedule",
     "lastSuccessfulSourceCount": 60,
     "sourceErrorCount": 24,
     "hasWarnings": true,
@@ -2604,21 +2604,21 @@
         "provider": "MI5 (Security Service) a Terrorism News",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 403",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -2642,7 +2642,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "npsa-national-protective-security-authority": {
         "provider": "National Protective Security Authority (NPSA) a Updates",
@@ -2688,15 +2688,15 @@
         "provider": "Metropolitan Police Service a News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 3,
-        "successfulRuns": 6,
+        "successfulRuns": 7,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -2726,7 +2726,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "british-transport-police-news": {
         "provider": "British Transport Police a News",
@@ -2747,27 +2747,27 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "tfl-press-releases": {
         "provider": "Transport for London a Press Releases",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 403",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -2844,17 +2844,17 @@
         "provider": "Greater London Authority a RSS Feed 80603",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -2936,21 +2936,21 @@
         "provider": "Westminster City Council a News",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -2985,7 +2985,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "hackney-council-news": {
         "provider": "Hackney Council a News",
@@ -3006,7 +3006,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "newham-council-news": {
         "provider": "Newham Council a News",
@@ -3023,21 +3023,21 @@
         "provider": "Tower Hamlets Council a News",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -3046,21 +3046,21 @@
         "provider": "Southwark Council a Newsroom",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "network-failure",
         "lastErrorMessage": "fetch failed",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -3134,7 +3134,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "brent-council-news": {
         "provider": "Brent Council a News",
@@ -3155,7 +3155,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "hounslow-council-news": {
         "provider": "Hounslow Council a News",
@@ -3198,27 +3198,27 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "bromley-council-news": {
         "provider": "Bromley Council a Newsroom",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -3242,7 +3242,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "redbridge-council-news": {
         "provider": "Redbridge Council a News",
@@ -3302,7 +3302,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "waltham-forest-council-news": {
         "provider": "Waltham Forest Council a News",
@@ -3429,7 +3429,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "barking-dagenham-council-news": {
         "provider": "Barking and Dagenham Council a News",
@@ -3450,7 +3450,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "haringey-council-news": {
         "provider": "Haringey Council a News",
@@ -3522,7 +3522,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "barts-health-news": {
         "provider": "Barts Health NHS Trust a News",
@@ -3560,7 +3560,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "kings-college-hospital-news": {
         "provider": "King's College Hospital NHS Foundation Trust a News",
@@ -3598,7 +3598,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "uclh-news": {
         "provider": "University College London Hospitals a News",
@@ -3664,7 +3664,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "homerton-healthcare-news": {
         "provider": "Homerton Healthcare NHS Foundation Trust a News",
@@ -3685,7 +3685,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "north-middlesex-news": {
         "provider": "North Middlesex University Hospital a News",
@@ -3751,7 +3751,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "royal-brompton-harefield-news": {
         "provider": "Royal Brompton and Harefield Hospitals a News",
@@ -3800,7 +3800,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "slam-news": {
         "provider": "South London and Maudsley NHS Foundation Trust a News",
@@ -3849,7 +3849,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "nelft-news": {
         "provider": "North East London NHS Foundation Trust a News",
@@ -3909,7 +3909,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "nhs-london-nwl-news": {
         "provider": "NHS North West London a News",
@@ -3991,7 +3991,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "uk-home-office": {
         "provider": "UK Home Office a Announcements and Publications",
@@ -4166,17 +4166,17 @@
         "provider": "National Cyber Security Centre (UK) a Threat Reports",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -4212,15 +4212,15 @@
         "provider": "Office of Financial Sanctions Implementation (OFSI) a Blog",
         "lane": "sanctions",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 1,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -4252,15 +4252,15 @@
         "provider": "Europol a Newsroom (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 4,
-        "successfulRuns": 3,
+        "successfulRuns": 4,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -4378,15 +4378,15 @@
         "provider": "Council of the European Union a Justice & Home Affairs Meetings (RSS)",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 1,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -4412,15 +4412,15 @@
         "provider": "European Parliament a LIBE Committee (RSS)",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 1,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -4435,17 +4435,17 @@
         "provider": "European Parliament a SEDE Committee (RSS)",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -4490,7 +4490,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-cellar-rss-atom": {
         "provider": "Publications Office of the European Union (CELLAR) a RSS/Atom Feeds",
@@ -4511,7 +4511,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "unsc-1267-press-releases": {
         "provider": "UN Security Council a ISIL/DaaTMesh & AlaQaida Sanctions Committee Press Releases",
@@ -4611,7 +4611,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "interpol-notices": {
         "provider": "INTERPOL a Notices",
@@ -4662,21 +4662,21 @@
         "provider": "NATO a News (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -4696,21 +4696,21 @@
         "provider": "FBI a National Press Releases (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -4780,7 +4780,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "us-treasury-ofac-press-releases": {
         "provider": "U.S. Treasury (OFAC) a Press Releases",
@@ -4835,7 +4835,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "doj-nsd-press-releases": {
         "provider": "U.S. Department of Justice a National Security Division Press Releases",
@@ -4993,17 +4993,17 @@
         "provider": "Global Network on Extremism & Technology (GNET) a Youth",
         "lane": "prevention",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5016,15 +5016,15 @@
         "provider": "Global Network on Extremism & Technology (GNET) a Updates (RSS)",
         "lane": "prevention",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 4,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -5056,15 +5056,15 @@
         "provider": "Global Network on Extremism & Technology (GNET) a Artificial Intelligence (RSS)",
         "lane": "prevention",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 2,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -5079,17 +5079,17 @@
         "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
         "lane": "prevention",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5140,7 +5140,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "icsr-kcl": {
         "provider": "International Centre for the Study of Radicalisation (ICSR) a Updates",
@@ -5212,7 +5212,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "rand-terrorism-topic": {
         "provider": "RAND a Terrorism Topic Updates",
@@ -5233,23 +5233,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "bbc-news-uk": {
         "provider": "BBC News a UK",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5262,17 +5262,17 @@
         "provider": "BBC News a World",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5285,17 +5285,17 @@
         "provider": "BBC News a Front Page (Legacy RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5354,17 +5354,17 @@
         "provider": "BBC News a World (Legacy RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5392,27 +5392,27 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "ap-top-news": {
         "provider": "Associated Press a Top News",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 401",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -5467,21 +5467,21 @@
         "provider": "The Sun",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -5513,21 +5513,21 @@
         "provider": "The Sun",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -5551,7 +5551,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "financial-times-world": {
         "provider": "Financial Times a World",
@@ -5625,21 +5625,21 @@
         "provider": "Lawfare a Blog (National Security Law & CT Policy)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 403",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -5648,17 +5648,17 @@
         "provider": "War on the Rocks a National Security & CT Analysis",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5671,21 +5671,21 @@
         "provider": "Just Security a Law, Rights & National Security",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "Blocked by blocked access page",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -5717,17 +5717,17 @@
         "provider": "Police Service of Northern Ireland a News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5740,17 +5740,17 @@
         "provider": "Police Scotland a News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 4,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": "2026-04-05T09:42:02.315Z",
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5778,23 +5778,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "west-yorkshire-police-news": {
         "provider": "West Yorkshire Police a News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -5822,7 +5822,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "thames-valley-police-news": {
         "provider": "Thames Valley Police a News",
@@ -5843,7 +5843,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "south-yorkshire-police-news": {
         "provider": "South Yorkshire Police a News",
@@ -5864,7 +5864,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "merseyside-police-news": {
         "provider": "Merseyside Police a News",
@@ -5885,7 +5885,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "kent-police-news": {
         "provider": "Kent Police a News",
@@ -5906,7 +5906,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "essex-police-news": {
         "provider": "Essex Police a News",
@@ -6101,7 +6101,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "chathamhouse-whatsnew": {
         "provider": "Chatham House a What's New (RSS)",
@@ -6153,17 +6153,17 @@
         "provider": "Chatham House a International Security Programme (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -6176,17 +6176,17 @@
         "provider": "Chatham House a News Releases (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -6199,16 +6199,16 @@
         "provider": "NCTV (Netherlands) a English News",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 2,
-        "consecutiveFailures": 2,
+        "failedRuns": 3,
+        "consecutiveFailures": 3,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
@@ -6296,16 +6296,16 @@
         "provider": "PET (Denmark) a English News",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 2,
-        "consecutiveFailures": 2,
+        "failedRuns": 3,
+        "consecutiveFailures": 3,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
@@ -6336,16 +6336,16 @@
         "provider": "SUPO (Finland) a English Publications",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 2,
-        "consecutiveFailures": 2,
+        "failedRuns": 3,
+        "consecutiveFailures": 3,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
@@ -6376,16 +6376,16 @@
         "provider": "Radicalisation Awareness Network (RAN) a Publications",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 2,
-        "consecutiveFailures": 2,
+        "failedRuns": 3,
+        "consecutiveFailures": 3,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "network-failure",
         "lastErrorMessage": "fetch failed",
@@ -6520,7 +6520,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-home-affairs-news": {
         "provider": "European Commission a Home Affairs News",
@@ -6543,17 +6543,17 @@
         "provider": "Avon & Somerset Police a News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -6581,7 +6581,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "lancashire-constabulary-news": {
         "provider": "Lancashire Constabulary a News",
@@ -6602,7 +6602,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "durham-constabulary-news": {
         "provider": "Durham Constabulary a News",
@@ -6623,7 +6623,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "hampshire-police-news": {
         "provider": "Hampshire & Isle of Wight Constabulary a News",
@@ -6644,7 +6644,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "hertfordshire-police-news": {
         "provider": "Hertfordshire Constabulary a News",
@@ -6665,7 +6665,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "nottinghamshire-police-news": {
         "provider": "Nottinghamshire Police a News",
@@ -6686,7 +6686,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "surrey-police-news": {
         "provider": "Surrey Police a News",
@@ -6707,7 +6707,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "sussex-police-news": {
         "provider": "Sussex Police a News",
@@ -6728,7 +6728,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "staffordshire-police-news": {
         "provider": "Staffordshire Police a News",
@@ -6749,7 +6749,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "gov-uk-mod-atom": {
         "provider": "Ministry of Defence a GOV.UK Atom Feed",
@@ -6920,7 +6920,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "uk-parliament-foreign-affairs-committee": {
         "provider": "UK Parliament a Foreign Affairs Select Committee",
@@ -6943,21 +6943,21 @@
         "provider": "Chatham House a Research & Commentary (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 403",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -6981,7 +6981,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "vox-pol-publications": {
         "provider": "VOX-Pol Network a Publications",
@@ -7002,7 +7002,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "counter-extremism-project-news": {
         "provider": "Counter Extremism Project a News",
@@ -7023,7 +7023,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "tony-blair-institute-news": {
         "provider": "Tony Blair Institute for Global Change a Publications",
@@ -7078,7 +7078,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "crisis-group-europe": {
         "provider": "International Crisis Group a Europe (RSS)",
@@ -7141,17 +7141,17 @@
         "provider": "Al Jazeera English a Top Stories (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -7164,17 +7164,17 @@
         "provider": "Sky News UK a Top Stories (RSS)",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 3,
+        "consecutiveEmptyRuns": 4,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -7339,7 +7339,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-ct-coordinator": {
         "provider": "EU Counter-Terrorism Coordinator a Council of the EU",
@@ -7360,7 +7360,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "enisa-news": {
         "provider": "ENISA (EU Cybersecurity Agency) a News",
@@ -7381,7 +7381,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-eppo-news": {
         "provider": "European Public Prosecutor's Office a Press Releases",
@@ -7453,7 +7453,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "unodc-news": {
         "provider": "UNODC (UN Office on Drugs and Crime) a Press Releases",
@@ -7525,7 +7525,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "leicestershire-police-news": {
         "provider": "Leicestershire Police - News",
@@ -7546,7 +7546,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "derbyshire-police-news": {
         "provider": "Derbyshire Police - News",
@@ -7567,7 +7567,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "lancashire-police-news": {
         "provider": "Lancashire Police - News",
@@ -7588,7 +7588,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "cheshire-police-news": {
         "provider": "Cheshire Constabulary - News",
@@ -7609,7 +7609,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "devon-cornwall-police-news": {
         "provider": "Devon and Cornwall Police - News",
@@ -7630,7 +7630,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "dorset-police-news": {
         "provider": "Dorset Police - News",
@@ -7651,7 +7651,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "gloucestershire-police-news": {
         "provider": "Gloucestershire Police - News",
@@ -7672,7 +7672,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "warwickshire-police-news": {
         "provider": "Warwickshire Police - News",
@@ -7693,7 +7693,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "wiltshire-police-news": {
         "provider": "Wiltshire Police - News",
@@ -7714,7 +7714,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "crown-office-news": {
         "provider": "Crown Office and Procurator Fiscal Service - News",
@@ -7777,7 +7777,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "french-police-nationale-news": {
         "provider": "Police Nationale - News",
@@ -7798,7 +7798,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "french-gendarmerie-news": {
         "provider": "Gendarmerie Nationale - News",
@@ -7819,7 +7819,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "paris-police-prefecture-news": {
         "provider": "Prefecture de Police de Paris - News",
@@ -7840,7 +7840,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "french-justice-ministry-news": {
         "provider": "French Ministry of Justice - News",
@@ -7861,7 +7861,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "spain-interior-ministry-news": {
         "provider": "Spanish Ministry of the Interior - Press",
@@ -7882,7 +7882,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "guardia-civil-news": {
         "provider": "Guardia Civil - News",
@@ -7903,7 +7903,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "policia-nacional-news": {
         "provider": "Policia Nacional - Press",
@@ -7924,23 +7924,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "mossos-news": {
         "provider": "Mossos dEsquadra - News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -7968,7 +7968,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "portugal-psp-news": {
         "provider": "Public Security Police Portugal - News",
@@ -7989,23 +7989,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "portugal-pj-news": {
         "provider": "Policia Judiciaria Portugal - News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -8018,17 +8018,17 @@
         "provider": "Dutch National Police - News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -8094,7 +8094,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "belgium-crisis-centre-news": {
         "provider": "Belgian National Crisis Centre - News",
@@ -8126,7 +8126,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "german-interior-ministry-press": {
         "provider": "German Federal Ministry of the Interior - Press",
@@ -8164,7 +8164,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "austria-interior-ministry-news": {
         "provider": "Austrian Interior Ministry - News",
@@ -8219,7 +8219,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "finland-supo-news": {
         "provider": "Finnish Security Intelligence Service - News",
@@ -8240,23 +8240,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "finland-police-news": {
         "provider": "Finnish Police - News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -8284,7 +8284,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "ireland-gardai-press": {
         "provider": "An Garda Siochana - Press Releases",
@@ -8305,7 +8305,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "cleveland-police-news": {
         "provider": "Cleveland Police - News",
@@ -8326,7 +8326,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "norfolk-constabulary-news": {
         "provider": "Norfolk Constabulary - News",
@@ -8347,7 +8347,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "suffolk-constabulary-news": {
         "provider": "Suffolk Constabulary - News",
@@ -8368,7 +8368,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "bedfordshire-police-news": {
         "provider": "Bedfordshire Police - News",
@@ -8389,7 +8389,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "lincolnshire-police-news": {
         "provider": "Lincolnshire Police - News",
@@ -8410,7 +8410,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "cumbria-police-news": {
         "provider": "Cumbria Police - News",
@@ -8431,7 +8431,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "dyfed-powys-police-news": {
         "provider": "Dyfed-Powys Police - News",
@@ -8452,7 +8452,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "czech-police-news": {
         "provider": "Police of the Czech Republic - News",
@@ -8473,7 +8473,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "romanian-police-news": {
         "provider": "Romanian Police - News",
@@ -8494,27 +8494,27 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "mi5-news-rss-direct": {
         "provider": "MI5 - News RSS",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "HTTP 403",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -8523,15 +8523,15 @@
         "provider": "UK NCSC - All Updates RSS",
         "lane": "prevention",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 2,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -8546,17 +8546,17 @@
         "provider": "Counter Terrorism Policing UK - RSS Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -8569,21 +8569,21 @@
         "provider": "NCTV Netherlands - English RSS",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "dead-or-moved-url",
         "lastErrorMessage": "HTTP 404",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -8641,7 +8641,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "ct-policing-north-west": {
         "provider": "Counter Terrorism Policing North West",
@@ -8662,7 +8662,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "ct-policing-prevent-programme": {
         "provider": "Counter Terrorism Policing - Prevent",
@@ -8751,7 +8751,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "attorney-generals-office-html": {
         "provider": "Attorney General's Office",
@@ -8901,15 +8901,15 @@
         "provider": "Metropolitan Police - Latest News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 3,
-        "successfulRuns": 6,
+        "successfulRuns": 7,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -8939,7 +8939,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "city-of-london-police-newsroom": {
         "provider": "City of London Police - Newsroom",
@@ -8960,7 +8960,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "city-of-london-police-news-html": {
         "provider": "City of London Police - News",
@@ -8981,7 +8981,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "btp-british-transport-police-news-html": {
         "provider": "British Transport Police - News",
@@ -9002,7 +9002,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "tfl-press-releases-html": {
         "provider": "Transport for London - Press Releases",
@@ -9023,7 +9023,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "london-gov-home": {
         "provider": "London.gov.uk",
@@ -9055,7 +9055,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "mopac-html": {
         "provider": "Mayor's Office for Policing and Crime",
@@ -9114,23 +9114,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "west-yorkshire-police-news-appeals": {
         "provider": "West Yorkshire Police - News Appeals",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -9158,7 +9158,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "thames-valley-police-news-html": {
         "provider": "Thames Valley Police - Thames Valley News",
@@ -9179,7 +9179,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "kent-police-news-html": {
         "provider": "Kent Police - News",
@@ -9200,7 +9200,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "essex-police-news-html": {
         "provider": "Essex Police - News",
@@ -9221,7 +9221,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "met-office-seasonal-advice": {
         "provider": "Met Office - Seasonal Advice",
@@ -9343,7 +9343,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "bbc-news-london-rss": {
         "provider": "BBC News - London RSS",
@@ -9387,7 +9387,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "npsa-blog": {
         "provider": "NPSA - Blog",
@@ -9459,7 +9459,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "city-of-london-police-fraud-reporting": {
         "provider": "City of London Police - Fraud Reporting",
@@ -9540,7 +9540,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "gov-uk-terrorism-national-emergency": {
         "provider": "GOV.UK - Terrorism National Emergency",
@@ -9563,15 +9563,15 @@
         "provider": "GOV.UK - Report Terrorism",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 4,
-        "successfulRuns": 2,
+        "successfulRuns": 3,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -9603,17 +9603,17 @@
         "provider": "GOV.UK - News and Communications Atom",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -9626,17 +9626,17 @@
         "provider": "Avon and Somerset Police - News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -9664,7 +9664,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "cambridgeshire-police-news-search": {
         "provider": "Cambridgeshire Police - News Search",
@@ -9685,23 +9685,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "cumbria-police-newsroom": {
         "provider": "Cumbria Police - Newsroom",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -9729,7 +9729,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "dorset-police-newsroom": {
         "provider": "Dorset Police - Newsroom",
@@ -9750,7 +9750,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "durham-police-durham-news": {
         "provider": "Durham Police - Durham News",
@@ -9771,7 +9771,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "humberside-police-news-search": {
         "provider": "Humberside Police - News Search",
@@ -9792,7 +9792,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "northamptonshire-police-news-html": {
         "provider": "Northamptonshire Police - News",
@@ -9813,7 +9813,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "northumbria-police-northumbria-news": {
         "provider": "Northumbria Police - Northumbria News",
@@ -9834,7 +9834,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "north-yorkshire-police-news-html": {
         "provider": "North Yorkshire Police - News",
@@ -9855,7 +9855,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "nottinghamshire-police-nottinghamshire-news": {
         "provider": "Nottinghamshire Police - Nottinghamshire News",
@@ -9876,7 +9876,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "staffordshire-police-staffordshire-news": {
         "provider": "Staffordshire Police - Staffordshire News",
@@ -9897,7 +9897,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "west-mercia-police-news-html": {
         "provider": "West Mercia Police - News",
@@ -9918,7 +9918,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "judiciary-rss-feeds-page": {
         "provider": "Judiciary UK - RSS Feeds",
@@ -10025,17 +10025,17 @@
         "provider": "Police Service of Northern Ireland - Latest News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10048,17 +10048,17 @@
         "provider": "Police Scotland - What's Happening News",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 3,
+        "emptyRuns": 4,
         "failedRuns": 3,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": "2026-04-05T09:42:02.315Z",
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10097,7 +10097,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eurojust-press-news-html": {
         "provider": "Eurojust - Press Releases and News",
@@ -10146,7 +10146,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-commission-counter-terrorism-measures-2026": {
         "provider": "European Commission - Counter Terrorism Measures 2026",
@@ -10167,7 +10167,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-commission-home-affairs-topic": {
         "provider": "European Commission - Home Affairs",
@@ -10188,7 +10188,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-commission-presscorner-home": {
         "provider": "European Commission - Press Corner",
@@ -10209,7 +10209,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-council-fight-against-terrorism": {
         "provider": "Council of the EU - Fight Against Terrorism",
@@ -10285,7 +10285,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "enisa-rss-transition-page": {
         "provider": "ENISA - RSS Feeds Transition Notice",
@@ -10366,7 +10366,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "icct-home": {
         "provider": "ICCT - Home",
@@ -10387,7 +10387,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "ecfr-feeds-index": {
         "provider": "ECFR - Feeds",
@@ -10408,7 +10408,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "euiss-home": {
         "provider": "EU Institute for Security Studies",
@@ -10440,7 +10440,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eucrim-judicial-counter-terrorism-register": {
         "provider": "eucrim - Judicial Counter Terrorism Register",
@@ -10463,17 +10463,17 @@
         "provider": "Dorset and Cornwall Police - Community Messaging",
         "lane": "prevention",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 2,
+        "emptyRuns": 3,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 2,
+        "consecutiveEmptyRuns": 3,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10501,7 +10501,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "wiltshire-999s": {
         "provider": "Wiltshire 999s",
@@ -10539,7 +10539,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "north-wales-police-news": {
         "provider": "North Wales Police - News",
@@ -10560,7 +10560,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "south-wales-police-news": {
         "provider": "South Wales Police - News",
@@ -10581,23 +10581,23 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "dutch-police-rss-index": {
         "provider": "Politie.nl - RSS",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10610,17 +10610,17 @@
         "provider": "Politie.nl - Nieuws",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10659,7 +10659,7 @@
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "austria-interior-ministry-rss-index": {
         "provider": "Austrian Interior Ministry - RSS Index",
@@ -10682,17 +10682,17 @@
         "provider": "BKA Germany - Press Releases",
         "lane": "incidents",
         "kind": "html",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 6,
+        "emptyRuns": 7,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 6,
+        "consecutiveEmptyRuns": 7,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10705,21 +10705,21 @@
         "provider": "Bund Deutscher Kriminalbeamter - RSS",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 3,
-        "consecutiveFailures": 3,
+        "failedRuns": 4,
+        "consecutiveFailures": 4,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
-        "cooldownUntil": null,
-        "autoSkipReason": null,
+        "cooldownUntil": "2026-04-06T10:38:33.331Z",
+        "autoSkipReason": "failure-cooldown",
         "quarantined": false,
         "quarantinedAt": null,
         "quarantineReason": null
@@ -10728,17 +10728,17 @@
         "provider": "Judiciary UK - Judgments Feed",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10805,17 +10805,17 @@
         "provider": "Scottish Courts - Publications RSS",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10834,17 +10834,17 @@
         "provider": "Scottish Courts - Sheriff Court Criminal Practice Notes RSS",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10893,17 +10893,17 @@
         "provider": "West Yorkshire Police - Appeals Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10916,17 +10916,17 @@
         "provider": "West Yorkshire Police - Releases Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10939,16 +10939,16 @@
         "provider": "West Yorkshire Police - Missing Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 1,
-        "consecutiveFailures": 1,
+        "failedRuns": 2,
+        "consecutiveFailures": 2,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
@@ -10962,17 +10962,17 @@
         "provider": "West Yorkshire Police - Coroner Appeals Feed",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -10985,17 +10985,17 @@
         "provider": "West Yorkshire Police - News Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -11008,17 +11008,17 @@
         "provider": "West Yorkshire Police - All Feed",
         "lane": "incidents",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -11037,17 +11037,17 @@
         "provider": "Police.uk - Crime Categories (2024-01)",
         "lane": "oversight",
         "kind": "json",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -11084,15 +11084,15 @@
         "provider": "Police.uk - Outcomes For Crime e11dade0",
         "lane": "oversight",
         "kind": "json",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 1,
-        "successfulRuns": 1,
+        "successfulRuns": 2,
         "emptyRuns": 0,
         "failedRuns": 0,
         "consecutiveFailures": 0,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
-        "lastSuccessfulAt": "2026-04-05T10:26:56.048Z",
+        "lastSuccessfulAt": "2026-04-05T10:38:33.331Z",
         "lastFailureAt": null,
         "lastEmptyAt": null,
         "lastErrorCategory": null,
@@ -11112,7 +11112,7 @@
         "quarantineReason": null,
         "autoSkipReason": "html-budget",
         "cooldownUntil": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "stay-in-the-know-home": {
         "provider": "Stay In The Know - Community Alerts",
@@ -11135,7 +11135,7 @@
         "quarantineReason": null,
         "autoSkipReason": "html-budget",
         "cooldownUntil": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "my-community-alert": {
         "provider": "My Community Alert",
@@ -11170,7 +11170,7 @@
         "quarantineReason": null,
         "autoSkipReason": "html-budget",
         "cooldownUntil": null,
-        "lastDeferredAt": "2026-04-05T10:26:56.048Z"
+        "lastDeferredAt": "2026-04-05T10:38:33.331Z"
       },
       "eu-council-jha-register-rss": {
         "provider": "Council of the EU - Justice and Home Affairs Register RSS",
@@ -11206,17 +11206,17 @@
         "provider": "European Court of Human Rights - UK Grand Chamber RSS",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
-        "emptyRuns": 1,
+        "emptyRuns": 2,
         "failedRuns": 0,
         "consecutiveFailures": 0,
-        "consecutiveEmptyRuns": 1,
+        "consecutiveEmptyRuns": 2,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
         "lastFailureAt": null,
-        "lastEmptyAt": "2026-04-05T10:26:56.048Z",
+        "lastEmptyAt": "2026-04-05T10:38:33.331Z",
         "lastErrorCategory": null,
         "lastErrorMessage": null,
         "cooldownUntil": null,
@@ -11235,16 +11235,16 @@
         "provider": "EU Agency for Fundamental Rights - RSS",
         "lane": "oversight",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 1,
-        "consecutiveFailures": 1,
+        "failedRuns": 2,
+        "consecutiveFailures": 2,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "brittle-selectors-or-js-rendering",
         "lastErrorMessage": "No items parsed from source endpoint",
@@ -11258,16 +11258,16 @@
         "provider": "Skwawkbox - Feed",
         "lane": "context",
         "kind": "rss",
-        "lastCheckedAt": "2026-04-05T10:26:56.048Z",
+        "lastCheckedAt": "2026-04-05T10:38:33.331Z",
         "lastBuiltCount": 0,
         "successfulRuns": 0,
         "emptyRuns": 0,
-        "failedRuns": 1,
-        "consecutiveFailures": 1,
+        "failedRuns": 2,
+        "consecutiveFailures": 2,
         "consecutiveEmptyRuns": 0,
         "consecutiveBlockedFailures": 0,
         "lastSuccessfulAt": null,
-        "lastFailureAt": "2026-04-05T10:26:56.048Z",
+        "lastFailureAt": "2026-04-05T10:38:33.331Z",
         "lastEmptyAt": null,
         "lastErrorCategory": "blocked-or-auth",
         "lastErrorMessage": "Blocked by anti-bot protection",
