@@ -4446,6 +4446,138 @@
                         "isTrustedOfficial":  true,
                         "requiresKeywordMatch":  false,
                         "comment":  "ENISA notice page documenting RSS feed changes and subscription transition."
+                    },
+                    {
+                        "id":  "statewatch-news",
+                        "provider":  "Statewatch - News",
+                        "endpoint":  "https://www.statewatch.org/news/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Statewatch news page for civil-liberties, policing, borders and counter-terror policy scrutiny."
+                    },
+                    {
+                        "id":  "isd-global-publications",
+                        "provider":  "ISD - Publications",
+                        "endpoint":  "https://www.isdglobal.org/publications/",
+                        "kind":  "html",
+                        "lane":  "prevention",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Institute for Strategic Dialogue publications page for extremism, radicalisation and online-threat research."
+                    },
+                    {
+                        "id":  "tech-against-terrorism-home",
+                        "provider":  "Tech Against Terrorism - Home",
+                        "endpoint":  "https://techagainstterrorism.org/home",
+                        "kind":  "html",
+                        "lane":  "prevention",
+                        "region":  "international",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Tech Against Terrorism homepage variant for platform safety, extremist content and online prevention context."
+                    },
+                    {
+                        "id":  "tech-against-terrorism-podcast",
+                        "provider":  "Tech Against Terrorism - Podcast",
+                        "endpoint":  "https://podcast.techagainstterrorism.org/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "international",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Tech Against Terrorism podcast site for interviews and analysis on extremist content and digital threat response."
+                    },
+                    {
+                        "id":  "icct-home",
+                        "provider":  "ICCT - Home",
+                        "endpoint":  "https://icct.nl/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "ICCT homepage for counter-terrorism analysis, publications and research updates."
+                    },
+                    {
+                        "id":  "ecfr-feeds-index",
+                        "provider":  "ECFR - Feeds",
+                        "endpoint":  "https://ecfr.eu/feeds/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "ECFR feed index page for European foreign-policy and security research feed discovery."
+                    },
+                    {
+                        "id":  "euiss-home",
+                        "provider":  "EU Institute for Security Studies",
+                        "endpoint":  "https://www.iss.europa.eu/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "European Union Institute for Security Studies homepage for defence, terrorism and strategic risk analysis."
+                    },
+                    {
+                        "id":  "eucrim-counter-terrorism-agenda",
+                        "provider":  "eucrim - Commission Counter Terrorism Agenda",
+                        "endpoint":  "https://eucrim.eu/news/commission-counter-terrorism-agenda/",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "eucrim article covering the European Commission counter-terrorism agenda."
+                    },
+                    {
+                        "id":  "eucrim-judicial-counter-terrorism-register",
+                        "provider":  "eucrim - Judicial Counter Terrorism Register",
+                        "endpoint":  "https://eucrim.eu/news/judicial-counter-terrorism-register/",
+                        "kind":  "html",
+                        "lane":  "oversight",
+                        "region":  "eu",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  false,
+                        "comment":  "eucrim article on the judicial counter-terrorism register and EU judicial cooperation."
+                    },
+                    {
+                        "id":  "dc-police-community-messaging",
+                        "provider":  "Dorset and Cornwall Police - Community Messaging",
+                        "endpoint":  "https://community-messaging.dc.police.uk/",
+                        "kind":  "html",
+                        "lane":  "prevention",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Community messaging portal for Dorset and Cornwall policing alerts, neighbourhood warnings and safety messaging."
+                    },
+                    {
+                        "id":  "northamptonshire-talking",
+                        "provider":  "Northamptonshire Talking",
+                        "endpoint":  "https://www.northamptonshiretalking.co.uk/",
+                        "kind":  "html",
+                        "lane":  "prevention",
+                        "region":  "uk",
+                        "isTrustedOfficial":  true,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Northamptonshire police community-alert portal for local messaging, engagement and public safety notices."
+                    },
+                    {
+                        "id":  "wiltshire-999s",
+                        "provider":  "Wiltshire 999s",
+                        "endpoint":  "https://www.wiltshire999s.co.uk/",
+                        "kind":  "html",
+                        "lane":  "context",
+                        "region":  "uk",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Wiltshire emergency services news site for local incident corroboration and public reporting."
                     }
                 ]
 }
