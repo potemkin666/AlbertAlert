@@ -31,6 +31,7 @@ import {
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
 import {
+  CONTROL_MAX_HTML_SOURCES_PER_RUN,
   MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
   sourceRefreshEveryHours,
@@ -756,6 +757,10 @@ test('source refresh cadence keeps incidents hourly and rotates lower-yield lane
 
 test('html source run cap is increased for candidate scheduler mode', () => {
   assert.equal(MAX_HTML_SOURCES_PER_RUN, 32);
+});
+
+test('html source run cap keeps control scheduler budget at legacy value', () => {
+  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 24);
 });
 
 test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {

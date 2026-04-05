@@ -3,6 +3,7 @@ import path from 'node:path';
 import {
   DEFAULT_MAX_RETRIES,
   DEFAULT_TIMEOUT_MS,
+  FEED_BOT_USER_AGENT,
   RETRYABLE_STATUS_CODES,
   outputPath,
   repoRoot
@@ -73,7 +74,7 @@ export function isEnglishLanguage(value) {
 
 function mergedHeaders(source = null) {
   return {
-    'user-agent': clean(source?.headers?.['user-agent']) || 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)',
+    'user-agent': clean(source?.headers?.['user-agent']) || FEED_BOT_USER_AGENT,
     accept: clean(source?.headers?.accept) || 'application/feed+json, application/json;q=0.95, application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8',
     'accept-language': clean(source?.headers?.['accept-language']) || 'en-GB,en;q=0.9',
     'cache-control': clean(source?.headers?.['cache-control']) || 'no-cache'
@@ -165,7 +166,7 @@ export async function fetchTextWithPlaywright(url, options = {}) {
   const browser = await playwright.chromium.launch({ headless: true });
   try {
     const context = await browser.newContext({
-      userAgent: clean(options?.source?.headers?.['user-agent']) || 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)'
+      userAgent: clean(options?.source?.headers?.['user-agent']) || FEED_BOT_USER_AGENT
     });
     const page = await context.newPage();
     await page.goto(url, {

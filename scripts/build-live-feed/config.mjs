@@ -35,7 +35,7 @@ export const MAX_FEED_PREFETCH_ITEMS = 8;
 export const MAX_HTML_SOURCES_PER_RUN = 32;
 export const CONTROL_MAX_HTML_SOURCES_PER_RUN = 24;
 export const HTML_DOMAIN_CAP_PER_RUN = 3;
-export const SCHEDULER_AB_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'candidate').toLowerCase() === 'control'
+export const SCHEDULER_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'candidate').toLowerCase() === 'control'
   ? 'control'
   : 'candidate';
 export const PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS = new Set([
@@ -95,6 +95,7 @@ export const EXPECTED_REFRESH_MINUTES = 60;
 export const STALE_AFTER_MINUTES = 75;
 export const SOURCE_TIMEZONE = 'Europe/London';
 export const RETRYABLE_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504]);
+export const FEED_BOT_USER_AGENT = 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)';
 export const DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE = Object.freeze({
   incidents: 1,
   context: 2,

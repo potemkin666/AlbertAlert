@@ -24,7 +24,7 @@ import {
   PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS,
   PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN,
   PLAYWRIGHT_FALLBACK_TIMEOUT_MS,
-  SCHEDULER_AB_MODE,
+  SCHEDULER_MODE,
   SOURCE_EMPTY_COOLDOWN_HOURS,
   SOURCE_FAILURE_COOLDOWN_HOURS,
   SOURCE_ITEM_LIMITS,
@@ -285,6 +285,7 @@ function sourceDomain(source) {
 function selectHtmlSourcesForRun(rankedHtmlEntries, buildDate, maxSources) {
   const safeEntries = Array.isArray(rankedHtmlEntries) ? rankedHtmlEntries : [];
   const runSeed = Math.floor(buildDate.getTime() / 3600000);
+  const ROTATION_WEIGHT_BUCKETS = 7;
   const runCap = Math.max(0, Number(maxSources || 0));
   const domainUse = new Map();
   const domainCappedSourceIds = new Set();
@@ -305,10 +306,10 @@ function selectHtmlSourcesForRun(rankedHtmlEntries, buildDate, maxSources) {
       const leftSource = left?.source || {};
       const rightSource = right?.source || {};
       const leftWeight = weighted
-        ? sourceDeterministicHash(`${leftSource.id || leftSource.endpoint}|${runSeed}`) % 7
+        ? sourceDeterministicHash(`${leftSource.id || leftSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
         : 0;
       const rightWeight = weighted
-        ? sourceDeterministicHash(`${rightSource.id || rightSource.endpoint}|${runSeed}`) % 7
+        ? sourceDeterministicHash(`${rightSource.id || rightSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
         : 0;
       if (rightWeight !== leftWeight) return rightWeight - leftWeight;
       return left.index - right.index;
@@ -613,7 +614,7 @@ async function main() {
     .filter((entry) => isMachineReadableSourceKind(entry.source?.kind))
     .map((entry) => entry.source);
   const htmlRankedEntries = rankedScheduledSources.filter((entry) => entry.source?.kind === 'html');
-  const htmlBudget = SCHEDULER_AB_MODE === 'control' ? CONTROL_MAX_HTML_SOURCES_PER_RUN : MAX_HTML_SOURCES_PER_RUN;
+  const htmlBudget = SCHEDULER_MODE === 'control' ? CONTROL_MAX_HTML_SOURCES_PER_RUN : MAX_HTML_SOURCES_PER_RUN;
   const htmlSelection = selectHtmlSourcesForRun(htmlRankedEntries, buildDate, htmlBudget);
   const htmlScheduled = htmlSelection.selected;
   const playwrightBudget = {
@@ -909,7 +910,7 @@ async function main() {
     geoLookupSnapshot: geoLookupSnapshot(),
     buildWarning,
     runMetrics: {
-      schedulerMode: SCHEDULER_AB_MODE,
+      schedulerMode: SCHEDULER_MODE,
       htmlBudget,
       htmlDomainCapPerRun: HTML_DOMAIN_CAP_PER_RUN,
       htmlDomainUsage: htmlSelection.domainUsage,
@@ -943,7 +944,7 @@ async function main() {
       sourceHealth: nextSourceHealth,
       autoDeferredSources,
       extraMetrics: {
-        schedulerMode: SCHEDULER_AB_MODE,
+        schedulerMode: SCHEDULER_MODE,
         coverage,
         freshnessSlaByTier,
         failureReasons,
@@ -1011,7 +1012,7 @@ async function main() {
   if (failingCategorySummary) {
     console.log(`Failure categories: ${failingCategorySummary}`);
   }
-  console.log(`Scheduler mode=${SCHEDULER_AB_MODE} | htmlBudget=${htmlBudget} | coverage=${coverage.checked}/${coverage.eligible} | playwrightFallback=${playwrightBudget.successes}/${playwrightBudget.attempts} | guardrailViolations=${guardrailViolations.length}`);
+  console.log(`Scheduler mode=${SCHEDULER_MODE} | htmlBudget=${htmlBudget} | coverage=${coverage.checked}/${coverage.eligible} | playwrightFallback=${playwrightBudget.successes}/${playwrightBudget.attempts} | guardrailViolations=${guardrailViolations.length}`);
 }
 
 const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
