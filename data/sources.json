@@ -5227,6 +5227,17 @@
                         "isTrustedOfficial":  true,
                         "requiresKeywordMatch":  true,
                         "comment":  "Official FRA RSS feed for rights, justice and security-related updates."
+                    },
+                    {
+                        "id":  "skwawkbox-feed",
+                        "provider":  "Skwawkbox - Feed",
+                        "endpoint":  "https://www.thecanary.co/skwawkbox/feed/",
+                        "kind":  "rss",
+                        "lane":  "context",
+                        "region":  "uk",
+                        "isTrustedOfficial":  false,
+                        "requiresKeywordMatch":  true,
+                        "comment":  "Commentary and political reporting feed kept keyword-gated as low-trust corroboration/context only."
                     }
                 ]
 }
