@@ -118,48 +118,11 @@ export async function loadWatchGeography(state, url) {
 export function coerceLiveFeedPayload(raw) {
   const payload = raw && typeof raw === 'object' ? raw : {};
   const alerts = Array.isArray(payload.alerts) ? payload.alerts : [];
+  const fetchedAlertCount = Number(payload.alertCount ?? alerts.length);
   const generatedAt = payload.generatedAt || payload.updatedAt || payload.alertData?.timestamp || null;
   const sourceCount = Number(payload.sourceCount ?? payload.alertData?.sourceCount ?? 0);
-  const validLanes = new Set(['incidents', 'context', 'sanctions', 'oversight', 'border', 'prevention']);
-  const validRegions = new Set(['uk', 'europe', 'london', 'eu', 'international', 'us']);
-  const validSourceTiers = new Set(['trigger', 'corroboration', 'context', 'research']);
-  const validReliabilityProfiles = new Set([
-    'official_ct',
-    'official_general',
-    'official_context',
-    'major_media',
-    'general_media',
-    'tabloid',
-    'specialist_research'
-  ]);
-  const validIncidentTracks = new Set(['live', 'case']);
   const isValidTimestamp = typeof generatedAt === 'string' && !Number.isNaN(new Date(generatedAt).getTime());
   const hasNumericSourceCount = Number.isFinite(sourceCount) && sourceCount >= 0;
-
-  function isRenderableAlert(alert) {
-    if (!alert || typeof alert !== 'object') return false;
-    if (typeof alert.id !== 'string' || !alert.id.trim()) return false;
-    if (typeof alert.title !== 'string' || !alert.title.trim()) return false;
-    if (typeof alert.summary !== 'string' || !alert.summary.trim()) return false;
-    if (typeof alert.source !== 'string' || !alert.source.trim()) return false;
-    if (typeof alert.sourceUrl !== 'string' || !alert.sourceUrl.trim()) return false;
-    if (typeof alert.location !== 'string' || !alert.location.trim()) return false;
-    if (!validLanes.has(alert.lane)) return false;
-    if (!validRegions.has(alert.region)) return false;
-    if (typeof alert.sourceTier !== 'string' || !validSourceTiers.has(alert.sourceTier)) return false;
-    if (typeof alert.reliabilityProfile !== 'string' || !validReliabilityProfiles.has(alert.reliabilityProfile)) return false;
-    if (alert.lane === 'incidents') {
-      if (typeof alert.incidentTrack !== 'string' || !validIncidentTracks.has(alert.incidentTrack)) return false;
-      if (typeof alert.isTerrorRelevant !== 'boolean') return false;
-      if (!Array.isArray(alert.keywordHits)) return false;
-      if (!Array.isArray(alert.terrorismHits)) return false;
-      if (typeof alert.queueReason !== 'string' || !alert.queueReason.trim()) return false;
-      if (typeof alert.laneReason !== 'string' || !alert.laneReason.trim()) return false;
-    }
-    return true;
-  }
-
-  const renderableAlerts = alerts.filter(isRenderableAlert);
 
   if (!Array.isArray(payload.alerts)) {
     throw new Error('Live feed payload is missing an alerts array.');
@@ -173,8 +136,17 @@ export function coerceLiveFeedPayload(raw) {
     throw new Error('Live feed payload is missing a valid sourceCount.');
   }
 
+  if (!Number.isFinite(fetchedAlertCount) || fetchedAlertCount < 0) {
+    throw new Error('Live feed payload is missing a valid alertCount.');
+  }
+
+  if (fetchedAlertCount < alerts.length) {
+    throw new Error('Live feed payload alertCount cannot be lower than alerts array length.');
+  }
+
   return {
-    alerts: renderableAlerts,
+    alerts,
+    fetchedAlertCount,
     generatedAt,
     sourceCount,
     health: payload && typeof payload.health === 'object' && payload.health ? payload.health : null
@@ -186,12 +158,14 @@ export async function loadLiveFeed(state, options) {
   const previousAlerts = state.alerts;
   const previousGeneratedAt = state.liveFeedGeneratedAt;
   const previousSourceCount = state.liveSourceCount;
+  const previousFetchedAlertCount = state.liveFetchedAlertCount || 0;
   const previousHealth = state.liveFeedHealth;
   try {
     const response = await fetch(`${liveFeedUrl}?t=${Date.now()}`, { cache: 'no-store' });
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = coerceLiveFeedPayload(await response.json());
     state.alerts = data.alerts.map((alert, index) => normaliseAlert(alert, index, state.geoLookup));
+    state.liveFetchedAlertCount = data.fetchedAlertCount;
     state.liveFeedGeneratedAt = data.generatedAt ? new Date(data.generatedAt) : new Date();
     state.liveFeedHealth = data.health;
     const sourceCount = Number(data.sourceCount);
@@ -204,6 +178,7 @@ export async function loadLiveFeed(state, options) {
     state.alerts = previousAlerts;
     state.liveFeedGeneratedAt = previousGeneratedAt;
     state.liveSourceCount = previousSourceCount;
+    state.liveFetchedAlertCount = previousFetchedAlertCount;
     state.liveFeedHealth = previousHealth;
     state.liveFeedFetchError = {
       message: error instanceof Error ? error.message : String(error),
