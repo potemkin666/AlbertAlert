@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-05T21:37:38.417Z",
+  "generatedAt": "2026-04-05T22:37:03.546Z",
   "totalSourceErrors": 17,
   "top20": [
     {
-      "id": "gov-uk-defence-intelligence",
-      "provider": "UK Defence Intelligence a GOV.UK",
-      "endpoint": "https://www.gov.uk/government/organisations/defence-intelligence",
+      "id": "finland-supo-news",
+      "provider": "Finnish Security Intelligence Service - News",
+      "endpoint": "https://supo.fi/en/news",
       "finalUrl": "",
       "category": "dead-or-moved-url",
       "message": "HTTP 404",
@@ -16,9 +16,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "scottish-government-justice-news",
-      "provider": "Scottish Government - Justice and Safety",
-      "endpoint": "https://www.gov.scot/justice-and-law/",
+      "id": "german-bfv-news",
+      "provider": "German BfV - News",
+      "endpoint": "https://www.verfassungsschutz.de/EN/service/news/news_node.html",
       "finalUrl": "",
       "category": "dead-or-moved-url",
       "message": "HTTP 404",
@@ -28,33 +28,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "frontex-news-releases",
-      "provider": "Frontex a News Releases",
-      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": ""
-    },
-    {
-      "id": "interpol-notices",
-      "provider": "INTERPOL a Notices",
-      "endpoint": "https://www.interpol.int/How-we-work/Notices",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": ""
-    },
-    {
-      "id": "kensington-chelsea-newsroom",
-      "provider": "Royal Borough of Kensington and Chelsea a Newsroom",
-      "endpoint": "https://www.rbkc.gov.uk/newsroom",
+      "id": "cnwl-news",
+      "provider": "Central and North West London NHS Foundation Trust a News",
+      "endpoint": "https://www.cnwl.nhs.uk/news",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "Blocked by anti-bot protection",
@@ -64,45 +40,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "netherlands-prosecution-news",
-      "provider": "Dutch Public Prosecution Service - News",
-      "endpoint": "https://www.om.nl/actueel/nieuws",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": ""
-    },
-    {
-      "id": "paris-prefecture-police-rss-page",
-      "provider": "Paris Prefecture of Police - RSS",
-      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/presentation/les-directions-et-services/le-cabinet-du-prefet-de-police/service-de-la-communication/abonnez-vous-aux-flux-rss",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source endpoint",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": ""
-    },
-    {
-      "id": "police-uk-outcomes-at-location-1609590",
-      "provider": "Police.uk - Outcomes At Location 1609590",
-      "endpoint": "https://data.police.uk/api/outcomes-at-location?date=2024-01&location_id=1609590",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source endpoint",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": ""
-    },
-    {
-      "id": "tavistock-portman-news",
-      "provider": "Tavistock and Portman NHS Foundation Trust a News",
-      "endpoint": "https://tavistockandportman.nhs.uk/about-us/news/",
+      "id": "enisa-news",
+      "provider": "ENISA (EU Cybersecurity Agency) a News",
+      "endpoint": "https://www.enisa.europa.eu/news",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "Blocked by anti-bot protection",
@@ -112,9 +52,81 @@
       "replacementCandidate": ""
     },
     {
-      "id": "eu-council-fight-against-terrorism",
-      "provider": "Council of the EU - Fight Against Terrorism",
-      "endpoint": "https://www.consilium.europa.eu/en/policies/fight-against-terrorism/",
+      "id": "eu-commission-presscorner-home",
+      "provider": "European Commission - Press Corner",
+      "endpoint": "https://ec.europa.eu/commission/presscorner/home/en",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source endpoint",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "europol-tesat-report",
+      "provider": "Europol - TESAT Report",
+      "endpoint": "https://www.europol.europa.eu/publications-events/main-reports/tesat-report",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source endpoint",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "kent-police-news",
+      "provider": "Kent Police a News",
+      "endpoint": "https://www.kent.police.uk/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "report-fraud-newsroom",
+      "provider": "Report Fraud - Newsroom",
+      "endpoint": "https://www.reportfraud.police.uk/collection/newsroom/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "unhcr-europe-news",
+      "provider": "UNHCR Europe a News",
+      "endpoint": "https://www.unhcr.org/europe/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "us-house-homeland-security",
+      "provider": "US House Committee on Homeland Security - News",
+      "endpoint": "https://homeland.house.gov/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "eu-council-rss-index",
+      "provider": "Council of the EU - RSS Index",
+      "endpoint": "https://www.consilium.europa.eu/en/about-site/rss/",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -148,18 +160,6 @@
       "replacementCandidate": ""
     },
     {
-      "id": "gnet-youth-rss",
-      "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
-      "endpoint": "https://gnet-research.org/tag/youth/feed/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "message": "HTTP 304",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": ""
-    },
-    {
       "id": "judiciary-uk-announcements-feed",
       "provider": "Judiciary UK - Announcements Feed",
       "endpoint": "https://www.judiciary.uk/announcements/feed/",
@@ -172,9 +172,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "judiciary-uk-judgments-feed",
-      "provider": "Judiciary UK - Judgments Feed",
-      "endpoint": "https://www.judiciary.uk/judgments/feed/",
+      "id": "judiciary-uk-news",
+      "provider": "Judiciary of England and Wales a News",
+      "endpoint": "https://www.judiciary.uk/feed/",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
