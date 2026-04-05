@@ -38,6 +38,8 @@ The product is built around one idea: the feed builder decides what an alert is,
   Source catalog and source metadata.
 - `data/geo-lookup.json`
   Location term lookup for map placement and geographic enrichment.
+- `data/brialert.sqlite`
+  SQLite persistence for source state, cooldown history, and alert churn written by the hourly builder.
 - `scripts/build-live-feed/`
   Feed builder modules for config, IO, parsing, alert assembly, and health metadata.
 - `scripts/build-live-feed.mjs`
@@ -70,6 +72,7 @@ npm run build:feeds
 
 - The browser should trust the feed payload rather than re-inferring terrorism relevance or source reliability.
 - The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
+- The feed builder now writes a SQLite sidecar for source reputation, cooldown memory, and alert churn history so source intelligence can persist across runs.
 - London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.
 - Both CI and the hourly workflow now run `validate:live-feed-output` after feed generation to fail fast on malformed publish output.
 - The hourly publish step retries once after rebasing `origin/main` if `git push` hits a non-fast-forward race.

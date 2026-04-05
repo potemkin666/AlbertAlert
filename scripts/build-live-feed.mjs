@@ -1,5 +1,9 @@
 import fs from 'node:fs/promises';
-import { pathToFileURL } from 'node:url';
+import os from 'node:os';
+import path from 'node:path';
+import { execFile as execFileCallback } from 'node:child_process';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { promisify } from 'node:util';
 import {
   AUTO_SKIP_EMPTY_THRESHOLD,
   AUTO_SKIP_FAILURE_THRESHOLD,
@@ -15,6 +19,7 @@ import {
   SOURCE_ITEM_LIMITS,
   shouldRefreshSourceThisRun,
   outputPath,
+  sqlitePath,
   sourcePath,
   sourceRequestsPath
 } from './build-live-feed/config.mjs';
@@ -46,12 +51,14 @@ import {
   parseHtmlItems
 } from './build-live-feed/parsing.mjs';
 import {
+  clean,
   inferReliabilityProfile,
   inferSourceTier,
   sourceLooksEnglish
 } from '../shared/taxonomy.mjs';
 
 export { buildHealthBlock } from './build-live-feed/health.mjs';
+const execFile = promisify(execFileCallback);
 
 function parseIsoMs(value) {
   const ms = new Date(value || '').getTime();
@@ -140,6 +147,91 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.autoSkipReason = 'empty-cooldown';
   }
   return next;
+}
+
+function alertKey(alert) {
+  return clean(alert?.fusedIncidentId) || clean(alert?.id);
+}
+
+function buildAlertChurnRows(previousAlerts, nextAlerts) {
+  const previousMap = new Map(
+    (Array.isArray(previousAlerts) ? previousAlerts : [])
+      .map((alert) => [alertKey(alert), alert])
+      .filter(([key]) => key)
+  );
+  const nextMap = new Map(
+    (Array.isArray(nextAlerts) ? nextAlerts : [])
+      .map((alert) => [alertKey(alert), alert])
+      .filter(([key]) => key)
+  );
+
+  const rows = [];
+
+  for (const [key, alert] of nextMap.entries()) {
+    if (!previousMap.has(key)) {
+      rows.push({
+        action: 'entered',
+        alertId: clean(alert?.id),
+        fusedIncidentId: clean(alert?.fusedIncidentId),
+        title: clean(alert?.title),
+        lane: clean(alert?.lane),
+        region: clean(alert?.region),
+        source: clean(alert?.source),
+        publishedAt: clean(alert?.publishedAt),
+        retentionScore: Number.isFinite(alert?.priorityScore) ? alert.priorityScore : null
+      });
+    }
+  }
+
+  for (const [key, alert] of previousMap.entries()) {
+    if (!nextMap.has(key)) {
+      rows.push({
+        action: 'evicted',
+        alertId: clean(alert?.id),
+        fusedIncidentId: clean(alert?.fusedIncidentId),
+        title: clean(alert?.title),
+        lane: clean(alert?.lane),
+        region: clean(alert?.region),
+        source: clean(alert?.source),
+        publishedAt: clean(alert?.publishedAt),
+        retentionScore: Number.isFinite(alert?.priorityScore) ? alert.priorityScore : null
+      });
+    }
+  }
+
+  return rows;
+}
+
+async function syncBuilderSQLite(snapshot) {
+  const helperPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'build-live-feed', 'sqlite-sync.py');
+  const tempPath = path.join(os.tmpdir(), `brialert-sqlite-sync-${Date.now()}-${process.pid}.json`);
+  const payload = {
+    ...snapshot,
+    sqlitePath
+  };
+
+  await fs.writeFile(tempPath, JSON.stringify(payload, null, 2), 'utf8');
+  const pythonCommands = process.platform === 'win32'
+    ? [['py', ['-3', helperPath, tempPath]], ['python', [helperPath, tempPath]]]
+    : [['python3', [helperPath, tempPath]], ['python', [helperPath, tempPath]]];
+
+  let lastError = null;
+  try {
+    for (const [command, args] of pythonCommands) {
+      try {
+        await execFile(command, args, { windowsHide: true });
+        return;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+  } finally {
+    await fs.unlink(tempPath).catch(() => {});
+  }
+
+  if (lastError) {
+    throw lastError;
+  }
 }
 
 async function main() {
@@ -420,6 +512,19 @@ async function main() {
       autoDeferredSources
     })
   };
+  const sqliteSnapshot = {
+    generatedAt,
+    sourceHealth: nextSourceHealth,
+    sourceStats,
+    alertChurn: buildAlertChurnRows(existing?.alerts || [], payload.alerts)
+  };
+
+  try {
+    await syncBuilderSQLite(sqliteSnapshot);
+  } catch (error) {
+    const message = error instanceof Error ? error.message : String(error);
+    console.warn(`SQLite sync skipped: ${message}`);
+  }
 
   const currentComparable = JSON.stringify(existing?.alerts || []);
   const nextComparable = JSON.stringify(payload.alerts);

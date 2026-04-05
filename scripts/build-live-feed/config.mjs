@@ -10,6 +10,7 @@ export const sourcePath = path.join(repoRoot, 'data', 'sources.json');
 export const sourceRequestsPath = path.join(repoRoot, 'data', 'source-requests.json');
 export const geoLookupPath = path.join(repoRoot, 'data', 'geo-lookup.json');
 export const outputPath = path.join(repoRoot, 'live-alerts.json');
+export const sqlitePath = path.join(repoRoot, 'data', 'brialert.sqlite');
 
 export const parser = new XMLParser({
   ignoreAttributes: false,
