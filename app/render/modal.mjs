@@ -45,7 +45,7 @@ function buildLocalLongBrief(alert) {
     ...bits.map((paragraph) => paragraph.trim()),
     '',
     'NOTE',
-    'This version was generated locally from the captured source text and alert metadata because the remote AI brief endpoint was unavailable or timed out.'
+    'This long brief was generated from the captured source text and alert metadata available in this alert.'
   ].join('\n\n');
 }
 
