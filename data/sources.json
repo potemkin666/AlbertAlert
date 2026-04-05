@@ -134,8 +134,8 @@
                     {
                         "id":  "mayor-of-london-press-releases",
                         "provider":  "Mayor of London â€“ Press Releases",
-                        "endpoint":  "https://www.london.gov.uk/media-centre/mayors-press-releases/rss.xml",
-                        "kind":  "rss",
+                        "endpoint":  "https://www.london.gov.uk/media-centre/mayors-press-releases",
+                        "kind":  "html",
                         "lane":  "context",
                         "region":  "london",
                         "isTrustedOfficial":  true,
@@ -145,8 +145,8 @@
                     {
                         "id":  "london-assembly-press-releases",
                         "provider":  "London Assembly â€“ Press Releases",
-                        "endpoint":  "https://www.london.gov.uk/media-centre/london-assembly-press-releases/rss.xml",
-                        "kind":  "rss",
+                        "endpoint":  "https://www.london.gov.uk/media-centre/london-assembly-press-releases",
+                        "kind":  "html",
                         "lane":  "oversight",
                         "region":  "london",
                         "isTrustedOfficial":  true,
@@ -1997,8 +1997,8 @@
                     {
                         "id":  "gov-uk-counter-extremism-commissioner",
                         "provider":  "Counter Extremism Commissioner â€“ GOV.UK",
-                        "endpoint":  "https://www.gov.uk/government/organisations/independent-commissioner-for-counter-extremism",
-                        "kind":  "html",
+                        "endpoint":  "https://www.gov.uk/government/organisations/commission-for-countering-extremism.atom",
+                        "kind":  "atom",
                         "lane":  "prevention",
                         "region":  "uk",
                         "isTrustedOfficial":  true,
@@ -2030,8 +2030,8 @@
                     {
                         "id":  "gov-uk-prevent-strategy",
                         "provider":  "GOV.UK â€“ Prevent Strategy and Guidance",
-                        "endpoint":  "https://www.gov.uk/government/collections/revised-prevent-duty-guidance",
-                        "kind":  "html",
+                        "endpoint":  "https://www.gov.uk/government/collections/prevent-strategy.atom",
+                        "kind":  "atom",
                         "lane":  "prevention",
                         "region":  "uk",
                         "isTrustedOfficial":  true,
@@ -2151,7 +2151,7 @@
                     {
                         "id":  "ocam-be-english",
                         "provider":  "OCAM/CUTA (Belgium) â€“ English News",
-                        "endpoint":  "https://www.ocam.be/en/newspublications",
+                        "endpoint":  "https://ocam.belgium.be/en/news",
                         "kind":  "html",
                         "lane":  "prevention",
                         "region":  "europe",
@@ -2679,8 +2679,8 @@
                     {
                         "id":  "euractiv-security-rss",
                         "provider":  "Euractiv â€“ Security \u0026 Defence (RSS)",
-                        "endpoint":  "https://www.euractiv.com/sections/security/feed/",
-                        "kind":  "rss",
+                        "endpoint":  "https://www.euractiv.com/section/defence-and-security/",
+                        "kind":  "html",
                         "lane":  "context",
                         "region":  "eu",
                         "isTrustedOfficial":  false,
@@ -2690,7 +2690,7 @@
                     {
                         "id":  "rte-ireland-news-rss",
                         "provider":  "RTÃ‰ News â€“ Ireland (RSS)",
-                        "endpoint":  "https://www.rte.ie/news/rss/news-ireland.xml",
+                        "endpoint":  "https://www.rte.ie/feeds/rss/?index=/news/ireland/",
                         "kind":  "rss",
                         "lane":  "context",
                         "region":  "europe",
@@ -2855,8 +2855,8 @@
                     {
                         "id":  "occrp-news",
                         "provider":  "OCCRP â€“ Organized Crime and Corruption Reporting Project",
-                        "endpoint":  "https://www.occrp.org/en/announcements.rss",
-                        "kind":  "rss",
+                        "endpoint":  "https://www.occrp.org/en/news/",
+                        "kind":  "html",
                         "lane":  "context",
                         "region":  "international",
                         "isTrustedOfficial":  false,
