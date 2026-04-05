@@ -383,7 +383,7 @@ test('feed health status surfaces fetch failure even when last good data exists'
   assert.equal(snapshot.isStale, false);
 });
 
-test('live feed coercion keeps valid alerts and drops malformed ones', () => {
+test('live feed coercion keeps all payload alerts for frontend rendering path', () => {
   const payload = coerceLiveFeedPayload({
     generatedAt: '2026-04-04T10:00:00.000Z',
     sourceCount: 2,
@@ -417,11 +417,12 @@ test('live feed coercion keeps valid alerts and drops malformed ones', () => {
     ]
   });
 
-  assert.equal(payload.alerts.length, 1);
+  assert.equal(payload.alerts.length, 2);
   assert.equal(payload.alerts[0].id, 'good-1');
+  assert.equal(payload.fetchedAlertCount, 2);
 });
 
-test('live feed coercion allows empty renderable alerts for standby posture', () => {
+test('live feed coercion accepts malformed alerts without dropping payload entries', () => {
   const payload = coerceLiveFeedPayload({
     generatedAt: '2026-04-04T10:00:00.000Z',
     sourceCount: 1,
@@ -437,7 +438,8 @@ test('live feed coercion allows empty renderable alerts for standby posture', ()
     ]
   });
 
-  assert.equal(payload.alerts.length, 0);
+  assert.equal(payload.alerts.length, 1);
+  assert.equal(payload.fetchedAlertCount, 1);
 });
 
 test('loadLiveFeed accepts empty renderable payload and clears alerts into standby', async () => {
@@ -446,6 +448,7 @@ test('loadLiveFeed accepts empty renderable payload and clears alerts into stand
     geoLookup: [],
     liveFeedGeneratedAt: null,
     liveSourceCount: 0,
+    liveFetchedAlertCount: 0,
     liveFeedHealth: null,
     liveFeedFetchError: null,
     lastBrowserPollAt: null
@@ -482,9 +485,10 @@ test('loadLiveFeed accepts empty renderable payload and clears alerts into stand
     globalThis.fetch = previousFetch;
   }
 
-  assert.equal(state.alerts.length, 0);
+  assert.equal(state.alerts.length, 1);
   assert.equal(state.liveFeedFetchError, null);
   assert.equal(state.liveSourceCount, 1);
+  assert.equal(state.liveFetchedAlertCount, 1);
 });
 
 test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload sourceCount is zero', async () => {
@@ -493,6 +497,7 @@ test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload s
     geoLookup: [],
     liveFeedGeneratedAt: null,
     liveSourceCount: 0,
+    liveFetchedAlertCount: 0,
     liveFeedHealth: null,
     liveFeedFetchError: null,
     lastBrowserPollAt: null
@@ -525,6 +530,7 @@ test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload s
 
   assert.equal(state.liveSourceCount, 118);
   assert.equal(state.liveFeedFetchError, null);
+  assert.equal(state.liveFetchedAlertCount, 0);
 });
 
 test('matchesKeywords uses word-boundary matching and does not match substrings', () => {
@@ -658,7 +664,9 @@ test("renderHero shows requested fallback copy when live pull hasn't happened ye
     activeLane: 'all',
     liveFeedGeneratedAt: null,
     lastBrowserPollAt: null,
-    liveSourceCount: 0
+    liveSourceCount: 0,
+    liveFetchedAlertCount: 0,
+    alerts: []
   };
   const elements = {
     heroSearch: { value: '' },
@@ -678,6 +686,8 @@ test('renderHero uses last successful source count when current source count is 
     liveFeedGeneratedAt: new Date('2026-04-04T08:00:00.000Z'),
     lastBrowserPollAt: null,
     liveSourceCount: 0,
+    liveFetchedAlertCount: 0,
+    alerts: [],
     liveFeedHealth: {
       lastSuccessfulSourceCount: 118
     }
@@ -689,7 +699,29 @@ test('renderHero uses last successful source count when current source count is 
 
   renderHero({ state, elements });
 
-  assert.match(elements.heroUpdated.textContent, /\| 118 sources$/);
+  assert.match(elements.heroUpdated.textContent, /\| 118 sources \| 0 articles$/);
+});
+
+test('renderHero reports rendered vs fetched article totals when they differ', () => {
+  const state = {
+    briefingMode: false,
+    activeRegion: 'all',
+    activeLane: 'all',
+    liveFeedGeneratedAt: new Date('2026-04-04T08:00:00.000Z'),
+    lastBrowserPollAt: null,
+    liveSourceCount: 41,
+    liveFetchedAlertCount: 41,
+    alerts: Array.from({ length: 14 }, (_, index) => makeAlert({ id: `alert-${index}` })),
+    liveFeedHealth: null
+  };
+  const elements = {
+    heroSearch: { value: '' },
+    heroUpdated: { textContent: '' }
+  };
+
+  renderHero({ state, elements });
+
+  assert.match(elements.heroUpdated.textContent, /\| 41 sources \| Showing 14 of 41 articles$/);
 });
 
 test('normaliseSourcesPayload drops duplicate source IDs and keeps first occurrence', () => {

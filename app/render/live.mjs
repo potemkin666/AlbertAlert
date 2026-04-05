@@ -160,7 +160,12 @@ export function renderHero({ state, elements }) {
   const stamp = healthRefresh ? new Date(healthRefresh) : state.liveFeedGeneratedAt;
   const hasValidStamp = stamp instanceof Date && !Number.isNaN(stamp.getTime());
   const sourceCount = displaySourceCount(state);
+  const fetchedAlerts = Math.max(0, Number(state.liveFetchedAlertCount || 0));
+  const renderedAlerts = Array.isArray(state.alerts) ? state.alerts.length : 0;
+  const articleStatus = fetchedAlerts > renderedAlerts
+    ? `Showing ${renderedAlerts} of ${fetchedAlerts} articles`
+    : `${renderedAlerts} articles`;
   elements.heroUpdated.textContent = hasValidStamp
-    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${sourceCount} sources`
+    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${sourceCount} sources | ${articleStatus}`
     : 'Waiting for first live update';
 }
