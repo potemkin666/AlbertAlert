@@ -27,6 +27,7 @@ import {
   SCHEDULER_MODE,
   SOURCE_EMPTY_COOLDOWN_HOURS,
   SOURCE_FAILURE_COOLDOWN_HOURS,
+  TARGET_SUCCESSFUL_SOURCES_PER_RUN,
   SOURCE_ITEM_LIMITS,
   isMachineReadableSourceKind,
   sourceDeterministicHash,
@@ -575,6 +576,8 @@ async function main() {
   const sourceErrors = [];
   const sourceStats = [];
   const autoDeferredSources = [];
+  const cooldownDeferredSourceIds = new Set();
+  const cadenceDeferredSources = [];
   const eligibleSources = sources.filter((source) => {
     if (!sourceLooksEnglish(source)) return false;
     if (source?.quarantined) {
@@ -596,9 +599,12 @@ async function main() {
         reason: autoCooldown.reason,
         until: autoCooldown.until
       });
+      cooldownDeferredSourceIds.add(source.id);
       return false;
     }
-    return shouldRefreshSourceThisRun(source, buildDate);
+    const scheduledThisRun = shouldRefreshSourceThisRun(source, buildDate);
+    if (!scheduledThisRun) cadenceDeferredSources.push(source);
+    return scheduledThisRun;
   });
   const rankedScheduledSources = scheduledSources
     .map((source, index) => ({
@@ -623,21 +629,33 @@ async function main() {
     maxAttempts: PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN
   };
   const scheduledSourceIds = new Set([...machineReadableScheduled, ...htmlScheduled].map((source) => source.id));
-  const scheduledSourcesFinal = [...machineReadableScheduled, ...htmlScheduled];
+  const scheduledSourcesInitial = [...machineReadableScheduled, ...htmlScheduled];
   const htmlDeferredForBudget = scheduledSources.filter((source) => source?.kind === 'html' && !scheduledSourceIds.has(source.id));
+  const htmlDeferredReasonById = new Map();
   for (const source of htmlDeferredForBudget) {
-    const reason = htmlSelection.domainCappedSourceIds.has(source.id) ? 'domain-cap' : 'html-budget';
-    autoDeferredSources.push({
-      id: source.id,
-      provider: source.provider,
-      reason,
-      until: null
-    });
+    htmlDeferredReasonById.set(source.id, htmlSelection.domainCappedSourceIds.has(source.id) ? 'domain-cap' : 'html-budget');
   }
-  const deferredSources = Math.max(0, eligibleSources.length - scheduledSources.length);
 
-  const sourceResults = await mapWithConcurrency(
-    scheduledSourcesFinal,
+  const continuationCandidates = [...new Map(
+    [...htmlDeferredForBudget, ...cadenceDeferredSources]
+      .filter((source) => !scheduledSourceIds.has(source.id) && !cooldownDeferredSourceIds.has(source.id))
+      .map((source, index) => [source.id, { source, index }])
+  ).values()]
+    .sort((left, right) => {
+      const priorityDelta = sourceSchedulingPriority(right.source) - sourceSchedulingPriority(left.source);
+      if (priorityDelta !== 0) return priorityDelta;
+      return left.index - right.index;
+    })
+    .map((entry) => entry.source);
+
+  let checked = 0;
+  let sourceAttemptOffset = 0;
+  let sourcesAttemptedCount = 0;
+
+  async function processSourceBatch(batch) {
+    if (!batch.length) return;
+    const sourceResults = await mapWithConcurrency(
+      batch,
     FEED_SOURCE_CONCURRENCY,
     async (source, sourceIndex) => {
       const localErrors = [];
@@ -658,7 +676,7 @@ async function main() {
       };
 
       try {
-        await sleep(sourceIndex * 60);
+        await sleep((sourceAttemptOffset + sourceIndex) * 60);
         let body;
         let usedPlaywrightFallback = false;
         try {
@@ -772,14 +790,39 @@ async function main() {
         };
       }
     }
-  );
+    );
+    sourceAttemptOffset += batch.length;
+    sourcesAttemptedCount += batch.length;
+    for (const result of sourceResults) {
+      checked += result.checked || 0;
+      if (Array.isArray(result.alerts) && result.alerts.length) items.push(...result.alerts);
+      if (Array.isArray(result.sourceErrors) && result.sourceErrors.length) sourceErrors.push(...result.sourceErrors);
+      if (result.sourceStat) sourceStats.push(result.sourceStat);
+    }
+  }
 
-  let checked = 0;
-  for (const result of sourceResults) {
-    checked += result.checked || 0;
-    if (Array.isArray(result.alerts) && result.alerts.length) items.push(...result.alerts);
-    if (Array.isArray(result.sourceErrors) && result.sourceErrors.length) sourceErrors.push(...result.sourceErrors);
-    if (result.sourceStat) sourceStats.push(result.sourceStat);
+  await processSourceBatch(scheduledSourcesInitial);
+
+  while (
+    sourceStats.filter((stat) => stat.built > 0).length < TARGET_SUCCESSFUL_SOURCES_PER_RUN
+    && continuationCandidates.length
+  ) {
+    const remainingNeeded = TARGET_SUCCESSFUL_SOURCES_PER_RUN - sourceStats.filter((stat) => stat.built > 0).length;
+    const nextBatchSize = Math.min(
+      continuationCandidates.length,
+      Math.max(FEED_SOURCE_CONCURRENCY, remainingNeeded * 2)
+    );
+    const nextBatch = continuationCandidates.splice(0, nextBatchSize);
+    await processSourceBatch(nextBatch);
+  }
+
+  for (const source of continuationCandidates) {
+    autoDeferredSources.push({
+      id: source.id,
+      provider: source.provider,
+      reason: htmlDeferredReasonById.get(source.id) || 'refresh-cadence',
+      until: null
+    });
   }
 
   const preDedupeCount = items.length;
@@ -812,8 +855,8 @@ async function main() {
     .map(([category, count]) => `${category}:${count}`)
     .join(', ');
   const runDurationMs = Date.now() - runStartedAtMs;
-  const failedRate = scheduledSourcesFinal.length
-    ? failedSources / scheduledSourcesFinal.length
+  const failedRate = sourcesAttemptedCount
+    ? failedSources / sourcesAttemptedCount
     : 0;
   const guardrailViolations = [];
   if (runDurationMs > GUARDRAIL_MAX_RUNTIME_MS) guardrailViolations.push('runtime-exceeded');
@@ -897,10 +940,12 @@ async function main() {
   );
   const coverage = {
     eligible: eligibleSources.length,
-    scheduled: scheduledSourcesFinal.length,
+    scheduled: sourcesAttemptedCount,
+    initialScheduled: scheduledSourcesInitial.length,
+    continuationAttempted: Math.max(0, sourcesAttemptedCount - scheduledSourcesInitial.length),
     checked,
     eligibleCheckedRate: eligibleSources.length ? Number((checked / eligibleSources.length).toFixed(3)) : 0,
-    scheduledCheckedRate: scheduledSourcesFinal.length ? Number((checked / scheduledSourcesFinal.length).toFixed(3)) : 0
+    scheduledCheckedRate: sourcesAttemptedCount ? Number((checked / sourcesAttemptedCount).toFixed(3)) : 0
   };
 
   const payload = {
@@ -930,6 +975,7 @@ async function main() {
         maxRuntimeMs: GUARDRAIL_MAX_RUNTIME_MS,
         maxFailedSourceRate: GUARDRAIL_MAX_FAILED_SOURCE_RATE,
         minSuccessfulSources: GUARDRAIL_MIN_SUCCESSFUL_SOURCES,
+        targetSuccessfulSourcesPerRun: TARGET_SUCCESSFUL_SOURCES_PER_RUN,
         failedSourceRate: Number(failedRate.toFixed(3)),
         successfulSources,
         violations: guardrailViolations
@@ -992,8 +1038,10 @@ async function main() {
   console.log([
     'Feed build summary:',
     `eligible=${eligibleSources.length}`,
-    `scheduled=${scheduledSourcesFinal.length}`,
-    `deferred=${deferredSources + htmlDeferredForBudget.length}`,
+    `scheduled=${sourcesAttemptedCount}`,
+    `initialScheduled=${scheduledSourcesInitial.length}`,
+    `continuationAttempted=${Math.max(0, sourcesAttemptedCount - scheduledSourcesInitial.length)}`,
+    `deferred=${Math.max(0, eligibleSources.length - sourcesAttemptedCount)}`,
     `cooldownDeferred=${autoDeferredSources.length}`,
     `checked=${checked}`,
     `successfulWithAlerts=${successfulSources}`,
