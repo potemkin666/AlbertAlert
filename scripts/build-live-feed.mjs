@@ -405,14 +405,15 @@ function buildFetchError(message, category) {
 
 function classifyFetchFailure(summary) {
   const category = clean(summary?.category || '').toLowerCase();
+  if (category === 'unchanged-304') return 'unchanged';
   if (category === 'anti-bot-protection') return 'bot-block';
   if (category === 'blocked-or-auth') return 'bot-block';
-  if (category === 'not-found-404') return 'http-error';
+  if (category === 'not-found-404') return 'stale-endpoint';
   if (category === 'timeout') return 'timeout';
-  if (category === 'brittle-selectors-or-js-rendering') return 'parser-error';
+  if (category === 'brittle-selectors-or-js-rendering') return 'parser-failure';
   if (category === 'dead-or-moved-url') return 'http-error';
   if (category === 'http-status-error') return 'http-error';
-  if (category === 'network-failure') return 'network-error';
+  if (category === 'network-failure') return 'timeout';
   return 'unknown';
 }
 
@@ -905,11 +906,13 @@ async function main() {
         const localErrors = [];
         const builtAlerts = [];
         const failureReasonCounts = {
-          timeout: 0,
-          'bot-block': 0,
-          'parser-error': 0,
-          'http-error': 0,
-          'network-error': 0,
+          success: 0,
+          unchanged: 0,
+          'stale-endpoint': 0,
+          'blocked-or-anti-bot': 0,
+          'timeout-or-aborted': 0,
+          'parser-failure': 0,
+          'empty-or-no-items': 0,
           unknown: 0
         };
         const discardReasons = {
@@ -930,19 +933,24 @@ async function main() {
           let usedPlaywrightFallback = false;
           let finalUrl = clean(source?.endpoint);
           let responseStatus = null;
+          let fetchOutcome = 'unknown';
           try {
             const fetched = await fetchText(source.endpoint, 1, { source, requestState, includeMeta: true });
             if (typeof fetched === 'string') {
               body = fetched;
+              fetchOutcome = 'success';
             } else {
               body = fetched.text;
               finalUrl = clean(fetched.finalUrl || source.endpoint);
               responseStatus = Number.isFinite(Number(fetched.status)) ? Number(fetched.status) : null;
+              fetchOutcome = (responseStatus === 304 || fetched.unchanged304) ? 'unchanged' : 'success';
             }
           } catch (error) {
             const summary = summariseSourceError(source, error);
             const reason = classifyFetchFailure(summary);
-            failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
+            if (reason === 'stale-endpoint') failureReasonCounts['stale-endpoint'] += 1;
+            else if (reason === 'bot-block') failureReasonCounts['blocked-or-anti-bot'] += 1;
+            else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
             if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
               playwrightBudget.attempts += 1;
               body = await fetchTextWithPlaywright(source.endpoint, {
@@ -951,6 +959,7 @@ async function main() {
               });
               usedPlaywrightFallback = true;
               playwrightBudget.successes += 1;
+              fetchOutcome = 'success';
             } else {
               throw error;
             }
@@ -960,11 +969,9 @@ async function main() {
             : parseHtmlItems(source, body);
           if (!parsed.length) {
             discardReasons.parseNoItems += 1;
-            const parseError = buildFetchError('No items parsed from source endpoint', 'brittle-selectors-or-js-rendering');
-            const parseSummary = summariseSourceError(source, parseError);
-            localErrors.push(parseSummary);
-            const reason = classifyFetchFailure(parseSummary);
-            failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
+            if (fetchOutcome !== 'unchanged') {
+              failureReasonCounts['empty-or-no-items'] += 1;
+            }
           }
           const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
           const preLimited = parsed.slice(0, preLimit);
@@ -999,6 +1006,15 @@ async function main() {
               console.error(`Alert build failed: ${source.id} - ${error instanceof Error ? error.message : String(error)}`);
             }
           });
+          const parserFailures = localErrors
+            .map((errorSummary) => classifyFetchFailure(errorSummary))
+            .filter((reason) => reason === 'parser-failure').length;
+          if (parserFailures > 0) failureReasonCounts['parser-failure'] += parserFailures;
+          if (fetchOutcome === 'unchanged') {
+            failureReasonCounts.unchanged += 1;
+          } else if (builtAlerts.length > 0) {
+            failureReasonCounts.success += 1;
+          }
 
           return {
             checked: 1,
@@ -1020,6 +1036,7 @@ async function main() {
               usedPlaywrightFallback,
               finalUrl,
               status: responseStatus,
+              fetchOutcome,
               failureReasonCounts,
               discardReasons
             }
@@ -1028,7 +1045,17 @@ async function main() {
           const summary = summariseSourceError(source, error);
           localErrors.push(summary);
           const reason = classifyFetchFailure(summary);
-          failureReasonCounts[reason] = (failureReasonCounts[reason] || 0) + 1;
+          if (reason === 'stale-endpoint') failureReasonCounts['stale-endpoint'] += 1;
+          else if (reason === 'bot-block') failureReasonCounts['blocked-or-anti-bot'] += 1;
+          else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
+          else if (reason === 'parser-failure') failureReasonCounts['parser-failure'] += 1;
+          else if (reason === 'unknown') {
+            failureReasonCounts.unknown += 1;
+            console.warn(`Unclassified source failure category: ${summary.id} [${source.kind}/${source.lane}] - ${summary.message}`);
+          } else {
+            failureReasonCounts['timeout-or-aborted'] += 1;
+            console.warn(`Unhandled source failure reason mapped to timeout-or-aborted: ${reason} (${summary.id})`);
+          }
           console.error(`Source failed: ${summary.id} [${source.kind}/${source.lane}] - ${summary.message}`);
           return {
             checked: 0,
@@ -1050,6 +1077,7 @@ async function main() {
               usedPlaywrightFallback: false,
               finalUrl: clean(source?.endpoint),
               status: null,
+              fetchOutcome: 'failed',
               failureReasonCounts,
               discardReasons
             }
@@ -1101,9 +1129,38 @@ async function main() {
   const preservedAlerts = !deduped.length && sourceErrors.length && existingAlerts.length;
   const mergedCandidates = dedupeAndSortAlerts([...deduped, ...existingAlerts]);
   const finalAlerts = preservedAlerts ? existingAlerts : selectStoredAlerts(mergedCandidates, MAX_STORED_ALERTS);
-  const successfulSources = sourceStats.filter((stat) => stat.built > 0).length;
-  const failedSources = sourceStats.filter((stat) => stat.built === 0 && stat.errors > 0).length;
-  const emptySources = sourceStats.filter((stat) => stat.built === 0 && stat.errors === 0).length;
+  const sourceOutcomeTally = sourceStats.reduce((acc, stat) => {
+    if ((stat?.built || 0) > 0) {
+      acc.successfulSources += 1;
+      if (stat.fetchOutcome === 'success') acc.updatedSources += 1;
+    } else if ((stat?.errors || 0) > 0) {
+      acc.failedSources += 1;
+    } else {
+      acc.emptySources += 1;
+    }
+    if (stat?.fetchOutcome === 'unchanged') acc.unchangedSources += 1;
+    return acc;
+  }, {
+    successfulSources: 0,
+    failedSources: 0,
+    emptySources: 0,
+    unchangedSources: 0,
+    updatedSources: 0
+  });
+  const {
+    successfulSources,
+    failedSources,
+    emptySources,
+    unchangedSources,
+    updatedSources
+  } = sourceOutcomeTally;
+  const sourceRunStats = {
+    totalConfiguredSources: sources.length,
+    sourcesCheckedThisRun: sourcesAttemptedCount,
+    sourcesUpdatedThisRun: updatedSources,
+    sourcesFailedThisRun: failedSources,
+    sourcesUnchangedThisRun: unchangedSources
+  };
   const droppedByFilter = sourceStats.reduce((sum, stat) => sum + (stat.discardReasons?.droppedByFilter || 0), 0);
   const droppedByMissingOrInvalidDate = sourceStats.reduce((sum, stat) => sum + (stat.discardReasons?.droppedByMissingOrInvalidDate || 0), 0);
   const droppedByItemCap = sourceStats.reduce((sum, stat) => sum + (stat.discardReasons?.droppedByItemCap || 0), 0);
@@ -1237,6 +1294,7 @@ async function main() {
       coverage,
       freshnessSlaByTier,
       failureReasons,
+      sourceRunStats,
       runDurationMs,
       playwrightFallback: {
         attempts: playwrightBudget.attempts,
@@ -1264,11 +1322,13 @@ async function main() {
       usedFallback: preservedAlerts || Boolean(geoLookupFallbackNote),
       sourceHealth: nextSourceHealth,
       autoDeferredSources,
+      sourceRunStats,
       extraMetrics: {
         schedulerMode: SCHEDULER_MODE,
         coverage,
         freshnessSlaByTier,
         failureReasons,
+        sourceRunStats,
         playwrightFallback: {
           attempts: playwrightBudget.attempts,
           successes: playwrightBudget.successes
@@ -1329,6 +1389,8 @@ async function main() {
     `deferred=${Math.max(0, eligibleSources.length - sourcesAttemptedCount)}`,
     `cooldownDeferred=${autoDeferredSources.length}`,
     `checked=${checked}`,
+    `unchanged=${unchangedSources}`,
+    `updated=${updatedSources}`,
     `successfulWithAlerts=${successfulSources}`,
     `failed=${failedSources}`,
     `empty=${emptySources}`,

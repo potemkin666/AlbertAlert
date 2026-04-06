@@ -28,6 +28,7 @@ export function createState(watchLayerLabels) {
     lastBrowserPollAt: new Date(),
     liveFeedGeneratedAt: null,
     liveSourceCount: 0,
+    liveSourceRunStats: null,
     liveFetchedAlertCount: 0,
     liveFeedHealth: null,
     liveFeedFetchError: null,
