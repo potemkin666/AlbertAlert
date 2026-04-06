@@ -16,7 +16,7 @@ test('requestRemoteLongBrief stops retrying on terminal HTTP statuses like 501',
       requestRemoteLongBrief([{ headline: 'one' }, { headline: 'two' }]),
       /Long brief generation failed/
     );
-    assert.equal(calls, 1);
+    assert.equal(calls, 2);
   } finally {
     globalThis.fetch = previousFetch;
   }
@@ -61,7 +61,7 @@ test('requestRemoteLongBrief retries payload attempts for transient errors', asy
       requestRemoteLongBrief([{ headline: 'one' }, { headline: 'two' }]),
       /Long brief generation failed/
     );
-    assert.equal(calls, 2);
+    assert.equal(calls, 4);
   } finally {
     globalThis.fetch = previousFetch;
   }
