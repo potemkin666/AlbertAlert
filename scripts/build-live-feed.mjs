@@ -416,6 +416,11 @@ function freshnessMinutes(entry, nowMs) {
 function buildFetchError(message, category) {
   const error = new Error(message);
   error.__brialertCategory = category;
+  error.__brialertMeta = {
+    errorCode: category === 'brittle-selectors-or-js-rendering'
+      ? 'PARSER_SELECTOR_OR_JS_RENDERING'
+      : ''
+  };
   return error;
 }
 
@@ -1028,6 +1033,10 @@ async function main() {
             if (fetchOutcome !== 'unchanged') {
               failureReasonCounts['empty-or-no-items'] += 1;
             }
+            localErrors.push(summariseSourceError(
+              source,
+              buildFetchError('No items parsed from source payload', 'brittle-selectors-or-js-rendering')
+            ));
           }
           const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
           const preLimited = parsed.slice(0, preLimit);
