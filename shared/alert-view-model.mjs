@@ -507,6 +507,7 @@ export function buildBriefing(alert, summaryText) {
 }
 
 const UNCONFIRMED_SOURCE_DATE = 'source date unconfirmed';
+const ALLOWED_REGIONS = new Set(['uk', 'london', 'eu', 'europe', 'us', 'international']);
 
 function isUnconfirmedSourceDate(value) {
   return clean(value).toLowerCase() === UNCONFIRMED_SOURCE_DATE;
@@ -522,11 +523,16 @@ export function normaliseAlert(alert, index, geoLookup = []) {
   const timeRaw = plainText(alert.time);
   const happenedWhen = isUnconfirmedSourceDate(happenedWhenRaw) ? '' : happenedWhenRaw;
   const time = isUnconfirmedSourceDate(timeRaw) ? '' : timeRaw;
+  const rawRegion = clean(alert.region).toLowerCase();
+  if (rawRegion && !ALLOWED_REGIONS.has(rawRegion)) {
+    console.warn(`Unknown alert region "${rawRegion}" normalized to "europe".`);
+  }
+  const region = ALLOWED_REGIONS.has(rawRegion) ? rawRegion : 'europe';
   return {
     id: clean(alert.id) || `live-${index}`,
     title: plainText(alert.title) || 'Untitled source item',
     location: plainText(alert.location) || (alert.region === 'uk' ? 'United Kingdom' : 'Europe'),
-    region: alert.region === 'uk' ? 'uk' : alert.region === 'london' ? 'london' : 'europe',
+    region,
     lane,
     severity: ['critical', 'high', 'elevated', 'moderate'].includes(alert.severity) ? alert.severity : 'moderate',
     status: plainText(alert.status) || 'Update',
@@ -563,6 +569,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     isTerrorRelevant: typeof alert.isTerrorRelevant === 'boolean' ? alert.isTerrorRelevant : null,
     laneReason: plainText(alert.laneReason),
     queueReason: plainText(alert.queueReason),
+    queueBucket: clean(alert.queueBucket).toLowerCase(),
     corroboratingSources: Array.isArray(alert.corroboratingSources) ? alert.corroboratingSources.filter(Boolean).map((entry) => ({
       fusedIncidentId: clean(entry.fusedIncidentId),
       source: plainText(entry.source),

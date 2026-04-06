@@ -46,6 +46,7 @@ import {
   sourceRefreshOffset
 } from '../scripts/build-live-feed/config.mjs';
 import { renderHero, renderSupporting } from '../app/render/live.mjs';
+import { filteredMapView } from '../app/render/map.mjs';
 import { addSourceRequest } from '../app/render/notes.mjs';
 import {
   INITIAL_RESPONDER_VISIBLE,
@@ -143,10 +144,13 @@ test('quarantine routing catches weak secondary incident-like items', () => {
     isOfficial: false,
     confidenceScore: 0.72,
     needsHumanReview: true,
-    queueReason: 'Needs human review'
+    queueReason: 'Needs human review',
+    queueBucket: 'quarantine'
   });
 
-  const liveOfficial = makeAlert();
+  const liveOfficial = makeAlert({
+    queueBucket: 'responder'
+  });
   const state = {
     alerts: [liveOfficial, weakSecondary],
     activeRegion: 'all',
@@ -154,10 +158,7 @@ test('quarantine routing catches weak secondary incident-like items', () => {
   };
 
   const view = deriveView(state, {
-    sortAlertsByFreshness: (alerts) => alerts,
-    isLiveIncidentCandidate,
-    isQuarantineCandidate,
-    isTerrorRelevant: (alert) => alert.isTerrorRelevant
+    sortAlertsByFreshness: (alerts) => alerts
   });
 
   assert.equal(view.responder.length, 1);
@@ -1101,19 +1102,97 @@ test('deriveView keeps full quarantine list for progressive rendering', () => {
     isOfficial: false,
     confidenceScore: 0.71,
     needsHumanReview: true,
-    queueReason: 'Needs human review'
+    queueReason: 'Needs human review',
+    queueBucket: 'quarantine'
   }));
   const view = deriveView({
     alerts,
     activeRegion: 'all',
     activeLane: 'all'
   }, {
-    sortAlertsByFreshness: (items) => items,
-    isLiveIncidentCandidate,
-    isQuarantineCandidate,
-    isTerrorRelevant: (alert) => alert.isTerrorRelevant
+    sortAlertsByFreshness: (items) => items
   });
   assert.equal(view.quarantine.length, 10);
+});
+
+test('deriveView trusts upstream lanes for incidents vs context', () => {
+  const responderIncident = makeAlert({
+    id: 'incident-live',
+    lane: 'incidents',
+    queueReason: 'Trigger-tier terrorism incident candidate',
+    queueBucket: 'responder'
+  });
+  const quarantinedIncident = makeAlert({
+    id: 'incident-quarantine',
+    lane: 'incidents',
+    queueReason: 'Needs human review',
+    needsHumanReview: true,
+    isOfficial: false,
+    confidenceScore: 0.7,
+    queueBucket: 'quarantine'
+  });
+  const contextItem = makeAlert({
+    id: 'context-upstream',
+    lane: 'context',
+    queueReason: 'Corroborating or adjacent source kept out of the live trigger lane.',
+    queueBucket: 'context'
+  });
+
+  const view = deriveView({
+    alerts: [responderIncident, quarantinedIncident, contextItem],
+    activeRegion: 'all',
+    activeLane: 'all'
+  }, {
+    sortAlertsByFreshness: (items) => items
+  });
+
+  assert.deepEqual(view.responder.map((item) => item.id), ['incident-live']);
+  assert.deepEqual(view.quarantine.map((item) => item.id), ['incident-quarantine']);
+  assert.deepEqual(view.context.map((item) => item.id), ['context-upstream']);
+});
+
+test('deriveView treats missing queue bucket as context for safe fallback', () => {
+  const noBucket = makeAlert({
+    id: 'no-bucket',
+    lane: 'incidents'
+  });
+  const view = deriveView({
+    alerts: [noBucket],
+    activeRegion: 'all',
+    activeLane: 'all'
+  }, {
+    sortAlertsByFreshness: (items) => items
+  });
+  assert.deepEqual(view.context.map((item) => item.id), ['no-bucket']);
+  assert.equal(view.responder.length, 0);
+  assert.equal(view.quarantine.length, 0);
+});
+
+test('normaliseAlert preserves canonical non-UK regions', () => {
+  assert.equal(makeAlert({ region: 'eu' }).region, 'eu');
+  assert.equal(makeAlert({ region: 'europe' }).region, 'europe');
+  assert.equal(makeAlert({ region: 'us' }).region, 'us');
+  assert.equal(makeAlert({ region: 'international' }).region, 'international');
+});
+
+test('filteredMapView respects pre-filtered region view data', () => {
+  const londonAlert = makeAlert({ id: 'london-1', region: 'london', location: 'London' });
+  const euAlert = makeAlert({ id: 'eu-1', region: 'eu', location: 'Paris' });
+  const state = {
+    alerts: [londonAlert, euAlert],
+    activeLane: 'all',
+    searchQuery: '',
+    mapViewMode: 'world'
+  };
+  const view = {
+    filtered: [londonAlert],
+    responder: [],
+    context: [],
+    quarantine: [],
+    topPriority: null
+  };
+  const result = filteredMapView(state, view);
+  assert.deepEqual(result.filtered.map((item) => item.id), ['london-1']);
 });
 
 test('renderSupporting merges context and quarantine into one progressive list', () => {

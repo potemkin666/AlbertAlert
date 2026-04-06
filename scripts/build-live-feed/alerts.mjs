@@ -281,6 +281,19 @@ function queueReasonFor(source, { sourceTier, reliabilityProfile, incidentTrack,
   return 'Trigger-tier terrorism incident candidate';
 }
 
+function queueBucketFor(source, { queueReason }) {
+  const reason = clean(queueReason).toLowerCase();
+  if (source?.lane !== 'incidents') return source?.lane || 'context';
+  if (reason.includes('needs human review')) return 'quarantine';
+  if (reason.includes('non-trigger source awaiting corroboration')) return 'quarantine';
+  if (reason.includes('weak confidence')) return 'quarantine';
+  if (reason.includes('tabloid source requires corroboration')) return 'quarantine';
+  if (reason.includes('incident wording without clear terrorism signal')) return 'quarantine';
+  if (reason.includes('keyword-led match from a broad source')) return 'quarantine';
+  if (reason.includes('case or prosecution update kept out of the live trigger lane')) return 'quarantine';
+  return 'responder';
+}
+
 function shouldKeepPeopleInvolved(reliabilityProfile, confidenceScore, needsHumanReview, peopleInvolved) {
   if (!Array.isArray(peopleInvolved) || !peopleInvolved.length) return false;
   if (needsHumanReview) return false;
@@ -354,6 +367,7 @@ export function buildAlert(source, item, idx) {
     needsHumanReview,
     isTerrorRelevant
   });
+  const queueBucket = queueBucketFor(source, { queueReason });
   const fusedIncidentId = fusedIncidentIdFor({
     title: item.title,
     summary: item.summary,
@@ -388,6 +402,7 @@ export function buildAlert(source, item, idx) {
     incidentTrack,
     laneReason: laneReasonFor(source, incidentTrack),
     queueReason,
+    queueBucket,
     time: displayWhen,
     lat: coords.lat,
     lng: coords.lng,

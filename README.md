@@ -5,7 +5,7 @@
 
 Brialert is a GitHub Pages web app for fast, phone-friendly terrorism monitoring with a UK, London, and Europe bias.
 
-The product is built around one idea: the feed builder decides what an alert is, how trustworthy it is, whether it belongs in the live incident lane, and how it should be grouped. The browser then validates that payload, renders it quickly, and stays out of the classification business.
+The product is built around one idea: the feed builder decides what an alert is, how trustworthy it is, whether it belongs in the live responder lane, and how it should be grouped. The browser then validates that payload, renders it quickly, and follows upstream queueing decisions without reclassifying alert type.
 
 ## Live site
 
@@ -72,7 +72,7 @@ npm run build:feeds
 
 ## Operational notes
 
-- The browser should trust the feed payload rather than re-inferring terrorism relevance or source reliability.
+- The browser should trust upstream lane and queue decisions in the feed payload rather than re-inferring terrorism relevance, source reliability, or incident classification.
 - The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
 - The feed builder now writes a SQLite sidecar for source reputation, cooldown memory, and alert churn history so source intelligence can persist across runs.
 - London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.

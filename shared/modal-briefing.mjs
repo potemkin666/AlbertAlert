@@ -1,3 +1,5 @@
+import { regionLabel } from './alert-view-model.mjs';
+
 export function createModalController(elements, deps) {
   const {
     modal,
@@ -59,7 +61,7 @@ export function createModalController(elements, deps) {
     modalSeverity.textContent = deps.severityLabel(alert.severity);
     modalStatus.textContent = alert.status;
     modalSource.textContent = alert.source;
-    modalRegion.textContent = alert.region === 'uk' ? 'United Kingdom' : 'Europe';
+    modalRegion.textContent = regionLabel(alert.region);
     modalBriefing.textContent = briefing;
     if (modalExpandedBrief) {
       modalExpandedBrief.textContent = 'Press Generate Long Brief to create a longer AI-written factual brief from the captured source text.';

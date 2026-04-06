@@ -51,13 +51,18 @@ export function filteredAlerts(state) {
 
 export function deriveView(state, deps) {
   const filtered = filteredAlerts(state);
-  const responder = deps.sortAlertsByFreshness(filtered.filter(deps.isLiveIncidentCandidate));
-  const context = deps.sortAlertsByFreshness(filtered.filter((alert) => {
-    if (deps.isQuarantineCandidate(alert)) return false;
-    if (alert.lane === 'incidents' && !deps.isTerrorRelevant(alert)) return false;
-    return !deps.isLiveIncidentCandidate(alert);
+  const responder = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === 'responder';
   }));
-  const quarantine = deps.sortAlertsByFreshness(filtered.filter(deps.isQuarantineCandidate));
+  const quarantine = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === 'quarantine';
+  }));
+  const context = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === '' || (queueBucket !== 'responder' && queueBucket !== 'quarantine');
+  }));
   const topPriority = responder[0] || context[0] || null;
 
   return { filtered, responder, context, quarantine, topPriority };

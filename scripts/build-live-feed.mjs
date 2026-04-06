@@ -222,6 +222,22 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.cooldownUntil = null;
       return next;
     }
+    if (!next.quarantined && source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
+      next.quarantined = true;
+      next.quarantinedAt = generatedAt;
+      next.quarantineReason = 'Repeated blocked-or-auth failures on html source';
+      next.autoSkipReason = 'review-quarantine';
+      next.cooldownUntil = null;
+      return next;
+    }
+    if (!next.quarantined && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
+      next.quarantined = true;
+      next.quarantinedAt = generatedAt;
+      next.quarantineReason = 'Repeated dead-or-moved-url failures';
+      next.autoSkipReason = 'review-quarantine';
+      next.cooldownUntil = null;
+      return next;
+    }
     if (next.consecutiveFailures >= AUTO_SKIP_FAILURE_THRESHOLD) {
       const cooldownHours = sourceFailureCooldownHours(source, stat?.lastErrorCategory || '');
       next.cooldownUntil = new Date(Date.parse(generatedAt) + cooldownHours * 3600000).toISOString();
@@ -417,6 +433,25 @@ function classifyFetchFailure(summary) {
   return 'unknown';
 }
 
+/**
+ * Returns a redirected final URL as a replacement candidate when it differs
+ * from the configured endpoint; otherwise returns an empty string.
+ */
+function fallbackReplacementUrl(error) {
+  const finalUrl = clean(error?.finalUrl);
+  const endpoint = clean(error?.endpoint);
+  if (finalUrl && endpoint && finalUrl !== endpoint) return finalUrl;
+  return '';
+}
+
+function reviewByTimestamp(entry, hours = 48) {
+  const base = clean(entry?.lastFailureAt || entry?.quarantinedAt);
+  if (!base) return '';
+  const baseMs = Date.parse(base);
+  if (!Number.isFinite(baseMs)) return '';
+  return new Date(baseMs + (hours * 3600000)).toISOString();
+}
+
 function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
   if (!source || source.kind !== 'html') return false;
   if (!summary) return false;
@@ -449,6 +484,9 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
         lastErrorCategory: clean(health?.lastErrorCategory),
         lastErrorMessage: clean(health?.lastErrorMessage),
         consecutiveBlockedFailures: Number(health?.consecutiveBlockedFailures || 0),
+        consecutiveDeadUrlFailures: Number(health?.consecutiveDeadUrlFailures || 0),
+        replacementSuggestion: clean(source?.replacementEndpoint || source?.fallbackEndpoint || source?.canonicalEndpoint || ''),
+        reviewBy: reviewByTimestamp(health, 48),
         lastFailureAt: clean(health?.lastFailureAt),
         lastCheckedAt: clean(health?.lastCheckedAt)
       };
@@ -502,6 +540,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     <div class="meta" id="meta">
       <span class="pill">Generated: ${clean(generatedAt)}</span>
       <span class="pill">Quarantined sources: ${entries.length}</span>
+      <span class="pill">SLA: review within 48h</span>
     </div>
     <div class="card">
       <table>
@@ -514,12 +553,14 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             <th>Reason</th>
             <th>Last Error</th>
             <th>Blocked Runs</th>
+            <th>Dead/Moved Runs</th>
+            <th>SLA Review By</th>
             <th>Endpoint</th>
             <th>Restore</th>
           </tr>
         </thead>
         <tbody id="quarantine-body">
-          <tr><td colspan="9" class="empty">Loading quarantined sources...</td></tr>
+          <tr><td colspan="11" class="empty">Loading quarantined sources...</td></tr>
         </tbody>
       </table>
     </div>
@@ -547,7 +588,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     }
 
     function emptyState(message) {
-      body.innerHTML = '<tr><td colspan="9" class="empty">' + escapeHtml(message) + '</td></tr>';
+       body.innerHTML = '<tr><td colspan="11" class="empty">' + escapeHtml(message) + '</td></tr>';
     }
 
     function rowMarkup(entry) {
@@ -559,10 +600,13 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         '<td>' + escapeHtml(entry.reason) + '</td>' +
         '<td>' + escapeHtml(entry.lastErrorCategory || 'n/a') + '</td>' +
         '<td>' + escapeHtml(entry.consecutiveBlockedFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.consecutiveDeadUrlFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.reviewBy || 'n/a') + '</td>' +
         '<td><a href="' + escapeHtml(entry.endpoint) + '" target="_blank" rel="noreferrer">' + escapeHtml(entry.endpoint) + '</a></td>' +
         '<td><div class="action">' +
-          '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
+          '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" value="' + escapeHtml(entry.replacementSuggestion || '') + '" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
           '<button type="button" data-action="restore">Add new URL</button>' +
+          '<div class="status-note">If prefilled, suggestion is auto-detected and must be verified.</div>' +
           '<div class="status-note" aria-live="polite"></div>' +
         '</div></td>' +
       '</tr>';
@@ -628,8 +672,8 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         }
         note.textContent = payload.detail || 'Source restored.';
         note.className = 'status-note success';
-        currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
-        renderMeta({ generatedAt: new Date().toISOString() });
+      currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
+      renderMeta({ generatedAt: new Date().toISOString() });
         setTimeout(() => {
           renderRows();
         }, 250);
@@ -693,7 +737,11 @@ function buildSourceRemediationSweep({ generatedAt, sourceErrors, sourceStats })
       status: Number.isFinite(Number(error?.status ?? stat?.status)) ? Number(error?.status ?? stat?.status) : null,
       rankScore: remediationRankScore(effectiveCategory) + (movedCandidate ? 1 : 0),
       suggestedAction: remediationActionForCategory(effectiveCategory),
-      replacementCandidate: movedCandidate ? finalUrl : ''
+      replacementCandidate: movedCandidate ? finalUrl : fallbackReplacementUrl(error),
+      sourceKind: clean(stat?.kind),
+      sourceLane: clean(stat?.lane),
+      sourceRegion: clean(stat?.region),
+      isMachineReadable: isMachineReadableSourceKind(clean(stat?.kind))
     };
   });
 
@@ -716,6 +764,14 @@ function buildSourceRemediationSweep({ generatedAt, sourceErrors, sourceStats })
       acc[entry.category] = (acc[entry.category] || 0) + 1;
       return acc;
     }, {}),
+    // byKind summarizes remediation workload split by source transport kind (rss/atom/json/html).
+    byKind: sorted.reduce((acc, entry) => {
+      const kind = clean(entry.sourceKind) || 'unknown';
+      acc[kind] = (acc[kind] || 0) + 1;
+      return acc;
+    }, {}),
+    machineReadableErrorCount: sorted.filter((entry) => entry.isMachineReadable).length,
+    htmlErrorCount: sorted.filter((entry) => !entry.isMachineReadable).length,
     top20: sorted.slice(0, 20),
     sources: sorted
   };
