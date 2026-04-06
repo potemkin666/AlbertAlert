@@ -417,11 +417,11 @@ function freshnessMinutes(entry, nowMs) {
 function buildFetchError(message, category) {
   const error = new Error(message);
   error.__brialertCategory = category;
-  error.__brialertMeta = {
-    errorCode: category === 'brittle-selectors-or-js-rendering'
-      ? ERROR_CODE.PARSER_SELECTOR_OR_JS_RENDERING
-      : ''
-  };
+  if (category === 'brittle-selectors-or-js-rendering') {
+    error.__brialertMeta = {
+      errorCode: ERROR_CODE.PARSER_SELECTOR_OR_JS_RENDERING
+    };
+  }
   return error;
 }
 
