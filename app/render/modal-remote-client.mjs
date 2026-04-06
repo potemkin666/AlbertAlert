@@ -2,6 +2,7 @@ const LONG_BRIEF_API_URLS = [
   '/api/generate-brief'
 ];
 const LONG_BRIEF_TIMEOUT_MS = 25_000;
+const TERMINAL_HTTP_STATUSES = new Set([400, 401, 403, 404, 405, 410, 501]);
 
 function resolveLongBriefApiUrls() {
   return [...LONG_BRIEF_API_URLS];
@@ -41,13 +42,20 @@ export async function requestRemoteLongBrief(payloadAttempts) {
           signal: controller.signal,
           body: JSON.stringify(payload)
         });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        if (!response.ok) {
+          const error = new Error(`HTTP ${response.status}`);
+          error.retryable = !TERMINAL_HTTP_STATUSES.has(response.status);
+          throw error;
+        }
         const brief = extractRemoteBrief(await response.json());
         if (!brief) throw new Error('Invalid brief response');
         return brief;
       } catch (error) {
         const detail = error instanceof Error ? error.message : String(error);
         errors.push(`${apiUrl}: ${detail}`);
+        if (error && typeof error === 'object' && 'retryable' in error && error.retryable === false) {
+          throw new Error(`Long brief generation failed after ${errors.length} attempts: ${errors.join(' | ')}`);
+        }
       } finally {
         clearTimeout(timeout);
       }
