@@ -30,10 +30,11 @@ function extractRemoteBrief(responseData) {
 
 export async function requestRemoteLongBrief(payloadAttempts) {
   const apiUrls = resolveLongBriefApiUrls();
-  const errors = [];
+  const allErrors = [];
 
   for (const payload of payloadAttempts) {
-    let terminalErrorSeen = false;
+    let hasTerminalError = false;
+    const payloadErrors = [];
     for (let index = 0; index < apiUrls.length; index += 1) {
       const apiUrl = apiUrls[index];
       const controller = new AbortController();
@@ -55,18 +56,20 @@ export async function requestRemoteLongBrief(payloadAttempts) {
         return brief;
       } catch (error) {
         const detail = error instanceof Error ? error.message : String(error);
-        errors.push(`${apiUrl}: ${detail}`);
+        const formattedError = `${apiUrl}: ${detail}`;
+        payloadErrors.push(formattedError);
+        allErrors.push(formattedError);
         if (error?.retryable === false) {
-          terminalErrorSeen = true;
+          hasTerminalError = true;
         }
       } finally {
         clearTimeout(timeout);
       }
     }
-    if (terminalErrorSeen) {
-      throw new Error(`Long brief generation failed with terminal error: ${errors.join(' | ')}`);
+    if (hasTerminalError) {
+      throw new Error(`Long brief generation failed with terminal error: ${payloadErrors.join(' | ')}`);
     }
   }
 
-  throw new Error(`Long brief generation failed after ${apiUrls.length * payloadAttempts.length} attempts: ${errors.join(' | ')}`);
+  throw new Error(`Long brief generation failed after ${apiUrls.length * payloadAttempts.length} attempts: ${allErrors.join(' | ')}`);
 }
