@@ -36,8 +36,9 @@
     <h1>Source Quarantine Review</h1>
     <p>Auto-quarantined or manually quarantined sources that should be reviewed before returning to the hourly feed run. Suggest a replacement URL and Brialert will restore it into the normal source catalog for the next run.</p>
     <div class="meta" id="meta">
-      <span class="pill">Generated: 2026-04-06T16:01:40.268Z</span>
-      <span class="pill">Quarantined sources: 83</span>
+      <span class="pill">Generated: 2026-04-06T17:04:11.606Z</span>
+      <span class="pill">Quarantined sources: 97</span>
+      <span class="pill">SLA: review within 48h</span>
     </div>
     <div class="card">
       <table>
@@ -50,12 +51,14 @@
             <th>Reason</th>
             <th>Last Error</th>
             <th>Blocked Runs</th>
+            <th>Dead/Moved Runs</th>
+            <th>SLA Review By</th>
             <th>Endpoint</th>
             <th>Restore</th>
           </tr>
         </thead>
         <tbody id="quarantine-body">
-          <tr><td colspan="9" class="empty">Loading quarantined sources...</td></tr>
+          <tr><td colspan="11" class="empty">Loading quarantined sources...</td></tr>
         </tbody>
       </table>
     </div>
@@ -77,13 +80,13 @@
 
     function renderMeta(payload) {
       meta.innerHTML = [
-        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-06T16:01:40.268Z') + '</span>',
+        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-06T17:04:11.606Z') + '</span>',
         '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>'
       ].join('');
     }
 
     function emptyState(message) {
-      body.innerHTML = '<tr><td colspan="9" class="empty">' + escapeHtml(message) + '</td></tr>';
+       body.innerHTML = '<tr><td colspan="11" class="empty">' + escapeHtml(message) + '</td></tr>';
     }
 
     function rowMarkup(entry) {
@@ -95,10 +98,13 @@
         '<td>' + escapeHtml(entry.reason) + '</td>' +
         '<td>' + escapeHtml(entry.lastErrorCategory || 'n/a') + '</td>' +
         '<td>' + escapeHtml(entry.consecutiveBlockedFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.consecutiveDeadUrlFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.reviewBy || 'n/a') + '</td>' +
         '<td><a href="' + escapeHtml(entry.endpoint) + '" target="_blank" rel="noreferrer">' + escapeHtml(entry.endpoint) + '</a></td>' +
         '<td><div class="action">' +
-          '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
+          '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" value="' + escapeHtml(entry.replacementSuggestion || '') + '" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
           '<button type="button" data-action="restore">Add new URL</button>' +
+          '<div class="status-note">If prefilled, suggestion is auto-detected and must be verified.</div>' +
           '<div class="status-note" aria-live="polite"></div>' +
         '</div></td>' +
       '</tr>';
@@ -164,8 +170,8 @@
         }
         note.textContent = payload.detail || 'Source restored.';
         note.className = 'status-note success';
-        currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
-        renderMeta({ generatedAt: new Date().toISOString() });
+      currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
+      renderMeta({ generatedAt: new Date().toISOString() });
         setTimeout(() => {
           renderRows();
         }, 250);
