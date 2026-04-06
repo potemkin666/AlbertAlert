@@ -1,8 +1,5 @@
 import { watchLayerLabels, albertQuotes, defaultNotes } from '../../shared/ui-data.mjs';
 import {
-  isQuarantineCandidate,
-  isTerrorRelevant,
-  isLiveIncidentCandidate,
   normaliseAlert,
   sortAlertsByFreshness
 } from '../../shared/alert-view-model.mjs';
@@ -122,10 +119,7 @@ function createElements() {
 export function initialiseApp() {
   const state = createState(watchLayerLabels);
   const feedDeps = {
-    sortAlertsByFreshness,
-    isLiveIncidentCandidate,
-    isQuarantineCandidate,
-    isTerrorRelevant
+    sortAlertsByFreshness
   };
   const derivedViewStore = createDerivedViewStore(deriveView, feedDeps);
   const elements = createElements();

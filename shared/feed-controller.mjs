@@ -1,4 +1,4 @@
-import { isLondonAlert } from './alert-view-model.mjs';
+import { isLondonAlert, isQuarantineCandidate } from './alert-view-model.mjs';
 
 function searchTerms(query) {
   return String(query || '')
@@ -51,13 +51,11 @@ export function filteredAlerts(state) {
 
 export function deriveView(state, deps) {
   const filtered = filteredAlerts(state);
-  const responder = deps.sortAlertsByFreshness(filtered.filter(deps.isLiveIncidentCandidate));
-  const context = deps.sortAlertsByFreshness(filtered.filter((alert) => {
-    if (deps.isQuarantineCandidate(alert)) return false;
-    if (alert.lane === 'incidents' && !deps.isTerrorRelevant(alert)) return false;
-    return !deps.isLiveIncidentCandidate(alert);
-  }));
-  const quarantine = deps.sortAlertsByFreshness(filtered.filter(deps.isQuarantineCandidate));
+  const incidents = filtered.filter((alert) => alert.lane === 'incidents');
+  const nonIncidents = filtered.filter((alert) => alert.lane !== 'incidents');
+  const quarantine = deps.sortAlertsByFreshness(incidents.filter((alert) => isQuarantineCandidate(alert)));
+  const responder = deps.sortAlertsByFreshness(incidents.filter((alert) => !isQuarantineCandidate(alert)));
+  const context = deps.sortAlertsByFreshness(nonIncidents);
   const topPriority = responder[0] || context[0] || null;
 
   return { filtered, responder, context, quarantine, topPriority };

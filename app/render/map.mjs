@@ -2,7 +2,7 @@ import { isLondonAlert } from '../../shared/alert-view-model.mjs';
 import { matchesAlertSearch } from '../../shared/feed-controller.mjs';
 
 export function filteredMapView(state, view) {
-  const base = state.alerts.filter((alert) =>
+  const base = view.filtered.filter((alert) =>
     (state.activeLane === 'all' || alert.lane === state.activeLane) &&
     matchesAlertSearch(alert, state.searchQuery)
   );

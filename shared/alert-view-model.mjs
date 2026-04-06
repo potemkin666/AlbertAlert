@@ -522,11 +522,14 @@ export function normaliseAlert(alert, index, geoLookup = []) {
   const timeRaw = plainText(alert.time);
   const happenedWhen = isUnconfirmedSourceDate(happenedWhenRaw) ? '' : happenedWhenRaw;
   const time = isUnconfirmedSourceDate(timeRaw) ? '' : timeRaw;
+  const allowedRegions = new Set(['uk', 'london', 'eu', 'europe', 'us', 'international']);
+  const rawRegion = clean(alert.region).toLowerCase();
+  const region = allowedRegions.has(rawRegion) ? rawRegion : 'europe';
   return {
     id: clean(alert.id) || `live-${index}`,
     title: plainText(alert.title) || 'Untitled source item',
     location: plainText(alert.location) || (alert.region === 'uk' ? 'United Kingdom' : 'Europe'),
-    region: alert.region === 'uk' ? 'uk' : alert.region === 'london' ? 'london' : 'europe',
+    region,
     lane,
     severity: ['critical', 'high', 'elevated', 'moderate'].includes(alert.severity) ? alert.severity : 'moderate',
     status: plainText(alert.status) || 'Update',
