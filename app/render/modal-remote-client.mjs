@@ -53,7 +53,7 @@ export async function requestRemoteLongBrief(payloadAttempts) {
       } catch (error) {
         const detail = error instanceof Error ? error.message : String(error);
         errors.push(`${apiUrl}: ${detail}`);
-        if (error && typeof error === 'object' && 'retryable' in error && error.retryable === false) {
+        if (error?.retryable === false) {
           throw new Error(`Long brief generation failed after ${errors.length} attempts: ${errors.join(' | ')}`);
         }
       } finally {
