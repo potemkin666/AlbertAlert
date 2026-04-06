@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-06T05:29:44.899Z",
-  "totalSourceErrors": 10,
+  "generatedAt": "2026-04-06T07:06:34.068Z",
+  "totalSourceErrors": 11,
   "top20": [
     {
-      "id": "scottish-government-justice-news",
-      "provider": "Scottish Government - Justice and Safety",
-      "endpoint": "https://www.gov.scot/justice-and-law/",
+      "id": "german-bfv-news",
+      "provider": "German BfV - News",
+      "endpoint": "https://www.verfassungsschutz.de/EN/service/news/news_node.html",
       "finalUrl": "",
       "category": "dead-or-moved-url",
       "message": "HTTP 404",
@@ -16,21 +16,21 @@
       "replacementCandidate": ""
     },
     {
-      "id": "europol-media-press",
-      "provider": "Europol a Media and Press",
-      "endpoint": "https://www.europol.europa.eu/media-press",
+      "id": "cnwl-news",
+      "provider": "Central and North West London NHS Foundation Trust a News",
+      "endpoint": "https://www.cnwl.nhs.uk/news",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source endpoint",
-      "status": 200,
+      "category": "blocked-or-auth",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": ""
     },
     {
-      "id": "financial-times-world",
-      "provider": "Financial Times a World",
-      "endpoint": "https://www.ft.com/world",
+      "id": "french-interior-ministry-news",
+      "provider": "French Ministry of the Interior - News",
+      "endpoint": "https://www.interieur.gouv.fr/actualites",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "HTTP 403",
@@ -40,9 +40,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "nsa-cybersecurity-news",
-      "provider": "NSA - Cybersecurity Advisories & Guidance",
-      "endpoint": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/",
+      "id": "kent-police-news",
+      "provider": "Kent Police a News",
+      "endpoint": "https://www.kent.police.uk/news/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "HTTP 403",
@@ -52,21 +52,33 @@
       "replacementCandidate": ""
     },
     {
-      "id": "police-uk-outcomes-at-location-1609590",
-      "provider": "Police.uk - Outcomes At Location 1609590",
-      "endpoint": "https://data.police.uk/api/outcomes-at-location?date=2024-01&location_id=1609590",
+      "id": "rand-terrorism-topic",
+      "provider": "RAND - Terrorism Topic Updates",
+      "endpoint": "https://www.rand.org/topics/terrorism.html",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source endpoint",
-      "status": 200,
+      "category": "blocked-or-auth",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": ""
     },
     {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
+      "id": "report-fraud-newsroom",
+      "provider": "Report Fraud - Newsroom",
+      "endpoint": "https://www.reportfraud.police.uk/collection/newsroom/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "eu-council-press-releases",
+      "provider": "Council of the European Union a Press Releases (RSS)",
+      "endpoint": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -76,9 +88,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "judiciary-uk-announcements-feed",
-      "provider": "Judiciary UK - Announcements Feed",
-      "endpoint": "https://www.judiciary.uk/announcements/feed/",
+      "id": "gnet-artificial-intelligence-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) a Artificial Intelligence (RSS)",
+      "endpoint": "https://gnet-research.org/tag/artificial-intelligence/feed/",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -88,9 +100,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "judiciary-uk-judgments-feed",
-      "provider": "Judiciary UK - Judgments Feed",
-      "endpoint": "https://www.judiciary.uk/judgments/feed/",
+      "id": "gnet-youth-rss",
+      "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
+      "endpoint": "https://gnet-research.org/tag/youth/feed/",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -100,9 +112,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "lords-library-notes-rss",
-      "provider": "Lords Library Notes RSS",
-      "endpoint": "https://researchbriefings.parliament.uk/rssfeed/Lords%20. Library%20notes",
+      "id": "judiciary-uk-news",
+      "provider": "Judiciary of England and Wales a News",
+      "endpoint": "https://www.judiciary.uk/feed/",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -112,9 +124,9 @@
       "replacementCandidate": ""
     },
     {
-      "id": "parliament-private-bills-rss",
-      "provider": "Parliament - Private Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/privatebills.rss",
+      "id": "parliament-public-bills-rss",
+      "provider": "Parliament - Public Bills RSS",
+      "endpoint": "https://bills.parliament.uk/rss/publicbills.rss",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
