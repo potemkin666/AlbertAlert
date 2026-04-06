@@ -144,10 +144,13 @@ test('quarantine routing catches weak secondary incident-like items', () => {
     isOfficial: false,
     confidenceScore: 0.72,
     needsHumanReview: true,
-    queueReason: 'Needs human review'
+    queueReason: 'Needs human review',
+    queueBucket: 'quarantine'
   });
 
-  const liveOfficial = makeAlert();
+  const liveOfficial = makeAlert({
+    queueBucket: 'responder'
+  });
   const state = {
     alerts: [liveOfficial, weakSecondary],
     activeRegion: 'all',
@@ -1099,7 +1102,8 @@ test('deriveView keeps full quarantine list for progressive rendering', () => {
     isOfficial: false,
     confidenceScore: 0.71,
     needsHumanReview: true,
-    queueReason: 'Needs human review'
+    queueReason: 'Needs human review',
+    queueBucket: 'quarantine'
   }));
   const view = deriveView({
     alerts,
@@ -1115,7 +1119,8 @@ test('deriveView trusts upstream lanes for incidents vs context', () => {
   const responderIncident = makeAlert({
     id: 'incident-live',
     lane: 'incidents',
-    queueReason: 'Trigger-tier terrorism incident candidate'
+    queueReason: 'Trigger-tier terrorism incident candidate',
+    queueBucket: 'responder'
   });
   const quarantinedIncident = makeAlert({
     id: 'incident-quarantine',
@@ -1123,12 +1128,14 @@ test('deriveView trusts upstream lanes for incidents vs context', () => {
     queueReason: 'Needs human review',
     needsHumanReview: true,
     isOfficial: false,
-    confidenceScore: 0.7
+    confidenceScore: 0.7,
+    queueBucket: 'quarantine'
   });
   const contextItem = makeAlert({
     id: 'context-upstream',
     lane: 'context',
-    queueReason: 'Corroborating or adjacent source kept out of the live trigger lane.'
+    queueReason: 'Corroborating or adjacent source kept out of the live trigger lane.',
+    queueBucket: 'context'
   });
 
   const view = deriveView({
@@ -1142,6 +1149,23 @@ test('deriveView trusts upstream lanes for incidents vs context', () => {
   assert.deepEqual(view.responder.map((item) => item.id), ['incident-live']);
   assert.deepEqual(view.quarantine.map((item) => item.id), ['incident-quarantine']);
   assert.deepEqual(view.context.map((item) => item.id), ['context-upstream']);
+});
+
+test('deriveView treats missing queue bucket as context for safe fallback', () => {
+  const noBucket = makeAlert({
+    id: 'no-bucket',
+    lane: 'incidents'
+  });
+  const view = deriveView({
+    alerts: [noBucket],
+    activeRegion: 'all',
+    activeLane: 'all'
+  }, {
+    sortAlertsByFreshness: (items) => items
+  });
+  assert.deepEqual(view.context.map((item) => item.id), ['no-bucket']);
+  assert.equal(view.responder.length, 0);
+  assert.equal(view.quarantine.length, 0);
 });
 
 test('normaliseAlert preserves canonical non-UK regions', () => {

@@ -1,4 +1,4 @@
-import { isLondonAlert, isQuarantineCandidate } from './alert-view-model.mjs';
+import { isLondonAlert } from './alert-view-model.mjs';
 
 function searchTerms(query) {
   return String(query || '')
@@ -51,11 +51,18 @@ export function filteredAlerts(state) {
 
 export function deriveView(state, deps) {
   const filtered = filteredAlerts(state);
-  const incidents = filtered.filter((alert) => alert.lane === 'incidents');
-  const nonIncidents = filtered.filter((alert) => alert.lane !== 'incidents');
-  const quarantine = deps.sortAlertsByFreshness(incidents.filter((alert) => isQuarantineCandidate(alert)));
-  const responder = deps.sortAlertsByFreshness(incidents.filter((alert) => !isQuarantineCandidate(alert)));
-  const context = deps.sortAlertsByFreshness(nonIncidents);
+  const responder = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === 'responder';
+  }));
+  const quarantine = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === 'quarantine';
+  }));
+  const context = deps.sortAlertsByFreshness(filtered.filter((alert) => {
+    const queueBucket = String(alert?.queueBucket || '').toLowerCase();
+    return queueBucket === '' || (queueBucket !== 'responder' && queueBucket !== 'quarantine');
+  }));
   const topPriority = responder[0] || context[0] || null;
 
   return { filtered, responder, context, quarantine, topPriority };

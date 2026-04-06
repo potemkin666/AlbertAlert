@@ -433,6 +433,25 @@ function classifyFetchFailure(summary) {
   return 'unknown';
 }
 
+/**
+ * Returns a redirected final URL as a replacement candidate when it differs
+ * from the configured endpoint; otherwise returns an empty string.
+ */
+function fallbackReplacementUrl(error) {
+  const finalUrl = clean(error?.finalUrl);
+  const endpoint = clean(error?.endpoint);
+  if (finalUrl && endpoint && finalUrl !== endpoint) return finalUrl;
+  return '';
+}
+
+function reviewByTimestamp(entry, hours = 48) {
+  const base = clean(entry?.lastFailureAt || entry?.quarantinedAt);
+  if (!base) return '';
+  const baseMs = Date.parse(base);
+  if (!Number.isFinite(baseMs)) return '';
+  return new Date(baseMs + (hours * 3600000)).toISOString();
+}
+
 function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
   if (!source || source.kind !== 'html') return false;
   if (!summary) return false;
@@ -467,11 +486,7 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
         consecutiveBlockedFailures: Number(health?.consecutiveBlockedFailures || 0),
         consecutiveDeadUrlFailures: Number(health?.consecutiveDeadUrlFailures || 0),
         replacementSuggestion: clean(source?.replacementEndpoint || source?.fallbackEndpoint || source?.canonicalEndpoint || ''),
-        reviewBy: clean(health?.lastFailureAt) && clean(health?.quarantinedAt)
-          ? new Date(Date.parse(clean(health?.lastFailureAt || health?.quarantinedAt)) + (48 * 3600000)).toISOString()
-          : (clean(health?.quarantinedAt)
-            ? new Date(Date.parse(clean(health?.quarantinedAt)) + (48 * 3600000)).toISOString()
-            : ''),
+        reviewBy: reviewByTimestamp(health, 48),
         lastFailureAt: clean(health?.lastFailureAt),
         lastCheckedAt: clean(health?.lastCheckedAt)
       };
@@ -525,6 +540,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     <div class="meta" id="meta">
       <span class="pill">Generated: ${clean(generatedAt)}</span>
       <span class="pill">Quarantined sources: ${entries.length}</span>
+      <span class="pill">SLA: review within 48h</span>
     </div>
     <div class="card">
       <table>
@@ -590,6 +606,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         '<td><div class="action">' +
           '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" value="' + escapeHtml(entry.replacementSuggestion || '') + '" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
           '<button type="button" data-action="restore">Add new URL</button>' +
+          '<div class="status-note">If prefilled, suggestion is auto-detected and must be verified.</div>' +
           '<div class="status-note" aria-live="polite"></div>' +
         '</div></td>' +
       '</tr>';
@@ -655,8 +672,8 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         }
         note.textContent = payload.detail || 'Source restored.';
         note.className = 'status-note success';
-        currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
-        renderMeta({ generatedAt: new Date().toISOString() });
+      currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
+      renderMeta({ generatedAt: new Date().toISOString() });
         setTimeout(() => {
           renderRows();
         }, 250);
@@ -720,7 +737,7 @@ function buildSourceRemediationSweep({ generatedAt, sourceErrors, sourceStats })
       status: Number.isFinite(Number(error?.status ?? stat?.status)) ? Number(error?.status ?? stat?.status) : null,
       rankScore: remediationRankScore(effectiveCategory) + (movedCandidate ? 1 : 0),
       suggestedAction: remediationActionForCategory(effectiveCategory),
-      replacementCandidate: movedCandidate ? finalUrl : '',
+      replacementCandidate: movedCandidate ? finalUrl : fallbackReplacementUrl(error),
       sourceKind: clean(stat?.kind),
       sourceLane: clean(stat?.lane),
       sourceRegion: clean(stat?.region),
@@ -747,6 +764,7 @@ function buildSourceRemediationSweep({ generatedAt, sourceErrors, sourceStats })
       acc[entry.category] = (acc[entry.category] || 0) + 1;
       return acc;
     }, {}),
+    // byKind summarizes remediation workload split by source transport kind (rss/atom/json/html).
     byKind: sorted.reduce((acc, entry) => {
       const kind = clean(entry.sourceKind) || 'unknown';
       acc[kind] = (acc[kind] || 0) + 1;
