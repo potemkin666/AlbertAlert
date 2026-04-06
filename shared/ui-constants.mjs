@@ -1,4 +1,5 @@
 export const LANE_ALL = 'all';
+export const REGION_ALL = 'all';
 export const DEFAULT_LANE = 'incidents';
 export const LANE_KEYS = Object.freeze([
   'incidents',
