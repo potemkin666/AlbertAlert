@@ -34,7 +34,13 @@ import {
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
 import {
+  AUTO_QUARANTINE_DEAD_URL_THRESHOLD,
   CONTROL_MAX_HTML_SOURCES_PER_RUN,
+  DEFAULT_MAX_RETRIES,
+  DEFAULT_TIMEOUT_MS,
+  FEED_SOURCE_CONCURRENCY,
+  MAX_FEED_PREFETCH_ITEMS,
+  MAX_HTML_PREFETCH_ITEMS,
   MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
   sourceRefreshEveryHours,
@@ -922,6 +928,18 @@ test('html source run cap is increased for candidate scheduler mode', () => {
 
 test('html source run cap keeps control scheduler budget at legacy value', () => {
   assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 24);
+});
+
+test('default fetch/runtime tuning constants remain stable', () => {
+  assert.equal(DEFAULT_TIMEOUT_MS, 12000);
+  assert.equal(DEFAULT_MAX_RETRIES, 3);
+  assert.equal(FEED_SOURCE_CONCURRENCY, 4);
+  assert.equal(MAX_HTML_PREFETCH_ITEMS, 12);
+  assert.equal(MAX_FEED_PREFETCH_ITEMS, 8);
+});
+
+test('dead-url quarantine threshold defaults to two consecutive failures', () => {
+  assert.equal(AUTO_QUARANTINE_DEAD_URL_THRESHOLD, 2);
 });
 
 test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {

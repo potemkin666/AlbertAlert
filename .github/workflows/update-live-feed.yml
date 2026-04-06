@@ -41,6 +41,14 @@ jobs:
       - name: Validate feed data files
         run: npm run validate:feed-data
 
+      - name: Validate compiled source catalog freshness
+        run: npm run check:sources:freshness
+
+      - name: Validate London source health (full scope)
+        env:
+          BRIALERT_SOURCE_HEALTH_SCOPE: all
+        run: npm run validate:source-health
+
       - name: Build live alert feed
         run: npm run build:feeds
 

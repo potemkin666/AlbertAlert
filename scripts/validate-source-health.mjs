@@ -8,6 +8,13 @@ const sourcesPath = path.join(repoRoot, 'data', 'sources.json');
 
 const REQUEST_TIMEOUT_MS = 20_000;
 const CONCURRENCY = 6;
+const SCOPE = String(process.env.BRIALERT_SOURCE_HEALTH_SCOPE || 'all').toLowerCase();
+const CRITICAL_IDS = new Set(
+  String(process.env.BRIALERT_SOURCE_HEALTH_CRITICAL_IDS || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
 const USER_AGENT = 'Mozilla/5.0 (compatible; BrialertSourceValidator/1.0; +https://github.com/potemkin666/Brialert)';
 
 function stripBom(text) {
@@ -40,11 +47,11 @@ async function loadLondonHtmlSources() {
   const raw = stripBom(await fs.readFile(sourcesPath, 'utf8'));
   const parsed = JSON.parse(raw);
   const sources = Array.isArray(parsed?.sources) ? parsed.sources : [];
-  return sources.filter((source) =>
-    source &&
-    source.region === 'london' &&
-    source.kind === 'html'
-  );
+  return sources.filter((source) => {
+    if (!source || source.region !== 'london' || source.kind !== 'html') return false;
+    if (SCOPE !== 'critical') return true;
+    return source.lane === 'incidents' || CRITICAL_IDS.has(source.id);
+  });
 }
 
 async function readSample(response) {
@@ -121,6 +128,7 @@ async function mapWithConcurrency(items, worker, limit) {
 
 async function main() {
   const sources = await loadLondonHtmlSources();
+  console.log(`Source health scope: ${SCOPE}`);
   const results = await mapWithConcurrency(sources, validateSource, CONCURRENCY);
   const failures = results.filter((result) => !result.ok);
   const hardFailures = failures.filter((result) => result.severity === 'hard');

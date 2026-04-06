@@ -23,10 +23,13 @@ on:
       - '.github/workflows/**'
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   validate-feed:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     env:
       BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK: ${{ vars.BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK || 'false' }}
 
@@ -50,11 +53,51 @@ jobs:
       - name: Validate feed data files
         run: npm run validate:feed-data
 
+      - name: Validate compiled source catalog freshness
+        run: npm run check:sources:freshness
+
       - name: Validate London source health
+        env:
+          BRIALERT_SOURCE_HEALTH_SCOPE: critical
+          BRIALERT_SOURCE_HEALTH_CRITICAL_IDS: ct-policing-london,met-police-news,met-police-latest-news,city-of-london-police-news,city-of-london-police-news-html,city-of-london-police-newsroom,mopac-html,london-fire-brigade-news,tfl-press-releases-html,london-gov-press-releases-html
         run: npm run validate:source-health
 
       - name: Run decision-logic tests
         run: npm test
+
+  build-feed-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: validate-feed
+    env:
+      BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK: ${{ vars.BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK || 'false' }}
+      BRIALERT_SCHEDULER_AB_MODE: control
+      BRIALERT_MAX_HTML_SOURCES_PER_RUN: '10'
+      BRIALERT_CONTROL_MAX_HTML_SOURCES_PER_RUN: '8'
+      BRIALERT_MAX_HTML_PREFETCH_ITEMS: '4'
+      BRIALERT_MAX_FEED_PREFETCH_ITEMS: '4'
+      BRIALERT_FETCH_TIMEOUT_MS: '7000'
+      BRIALERT_FETCH_MAX_RETRIES: '2'
+      BRIALERT_FEED_SOURCE_CONCURRENCY: '3'
+      BRIALERT_GUARDRAIL_MAX_RUNTIME_MS: '420000'
+      BRIALERT_FAIL_ON_GUARDRAIL_VIOLATION: 'true'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20.18.1'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Playwright Chromium
+        if: ${{ env.BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK == 'true' }}
+        run: npx playwright install chromium --with-deps
 
       - name: Build live alert feed
         run: npm run build:feeds
@@ -64,3 +107,24 @@ jobs:
 
       - name: Validate generated feed output
         run: npm run validate:live-feed-output
+
+      - name: Build smoke observability artifact
+        if: always()
+        run: |
+          mkdir -p .ci-artifacts
+          cp live-alerts.json .ci-artifacts/live-alerts.json 2>/dev/null || true
+          cp data/source-remediation-sweep.json .ci-artifacts/source-remediation-sweep.json 2>/dev/null || true
+          cp data/top-20-source-remediation.json .ci-artifacts/top-20-source-remediation.json 2>/dev/null || true
+          node ./scripts/ci/generate-feed-smoke-summary.mjs live-alerts.json .ci-artifacts/feed-smoke-summary.json
+
+      - name: Enforce CI smoke runtime budget
+        run: |
+          node ./scripts/ci/enforce-runtime-budget.mjs live-alerts.json "$BRIALERT_GUARDRAIL_MAX_RUNTIME_MS"
+
+      - name: Upload feed smoke artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: feed-smoke-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .ci-artifacts
+          if-no-files-found: warn

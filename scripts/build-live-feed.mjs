@@ -6,6 +6,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { promisify } from 'node:util';
 import {
   AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD,
+  AUTO_QUARANTINE_DEAD_URL_THRESHOLD,
   AUTO_QUARANTINE_RECHECK_HOURS,
   AUTO_SKIP_EMPTY_THRESHOLD,
   AUTO_SKIP_FAILURE_THRESHOLD,
@@ -25,6 +26,7 @@ import {
   PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS,
   PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN,
   PLAYWRIGHT_FALLBACK_TIMEOUT_MS,
+  FAIL_ON_GUARDRAIL_VIOLATION,
   SCHEDULER_MODE,
   SOURCE_EMPTY_COOLDOWN_HOURS,
   SOURCE_PROTECTED_FAILURE_COOLDOWN_HOURS,
@@ -104,6 +106,10 @@ function isBlockedFailureCategory(category) {
   return category === 'blocked-or-auth' || category === 'anti-bot-protection';
 }
 
+function isDeadUrlFailureCategory(category) {
+  return category === 'dead-or-moved-url';
+}
+
 function sourceFailureCooldownHours(source, errorCategory) {
   const criticality = sourceCriticality(source);
   if (isBlockedFailureCategory(errorCategory)) return SOURCE_BLOCKED_FAILURE_COOLDOWN_HOURS;
@@ -151,6 +157,7 @@ function sourceMayAutoCooldown(source, previousEntry, buildDate) {
 function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   const prior = previousEntry && typeof previousEntry === 'object' ? previousEntry : {};
   const priorBlockedFailures = Number(prior.consecutiveBlockedFailures || 0);
+  const priorDeadUrlFailures = Number(prior.consecutiveDeadUrlFailures || 0);
   const next = {
     provider: source.provider,
     lane: source.lane,
@@ -163,6 +170,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     consecutiveFailures: Number(prior.consecutiveFailures || 0),
     consecutiveEmptyRuns: Number(prior.consecutiveEmptyRuns || 0),
     consecutiveBlockedFailures: priorBlockedFailures,
+    consecutiveDeadUrlFailures: priorDeadUrlFailures,
     lastSuccessfulAt: prior.lastSuccessfulAt || null,
     lastFailureAt: prior.lastFailureAt || null,
     lastEmptyAt: prior.lastEmptyAt || null,
@@ -180,6 +188,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.consecutiveFailures = 0;
     next.consecutiveEmptyRuns = 0;
     next.consecutiveBlockedFailures = 0;
+    next.consecutiveDeadUrlFailures = 0;
     next.lastErrorCategory = null;
     next.lastErrorMessage = null;
     next.lastSuccessfulAt = generatedAt;
@@ -188,10 +197,12 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
 
   if ((stat?.errors || 0) > 0) {
     const blockedFailure = source?.kind === 'html' && isBlockedFailureCategory(stat?.lastErrorCategory);
+    const deadUrlFailure = isDeadUrlFailureCategory(stat?.lastErrorCategory);
     next.failedRuns += 1;
     next.consecutiveFailures += 1;
     next.consecutiveEmptyRuns = 0;
     next.consecutiveBlockedFailures = blockedFailure ? priorBlockedFailures + 1 : 0;
+    next.consecutiveDeadUrlFailures = deadUrlFailure ? priorDeadUrlFailures + 1 : 0;
     next.lastFailureAt = generatedAt;
     next.lastErrorCategory = stat?.lastErrorCategory || null;
     next.lastErrorMessage = stat?.lastErrorMessage || null;
@@ -199,6 +210,14 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantined = true;
       next.quarantinedAt = generatedAt;
       next.quarantineReason = `Repeated ${stat.lastErrorCategory} failures on html source`;
+      next.autoSkipReason = 'review-quarantine';
+      next.cooldownUntil = null;
+      return next;
+    }
+    if (!next.quarantined && deadUrlFailure && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
+      next.quarantined = true;
+      next.quarantinedAt = generatedAt;
+      next.quarantineReason = `Repeated ${stat.lastErrorCategory} failures`;
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
       return next;
@@ -215,6 +234,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   next.consecutiveEmptyRuns += 1;
   next.consecutiveFailures = 0;
   next.consecutiveBlockedFailures = 0;
+  next.consecutiveDeadUrlFailures = 0;
   next.lastErrorCategory = null;
   next.lastErrorMessage = null;
   next.lastEmptyAt = generatedAt;
@@ -1105,11 +1125,14 @@ async function main() {
   if (runDurationMs > GUARDRAIL_MAX_RUNTIME_MS) guardrailViolations.push('runtime-exceeded');
   if (failedRate > GUARDRAIL_MAX_FAILED_SOURCE_RATE) guardrailViolations.push('failure-rate-exceeded');
   if (successfulSources < GUARDRAIL_MIN_SUCCESSFUL_SOURCES) guardrailViolations.push('successful-source-floor-breached');
+  const guardrailMessage = guardrailViolations.length
+    ? `Guardrails breached: ${guardrailViolations.join(', ')} (runtime=${runDurationMs}ms, failedRate=${failedRate.toFixed(3)}, successfulSources=${successfulSources})`
+    : null;
   const buildWarning = [
     geoLookupFallbackNote,
     autoDeferredSources.length ? `Deferred ${autoDeferredSources.length} low-yield source(s) on health cooldown.` : null,
     preservedAlerts ? 'Build produced no fresh alerts; preserved previous alert set.' : null,
-    guardrailViolations.length ? `Guardrails breached: ${guardrailViolations.join(', ')}` : null
+    guardrailMessage
   ].filter(Boolean).join(' | ') || null;
   const generatedAt = new Date().toISOString();
   const nextSourceHealth = {};
@@ -1317,6 +1340,12 @@ async function main() {
   }
   if (failingCategorySummary) {
     console.log(`Failure categories: ${failingCategorySummary}`);
+  }
+  if (guardrailMessage) {
+    console.error(`[guardrail] ${guardrailMessage}`);
+  }
+  if (FAIL_ON_GUARDRAIL_VIOLATION && guardrailViolations.length) {
+    throw new Error(`Build failed on guardrail violation: ${guardrailViolations.join(', ')}`);
   }
   console.log(`Scheduler mode=${SCHEDULER_MODE} | htmlBudget=${htmlBudget} | coverage=${coverage.checked}/${coverage.eligible} | playwrightFallback=${playwrightBudget.successes}/${playwrightBudget.attempts} | guardrailViolations=${guardrailViolations.length}`);
 }
