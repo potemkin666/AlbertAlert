@@ -56,6 +56,7 @@ jobs:
       - name: Validate London source health
         env:
           BRIALERT_SOURCE_HEALTH_SCOPE: critical
+          BRIALERT_SOURCE_HEALTH_CRITICAL_IDS: ct-policing-london,met-police-news,met-police-latest-news,city-of-london-police-news,city-of-london-police-news-html,city-of-london-police-newsroom,mopac-html,london-fire-brigade-news,tfl-press-releases-html,london-gov-press-releases-html
         run: npm run validate:source-health
 
       - name: Run decision-logic tests

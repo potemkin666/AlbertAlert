@@ -9,6 +9,12 @@ const sourcesPath = path.join(repoRoot, 'data', 'sources.json');
 const REQUEST_TIMEOUT_MS = 20_000;
 const CONCURRENCY = 6;
 const SCOPE = String(process.env.BRIALERT_SOURCE_HEALTH_SCOPE || 'all').toLowerCase();
+const CRITICAL_IDS = new Set(
+  String(process.env.BRIALERT_SOURCE_HEALTH_CRITICAL_IDS || '')
+    .split(',')
+    .map((value) => value.trim())
+    .filter(Boolean)
+);
 const USER_AGENT = 'Mozilla/5.0 (compatible; BrialertSourceValidator/1.0; +https://github.com/potemkin666/Brialert)';
 
 function stripBom(text) {
@@ -47,7 +53,7 @@ async function loadLondonHtmlSources() {
     source.kind === 'html'
   );
   if (SCOPE !== 'critical') return londonHtml;
-  return londonHtml.filter((source) => source.lane === 'incidents' || source.isTrustedOfficial);
+  return londonHtml.filter((source) => source.lane === 'incidents' || CRITICAL_IDS.has(source.id));
 }
 
 async function readSample(response) {

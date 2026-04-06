@@ -76,7 +76,7 @@ npm run build:feeds
 - The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
 - The feed builder now writes a SQLite sidecar for source reputation, cooldown memory, and alert churn history so source intelligence can persist across runs.
 - London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.
-- Feed validation CI runs source health in a critical-only scope (`BRIALERT_SOURCE_HEALTH_SCOPE=critical`) and runs feed build in a bounded smoke configuration; scheduled hourly refresh keeps full-depth source checks.
+- Feed validation CI runs source health in a critical-only scope (`BRIALERT_SOURCE_HEALTH_SCOPE=critical`) with a curated high-value London source list (`BRIALERT_SOURCE_HEALTH_CRITICAL_IDS`) and runs feed build in a bounded smoke configuration; scheduled hourly refresh keeps full-depth source checks.
 - Both CI and the hourly workflow now run `validate:live-feed-output` after feed generation to fail fast on malformed publish output.
 - CI now enforces source-catalog freshness (`npm run check:sources:freshness`) so shard edits must be compiled into `data/sources.json`.
 - The hourly publish step retries once after rebasing `origin/main` if `git push` hits a non-fast-forward race.
