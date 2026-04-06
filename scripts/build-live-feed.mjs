@@ -113,6 +113,10 @@ function isDeadUrlFailureCategory(category) {
   return category === 'dead-or-moved-url';
 }
 
+function isNotFoundFailureCategory(category) {
+  return category === 'not-found-404';
+}
+
 function sourceFailureCooldownHours(source, errorCategory) {
   const criticality = sourceCriticality(source);
   if (isBlockedFailureCategory(errorCategory)) return SOURCE_BLOCKED_FAILURE_COOLDOWN_HOURS;
@@ -201,6 +205,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   if ((stat?.errors || 0) > 0) {
     const blockedFailure = source?.kind === 'html' && isBlockedFailureCategory(stat?.lastErrorCategory);
     const deadUrlFailure = isDeadUrlFailureCategory(stat?.lastErrorCategory);
+    const notFoundFailure = isNotFoundFailureCategory(stat?.lastErrorCategory);
     next.failedRuns += 1;
     next.consecutiveFailures += 1;
     next.consecutiveEmptyRuns = 0;
@@ -209,18 +214,10 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.lastFailureAt = generatedAt;
     next.lastErrorCategory = stat?.lastErrorCategory || null;
     next.lastErrorMessage = stat?.lastErrorMessage || null;
-    if (!next.quarantined && blockedFailure && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
+    if (!next.quarantined && notFoundFailure) {
       next.quarantined = true;
       next.quarantinedAt = generatedAt;
-      next.quarantineReason = `Repeated ${stat.lastErrorCategory} failures on html source`;
-      next.autoSkipReason = 'review-quarantine';
-      next.cooldownUntil = null;
-      return next;
-    }
-    if (!next.quarantined && deadUrlFailure && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
-      next.quarantined = true;
-      next.quarantinedAt = generatedAt;
-      next.quarantineReason = `Repeated ${stat.lastErrorCategory} failures`;
+      next.quarantineReason = 'HTTP 404 not found; needs manual source URL review';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
       return next;
@@ -410,6 +407,7 @@ function classifyFetchFailure(summary) {
   const category = clean(summary?.category || '').toLowerCase();
   if (category === 'anti-bot-protection') return 'bot-block';
   if (category === 'blocked-or-auth') return 'bot-block';
+  if (category === 'not-found-404') return 'http-error';
   if (category === 'timeout') return 'timeout';
   if (category === 'brittle-selectors-or-js-rendering') return 'parser-error';
   if (category === 'dead-or-moved-url') return 'http-error';
@@ -649,6 +647,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
 }
 
 function remediationActionForCategory(category) {
+  if (category === 'not-found-404') return 'move source to quarantine and replace endpoint with current live URL';
   if (category === 'dead-or-moved-url') return 'replace endpoint with current feed/listing URL';
   if (category === 'moved-temporarily') return 'update source endpoint to redirected final URL';
   if (category === 'blocked-or-auth' || category === 'anti-bot-protection') return 'downgrade to non-bot-protected endpoint or quarantine if no public feed';
@@ -658,6 +657,7 @@ function remediationActionForCategory(category) {
 }
 
 function remediationRankScore(category) {
+  if (category === 'not-found-404') return 5;
   if (category === 'dead-or-moved-url') return 4;
   if (category === 'moved-temporarily') return 3;
   if (category === 'blocked-or-auth' || category === 'anti-bot-protection') return 2;

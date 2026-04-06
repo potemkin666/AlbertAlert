@@ -331,7 +331,8 @@ export function summariseSourceError(source, error) {
   const message = error instanceof Error ? error.message : String(error);
   const meta = error && typeof error === 'object' ? error.__brialertMeta : null;
   let category = 'unknown';
-  if (/HTTP 404|HTTP 410/i.test(message)) category = 'dead-or-moved-url';
+  if (/HTTP 404/i.test(message)) category = 'not-found-404';
+  else if (/HTTP 410/i.test(message)) category = 'dead-or-moved-url';
   else if (/HTTP 403|HTTP 401|access denied|blocked/i.test(message)) category = 'blocked-or-auth';
   else if (/anti-bot|captcha|cloudflare|javascript and cookies/i.test(message)) category = 'anti-bot-protection';
   else if (/HTTP 301|HTTP 302|HTTP 307|HTTP 308/i.test(message)) category = 'moved-temporarily';
