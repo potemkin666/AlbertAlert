@@ -1,6 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, '..');
@@ -57,7 +57,7 @@ async function listShardFiles() {
   return files.sort(compareByPath);
 }
 
-async function compileCatalog() {
+export async function compileSourcesCatalog() {
   const shardFiles = await listShardFiles();
   if (!shardFiles.length) {
     if (!quiet) {
@@ -83,7 +83,11 @@ async function compileCatalog() {
   return { sources: allSources, shardFiles };
 }
 
-compileCatalog().catch((error) => {
-  console.error(error instanceof Error ? error.message : String(error));
-  process.exit(1);
-});
+const isDirectRun = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;
+
+if (isDirectRun) {
+  compileSourcesCatalog().catch((error) => {
+    console.error(error instanceof Error ? error.message : String(error));
+    process.exit(1);
+  });
+}

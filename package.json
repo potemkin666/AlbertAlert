@@ -8,6 +8,7 @@
   },
   "scripts": {
     "compile:sources": "node ./scripts/compile-source-catalog.mjs",
+    "check:sources:freshness": "node ./scripts/ci/check-source-catalog-freshness.mjs",
     "split:sources": "node ./scripts/split-source-catalog.mjs",
     "validate:feed-data": "node ./scripts/compile-source-catalog.mjs --quiet && node ./scripts/validate-feed-data.mjs",
     "validate:source-health": "node ./scripts/validate-source-health.mjs",

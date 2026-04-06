@@ -8,6 +8,7 @@ const sourcesPath = path.join(repoRoot, 'data', 'sources.json');
 
 const REQUEST_TIMEOUT_MS = 20_000;
 const CONCURRENCY = 6;
+const SCOPE = String(process.env.BRIALERT_SOURCE_HEALTH_SCOPE || 'all').toLowerCase();
 const USER_AGENT = 'Mozilla/5.0 (compatible; BrialertSourceValidator/1.0; +https://github.com/potemkin666/Brialert)';
 
 function stripBom(text) {
@@ -40,11 +41,13 @@ async function loadLondonHtmlSources() {
   const raw = stripBom(await fs.readFile(sourcesPath, 'utf8'));
   const parsed = JSON.parse(raw);
   const sources = Array.isArray(parsed?.sources) ? parsed.sources : [];
-  return sources.filter((source) =>
+  const londonHtml = sources.filter((source) =>
     source &&
     source.region === 'london' &&
     source.kind === 'html'
   );
+  if (SCOPE !== 'critical') return londonHtml;
+  return londonHtml.filter((source) => source.lane === 'incidents' || source.isTrustedOfficial);
 }
 
 async function readSample(response) {
@@ -121,6 +124,7 @@ async function mapWithConcurrency(items, worker, limit) {
 
 async function main() {
   const sources = await loadLondonHtmlSources();
+  console.log(`Source health scope: ${SCOPE}`);
   const results = await mapWithConcurrency(sources, validateSource, CONCURRENCY);
   const failures = results.filter((result) => !result.ok);
   const hardFailures = failures.filter((result) => result.severity === 'hard');

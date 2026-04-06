@@ -63,6 +63,7 @@ Requires Node `20.18.1` or newer.
 ```bash
 npm ci
 npm run compile:sources
+npm run check:sources:freshness
 npm run validate:feed-data
 npm run validate:source-health
 npm test
@@ -75,11 +76,14 @@ npm run build:feeds
 - The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
 - The feed builder now writes a SQLite sidecar for source reputation, cooldown memory, and alert churn history so source intelligence can persist across runs.
 - London-focused HTML sources are validated in CI so dead or empty pages are easier to catch before they pollute the catalog.
+- Feed validation CI runs source health in a critical-only scope (`BRIALERT_SOURCE_HEALTH_SCOPE=critical`) and runs feed build in a bounded smoke configuration; scheduled hourly refresh keeps full-depth source checks.
 - Both CI and the hourly workflow now run `validate:live-feed-output` after feed generation to fail fast on malformed publish output.
+- CI now enforces source-catalog freshness (`npm run check:sources:freshness`) so shard edits must be compiled into `data/sources.json`.
 - The hourly publish step retries once after rebasing `origin/main` if `git push` hits a non-fast-forward race.
 - If a refresh preserves prior alerts and reports `sourceCount: 0`, the app now falls back to `health.lastSuccessfulSourceCount` so the hero source count does not stick at zero.
 - Source catalog can be managed in sharded files under `data/sources/<region>/<lane>.json`; `npm run compile:sources` rebuilds `data/sources.json`.
 - Build runs now emit `data/source-remediation-sweep.json` and `data/top-20-source-remediation.json` to prioritize dead/moved URLs and replacement actions.
+- Build/runtime knobs (timeouts, retries, prefetch counts, html budget, guardrail fail behavior) are configurable through `BRIALERT_*` environment variables for CI fast-mode tuning.
 
 ## Source catalog contribution rules
 

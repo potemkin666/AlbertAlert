@@ -24,18 +24,23 @@ export const parser = new XMLParser({
   trimValues: true
 });
 
-export const DEFAULT_TIMEOUT_MS = 12000;
-export const DEFAULT_MAX_RETRIES = 3;
+function envInt(name, fallback, minimum = 0) {
+  const parsed = Math.floor(Number(process.env[name]));
+  return Number.isFinite(parsed) && parsed >= minimum ? parsed : fallback;
+}
+
+export const DEFAULT_TIMEOUT_MS = envInt('BRIALERT_FETCH_TIMEOUT_MS', 12000, 1000);
+export const DEFAULT_MAX_RETRIES = envInt('BRIALERT_FETCH_MAX_RETRIES', 3, 1);
 export const MAX_SOURCE_ERRORS_TO_REPORT = 25;
-export const FEED_SOURCE_CONCURRENCY = 4;
+export const FEED_SOURCE_CONCURRENCY = envInt('BRIALERT_FEED_SOURCE_CONCURRENCY', 4, 1);
 export const HTML_HYDRATION_CONCURRENCY = 3;
 export const MAX_HTML_CANDIDATES_PER_SOURCE = 18;
 export const MAX_FEED_CANDIDATES_PER_SOURCE = 10;
 export const MAX_HTML_PARSING_THRESHOLD = MAX_HTML_CANDIDATES_PER_SOURCE * 2;
-export const MAX_HTML_PREFETCH_ITEMS = 12;
-export const MAX_FEED_PREFETCH_ITEMS = 8;
-export const MAX_HTML_SOURCES_PER_RUN = 32;
-export const CONTROL_MAX_HTML_SOURCES_PER_RUN = 24;
+export const MAX_HTML_PREFETCH_ITEMS = envInt('BRIALERT_MAX_HTML_PREFETCH_ITEMS', 12, 1);
+export const MAX_FEED_PREFETCH_ITEMS = envInt('BRIALERT_MAX_FEED_PREFETCH_ITEMS', 8, 1);
+export const MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_MAX_HTML_SOURCES_PER_RUN', 32, 1);
+export const CONTROL_MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_CONTROL_MAX_HTML_SOURCES_PER_RUN', 24, 1);
 export const HTML_DOMAIN_CAP_PER_RUN = 3;
 export const SCHEDULER_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'candidate').toLowerCase() === 'control'
   ? 'control'
@@ -121,6 +126,8 @@ export const AUTO_QUARANTINE_RECHECK_HOURS = 7 * 24;
 export const AUTO_SKIP_FAILURE_THRESHOLD = 4;
 export const AUTO_SKIP_EMPTY_THRESHOLD = 6;
 export const AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD = 2;
+export const AUTO_QUARANTINE_DEAD_URL_THRESHOLD = envInt('BRIALERT_AUTO_QUARANTINE_DEAD_URL_THRESHOLD', 2, 1);
+export const FAIL_ON_GUARDRAIL_VIOLATION = clean(process.env.BRIALERT_FAIL_ON_GUARDRAIL_VIOLATION).toLowerCase() === 'true';
 export const HARD_SKIP_SOURCE_IDS = new Set([
   'globalsecurity-terror-news',
   'un-ctitf-news',
