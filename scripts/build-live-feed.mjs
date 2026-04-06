@@ -909,10 +909,11 @@ async function main() {
           success: 0,
           unchanged: 0,
           'stale-endpoint': 0,
-          'blocked/anti-bot': 0,
-          'timeout/aborted': 0,
+          'blocked-or-anti-bot': 0,
+          'timeout-or-aborted': 0,
           'parser-failure': 0,
-          'empty/no-items': 0
+          'empty-or-no-items': 0,
+          unknown: 0
         };
         const discardReasons = {
           parseNoItems: 0,
@@ -932,23 +933,24 @@ async function main() {
           let usedPlaywrightFallback = false;
           let finalUrl = clean(source?.endpoint);
           let responseStatus = null;
-          let fetchOutcome = 'success';
+          let fetchOutcome = 'unknown';
           try {
             const fetched = await fetchText(source.endpoint, 1, { source, requestState, includeMeta: true });
             if (typeof fetched === 'string') {
               body = fetched;
+              fetchOutcome = 'success';
             } else {
               body = fetched.text;
               finalUrl = clean(fetched.finalUrl || source.endpoint);
               responseStatus = Number.isFinite(Number(fetched.status)) ? Number(fetched.status) : null;
-              if (responseStatus === 304 || fetched.unchanged304) fetchOutcome = 'unchanged';
+              fetchOutcome = (responseStatus === 304 || fetched.unchanged304) ? 'unchanged' : 'success';
             }
           } catch (error) {
             const summary = summariseSourceError(source, error);
             const reason = classifyFetchFailure(summary);
             if (reason === 'stale-endpoint') failureReasonCounts['stale-endpoint'] += 1;
-            else if (reason === 'bot-block') failureReasonCounts['blocked/anti-bot'] += 1;
-            else if (reason === 'timeout') failureReasonCounts['timeout/aborted'] += 1;
+            else if (reason === 'bot-block') failureReasonCounts['blocked-or-anti-bot'] += 1;
+            else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
             if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
               playwrightBudget.attempts += 1;
               body = await fetchTextWithPlaywright(source.endpoint, {
@@ -967,6 +969,9 @@ async function main() {
             : parseHtmlItems(source, body);
           if (!parsed.length) {
             discardReasons.parseNoItems += 1;
+            if (fetchOutcome !== 'unchanged') {
+              failureReasonCounts['empty-or-no-items'] += 1;
+            }
           }
           const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
           const preLimited = parsed.slice(0, preLimit);
@@ -1009,8 +1014,6 @@ async function main() {
             failureReasonCounts.unchanged += 1;
           } else if (builtAlerts.length > 0) {
             failureReasonCounts.success += 1;
-          } else if (parsed.length > 0 && localErrors.length === 0) {
-            failureReasonCounts['empty/no-items'] += 1;
           }
 
           return {
@@ -1043,10 +1046,16 @@ async function main() {
           localErrors.push(summary);
           const reason = classifyFetchFailure(summary);
           if (reason === 'stale-endpoint') failureReasonCounts['stale-endpoint'] += 1;
-          else if (reason === 'bot-block') failureReasonCounts['blocked/anti-bot'] += 1;
-          else if (reason === 'timeout') failureReasonCounts['timeout/aborted'] += 1;
+          else if (reason === 'bot-block') failureReasonCounts['blocked-or-anti-bot'] += 1;
+          else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
           else if (reason === 'parser-failure') failureReasonCounts['parser-failure'] += 1;
-          else failureReasonCounts['timeout/aborted'] += 1;
+          else if (reason === 'unknown') {
+            failureReasonCounts.unknown += 1;
+            console.warn(`Unclassified source failure category: ${summary.id} [${source.kind}/${source.lane}] - ${summary.message}`);
+          } else {
+            failureReasonCounts['timeout-or-aborted'] += 1;
+            console.warn(`Unhandled source failure reason mapped to timeout-or-aborted: ${reason} (${summary.id})`);
+          }
           console.error(`Source failed: ${summary.id} [${source.kind}/${source.lane}] - ${summary.message}`);
           return {
             checked: 0,
@@ -1120,11 +1129,31 @@ async function main() {
   const preservedAlerts = !deduped.length && sourceErrors.length && existingAlerts.length;
   const mergedCandidates = dedupeAndSortAlerts([...deduped, ...existingAlerts]);
   const finalAlerts = preservedAlerts ? existingAlerts : selectStoredAlerts(mergedCandidates, MAX_STORED_ALERTS);
-  const successfulSources = sourceStats.filter((stat) => stat.built > 0).length;
-  const failedSources = sourceStats.filter((stat) => stat.built === 0 && stat.errors > 0).length;
-  const emptySources = sourceStats.filter((stat) => stat.built === 0 && stat.errors === 0).length;
-  const unchangedSources = sourceStats.filter((stat) => stat.fetchOutcome === 'unchanged').length;
-  const updatedSources = sourceStats.filter((stat) => stat.built > 0 && stat.fetchOutcome !== 'unchanged').length;
+  const sourceOutcomeTally = sourceStats.reduce((acc, stat) => {
+    if ((stat?.built || 0) > 0) {
+      acc.successfulSources += 1;
+      if (stat.fetchOutcome === 'success') acc.updatedSources += 1;
+    } else if ((stat?.errors || 0) > 0) {
+      acc.failedSources += 1;
+    } else {
+      acc.emptySources += 1;
+    }
+    if (stat?.fetchOutcome === 'unchanged') acc.unchangedSources += 1;
+    return acc;
+  }, {
+    successfulSources: 0,
+    failedSources: 0,
+    emptySources: 0,
+    unchangedSources: 0,
+    updatedSources: 0
+  });
+  const {
+    successfulSources,
+    failedSources,
+    emptySources,
+    unchangedSources,
+    updatedSources
+  } = sourceOutcomeTally;
   const sourceRunStats = {
     totalConfiguredSources: sources.length,
     sourcesCheckedThisRun: sourcesAttemptedCount,

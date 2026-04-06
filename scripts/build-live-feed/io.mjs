@@ -204,20 +204,32 @@ export async function fetchText(url, attempt = 1, options = {}) {
     const finalUrl = clean(response.url || url);
     const etag = clean(response.headers.get('etag'));
     const lastModified = clean(response.headers.get('last-modified'));
-    if (!disableConditional && options?.requestState && cacheKey && (etag || lastModified)) {
-      if (!options.requestState.conditionalCache || typeof options.requestState.conditionalCache !== 'object') {
-        options.requestState.conditionalCache = {};
-      }
-      options.requestState.conditionalCache[cacheKey] = {
-        etag: etag || null,
-        lastModified: lastModified || null,
-        text: typeof priorCache?.text === 'string' ? priorCache.text : null,
-        updatedAt: new Date().toISOString()
-      };
-    }
-
     if (response.status === 304) {
       const cachedText = typeof priorCache?.text === 'string' ? priorCache.text : '';
+      if (!cachedText) {
+        const error = new Error('HTTP 304 with empty cache');
+        error.__brialertMeta = {
+          status: response.status,
+          finalUrl
+        };
+        throw error;
+      }
+      if (!disableConditional && options?.requestState && cacheKey) {
+        if (!options.requestState.conditionalCache || typeof options.requestState.conditionalCache !== 'object') {
+          options.requestState.conditionalCache = {};
+        }
+        const nextEtag = etag || priorCache?.etag || null;
+        const nextLastModified = lastModified || priorCache?.lastModified || null;
+        options.requestState.conditionalCache[cacheKey] = {
+          etag: nextEtag,
+          lastModified: nextLastModified,
+          text: cachedText,
+          updatedAt: new Date().toISOString()
+        };
+        if (!nextEtag && !nextLastModified) {
+          console.warn(`HTTP 304 cache refresh missing validators for ${cacheKey}; reusing cached body only.`);
+        }
+      }
       const payload = {
         text: cachedText,
         finalUrl,
@@ -351,7 +363,8 @@ export function summariseSourceError(source, error) {
   const message = error instanceof Error ? error.message : String(error);
   const meta = error && typeof error === 'object' ? error.__brialertMeta : null;
   let category = 'unknown';
-  if (/HTTP 304/i.test(message)) category = 'unchanged-304';
+  if (/HTTP 304 with empty cache/i.test(message)) category = 'http-status-error';
+  else if (/HTTP 304/i.test(message)) category = 'unchanged-304';
   else if (/HTTP 404/i.test(message)) category = 'not-found-404';
   else if (/HTTP 410/i.test(message)) category = 'dead-or-moved-url';
   else if (/HTTP 403|HTTP 401|access denied|blocked/i.test(message)) category = 'blocked-or-auth';
