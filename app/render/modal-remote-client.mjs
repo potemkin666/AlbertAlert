@@ -33,7 +33,7 @@ export async function requestRemoteLongBrief(payloadAttempts) {
   const allErrors = [];
 
   for (const payload of payloadAttempts) {
-    let hasTerminalError = false;
+    let currentPayloadHasTerminalError = false;
     const payloadErrors = [];
     for (let index = 0; index < apiUrls.length; index += 1) {
       const apiUrl = apiUrls[index];
@@ -60,13 +60,13 @@ export async function requestRemoteLongBrief(payloadAttempts) {
         payloadErrors.push(formattedError);
         allErrors.push(formattedError);
         if (error?.retryable === false) {
-          hasTerminalError = true;
+          currentPayloadHasTerminalError = true;
         }
       } finally {
         clearTimeout(timeout);
       }
     }
-    if (hasTerminalError) {
+    if (currentPayloadHasTerminalError) {
       throw new Error(`Long brief generation failed with terminal error: ${payloadErrors.join(' | ')}`);
     }
   }
