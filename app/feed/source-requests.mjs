@@ -111,6 +111,11 @@ export async function submitSourceRequest(state, { apiUrl, url, regionHint }) {
     headers: { 'Content-Type': 'application/json' },
     signal: controller.signal,
     body: JSON.stringify({ url: normalizedUrl, regionHint })
+  }).catch((error) => {
+    if (error?.name === 'AbortError') {
+      throw new Error('Source request timed out. Please try again.');
+    }
+    throw error;
   }).finally(() => {
     clearTimeout(timeout);
   });
