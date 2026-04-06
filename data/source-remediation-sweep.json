@@ -1,11 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-06T07:06:34.068Z",
-  "totalSourceErrors": 11,
+  "generatedAt": "2026-04-06T07:49:39.939Z",
+  "totalSourceErrors": 16,
   "byCategory": {
     "dead-or-moved-url": 1,
-    "blocked-or-auth": 5,
-    "http-status-error": 5
+    "blocked-or-auth": 7,
+    "http-status-error": 8
   },
   "top20": [
     {
@@ -28,6 +28,18 @@
       "category": "blocked-or-auth",
       "message": "Blocked by anti-bot protection",
       "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "curia-press-rss-en",
+      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
+      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": ""
@@ -74,8 +86,20 @@
       "endpoint": "https://www.reportfraud.police.uk/collection/newsroom/",
       "finalUrl": "",
       "category": "blocked-or-auth",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "supo-fi-english",
+      "provider": "SUPO Finland news and press releases",
+      "endpoint": "https://supo.fi/en/news-and-press-releases",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": ""
@@ -117,6 +141,18 @@
       "replacementCandidate": ""
     },
     {
+      "id": "judiciary-uk-judgments-feed",
+      "provider": "Judiciary UK - Judgments Feed",
+      "endpoint": "https://www.judiciary.uk/judgments/feed/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
       "id": "judiciary-uk-news",
       "provider": "Judiciary of England and Wales a News",
       "endpoint": "https://www.judiciary.uk/feed/",
@@ -129,9 +165,33 @@
       "replacementCandidate": ""
     },
     {
-      "id": "parliament-public-bills-rss",
-      "provider": "Parliament - Public Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/publicbills.rss",
+      "id": "lords-in-focus-rss",
+      "provider": "Lords In Focus RSS",
+      "endpoint": "https://researchbriefings.parliament.uk/rssfeed/Lords%20. In%20. Focus",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "parliament-private-bills-rss",
+      "provider": "Parliament - Private Bills RSS",
+      "endpoint": "https://bills.parliament.uk/rss/privatebills.rss",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "west-yorkshire-police-coroner-appeals-rss",
+      "provider": "West Yorkshire Police - Coroner Appeals Feed",
+      "endpoint": "https://www.westyorkshire.police.uk/news/coroner-appeals/feed",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
@@ -167,6 +227,18 @@
       "replacementCandidate": ""
     },
     {
+      "id": "curia-press-rss-en",
+      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
+      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
       "id": "french-interior-ministry-news",
       "provider": "French Ministry of the Interior - News",
       "endpoint": "https://www.interieur.gouv.fr/actualites",
@@ -208,8 +280,20 @@
       "endpoint": "https://www.reportfraud.police.uk/collection/newsroom/",
       "finalUrl": "",
       "category": "blocked-or-auth",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "supo-fi-english",
+      "provider": "SUPO Finland news and press releases",
+      "endpoint": "https://supo.fi/en/news-and-press-releases",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": ""
@@ -251,6 +335,18 @@
       "replacementCandidate": ""
     },
     {
+      "id": "judiciary-uk-judgments-feed",
+      "provider": "Judiciary UK - Judgments Feed",
+      "endpoint": "https://www.judiciary.uk/judgments/feed/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
       "id": "judiciary-uk-news",
       "provider": "Judiciary of England and Wales a News",
       "endpoint": "https://www.judiciary.uk/feed/",
@@ -263,9 +359,33 @@
       "replacementCandidate": ""
     },
     {
-      "id": "parliament-public-bills-rss",
-      "provider": "Parliament - Public Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/publicbills.rss",
+      "id": "lords-in-focus-rss",
+      "provider": "Lords In Focus RSS",
+      "endpoint": "https://researchbriefings.parliament.uk/rssfeed/Lords%20. In%20. Focus",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "parliament-private-bills-rss",
+      "provider": "Parliament - Private Bills RSS",
+      "endpoint": "https://bills.parliament.uk/rss/privatebills.rss",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "message": "HTTP 304",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": ""
+    },
+    {
+      "id": "west-yorkshire-police-coroner-appeals-rss",
+      "provider": "West Yorkshire Police - Coroner Appeals Feed",
+      "endpoint": "https://www.westyorkshire.police.uk/news/coroner-appeals/feed",
       "finalUrl": "",
       "category": "http-status-error",
       "message": "HTTP 304",
