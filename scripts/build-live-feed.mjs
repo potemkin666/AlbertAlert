@@ -649,12 +649,12 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
   </main>
   <script>
     const API_BASE = 'https://brialertbackend.vercel.app';
+    // Fallback to committed snapshot when backend API auth/network fails.
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
     const body = document.getElementById('quarantine-body');
     const meta = document.getElementById('meta');
     let currentEntries = [];
     let currentDataMode = 'api';
-    const readOnlyMode = false;
 
     function escapeHtml(value) {
       return String(value ?? '')
@@ -694,7 +694,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         '<td><a href="' + escapeHtml(entry.endpoint) + '" target="_blank" rel="noreferrer">' + escapeHtml(entry.endpoint) + '</a></td>' +
         '<td><div class="action">' +
           '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" value="' + escapeHtml(entry.replacementSuggestion || '') + '" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
-          '<button type="button" data-action="restore" ' + (readOnlyMode ? 'disabled' : '') + '>Add new URL</button>' +
+          '<button type="button" data-action="restore">Add new URL</button>' +
           '<div class="helper-note">If prefilled, suggestion is auto-detected and must be verified.</div>' +
           '<div class="status-note status-feedback" aria-live="polite"></div>' +
         '</div></td>' +
@@ -709,16 +709,35 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       body.innerHTML = currentEntries.map(rowMarkup).join('');
     }
 
+    function serializeError(error) {
+      return error instanceof Error ? error.message : String(error);
+    }
+
     function explainError(error) {
-      const message = error instanceof Error ? error.message : String(error);
+      const message = serializeError(error);
       if (/bad credentials/i.test(message)) {
-        return 'Quarantine backend authentication failed (Bad credentials). Review is still available from local snapshot data.';
+        return 'Backend authentication failed. Displaying cached snapshot data (restore functionality may be unavailable).';
       }
       return message;
     }
 
     async function fetchPayload(url, fallbackError) {
       const response = await fetch(url, { cache: 'no-store' });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        throw new Error(payload && payload.detail ? payload.detail : fallbackError);
+      }
+      return payload;
+    }
+
+    async function postPayload(url, bodyPayload, fallbackError) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(bodyPayload)
+      });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
         throw new Error(payload && payload.detail ? payload.detail : fallbackError);
@@ -734,14 +753,15 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
           payload = await fetchPayload(API_BASE + '/api/quarantined-sources', 'Failed to load quarantined sources.');
           currentDataMode = 'api';
         } catch (primaryError) {
+          console.warn('Failed to load live quarantine API, using local snapshot.', {
+            error: serializeError(primaryError)
+          });
           payload = await fetchPayload(LOCAL_DATA_URL, 'Failed to load local quarantine snapshot.');
           currentDataMode = 'snapshot';
-          const warning = explainError(primaryError);
-          emptyState('Live quarantine API unavailable. Falling back to local snapshot. Details: ' + warning);
         }
         currentEntries = Array.isArray(payload.sources) ? payload.sources : [];
         renderMeta(payload);
-        if (currentEntries.length) renderRows();
+        renderRows();
       } catch (error) {
         emptyState(explainError(error));
       }
@@ -767,20 +787,11 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       note.className = 'status-note';
 
       try {
-        const response = await fetch(API_BASE + '/api/release-quarantined-source', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            sourceId,
-            url
-          })
-        });
-        const payload = await response.json().catch(() => ({}));
-        if (!response.ok) {
-          throw new Error(payload && payload.detail ? payload.detail : 'Failed to restore source.');
-        }
+        const payload = await postPayload(
+          API_BASE + '/api/release-quarantined-source',
+          { sourceId, url },
+          'Failed to restore source.'
+        );
         note.textContent = payload.detail || 'Source restored.';
         note.className = 'status-note success';
       currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
