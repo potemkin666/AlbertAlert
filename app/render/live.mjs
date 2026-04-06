@@ -169,7 +169,23 @@ export function renderHero({ state, elements }) {
   const articleCountText = fetchedAlerts > renderedAlerts
     ? `Showing ${renderedAlerts} of ${fetchedAlerts} articles`
     : `${renderedAlerts} articles`;
+  const sourceStats = state.liveSourceRunStats && typeof state.liveSourceRunStats === 'object'
+    ? state.liveSourceRunStats
+    : {};
+  const configured = Number(sourceStats.totalConfiguredSources || 0);
+  const checked = Number(sourceStats.sourcesCheckedThisRun || 0);
+  const updated = Number(sourceStats.sourcesUpdatedThisRun || 0);
+  const failed = Number(sourceStats.sourcesFailedThisRun || 0);
+  const lastSuccessfulGlobalBuild = sourceStats.lastSuccessfulGlobalBuild || state.liveFeedHealth?.lastSuccessfulRefreshTime || null;
+  const lastBuildDate = lastSuccessfulGlobalBuild ? new Date(lastSuccessfulGlobalBuild) : null;
+  const hasValidLastBuild = lastBuildDate instanceof Date && !Number.isNaN(lastBuildDate.getTime());
+  const sourceRunText = configured > 0
+    ? `cfg ${configured} | chk ${checked} | upd ${updated} | fail ${failed}`
+    : `${sourceCount} sources`;
+  const lastBuildText = hasValidLastBuild
+    ? `last good ${lastBuildDate.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}`
+    : 'last good unknown';
   elements.heroUpdated.textContent = hasValidStamp
-    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${sourceCount} sources | ${articleCountText}`
+    ? `${stamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })} | ${sourceRunText} | ${lastBuildText} | ${articleCountText}`
     : 'Waiting for first live update';
 }

@@ -376,11 +376,23 @@ test('health block stores extra scheduler metrics when provided', () => {
     extraMetrics: {
       schedulerMode: 'candidate',
       coverage: { eligible: 100, checked: 12 }
+    },
+    sourceRunStats: {
+      totalConfiguredSources: 250,
+      sourcesCheckedThisRun: 52,
+      sourcesUpdatedThisRun: 19,
+      sourcesFailedThisRun: 5,
+      sourcesUnchangedThisRun: 7
     }
   });
 
   assert.equal(health.extraMetrics.schedulerMode, 'candidate');
   assert.equal(health.extraMetrics.coverage.checked, 12);
+  assert.equal(health.sourceRunStats.totalConfiguredSources, 250);
+  assert.equal(health.sourceRunStats.sourcesCheckedThisRun, 52);
+  assert.equal(health.sourceRunStats.sourcesUpdatedThisRun, 19);
+  assert.equal(health.sourceRunStats.sourcesFailedThisRun, 5);
+  assert.equal(health.sourceRunStats.sourcesUnchangedThisRun, 7);
 });
 
 test('feed health status flags stale fallback data honestly', () => {
@@ -595,6 +607,59 @@ test('loadLiveFeed falls back to health lastSuccessfulSourceCount when payload s
   assert.equal(state.liveSourceCount, 118);
   assert.equal(state.liveFeedFetchError, null);
   assert.equal(state.liveFetchedAlertCount, 0);
+});
+
+test('loadLiveFeed stores source run stats from health payload for frontend status rendering', async () => {
+  const state = {
+    alerts: [],
+    geoLookup: [],
+    liveFeedGeneratedAt: null,
+    liveSourceCount: 0,
+    liveSourceRunStats: null,
+    liveFetchedAlertCount: 0,
+    liveFeedHealth: null,
+    liveFeedFetchError: null,
+    lastBrowserPollAt: null
+  };
+
+  const previousFetch = globalThis.fetch;
+  globalThis.fetch = async () => ({
+    ok: true,
+    async json() {
+      return {
+        generatedAt: '2026-04-04T10:00:00.000Z',
+        sourceCount: 12,
+        alerts: [],
+        health: {
+          lastSuccessfulRefreshTime: '2026-04-04T09:57:00.000Z',
+          sourceRunStats: {
+            totalConfiguredSources: 240,
+            sourcesCheckedThisRun: 52,
+            sourcesUpdatedThisRun: 11,
+            sourcesFailedThisRun: 4,
+            sourcesUnchangedThisRun: 8
+          }
+        }
+      };
+    }
+  });
+
+  try {
+    await loadLiveFeed(state, {
+      liveFeedUrl: 'live-alerts.json',
+      normaliseAlert,
+      onAfterLoad: () => {}
+    });
+  } finally {
+    globalThis.fetch = previousFetch;
+  }
+
+  assert.equal(state.liveSourceRunStats.totalConfiguredSources, 240);
+  assert.equal(state.liveSourceRunStats.sourcesCheckedThisRun, 52);
+  assert.equal(state.liveSourceRunStats.sourcesUpdatedThisRun, 11);
+  assert.equal(state.liveSourceRunStats.sourcesFailedThisRun, 4);
+  assert.equal(state.liveSourceRunStats.sourcesUnchangedThisRun, 8);
+  assert.equal(state.liveSourceRunStats.lastSuccessfulGlobalBuild, '2026-04-04T09:57:00.000Z');
 });
 
 test('matchesKeywords uses word-boundary matching and does not match substrings', () => {
@@ -837,7 +902,7 @@ test('renderHero uses last successful source count when current source count is 
 
   renderHero({ state, elements });
 
-  assert.match(elements.heroUpdated.textContent, /\| 118 sources \| 0 articles$/);
+  assert.match(elements.heroUpdated.textContent, /\| 118 sources \| last good unknown \| 0 articles$/);
 });
 
 test('renderHero reports rendered vs fetched article totals when they differ', () => {
@@ -859,7 +924,39 @@ test('renderHero reports rendered vs fetched article totals when they differ', (
 
   renderHero({ state, elements });
 
-  assert.match(elements.heroUpdated.textContent, /\| 41 sources \| Showing 14 of 41 articles$/);
+  assert.match(elements.heroUpdated.textContent, /\| 41 sources \| last good unknown \| Showing 14 of 41 articles$/);
+});
+
+test('renderHero shows configured/checked/updated/failed counters and last successful build', () => {
+  const state = {
+    briefingMode: false,
+    activeRegion: 'all',
+    activeLane: 'all',
+    liveFeedGeneratedAt: new Date('2026-04-04T08:00:00.000Z'),
+    lastBrowserPollAt: null,
+    liveSourceCount: 30,
+    liveFetchedAlertCount: 2,
+    alerts: [makeAlert({ id: 'alert-1' }), makeAlert({ id: 'alert-2' })],
+    liveFeedHealth: {
+      lastSuccessfulRefreshTime: '2026-04-04T07:55:00.000Z'
+    },
+    liveSourceRunStats: {
+      totalConfiguredSources: 240,
+      sourcesCheckedThisRun: 52,
+      sourcesUpdatedThisRun: 11,
+      sourcesFailedThisRun: 4,
+      sourcesUnchangedThisRun: 8,
+      lastSuccessfulGlobalBuild: '2026-04-04T07:55:00.000Z'
+    }
+  };
+  const elements = {
+    heroSearch: { value: '' },
+    heroUpdated: { textContent: '' }
+  };
+
+  renderHero({ state, elements });
+
+  assert.match(elements.heroUpdated.textContent, /\| cfg 240 \| chk 52 \| upd 11 \| fail 4 \| last good /);
 });
 
 test('normaliseSourcesPayload drops duplicate source IDs and keeps first occurrence', () => {
@@ -944,6 +1041,15 @@ test('source error summary classifies HTTP 404 separately for direct quarantine 
     new Error('HTTP 404')
   );
   assert.equal(summary.category, 'not-found-404');
+});
+
+test('source error summary classifies HTTP 304 as unchanged', async () => {
+  const { summariseSourceError } = await import('../scripts/build-live-feed/io.mjs');
+  const summary = summariseSourceError(
+    { id: 'test-source', provider: 'Test provider', endpoint: 'https://example.test/feed' },
+    new Error('HTTP 304')
+  );
+  assert.equal(summary.category, 'unchanged-304');
 });
 
 test('validate-live-feed-output script passes valid feed and fails invalid sourceCount', () => {

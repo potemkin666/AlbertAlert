@@ -211,12 +211,22 @@ export async function fetchText(url, attempt = 1, options = {}) {
       options.requestState.conditionalCache[cacheKey] = {
         etag: etag || null,
         lastModified: lastModified || null,
+        text: typeof priorCache?.text === 'string' ? priorCache.text : null,
         updatedAt: new Date().toISOString()
       };
     }
 
     if (response.status === 304) {
-      throw new Error('HTTP 304');
+      const cachedText = typeof priorCache?.text === 'string' ? priorCache.text : '';
+      const payload = {
+        text: cachedText,
+        finalUrl,
+        status: response.status,
+        etag: etag || null,
+        lastModified: lastModified || null,
+        unchanged304: true
+      };
+      return options?.includeMeta ? payload : payload.text;
     }
 
     if (!response.ok) {
@@ -247,6 +257,17 @@ export async function fetchText(url, attempt = 1, options = {}) {
       etag: etag || null,
       lastModified: lastModified || null
     };
+    if (!disableConditional && options?.requestState && cacheKey) {
+      if (!options.requestState.conditionalCache || typeof options.requestState.conditionalCache !== 'object') {
+        options.requestState.conditionalCache = {};
+      }
+      options.requestState.conditionalCache[cacheKey] = {
+        etag: etag || null,
+        lastModified: lastModified || null,
+        text,
+        updatedAt: new Date().toISOString()
+      };
+    }
     if (domain && options?.requestState?.domainState && options.requestState.domainState[domain]) {
       options.requestState.domainState[domain] = {
         failures: 0,
@@ -261,8 +282,7 @@ export async function fetchText(url, attempt = 1, options = {}) {
       message.includes('aborted') ||
       message.includes('AbortError') ||
       message.includes('ECONNRESET') ||
-      message.includes('ETIMEDOUT') ||
-      message.includes('HTTP 304');
+      message.includes('ETIMEDOUT');
 
     if (retryable && attempt < maxAttempts) {
       await sleep(jitteredBackoffMs(attempt));
@@ -331,7 +351,8 @@ export function summariseSourceError(source, error) {
   const message = error instanceof Error ? error.message : String(error);
   const meta = error && typeof error === 'object' ? error.__brialertMeta : null;
   let category = 'unknown';
-  if (/HTTP 404/i.test(message)) category = 'not-found-404';
+  if (/HTTP 304/i.test(message)) category = 'unchanged-304';
+  else if (/HTTP 404/i.test(message)) category = 'not-found-404';
   else if (/HTTP 410/i.test(message)) category = 'dead-or-moved-url';
   else if (/HTTP 403|HTTP 401|access denied|blocked/i.test(message)) category = 'blocked-or-auth';
   else if (/anti-bot|captcha|cloudflare|javascript and cookies/i.test(message)) category = 'anti-bot-protection';

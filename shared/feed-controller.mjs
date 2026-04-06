@@ -173,6 +173,17 @@ export async function loadLiveFeed(state, options) {
     state.liveSourceCount = Number.isFinite(sourceCount) && sourceCount > 0
       ? sourceCount
       : (Number.isFinite(successfulSourceCount) && successfulSourceCount > 0 ? successfulSourceCount : 0);
+    const runStats = data.health?.sourceRunStats && typeof data.health.sourceRunStats === 'object'
+      ? data.health.sourceRunStats
+      : {};
+    state.liveSourceRunStats = {
+      totalConfiguredSources: Number(runStats.totalConfiguredSources || 0),
+      sourcesCheckedThisRun: Number(runStats.sourcesCheckedThisRun || 0),
+      sourcesUpdatedThisRun: Number(runStats.sourcesUpdatedThisRun || 0),
+      sourcesFailedThisRun: Number(runStats.sourcesFailedThisRun || 0),
+      sourcesUnchangedThisRun: Number(runStats.sourcesUnchangedThisRun || 0),
+      lastSuccessfulGlobalBuild: data.health?.lastSuccessfulRefreshTime || null
+    };
     state.liveFeedFetchError = null;
   } catch (error) {
     state.alerts = previousAlerts;
