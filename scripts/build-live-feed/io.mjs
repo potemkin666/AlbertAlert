@@ -1,9 +1,10 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {
+  BACKOFF_CAP_MS,
   DEFAULT_MAX_RETRIES,
   DEFAULT_TIMEOUT_MS,
-  FEED_BOT_USER_AGENT,
+  sourceUserAgent,
   RETRYABLE_STATUS_CODES,
   outputPath,
   repoRoot
@@ -64,17 +65,19 @@ export function parseSourceDate(rawDate) {
 }
 
 function jitteredBackoffMs(attempt, floor = 600) {
-  const base = Math.max(floor, 650 * Math.pow(2, Math.max(0, attempt - 1)));
+  const uncapped = 650 * Math.pow(2, Math.max(0, attempt - 1));
+  const base = Math.max(floor, Math.min(BACKOFF_CAP_MS, uncapped));
   const jitter = Math.floor(base * (0.12 + Math.random() * 0.32));
   return base + jitter;
 }
 
 function parseRetryAfterMs(value) {
+  if (!value) return null;
   const seconds = Number(value);
-  if (Number.isFinite(seconds) && seconds > 0) return seconds * 1000;
+  if (Number.isFinite(seconds) && seconds > 0) return Math.min(seconds * 1000, 60 * 60 * 1000);
   const asDate = Date.parse(String(value || ''));
   if (Number.isFinite(asDate)) {
-    const delta = asDate - Date.now();
+    const delta = Math.min((asDate - Date.now()), 60 * 60 * 1000);
     if (delta > 0) return delta;
   }
   return null;
@@ -98,11 +101,24 @@ export function isEnglishLanguage(value) {
 }
 
 function mergedHeaders(source = null) {
+  const userHeaders = source?.headers && typeof source.headers === 'object' ? source.headers : {};
+  const customHeaders = Object.fromEntries(
+    Object.entries(userHeaders)
+      .filter(([key]) => !['user-agent', 'accept', 'accept-language', 'cache-control', 'accept-encoding', 'upgrade-insecure-requests', 'sec-fetch-site', 'sec-fetch-mode', 'sec-fetch-dest'].includes(String(key).toLowerCase()))
+      .map(([key, value]) => [String(key).toLowerCase(), clean(value)])
+      .filter(([, value]) => Boolean(value))
+  );
   return {
-    'user-agent': clean(source?.headers?.['user-agent']) || FEED_BOT_USER_AGENT,
-    accept: clean(source?.headers?.accept) || 'application/feed+json, application/json;q=0.95, application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8',
+    'user-agent': sourceUserAgent(source),
+    accept: clean(userHeaders.accept) || 'application/feed+json, application/json;q=0.95, application/rss+xml, application/atom+xml, application/xml, text/xml, text/html;q=0.9, */*;q=0.8',
     'accept-language': clean(source?.headers?.['accept-language']) || 'en-GB,en;q=0.9',
-    'cache-control': clean(source?.headers?.['cache-control']) || 'no-cache'
+    'cache-control': clean(source?.headers?.['cache-control']) || 'no-cache',
+    'accept-encoding': clean(userHeaders['accept-encoding']) || 'gzip, deflate, br',
+    'upgrade-insecure-requests': clean(userHeaders['upgrade-insecure-requests']) || '1',
+    'sec-fetch-site': clean(userHeaders['sec-fetch-site']) || 'none',
+    'sec-fetch-mode': clean(userHeaders['sec-fetch-mode']) || 'navigate',
+    'sec-fetch-dest': clean(userHeaders['sec-fetch-dest']) || 'document',
+    ...customHeaders
   };
 }
 
@@ -115,7 +131,14 @@ function classifyBodyBlock(text = '') {
     lower.includes('captcha') ||
     lower.includes('cf-challenge') ||
     lower.includes('just a moment') ||
-    lower.includes('enable javascript and cookies')
+    lower.includes('enable javascript and cookies') ||
+    lower.includes('security check') ||
+    lower.includes('verify you are human') ||
+    lower.includes('browser validation') ||
+    lower.includes('ddos protection') ||
+    lower.includes('suspicious activity') ||
+    lower.includes('bot detected') ||
+    lower.includes('please enable javascript')
   ) return 'anti-bot protection';
   if (
     lower.includes('access denied') ||
@@ -141,9 +164,10 @@ export async function fetchText(url, attempt = 1, options = {}) {
     : {};
   const conditionalHeaders = {};
   const cacheKey = domain || endpoint;
-  const priorCache = existingState.conditionalCache?.[cacheKey];
-  if (priorCache?.etag) conditionalHeaders['if-none-match'] = clean(priorCache.etag);
-  if (priorCache?.lastModified) conditionalHeaders['if-modified-since'] = clean(priorCache.lastModified);
+  const disableConditional = source?.disableConditionalHeaders === true || source?.kind === 'html';
+  const priorCache = disableConditional ? null : existingState.conditionalCache?.[cacheKey];
+  if (!disableConditional && priorCache?.etag) conditionalHeaders['if-none-match'] = clean(priorCache.etag);
+  if (!disableConditional && priorCache?.lastModified) conditionalHeaders['if-modified-since'] = clean(priorCache.lastModified);
   if (domain && domainState[domain]?.circuitOpenUntil && Date.now() < Number(domainState[domain].circuitOpenUntil || 0)) {
     const openUntil = new Date(Number(domainState[domain].circuitOpenUntil)).toISOString();
     throw new Error(`Circuit open for domain ${domain} until ${openUntil}`);
@@ -158,12 +182,13 @@ export async function fetchText(url, attempt = 1, options = {}) {
         ...conditionalHeaders
       },
       redirect: 'follow',
+      credentials: 'omit',
       signal: controller.signal
     });
     const finalUrl = clean(response.url || url);
     const etag = clean(response.headers.get('etag'));
     const lastModified = clean(response.headers.get('last-modified'));
-    if (options?.requestState && cacheKey && (etag || lastModified)) {
+    if (!disableConditional && options?.requestState && cacheKey && (etag || lastModified)) {
       if (!options.requestState.conditionalCache || typeof options.requestState.conditionalCache !== 'object') {
         options.requestState.conditionalCache = {};
       }
@@ -236,10 +261,11 @@ export async function fetchText(url, attempt = 1, options = {}) {
         ? options.requestState.domainState[domain]
         : { failures: 0, circuitOpenUntil: 0 };
       const nextFailures = Number(current.failures || 0) + 1;
-      const shouldTrip = nextFailures >= 4 && /HTTP 429|HTTP 503|HTTP 504|timed out|AbortError|fetch failed|ETIMEDOUT/i.test(message);
+      const isBotBlock = /anti-bot|captcha|cloudflare|javascript and cookies|security check|verify you are human|bot detected/i.test(message);
+      const shouldTrip = nextFailures >= (isBotBlock ? 6 : 4) && /HTTP 429|HTTP 503|HTTP 504|timed out|AbortError|fetch failed|ETIMEDOUT|anti-bot|captcha|cloudflare/i.test(message);
       options.requestState.domainState[domain] = {
         failures: nextFailures,
-        circuitOpenUntil: shouldTrip ? Date.now() + (10 * 60 * 1000) : Number(current.circuitOpenUntil || 0)
+        circuitOpenUntil: shouldTrip ? Date.now() + ((isBotBlock ? 5 : 10) * 60 * 1000) : Number(current.circuitOpenUntil || 0)
       };
     }
 
@@ -258,7 +284,8 @@ export async function fetchTextWithPlaywright(url, options = {}) {
   const browser = await playwright.chromium.launch({ headless: true });
   try {
     const context = await browser.newContext({
-      userAgent: clean(options?.source?.headers?.['user-agent']) || FEED_BOT_USER_AGENT
+      userAgent: sourceUserAgent(options?.source),
+      locale: 'en-GB'
     });
     const page = await context.newPage();
     await page.goto(url, {
