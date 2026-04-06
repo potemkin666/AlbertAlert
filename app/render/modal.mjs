@@ -7,7 +7,10 @@ const LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS = 8_000;
 const LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS = 3_500;
 
 export function createModalRuntime(elements, options = {}) {
-  const modalController = createModalUiController(elements, options);
+  const modalController = options.modalController || createModalUiController(elements, options);
+  const requestRemoteLongBriefFn = options.requestRemoteLongBrief || requestRemoteLongBrief;
+  const buildLocalLongBriefFn = options.buildLocalLongBrief || buildLocalLongBrief;
+  const mapAlertToLongBriefPayloadFn = options.mapAlertToLongBriefPayload || mapAlertToLongBriefPayload;
 
   function setLongBriefFallbackNotice(message = '') {
     if (!elements.longBriefFallbackNotice) return;
@@ -26,15 +29,15 @@ export function createModalRuntime(elements, options = {}) {
 
     try {
       const payloadAttempts = [
-        mapAlertToLongBriefPayload(alert, LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS),
-        mapAlertToLongBriefPayload(alert, LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS)
+        mapAlertToLongBriefPayloadFn(alert, LONG_BRIEF_MAX_SOURCE_EXTRACT_CHARS),
+        mapAlertToLongBriefPayloadFn(alert, LONG_BRIEF_FALLBACK_SOURCE_EXTRACT_CHARS)
       ];
-      const brief = await requestRemoteLongBrief(payloadAttempts);
+      const brief = await requestRemoteLongBriefFn(payloadAttempts);
       modalController.setExpandedBrief(brief);
     } catch (error) {
       console.error('Remote long brief generation failed, falling back to local generator:', error);
       setLongBriefFallbackNotice('Vercel agent failed. Using local agent fallback.');
-      modalController.setExpandedBrief(buildLocalLongBrief(alert));
+      modalController.setExpandedBrief(buildLocalLongBriefFn(alert));
     } finally {
       elements.generateExpandedBrief.disabled = false;
     }
