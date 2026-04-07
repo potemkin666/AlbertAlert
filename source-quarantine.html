@@ -128,7 +128,7 @@
     <h1>Source Quarantine Review</h1>
     <p>Auto-quarantined or manually quarantined sources that should be reviewed before returning to the hourly feed run. Suggest a replacement URL and Brialert will restore it into the normal source catalog for the next run.</p>
     <div class="meta" id="meta">
-      <span class="pill">Generated: 2026-04-07T15:20:08.483Z</span>
+      <span class="pill">Generated: 2026-04-07T17:10:44.774Z</span>
       <span class="pill">Quarantined sources: 185</span>
       <span class="pill">SLA: review within 48h</span>
     </div>
@@ -161,7 +161,7 @@
   <script>
     const WRITE_API_BASE = 'https://brialertbackend.vercel.app';
     // Optional override injected by hosting/runtime to target a dedicated API origin.
-    const API_BASE = String(globalThis.BRIALERT_API_BASE || WRITE_API_BASE).replace(/\/$/, '');
+    const API_BASE = String(globalThis.BRIALERT_API_BASE || WRITE_API_BASE).replace(//$/, '');
     const LIVE_QUARANTINE_URL = API_BASE + '/api/quarantined-sources';
     const RESTORE_SOURCE_URL = API_BASE + '/api/restore-source';
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
@@ -191,7 +191,7 @@
           ? 'Data mode: live API (restore enabled)'
           : 'Data mode: live read-only (restore unavailable)';
       meta.innerHTML = [
-        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-07T15:20:08.483Z') + '</span>',
+        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-07T17:10:44.774Z') + '</span>',
         '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
         '<span class="pill">SLA: review within 48h</span>',
         '<span class="pill' + (!restoreEnabled ? ' warn' : '') + '">' +

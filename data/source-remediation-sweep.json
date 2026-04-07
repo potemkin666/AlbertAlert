@@ -1,20 +1,37 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-07T15:20:08.483Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-04-07T17:10:44.774Z",
+  "totalSourceErrors": 2,
   "byCategory": {
+    "brittle-selectors-or-js-rendering": 1,
     "blocked-or-auth": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 2
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 2,
   "top20": [
     {
-      "id": "henry-jackson-society-news",
-      "provider": "Henry Jackson Society a Publications",
-      "endpoint": "https://henryjacksonsociety.org/feed/",
+      "id": "hammersmith-fulham-news",
+      "provider": "Hammersmith and Fulham Council a News",
+      "endpoint": "https://www.lbhf.gov.uk/news",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source payload",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "HTTP 403",
@@ -22,17 +39,33 @@
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "henry-jackson-society-news",
-      "provider": "Henry Jackson Society a Publications",
-      "endpoint": "https://henryjacksonsociety.org/feed/",
+      "id": "hammersmith-fulham-news",
+      "provider": "Hammersmith and Fulham Council a News",
+      "endpoint": "https://www.lbhf.gov.uk/news",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source payload",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "message": "HTTP 403",
@@ -40,10 +73,10 @@
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
