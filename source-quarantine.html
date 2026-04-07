@@ -150,6 +150,8 @@
     const SNAPSHOT_RESTORE_QUEUE_NOTE = 'Live API is temporarily unavailable. Submissions will be queued and auto-retried when API access is restored.';
     const RESTORE_QUEUED_NOTE = 'Queued for restore and will auto-retry once live API access is restored.';
     const PENDING_RESTORES_STORAGE_KEY = 'brialert-pending-source-restores';
+    const MAX_PENDING_RESTORE_ATTEMPTS = 20;
+    const MAX_PENDING_RESTORE_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 
     function escapeHtml(value) {
       return String(value ?? '')
@@ -262,7 +264,8 @@
       const nextEntry = {
         sourceId,
         url,
-        queuedAt: new Date().toISOString()
+        queuedAt: new Date().toISOString(),
+        attempts: 0
       };
       queueMap.set(sourceId, nextEntry);
       savePendingRestores(Array.from(queueMap.values()));
@@ -277,22 +280,47 @@
     async function flushQueuedRestores() {
       const queue = loadPendingRestores();
       if (!queue.length) return;
-      const outcomes = await Promise.allSettled(queue.map((entry) =>
+      const now = Date.now();
+      const retryableQueue = [];
+      for (const entry of queue) {
+        const attempts = Number(entry && entry.attempts) || 0;
+        const queuedAtMs = Date.parse(entry && entry.queuedAt ? entry.queuedAt : '');
+        const ageMs = Number.isFinite(queuedAtMs) ? now - queuedAtMs : 0;
+        if (attempts >= MAX_PENDING_RESTORE_ATTEMPTS || ageMs > MAX_PENDING_RESTORE_AGE_MS) {
+          console.warn('Dropping stale queued source restore request.', {
+            sourceId: entry && entry.sourceId ? entry.sourceId : 'unknown',
+            attempts,
+            ageMs
+          });
+          continue;
+        }
+        retryableQueue.push(entry);
+      }
+      if (!retryableQueue.length) {
+        savePendingRestores([]);
+        return;
+      }
+      const outcomes = await Promise.allSettled(retryableQueue.map((entry) =>
         postPayload(
           API_BASE + '/api/release-quarantined-source',
           { sourceId: entry.sourceId, url: entry.url },
           'Failed to restore source.'
         )
       ));
+      const remaining = [];
       outcomes.forEach((outcome, index) => {
         if (outcome.status === 'rejected') {
+          const entry = retryableQueue[index];
           console.warn('Queued source restore retry failed.', {
-            sourceId: queue[index].sourceId,
+            sourceId: entry.sourceId,
             error: serializeError(outcome.reason)
+          });
+          remaining.push({
+            ...entry,
+            attempts: (Number(entry.attempts) || 0) + 1
           });
         }
       });
-      const remaining = queue.filter((_entry, index) => outcomes[index].status !== 'fulfilled');
       savePendingRestores(remaining);
     }
 
