@@ -220,7 +220,7 @@ jobs:
           }
 
           if (ageMinutes > maxAgeMinutes) {
-            console.error(`Feed is stale: age ${ageMinutes.toFixed(2)} minutes exceeds ${maxAgeMinutes}.`);
+            console.error(`Feed is stale: age ${ageMinutes.toFixed(2)} minutes is greater than ${maxAgeMinutes}.`);
             process.exit(1);
           }
           NODE
