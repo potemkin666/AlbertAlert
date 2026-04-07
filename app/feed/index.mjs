@@ -5,14 +5,15 @@ import {
 } from '../../shared/feed-controller.mjs';
 import { reportBackgroundError } from '../../shared/logger.mjs';
 
+function currentOriginBase() {
+  if (typeof window === 'undefined' || typeof window.location?.origin !== 'string') return null;
+  const origin = window.location.origin.trim();
+  return origin.length > 0 ? origin : null;
+}
+
 const LIVE_FEED_TRIGGER_API_BASES = [
   'https://brialertbackend.vercel.app',
-  (() => {
-    const origin = typeof window !== 'undefined' && typeof window.location?.origin === 'string'
-      ? window.location.origin.trim()
-      : '';
-    return origin.length > 0 ? origin : null;
-  })()
+  currentOriginBase()
 ].filter(Boolean);
 const LIVE_FEED_TRIGGER_API_PATHS = [
   '/api/trigger-live-feed',
