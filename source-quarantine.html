@@ -148,6 +148,7 @@
     let currentEntries = [];
     let currentDataMode = 'api';
     const SNAPSHOT_RESTORE_QUEUE_NOTE = 'Live API is temporarily unavailable. Submissions will be queued and auto-retried when API access is restored.';
+    const RESTORE_QUEUED_NOTE = 'Queued for restore and will auto-retry once live API access is restored.';
     const PENDING_RESTORES_STORAGE_KEY = 'brialert-pending-source-restores';
 
     function escapeHtml(value) {
@@ -257,19 +258,14 @@
     }
 
     function queueRestore(sourceId, url) {
-      const queue = loadPendingRestores();
+      const queueMap = new Map(loadPendingRestores().map((entry) => [entry.sourceId, entry]));
       const nextEntry = {
         sourceId,
         url,
         queuedAt: new Date().toISOString()
       };
-      const existingIndex = queue.findIndex((entry) => entry.sourceId === sourceId);
-      if (existingIndex >= 0) {
-        queue[existingIndex] = nextEntry;
-      } else {
-        queue.push(nextEntry);
-      }
-      savePendingRestores(queue);
+      queueMap.set(sourceId, nextEntry);
+      savePendingRestores(Array.from(queueMap.values()));
     }
 
     function dequeueRestore(sourceId) {
@@ -288,6 +284,14 @@
           'Failed to restore source.'
         )
       ));
+      outcomes.forEach((outcome, index) => {
+        if (outcome.status === 'rejected') {
+          console.warn('Queued source restore retry failed.', {
+            sourceId: queue[index].sourceId,
+            error: serializeError(outcome.reason)
+          });
+        }
+      });
       const remaining = queue.filter((_entry, index) => outcomes[index].status !== 'fulfilled');
       savePendingRestores(remaining);
     }
@@ -357,7 +361,7 @@
       }
       if (currentDataMode === 'snapshot') {
         queueRestore(sourceId, url);
-        note.textContent = 'Queued for restore and will auto-retry once live API access is restored.';
+        note.textContent = RESTORE_QUEUED_NOTE;
         note.className = 'status-note success';
         return;
       }
@@ -383,7 +387,7 @@
       } catch (error) {
         if (isRestoreApiUnavailableError(error)) {
           queueRestore(sourceId, url);
-          note.textContent = 'Restore API unavailable. Request queued and will auto-retry later.';
+          note.textContent = RESTORE_QUEUED_NOTE;
           note.className = 'status-note success';
         } else {
           note.textContent = explainError(error);
