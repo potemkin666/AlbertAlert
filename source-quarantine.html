@@ -147,6 +147,7 @@
     const meta = document.getElementById('meta');
     let currentEntries = [];
     let currentDataMode = 'api';
+    let currentGeneratedAt = '2026-04-07T07:00:44.566Z';
     const SNAPSHOT_RESTORE_QUEUE_NOTE = 'Live API is temporarily unavailable. Submissions will be queued and auto-retried when API access is restored.';
     const RESTORE_QUEUED_NOTE = 'Queued for restore and will auto-retry once live API access is restored.';
     const PENDING_RESTORES_STORAGE_KEY = 'brialert-pending-source-restores';
@@ -165,8 +166,9 @@
     }
 
     function renderMeta(payload) {
+      currentGeneratedAt = payload && payload.generatedAt ? payload.generatedAt : currentGeneratedAt;
       meta.innerHTML = [
-        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-07T07:00:44.566Z') + '</span>',
+        '<span class="pill">Generated: ' + escapeHtml(currentGeneratedAt) + '</span>',
         '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
         '<span class="pill">SLA: review within 48h</span>',
         '<span class="pill' + (currentDataMode === 'snapshot' ? ' warn' : '') + '">' +
@@ -375,14 +377,18 @@
       }
     }
 
-    body.addEventListener('click', async (event) => {
-      const button = event.target.closest('button[data-action="restore"]');
-      if (!button) return;
-      const row = button.closest('tr[data-source-id]');
-      if (!row) return;
+    function removeFromQuarantineList(sourceId) {
+      currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
+      renderMeta({ generatedAt: currentGeneratedAt });
+      renderRows();
+    }
+
+    async function submitRestoreForRow(row) {
+      const button = row.querySelector('button[data-action="restore"]');
       const sourceId = row.getAttribute('data-source-id');
       const input = row.querySelector('.url-input');
       const note = row.querySelector('.status-feedback');
+      if (!sourceId || !input || !note) return;
       const url = input && input.value ? input.value.trim() : '';
       if (!url) {
         note.textContent = 'Paste a replacement URL first.';
@@ -393,10 +399,13 @@
         queueRestore(sourceId, url);
         note.textContent = RESTORE_QUEUED_NOTE;
         note.className = 'status-note success';
+        removeFromQuarantineList(sourceId);
         return;
       }
 
-      button.disabled = true;
+      if (button) {
+        button.disabled = true;
+      }
       note.textContent = 'Validating and restoring source...';
       note.className = 'status-note';
 
@@ -409,22 +418,39 @@
         dequeueRestore(sourceId);
         note.textContent = payload.detail || 'Source restored.';
         note.className = 'status-note success';
-      currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
-      renderMeta({ generatedAt: new Date().toISOString() });
-        setTimeout(() => {
-          renderRows();
-        }, 250);
+        removeFromQuarantineList(sourceId);
       } catch (error) {
         if (isRestoreApiUnavailableError(error)) {
           queueRestore(sourceId, url);
           note.textContent = RESTORE_QUEUED_NOTE;
           note.className = 'status-note success';
+          removeFromQuarantineList(sourceId);
         } else {
           note.textContent = explainError(error);
           note.className = 'status-note error';
         }
-        button.disabled = false;
+        if (button) {
+          button.disabled = false;
+        }
       }
+    }
+
+    body.addEventListener('click', async (event) => {
+      const button = event.target.closest('button[data-action="restore"]');
+      if (!button) return;
+      const row = button.closest('tr[data-source-id]');
+      if (!row) return;
+      await submitRestoreForRow(row);
+    });
+
+    body.addEventListener('keydown', async (event) => {
+      if (event.key !== 'Enter') return;
+      const input = event.target.closest('.url-input');
+      if (!input) return;
+      event.preventDefault();
+      const row = input.closest('tr[data-source-id]');
+      if (!row) return;
+      await submitRestoreForRow(row);
     });
 
     loadEntries();
