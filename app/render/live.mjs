@@ -196,7 +196,7 @@ export function renderHero({ state, elements }) {
     ? `last good ${formatTimeHm(lastBuildDate)}`
     : 'last good unknown';
   elements.heroUpdated.textContent = hasValidStamp
-    ? `last feed ${formatTimeHm(stamp)} | ${sourceRunText} | ${lastBuildText} | ${articleCountText}`
+    ? `Feed updated at ${formatTimeHm(stamp)} | ${sourceRunText} | ${lastBuildText} | ${articleCountText}`
     : 'Waiting for first live update';
 
   if (!elements.heroStatus) return;

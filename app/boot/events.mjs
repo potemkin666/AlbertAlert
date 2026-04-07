@@ -191,7 +191,7 @@ export function bindEvents({
         const triggerResult = await triggerLiveFeedRun();
         state.manualRefreshTriggerStatus = {
           state: 'success',
-          message: triggerResult?.payload?.detail || 'Refresh workflow queued.',
+          message: triggerResult?.payload?.detail || 'Feed refresh queued.',
           at: new Date().toISOString(),
           apiUrl: triggerResult?.apiUrl || null
         };
