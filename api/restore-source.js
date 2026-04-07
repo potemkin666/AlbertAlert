@@ -62,14 +62,20 @@ function ensureValidSourceId(raw) {
   return value;
 }
 
-function detectDuplicateConflict(sources, sourceId, replacementUrl) {
+function createNormalisedEndpointSet(sources, excludedSourceId) {
+  const endpoints = new Set();
+  for (const entry of Array.isArray(sources) ? sources : []) {
+    if (!entry || typeof entry !== 'object' || entry.id === excludedSourceId) continue;
+    const normalised = normaliseEndpoint(entry.endpoint);
+    if (normalised) endpoints.add(normalised);
+  }
+  return endpoints;
+}
+
+function detectDuplicateConflict(normalisedEndpointSet, replacementUrl) {
   const candidate = normaliseEndpoint(replacementUrl);
   if (!candidate) return false;
-  return (Array.isArray(sources) ? sources : []).some((entry) => {
-    if (!entry || typeof entry !== 'object') return false;
-    if (entry.id === sourceId) return false;
-    return normaliseEndpoint(entry.endpoint) === candidate;
-  });
+  return normalisedEndpointSet.has(candidate);
 }
 
 async function resolveShardPath(config, restoredSource, shardPaths) {
@@ -142,7 +148,8 @@ export default async function handler(request, response) {
       throw new ApiError('source-not-found', `Quarantined source "${sourceId}" was not found.`, 404);
     }
 
-    if (detectDuplicateConflict(activeSources, sourceId, replacementUrl)) {
+    const normalisedEndpointSet = createNormalisedEndpointSet(activeSources, sourceId);
+    if (detectDuplicateConflict(normalisedEndpointSet, replacementUrl)) {
       throw new ApiError(
         'duplicate-conflict',
         'Replacement URL already exists on a different active source.',
@@ -158,8 +165,7 @@ export default async function handler(request, response) {
     if (activeIndex >= 0) {
       nextActiveSources[activeIndex] = {
         ...nextActiveSources[activeIndex],
-        ...restoredSource,
-        endpoint: replacementUrl
+        ...restoredSource
       };
     } else {
       nextActiveSources.push(restoredSource);
@@ -186,8 +192,7 @@ export default async function handler(request, response) {
     if (shardResolution.sourceIndex >= 0) {
       shardSources[shardResolution.sourceIndex] = {
         ...shardSources[shardResolution.sourceIndex],
-        ...restoredSource,
-        endpoint: replacementUrl
+        ...restoredSource
       };
     } else {
       shardSources.push(restoredSource);

@@ -679,6 +679,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     let currentDataMode = 'live';
     let restoreEnabled = true;
     const READ_ONLY_NOTE = 'Restore is unavailable in read-only mode because the backend write API is not reachable.';
+    const TOAST_DURATION_MS = 1900;
     let toastTimer = null;
 
     function escapeHtml(value) {
@@ -797,7 +798,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       if (toastTimer) clearTimeout(toastTimer);
       toastTimer = setTimeout(() => {
         toast.classList.remove('visible');
-      }, 1900);
+      }, TOAST_DURATION_MS);
     }
 
     async function fetchPayload(url, fallbackError) {

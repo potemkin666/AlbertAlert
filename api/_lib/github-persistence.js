@@ -1,5 +1,6 @@
 const GITHUB_API_BASE = 'https://api.github.com';
-const MAX_COMMIT_RETRIES = 3;
+const COMMIT_ATTEMPT_LIMIT = 3;
+const COMMIT_RETRY_BASE_DELAY_MS = 120;
 
 export class ApiError extends Error {
   constructor(code, message, status = 400) {
@@ -240,7 +241,10 @@ export async function listSourceShardPaths(config) {
 }
 
 export async function commitJsonFilesAtomically(config, updatesByPath, message) {
-  for (let attempt = 0; attempt < MAX_COMMIT_RETRIES; attempt++) {
+  for (let attempt = 0; attempt < COMMIT_ATTEMPT_LIMIT; attempt++) {
+    if (attempt > 0) {
+      await wait(COMMIT_RETRY_BASE_DELAY_MS * Math.pow(2, attempt - 1));
+    }
     const headSha = await getBranchHead(config);
     const headCommit = await getCommit(config, headSha);
     const baseTreeSha = headCommit?.tree?.sha;
@@ -269,4 +273,9 @@ export async function commitJsonFilesAtomically(config, updatesByPath, message) 
     'Failed to persist restore update due to concurrent repository updates. Please retry.',
     409
   );
+}
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
 }
