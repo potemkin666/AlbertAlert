@@ -7,15 +7,14 @@ import { reportBackgroundError } from '../../shared/logger.mjs';
 
 const LIVE_FEED_TRIGGER_API_BASES = [
   'https://brialertbackend.vercel.app',
-  ''
-];
+  typeof window !== 'undefined' && window.location?.origin ? window.location.origin : null
+].filter(Boolean);
 const LIVE_FEED_TRIGGER_API_PATHS = [
   '/api/trigger-live-feed',
   '/api/trigger-feed-refresh'
 ];
-const LIVE_FEED_TRIGGER_API_URLS = Array.from(new Set(
-  LIVE_FEED_TRIGGER_API_BASES.flatMap((base) => LIVE_FEED_TRIGGER_API_PATHS.map((path) => `${base}${path}`))
-));
+const LIVE_FEED_TRIGGER_API_URLS = LIVE_FEED_TRIGGER_API_BASES
+  .flatMap((base) => LIVE_FEED_TRIGGER_API_PATHS.map((path) => `${base}${path}`));
 
 async function triggerFeedRunVia(url) {
   const response = await fetch(url, {
