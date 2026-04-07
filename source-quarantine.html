@@ -315,10 +315,12 @@
       if (direct) return direct;
       const trimmed = String(value || '').trim();
       if (!trimmed) return '';
-      const duplicatedUrlMatch = trimmed.match(/^(https?:\/\/\S+?)(https?:\/\/\S+)$/i);
-      if (!duplicatedUrlMatch) return '';
-      const firstCandidate = normaliseAbsoluteHttpUrl(duplicatedUrlMatch[1]);
-      const secondCandidate = normaliseAbsoluteHttpUrl(duplicatedUrlMatch[2]);
+      const schemeMatches = Array.from(trimmed.matchAll(/https?:\/\//gi));
+      if (schemeMatches.length !== 2) return '';
+      const splitAt = schemeMatches[1]?.index;
+      if (!Number.isInteger(splitAt) || splitAt <= 0) return '';
+      const firstCandidate = normaliseAbsoluteHttpUrl(trimmed.slice(0, splitAt));
+      const secondCandidate = normaliseAbsoluteHttpUrl(trimmed.slice(splitAt));
       if (!firstCandidate || !secondCandidate) return '';
       return firstCandidate.toLowerCase() === secondCandidate.toLowerCase() ? firstCandidate : '';
     }
