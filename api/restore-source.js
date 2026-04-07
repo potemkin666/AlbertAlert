@@ -62,22 +62,22 @@ function ensureValidSourceId(raw) {
   return value;
 }
 
-function createNormalisedEndpointSet(sources, excludedSourceId) {
-  const endpoints = new Set();
-  for (const entry of Array.isArray(sources) ? sources : []) {
-    if (!entry || typeof entry !== 'object' || entry.id === excludedSourceId) continue;
-    const normalised = normaliseEndpoint(entry.endpoint);
-    if (normalised) endpoints.add(normalised);
-  }
-  return endpoints;
-}
-
-function detectDuplicateConflict(normalisedEndpointSet, replacementUrl) {
+function detectDuplicateConflict(sources, excludedSourceId, replacementUrl) {
   const candidate = normaliseEndpoint(replacementUrl);
   if (!candidate) return false;
-  return normalisedEndpointSet.has(candidate);
+  for (const entry of Array.isArray(sources) ? sources : []) {
+    if (!entry || typeof entry !== 'object' || entry.id === excludedSourceId) continue;
+    if (normaliseEndpoint(entry.endpoint) === candidate) return true;
+  }
+  return false;
 }
 
+/**
+ * Resolve which shard file must be updated for a restored source.
+ * It first checks the expected region/lane shard, then scans all shards for the source id.
+ * If the source is not found in any existing shard, it falls back to creating/inserting into
+ * the expected region/lane shard path so persistence still completes atomically.
+ */
 async function resolveShardPath(config, restoredSource, shardPaths) {
   const targetId = restoredSource.id;
   if (!targetId) {
@@ -148,8 +148,7 @@ export default async function handler(request, response) {
       throw new ApiError('source-not-found', `Quarantined source "${sourceId}" was not found.`, 404);
     }
 
-    const normalisedEndpointSet = createNormalisedEndpointSet(activeSources, sourceId);
-    if (detectDuplicateConflict(normalisedEndpointSet, replacementUrl)) {
+    if (detectDuplicateConflict(activeSources, sourceId, replacementUrl)) {
       throw new ApiError(
         'duplicate-conflict',
         'Replacement URL already exists on a different active source.',

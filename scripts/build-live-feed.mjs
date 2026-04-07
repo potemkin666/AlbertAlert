@@ -783,6 +783,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     }
 
     function isAbsoluteHttpUrl(value) {
+      // Keep client-side validation aligned with backend rules in /api/restore-source.
       try {
         const parsed = new URL(value);
         return parsed.protocol === 'http:' || parsed.protocol === 'https:';

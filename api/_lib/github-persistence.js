@@ -17,6 +17,12 @@ function parseJsonResponse(response, fallbackMessage) {
   }));
 }
 
+function wait(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
 function getRepoConfig() {
   const token = process.env.GITHUB_TOKEN || '';
   const owner = process.env.GITHUB_OWNER || process.env.VERCEL_GIT_REPO_OWNER || '';
@@ -273,9 +279,4 @@ export async function commitJsonFilesAtomically(config, updatesByPath, message) 
     'Failed to persist restore update due to concurrent repository updates. Please retry.',
     409
   );
-}
-function wait(ms) {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms);
-  });
 }
