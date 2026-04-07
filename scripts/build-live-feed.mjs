@@ -667,10 +667,11 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
   </main>
   <div id="toast" class="toast" aria-live="polite"></div>
   <script>
-    // Optional override injected by hosting/runtime to target a dedicated Vercel API origin.
-    const API_BASE = String(globalThis.BRIALERT_API_BASE || '').replace(/\/$/, '');
-    const LIVE_QUARANTINE_URL = API_BASE ? API_BASE + '/api/quarantined-sources' : '/api/quarantined-sources';
-    const RESTORE_SOURCE_URL = API_BASE ? API_BASE + '/api/restore-source' : '/api/restore-source';
+    const WRITE_API_BASE = 'https://brialertbackend.vercel.app';
+    // Optional override injected by hosting/runtime to target a dedicated API origin.
+    const API_BASE = String(globalThis.BRIALERT_API_BASE || WRITE_API_BASE).replace(/\/$/, '');
+    const LIVE_QUARANTINE_URL = API_BASE + '/api/quarantined-sources';
+    const RESTORE_SOURCE_URL = API_BASE + '/api/restore-source';
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
     const body = document.getElementById('quarantine-body');
     const meta = document.getElementById('meta');
@@ -826,6 +827,36 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       return payload;
     }
 
+    async function probeRestoreApi() {
+      try {
+        const response = await fetch(RESTORE_SOURCE_URL, {
+          method: 'GET',
+          cache: 'no-store'
+        });
+        return response.status > 0;
+      } catch {
+        return false;
+      }
+    }
+
+    async function restoreSource(sourceId, replacementUrl) {
+      const response = await fetch(RESTORE_SOURCE_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          sourceId,
+          replacementUrl: String(replacementUrl || '').trim()
+        })
+      });
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || 'Restore failed');
+      }
+      return data.restoredSource;
+    }
+
     async function restoreSourceRow(row) {
       if (!row || !restoreEnabled || row.dataset.restoring === 'true') return;
       const sourceId = row.getAttribute('data-source-id');
@@ -850,21 +881,14 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       note.className = 'status-note';
 
       try {
-        const payload = await postPayload(
-          RESTORE_SOURCE_URL,
-          { sourceId, replacementUrl: url },
-          'Failed to restore source.'
-        );
-        if (!payload || payload.ok === false) {
-          throw new Error(payload && payload.message ? payload.message : 'Failed to restore source.');
-        }
+        await restoreSource(sourceId, url);
         currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
         renderMeta({ generatedAt: new Date().toISOString() });
         row.remove();
         if (!body.querySelector('tr[data-source-id]')) {
           emptyState('No quarantined sources currently recorded.');
         }
-        showToast(payload.message || 'Source restored.');
+        showToast('Source restored.');
       } catch (error) {
         note.textContent = explainError(error);
         note.className = 'status-note error';
@@ -880,7 +904,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         try {
           payload = await fetchPayload(LIVE_QUARANTINE_URL, 'Failed to load quarantined sources.');
           currentDataMode = 'live';
-          restoreEnabled = payload.restoreAvailable !== false;
+          restoreEnabled = await probeRestoreApi();
         } catch (primaryError) {
           console.warn('Failed to load live quarantine API; falling back to static snapshot in read-only mode.', {
             error: serializeError(primaryError)
