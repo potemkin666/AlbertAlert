@@ -19,6 +19,7 @@ const LIVE_FEED_TRIGGER_API_PATHS = [
   '/api/trigger-live-feed',
   '/api/trigger-feed-refresh'
 ];
+const MAX_FAILURE_PREVIEW_COUNT = 2;
 const LIVE_FEED_TRIGGER_API_URLS = LIVE_FEED_TRIGGER_API_BASES
   .flatMap((base) => LIVE_FEED_TRIGGER_API_PATHS.map((path) => `${base}${path}`));
 
@@ -78,8 +79,8 @@ export async function triggerLiveFeedRun() {
       failures.push(`${apiUrl}: ${error instanceof Error ? error.message : String(error)}`);
     }
   }
-  const previewFailures = failures.slice(0, 2).join(' | ');
-  const extraCount = Math.max(0, failures.length - 2);
+  const previewFailures = failures.slice(0, MAX_FAILURE_PREVIEW_COUNT).join(' | ');
+  const extraCount = Math.max(0, failures.length - MAX_FAILURE_PREVIEW_COUNT);
   const message = `Unable to trigger live-feed run. ${previewFailures}${extraCount ? ` | +${extraCount} more` : ''}`;
   reportBackgroundError('feed', message, new Error(message), { operation: 'triggerLiveFeedRun' });
   throw new Error(message);
