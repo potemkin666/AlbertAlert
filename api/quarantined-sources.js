@@ -17,6 +17,30 @@ function sendError(response, error) {
   });
 }
 
+function sanitiseSources(rawSources) {
+  const entries = Array.isArray(rawSources) ? rawSources : [];
+  const seenIds = new Set();
+  const sources = [];
+  let droppedCount = 0;
+
+  for (const entry of entries) {
+    if (!entry || typeof entry !== 'object') {
+      droppedCount += 1;
+      continue;
+    }
+    const id = typeof entry.id === 'string' ? entry.id.trim() : '';
+    if (!id) {
+      droppedCount += 1;
+      continue;
+    }
+    if (seenIds.has(id)) continue;
+    seenIds.add(id);
+    sources.push(entry);
+  }
+
+  return { sources, droppedCount };
+}
+
 export default async function handler(request, response) {
   setCorsHeaders(response);
   if (request.method === 'OPTIONS') {
@@ -34,7 +58,15 @@ export default async function handler(request, response) {
 
   try {
     const file = await loadJsonFile('data/quarantined-sources.json');
-    const sources = Array.isArray(file.data?.sources) ? file.data.sources : [];
+    const {
+      sources,
+      droppedCount
+    } = sanitiseSources(file.data?.sources);
+    if (droppedCount > 0) {
+      console.warn(
+        `quarantined-sources GET skipped ${droppedCount} invalid source entr${droppedCount === 1 ? 'y' : 'ies'}.`
+      );
+    }
     const generatedAt = typeof file.data?.generatedAt === 'string'
       ? file.data.generatedAt
       : new Date().toISOString();
