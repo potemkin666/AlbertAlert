@@ -154,7 +154,6 @@
     // Keep retries bounded so stale entries do not stay queued forever.
     const MAX_PENDING_RESTORE_ATTEMPTS = 20;
     const MAX_PENDING_RESTORE_AGE_MS = 7 * ONE_DAY_MS;
-    const UI_ROW_REMOVAL_DELAY_MS = 250;
 
     function escapeHtml(value) {
       return String(value ?? '')
@@ -379,9 +378,7 @@
     function removeFromQuarantineList(sourceId) {
       currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
       renderMeta({ generatedAt: new Date().toISOString() });
-      setTimeout(() => {
-        renderRows();
-      }, UI_ROW_REMOVAL_DELAY_MS);
+      renderRows();
     }
 
     async function submitRestoreForRow(row) {
