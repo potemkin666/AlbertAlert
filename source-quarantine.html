@@ -379,7 +379,7 @@
 
     function removeFromQuarantineList(sourceId) {
       currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
-      renderMeta({});
+      renderMeta({ generatedAt: currentGeneratedAt });
       renderRows();
     }
 
