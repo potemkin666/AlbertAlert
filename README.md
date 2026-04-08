@@ -72,6 +72,13 @@ npm run build:feeds
 
 ## Operational notes
 
+- Quarantine admin access now uses GitHub OAuth plus an HttpOnly session cookie (no manual token entry in the quarantine UI).
+- Backend env vars required for quarantine admin auth:
+  - `BRIALERT_SESSION_SECRET` (strong random secret for signing session/state cookies)
+  - `GITHUB_OAUTH_CLIENT_ID`
+  - `GITHUB_OAUTH_CLIENT_SECRET`
+  - at least one allowlist: `BRIALERT_ADMIN_ALLOWED_USERS` (comma-separated logins), `BRIALERT_ADMIN_ALLOWED_ORGS` (comma-separated orgs), or `BRIALERT_ADMIN_ALLOWED_TEAMS` (comma-separated `org/team-slug`)
+  - optional: `BRIALERT_ALLOWED_ORIGINS` (comma-separated frontend origins), `BRIALERT_GITHUB_OAUTH_REDIRECT_URI`, `BRIALERT_AUTH_SUCCESS_REDIRECT`, `BRIALERT_AUTH_FAILURE_REDIRECT`
 - The browser should trust upstream lane and queue decisions in the feed payload rather than re-inferring terrorism relevance, source reliability, or incident classification.
 - The feed builder is designed to fail soft per source, skip duplicate source IDs at runtime with a warning, and preserve last-known-good output when possible.
 - The feed builder now writes a SQLite sidecar for source reputation, cooldown memory, and alert churn history so source intelligence can persist across runs.
