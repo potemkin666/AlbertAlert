@@ -3622,13 +3622,15 @@
     {
       "id": "staffordshire-police-news",
       "provider": "Staffordshire Police a News",
-      "endpoint": "https://www.staffordshire.police.uk/news/",
+      "endpoint": "https://www.staffordshire.police.uk/news/staffordshire/news/?newsCategory=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Staffordshire Police news for the West Midlands fringe and major events incident corroboration."
+      "comment": "Staffordshire Police news for the West Midlands fringe and major events incident corroboration.",
+      "quarantined": false,
+      "restoredAt": "2026-04-08T22:27:19.216Z"
     },
     {
       "id": "staffordshire-police-staffordshire-news",
