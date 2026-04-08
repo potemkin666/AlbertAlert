@@ -3444,13 +3444,15 @@
     {
       "id": "lincolnshire-police-news",
       "provider": "Lincolnshire Police - News",
-      "endpoint": "https://www.lincs.police.uk/news/lincolnshire/news/",
+      "endpoint": "https://www.lincs.police.uk/news/lincolnshire/news/GetNewsRss/",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Lincolnshire Police updates for regional public-safety and infrastructure-adjacent incident reporting."
+      "comment": "Lincolnshire Police updates for regional public-safety and infrastructure-adjacent incident reporting.",
+      "quarantined": false,
+      "restoredAt": "2026-04-08T22:26:56.787Z"
     },
     {
       "id": "merseyside-police-news",
