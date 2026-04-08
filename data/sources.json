@@ -3233,13 +3233,15 @@
     {
       "id": "derbyshire-police-news",
       "provider": "Derbyshire Police - News",
-      "endpoint": "https://www.derbyshire.police.uk/news/derbyshire/news/",
+      "endpoint": "https://www.derbyshire.police.uk/news/derbyshire/news/?newsCategory=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Derbyshire Police newsroom for East Midlands incident corroboration and public-safety context."
+      "comment": "Derbyshire Police newsroom for East Midlands incident corroboration and public-safety context.",
+      "quarantined": false,
+      "restoredAt": "2026-04-08T22:26:32.529Z"
     },
     {
       "id": "devon-and-cornwall-police-newsroom",
