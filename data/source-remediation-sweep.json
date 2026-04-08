@@ -1,49 +1,49 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-08T06:59:19.826Z",
+  "generatedAt": "2026-04-08T07:32:24.914Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "gnet-youth-rss",
-      "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
-      "endpoint": "https://gnet-research.org/tag/youth/feed/",
+      "id": "hammersmith-fulham-news",
+      "provider": "Hammersmith and Fulham Council a News",
+      "endpoint": "https://www.lbhf.gov.uk/news",
       "finalUrl": "",
-      "category": "anti-bot-protection",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source payload",
+      "status": 202,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "gnet-youth-rss",
-      "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
-      "endpoint": "https://gnet-research.org/tag/youth/feed/",
+      "id": "hammersmith-fulham-news",
+      "provider": "Hammersmith and Fulham Council a News",
+      "endpoint": "https://www.lbhf.gov.uk/news",
       "finalUrl": "",
-      "category": "anti-bot-protection",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "category": "brittle-selectors-or-js-rendering",
+      "message": "No items parsed from source payload",
+      "status": 202,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
