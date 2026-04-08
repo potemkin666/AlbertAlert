@@ -694,12 +694,14 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       return base ? base + '/api/restore-source' : '';
     }
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
+    const ADMIN_TOKEN_STORAGE_KEY = 'brialert:quarantine-admin-token';
     const body = document.getElementById('quarantine-body');
     const meta = document.getElementById('meta');
     const toast = document.getElementById('toast');
     let currentEntries = [];
     let currentDataMode = 'live';
     let restoreEnabled = true;
+    let adminToken = '';
     const READ_ONLY_NOTE = 'Restore is unavailable in read-only mode because the backend write API is not reachable.';
     const TOAST_DURATION_MS = 1900;
     const LOAD_FETCH_TIMEOUT_MS = 12000;
@@ -812,10 +814,67 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
 
     function explainError(error) {
       const message = serializeError(error);
+      if (error && (error.code === 'admin-auth-required' || error.status === 401)) {
+        return 'Admin authentication is required to access quarantine data.';
+      }
       if (/bad credentials/i.test(message)) {
         return 'Backend authentication failed. Displaying cached snapshot data (restore functionality may be unavailable).';
       }
       return message;
+    }
+
+    function readStoredAdminToken() {
+      try {
+        return String(sessionStorage.getItem(ADMIN_TOKEN_STORAGE_KEY) || '').trim();
+      } catch {
+        return '';
+      }
+    }
+
+    function writeStoredAdminToken(value) {
+      const token = String(value || '').trim();
+      try {
+        if (token) {
+          sessionStorage.setItem(ADMIN_TOKEN_STORAGE_KEY, token);
+        } else {
+          sessionStorage.removeItem(ADMIN_TOKEN_STORAGE_KEY);
+        }
+      } catch {
+        // Ignore storage failures and keep runtime token only.
+      }
+      adminToken = token;
+    }
+
+    function clearStoredAdminToken() {
+      writeStoredAdminToken('');
+    }
+
+    function ensureAdminToken() {
+      if (adminToken) return adminToken;
+      const stored = readStoredAdminToken();
+      if (stored) {
+        adminToken = stored;
+        return stored;
+      }
+      const prompted = typeof prompt === 'function'
+        ? prompt('Enter quarantine admin token:')
+        : '';
+      const token = String(prompted || '').trim();
+      if (!token) {
+        throw new Error('Admin authentication is required to access this page.');
+      }
+      writeStoredAdminToken(token);
+      return token;
+    }
+
+    function withAdminAuthHeaders(headers) {
+      const baseHeaders = headers && typeof headers === 'object' ? { ...headers } : {};
+      const token = String(adminToken || '').trim();
+      if (!token) return baseHeaders;
+      return {
+        ...baseHeaders,
+        Authorization: 'Bearer ' + token
+      };
     }
 
     function normaliseAbsoluteHttpUrl(value) {
@@ -908,13 +967,19 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     async function fetchPayload(url, fallbackError) {
       const response = await fetchWithTimeout(
         url,
-        { cache: 'no-store' },
+        {
+          cache: 'no-store',
+          headers: withAdminAuthHeaders()
+        },
         LOAD_FETCH_TIMEOUT_MS,
         'Quarantine data request'
       );
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
+        const error = new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
+        error.status = response.status;
+        error.code = payload && payload.error ? payload.error : '';
+        throw error;
       }
       return payload;
     }
@@ -923,13 +988,17 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...withAdminAuthHeaders()
         },
         body: JSON.stringify(bodyPayload)
       });
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
+        const error = new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
+        error.status = response.status;
+        error.code = payload && payload.error ? payload.error : '';
+        throw error;
       }
       return payload;
     }
@@ -964,6 +1033,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             restoreUrl,
             {
               method: attempt.method,
+              headers: withAdminAuthHeaders(),
               cache: 'no-store'
             },
             PROBE_FETCH_TIMEOUT_MS,
@@ -1002,7 +1072,8 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       const response = await fetch(restoreUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          ...withAdminAuthHeaders()
         },
         body: JSON.stringify({
           sourceId,
@@ -1011,7 +1082,10 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       });
       const data = await response.json().catch(() => ({}));
       if (!response.ok || !data.ok) {
-        throw new Error(data.message || 'Restore failed');
+        const error = new Error(data.message || 'Restore failed');
+        error.status = response.status;
+        error.code = data && data.error ? data.error : '';
+        throw error;
       }
       return data.restoredSource;
     }
@@ -1084,6 +1158,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     async function loadEntries() {
       emptyState('Loading quarantined sources...');
       try {
+        ensureAdminToken();
         let payload;
         try {
           payload = await fetchLivePayloadWithFailover();
@@ -1094,6 +1169,10 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             console.warn('Restore API probe marked backend as unreachable; keeping quarantine UI in live read-only mode.', probe);
           }
         } catch (primaryError) {
+          if (primaryError && (primaryError.code === 'admin-auth-required' || primaryError.status === 401)) {
+            clearStoredAdminToken();
+            throw primaryError;
+          }
           console.warn('Failed to load live quarantine API; falling back to static snapshot in read-only mode.', {
             error: serializeError(primaryError)
           });

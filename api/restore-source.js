@@ -6,6 +6,7 @@ import {
   normaliseEndpoint,
   validateAbsoluteHttpUrl
 } from './_lib/github-persistence.js';
+import { applyRestrictedCors, assertAdminAuth } from './_lib/admin-auth.js';
 
 const QUARANTINE_ONLY_FIELDS = new Set([
   'status',
@@ -20,12 +21,6 @@ const QUARANTINE_ONLY_FIELDS = new Set([
   'lastFailureAt',
   'lastCheckedAt'
 ]);
-
-function setCorsHeaders(response) {
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-}
 
 function sendError(response, error) {
   const status = error instanceof ApiError ? error.status : 500;
@@ -127,7 +122,10 @@ async function resolveShardPath(config, restoredSource, shardPaths) {
 }
 
 export default async function handler(request, response) {
-  setCorsHeaders(response);
+  const corsResult = applyRestrictedCors(request, response, ['POST', 'OPTIONS']);
+  if (corsResult.blocked) {
+    return response.status(corsResult.status).json(corsResult.body);
+  }
   if (request.method === 'OPTIONS') {
     response.setHeader('Allow', 'POST,OPTIONS');
     return response.status(204).end();
@@ -142,6 +140,7 @@ export default async function handler(request, response) {
   }
 
   try {
+    assertAdminAuth(request);
     const body = parseRequestBody(request);
     const sourceId = ensureValidSourceId(body.sourceId);
     const replacementUrl = validateAbsoluteHttpUrl(body.replacementUrl);

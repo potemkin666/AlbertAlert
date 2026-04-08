@@ -84,6 +84,7 @@ npm run build:feeds
 - Source catalog can be managed in sharded files under `data/sources/<region>/<lane>.json`; `npm run compile:sources` rebuilds `data/sources.json`.
 - Build runs now emit `data/source-remediation-sweep.json` and `data/top-20-source-remediation.json` to prioritize dead/moved URLs and replacement actions.
 - Build/runtime knobs (timeouts, retries, prefetch counts, html budget, guardrail fail behavior) are configurable through `BRIALERT_*` environment variables for CI fast-mode tuning.
+- Quarantine backend endpoints (`/api/quarantined-sources`, `/api/restore-source`) now require an admin bearer token via `BRIALERT_ADMIN_TOKEN`; restrict browser origins with `BRIALERT_ALLOWED_ORIGINS` (comma-separated origins).
 
 ## Source catalog contribution rules
 
