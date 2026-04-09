@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-09T18:21:03.604Z",
-  "count": 183,
+  "generatedAt": "2026-04-09T18:22:52.720Z",
+  "count": 182,
   "sources": [
     {
       "id": "frontex-news-releases",
@@ -394,25 +394,6 @@
       "quarantinedAt": "2026-04-07T11:11:10.131Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-09T11:11:10.131Z",
-      "lastFailureAt": "2026-04-07T11:11:10.131Z",
-      "lastCheckedAt": "2026-04-07T11:11:10.131Z"
-    },
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://www.politiaromana.ro/en/news",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-07T11:11:10.131Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveBlockedFailures": 2,
       "consecutiveDeadUrlFailures": 0,
       "replacementSuggestion": "",
