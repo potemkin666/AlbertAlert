@@ -251,15 +251,19 @@
     function sessionUrlFor(base) {
       return apiUrlFor(base, '/api/auth/session');
     }
-    function returnToUrlForAuth() {
+    function currentQuarantineUrl() {
+      const fallbackOrigin = globalThis.location?.origin || DEFAULT_API_BASE;
       try {
-        const currentUrl = new URL(globalThis.location?.href || '/source-quarantine.html');
-        currentUrl.searchParams.delete('auth');
-        currentUrl.searchParams.delete('error');
-        return currentUrl.toString();
+        return new URL(globalThis.location?.href || '/source-quarantine.html', fallbackOrigin);
       } catch {
-        return globalThis.location?.href || '/source-quarantine.html';
+        return new URL('/source-quarantine.html', fallbackOrigin);
       }
+    }
+    function returnToUrlForAuth() {
+      const currentUrl = currentQuarantineUrl();
+      currentUrl.searchParams.delete('auth');
+      currentUrl.searchParams.delete('error');
+      return currentUrl.toString();
     }
     function loginUrlFor(base) {
       const normalizedBase = normaliseApiBase(base);
@@ -751,12 +755,10 @@
         const authStatus = new URLSearchParams(globalThis.location?.search || '').get('auth');
         const isAuthenticated = await loadAuthSession({ retryAfterOauth: authStatus === 'ok' });
         if (authStatus) {
-          try {
-            const currentUrl = new URL(globalThis.location?.href || '/source-quarantine.html');
-            currentUrl.searchParams.delete('auth');
-            currentUrl.searchParams.delete('error');
-            globalThis.history?.replaceState?.({}, '', currentUrl.toString());
-          } catch {}
+          const currentUrl = currentQuarantineUrl();
+          currentUrl.searchParams.delete('auth');
+          currentUrl.searchParams.delete('error');
+          globalThis.history?.replaceState?.({}, '', currentUrl.toString());
         }
         if (!isAuthenticated) {
           currentDataMode = 'live';
