@@ -2549,13 +2549,15 @@
     {
       "id": "whittington-health-news",
       "provider": "Whittington Health a News",
-      "endpoint": "https://www.whittington.nhs.uk/news/default.asp",
+      "endpoint": "https://www.whittington.nhs.uk/default.asp?c=182",
       "kind": "html",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Whittington Health updates used for North London hospital and local incident context."
+      "comment": "Whittington Health updates used for North London hospital and local incident context.",
+      "quarantined": false,
+      "restoredAt": "2026-04-09T18:33:14.221Z"
     },
     {
       "id": "city-of-london-police-news",
