@@ -10,6 +10,7 @@ const INITIAL_LONDON_ZOOM = 12;
 const WORLD_FALLBACK = Object.freeze({ center: [20, 10], zoom: 2 });
 const LONDON_CLUSTER_MAX_ZOOM = 12;
 const WORLD_CLUSTER_MAX_ZOOM = 7;
+const FRESH_ALERT_WINDOW_MS = 90 * 60 * 1000;
 
 function statusLine(mode, count) {
   if (count <= 0) return 'No alerts in current view';
@@ -55,6 +56,17 @@ function clusterThreshold(zoom) {
   return 24;
 }
 
+function alertPublishedAtMs(alert) {
+  const stamp = alert?.publishedAt || alert?.updatedAt || alert?.firstReportedAt || null;
+  const timeMs = stamp ? new Date(stamp).getTime() : NaN;
+  return Number.isFinite(timeMs) ? timeMs : NaN;
+}
+
+function isFreshAlert(alert, nowMs = Date.now()) {
+  const publishedAtMs = alertPublishedAtMs(alert);
+  return Number.isFinite(publishedAtMs) && (nowMs - publishedAtMs) >= 0 && (nowMs - publishedAtMs) <= FRESH_ALERT_WINDOW_MS;
+}
+
 export function createMapController(config) {
   const { mapElement, mapStatusLine, mapEmptyState, openDetail } = config;
   let liveMap = null;
@@ -88,9 +100,10 @@ export function createMapController(config) {
 
   function mapIconForAlert(alert) {
     const level = severityClass(alert);
+    const freshClass = isFreshAlert(alert) ? ' map-dot--fresh' : '';
     return L.divIcon({
       className: 'map-dot-icon',
-      html: `<span class="map-dot map-dot--${level}" aria-hidden="true"></span>`,
+      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>`,
       iconSize: [16, 16],
       iconAnchor: [8, 8],
       popupAnchor: [0, -8]
