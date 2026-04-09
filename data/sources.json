@@ -423,13 +423,15 @@
     {
       "id": "romanian-police-news",
       "provider": "Romanian Police - News",
-      "endpoint": "https://www.politiaromana.ro/en/news",
+      "endpoint": "https://politiaromana.ro/en/news-and-media/news",
       "kind": "html",
       "lane": "incidents",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Romanian Police news for arrests, organised-crime overlap and regional security incident corroboration."
+      "comment": "Romanian Police news for arrests, organised-crime overlap and regional security incident corroboration.",
+      "quarantined": false,
+      "restoredAt": "2026-04-09T18:22:52.720Z"
     },
     {
       "id": "sweden-police-news",
