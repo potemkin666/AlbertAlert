@@ -767,10 +767,13 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         return new URL('/source-quarantine.html', fallbackOrigin);
       }
     }
+    function stripAuthQueryParams(url) {
+      url.searchParams.delete('auth');
+      url.searchParams.delete('error');
+      return url;
+    }
     function returnToUrlForAuth() {
-      const currentUrl = currentQuarantineUrl();
-      currentUrl.searchParams.delete('auth');
-      currentUrl.searchParams.delete('error');
+      const currentUrl = stripAuthQueryParams(currentQuarantineUrl());
       return currentUrl.toString();
     }
     function loginUrlFor(base) {
@@ -1263,9 +1266,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         const authStatus = new URLSearchParams(globalThis.location?.search || '').get('auth');
         const isAuthenticated = await loadAuthSession({ retryAfterOauth: authStatus === 'ok' });
         if (authStatus) {
-          const currentUrl = currentQuarantineUrl();
-          currentUrl.searchParams.delete('auth');
-          currentUrl.searchParams.delete('error');
+          const currentUrl = stripAuthQueryParams(currentQuarantineUrl());
           globalThis.history?.replaceState?.({}, '', currentUrl.toString());
         }
         if (!isAuthenticated) {
