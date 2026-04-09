@@ -45,7 +45,7 @@ export function normaliseRenderState(state) {
     searchQuery: String(next.searchQuery || ''),
     activeRegion: String(next.activeRegion || LANE_ALL),
     activeLane: String(next.activeLane || LANE_ALL),
-    mapViewMode: String(next.mapViewMode || MAP_VIEW_MODES.london),
+    mapViewMode: String(next.mapViewMode || MAP_VIEW_MODES.world),
     watched,
     notes: Array.isArray(next.notes) ? next.notes : [],
     sourceRequests: Array.isArray(next.sourceRequests) ? next.sourceRequests : [],

@@ -152,7 +152,7 @@ export function initialiseApp() {
   state.notes = loadArray(NOTES_STORAGE_KEY, defaultNotes);
   state.sourceRequests = loadArray(SOURCE_REQUESTS_STORAGE_KEY, []);
   state.briefingMode = false;
-  state.mapViewMode = state.mapViewMode || MAP_VIEW_MODES.london;
+  state.mapViewMode = state.mapViewMode || MAP_VIEW_MODES.world;
 
   refreshAlbertQuote();
   applyBriefingMode();

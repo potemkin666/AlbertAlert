@@ -7,7 +7,7 @@ const LONDON_BOUNDS = Object.freeze([
   [51.7, 0.24]
 ]);
 const INITIAL_LONDON_ZOOM = 12;
-const WORLD_FALLBACK = Object.freeze({ center: [20, 10], zoom: 2 });
+const WORLD_FALLBACK = Object.freeze({ center: [50.2, 10.4], zoom: 4 });
 const LONDON_CLUSTER_MAX_ZOOM = 12;
 const WORLD_CLUSTER_MAX_ZOOM = 7;
 const FRESH_ALERT_WINDOW_MS = 90 * 60 * 1000;
@@ -72,7 +72,7 @@ export function createMapController(config) {
   let liveMap = null;
   let layers = [];
   let lastSignature = '';
-  let lastMode = MAP_VIEW_MODES.london;
+  let lastMode = MAP_VIEW_MODES.world;
   let lastState = null;
   let lastView = null;
   let hasInitialLondonFrame = false;
@@ -80,8 +80,8 @@ export function createMapController(config) {
   function ensureMap() {
     if (liveMap || !mapElement || typeof L === 'undefined') return;
     liveMap = L.map(mapElement, {
-      center: LONDON_CENTER,
-      zoom: 11,
+      center: WORLD_FALLBACK.center,
+      zoom: WORLD_FALLBACK.zoom,
       minZoom: 2,
       maxZoom: 13,
       zoomControl: true,

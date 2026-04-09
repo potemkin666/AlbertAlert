@@ -21,7 +21,7 @@ export function createState() {
     searchQuery: '',
     activeRegion: 'all',
     activeLane: 'all',
-    mapViewMode: 'london',
+    mapViewMode: 'world',
     watched: new Set(),
     lastBrowserPollAt: new Date(),
     liveFeedGeneratedAt: null,
