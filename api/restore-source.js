@@ -6,6 +6,7 @@ import {
   normaliseEndpoint,
   validateAbsoluteHttpUrl
 } from './_lib/github-persistence.js';
+import { applyCorsHeaders, requireAdminSession } from './_lib/admin-session.js';
 
 const QUARANTINE_ONLY_FIELDS = new Set([
   'status',
@@ -20,12 +21,6 @@ const QUARANTINE_ONLY_FIELDS = new Set([
   'lastFailureAt',
   'lastCheckedAt'
 ]);
-
-function setCorsHeaders(response) {
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-}
 
 function sendError(response, error) {
   const status = error instanceof ApiError ? error.status : 500;
@@ -127,7 +122,7 @@ async function resolveShardPath(config, restoredSource, shardPaths) {
 }
 
 export default async function handler(request, response) {
-  setCorsHeaders(response);
+  applyCorsHeaders(request, response, 'POST,OPTIONS');
   if (request.method === 'OPTIONS') {
     response.setHeader('Allow', 'POST,OPTIONS');
     return response.status(204).end();
@@ -139,6 +134,9 @@ export default async function handler(request, response) {
       error: 'method-not-allowed',
       message: 'Only POST is supported.'
     });
+  }
+  if (!requireAdminSession(request, response)) {
+    return response;
   }
 
   try {

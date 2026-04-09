@@ -550,6 +550,44 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       border-color: rgba(255, 196, 122, 0.33);
       color: #ffdda8;
     }
+    .auth-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(127, 156, 203, 0.26);
+      background: rgba(19, 27, 45, 0.6);
+    }
+    .auth-note {
+      font-size: 13px;
+      color: #cfe0ff;
+    }
+    .auth-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .auth-actions button {
+      border: 0;
+      border-radius: 10px;
+      padding: 8px 11px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: #09101c;
+      background: #9fd0ff;
+      cursor: pointer;
+    }
+    .auth-actions button.secondary {
+      color: #dceaff;
+      background: rgba(97, 125, 168, 0.45);
+      border: 1px solid rgba(163, 190, 228, 0.38);
+    }
     .card {
       background: var(--panel);
       border: 1px solid var(--panel-border);
@@ -635,6 +673,10 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
   <main>
     <h1>Source Quarantine Review</h1>
     <p>Auto-quarantined or manually quarantined sources that should be reviewed before returning to the hourly feed run. Suggest a replacement URL and Brialert will restore it into the normal source catalog for the next run.</p>
+    <div class="auth-panel" id="auth-panel">
+      <div id="auth-note" class="auth-note">Checking admin session...</div>
+      <div class="auth-actions" id="auth-actions"></div>
+    </div>
     <div class="meta" id="meta">
       <span class="pill">Generated: ${clean(generatedAt)}</span>
       <span class="pill">Quarantined sources: ${entries.length}</span>
@@ -687,16 +729,33 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       normaliseApiBase(DEFAULT_WRITE_API_BASE)
     ]);
     let apiBase = API_BASE_CANDIDATES[0] || '';
+    let authState = {
+      authenticated: false,
+      user: null,
+      loginUrl: '',
+      logoutUrl: ''
+    };
     function quarantineUrlFor(base) {
       return base ? base + '/api/quarantined-sources' : '';
     }
     function restoreUrlFor(base) {
       return base ? base + '/api/restore-source' : '';
     }
+    function sessionUrlFor(base) {
+      return base ? base + '/api/auth/session' : '';
+    }
+    function loginUrlFor(base) {
+      return base ? base + '/api/auth/github/start?returnTo=' + encodeURIComponent(globalThis.location?.href || '/source-quarantine.html') : '';
+    }
+    function logoutUrlFor(base) {
+      return base ? base + '/api/auth/logout' : '';
+    }
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
     const body = document.getElementById('quarantine-body');
     const meta = document.getElementById('meta');
     const toast = document.getElementById('toast');
+    const authNote = document.getElementById('auth-note');
+    const authActions = document.getElementById('auth-actions');
     let currentEntries = [];
     let currentDataMode = 'live';
     let restoreEnabled = true;
@@ -812,10 +871,58 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
 
     function explainError(error) {
       const message = serializeError(error);
+      if (/not-authenticated|sign in with github|authorized admin/i.test(message)) {
+        return 'Sign in with an authorized GitHub admin account to access quarantine.';
+      }
       if (/bad credentials/i.test(message)) {
         return 'Backend authentication failed. Displaying cached snapshot data (restore functionality may be unavailable).';
       }
       return message;
+    }
+
+    function renderAuthPanel() {
+      if (authNote) {
+        authNote.textContent = authState.authenticated
+          ? 'Signed in as @' + String(authState.user?.login || 'admin')
+          : 'Admin sign-in required for quarantine access.';
+      }
+      if (!authActions) return;
+      authActions.innerHTML = '';
+      const signIn = document.createElement('button');
+      signIn.type = 'button';
+      signIn.textContent = authState.authenticated ? 'Switch account' : 'Sign in with GitHub';
+      signIn.addEventListener('click', () => {
+        const target = authState.loginUrl || loginUrlFor(apiBase);
+        if (target) globalThis.location.href = target;
+      });
+      authActions.appendChild(signIn);
+      if (authState.authenticated) {
+        const signOut = document.createElement('button');
+        signOut.type = 'button';
+        signOut.className = 'secondary';
+        signOut.textContent = 'Sign out';
+        signOut.addEventListener('click', async () => {
+          try {
+            await fetch(logoutUrlFor(apiBase) || authState.logoutUrl, {
+              method: 'POST',
+              credentials: 'include'
+            });
+          } catch {}
+          authState = {
+            authenticated: false,
+            user: null,
+            loginUrl: loginUrlFor(apiBase),
+            logoutUrl: logoutUrlFor(apiBase)
+          };
+          renderAuthPanel();
+          currentEntries = [];
+          restoreEnabled = false;
+          renderMeta({ generatedAt: new Date().toISOString() });
+          renderRows();
+          emptyState('Sign in as an admin to view quarantined sources.');
+        });
+        authActions.appendChild(signOut);
+      }
     }
 
     function normaliseAbsoluteHttpUrl(value) {
@@ -908,28 +1015,16 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     async function fetchPayload(url, fallbackError) {
       const response = await fetchWithTimeout(
         url,
-        { cache: 'no-store' },
+        { cache: 'no-store', credentials: 'include' },
         LOAD_FETCH_TIMEOUT_MS,
         'Quarantine data request'
       );
       const payload = await response.json().catch(() => ({}));
       if (!response.ok) {
-        throw new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
-      }
-      return payload;
-    }
-
-    async function postPayload(url, bodyPayload, fallbackError) {
-      const response = await fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(bodyPayload)
-      });
-      const payload = await response.json().catch(() => ({}));
-      if (!response.ok) {
-        throw new Error(payload && (payload.message || payload.detail) ? (payload.message || payload.detail) : fallbackError);
+        const apiMessage = payload?.message || payload?.detail;
+        const error = new Error(apiMessage || fallbackError);
+        error.status = response.status;
+        throw error;
       }
       return payload;
     }
@@ -964,7 +1059,8 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             restoreUrl,
             {
               method: attempt.method,
-              cache: 'no-store'
+              cache: 'no-store',
+              credentials: 'include'
             },
             PROBE_FETCH_TIMEOUT_MS,
             'Restore API probe (' + attempt.method + ')'
@@ -1001,6 +1097,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       }
       const response = await fetch(restoreUrl, {
         method: 'POST',
+        credentials: 'include',
         headers: {
           'Content-Type': 'application/json'
         },
@@ -1014,6 +1111,40 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         throw new Error(data.message || 'Restore failed');
       }
       return data.restoredSource;
+    }
+
+    async function loadAuthSession() {
+      const failures = [];
+      for (const candidateBase of API_BASE_CANDIDATES) {
+        apiBase = candidateBase;
+        const url = sessionUrlFor(candidateBase);
+        if (!url) continue;
+        try {
+          const payload = await fetchPayload(url, 'Failed to load admin session.');
+          const authenticated = !!payload?.authenticated;
+          authState = {
+            authenticated,
+            user: authenticated ? payload.user || null : null,
+            loginUrl: payload.loginUrl ? candidateBase + payload.loginUrl : loginUrlFor(candidateBase),
+            logoutUrl: payload.logoutUrl ? candidateBase + payload.logoutUrl : logoutUrlFor(candidateBase)
+          };
+          renderAuthPanel();
+          if (authenticated) return true;
+        } catch (error) {
+          failures.push(candidateBase + ': ' + serializeError(error));
+        }
+      }
+      authState = {
+        authenticated: false,
+        user: null,
+        loginUrl: loginUrlFor(apiBase),
+        logoutUrl: logoutUrlFor(apiBase)
+      };
+      renderAuthPanel();
+      if (failures.length) {
+        console.warn('Failed to load auth session from configured backends.', { failures });
+      }
+      return false;
     }
 
     async function fetchLivePayloadWithFailover() {
@@ -1084,6 +1215,16 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
     async function loadEntries() {
       emptyState('Loading quarantined sources...');
       try {
+        const isAuthenticated = await loadAuthSession();
+        if (!isAuthenticated) {
+          currentDataMode = 'live';
+          restoreEnabled = false;
+          currentEntries = [];
+          renderMeta({ generatedAt: new Date().toISOString() });
+          renderRows();
+          emptyState('Sign in as an admin to view quarantined sources.');
+          return;
+        }
         let payload;
         try {
           payload = await fetchLivePayloadWithFailover();
@@ -1094,6 +1235,9 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             console.warn('Restore API probe marked backend as unreachable; keeping quarantine UI in live read-only mode.', probe);
           }
         } catch (primaryError) {
+          if (primaryError && primaryError.status === 401) {
+            throw primaryError;
+          }
           console.warn('Failed to load live quarantine API; falling back to static snapshot in read-only mode.', {
             error: serializeError(primaryError)
           });

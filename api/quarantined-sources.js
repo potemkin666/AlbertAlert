@@ -1,10 +1,5 @@
 import { ApiError, loadJsonFile } from './_lib/github-persistence.js';
-
-function setCorsHeaders(response) {
-  response.setHeader('Access-Control-Allow-Origin', '*');
-  response.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
-  response.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-}
+import { applyCorsHeaders, requireAdminSession } from './_lib/admin-session.js';
 
 function sendError(response, error) {
   const status = error instanceof ApiError ? error.status : 500;
@@ -42,7 +37,7 @@ function sanitiseSources(rawSources) {
 }
 
 export default async function handler(request, response) {
-  setCorsHeaders(response);
+  applyCorsHeaders(request, response, 'GET,OPTIONS');
   if (request.method === 'OPTIONS') {
     response.setHeader('Allow', 'GET,OPTIONS');
     return response.status(204).end();
@@ -54,6 +49,9 @@ export default async function handler(request, response) {
       error: 'method-not-allowed',
       message: 'Only GET is supported.'
     });
+  }
+  if (!requireAdminSession(request, response)) {
+    return response;
   }
 
   try {
