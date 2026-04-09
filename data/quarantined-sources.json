@@ -1,7 +1,45 @@
 {
-  "generatedAt": "2026-04-09T18:36:00.701Z",
-  "count": 170,
+  "generatedAt": "2026-04-09T19:21:50.287Z",
+  "count": 172,
   "sources": [
+    {
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_en/comunicacion_prensa.php",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "eu",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-09T19:21:50.287Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-11T19:21:50.287Z",
+      "lastFailureAt": "2026-04-09T19:21:50.287Z",
+      "lastCheckedAt": "2026-04-09T19:21:50.287Z"
+    },
+    {
+      "id": "whittington-health-news",
+      "provider": "Whittington Health a News",
+      "endpoint": "https://www.whittington.nhs.uk/news/default.asp",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-09T19:21:50.287Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-11T19:21:50.287Z",
+      "lastFailureAt": "2026-04-09T19:21:50.287Z",
+      "lastCheckedAt": "2026-04-09T19:21:50.287Z"
+    },
     {
       "id": "frontex-news-releases",
       "provider": "Frontex a News Releases",
@@ -3232,6 +3270,5 @@
       "lastFailureAt": "2026-04-05T13:02:51.966Z",
       "lastCheckedAt": "2026-04-05T13:02:51.966Z"
     }
-  ],
-  "schemaVersion": 1
+  ]
 }
