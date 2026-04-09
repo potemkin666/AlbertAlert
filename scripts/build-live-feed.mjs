@@ -1100,6 +1100,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
           reason: 'no-api-base'
         };
       }
+      // POST probe intentionally sends invalid payload so backend returns a non-mutating validation/auth response.
       const attempts = [
         {
           method: 'POST',
