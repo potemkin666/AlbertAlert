@@ -1,7 +1,26 @@
 {
-  "generatedAt": "2026-04-09T15:33:36.097Z",
-  "count": 185,
+  "generatedAt": "2026-04-09T17:18:52.492Z",
+  "count": 186,
   "sources": [
+    {
+      "id": "frontex-news-releases",
+      "provider": "Frontex a News Releases",
+      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/",
+      "kind": "html",
+      "lane": "border",
+      "region": "eu",
+      "status": "auto-quarantined",
+      "reason": "Repeated blocked-or-auth failures on html source",
+      "quarantinedAt": "2026-04-09T17:18:52.492Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveBlockedFailures": 2,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-11T17:18:52.492Z",
+      "lastFailureAt": "2026-04-09T17:18:52.492Z",
+      "lastCheckedAt": "2026-04-09T17:18:52.492Z"
+    },
     {
       "id": "belgium-crisis-centre-news",
       "provider": "Belgian National Crisis Centre - News",
