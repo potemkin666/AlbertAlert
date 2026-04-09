@@ -5,6 +5,9 @@ import {
 } from '../../shared/feed-controller.mjs';
 import { reportBackgroundError } from '../../shared/logger.mjs';
 
+const MANUAL_REFRESH_POLL_INTERVAL_MS = 5_000;
+const MANUAL_REFRESH_MAX_WAIT_MS = 90_000;
+
 function currentOriginBase() {
   if (typeof window === 'undefined' || !window.location) return null;
   const origin = window.location.origin.trim();
@@ -74,6 +77,57 @@ export function refreshLiveFeedNow(state, liveFeedUrl, normaliseAlert, onAfterLo
     normaliseAlert,
     onAfterLoad
   });
+}
+
+function feedGeneratedAtMs(state) {
+  const value = state?.liveFeedGeneratedAt;
+  if (!(value instanceof Date)) return NaN;
+  const timeMs = value.getTime();
+  return Number.isFinite(timeMs) ? timeMs : NaN;
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+export async function refreshLiveFeedUntilUpdated(
+  state,
+  liveFeedUrl,
+  normaliseAlert,
+  onAfterLoad,
+  options = {}
+) {
+  const previousGeneratedAt = options.previousGeneratedAt instanceof Date
+    ? options.previousGeneratedAt
+    : state?.liveFeedGeneratedAt;
+  const previousGeneratedAtMs = previousGeneratedAt instanceof Date
+    ? previousGeneratedAt.getTime()
+    : NaN;
+  const pollIntervalMs = Number(options.pollIntervalMs || MANUAL_REFRESH_POLL_INTERVAL_MS);
+  const maxWaitMs = Number(options.maxWaitMs || MANUAL_REFRESH_MAX_WAIT_MS);
+  const deadline = Date.now() + Math.max(0, maxWaitMs);
+  let attempts = 0;
+
+  while (attempts === 0 || Date.now() < deadline) {
+    attempts += 1;
+    await refreshLiveFeedNow(state, liveFeedUrl, normaliseAlert, onAfterLoad);
+    const currentGeneratedAtMs = feedGeneratedAtMs(state);
+    if (!Number.isFinite(previousGeneratedAtMs) || (Number.isFinite(currentGeneratedAtMs) && currentGeneratedAtMs > previousGeneratedAtMs)) {
+      return {
+        updated: true,
+        attempts,
+        generatedAt: state?.liveFeedGeneratedAt instanceof Date ? state.liveFeedGeneratedAt.toISOString() : null
+      };
+    }
+    if (Date.now() >= deadline) break;
+    await delay(pollIntervalMs);
+  }
+
+  return {
+    updated: false,
+    attempts,
+    generatedAt: state?.liveFeedGeneratedAt instanceof Date ? state.liveFeedGeneratedAt.toISOString() : null
+  };
 }
 
 export async function triggerLiveFeedRun() {

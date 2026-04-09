@@ -1,4 +1,9 @@
-import { loadInitialResources, refreshLiveFeedNow, startFeedPolling } from '../feed/index.mjs';
+import {
+  loadInitialResources,
+  refreshLiveFeedNow,
+  refreshLiveFeedUntilUpdated,
+  startFeedPolling
+} from '../feed/index.mjs';
 import { syncSourceRequests } from '../feed/source-requests.mjs';
 
 export function bootstrapMap(mapController, { idleTimeoutMs, fallbackDelayMs }) {
@@ -55,4 +60,24 @@ export function refreshFeed({
     invalidateDerivedView();
     renderAll();
   });
+}
+
+export function refreshFeedUntilUpdated({
+  state,
+  liveFeedUrl,
+  normaliseAlert,
+  invalidateDerivedView,
+  renderAll,
+  previousGeneratedAt
+}) {
+  return refreshLiveFeedUntilUpdated(
+    state,
+    liveFeedUrl,
+    normaliseAlert,
+    () => {
+      invalidateDerivedView();
+      renderAll();
+    },
+    { previousGeneratedAt }
+  );
 }

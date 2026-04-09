@@ -33,7 +33,7 @@ import { createElements } from './elements.mjs';
 import { createRenderingCoordinator } from './rendering.mjs';
 import { bindEvents } from './events.mjs';
 import * as actions from './actions.mjs';
-import { bootstrapMap, refreshFeed, startRuntimeLifecycle } from './startup.mjs';
+import { bootstrapMap, refreshFeed, refreshFeedUntilUpdated, startRuntimeLifecycle } from './startup.mjs';
 import { filteredMapView } from '../render/map.mjs';
 import { renderSourceRequests } from '../render/source-requests.mjs';
 import { triggerLiveFeedRun } from '../feed/index.mjs';
@@ -131,6 +131,14 @@ export function initialiseApp() {
       normaliseAlert,
       invalidateDerivedView: rendering.invalidateDerivedView,
       renderAll: rendering.renderAll
+    }),
+    refreshFeedUntilUpdated: (previousGeneratedAt) => refreshFeedUntilUpdated({
+      state,
+      liveFeedUrl: LIVE_FEED_URL,
+      normaliseAlert,
+      invalidateDerivedView: rendering.invalidateDerivedView,
+      renderAll: rendering.renderAll,
+      previousGeneratedAt
     })
   });
 

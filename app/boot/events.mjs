@@ -21,7 +21,8 @@ export function bindEvents({
   rendering,
   setActiveTab,
   triggerLiveFeedRun,
-  refreshFeedNow
+  refreshFeedNow,
+  refreshFeedUntilUpdated
 }) {
   let resizeTimer = null;
   let searchTimer = null;
@@ -177,6 +178,9 @@ export function bindEvents({
   elements.heroRefresh?.addEventListener('click', async () => {
     if (elements.heroRefresh.disabled) return;
     const originalText = elements.heroRefresh.textContent;
+    const previousGeneratedAt = state.liveFeedGeneratedAt instanceof Date
+      ? new Date(state.liveFeedGeneratedAt)
+      : null;
     elements.heroRefresh.disabled = true;
     elements.heroRefresh.textContent = 'Queuing run...';
     state.manualRefreshTriggerStatus = {
@@ -207,7 +211,25 @@ export function bindEvents({
       elements.heroRefresh.textContent = state.manualRefreshTriggerStatus.state === 'error'
         ? 'Refreshing feed...'
         : 'Run queued. Refreshing...';
-      await refreshFeedNow();
+      if (typeof refreshFeedUntilUpdated === 'function') {
+        const refreshResult = await refreshFeedUntilUpdated(previousGeneratedAt);
+        if (!refreshResult?.updated) {
+          state.manualRefreshTriggerStatus = {
+            state: 'error',
+            message: 'Run queued, but no newer feed landed yet. Try again in about a minute.',
+            at: new Date().toISOString(),
+            apiUrl: state.manualRefreshTriggerStatus?.apiUrl || null
+          };
+        } else if (state.manualRefreshTriggerStatus.state === 'success') {
+          state.manualRefreshTriggerStatus = {
+            ...state.manualRefreshTriggerStatus,
+            message: `Feed updated (${refreshResult.attempts} check${refreshResult.attempts === 1 ? '' : 's'}).`,
+            at: new Date().toISOString()
+          };
+        }
+      } else {
+        await refreshFeedNow();
+      }
     } finally {
       elements.heroRefresh.disabled = false;
       elements.heroRefresh.textContent = originalText;
