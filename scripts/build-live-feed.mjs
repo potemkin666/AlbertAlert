@@ -1072,16 +1072,6 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       return payload;
     }
 
-    function classifyProbeStatus(status) {
-      // A concrete HTTP response means the backend origin is reachable.
-      // 404 is treated as missing route (write API unavailable for restore).
-      if (status === 404) return { reachable: false, reason: 'missing-route' };
-      if (status >= 400 && status <= 499) return { reachable: true, reason: 'method-or-validation-or-auth' };
-      if (status >= 200 && status <= 399) return { reachable: true, reason: 'ok' };
-      if (status >= 500 && status <= 599) return { reachable: true, reason: 'backend-server-error' };
-      return { reachable: false, reason: 'unexpected-status' };
-    }
-
     function cacheBustedUrl(url, cacheKey) {
       try {
         const candidate = new URL(url);
@@ -1100,59 +1090,43 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
           reason: 'no-api-base'
         };
       }
-      // POST probe intentionally sends invalid payload so backend returns a non-mutating validation/auth response.
-      const attempts = [
-        {
-          method: 'POST',
-          note: 'invalid-body reachability probe for write route',
-          options: {
+      try {
+        // POST probe intentionally sends invalid payload so backend returns a non-mutating validation/auth response.
+        const response = await fetchWithTimeout(
+          cacheBustedUrl(restoreUrl, Date.now()),
+          withSessionCredentials({
+            method: 'POST',
+            cache: 'no-store',
             headers: {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({ sourceId: '', replacementUrl: '' })
-          }
-        },
-        { method: 'OPTIONS', note: 'fallback probe for hosts that reject POST without CORS headers' },
-        { method: 'GET', note: 'final fallback probe for hosts that reject OPTIONS' }
-      ];
-      let lastUnreachableReason = 'probe-not-run';
-
-      for (const attempt of attempts) {
+          }),
+          PROBE_FETCH_TIMEOUT_MS,
+          'Restore API probe (POST)'
+        );
+        let payload = null;
         try {
-          const requestUrl = cacheBustedUrl(restoreUrl, Date.now());
-          const response = await fetchWithTimeout(
-            requestUrl,
-            withSessionCredentials({
-              method: attempt.method,
-              cache: 'no-store',
-              ...attempt.options
-            }),
-            PROBE_FETCH_TIMEOUT_MS,
-            'Restore API probe (' + attempt.method + ')'
-          );
-          const classification = classifyProbeStatus(response.status);
-          if (classification.reachable) {
-            return {
-              reachable: true,
-              method: attempt.method,
-              status: response.status,
-              reason: classification.reason
-            };
-          }
-          lastUnreachableReason = attempt.method + ' (' + attempt.note + ') returned status ' + response.status + ' (' + classification.reason + ')';
-        } catch (error) {
-          const message = serializeError(error);
-          const normalized = /failed to fetch|networkerror|load failed|cors/i.test(message)
-            ? 'network-or-cors'
-            : 'fetch-failure';
-          lastUnreachableReason = attempt.method + ' (' + attempt.note + ') ' + normalized + ': ' + message;
-        }
+          payload = await response.clone().json();
+        } catch {}
+        // Any HTTP response means the backend write route is reachable.
+        // Only fetch-level failures (network/CORS/timeout/transport) should disable restore controls.
+        return {
+          reachable: true,
+          method: 'POST',
+          status: response.status,
+          reason: String(payload?.error || payload?.message || payload?.detail || 'http-response')
+        };
+      } catch (error) {
+        const message = serializeError(error);
+        const normalized = /failed to fetch|networkerror|load failed|cors|timed out/i.test(message)
+          ? 'network-or-cors'
+          : 'fetch-failure';
+        return {
+          reachable: false,
+          reason: 'POST (invalid-body reachability probe for write route) ' + normalized + ': ' + message
+        };
       }
-
-      return {
-        reachable: false,
-        reason: lastUnreachableReason
-      };
     }
 
     async function restoreSource(sourceId, replacementUrl) {
