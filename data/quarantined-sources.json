@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-10T09:50:26.616Z",
-  "count": 181,
+  "generatedAt": "2026-04-10T09:50:52.220Z",
+  "count": 180,
   "sources": [
     {
       "id": "romanian-police-news",
@@ -558,25 +558,6 @@
       "provider": "Counter Extremism Project a News",
       "endpoint": "https://www.counterextremism.com/news",
       "kind": "html",
-      "lane": "context",
-      "region": "international",
-      "status": "auto-quarantined",
-      "reason": "HTTP 404 not found; needs manual source URL review",
-      "quarantinedAt": "2026-04-07T14:01:19.759Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-09T14:01:19.759Z",
-      "lastFailureAt": "2026-04-07T14:01:19.759Z",
-      "lastCheckedAt": "2026-04-07T14:01:19.759Z"
-    },
-    {
-      "id": "rferl-security-news-rss",
-      "provider": "Radio Free Europe/Radio Liberty a Security (RSS)",
-      "endpoint": "https://www.rferl.org/api/ep_rss_all/iu/1",
-      "kind": "rss",
       "lane": "context",
       "region": "international",
       "status": "auto-quarantined",
