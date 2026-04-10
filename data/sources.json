@@ -243,13 +243,15 @@
     {
       "id": "nctv-english-rss",
       "provider": "NCTV Netherlands - English RSS",
-      "endpoint": "https://english.nctv.nl/actueel/rss.xml",
+      "endpoint": "https://nltimes.nl/categories/crime",
       "kind": "rss",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "English NCTV RSS feed for Dutch threat posture, terrorism and national security updates."
+      "comment": "English NCTV RSS feed for Dutch threat posture, terrorism and national security updates.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:46:26.909Z"
     },
     {
       "id": "paris-prefecture-police-rss-page",
