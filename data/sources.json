@@ -278,13 +278,15 @@
     {
       "id": "statewatch-news",
       "provider": "Statewatch - News",
-      "endpoint": "https://www.statewatch.org/news/",
+      "endpoint": "https://www.statewatch.org/latest/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "Statewatch news page for civil-liberties, policing, borders and counter-terror policy scrutiny."
+      "comment": "Statewatch news page for civil-liberties, policing, borders and counter-terror policy scrutiny.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:47:13.429Z"
     },
     {
       "id": "sweden-sapo-news",
