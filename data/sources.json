@@ -3134,13 +3134,15 @@
     {
       "id": "cambridgeshire-police-news-search",
       "provider": "Cambridgeshire Police - News Search",
-      "endpoint": "https://www.cambs.police.uk/news/news-search/?ct=News",
+      "endpoint": "https://www.cambs.police.uk/news/news-search/?q=&ct=Appeals&ct=Court+news&ct=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Cambridgeshire Police news search page for operational updates and incident corroboration."
+      "comment": "Cambridgeshire Police news search page for operational updates and incident corroboration.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:53:52.103Z"
     },
     {
       "id": "cheshire-police-news",
