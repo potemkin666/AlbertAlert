@@ -1508,13 +1508,15 @@
     {
       "id": "rferl-security-news-rss",
       "provider": "Radio Free Europe/Radio Liberty a Security (RSS)",
-      "endpoint": "https://www.rferl.org/api/ep_rss_all/iu/1",
+      "endpoint": "https://www.rferl.org/LatestNews",
       "kind": "rss",
       "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "RFE/RL news on terrorism, extremism and security in Central Asia, Russia and the Middle East used for international context."
+      "comment": "RFE/RL news on terrorism, extremism and security in Central Asia, Russia and the Middle East used for international context.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:50:52.220Z"
     },
     {
       "id": "soufan-center-intelbrief",
