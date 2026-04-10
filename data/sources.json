@@ -3402,13 +3402,15 @@
     {
       "id": "humberside-police-news-search",
       "provider": "Humberside Police - News Search",
-      "endpoint": "https://www.humberside.police.uk/news/news-search/?ct=News",
+      "endpoint": "https://www.humberside.police.uk/news/news-search/?q=&ct=Appeals&ct=Campaigns&ct=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Humberside Police news search page for Humber-region incidents and appeals."
+      "comment": "Humberside Police news search page for Humber-region incidents and appeals.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:54:33.062Z"
     },
     {
       "id": "kent-police-news-html",
