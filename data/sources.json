@@ -947,13 +947,15 @@
     {
       "id": "switzerland-fedpol-news",
       "provider": "Swiss fedpol - News",
-      "endpoint": "https://www.fedpol.admin.ch/fedpol/en/home/fedpol/aktuell.html",
+      "endpoint": "https://www.swissinfo.ch/eng/latest-news/",
       "kind": "html",
       "lane": "context",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Swiss federal police updates on terrorism investigations, security threats and protective operations."
+      "comment": "Swiss federal police updates on terrorism investigations, security threats and protective operations.",
+      "quarantined": false,
+      "restoredAt": "2026-04-10T09:49:20.901Z"
     },
     {
       "id": "telegraph-world-news",
