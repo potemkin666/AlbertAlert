@@ -1,16 +1,34 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-10T07:11:03.754Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-04-10T07:53:55.569Z",
+  "totalSourceErrors": 2,
   "byCategory": {
+    "blocked-or-auth": 1,
     "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
+    "rss": 1,
     "html": 1
   },
-  "machineReadableErrorCount": 0,
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 1,
   "top20": [
+    {
+      "id": "euractiv-security-rss",
+      "provider": "Euractiv a Security & Defence (RSS)",
+      "endpoint": "https://www.euractiv.com/sections/security/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "hammersmith-fulham-news",
       "provider": "Hammersmith and Fulham Council a News",
@@ -29,6 +47,22 @@
     }
   ],
   "sources": [
+    {
+      "id": "euractiv-security-rss",
+      "provider": "Euractiv a Security & Defence (RSS)",
+      "endpoint": "https://www.euractiv.com/sections/security/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "hammersmith-fulham-news",
       "provider": "Hammersmith and Fulham Council a News",
