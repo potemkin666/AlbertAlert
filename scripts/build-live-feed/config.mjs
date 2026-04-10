@@ -196,23 +196,37 @@ export function sourceRefreshOffset(source) {
   const cadence = sourceRefreshEveryHours(source);
   const explicit = Number(source?.refreshOffset);
   if (Number.isFinite(explicit) && explicit >= 0) return explicit % cadence;
-  return (deterministicSourceHash(source?.id || source?.endpoint || source?.provider || '') % Math.max(1, Math.floor(cadence))) * (cadence < 1 ? cadence : 1);
+
+  // Compute a deterministic offset based on source identifier
+  const sourceKey = source?.id || source?.endpoint || source?.provider || '';
+  const hashValue = deterministicSourceHash(sourceKey);
+  const hashRange = Math.max(1, Math.floor(cadence));
+  const baseOffset = hashValue % hashRange;
+
+  // Scale offset for sub-hour cadences to distribute sources across time slots
+  const scalingFactor = cadence < 1 ? cadence : 1;
+  return baseOffset * scalingFactor;
 }
 
 export function shouldRefreshSourceThisRun(source, buildDate = new Date()) {
   const cadence = sourceRefreshEveryHours(source);
+  const offset = sourceRefreshOffset(source);
+
   // Sub-hour cadences: refresh every run (workflow runs every 15 minutes)
   if (cadence <= 0.25) return true;
+
   // For cadences up to 1 hour, use 15-minute slots
   if (cadence <= 1) {
     const slotMinutes = 15;
-    const slot = Math.floor(buildDate.getTime() / (slotMinutes * 60_000));
+    const currentSlot = Math.floor(buildDate.getTime() / (slotMinutes * 60_000));
     const slotsPerCadence = Math.ceil(cadence * 60 / slotMinutes);
-    const offset = Math.floor(sourceRefreshOffset(source) * 60 / slotMinutes) % slotsPerCadence;
-    return slot % slotsPerCadence === offset;
+    const offsetSlot = Math.floor(offset * 60 / slotMinutes) % slotsPerCadence;
+    return currentSlot % slotsPerCadence === offsetSlot;
   }
+
   // Multi-hour cadences: use hourly slots
   const hourSlot = Math.floor(buildDate.getTime() / 3600000);
   const cadenceHours = Math.floor(cadence);
-  return hourSlot % cadenceHours === Math.floor(sourceRefreshOffset(source)) % cadenceHours;
+  const offsetHours = Math.floor(offset) % cadenceHours;
+  return hourSlot % cadenceHours === offsetHours;
 }
