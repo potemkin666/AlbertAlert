@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-11T06:24:24.736Z",
-  "totalSourceErrors": 17,
+  "generatedAt": "2026-04-11T06:51:32.146Z",
+  "totalSourceErrors": 16,
   "top20": [
     {
       "id": "lords-in-focus-rss",
@@ -162,22 +162,6 @@
       "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     },
     {
       "id": "just-security",

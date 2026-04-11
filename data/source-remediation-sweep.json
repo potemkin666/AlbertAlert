@@ -1,19 +1,17 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-11T06:24:24.736Z",
-  "totalSourceErrors": 17,
+  "generatedAt": "2026-04-11T06:51:32.146Z",
+  "totalSourceErrors": 16,
   "byCategory": {
     "moved-temporarily": 2,
     "blocked-or-auth": 10,
-    "anti-bot-protection": 4,
-    "brittle-selectors-or-js-rendering": 1
+    "anti-bot-protection": 4
   },
   "byKind": {
-    "rss": 16,
-    "html": 1
+    "rss": 16
   },
   "machineReadableErrorCount": 16,
-  "htmlErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
       "id": "lords-in-focus-rss",
@@ -174,22 +172,6 @@
       "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     },
     {
       "id": "just-security",
@@ -448,22 +430,6 @@
       "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     },
     {
       "id": "just-security",
