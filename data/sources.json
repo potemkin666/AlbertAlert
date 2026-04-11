@@ -243,15 +243,13 @@
     {
       "id": "nctv-english-rss",
       "provider": "NCTV Netherlands - English RSS",
-      "endpoint": "https://nltimes.nl/categories/crime",
+      "endpoint": "https://english.nctv.nl/actueel/rss.xml",
       "kind": "rss",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "English NCTV RSS feed for Dutch threat posture, terrorism and national security updates.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:46:26.909Z"
+      "comment": "English NCTV RSS feed for Dutch threat posture, terrorism and national security updates."
     },
     {
       "id": "paris-prefecture-police-rss-page",
@@ -278,15 +276,13 @@
     {
       "id": "statewatch-news",
       "provider": "Statewatch - News",
-      "endpoint": "https://www.statewatch.org/latest/",
+      "endpoint": "https://www.statewatch.org/news/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "Statewatch news page for civil-liberties, policing, borders and counter-terror policy scrutiny.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:47:13.429Z"
+      "comment": "Statewatch news page for civil-liberties, policing, borders and counter-terror policy scrutiny."
     },
     {
       "id": "sweden-sapo-news",
@@ -808,9 +804,7 @@
       "region": "europe",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "Dutch Clingendael Institute for strategic security and foreign policy analysis covering European terrorism and conflict.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:47:55.999Z"
+      "comment": "Dutch Clingendael Institute for strategic security and foreign policy analysis covering European terrorism and conflict."
     },
     {
       "id": "dw-europe-rss",
@@ -947,15 +941,13 @@
     {
       "id": "switzerland-fedpol-news",
       "provider": "Swiss fedpol - News",
-      "endpoint": "https://www.swissinfo.ch/eng/latest-news/",
+      "endpoint": "https://www.fedpol.admin.ch/fedpol/en/home/fedpol/aktuell.html",
       "kind": "html",
       "lane": "context",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Swiss federal police updates on terrorism investigations, security threats and protective operations.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:49:20.901Z"
+      "comment": "Swiss federal police updates on terrorism investigations, security threats and protective operations."
     },
     {
       "id": "telegraph-world-news",
@@ -1191,15 +1183,13 @@
     {
       "id": "pst-no-english",
       "provider": "PST (Norway) English reporting page",
-      "endpoint": "https://www.bangkokpost.com/most-recent",
+      "endpoint": "https://www.pst.no/en/report/",
       "kind": "html",
       "lane": "prevention",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
-      "comment": "Norwegian Police Security Service (PST) English page for reporting suspicious activity; describes PST’s role and threat landscape; accessible alternative to the unavailable English news page.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:50:26.616Z"
+      "comment": "Norwegian Police Security Service (PST) English page for reporting suspicious activity; describes PST’s role and threat landscape; accessible alternative to the unavailable English news page."
     },
     {
       "id": "ran-network",
@@ -1508,15 +1498,13 @@
     {
       "id": "rferl-security-news-rss",
       "provider": "Radio Free Europe/Radio Liberty a Security (RSS)",
-      "endpoint": "https://www.rferl.org/LatestNews",
+      "endpoint": "https://www.rferl.org/api/ep_rss_all/iu/1",
       "kind": "rss",
       "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "RFE/RL news on terrorism, extremism and security in Central Asia, Russia and the Middle East used for international context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:50:52.220Z"
+      "comment": "RFE/RL news on terrorism, extremism and security in Central Asia, Russia and the Middle East used for international context."
     },
     {
       "id": "soufan-center-intelbrief",
@@ -2288,15 +2276,13 @@
     {
       "id": "nhs-london-sel-news",
       "provider": "NHS South East London a News",
-      "endpoint": "https://www.selondonics.org/news/",
+      "endpoint": "https://www.selondonics.org/latest-news/",
       "kind": "html",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "South East London ICS news used for borough-spanning health, resilience, and response context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:51:41.138Z"
+      "comment": "South East London ICS news used for borough-spanning health, resilience, and response context."
     },
     {
       "id": "nhs-london-swl-news",
@@ -2488,15 +2474,13 @@
     {
       "id": "tower-hamlets-council-news",
       "provider": "Tower Hamlets Council a News",
-      "endpoint": "https://eastlondontimes.co.uk/local/tower-hamlets/",
+      "endpoint": "https://www.towerhamlets.gov.uk/rss/news.xml",
       "kind": "rss",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Replaced legacy ASPX listing with Tower Hamlets official news RSS feed.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:53:22.095Z"
+      "comment": "Replaced legacy ASPX listing with Tower Hamlets official news RSS feed."
     },
     {
       "id": "uclh-news",
@@ -3134,15 +3118,13 @@
     {
       "id": "cambridgeshire-police-news-search",
       "provider": "Cambridgeshire Police - News Search",
-      "endpoint": "https://www.cambs.police.uk/news/news-search/?q=&ct=Appeals&ct=Court+news&ct=News",
+      "endpoint": "https://www.cambs.police.uk/news/news-search/?ct=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Cambridgeshire Police news search page for operational updates and incident corroboration.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:53:52.103Z"
+      "comment": "Cambridgeshire Police news search page for operational updates and incident corroboration."
     },
     {
       "id": "cheshire-police-news",
@@ -3301,15 +3283,13 @@
     {
       "id": "durham-police-durham-news",
       "provider": "Durham Police - Durham News",
-      "endpoint": "https://www.durham.police.uk/news/durham/news/?newsCategory=News",
+      "endpoint": "https://www.durham.police.uk/news/durham/news/",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Durham Police detailed county news page for incidents, arrests and operational notices.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:54:13.943Z"
+      "comment": "Durham Police detailed county news page for incidents, arrests and operational notices."
     },
     {
       "id": "dyfed-powys-police-news",
@@ -3402,15 +3382,13 @@
     {
       "id": "humberside-police-news-search",
       "provider": "Humberside Police - News Search",
-      "endpoint": "https://www.humberside.police.uk/news/news-search/?q=&ct=Appeals&ct=Campaigns&ct=News",
+      "endpoint": "https://www.humberside.police.uk/news/news-search/?ct=News",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Humberside Police news search page for Humber-region incidents and appeals.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:54:33.062Z"
+      "comment": "Humberside Police news search page for Humber-region incidents and appeals."
     },
     {
       "id": "kent-police-news-html",
@@ -3492,15 +3470,13 @@
     {
       "id": "north-wales-police-news",
       "provider": "North Wales Police - News",
-      "endpoint": "https://www.northwales.police.uk/news/north-wales/news/?newsCategory=News",
+      "endpoint": "https://www.northwales.police.uk/news/north-wales/news/",
       "kind": "html",
       "lane": "incidents",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "North Wales Police news page for regional incidents, coastal policing and operational reporting.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:54:49.585Z"
+      "comment": "North Wales Police news page for regional incidents, coastal policing and operational reporting."
     },
     {
       "id": "north-yorkshire-police-news-html",
@@ -4000,15 +3976,13 @@
     {
       "id": "gov-uk-parliament-jcnss",
       "provider": "UK Parliament a Joint Committee on National Security Strategy",
-      "endpoint": "https://www.politics.co.uk/the-commons-latest/",
+      "endpoint": "https://committees.parliament.uk/committee/54/joint-committee-on-the-national-security-strategy/news/",
       "kind": "html",
       "lane": "oversight",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "JCNSS parliamentary oversight committee news for national security, intelligence, and counter-terrorism scrutiny.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:55:32.055Z"
+      "comment": "JCNSS parliamentary oversight committee news for national security, intelligence, and counter-terrorism scrutiny."
     },
     {
       "id": "hmiprisons-news",
@@ -4456,9 +4430,7 @@
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Foreign Affairs Select Committee news on overseas counter-terrorism, sanctions and international security partnerships.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:58:28.786Z"
+      "comment": "Foreign Affairs Select Committee news on overseas counter-terrorism, sanctions and international security partnerships."
     },
     {
       "id": "uk-parliament-home-affairs-committee",
@@ -5062,15 +5034,13 @@
     {
       "id": "us-house-homeland-security",
       "provider": "US House Committee on Homeland Security - News",
-      "endpoint": "https://homeland.house.gov/press/",
+      "endpoint": "https://homeland.house.gov/news/",
       "kind": "html",
       "lane": "oversight",
       "region": "us",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "US House Homeland Security Committee news on terrorism threats, border security and DHS oversight hearings.",
-      "quarantined": false,
-      "restoredAt": "2026-04-10T09:57:58.267Z"
+      "comment": "US House Homeland Security Committee news on terrorism threats, border security and DHS oversight hearings."
     },
     {
       "id": "us-treasury-ofac-press-releases",
