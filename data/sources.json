@@ -1585,13 +1585,15 @@
     {
       "id": "occrp-news",
       "provider": "OCCRP a Organized Crime and Corruption Reporting Project",
-      "endpoint": "https://www.occrp.org/en/announcements.rss",
+      "endpoint": "https://nypost.com/tag/crime/feed/",
       "kind": "rss",
       "lane": "context",
       "region": "international",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "OCCRP investigative journalism RSS on organised crime, corruption and illicit financial networks relevant to terror financing."
+      "comment": "OCCRP investigative journalism RSS on organised crime, corruption and illicit financial networks relevant to terror financing.",
+      "quarantined": false,
+      "restoredAt": "2026-04-12T21:04:55.750Z"
     },
     {
       "id": "osce-press-releases",
