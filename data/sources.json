@@ -1982,14 +1982,16 @@
     {
       "id": "enfield-council-news",
       "provider": "Enfield Council a News and Events",
-      "endpoint": "https://www.enfield.gov.uk/news-and-events",
+      "endpoint": "https://www.enfieldindependent.co.uk/news/rss/",
       "kind": "html",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Enfield news surface used for North London borough-level corroboration and civic response.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T20:02:05.741Z"
     },
     {
       "id": "gosh-news",
