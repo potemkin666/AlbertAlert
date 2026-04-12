@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Brialert icon">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1020"/>
+      <stop offset="65%" stop-color="#1b2333"/>
+      <stop offset="100%" stop-color="#4a1d18"/>
+    </linearGradient>
+    <linearGradient id="shield" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e44d3d"/>
+      <stop offset="100%" stop-color="#a22820"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="110" fill="url(#bg)"/>
+  <path d="M256 74 390 124v118c0 104-66 167-134 196-68-29-134-92-134-196V124z" fill="url(#shield)"/>
+  <path d="M184 174h144v34h-52v136h-40V208h-52z" fill="#fff" opacity="0.96"/>
+  <circle cx="392" cy="122" r="42" fill="#f2b33d"/>
+  <path d="M392 96v52M366 122h52" stroke="#20160c" stroke-width="12" stroke-linecap="round"/>
+</svg>

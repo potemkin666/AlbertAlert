@@ -1,0 +1,227 @@
+name: Update live feeds
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/15 * * * *'
+
+concurrency:
+  group: brialert-live-feed
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-live-feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK: ${{ vars.BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK || 'false' }}
+      BRIALERT_FORCE_FEED_WRITE: 'true'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20.18.1'
+          cache: 'npm'
+
+      - name: Install feed builder dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Install Playwright Chromium
+        if: ${{ env.BRIALERT_ENABLE_PLAYWRIGHT_FALLBACK == 'true' }}
+        run: npx playwright install chromium --with-deps
+
+      - name: Validate feed data files
+        run: npm run validate:feed-data
+
+      - name: Validate compiled source catalog freshness
+        run: npm run check:sources:freshness
+
+      - name: Validate London source health (full scope)
+        env:
+          BRIALERT_SOURCE_HEALTH_SCOPE: all
+        run: npm run validate:source-health
+
+      - name: Build live alert feed
+        run: npm run build:feeds
+
+      - name: Validate generated feed output
+        run: npm run validate:live-feed-output
+
+      - name: Upload generated feed files
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-feed-output
+          path: |
+            live-alerts.json
+            data/quarantined-sources.json
+            source-quarantine.html
+            data/source-remediation-sweep.json
+            data/top-20-source-remediation.json
+            data/brialert.sqlite
+          if-no-files-found: ignore
+
+      - name: Show build output
+        if: always()
+        run: |
+          echo "==== git status before commit ===="
+          git status --short
+          echo "==== live-alerts head ===="
+          head -n 20 live-alerts.json || true
+          echo "==== live-alerts modified time ===="
+          ls -l live-alerts.json || true
+
+      - name: Build debug bundle
+        if: always()
+        run: |
+          mkdir -p .debug-artifacts
+          cat > .debug-artifacts/workflow-context.json <<EOF
+          {
+            "workflow": "${GITHUB_WORKFLOW}",
+            "job": "${GITHUB_JOB}",
+            "runId": "${GITHUB_RUN_ID}",
+            "runNumber": "${GITHUB_RUN_NUMBER}",
+            "runAttempt": "${GITHUB_RUN_ATTEMPT}",
+            "ref": "${GITHUB_REF}",
+            "sha": "${GITHUB_SHA}",
+            "actor": "${GITHUB_ACTOR}",
+            "eventName": "${GITHUB_EVENT_NAME}"
+          }
+          EOF
+          git status --short > .debug-artifacts/git-status.txt || true
+          git rev-parse HEAD > .debug-artifacts/head-sha.txt || true
+          cp live-alerts.json .debug-artifacts/live-alerts.json 2>/dev/null || true
+          cp data/quarantined-sources.json .debug-artifacts/quarantined-sources.json 2>/dev/null || true
+          cp data/source-remediation-sweep.json .debug-artifacts/source-remediation-sweep.json 2>/dev/null || true
+          cp data/top-20-source-remediation.json .debug-artifacts/top-20-source-remediation.json 2>/dev/null || true
+          cp source-quarantine.html .debug-artifacts/source-quarantine.html 2>/dev/null || true
+          cp data/brialert.sqlite .debug-artifacts/brialert.sqlite 2>/dev/null || true
+          cp data/sources.json .debug-artifacts/sources.json 2>/dev/null || true
+          cp data/geo-lookup.json .debug-artifacts/geo-lookup.json 2>/dev/null || true
+          cp package.json .debug-artifacts/package.json 2>/dev/null || true
+          cp package-lock.json .debug-artifacts/package-lock.json 2>/dev/null || true
+
+      - name: Upload build debug artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: live-feed-debug-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .debug-artifacts
+          if-no-files-found: warn
+
+  commit-live-feed:
+    needs: build-live-feed
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Download generated feed files
+        uses: actions/download-artifact@v4
+        with:
+          name: live-feed-output
+          path: .
+
+      - name: Commit refreshed feed data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add live-alerts.json
+          if [ -f data/quarantined-sources.json ]; then
+            git add data/quarantined-sources.json
+          fi
+          if [ -f source-quarantine.html ]; then
+            git add source-quarantine.html
+          fi
+          if [ -f data/source-remediation-sweep.json ]; then
+            git add data/source-remediation-sweep.json
+          fi
+          if [ -f data/top-20-source-remediation.json ]; then
+            git add data/top-20-source-remediation.json
+          fi
+          if [ -f data/brialert.sqlite ]; then
+            git add data/brialert.sqlite
+          fi
+          if git diff --cached --quiet; then
+            echo 'No feed changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Refresh live alert feed'
+          if git push; then
+            exit 0
+          fi
+          echo 'Initial push failed (likely non-fast-forward). Rebasing and retrying once.'
+          git fetch origin main
+          git pull --rebase origin main
+          git push
+
+  verify-live-feed-freshness:
+    needs: commit-live-feed
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    env:
+      LIVE_FEED_MAX_AGE_MINUTES: '180'
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20.18.1'
+
+      - name: Fail if live feed in main is stale
+        run: |
+          git fetch origin main
+          node <<'NODE'
+          const { execSync } = require('node:child_process');
+
+          const raw = execSync('git show origin/main:live-alerts.json', { encoding: 'utf8' });
+          const payload = JSON.parse(raw);
+          const generatedAt = payload?.generatedAt;
+
+          if (typeof generatedAt !== 'string' || generatedAt.trim().length === 0) {
+            console.error('live-alerts.json in main is missing generatedAt.');
+            process.exit(1);
+          }
+
+          const generatedAtMs = Date.parse(generatedAt);
+          if (!Number.isFinite(generatedAtMs)) {
+            console.error(`live-alerts.json generatedAt is invalid: ${generatedAt}`);
+            process.exit(1);
+          }
+
+          const nowMs = Date.now();
+          const ageMinutes = (nowMs - generatedAtMs) / 60000;
+          const maxAgeMinutes = Number.parseFloat(process.env.LIVE_FEED_MAX_AGE_MINUTES ?? '180');
+
+          console.log(`main/live-alerts.json generatedAt: ${generatedAt}`);
+          console.log(`Current age (minutes): ${ageMinutes.toFixed(2)} (max allowed: ${maxAgeMinutes})`);
+
+          if (!Number.isFinite(maxAgeMinutes) || maxAgeMinutes <= 0) {
+            console.error(`LIVE_FEED_MAX_AGE_MINUTES must be a positive number, got: ${process.env.LIVE_FEED_MAX_AGE_MINUTES}`);
+            process.exit(1);
+          }
+
+          if (ageMinutes > maxAgeMinutes) {
+            console.error(`Feed is stale: age ${ageMinutes.toFixed(2)} minutes is greater than ${maxAgeMinutes}.`);
+            process.exit(1);
+          }
+          NODE

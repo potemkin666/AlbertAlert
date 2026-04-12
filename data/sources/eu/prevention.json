@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "europol-eu-iru",
+      "provider": "Europol a EU Internet Referral Unit (EU IRU)",
+      "endpoint": "https://www.europol.europa.eu/about-europol/european-counter-terrorism-centre-ectc/eu-internet-referal-unit-eu-iru",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "eu",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": false,
+      "comment": "EU IRU page within the European Counter Terrorism Centre; monitors and counters terrorist online content."
+    },
+    {
+      "id": "isd-global-publications",
+      "provider": "ISD - Publications",
+      "endpoint": "https://www.isdglobal.org/publications/",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "eu",
+      "isTrustedOfficial": false,
+      "requiresKeywordMatch": true,
+      "comment": "Institute for Strategic Dialogue publications page for extremism, radicalisation and online-threat research."
+    },
+    {
+      "id": "ncsc-nl-rss",
+      "provider": "NCSC Netherlands - RSS",
+      "endpoint": "https://www.ncsc.nl/rss",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "eu",
+      "isTrustedOfficial": true,
+      "requiresKeywordMatch": true,
+      "comment": "Dutch NCSC RSS feed for cyber-threat, resilience and protective-security context."
+    }
+  ]
+}

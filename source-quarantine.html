@@ -1,0 +1,839 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brialert Source Quarantine Review</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #070d1a;
+      --panel: rgba(19, 27, 45, 0.94);
+      --panel-border: rgba(127, 156, 203, 0.26);
+      --text: #e8eef9;
+      --muted: #b9c6de;
+      --pill-bg: rgba(159, 208, 255, 0.09);
+      --pill-border: rgba(159, 208, 255, 0.2);
+      --danger: #ffb4b4;
+      --ok: #9ff5bc;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font: 15px/1.5 Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(circle at 12% -10%, #122445, #070d1a 48%);
+      color: var(--text);
+    }
+    main { max-width: 1480px; margin: 0 auto; padding: 28px 16px 42px; }
+    h1 { margin: 0 0 8px; font-size: clamp(26px, 3vw, 34px); line-height: 1.15; }
+    p { margin: 0 0 18px; color: var(--muted); max-width: 1050px; }
+    .meta { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+    .pill {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      color: #d8e7ff;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .pill.warn {
+      background: rgba(255, 196, 122, 0.13);
+      border-color: rgba(255, 196, 122, 0.33);
+      color: #ffdda8;
+    }
+    .auth-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(127, 156, 203, 0.26);
+      background: rgba(19, 27, 45, 0.6);
+    }
+    .auth-note {
+      font-size: 13px;
+      color: #cfe0ff;
+    }
+    .auth-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .auth-actions button {
+      border: 0;
+      border-radius: 10px;
+      padding: 8px 11px;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      color: #09101c;
+      background: #9fd0ff;
+      cursor: pointer;
+    }
+    .auth-actions button.secondary {
+      color: #dceaff;
+      background: rgba(97, 125, 168, 0.45);
+      border: 1px solid rgba(163, 190, 228, 0.38);
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.24);
+    }
+    .table-scroll { overflow: auto; max-height: calc(100vh - 220px); }
+    table { width: 100%; border-collapse: collapse; min-width: 1220px; }
+    th, td { text-align: left; padding: 10px 10px; vertical-align: top; border-bottom: 1px solid rgba(112, 138, 179, 0.14); }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #12203a;
+      color: #aac0e7;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    td { font-size: 14px; }
+    a { color: #9fd0ff; text-decoration: none; word-break: break-all; }
+    a:hover { text-decoration: underline; }
+    .action { display: grid; gap: 8px; min-width: 290px; }
+    .url-input {
+      width: 100%;
+      min-width: 240px;
+      padding: 9px 11px;
+      border-radius: 10px;
+      border: 1px solid rgba(112, 138, 179, 0.3);
+      background: rgba(8, 13, 24, 0.76);
+      color: var(--text);
+      font: inherit;
+    }
+    .url-input::placeholder { color: #8ea2c7; }
+    .url-input:focus { outline: none; border-color: rgba(159, 208, 255, 0.5); box-shadow: 0 0 0 3px rgba(159, 208, 255, 0.12); }
+    .url-input:disabled { opacity: 0.75; cursor: wait; }
+    .action button {
+      border: 0;
+      border-radius: 10px;
+      padding: 9px 10px;
+      font: inherit;
+      font-weight: 700;
+      color: #09101c;
+      background: #9fd0ff;
+      cursor: pointer;
+    }
+    .action button:hover { filter: brightness(1.04); }
+    .action button:disabled { cursor: wait; opacity: 0.72; }
+    .helper-note, .status-note { min-height: 18px; font-size: 12px; }
+    .helper-note { color: #8ea3c8; }
+    .status-note { color: #9fb2d6; }
+    .status-note.error { color: var(--danger); }
+    .status-note.success { color: var(--ok); }
+    .empty { padding: 18px 10px; color: var(--muted); }
+    .endpoint-copy { color: #d6e5ff; font-weight: 600; }
+    .toast {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      background: rgba(8, 21, 33, 0.96);
+      border: 1px solid rgba(159, 208, 255, 0.45);
+      color: #d8ecff;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity .16s ease, transform .16s ease;
+      pointer-events: none;
+    }
+    .toast.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 760px) {
+      main { padding: 18px 10px 26px; }
+      .card { border-radius: 12px; }
+      .table-scroll { max-height: calc(100vh - 160px); }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Source Quarantine Review</h1>
+    <p>Auto-quarantined or manually quarantined sources that should be reviewed before returning to the hourly feed run. Suggest a replacement URL and Brialert will restore it into the normal source catalog for the next run.</p>
+    <div class="auth-panel" id="auth-panel">
+      <div id="auth-note" class="auth-note">Checking admin session...</div>
+      <div class="auth-actions" id="auth-actions"></div>
+    </div>
+    <div class="meta" id="meta">
+      <span class="pill">Generated: 2026-04-12T13:42:42.234Z</span>
+      <span class="pill">Quarantined sources: 183</span>
+      <span class="pill">SLA: review within 48h</span>
+    </div>
+    <div class="card">
+      <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Provider</th>
+            <th>Type</th>
+            <th>Region</th>
+            <th>Status</th>
+            <th>Reason</th>
+            <th>Last Error</th>
+            <th>Blocked Runs</th>
+            <th>Dead/Moved Runs</th>
+            <th>SLA Review By</th>
+            <th>Endpoint</th>
+            <th>Restore</th>
+          </tr>
+        </thead>
+        <tbody id="quarantine-body">
+          <tr><td colspan="11" class="empty">Loading quarantined sources...</td></tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+  </main>
+  <div id="toast" class="toast" aria-live="polite"></div>
+  <script>
+    const DEFAULT_API_BASE = 'https://brialertbackend.vercel.app';
+    function normaliseApiBase(value) {
+      const raw = String(value || '').trim();
+      return raw ? raw.replace(/\/$/, '') : '';
+    }
+    function uniqueValues(values) {
+      const seen = new Set();
+      const result = [];
+      for (const value of values) {
+        if (!value || seen.has(value)) continue;
+        seen.add(value);
+        result.push(value);
+      }
+      return result;
+    }
+    const API_BASE_CANDIDATES = uniqueValues([
+      normaliseApiBase(globalThis.BRIALERT_API_BASE),
+      normaliseApiBase(DEFAULT_API_BASE)
+    ]);
+    let apiBase = API_BASE_CANDIDATES[0] || '';
+    let authState = {
+      authenticated: false,
+      user: null,
+      loginUrl: '',
+      logoutUrl: ''
+    };
+    function apiUrlFor(base, path) {
+      return base ? base + path : '';
+    }
+    function withSessionCredentials(options = {}) {
+      return {
+        ...options,
+        credentials: 'include'
+      };
+    }
+    function resolveAuthUrl(base, value, fallbackFactory) {
+      const raw = String(value || '').trim();
+      if (!raw) return fallbackFactory(base);
+      if (/^https?:\/\//i.test(raw)) return raw;
+      return apiUrlFor(base, raw.startsWith('/') ? raw : '/' + raw);
+    }
+    function quarantineUrlFor(base) {
+      return apiUrlFor(base, '/api/quarantined-sources');
+    }
+    function restoreUrlFor(base) {
+      return apiUrlFor(base, '/api/restore-source');
+    }
+    function sessionUrlFor(base) {
+      return apiUrlFor(base, '/api/auth/session');
+    }
+    function resolveQuarantineUrl() {
+      const fallbackOrigin = globalThis.location?.origin || DEFAULT_API_BASE;
+      try {
+        return new URL(globalThis.location?.href || '/source-quarantine.html', fallbackOrigin);
+      } catch {
+        return new URL('/source-quarantine.html', fallbackOrigin);
+      }
+    }
+    function stripAuthQueryParams(url) {
+      const sanitized = new URL(url.toString());
+      sanitized.searchParams.delete('auth');
+      sanitized.searchParams.delete('error');
+      return sanitized;
+    }
+    function returnToUrlForAuth() {
+      const currentUrl = stripAuthQueryParams(resolveQuarantineUrl());
+      return currentUrl.toString();
+    }
+    function loginUrlFor(base) {
+      const normalizedBase = normaliseApiBase(base);
+      const normalizedActiveBase = normaliseApiBase(apiBase);
+      const normalizedDefaultBase = normaliseApiBase(DEFAULT_API_BASE);
+      const targetBase = normalizedBase || normalizedActiveBase || normalizedDefaultBase;
+      return apiUrlFor(
+        targetBase,
+        '/api/auth/github/start?returnTo=' + encodeURIComponent(returnToUrlForAuth())
+      );
+    }
+    function logoutUrlFor(base) {
+      return apiUrlFor(base, '/api/auth/logout');
+    }
+    const LOCAL_DATA_URL = 'data/quarantined-sources.json';
+    const body = document.getElementById('quarantine-body');
+    const meta = document.getElementById('meta');
+    const toast = document.getElementById('toast');
+    const authNote = document.getElementById('auth-note');
+    const authActions = document.getElementById('auth-actions');
+    let currentEntries = [];
+    let currentDataMode = 'live';
+    let restoreEnabled = true;
+    const READ_ONLY_NOTE = 'Restore is unavailable in read-only mode because the backend write API is not reachable.';
+    const TOAST_DURATION_MS = 1900;
+    const LOAD_FETCH_TIMEOUT_MS = 12000;
+    const PROBE_FETCH_TIMEOUT_MS = 5000;
+    // Retry quickly after OAuth redirect to absorb short cookie/session propagation delays.
+    const POST_LOGIN_SESSION_RETRY_DELAYS_MS = [0, 250, 750];
+    let toastTimer = null;
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    function renderMeta(payload) {
+      const modeLabel = currentDataMode === 'snapshot'
+        ? 'Data mode: static snapshot (read-only)'
+        : restoreEnabled
+          ? 'Data mode: live API (restore enabled)'
+          : 'Data mode: live read-only (restore unavailable)';
+      meta.innerHTML = [
+        '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-12T13:42:42.234Z') + '</span>',
+        '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
+        '<span class="pill">SLA: review within 48h</span>',
+        '<span class="pill' + (!restoreEnabled ? ' warn' : '') + '">' +
+          modeLabel +
+        '</span>'
+      ].join('');
+    }
+
+    function emptyState(message) {
+       body.innerHTML = '<tr><td colspan="11" class="empty">' + escapeHtml(message) + '</td></tr>';
+    }
+
+    function rowMarkup(entry) {
+      return '<tr data-source-id="' + escapeHtml(entry.id) + '">' +
+        '<td>' + escapeHtml(entry.provider) + '</td>' +
+        '<td>' + escapeHtml(entry.kind) + ' / ' + escapeHtml(entry.lane) + '</td>' +
+        '<td>' + escapeHtml(entry.region) + '</td>' +
+        '<td>' + escapeHtml(entry.status) + '</td>' +
+        '<td>' + escapeHtml(entry.reason) + '</td>' +
+        '<td>' + escapeHtml(entry.lastErrorCategory || 'n/a') + '</td>' +
+        '<td>' + escapeHtml(entry.consecutiveBlockedFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.consecutiveDeadUrlFailures || 0) + '</td>' +
+        '<td>' + escapeHtml(entry.reviewBy || 'n/a') + '</td>' +
+        '<td><a href="' + escapeHtml(entry.endpoint) + '" target="_blank" rel="noreferrer">' + escapeHtml(entry.endpoint) + '</a></td>' +
+        '<td><div class="action">' +
+          '<input class="url-input" type="url" inputmode="url" placeholder="Suggest new URL" value="' + escapeHtml(entry.replacementSuggestion || '') + '" aria-label="Suggest new URL for ' + escapeHtml(entry.provider) + '">' +
+          '<button type="button" data-action="restore">Restore source</button>' +
+          '<div class="helper-note">If prefilled, suggestion is auto-detected and must be verified.</div>' +
+          '<div class="status-note status-feedback" aria-live="polite"></div>' +
+        '</div></td>' +
+      '</tr>';
+    }
+
+    function setRowBusy(row, isBusy) {
+      const button = row.querySelector('button[data-action="restore"]');
+      const input = row.querySelector('.url-input');
+      if (button) {
+        button.disabled = isBusy || !restoreEnabled;
+        button.textContent = isBusy ? 'Restoring...' : 'Restore source';
+      }
+      if (input) {
+        input.disabled = isBusy || !restoreEnabled;
+      }
+    }
+
+    function getOrCreateRowFeedbackNote(row) {
+      if (!row) return null;
+      const existing = row.querySelector('.status-feedback');
+      if (existing) return existing;
+      const container = row.querySelector('.action') || row;
+      const note = document.createElement('div');
+      note.className = 'status-note status-feedback';
+      note.setAttribute('aria-live', 'polite');
+      container.appendChild(note);
+      return note;
+    }
+
+    function renderRows() {
+      if (!currentEntries.length) {
+        emptyState('No quarantined sources currently recorded.');
+        return;
+      }
+      body.innerHTML = currentEntries.map(rowMarkup).join('');
+      if (!restoreEnabled) {
+        for (const row of body.querySelectorAll('tr[data-source-id]')) {
+          const button = row.querySelector('button[data-action="restore"]');
+          const input = row.querySelector('.url-input');
+          const note = row.querySelector('.status-feedback');
+          if (button) {
+            button.disabled = true;
+            button.title = READ_ONLY_NOTE;
+          }
+          if (input) {
+            input.disabled = true;
+          }
+          if (note) {
+            note.textContent = READ_ONLY_NOTE;
+            note.className = 'status-note error';
+          }
+        }
+      }
+    }
+
+    function serializeError(error) {
+      return error instanceof Error ? error.message : String(error);
+    }
+
+    function explainError(error) {
+      const message = serializeError(error);
+      if (/not-authenticated|sign in with github|authorized admin/i.test(message)) {
+        return 'Sign in with an authorized GitHub admin account to access quarantine.';
+      }
+      if (/bad credentials/i.test(message)) {
+        return 'Backend authentication failed. Displaying cached snapshot data (restore functionality may be unavailable).';
+      }
+      return message;
+    }
+
+    function renderAuthPanel() {
+      if (authNote) {
+        authNote.textContent = authState.authenticated
+          ? 'Signed in as @' + String(authState.user?.login || 'admin')
+          : 'Admin sign-in required for quarantine access.';
+      }
+      if (!authActions) return;
+      authActions.innerHTML = '';
+      const signIn = document.createElement('button');
+      signIn.type = 'button';
+      signIn.textContent = authState.authenticated ? 'Switch account' : 'Sign in with GitHub';
+      signIn.addEventListener('click', () => {
+        const target = authState.loginUrl || loginUrlFor(apiBase);
+        if (target) globalThis.location.href = target;
+      });
+      authActions.appendChild(signIn);
+      if (authState.authenticated) {
+        const signOut = document.createElement('button');
+        signOut.type = 'button';
+        signOut.className = 'secondary';
+        signOut.textContent = 'Sign out';
+        signOut.addEventListener('click', async () => {
+          try {
+            await fetch(
+              logoutUrlFor(apiBase) || authState.logoutUrl,
+              withSessionCredentials({ method: 'POST' })
+            );
+          } catch {}
+          authState = {
+            authenticated: false,
+            user: null,
+            loginUrl: loginUrlFor(apiBase),
+            logoutUrl: logoutUrlFor(apiBase)
+          };
+          renderAuthPanel();
+          currentEntries = [];
+          restoreEnabled = false;
+          renderMeta({ generatedAt: new Date().toISOString() });
+          renderRows();
+          emptyState('Sign in as an admin to view quarantined sources.');
+        });
+        authActions.appendChild(signOut);
+      }
+    }
+
+    function normaliseAbsoluteHttpUrl(value) {
+      const trimmed = String(value || '').trim();
+      if (!trimmed) return '';
+      try {
+        const parsed = new URL(trimmed);
+        if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') return '';
+        return parsed.toString();
+      } catch {
+        return '';
+      }
+    }
+
+    function sanitiseReplacementUrlInput(value) {
+      const direct = normaliseAbsoluteHttpUrl(value);
+      if (direct) return direct;
+      const trimmed = String(value || '').trim();
+      if (!trimmed) return '';
+      const schemeMatches = Array.from(trimmed.matchAll(/https?:\/\//gi));
+      if (schemeMatches.length !== 2) return '';
+      const splitAt = schemeMatches[1]?.index;
+      if (!Number.isInteger(splitAt) || splitAt <= 0) return '';
+      const firstCandidate = normaliseAbsoluteHttpUrl(trimmed.slice(0, splitAt));
+      const secondCandidate = normaliseAbsoluteHttpUrl(trimmed.slice(splitAt));
+      if (!firstCandidate || !secondCandidate) return '';
+      return firstCandidate.toLowerCase() === secondCandidate.toLowerCase() ? firstCandidate : '';
+    }
+
+    function syncUrlInputState(input) {
+      if (!input) return '';
+      const raw = String(input.value || '').trim();
+      if (!raw) {
+        input.setCustomValidity('');
+        return '';
+      }
+      const cleaned = sanitiseReplacementUrlInput(raw);
+      if (cleaned) {
+        if (input.value !== cleaned) input.value = cleaned;
+        input.setCustomValidity('');
+        return cleaned;
+      }
+      const hasMultipleAbsoluteUrls = /https?:\/\/\S*https?:\/\//i.test(raw);
+      input.setCustomValidity(hasMultipleAbsoluteUrls
+        ? 'Paste only one absolute URL.'
+        : 'Use a valid absolute http/https URL.'
+      );
+      return '';
+    }
+
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('visible');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('visible');
+      }, TOAST_DURATION_MS);
+    }
+
+    async function fetchWithTimeout(url, options, timeoutMs, timeoutLabel) {
+      const requestOptions = withSessionCredentials(options || {});
+      if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+        return fetch(url, requestOptions);
+      }
+      if (typeof AbortController !== 'function') {
+        return Promise.race([
+          fetch(url, requestOptions),
+          new Promise((_, reject) => {
+            setTimeout(() => reject(new Error(timeoutLabel + ' timed out after ' + timeoutMs + 'ms.')), timeoutMs);
+          })
+        ]);
+      }
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), timeoutMs);
+      try {
+        return await fetch(url, {
+          ...requestOptions,
+          signal: controller.signal
+        });
+      } catch (error) {
+        if (error && error.name === 'AbortError') {
+          throw new Error(timeoutLabel + ' timed out after ' + timeoutMs + 'ms.');
+        }
+        throw error;
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+
+    async function fetchPayload(url, fallbackError) {
+      const response = await fetchWithTimeout(
+        url,
+        withSessionCredentials({ cache: 'no-store' }),
+        LOAD_FETCH_TIMEOUT_MS,
+        'Quarantine data request'
+      );
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        const apiMessage = payload?.message || payload?.detail;
+        const error = new Error(apiMessage || fallbackError);
+        error.status = response.status;
+        throw error;
+      }
+      return payload;
+    }
+
+    function cacheBustedUrl(url, cacheKey) {
+      try {
+        const candidate = new URL(url);
+        candidate.searchParams.set('_brialert_probe', String(cacheKey || Date.now()));
+        return candidate.toString();
+      } catch {
+        return url;
+      }
+    }
+
+    async function probeRestoreApi() {
+      const restoreUrl = restoreUrlFor(apiBase);
+      if (!restoreUrl) {
+        return {
+          reachable: false,
+          reason: 'no-api-base'
+        };
+      }
+      try {
+        // POST probe intentionally sends invalid payload so backend returns a non-mutating validation/auth response.
+        const response = await fetchWithTimeout(
+          cacheBustedUrl(restoreUrl, Date.now()),
+          withSessionCredentials({
+            method: 'POST',
+            cache: 'no-store',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ sourceId: '', replacementUrl: '' })
+          }),
+          PROBE_FETCH_TIMEOUT_MS,
+          'Restore API probe (POST)'
+        );
+        let payload = null;
+        try {
+          payload = await response.clone().json();
+        } catch {}
+        // Any HTTP response means the backend write route is reachable.
+        // Only fetch-level failures (network/CORS/timeout/transport) should disable restore controls.
+        return {
+          reachable: true,
+          method: 'POST',
+          status: response.status,
+          reason: String(payload?.error || payload?.message || payload?.detail || 'http-response')
+        };
+      } catch (error) {
+        const message = serializeError(error);
+        const normalized = /failed to fetch|networkerror|load failed|cors|timed out/i.test(message)
+          ? 'network-or-cors'
+          : 'fetch-failure';
+        return {
+          reachable: false,
+          reason: 'POST (invalid-body reachability probe for write route) ' + normalized + ': ' + message
+        };
+      }
+    }
+
+    async function restoreSource(sourceId, replacementUrl) {
+      const restoreUrl = restoreUrlFor(apiBase);
+      if (!restoreUrl) {
+        throw new Error('No restore API base is configured.');
+      }
+      const response = await fetch(restoreUrl, withSessionCredentials({
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          sourceId,
+          replacementUrl: String(replacementUrl || '').trim()
+        })
+      }));
+      const data = await response.json().catch(() => ({}));
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || 'Restore failed');
+      }
+      return data.restoredSource;
+    }
+
+    async function loadAuthSession(options = {}) {
+      const retryAfterOauth = options.retryAfterOauth === true;
+      const delays = retryAfterOauth ? POST_LOGIN_SESSION_RETRY_DELAYS_MS : [0];
+      let latestFailures = [];
+
+      for (const delayMs of delays) {
+        if (delayMs > 0) {
+          await new Promise((resolve) => setTimeout(resolve, delayMs));
+        }
+        const failures = [];
+        for (const candidateBase of API_BASE_CANDIDATES) {
+          apiBase = candidateBase;
+          const url = sessionUrlFor(candidateBase);
+          if (!url) continue;
+          try {
+            const payload = await fetchPayload(url, 'Failed to load admin session.');
+            const authenticated = !!payload?.authenticated;
+            authState = {
+              authenticated,
+              user: authenticated ? payload.user || null : null,
+              loginUrl: resolveAuthUrl(candidateBase, payload.loginUrl, loginUrlFor),
+              logoutUrl: resolveAuthUrl(candidateBase, payload.logoutUrl, logoutUrlFor)
+            };
+            renderAuthPanel();
+            if (authenticated) return true;
+          } catch (error) {
+            failures.push(candidateBase + ': ' + serializeError(error));
+          }
+        }
+        latestFailures = failures;
+      }
+      authState = {
+        authenticated: false,
+        user: null,
+        loginUrl: loginUrlFor(apiBase),
+        logoutUrl: logoutUrlFor(apiBase)
+      };
+      renderAuthPanel();
+      if (latestFailures.length) {
+        console.warn('Failed to load auth session from configured backends.', { failures: latestFailures });
+      }
+      return false;
+    }
+
+    async function fetchLivePayloadWithFailover() {
+      const failures = [];
+      for (const candidateBase of API_BASE_CANDIDATES) {
+        apiBase = candidateBase;
+        try {
+          return await fetchPayload(
+            quarantineUrlFor(apiBase),
+            'Failed to load quarantined sources.'
+          );
+        } catch (error) {
+          failures.push(candidateBase + ': ' + serializeError(error));
+        }
+      }
+      if (!failures.length) {
+        throw new Error('No live quarantine API base is configured.');
+      }
+      throw new Error('Failed to load live quarantine API from all configured backends. ' + failures.join(' | '));
+    }
+
+    async function restoreSourceRow(row) {
+      if (!row || !restoreEnabled || row.dataset.restoring === 'true') return;
+      const sourceId = row.getAttribute('data-source-id');
+      const input = row.querySelector('.url-input');
+      const note = getOrCreateRowFeedbackNote(row);
+      const url = syncUrlInputState(input);
+
+      if (!url) {
+        if (note) {
+          note.textContent = input && String(input.value || '').trim()
+            ? 'Use a valid absolute http/https URL (single URL only).'
+            : 'Paste a replacement URL first.';
+          note.className = 'status-note error';
+        }
+        if (input && typeof input.reportValidity === 'function') {
+          input.reportValidity();
+        }
+        return;
+      }
+
+      row.dataset.restoring = 'true';
+      setRowBusy(row, true);
+      if (note) {
+        note.textContent = 'Restoring source...';
+        note.className = 'status-note';
+      }
+
+      try {
+        await restoreSource(sourceId, url);
+        currentEntries = currentEntries.filter((entry) => entry.id !== sourceId);
+        renderMeta({ generatedAt: new Date().toISOString() });
+        row.remove();
+        if (!body.querySelector('tr[data-source-id]')) {
+          emptyState('No quarantined sources currently recorded.');
+        }
+        showToast('Source restored.');
+      } catch (error) {
+        if (note) {
+          note.textContent = explainError(error);
+          note.className = 'status-note error';
+        }
+        row.dataset.restoring = 'false';
+        setRowBusy(row, false);
+      }
+    }
+
+    async function loadEntries() {
+      emptyState('Loading quarantined sources...');
+      try {
+        const authStatus = new URLSearchParams(globalThis.location?.search || '').get('auth');
+        const isAuthenticated = await loadAuthSession({ retryAfterOauth: authStatus === 'ok' });
+        if (authStatus) {
+          const currentUrl = stripAuthQueryParams(resolveQuarantineUrl());
+          globalThis.history?.replaceState?.({}, '', currentUrl.toString());
+        }
+        if (!isAuthenticated) {
+          currentDataMode = 'live';
+          restoreEnabled = false;
+          currentEntries = [];
+          renderMeta({ generatedAt: new Date().toISOString() });
+          renderRows();
+          emptyState('Sign in as an admin to view quarantined sources.');
+          return;
+        }
+        let payload;
+        try {
+          payload = await fetchLivePayloadWithFailover();
+          currentDataMode = 'live';
+          if (typeof payload?.restoreAvailable === 'boolean') {
+            restoreEnabled = payload.restoreAvailable;
+            if (!restoreEnabled) {
+              console.warn('Quarantine API reported restore is unavailable; keeping UI in live read-only mode.');
+            }
+          } else {
+            const probe = await probeRestoreApi();
+            restoreEnabled = probe.reachable;
+            if (!probe.reachable) {
+              console.warn('Restore API probe marked backend as unreachable; keeping quarantine UI in live read-only mode.', probe);
+            }
+          }
+        } catch (primaryError) {
+          if (primaryError && primaryError.status === 401) {
+            throw primaryError;
+          }
+          console.warn('Failed to load live quarantine API; falling back to static snapshot in read-only mode.', {
+            error: serializeError(primaryError)
+          });
+          payload = await fetchPayload(LOCAL_DATA_URL, 'Failed to load local quarantine snapshot.');
+          currentDataMode = 'snapshot';
+          restoreEnabled = false;
+        }
+        currentEntries = Array.isArray(payload.sources) ? payload.sources : [];
+        renderMeta(payload);
+        renderRows();
+      } catch (error) {
+        emptyState(explainError(error));
+      }
+    }
+
+    body.addEventListener('click', async (event) => {
+      const button = event.target.closest('button[data-action="restore"]');
+      if (!button) return;
+      const row = button.closest('tr[data-source-id]');
+      if (!row) return;
+      await restoreSourceRow(row);
+    });
+
+    body.addEventListener('keydown', async (event) => {
+      const input = event.target.closest('.url-input');
+      if (!input || event.key !== 'Enter') return;
+      const row = input.closest('tr[data-source-id]');
+      if (!row) return;
+      event.preventDefault();
+      await restoreSourceRow(row);
+    });
+
+    body.addEventListener('blur', (event) => {
+      const input = event.target.closest('.url-input');
+      if (!input) return;
+      syncUrlInputState(input);
+    }, true);
+
+    loadEntries();
+    globalThis.addEventListener('pageshow', (event) => {
+      if (!event?.persisted) return;
+      if (authState.authenticated) return;
+      loadEntries();
+    });
+  </script>
+</body>
+</html>
