@@ -7,9 +7,16 @@ import {
   OFFLINE_FIXTURE_MODE,
   offlineFixturesPath,
   sourceUserAgent,
+  randomBrowserUserAgent,
   RETRYABLE_STATUS_CODES,
   outputPath,
-  repoRoot
+  repoRoot,
+  PROXY_URL,
+  PROXY_LIST,
+  FEED_DISCOVERY_PATHS,
+  HIGH_VALUE_MAX_RETRIES,
+  FAST_FEED_TIMEOUT_MS,
+  URL_PATH_ALTERNATIVES
 } from './config.mjs';
 import { clean } from '../../shared/taxonomy.mjs';
 
@@ -263,16 +270,174 @@ function classifyBodyBlock(text = '') {
   return null;
 }
 
+/**
+ * Selects a proxy URL from the configured proxy list or single proxy URL.
+ * Returns null when no proxy is configured.
+ */
+function selectProxyUrl() {
+  if (PROXY_LIST.length) {
+    return PROXY_LIST[Math.floor(Math.random() * PROXY_LIST.length)];
+  }
+  return PROXY_URL || null;
+}
+
+/**
+ * Computes an adaptive timeout for a source based on its historical response
+ * times and criticality.  High-value sources (incidents, trusted official)
+ * get a longer timeout; fast RSS/Atom feeds get a shorter one.
+ */
+export function adaptiveTimeoutMs(source) {
+  const explicit = Number(source?.timeoutMs);
+  if (explicit > 0) return explicit;
+  const isHighValue = source?.lane === 'incidents' || source?.isTrustedOfficial;
+  const isFastFeed = source?.kind === 'rss' || source?.kind === 'atom' || source?.kind === 'json';
+  if (isFastFeed && !isHighValue) return FAST_FEED_TIMEOUT_MS;
+  return DEFAULT_TIMEOUT_MS;
+}
+
+/**
+ * Returns the effective max retries for a source.  High-value sources
+ * (incidents lane, trusted officials) receive extra retry attempts.
+ */
+export function adaptiveMaxRetries(source) {
+  const explicit = Number(source?.maxRetries);
+  if (explicit > 0) return explicit;
+  const isHighValue = source?.lane === 'incidents' || source?.isTrustedOfficial;
+  return isHighValue ? HIGH_VALUE_MAX_RETRIES : DEFAULT_MAX_RETRIES;
+}
+
+/**
+ * Probes a list of common feed paths on the same domain to discover an
+ * RSS/Atom feed.  Returns { feedUrl, feedKind } when a feed is found,
+ * or null when no feed is discovered.
+ */
+export async function discoverFeedUrl(endpointUrl) {
+  let origin;
+  try {
+    origin = new URL(endpointUrl).origin;
+  } catch {
+    return null;
+  }
+  for (const feedPath of FEED_DISCOVERY_PATHS) {
+    const candidateUrl = feedPath.startsWith('?')
+      ? `${origin}/${feedPath}`
+      : `${origin}${feedPath}`;
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    try {
+      const response = await fetch(candidateUrl, {
+        method: 'HEAD',
+        redirect: 'follow',
+        credentials: 'omit',
+        signal: controller.signal,
+        headers: { 'user-agent': randomBrowserUserAgent() }
+      });
+      clearTimeout(timeout);
+      if (!response.ok) continue;
+      const contentType = (response.headers.get('content-type') || '').toLowerCase();
+      if (
+        contentType.includes('xml') ||
+        contentType.includes('rss') ||
+        contentType.includes('atom') ||
+        contentType.includes('feed+json')
+      ) {
+        const feedKind = contentType.includes('atom') ? 'atom'
+          : contentType.includes('feed+json') ? 'json'
+            : 'rss';
+        return { feedUrl: clean(response.url || candidateUrl), feedKind };
+      }
+    } catch {
+      clearTimeout(timeout);
+    }
+  }
+  // Also look for <link rel="alternate"> in the original HTML page
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 6000);
+    const response = await fetch(endpointUrl, {
+      redirect: 'follow',
+      credentials: 'omit',
+      signal: controller.signal,
+      headers: { 'user-agent': randomBrowserUserAgent() }
+    });
+    clearTimeout(timeout);
+    if (response.ok) {
+      const html = await response.text();
+      const feedLinkMatch = html.match(/<link[^>]+type=["']application\/(rss\+xml|atom\+xml)["'][^>]*href=["']([^"']+)["']/i);
+      if (feedLinkMatch) {
+        const feedKind = feedLinkMatch[1].includes('atom') ? 'atom' : 'rss';
+        const feedUrl = absoluteUrl(feedLinkMatch[2], endpointUrl);
+        return { feedUrl, feedKind };
+      }
+    }
+  } catch {
+    // Discovery is best-effort
+  }
+  return null;
+}
+
+/**
+ * Try URL path alternatives for a 404'd endpoint (Improvement 10).
+ * Returns the first responding URL or null.
+ */
+export async function tryUrlAlternatives(endpointUrl) {
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(endpointUrl);
+  } catch {
+    return null;
+  }
+  const originalPath = parsedUrl.pathname;
+  const candidates = [];
+
+  // www prefix/removal
+  if (parsedUrl.hostname.startsWith('www.')) {
+    const alt = new URL(endpointUrl);
+    alt.hostname = alt.hostname.replace(/^www\./, '');
+    candidates.push(alt.toString());
+  } else {
+    const alt = new URL(endpointUrl);
+    alt.hostname = `www.${alt.hostname}`;
+    candidates.push(alt.toString());
+  }
+
+  // Path reorganisations
+  for (const [from, to] of URL_PATH_ALTERNATIVES) {
+    if (originalPath.includes(from)) {
+      const alt = new URL(endpointUrl);
+      alt.pathname = originalPath.replace(from, to);
+      candidates.push(alt.toString());
+    }
+  }
+
+  for (const candidateUrl of candidates) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 5000);
+    try {
+      const response = await fetch(candidateUrl, {
+        method: 'HEAD',
+        redirect: 'follow',
+        credentials: 'omit',
+        signal: controller.signal,
+        headers: { 'user-agent': randomBrowserUserAgent() }
+      });
+      clearTimeout(timeout);
+      if (response.ok) return clean(response.url || candidateUrl);
+    } catch {
+      clearTimeout(timeout);
+    }
+  }
+  return null;
+}
+
 export async function fetchText(url, attempt = 1, options = {}) {
   if (OFFLINE_FIXTURE_MODE) {
     const offlinePayload = await offlineFixtureResponse(url, options);
     return options?.includeMeta ? offlinePayload : offlinePayload.text;
   }
   const source = options?.source || null;
-  const configuredTimeoutMs = Number(source?.timeoutMs);
-  const configuredMaxRetries = Number(source?.maxRetries);
-  const timeoutMs = configuredTimeoutMs > 0 ? configuredTimeoutMs : DEFAULT_TIMEOUT_MS;
-  const maxAttempts = configuredMaxRetries > 0 ? configuredMaxRetries : DEFAULT_MAX_RETRIES;
+  const timeoutMs = adaptiveTimeoutMs(source);
+  const maxAttempts = adaptiveMaxRetries(source);
   const endpoint = clean(url);
   const domain = endpointDomain(endpoint);
   const existingState = options?.requestState && typeof options.requestState === 'object'
@@ -298,10 +463,12 @@ export async function fetchText(url, attempt = 1, options = {}) {
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
+    const retryHeaders = attempt > 1 ? { 'user-agent': randomBrowserUserAgent() } : {};
     const response = await fetch(url, {
       headers: {
         ...mergedHeaders(source),
-        ...conditionalHeaders
+        ...conditionalHeaders,
+        ...retryHeaders
       },
       redirect: 'follow',
       // Intentionally avoid ambient cookies/session state to reduce auth-gated/geo/session bot challenges.
@@ -455,10 +622,13 @@ export async function fetchTextWithPlaywright(url, options = {}) {
       errorCode: ERROR_CODE.PLAYWRIGHT_UNAVAILABLE
     });
   }
-  const browser = await playwright.chromium.launch({ headless: true });
+  const proxyUrl = selectProxyUrl();
+  const launchOptions = { headless: true };
+  if (proxyUrl) launchOptions.proxy = { server: proxyUrl };
+  const browser = await playwright.chromium.launch(launchOptions);
   try {
     const context = await browser.newContext({
-      userAgent: sourceUserAgent(options?.source),
+      userAgent: randomBrowserUserAgent(),
       locale: 'en-GB'
     });
     const page = await context.newPage();

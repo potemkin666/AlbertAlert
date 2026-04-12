@@ -60,6 +60,13 @@ export const SCHEDULER_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'c
 export const PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS = new Set([
   'met-police-news',
   'ct-policing-london',
+  'met-police-latest-news',
+  'city-of-london-police-news-html',
+  'city-of-london-police-newsroom',
+  'mopac-html',
+  'london-fire-brigade-news',
+  'tfl-press-releases-html',
+  'london-gov-press-releases-html',
   ...clean(process.env.BRIALERT_PLAYWRIGHT_ALLOWLIST || '')
     .split(',')
     .map((value) => clean(value))
@@ -69,7 +76,7 @@ export const PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN = Math.max(
   0,
   Number.isFinite(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
     ? Math.floor(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
-    : 2
+    : 6
 );
 export const PLAYWRIGHT_FALLBACK_AGGRESSIVE = clean(process.env.BRIALERT_PLAYWRIGHT_AGGRESSIVE).toLowerCase() === 'true';
 export const PLAYWRIGHT_FALLBACK_TIMEOUT_MS = Math.max(
@@ -124,8 +131,16 @@ export const RETRYABLE_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504
 export const FEED_BOT_USER_AGENT = 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)';
 export const FEED_BOT_USER_AGENTS = Object.freeze([
   FEED_BOT_USER_AGENT,
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:137.0) Gecko/20100101 Firefox/137.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14.5; rv:137.0) Gecko/20100101 Firefox/137.0',
+  'Mozilla/5.0 (X11; Linux x86_64; rv:137.0) Gecko/20100101 Firefox/137.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.4 Safari/605.1.15',
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0',
+  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0',
   'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
-  'Mozilla/5.0 (Macintosh; Intel Mac OS X 14_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36',
   'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36'
 ]);
 export const DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE = Object.freeze({
@@ -141,7 +156,8 @@ export const SOURCE_FAILURE_COOLDOWN_HOURS = 24;
 export const SOURCE_EMPTY_COOLDOWN_HOURS = 24;
 export const SOURCE_PROTECTED_FAILURE_COOLDOWN_HOURS = 6;
 export const SOURCE_BLOCKED_FAILURE_COOLDOWN_HOURS = 12;
-export const AUTO_QUARANTINE_RECHECK_HOURS = 7 * 24;
+export const AUTO_QUARANTINE_RECHECK_HOURS = envInt('BRIALERT_AUTO_QUARANTINE_RECHECK_HOURS', 3 * 24, 1);
+export const AUTO_QUARANTINE_RECHECK_HOURS_HIGH_PRIORITY = envInt('BRIALERT_AUTO_QUARANTINE_RECHECK_HOURS_HIGH_PRIORITY', 2 * 24, 1);
 export const AUTO_SKIP_FAILURE_THRESHOLD = 4;
 export const AUTO_SKIP_EMPTY_THRESHOLD = 6;
 export const AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD = envInt('BRIALERT_AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD', 4, 1);
@@ -166,6 +182,50 @@ export const HARD_SKIP_SOURCE_IDS = new Set([
   'kallxo-english-home'
 ]);
 
+// Playwright scraper defaults (referenced by playwright-scraper.mjs)
+export const DEFAULT_PLAYWRIGHT_TIMEOUT_MS = PLAYWRIGHT_FALLBACK_TIMEOUT_MS;
+export const DEFAULT_PLAYWRIGHT_PAGE_SETTLE_MS = envInt('BRIALERT_PLAYWRIGHT_PAGE_SETTLE_MS', 1500, 200);
+export const MAX_PLAYWRIGHT_RAW_CANDIDATES = MAX_HTML_PARSING_THRESHOLD;
+export const MAX_PLAYWRIGHT_ITEM_SUMMARY_CHARS = 420;
+export const PLAYWRIGHT_SCRAPER_USER_AGENT = FEED_BOT_USER_AGENTS[1] || FEED_BOT_USER_AGENT;
+
+// Proxy support (Improvement 5)
+export const PROXY_URL = clean(process.env.BRIALERT_PROXY_URL);
+export const PROXY_LIST = clean(process.env.BRIALERT_PROXY_LIST)
+  .split(',')
+  .map((value) => clean(value))
+  .filter(Boolean);
+
+// RSS/Atom feed concurrency (Improvement 9) — lightweight feeds tolerate higher parallelism
+export const FEED_SOURCE_CONCURRENCY_RSS = envInt('BRIALERT_FEED_SOURCE_CONCURRENCY_RSS', 6, 1);
+
+// Feed discovery paths (Improvement 2)
+export const FEED_DISCOVERY_PATHS = Object.freeze([
+  '/feed',
+  '/rss',
+  '/atom.xml',
+  '/feed.xml',
+  '/feeds/posts/default',
+  '/rss.xml',
+  '?format=rss',
+  '?feed=rss2'
+]);
+
+// Adaptive timeout constants (Improvement 6) — high-value sources get extra retries
+export const ADAPTIVE_TIMEOUT_MULTIPLIER = 1.5;
+export const HIGH_VALUE_MAX_RETRIES = envInt('BRIALERT_HIGH_VALUE_MAX_RETRIES', 4, 1);
+export const FAST_FEED_TIMEOUT_MS = envInt('BRIALERT_FAST_FEED_TIMEOUT_MS', 8000, 1000);
+
+// URL variations for 404 recovery (Improvement 10)
+export const URL_PATH_ALTERNATIVES = Object.freeze([
+  ['/news/', '/press-releases/'],
+  ['/press-releases/', '/news/'],
+  ['/media/', '/newsroom/'],
+  ['/newsroom/', '/media/'],
+  ['/news/', '/media/news/'],
+  ['/articles/', '/news/']
+]);
+
 export const severityRank = { critical: 4, high: 3, elevated: 2, moderate: 1 };
 
 export function titleCase(value) {
@@ -188,6 +248,21 @@ export function sourceUserAgent(source) {
   const sourceKey = clean(source?.id || source?.endpoint || source?.provider);
   const index = sourceKey ? sourceDeterministicHash(sourceKey) % FEED_BOT_USER_AGENTS.length : 0;
   return FEED_BOT_USER_AGENTS[index] || FEED_BOT_USER_AGENT;
+}
+
+/**
+ * Returns a randomised user-agent different from the deterministic one,
+ * useful for retries after bot-block detection.  Excludes the bot UA for
+ * sources that have been blocked.
+ */
+export function randomBrowserUserAgent(excludeIndex = -1) {
+  // Skip the bot UA (index 0) to avoid fingerprinting on retries
+  const candidates = FEED_BOT_USER_AGENTS.slice(1);
+  if (!candidates.length) return FEED_BOT_USER_AGENT;
+  const safeExclude = excludeIndex > 0 ? excludeIndex - 1 : -1;
+  const filtered = candidates.filter((_, idx) => idx !== safeExclude);
+  const pool = filtered.length ? filtered : candidates;
+  return pool[Math.floor(Math.random() * pool.length)];
 }
 
 export function sourceRefreshEveryHours(source) {

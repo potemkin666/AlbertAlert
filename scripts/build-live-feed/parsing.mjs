@@ -297,6 +297,17 @@ export function parseHtmlItems(source, html) {
     'a[href]'
   ];
 
+  function addCandidate(href, title, summary, published) {
+    if (!href || !title || title.length < 18) return;
+    if (href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:')) return;
+    const url = absoluteUrl(href, source.endpoint);
+    const key = `${title}|${url}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    candidates.push({ title, link: url, summary: summary || '', published: published || '' });
+  }
+
+  // Strategy 1: CSS selector cascade (existing logic)
   for (const selector of selectors) {
     $(selector).each((_, el) => {
       if (candidates.length >= MAX_HTML_PARSING_THRESHOLD) return false;
@@ -314,6 +325,71 @@ export function parseHtmlItems(source, html) {
       candidates.push({ title, link: url, summary, published });
     });
     if (candidates.length >= MAX_HTML_CANDIDATES_PER_SOURCE) break;
+  }
+
+  // Strategy 2: LD+JSON structured data extraction (Improvement 8)
+  if (candidates.length === 0) {
+    $('script[type="application/ld+json"]').each((_, el) => {
+      if (candidates.length >= MAX_HTML_CANDIDATES_PER_SOURCE) return false;
+      try {
+        const parsed = JSON.parse($(el).contents().text());
+        const objects = collectJsonLd(parsed);
+        for (const obj of objects) {
+          if (candidates.length >= MAX_HTML_CANDIDATES_PER_SOURCE) break;
+          const ldType = clean(obj['@type'] || '');
+          if (!/article|newsarticle|reportagenewsarticle|blogposting|webpage/i.test(ldType)) continue;
+          const title = plainText(obj.headline || obj.name || '');
+          const href = clean(obj.url || obj.mainEntityOfPage?.['@id'] || obj.mainEntityOfPage || '');
+          const summary = plainText(obj.description || '').slice(0, 420);
+          const published = clean(obj.datePublished || obj.dateCreated || '');
+          addCandidate(href, title, summary, published);
+        }
+      } catch {
+        // JSON-LD parse failure — skip gracefully
+      }
+    });
+  }
+
+  // Strategy 3: OG meta extraction for single-article pages (Improvement 8)
+  if (candidates.length === 0) {
+    const ogTitle = plainText($('meta[property="og:title"]').attr('content') || '');
+    const ogUrl = clean($('meta[property="og:url"]').attr('content') || '');
+    const ogDescription = plainText($('meta[property="og:description"]').attr('content') || '').slice(0, 420);
+    const ogDate = clean($('meta[property="article:published_time"]').attr('content') || '');
+    addCandidate(ogUrl, ogTitle, ogDescription, ogDate);
+  }
+
+  // Strategy 4: Heuristic link scoring for heavily-JS-rendered pages (Improvement 8)
+  if (candidates.length === 0) {
+    const scoredLinks = [];
+    $('main a[href], body a[href]').each((_, el) => {
+      if (scoredLinks.length >= MAX_HTML_PARSING_THRESHOLD) return false;
+      const href = $(el).attr('href');
+      const title = plainText($(el).text());
+      if (!href || !title || title.length < 20) return;
+      if (href.startsWith('#') || href.startsWith('javascript:') || href.startsWith('mailto:')) return;
+      const url = absoluteUrl(href, source.endpoint);
+      const key = `${title}|${url}`;
+      if (seen.has(key)) return;
+      let score = 0;
+      const container = $(el).closest('article,li,section,div');
+      if ($(el).closest('article').length) score += 3;
+      if (container.find('time').length) score += 2;
+      if ($(el).closest('h1,h2,h3,h4').length || $(el).parent('h1,h2,h3,h4').length) score += 2;
+      if ($(el).closest('nav,header,footer').length) score -= 5;
+      if (title.length > 30) score += 1;
+      scoredLinks.push({ href, title, score, container, url, key });
+    });
+    scoredLinks
+      .sort((a, b) => b.score - a.score)
+      .slice(0, MAX_HTML_CANDIDATES_PER_SOURCE)
+      .filter((link) => link.score > 0)
+      .forEach((link) => {
+        seen.add(link.key);
+        const summary = plainText(link.container.text()).slice(0, 420);
+        const published = clean(link.container.find('time').attr('datetime') || link.container.find('time').text());
+        candidates.push({ title: link.title, link: link.url, summary, published });
+      });
   }
 
   return candidates.slice(0, MAX_HTML_CANDIDATES_PER_SOURCE);

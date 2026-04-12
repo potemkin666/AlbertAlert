@@ -8,11 +8,13 @@ import {
   AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD,
   AUTO_QUARANTINE_DEAD_URL_THRESHOLD,
   AUTO_QUARANTINE_RECHECK_HOURS,
+  AUTO_QUARANTINE_RECHECK_HOURS_HIGH_PRIORITY,
   AUTO_SKIP_EMPTY_THRESHOLD,
   AUTO_SKIP_FAILURE_THRESHOLD,
   CONTROL_MAX_HTML_SOURCES_PER_RUN,
   DEFAULT_FETCH_STAGGER_MS,
   FEED_SOURCE_CONCURRENCY,
+  FEED_SOURCE_CONCURRENCY_RSS,
   GUARDRAIL_MAX_FAILED_SOURCE_RATE,
   GUARDRAIL_MAX_RUNTIME_MS,
   GUARDRAIL_MIN_SUCCESSFUL_SOURCES,
@@ -71,7 +73,9 @@ import {
   summariseSourceError,
   ERROR_CODE,
   fetchText,
-  fetchTextWithPlaywright
+  fetchTextWithPlaywright,
+  discoverFeedUrl,
+  tryUrlAlternatives
 } from './build-live-feed/io.mjs';
 import {
   enrichHtmlItems,
@@ -129,7 +133,9 @@ function sourceMayAutoCooldown(source, previousEntry, buildDate) {
   if (!previousEntry) return null;
   if (previousEntry.quarantined) {
     const quarantinedAtMs = parseIsoMs(previousEntry.quarantinedAt);
-    const quarantineRecheckAt = quarantinedAtMs + (AUTO_QUARANTINE_RECHECK_HOURS * 3600000);
+    const isHighPriority = source?.lane === 'incidents' || source?.lane === 'border' || source?.isTrustedOfficial;
+    const recheckHours = isHighPriority ? AUTO_QUARANTINE_RECHECK_HOURS_HIGH_PRIORITY : AUTO_QUARANTINE_RECHECK_HOURS;
+    const quarantineRecheckAt = quarantinedAtMs + (recheckHours * 3600000);
     if (quarantinedAtMs && buildDate.getTime() >= quarantineRecheckAt) {
       return null;
     }
@@ -188,7 +194,9 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     autoSkipReason: null,
     quarantined: Boolean(prior.quarantined),
     quarantinedAt: prior.quarantinedAt || null,
-    quarantineReason: prior.quarantineReason || null
+    quarantineReason: prior.quarantineReason || null,
+    // Improvement 10: Track redirect final URL for endpoint auto-update
+    lastRedirectFinalUrl: prior.lastRedirectFinalUrl || null
   };
 
   if ((stat?.built || 0) > 0) {
@@ -200,6 +208,16 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.lastErrorCategory = null;
     next.lastErrorMessage = null;
     next.lastSuccessfulAt = generatedAt;
+    // Improvement 10: Persist redirect final URL when it differs from endpoint
+    const finalUrl = clean(stat?.finalUrl);
+    if (finalUrl && finalUrl !== clean(source?.endpoint)) {
+      next.lastRedirectFinalUrl = finalUrl;
+    }
+    // Clear quarantine on successful run (Improvement 10 — auto-recovery)
+    if (next.quarantined) {
+      next.quarantined = false;
+      next.quarantineReason = null;
+    }
     return next;
   }
 
@@ -463,7 +481,7 @@ function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
   if (!summary) return false;
   if ((playwrightBudget?.attempts || 0) >= (playwrightBudget?.maxAttempts || 0)) return false;
   const reason = classifyFetchFailure(summary);
-  if (reason !== 'bot-block') return false;
+  if (reason !== 'bot-block' && reason !== 'parser-failure') return false;
   return PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS.has(source.id) || PLAYWRIGHT_FALLBACK_AGGRESSIVE;
 }
 
@@ -1580,7 +1598,26 @@ async function main() {
     maxAttempts: PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN
   };
   const scheduledSourceIds = new Set([...machineReadableScheduled, ...htmlScheduled].map((source) => source.id));
-  const scheduledSourcesInitial = [...machineReadableScheduled, ...htmlScheduled];
+
+  // Improvement 9: Process machine-readable (fast) sources first, then HTML (slow),
+  // and within each group sort by least-recently-successful to prevent starvation.
+  const sortByLeastRecentSuccess = (sources) => {
+    return [...sources].sort((a, b) => {
+      const aHealth = sourceHealthEntry(previousHealth, a.id);
+      const bHealth = sourceHealthEntry(previousHealth, b.id);
+      const aSuccessMs = parseIsoMs(aHealth?.lastSuccessfulAt);
+      const bSuccessMs = parseIsoMs(bHealth?.lastSuccessfulAt);
+      // Sources never successfully checked get highest priority (sort first)
+      if (!aSuccessMs && bSuccessMs) return -1;
+      if (aSuccessMs && !bSuccessMs) return 1;
+      // Among checked sources, oldest success first (ascending)
+      return aSuccessMs - bSuccessMs;
+    });
+  };
+  const scheduledSourcesInitial = [
+    ...sortByLeastRecentSuccess(machineReadableScheduled),
+    ...sortByLeastRecentSuccess(htmlScheduled)
+  ];
   const htmlDeferredForBudget = scheduledSources.filter((source) => source?.kind === 'html' && !scheduledSourceIds.has(source.id));
   const continuationOversamplingFactor = 2;
   const htmlDeferredReasonById = new Map();
@@ -1613,9 +1650,12 @@ async function main() {
 
   async function processSourceBatch(batch) {
     if (!batch.length) return;
+    // Improvement 9: Use higher concurrency for machine-readable feeds
+    const hasOnlyMachineReadable = batch.every((source) => isMachineReadableSourceKind(source?.kind));
+    const effectiveConcurrency = hasOnlyMachineReadable ? FEED_SOURCE_CONCURRENCY_RSS : FEED_SOURCE_CONCURRENCY;
     const sourceResults = await mapWithConcurrency(
       batch,
-      FEED_SOURCE_CONCURRENCY,
+      effectiveConcurrency,
       async (source, sourceIndex) => {
         const localErrors = [];
         const builtAlerts = [];
@@ -1665,6 +1705,8 @@ async function main() {
             if (reason === 'stale-endpoint') failureReasonCounts['stale-endpoint'] += 1;
             else if (reason === 'bot-block') failureReasonCounts['blocked-or-anti-bot'] += 1;
             else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
+
+            // Improvement 1: Playwright browser fallback for bot-blocked HTML sources
             if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
               playwrightBudget.attempts += 1;
               body = await fetchTextWithPlaywright(source.endpoint, {
@@ -1674,6 +1716,37 @@ async function main() {
               usedPlaywrightFallback = true;
               playwrightBudget.successes += 1;
               fetchOutcome = 'success';
+
+            // Improvement 3: Try replacement endpoint before giving up
+            } else if (
+              (reason === 'stale-endpoint' || reason === 'http-error' || reason === 'bot-block') &&
+              clean(source.replacementEndpoint || source.fallbackEndpoint || source.canonicalEndpoint)
+            ) {
+              const altEndpoint = clean(source.replacementEndpoint || source.fallbackEndpoint || source.canonicalEndpoint);
+              try {
+                const fetched = await fetchText(altEndpoint, 1, { source, requestState, includeMeta: true });
+                body = typeof fetched === 'string' ? fetched : fetched.text;
+                finalUrl = typeof fetched === 'string' ? altEndpoint : clean(fetched.finalUrl || altEndpoint);
+                fetchOutcome = 'success';
+              } catch {
+                throw error;
+              }
+
+            // Improvement 10: Try URL alternatives for 404 errors
+            } else if (reason === 'stale-endpoint') {
+              const altUrl = await tryUrlAlternatives(source.endpoint).catch(() => null);
+              if (altUrl) {
+                try {
+                  const fetched = await fetchText(altUrl, 1, { source, requestState, includeMeta: true });
+                  body = typeof fetched === 'string' ? fetched : fetched.text;
+                  finalUrl = typeof fetched === 'string' ? altUrl : clean(fetched.finalUrl || altUrl);
+                  fetchOutcome = 'success';
+                } catch {
+                  throw error;
+                }
+              } else {
+                throw error;
+              }
             } else {
               throw error;
             }
@@ -1681,7 +1754,28 @@ async function main() {
           const parsed = source.kind === 'rss' || source.kind === 'atom' || source.kind === 'json'
             ? parseFeedItems(source, body)
             : parseHtmlItems(source, body);
-          if (!parsed.length) {
+
+          // Improvement 2: When HTML parsing yields no results, try discovering
+          // an RSS/Atom feed at the same domain before reporting empty.
+          let feedDiscoveryParsed = null;
+          if (!parsed.length && source.kind === 'html' && fetchOutcome !== 'unchanged') {
+            try {
+              const discovered = await discoverFeedUrl(source.endpoint);
+              if (discovered) {
+                const feedBody = await fetchText(discovered.feedUrl, 1, { source, requestState, includeMeta: false });
+                const feedSource = { ...source, kind: discovered.feedKind, endpoint: discovered.feedUrl };
+                feedDiscoveryParsed = parseFeedItems(feedSource, feedBody);
+                if (feedDiscoveryParsed.length) {
+                  console.log(`Feed discovery found ${feedDiscoveryParsed.length} item(s) at ${discovered.feedUrl} for source ${source.id}`);
+                }
+              }
+            } catch {
+              // Feed discovery is best-effort; do not block the main flow
+            }
+          }
+          const effectiveParsed = (feedDiscoveryParsed && feedDiscoveryParsed.length) ? feedDiscoveryParsed : parsed;
+
+          if (!effectiveParsed.length) {
             discardReasons.parseNoItems += 1;
             if (fetchOutcome !== 'unchanged') {
               failureReasonCounts['empty-or-no-items'] += 1;
@@ -1692,7 +1786,7 @@ async function main() {
             ));
           }
           const preLimit = source.kind === 'html' ? MAX_HTML_PREFETCH_ITEMS : MAX_FEED_PREFETCH_ITEMS;
-          const preLimited = parsed.slice(0, preLimit);
+          const preLimited = effectiveParsed.slice(0, preLimit);
           const hydrated = source.kind === 'html' ? await enrichHtmlItems(source, preLimited) : preLimited;
           const reliabilityProfile = inferReliabilityProfile(source, inferSourceTier(source));
           const itemLimit = reliabilityProfile === 'tabloid'
@@ -1743,7 +1837,7 @@ async function main() {
               provider: source.provider,
               lane: source.lane,
               kind: source.kind,
-              parsed: parsed.length,
+              parsed: effectiveParsed.length,
               hydrated: hydrated.length,
               filtered: filtered.length,
               kept: kept.length,
