@@ -97,13 +97,15 @@
     {
       "id": "ecfr-feeds-index",
       "provider": "ECFR - Feeds",
-      "endpoint": "https://ecfr.eu/feeds/",
+      "endpoint": "https://ecfr.eu/feed/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "ECFR feed index page for European foreign-policy and security research feed discovery."
+      "comment": "ECFR feed index page for European foreign-policy and security research feed discovery.",
+      "quarantined": false,
+      "restoredAt": "2026-04-12T10:56:41.305Z"
     },
     {
       "id": "enisa-news",
