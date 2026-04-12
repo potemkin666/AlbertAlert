@@ -1188,14 +1188,16 @@
     {
       "id": "netherlands-prosecution-news",
       "provider": "Dutch Public Prosecution Service - News",
-      "endpoint": "https://www.om.nl/actueel/nieuws",
+      "endpoint": "https://nltimes.nl/categories/crime",
       "kind": "html",
       "lane": "oversight",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Dutch prosecution updates on terrorism cases, charges and court proceedings.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T19:59:55.079Z"
     },
     {
       "id": "bfv-de-english",
