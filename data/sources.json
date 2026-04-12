@@ -110,13 +110,15 @@
     {
       "id": "enisa-news",
       "provider": "ENISA (EU Cybersecurity Agency) a News",
-      "endpoint": "https://www.enisa.europa.eu/news",
+      "endpoint": "https://www.bing.com/search?q=eu+niche+news+terrorism&cvid=d88b596836e244b4abbb16e5b1417d60&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhA0gEIMzM0MGowajSoAgiwAgE&FORM=ANAB01&PC=LCTS",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "ENISA news on EU cybersecurity threats, state-sponsored attacks and critical infrastructure security relevant to CT context."
+      "comment": "ENISA news on EU cybersecurity threats, state-sponsored attacks and critical infrastructure security relevant to CT context.",
+      "quarantined": false,
+      "restoredAt": "2026-04-12T11:00:39.174Z"
     },
     {
       "id": "enisa-rss-transition-page",
