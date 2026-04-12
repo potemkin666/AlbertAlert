@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-12T19:53:34.082Z",
-  "count": 186,
+  "generatedAt": "2026-04-12T19:55:30.052Z",
+  "count": 185,
   "sources": [
     {
       "id": "ecfr-feeds-index",
@@ -3231,25 +3231,6 @@
       "reviewBy": "2026-04-08T09:17:50.585Z",
       "lastFailureAt": "2026-04-06T09:17:50.585Z",
       "lastCheckedAt": "2026-04-06T09:17:50.585Z"
-    },
-    {
-      "id": "french-interior-ministry-news",
-      "provider": "French Ministry of the Interior - News",
-      "endpoint": "https://www.interieur.gouv.fr/actualites",
-      "kind": "html",
-      "lane": "context",
-      "region": "europe",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-06T07:49:39.939Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-08T07:49:39.939Z",
-      "lastFailureAt": "2026-04-06T07:49:39.939Z",
-      "lastCheckedAt": "2026-04-06T07:49:39.939Z"
     },
     {
       "id": "supo-fi-english",
