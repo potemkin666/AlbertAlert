@@ -2962,14 +2962,16 @@
     {
       "id": "gov-uk-defence-intelligence",
       "provider": "UK Defence Intelligence a GOV.UK",
-      "endpoint": "https://www.gov.uk/government/organisations/defence-intelligence",
+      "endpoint": "https://www.govwire.co.uk/rss",
       "kind": "html",
       "lane": "context",
       "region": "uk",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Defence Intelligence publications used for UK threat assessment and intelligence context.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T20:03:50.210Z"
     },
     {
       "id": "gov-uk-terrorism-search",
