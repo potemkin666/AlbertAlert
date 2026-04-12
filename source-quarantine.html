@@ -176,60 +176,57 @@
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
-    .scoreboard {
+    .audit {
       margin: 18px 0 12px;
       padding: 16px 18px;
       border-radius: 16px;
       border: 1px solid rgba(127, 156, 203, 0.26);
       background: rgba(19, 27, 45, 0.72);
     }
-    .scoreboard-header {
+    .audit-header {
       display: flex;
-      justify-content: space-between;
       align-items: baseline;
+      justify-content: space-between;
       gap: 12px;
       flex-wrap: wrap;
+      margin-bottom: 12px;
     }
-    .scoreboard-header h2 {
+    .audit-title {
       margin: 0;
       font-size: 18px;
     }
-    .scoreboard-header p {
-      margin: 0;
+    .audit-subtitle {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--muted);
-      font-size: 13px;
     }
-    .scoreboard-list {
-      margin-top: 12px;
+    .audit-grid {
       display: grid;
-      gap: 10px;
+      gap: 16px;
+      grid-template-columns: minmax(240px, 1fr) minmax(240px, 1fr);
     }
-    .scoreboard-item {
-      display: grid;
-      gap: 6px;
-      padding: 10px 12px;
-      border-radius: 12px;
-      border: 1px solid rgba(127, 156, 203, 0.2);
-      background: rgba(12, 20, 36, 0.6);
-    }
-    .scoreboard-item strong {
-      font-size: 14px;
-    }
-    .scoreboard-meta {
+    .audit-line {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      font-size: 12px;
-      color: #cdd9f1;
+      gap: 6px;
+      font-size: 13px;
+      color: #d7e5ff;
     }
-    .scoreboard-link {
-      align-self: start;
-      font-size: 12px;
-      color: #9fd0ff;
-      text-decoration: none;
-      font-weight: 600;
+    .audit-line strong {
+      color: var(--text);
+      font-weight: 700;
     }
-    .scoreboard-link:hover { text-decoration: underline; }
+    .audit-failures {
+      display: grid;
+      gap: 6px;
+    }
+    .audit-list {
+      margin: 0;
+      padding-left: 18px;
+      color: #d6e2fb;
+      font-size: 13px;
+    }
     .hidden { display: none; }
     .helper-note, .status-note { min-height: 18px; font-size: 12px; }
     .helper-note { color: #8ea3c8; }
@@ -259,6 +256,7 @@
       main { padding: 18px 10px 26px; }
       .card { border-radius: 12px; }
       .table-scroll { max-height: calc(100vh - 160px); }
+      .audit-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -276,12 +274,20 @@
       <span class="pill suggest">Pending suggestions: 0</span>
       <span class="pill">SLA: review within 48h</span>
     </div>
-    <section class="scoreboard" id="scoreboard">
-      <div class="scoreboard-header">
-        <h2>Top Offenders</h2>
-        <p>Worst failure streaks in the last run.</p>
+    <section class="audit" id="audit">
+      <div class="audit-header">
+        <div>
+          <h2 class="audit-title">Feed Audit</h2>
+          <div class="audit-subtitle">Refresh + Restore Pulse</div>
+        </div>
       </div>
-      <div class="scoreboard-list" id="scoreboard-list"></div>
+      <div class="audit-grid">
+        <div class="audit-summary" id="audit-summary"></div>
+        <div class="audit-failures">
+          <div class="audit-subtitle">Top Failures</div>
+          <ul class="audit-list" id="audit-failures"></ul>
+        </div>
+      </div>
     </section>
     <div class="card">
       <div class="table-scroll">
@@ -395,11 +401,15 @@
       return apiUrlFor(base, '/api/auth/logout');
     }
     const LOCAL_DATA_URL = 'data/quarantined-sources.json';
+    const LIVE_ALERTS_URL = 'live-alerts.json';
+    const TOP_FAILURES_URL = 'data/top-20-source-remediation.json';
+    const RESTORE_AUDIT_URL = 'data/restore-audit.json';
     const body = document.getElementById('quarantine-body');
     const meta = document.getElementById('meta');
     const toast = document.getElementById('toast');
-    const scoreboard = document.getElementById('scoreboard');
-    const scoreboardList = document.getElementById('scoreboard-list');
+    const audit = document.getElementById('audit');
+    const auditSummary = document.getElementById('audit-summary');
+    const auditFailures = document.getElementById('audit-failures');
     const authNote = document.getElementById('auth-note');
     const authActions = document.getElementById('auth-actions');
     let currentEntries = [];
@@ -454,57 +464,55 @@
        body.innerHTML = '<tr><td colspan="11" class="empty">' + escapeHtml(message) + '</td></tr>';
     }
 
-    function topOffenders() {
-      const entries = Array.isArray(currentEntries) ? currentEntries : [];
-      return entries
-        .map((entry) => {
-          const streak = Number(entry?.consecutiveFailures || 0);
-          const blocked = Number(entry?.consecutiveBlockedFailures || 0);
-          const dead = Number(entry?.consecutiveDeadUrlFailures || 0);
-          const effectiveStreak = streak || Math.max(blocked, dead);
-          const lastErrorCategory = entry?.lastErrorCategory || 'unknown';
-          const lastErrorMessage = entry?.lastErrorMessage || 'No error message recorded';
-          const lastFailureAt = entry?.lastFailureAt || entry?.quarantinedAt || entry?.lastCheckedAt || '';
-          return {
-            id: entry?.id,
-            provider: entry?.provider,
-            effectiveStreak,
-            lastErrorCategory,
-            lastErrorMessage,
-            lastFailureAt
-          };
-        })
-        .filter((entry) => entry.effectiveStreak > 0)
-        .sort((a, b) => {
-          if (b.effectiveStreak !== a.effectiveStreak) return b.effectiveStreak - a.effectiveStreak;
-          const bTime = Date.parse(b.lastFailureAt || '') || 0;
-          const aTime = Date.parse(a.lastFailureAt || '') || 0;
-          return bTime - aTime;
-        })
-        .slice(0, 6);
+    function formatTimeAgo(timestampMs) {
+      if (!Number.isFinite(timestampMs)) return 'unknown';
+      const deltaMs = Date.now() - timestampMs;
+      if (deltaMs < 0) return 'just now';
+      const minutes = Math.floor(deltaMs / 60000);
+      if (minutes < 1) return 'just now';
+      const hours = Math.floor(minutes / 60);
+      const remainingMinutes = minutes % 60;
+      if (hours < 1) return `${minutes}m ago`;
+      return `${hours}h ${remainingMinutes}m ago`;
     }
 
-    function renderScoreboard() {
-      if (!scoreboard || !scoreboardList) return;
-      const offenders = topOffenders();
-      scoreboard.classList.toggle('hidden', offenders.length === 0);
-      if (!offenders.length) {
-        scoreboardList.innerHTML = '<div class="scoreboard-item">No failure streaks recorded yet.</div>';
+    function formatShortTime(timestampMs) {
+      if (!Number.isFinite(timestampMs)) return 'unknown';
+      return new Date(timestampMs).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    }
+
+    function renderAudit({ live, remediation, restoreAudit } = {}) {
+      if (!audit || !auditSummary || !auditFailures) return;
+      const generatedAt = typeof live?.generatedAt === 'string' ? live.generatedAt : '';
+      const generatedAtMs = Date.parse(generatedAt || '');
+      const refreshTime = Number.isFinite(generatedAtMs) ? formatShortTime(generatedAtMs) : 'unknown';
+      const refreshAge = Number.isFinite(generatedAtMs) ? formatTimeAgo(generatedAtMs) : 'unknown';
+      const sourceCount = Number.isFinite(Number(live?.sourceCount)) ? Number(live.sourceCount) : 'n/a';
+      const lastRestoreAt = restoreAudit?.lastRestore?.at;
+      const lastRestoreMs = Date.parse(lastRestoreAt || '');
+      const lastRestoreLabel = Number.isFinite(lastRestoreMs)
+        ? `${formatShortTime(lastRestoreMs)} (${formatTimeAgo(lastRestoreMs)})`
+        : 'none yet';
+
+      auditSummary.innerHTML = [
+        `<div class="audit-line">Last refresh: <strong>${escapeHtml(refreshTime)}</strong> (${escapeHtml(refreshAge)})</div>`,
+        `<div class="audit-line">Sources checked: <strong>${escapeHtml(sourceCount)}</strong></div>`,
+        `<div class="audit-line">Last restore: <strong>${escapeHtml(lastRestoreLabel)}</strong></div>`
+      ].join('');
+
+      const failures = Array.isArray(remediation?.top20) ? remediation.top20.slice(0, 3) : [];
+      if (!failures.length) {
+        auditFailures.innerHTML = '<li>No failure telemetry yet.</li>';
         return;
       }
-      scoreboardList.innerHTML = offenders.map((entry) => {
-        const id = safeDomId(entry.id);
-        return `
-          <div class="scoreboard-item">
-            <strong>${escapeHtml(entry.provider || entry.id || 'Unknown source')}</strong>
-            <div class="scoreboard-meta">
-              <span>Streak: ${escapeHtml(entry.effectiveStreak)}</span>
-              <span>${escapeHtml(entry.lastErrorCategory)}</span>
-              <span>${escapeHtml(entry.lastErrorMessage)}</span>
-            </div>
-            <a class="scoreboard-link" href="#source-${id}">Jump to row</a>
-          </div>
-        `;
+      auditFailures.innerHTML = failures.map((entry) => {
+        const provider = entry?.provider || entry?.id || 'Unknown source';
+        const category = entry?.category || 'unknown';
+        const statusLabel = Number.isFinite(Number(entry?.status)) ? `HTTP ${entry.status}` : '';
+        const message = entry?.message || '';
+        const detail = [statusLabel, message].filter(Boolean).join(' - ');
+        const suffix = detail ? ` | ${detail}` : '';
+        return `<li>${escapeHtml(provider)} - ${escapeHtml(category)}${escapeHtml(suffix)}</li>`;
       }).join('');
     }
 
@@ -590,13 +598,11 @@
     function renderRows() {
       if (!currentEntries.length && !currentSuggestions.length) {
         emptyState('No quarantined sources currently recorded.');
-        renderScoreboard();
         return;
       }
       const suggestionMarkup = currentSuggestions.map(suggestionRowMarkup).join('');
       const quarantineMarkup = currentEntries.map(rowMarkup).join('');
       body.innerHTML = `${suggestionMarkup}${quarantineMarkup}`;
-      renderScoreboard();
       if (!approveEnabled) {
         for (const row of body.querySelectorAll('tr[data-request-id]')) {
           const button = row.querySelector('button[data-action="approve"]');
@@ -796,6 +802,34 @@
         throw error;
       }
       return payload;
+    }
+
+    async function fetchOptionalJson(url, timeoutLabel) {
+      try {
+        const response = await fetchWithTimeout(
+          url,
+          withSessionCredentials({ cache: 'no-store' }),
+          PROBE_FETCH_TIMEOUT_MS,
+          timeoutLabel
+        );
+        if (!response.ok) return null;
+        return await response.json().catch(() => null);
+      } catch {
+        return null;
+      }
+    }
+
+    async function loadAudit(payload) {
+      const [live, remediation, restoreAudit] = await Promise.all([
+        fetchOptionalJson(LIVE_ALERTS_URL, 'Live feed audit'),
+        fetchOptionalJson(TOP_FAILURES_URL, 'Top failure audit'),
+        fetchOptionalJson(RESTORE_AUDIT_URL, 'Restore audit')
+      ]);
+      const fallbackLive = live || {
+        generatedAt: payload?.generatedAt || new Date().toISOString(),
+        sourceCount: payload?.count || payload?.sources?.length || 'n/a'
+      };
+      renderAudit({ live: fallbackLive, remediation, restoreAudit });
     }
 
     function cacheBustedUrl(url, cacheKey) {
@@ -1061,6 +1095,7 @@
           renderMeta({ generatedAt: new Date().toISOString() });
           renderRows();
           emptyState('Sign in as an admin to view quarantined sources.');
+          await loadAudit({ generatedAt: new Date().toISOString(), count: 0, sources: [] });
           return;
         }
         let payload;
@@ -1096,8 +1131,10 @@
         approveEnabled = restoreEnabled;
         renderMeta(payload);
         renderRows();
+        await loadAudit(payload);
       } catch (error) {
         emptyState(explainError(error));
+        await loadAudit({ generatedAt: new Date().toISOString(), count: 0, sources: [] });
       }
     }
 
