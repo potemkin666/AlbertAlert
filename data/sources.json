@@ -109,14 +109,16 @@
     {
       "id": "enisa-news",
       "provider": "ENISA (EU Cybersecurity Agency) a News",
-      "endpoint": "https://www.enisa.europa.eu/news",
+      "endpoint": "https://krebsonsecurity.com/feed/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "ENISA news on EU cybersecurity threats, state-sponsored attacks and critical infrastructure security relevant to CT context.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T20:54:53.537Z"
     },
     {
       "id": "enisa-rss-transition-page",
