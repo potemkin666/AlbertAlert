@@ -1456,12 +1456,14 @@
     {
       "id": "nato-news-rss",
       "provider": "NATO a News (RSS)",
-      "endpoint": "https://www.nato.int/cps/en/natohq/rss/news.rss",
+      "endpoint": "https://www.nato.int/en/news-and-events/articles/news",
       "kind": "rss",
       "lane": "context",
       "region": "international",
       "isTrustedOfficial": true,
-      "requiresKeywordMatch": true
+      "requiresKeywordMatch": true,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T08:53:42.867Z"
     },
     {
       "id": "occrp-news",
