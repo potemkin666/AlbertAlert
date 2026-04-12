@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-12T20:01:12.698Z",
-  "count": 178,
+  "generatedAt": "2026-04-12T20:02:05.741Z",
+  "count": 177,
   "sources": [
     {
       "id": "ecfr-feeds-index",
@@ -2571,25 +2571,6 @@
       "id": "city-of-london-police-fraud-reporting",
       "provider": "City of London Police - Fraud Reporting",
       "endpoint": "https://www.cityoflondon.police.uk/ro/report/fo/v1/fraud/",
-      "kind": "html",
-      "lane": "context",
-      "region": "london",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-06T12:11:54.469Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-08T12:11:54.469Z",
-      "lastFailureAt": "2026-04-06T12:11:54.469Z",
-      "lastCheckedAt": "2026-04-06T12:11:54.469Z"
-    },
-    {
-      "id": "enfield-council-news",
-      "provider": "Enfield Council a News and Events",
-      "endpoint": "https://www.enfield.gov.uk/news-and-events",
       "kind": "html",
       "lane": "context",
       "region": "london",
