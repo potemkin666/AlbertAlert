@@ -2,28 +2,96 @@ import { confidenceScoreLabel, contextLabel, quarantineReason, regionLabel, seve
 import { laneLabels } from '../../shared/ui-data.mjs';
 import { escapeHtml } from '../utils/text.mjs';
 
+function canonicalRegionKey(region) {
+  const key = String(region || '').toLowerCase().trim();
+  if (key === 'eu' || key === 'europe') return 'europe';
+  return key;
+}
+
 const regionBadgeMeta = {
-  london: { css: 'is-london', flag: '🏴', label: 'London' },
-  uk: { css: 'is-uk', flag: '🇬🇧', label: 'UK' },
-  eu: { css: 'is-eu', flag: '🇪🇺', label: 'EU' },
-  europe: { css: 'is-europe', flag: '🌍', label: 'Europe' },
-  us: { css: 'is-us', flag: '🇺🇸', label: 'US' },
-  international: { css: 'is-international', flag: '🌐', label: 'International' }
+  london: { key: 'london', css: 'is-london', flag: '🏴', label: 'London' },
+  uk: { key: 'uk', css: 'is-uk', flag: '🇬🇧', label: 'UK' },
+  europe: { key: 'europe', css: 'is-europe', flag: '🇪🇺', label: 'Europe' },
+  us: { key: 'us', css: 'is-us', flag: '🇺🇸', label: 'US' },
+  international: { key: 'international', css: 'is-international', flag: '🌐', label: 'International' }
 };
 
-function regionBadgeMarkup(alert) {
-  const regionKey = String(alert?.region || '').toLowerCase();
+const countryMentionMeta = [
+  { key: 'us', css: 'is-us', flag: '🇺🇸', label: 'US', patterns: [/\bUnited\s+States\b/i, /\bU\.S\.A\.?\b/i, /\bU\.S\.\b/i, /\bUS\b/, /\bthe\s+us\b/i, /\bAmerican\b/i] },
+  { key: 'uk', css: 'is-uk', flag: '🇬🇧', label: 'UK', patterns: [/\bUnited\s+Kingdom\b/i, /\bBritain\b/i, /\bBritish\b/i, /\bEngland\b/i, /\bScotland\b/i, /\bWales\b/i, /\bNorthern\s+Ireland\b/i] },
+  { key: 'europe', css: 'is-europe', flag: '🇪🇺', label: 'Europe', patterns: [/\bEurope\b/i, /\bEuropean\s+Union\b/i, /\bEU\b/i] },
+  { key: 'france', css: 'is-country', flag: '🇫🇷', label: 'France', patterns: [/\bFrance\b/i, /\bFrench\b/i] },
+  { key: 'germany', css: 'is-country', flag: '🇩🇪', label: 'Germany', patterns: [/\bGermany\b/i, /\bGerman\b/i] },
+  { key: 'italy', css: 'is-country', flag: '🇮🇹', label: 'Italy', patterns: [/\bItaly\b/i, /\bItalian\b/i] },
+  { key: 'spain', css: 'is-country', flag: '🇪🇸', label: 'Spain', patterns: [/\bSpain\b/i, /\bSpanish\b/i] },
+  { key: 'belgium', css: 'is-country', flag: '🇧🇪', label: 'Belgium', patterns: [/\bBelgium\b/i, /\bBelgian\b/i] },
+  { key: 'netherlands', css: 'is-country', flag: '🇳🇱', label: 'Netherlands', patterns: [/\bNetherlands\b/i, /\bDutch\b/i] },
+  { key: 'sweden', css: 'is-country', flag: '🇸🇪', label: 'Sweden', patterns: [/\bSweden\b/i, /\bSwedish\b/i] },
+  { key: 'norway', css: 'is-country', flag: '🇳🇴', label: 'Norway', patterns: [/\bNorway\b/i, /\bNorwegian\b/i] },
+  { key: 'denmark', css: 'is-country', flag: '🇩🇰', label: 'Denmark', patterns: [/\bDenmark\b/i, /\bDanish\b/i] },
+  { key: 'poland', css: 'is-country', flag: '🇵🇱', label: 'Poland', patterns: [/\bPoland\b/i, /\bPolish\b/i] },
+  { key: 'austria', css: 'is-country', flag: '🇦🇹', label: 'Austria', patterns: [/\bAustria\b/i, /\bAustrian\b/i] },
+  { key: 'switzerland', css: 'is-country', flag: '🇨🇭', label: 'Switzerland', patterns: [/\bSwitzerland\b/i, /\bSwiss\b/i] },
+  { key: 'ireland', css: 'is-country', flag: '🇮🇪', label: 'Ireland', patterns: [/\bIreland\b/i, /\bIrish\b/i] },
+  { key: 'israel', css: 'is-country', flag: '🇮🇱', label: 'Israel', patterns: [/\bIsrael\b/i, /\bIsraeli\b/i] },
+  { key: 'iran', css: 'is-country', flag: '🇮🇷', label: 'Iran', patterns: [/\bIran\b/i, /\bIranian\b/i] },
+  { key: 'turkey', css: 'is-country', flag: '🇹🇷', label: 'Turkey', patterns: [/\bTurkey\b/i, /\bTurkish\b/i] },
+  { key: 'russia', css: 'is-country', flag: '🇷🇺', label: 'Russia', patterns: [/\bRussia\b/i, /\bRussian\b/i] },
+  { key: 'ukraine', css: 'is-country', flag: '🇺🇦', label: 'Ukraine', patterns: [/\bUkraine\b/i, /\bUkrainian\b/i] },
+  { key: 'pakistan', css: 'is-country', flag: '🇵🇰', label: 'Pakistan', patterns: [/\bPakistan\b/i, /\bPakistani\b/i] },
+  { key: 'india', css: 'is-country', flag: '🇮🇳', label: 'India', patterns: [/\bIndia\b/i, /\bIndian\b/i] },
+  { key: 'nigeria', css: 'is-country', flag: '🇳🇬', label: 'Nigeria', patterns: [/\bNigeria\b/i, /\bNigerian\b/i] }
+];
+
+function storyGeoText(alert) {
+  return String([
+    alert?.title,
+    alert?.summary,
+    alert?.location,
+    alert?.sourceExtract
+  ].filter(Boolean).join(' '));
+}
+
+function badgeMarkup({ css, flag, label }) {
+  return `<span class="region-badge ${css}" aria-label="Geo tag: ${escapeHtml(label)}"><span aria-hidden="true">${escapeHtml(flag)}</span><span>${escapeHtml(label)}</span></span>`;
+}
+
+function regionBadgeFor(alert) {
+  const regionKey = canonicalRegionKey(alert?.region);
   const known = regionBadgeMeta[regionKey];
-  const css = known?.css || 'is-other';
-  const flag = known?.flag || '🏳️';
-  const label = known?.label || regionLabel(alert?.region);
-  return `<span class="region-badge ${css}" aria-label="Region: ${escapeHtml(label)}"><span aria-hidden="true">${escapeHtml(flag)}</span><span>${escapeHtml(label)}</span></span>`;
+  if (known) return known;
+  return {
+    key: regionKey || 'other',
+    css: 'is-other',
+    flag: '🏳️',
+    label: regionLabel(alert?.region)
+  };
+}
+
+function inferredCountryBadges(alert, primaryRegionKey) {
+  const text = storyGeoText(alert);
+  if (!text) return [];
+
+  const badges = [];
+  for (const badge of countryMentionMeta) {
+    if (badge.key === primaryRegionKey) continue;
+    if (!badge.patterns.some((pattern) => pattern.test(text))) continue;
+    badges.push({ key: badge.key, css: badge.css, flag: badge.flag, label: badge.label });
+    if (badges.length >= 3) break;
+  }
+  return badges;
+}
+
+function geoBadgesMarkup(alert) {
+  const primary = regionBadgeFor(alert);
+  const extras = inferredCountryBadges(alert, primary.key);
+  return `<span class="story-geo-tags">${[primary, ...extras].map((badge) => badgeMarkup(badge)).join('')}</span>`;
 }
 
 export function responderCardMarkup(alert, watched) {
   const trust = trustSignal(alert);
   const confidence = confidenceScoreLabel(alert);
-  const regionBadge = regionBadgeMarkup(alert);
+  const geoBadges = geoBadgesMarkup(alert);
   return `
     <article class="feed-card actionable" data-id="${alert.id}">
       <div class="feed-top">
@@ -41,7 +109,7 @@ export function responderCardMarkup(alert, watched) {
       </div>
       <div class="meta-row">
         <span>${escapeHtml(alert.source)}</span>
-        ${regionBadge}
+        ${geoBadges}
         <span>${escapeHtml(alert.status)}</span>
       </div>
     </article>`;
@@ -51,11 +119,11 @@ export function supportingCardMarkup(alert) {
   const isQuarantine = Boolean(alert.needsHumanReview);
   const badgeLabel = isQuarantine ? 'Quarantine' : (laneLabels[alert.lane] || 'Context');
   const metaReason = isQuarantine ? quarantineReason(alert) : contextLabel(alert);
-  const regionBadge = regionBadgeMarkup(alert);
+  const geoBadges = geoBadgesMarkup(alert);
   const timeMeta = String(alert.time || '').trim();
   const metaParts = [
     `<span>${escapeHtml(alert.source)}</span>`,
-    regionBadge,
+    geoBadges,
     `<span>${escapeHtml(metaReason)}</span>`,
     timeMeta ? `<span>${escapeHtml(timeMeta)}</span>` : ''
   ].filter(Boolean).join('');

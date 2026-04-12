@@ -1440,6 +1440,14 @@ h1 {
   color: rgba(225, 252, 255, 0.92);
 }
 
+
+.story-geo-tags {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
 .region-badge {
   display: inline-flex;
   align-items: center;
@@ -1479,6 +1487,11 @@ h1 {
 .region-badge.is-international {
   background: rgba(22, 149, 129, 0.24);
   border-color: rgba(103, 220, 198, 0.52);
+}
+
+.region-badge.is-country {
+  background: rgba(87, 96, 116, 0.24);
+  border-color: rgba(173, 184, 207, 0.5);
 }
 
 .region-badge.is-other {

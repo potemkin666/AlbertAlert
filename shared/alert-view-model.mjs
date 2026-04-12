@@ -20,8 +20,7 @@ export function severityLabel(severity) {
 export function regionLabel(region) {
   if (region === 'london') return 'London';
   if (region === 'uk') return 'UK';
-  if (region === 'eu') return 'EU';
-  if (region === 'europe') return 'Europe';
+  if (region === 'eu' || region === 'europe') return 'Europe';
   if (region === 'us') return 'US';
   if (region === 'international') return 'International';
   return String(region || '').toUpperCase() || 'Unknown';
