@@ -1160,7 +1160,7 @@ test('html source run cap keeps control scheduler budget at legacy value', () =>
 
 test('default fetch/runtime tuning constants remain stable', () => {
   assert.equal(DEFAULT_TIMEOUT_MS, 12000);
-  assert.equal(DEFAULT_MAX_RETRIES, 3);
+  assert.equal(DEFAULT_MAX_RETRIES, 2);
   assert.equal(FEED_SOURCE_CONCURRENCY, 4);
   assert.equal(MAX_HTML_PREFETCH_ITEMS, 12);
   assert.equal(MAX_FEED_PREFETCH_ITEMS, 8);

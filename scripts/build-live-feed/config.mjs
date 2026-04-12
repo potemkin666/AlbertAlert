@@ -311,6 +311,10 @@ export function sourceRefreshOffset(source) {
 }
 
 export function shouldRefreshSourceThisRun(source, buildDate = new Date(), previousEntry = null) {
+  const explicitHours = Number(source?.refreshEveryHours);
+  if (source?.lane === 'incidents' || (Number.isFinite(explicitHours) && explicitHours <= 0.25)) {
+    return true;
+  }
   const nextFetchAtMs = parseIsoMs(previousEntry?.nextFetchAt);
   if (nextFetchAtMs) return buildDate.getTime() >= nextFetchAtMs;
   const intervalMinutes = sourceScheduleIntervalMinutes(source);
