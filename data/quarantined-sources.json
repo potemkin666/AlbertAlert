@@ -1,7 +1,83 @@
 {
-  "generatedAt": "2026-04-12T08:55:08.895Z",
-  "count": 179,
+  "generatedAt": "2026-04-12T09:14:31.402Z",
+  "count": 183,
   "sources": [
+    {
+      "id": "belgium-crisis-centre-news",
+      "provider": "Belgian National Crisis Centre - News",
+      "endpoint": "https://crisiscenter.be/en/news",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-12T09:14:31.402Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-14T09:14:31.402Z",
+      "lastFailureAt": "2026-04-12T09:14:31.402Z",
+      "lastCheckedAt": "2026-04-12T09:14:31.402Z"
+    },
+    {
+      "id": "czech-police-news",
+      "provider": "Police of the Czech Republic - News",
+      "endpoint": "https://www.policie.cz/clanek/news.aspx",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "eu",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-12T09:14:31.402Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-14T09:14:31.402Z",
+      "lastFailureAt": "2026-04-12T09:14:31.402Z",
+      "lastCheckedAt": "2026-04-12T09:14:31.402Z"
+    },
+    {
+      "id": "nato-news-rss",
+      "provider": "NATO a News (RSS)",
+      "endpoint": "https://www.nato.int/cps/en/natohq/rss/news.rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-12T09:14:31.402Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-14T09:14:31.402Z",
+      "lastFailureAt": "2026-04-12T09:14:31.402Z",
+      "lastCheckedAt": "2026-04-12T09:14:31.402Z"
+    },
+    {
+      "id": "homerton-healthcare-news",
+      "provider": "Homerton Healthcare NHS Foundation Trust a News",
+      "endpoint": "https://www.homerton.nhs.uk/latest-news/",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "status": "auto-quarantined",
+      "reason": "HTTP 404 not found; needs manual source URL review",
+      "quarantinedAt": "2026-04-12T09:14:31.402Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-14T09:14:31.402Z",
+      "lastFailureAt": "2026-04-12T09:14:31.402Z",
+      "lastCheckedAt": "2026-04-12T09:14:31.402Z"
+    },
     {
       "id": "cumbria-police-newsroom",
       "provider": "Cumbria Police - Newsroom",
@@ -3403,6 +3479,5 @@
       "lastFailureAt": "2026-04-05T13:02:51.966Z",
       "lastCheckedAt": "2026-04-05T13:02:51.966Z"
     }
-  ],
-  "schemaVersion": 1
+  ]
 }
