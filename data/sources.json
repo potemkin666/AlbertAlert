@@ -2668,14 +2668,16 @@
     {
       "id": "tower-hamlets-council-news",
       "provider": "Tower Hamlets Council a News",
-      "endpoint": "https://www.towerhamlets.gov.uk/rss/news.xml",
+      "endpoint": "https://towerhamlets.public-i.tv/core/data/5155",
       "kind": "rss",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Replaced legacy ASPX listing with Tower Hamlets official news RSS feed.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-12T20:03:09.750Z"
     },
     {
       "id": "uclh-news",
