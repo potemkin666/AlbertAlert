@@ -1,6 +1,7 @@
 import {
   ApiError,
   commitJsonFilesAtomically,
+  dispatchWorkflow,
   listSourceShardPaths,
   loadJsonFile,
   normaliseEndpoint,
@@ -22,6 +23,8 @@ const QUARANTINE_ONLY_FIELDS = new Set([
   'lastCheckedAt'
 ]);
 
+const FEED_WORKFLOW_FILENAME = 'update-live-feed.yml';
+
 function sendError(response, error) {
   const status = error instanceof ApiError ? error.status : 500;
   const code = error instanceof ApiError ? error.code : 'persistence-failure';
@@ -31,6 +34,24 @@ function sendError(response, error) {
     error: code,
     message
   });
+}
+
+function applyRefreshPolicy(source) {
+  if (!source || typeof source !== 'object') return source;
+  const isCritical = source.lane === 'incidents' || source.isTrustedOfficial === true;
+  if (!isCritical) return source;
+
+  const explicit = Number(source.refreshEveryHours);
+  const hourlyCadence = 1;
+  const next = { ...source };
+
+  if (!Number.isFinite(explicit)) {
+    next.refreshEveryHours = hourlyCadence;
+    return next;
+  }
+
+  next.refreshEveryHours = Math.min(explicit, hourlyCadence);
+  return next;
 }
 
 function parseRequestBody(request) {
@@ -52,7 +73,7 @@ function cleanupRestoredSource(source, replacementUrl) {
     restored[key] = value;
   }
   restored.endpoint = replacementUrl;
-  return restored;
+  return applyRefreshPolicy(restored);
 }
 
 function ensureValidSourceId(raw) {
@@ -217,10 +238,26 @@ export default async function handler(request, response) {
       `Restore quarantined source ${sourceId}`
     );
 
+    const autoTrigger = String(process.env.BRIALERT_AUTO_TRIGGER_FEED || 'true').toLowerCase() !== 'false';
+    let workflowTriggered = false;
+    let workflowMessage = null;
+    if (autoTrigger) {
+      try {
+        await dispatchWorkflow(quarantinedFile.config, FEED_WORKFLOW_FILENAME);
+        workflowTriggered = true;
+      } catch (error) {
+        workflowMessage = error instanceof Error ? error.message : String(error);
+      }
+    }
+
     return response.status(200).json({
       ok: true,
       restoredSource,
-      message: 'Source restored successfully.'
+      workflowTriggered,
+      workflowMessage,
+      message: workflowTriggered
+        ? 'Source restored and live feed refresh triggered.'
+        : 'Source restored successfully.'
     });
   } catch (error) {
     return sendError(response, error);

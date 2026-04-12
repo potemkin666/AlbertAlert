@@ -26,6 +26,24 @@ function compareByPath(left, right) {
   return left.localeCompare(right);
 }
 
+function applyRefreshPolicy(source) {
+  if (!source || typeof source !== 'object') return source;
+  const isCritical = source.lane === 'incidents' || source.isTrustedOfficial === true;
+  if (!isCritical) return source;
+
+  const explicit = Number(source.refreshEveryHours);
+  const hourlyCadence = 1;
+  const next = { ...source };
+
+  if (!Number.isFinite(explicit)) {
+    next.refreshEveryHours = hourlyCadence;
+    return next;
+  }
+
+  next.refreshEveryHours = Math.min(explicit, hourlyCadence);
+  return next;
+}
+
 async function readShard(filePath) {
   const raw = stripBom(await fs.readFile(filePath, 'utf8'));
   const parsed = JSON.parse(raw);
@@ -37,7 +55,7 @@ async function readShard(filePath) {
   if (!sources) {
     throw new Error(`Invalid source shard at ${path.relative(repoRoot, filePath)}: expected array or { sources: [] }`);
   }
-  return sources;
+  return sources.map(applyRefreshPolicy);
 }
 
 async function listShardFiles() {

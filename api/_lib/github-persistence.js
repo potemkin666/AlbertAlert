@@ -280,3 +280,28 @@ export async function commitJsonFilesAtomically(config, updatesByPath, message) 
     409
   );
 }
+
+export async function dispatchWorkflow(config, workflowFilename, inputs = {}) {
+  if (!workflowFilename) {
+    throw new ApiError('workflow-not-found', 'Workflow filename is required.', 400);
+  }
+
+  const response = await githubRequest(
+    config,
+    `/repos/${config.owner}/${config.repo}/actions/workflows/${encodeURIComponent(workflowFilename)}/dispatches`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        ref: config.branch,
+        inputs
+      })
+    }
+  );
+
+  if (!response.ok) {
+    throw new ApiError('trigger-failed', 'Failed to trigger workflow dispatch.', 500);
+  }
+}
