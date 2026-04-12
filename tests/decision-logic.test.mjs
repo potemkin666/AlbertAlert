@@ -1151,11 +1151,11 @@ test('source refresh cadence keeps incidents every run and rotates lower-yield l
 });
 
 test('html source run cap is increased for candidate scheduler mode', () => {
-  assert.equal(MAX_HTML_SOURCES_PER_RUN, 32);
+  assert.equal(MAX_HTML_SOURCES_PER_RUN, 40);
 });
 
 test('html source run cap keeps control scheduler budget at legacy value', () => {
-  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 24);
+  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 30);
 });
 
 test('default fetch/runtime tuning constants remain stable', () => {
