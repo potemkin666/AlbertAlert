@@ -1,17 +1,19 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-12T13:42:42.234Z",
-  "totalSourceErrors": 5,
+  "generatedAt": "2026-04-12T14:32:49.299Z",
+  "totalSourceErrors": 7,
   "byCategory": {
     "moved-temporarily": 1,
-    "anti-bot-protection": 3,
-    "blocked-or-auth": 1
+    "anti-bot-protection": 4,
+    "blocked-or-auth": 2
   },
   "byKind": {
-    "html": 5
+    "html": 5,
+    "rss": 1,
+    "playwright_html": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 5,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 6,
   "top20": [
     {
       "id": "finland-police-news",
@@ -78,6 +80,22 @@
       "isMachineReadable": false
     },
     {
+      "id": "henry-jackson-society-news",
+      "provider": "Henry Jackson Society a Publications",
+      "endpoint": "https://henryjacksonsociety.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
       "id": "politico-europe",
       "provider": "Politico Europe",
       "endpoint": "https://www.politico.eu/",
@@ -89,6 +107,22 @@
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "skwawkbox",
+      "provider": "Skwawkbox",
+      "endpoint": "https://www.thecanary.co/skwawkbox/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "playwright_html",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
@@ -160,6 +194,22 @@
       "isMachineReadable": false
     },
     {
+      "id": "henry-jackson-society-news",
+      "provider": "Henry Jackson Society a Publications",
+      "endpoint": "https://henryjacksonsociety.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
       "id": "politico-europe",
       "provider": "Politico Europe",
       "endpoint": "https://www.politico.eu/",
@@ -171,6 +221,22 @@
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "skwawkbox",
+      "provider": "Skwawkbox",
+      "endpoint": "https://www.thecanary.co/skwawkbox/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "playwright_html",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
