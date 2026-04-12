@@ -1,26 +1,7 @@
 {
-  "generatedAt": "2026-04-12T08:09:25.665Z",
-  "count": 188,
+  "generatedAt": "2026-04-12T08:47:26.742Z",
+  "count": 187,
   "sources": [
-    {
-      "id": "frontex-news-releases",
-      "provider": "Frontex a News Releases",
-      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/",
-      "kind": "html",
-      "lane": "border",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-11T19:36:50.305Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-13T19:36:50.305Z",
-      "lastFailureAt": "2026-04-11T19:36:50.305Z",
-      "lastCheckedAt": "2026-04-11T19:36:50.305Z"
-    },
     {
       "id": "cumbria-police-newsroom",
       "provider": "Cumbria Police - Newsroom",
@@ -3574,5 +3555,6 @@
       "lastFailureAt": "2026-04-05T13:02:51.966Z",
       "lastCheckedAt": "2026-04-05T13:02:51.966Z"
     }
-  ]
+  ],
+  "schemaVersion": 1
 }
