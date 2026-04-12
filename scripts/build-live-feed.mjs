@@ -10,6 +10,8 @@ import {
   AUTO_QUARANTINE_RECHECK_HOURS,
   AUTO_SKIP_EMPTY_THRESHOLD,
   AUTO_SKIP_FAILURE_THRESHOLD,
+  BLOCKED_NON_CONTENT_COOLDOWN_HOURS,
+  BLOCKED_NON_CONTENT_FAIL_THRESHOLD,
   CONTROL_MAX_HTML_SOURCES_PER_RUN,
   DEFAULT_FETCH_STAGGER_MS,
   FEED_SOURCE_CONCURRENCY,
@@ -170,6 +172,12 @@ function sourceMayAutoCooldown(source, previousEntry, buildDate) {
   }
   const cooldownUntilMs = parseIsoMs(previousEntry.cooldownUntil);
   if (!cooldownUntilMs || buildDate.getTime() >= cooldownUntilMs) return null;
+  if (previousEntry.autoSkipReason === 'blocked-cooldown') {
+    return {
+      reason: 'blocked-cooldown',
+      until: previousEntry.cooldownUntil
+    };
+  }
 
   const consecutiveFailures = Number(previousEntry.consecutiveFailures || 0);
   const consecutiveEmptyRuns = Number(previousEntry.consecutiveEmptyRuns || 0);
@@ -235,16 +243,22 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
 
   if ((stat?.errors || 0) > 0) {
     const blockedFailure = source?.kind === 'html' && isBlockedFailureCategory(stat?.lastErrorCategory);
+    const blockedNonContent = stat?.statusKind === 'blocked_non_content' || blockedFailure;
     const deadUrlFailure = isDeadUrlFailureCategory(stat?.lastErrorCategory);
     const notFoundFailure = isNotFoundFailureCategory(stat?.lastErrorCategory);
     next.failedRuns += 1;
     next.consecutiveFailures += 1;
     next.consecutiveEmptyRuns = 0;
-    next.consecutiveBlockedFailures = blockedFailure ? priorBlockedFailures + 1 : 0;
+    next.consecutiveBlockedFailures = blockedNonContent ? priorBlockedFailures + 1 : 0;
     next.consecutiveDeadUrlFailures = deadUrlFailure ? priorDeadUrlFailures + 1 : 0;
     next.lastFailureAt = generatedAt;
     next.lastErrorCategory = stat?.lastErrorCategory || null;
     next.lastErrorMessage = stat?.lastErrorMessage || null;
+    if (blockedNonContent && next.consecutiveBlockedFailures >= BLOCKED_NON_CONTENT_FAIL_THRESHOLD) {
+      next.cooldownUntil = new Date(Date.parse(generatedAt) + BLOCKED_NON_CONTENT_COOLDOWN_HOURS * 3600000).toISOString();
+      next.autoSkipReason = 'blocked-cooldown';
+      return next;
+    }
     if (!next.quarantined && notFoundFailure) {
       next.quarantined = true;
       next.quarantinedAt = generatedAt;
