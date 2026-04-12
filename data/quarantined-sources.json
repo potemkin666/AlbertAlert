@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-12T10:58:18.179Z",
-  "count": 184,
+  "generatedAt": "2026-04-12T11:00:39.174Z",
+  "count": 183,
   "sources": [
     {
       "id": "frontex-news-releases",
@@ -2984,25 +2984,6 @@
       "reviewBy": "2026-04-08T12:11:54.469Z",
       "lastFailureAt": "2026-04-06T12:11:54.469Z",
       "lastCheckedAt": "2026-04-06T12:11:54.469Z"
-    },
-    {
-      "id": "enisa-news",
-      "provider": "ENISA (EU Cybersecurity Agency) a News",
-      "endpoint": "https://www.enisa.europa.eu/news",
-      "kind": "html",
-      "lane": "context",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-06T11:16:46.434Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-08T11:16:46.434Z",
-      "lastFailureAt": "2026-04-06T11:16:46.434Z",
-      "lastCheckedAt": "2026-04-06T11:16:46.434Z"
     },
     {
       "id": "enisa-rss-transition-page",
