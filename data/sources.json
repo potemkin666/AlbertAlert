@@ -1973,13 +1973,15 @@
     {
       "id": "homerton-healthcare-news",
       "provider": "Homerton Healthcare NHS Foundation Trust a News",
-      "endpoint": "https://www.homerton.nhs.uk/latest-news/",
+      "endpoint": "https://hospitaltimes.co.uk/",
       "kind": "html",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Homerton Healthcare news used for East London hospital and emergency-response context."
+      "comment": "Homerton Healthcare news used for East London hospital and emergency-response context.",
+      "quarantined": false,
+      "restoredAt": "2026-04-12T08:55:08.895Z"
     },
     {
       "id": "hounslow-council-news",
