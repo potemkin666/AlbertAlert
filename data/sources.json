@@ -411,14 +411,16 @@
     {
       "id": "german-bka-press",
       "provider": "German BKA - Press Releases",
-      "endpoint": "https://www.bka.de/EN/Press/Listings/PressReleases/pressReleases_node.html",
+      "endpoint": "https://www.kn-online.de/arc/outboundfeeds/rss/",
       "kind": "html",
       "lane": "incidents",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "German Federal Criminal Police Office press releases on terrorism investigations and arrests.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-13T17:22:07.804Z"
     },
     {
       "id": "german-bka-press-releases-de",
