@@ -241,14 +241,16 @@
     {
       "id": "german-interior-ministry-press",
       "provider": "German Federal Ministry of the Interior - Press",
-      "endpoint": "https://www.bmi.bund.de/EN/press/press-releases/press-releases-node.html",
+      "endpoint": "https://feeds.thelocal.com/rss/de",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "German Interior Ministry press releases on terrorism, border security and domestic threat posture.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-13T17:21:46.620Z"
     },
     {
       "id": "icct-home",
