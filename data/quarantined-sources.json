@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-13T20:45:45.274Z",
-  "count": 220,
+  "generatedAt": "2026-04-13T20:46:28.316Z",
+  "count": 219,
   "sources": [
     {
       "id": "german-bka-press",
@@ -3654,26 +3654,6 @@
       "quarantinedAt": "2026-04-06T12:11:54.469Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 4,
-      "consecutiveBlockedFailures": 4,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-15T14:11:58.193Z",
-      "lastFailureAt": "2026-04-13T14:11:58.193Z",
-      "lastCheckedAt": "2026-04-13T14:11:58.193Z"
-    },
-    {
-      "id": "london-fire-brigade-news",
-      "provider": "London Fire Brigade a News",
-      "endpoint": "https://www.london-fire.gov.uk/news/",
-      "kind": "html",
-      "lane": "context",
-      "region": "london",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-06T12:11:54.469Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 4,
       "consecutiveBlockedFailures": 4,
       "consecutiveDeadUrlFailures": 0,
