@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-13T20:42:13.114Z",
-  "count": 225,
+  "generatedAt": "2026-04-13T20:42:43.868Z",
+  "count": 224,
   "sources": [
     {
       "id": "german-bka-press",
@@ -2206,26 +2206,6 @@
       "id": "french-gendarmerie-news",
       "provider": "Gendarmerie Nationale - News",
       "endpoint": "https://www.gendarmerie.interieur.gouv.fr/gendarmerie/actualites",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "europe",
-      "status": "auto-quarantined",
-      "reason": "Repeated blocked-or-auth failures on html source",
-      "quarantinedAt": "2026-04-07T11:11:10.131Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 6,
-      "consecutiveBlockedFailures": 2,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-09T11:11:10.131Z",
-      "lastFailureAt": "2026-04-07T11:11:10.131Z",
-      "lastCheckedAt": "2026-04-07T11:11:10.131Z"
-    },
-    {
-      "id": "french-police-nationale-news",
-      "provider": "Police Nationale - News",
-      "endpoint": "https://www.police-nationale.interieur.gouv.fr/actualites",
       "kind": "html",
       "lane": "incidents",
       "region": "europe",
