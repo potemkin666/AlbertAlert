@@ -1128,14 +1128,16 @@
     {
       "id": "paris-police-prefecture-news",
       "provider": "Prefecture de Police de Paris - News",
-      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/actualites",
+      "endpoint": "https://www.france24.com/en/rss",
       "kind": "html",
       "lane": "incidents",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Paris Police Prefecture news for capital-city operational incidents and public-order security context.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-13T17:24:58.073Z"
     },
     {
       "id": "portugal-pj-news",
