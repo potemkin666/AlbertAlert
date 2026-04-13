@@ -825,14 +825,16 @@
     {
       "id": "fra-rss",
       "provider": "EU Agency for Fundamental Rights - RSS",
-      "endpoint": "https://fra.europa.eu/rss",
+      "endpoint": "https://fra.europa.eu/en/news-and-events/news.rss.xml",
       "kind": "rss",
       "lane": "oversight",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Official FRA RSS feed for rights, justice and security-related updates.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-13T17:22:44.242Z"
     },
     {
       "id": "europol-eu-iru",
