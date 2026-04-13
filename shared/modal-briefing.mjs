@@ -9,9 +9,7 @@ export function createModalController(elements, deps) {
     modalSummary,
     modalSceneClock,
     sceneClockPanel,
-    modalAudit,
     modalCorroboration,
-    auditPanel,
     corroborationPanel,
     modalSeverity,
     modalStatus,
@@ -53,10 +51,8 @@ export function createModalController(elements, deps) {
     modalSummary.hidden = true;
     modalSceneClock.innerHTML = deps.renderSceneClock(alert);
     sceneClockPanel.hidden = false;
-    modalAudit.textContent = deps.buildAuditBlock(alert);
     const corroborationMarkup = deps.renderCorroboratingSources(alert);
     modalCorroboration.innerHTML = corroborationMarkup;
-    auditPanel.hidden = false;
     corroborationPanel.hidden = !corroborationMarkup;
     modalSeverity.textContent = deps.severityLabel(alert.severity);
     modalStatus.textContent = alert.status;
