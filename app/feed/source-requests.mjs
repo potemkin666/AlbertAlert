@@ -2,8 +2,8 @@ import { reportBackgroundError } from '../../shared/logger.mjs';
 
 const SOURCE_REQUEST_TIMEOUT_MS = 12_000;
 const SOURCE_REQUEST_WINDOW_MS = 5 * 60 * 1000;
-const SOURCE_REQUEST_MAX_PER_WINDOW = 3;
-const SOURCE_REQUEST_COOLDOWN_MS = 15_000;
+const SOURCE_REQUEST_MAX_PER_WINDOW = 30;
+const SOURCE_REQUEST_COOLDOWN_MS = 2_000;
 const SOURCE_REQUEST_BACKEND_BASE = 'https://brialertbackend.vercel.app';
 
 const sourceRequestRateState = {
@@ -56,7 +56,7 @@ function enforceClientRateLimit(nowMs = Date.now()) {
   }
 
   if (sourceRequestRateState.recentAttemptsMs.length >= SOURCE_REQUEST_MAX_PER_WINDOW) {
-    throw new Error('Too many source requests sent from this browser. Please try again in a few minutes.');
+    throw new Error('You have added a lot of sources in a short time. Please wait a couple of minutes and try again.');
   }
 
   sourceRequestRateState.lastAttemptAtMs = nowMs;
