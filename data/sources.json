@@ -839,14 +839,16 @@
     {
       "id": "europol-eu-iru",
       "provider": "Europol a EU Internet Referral Unit (EU IRU)",
-      "endpoint": "https://www.europol.europa.eu/about-europol/european-counter-terrorism-centre-ectc/eu-internet-referal-unit-eu-iru",
+      "endpoint": "https://www.europol.europa.eu/cms/api/rss/news",
       "kind": "html",
       "lane": "prevention",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
       "comment": "EU IRU page within the European Counter Terrorism Centre; monitors and counters terrorist online content.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-13T17:23:11.030Z"
     },
     {
       "id": "isd-global-publications",
