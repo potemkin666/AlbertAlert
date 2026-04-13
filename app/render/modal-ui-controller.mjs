@@ -13,7 +13,6 @@ export function createModalUiController(elements, options = {}) {
     modal: elements.modal,
     modalTitle: elements.modalTitle,
     modalMeta: elements.modalMeta,
-    modalAiSummary: elements.modalAiSummary,
     modalSummary: elements.modalSummary,
     modalSceneClock: elements.modalSceneClock,
     sceneClockPanel: elements.sceneClockPanel,

@@ -37,7 +37,6 @@ export function createElements() {
     modalBackdrop: document.getElementById('modal-backdrop'),
     modalTitle: document.getElementById('modal-title'),
     modalMeta: document.getElementById('modal-meta'),
-    modalAiSummary: document.getElementById('modal-ai-summary'),
     modalSummary: document.getElementById('modal-summary'),
     modalSceneClock: document.getElementById('modal-scene-clock'),
     modalConfidenceLadder: document.getElementById('modal-confidence-ladder'),

@@ -6,7 +6,6 @@ export function createModalController(elements, deps) {
     modal,
     modalTitle,
     modalMeta,
-    modalAiSummary,
     modalSummary,
     modalSceneClock,
     sceneClockPanel,
@@ -50,7 +49,6 @@ export function createModalController(elements, deps) {
     const briefing = deps.buildBriefing(alert, summaryText);
     modalTitle.textContent = alert.title;
     modalMeta.textContent = `${alert.location} | ${alert.time}`;
-    modalAiSummary.textContent = summaryText;
     modalSummary.textContent = '';
     modalSummary.hidden = true;
     modalSceneClock.innerHTML = deps.renderSceneClock(alert);
