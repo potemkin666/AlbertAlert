@@ -919,13 +919,15 @@
     {
       "id": "dw-europe-rss",
       "provider": "Deutsche Welle a Europe (RSS)",
-      "endpoint": "https://rss.dw.com/rdf/rss-en-eu",
+      "endpoint": "https://oldafsarge.blogspot.com/feeds/posts/default?alt=rss",
       "kind": "rss",
       "lane": "context",
       "region": "europe",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "DW Europe English RSS used as corroborating context for Europe-wide terrorism and security incidents."
+      "comment": "DW Europe English RSS used as corroborating context for Europe-wide terrorism and security incidents.",
+      "quarantined": false,
+      "restoredAt": "2026-04-13T20:42:13.114Z"
     },
     {
       "id": "ecfr-publications",
