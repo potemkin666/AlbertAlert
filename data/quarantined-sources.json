@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-13T20:40:27.275Z",
-  "count": 229,
+  "generatedAt": "2026-04-13T20:40:49.656Z",
+  "count": 228,
   "sources": [
     {
       "id": "german-bka-press",
@@ -435,26 +435,6 @@
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
       "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-15T12:56:06.769Z",
-      "lastFailureAt": "2026-04-13T12:56:06.769Z",
-      "lastCheckedAt": "2026-04-13T12:56:06.769Z"
-    },
-    {
-      "id": "paris-prefecture-police-rss-page",
-      "provider": "Paris Prefecture of Police - RSS",
-      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/presentation/les-directions-et-services/le-cabinet-du-prefet-de-police/service-de-la-communication/abonnez-vous-aux-flux-rss",
-      "kind": "html",
-      "lane": "context",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated failures (24) need manual review",
-      "quarantinedAt": "2026-04-13T12:56:06.769Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 24,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "replacementSuggestion": "",
