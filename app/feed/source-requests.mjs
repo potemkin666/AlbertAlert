@@ -4,6 +4,7 @@ const SOURCE_REQUEST_TIMEOUT_MS = 12_000;
 const SOURCE_REQUEST_WINDOW_MS = 5 * 60 * 1000;
 const SOURCE_REQUEST_MAX_PER_WINDOW = 3;
 const SOURCE_REQUEST_COOLDOWN_MS = 15_000;
+const SOURCE_REQUEST_BACKEND_BASE = 'https://brialertbackend.vercel.app';
 
 const sourceRequestRateState = {
   recentAttemptsMs: [],
@@ -12,6 +13,20 @@ const sourceRequestRateState = {
 
 function clean(value) {
   return String(value || '').trim();
+}
+
+function currentOriginBase() {
+  if (typeof window === 'undefined' || !window.location) return null;
+  const origin = window.location.origin.trim();
+  return origin.length > 0 ? origin : null;
+}
+
+function resolveApiUrls(apiUrl) {
+  const trimmed = clean(apiUrl);
+  if (!trimmed) return [];
+  if (/^https?:\/\//i.test(trimmed)) return [trimmed];
+  const bases = [SOURCE_REQUEST_BACKEND_BASE, currentOriginBase()].filter(Boolean);
+  return bases.map((base) => `${base}${trimmed}`);
 }
 
 function normaliseRequestUrl(value) {
@@ -80,12 +95,23 @@ function mergeRequests(currentRequests, incomingRequests) {
 }
 
 export async function syncSourceRequests(state, apiUrl, onAfterLoad) {
+  const apiUrls = resolveApiUrls(apiUrl);
   try {
-    const response = await fetch(`${apiUrl}?t=${Date.now()}`, { cache: 'no-store' });
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-    const payload = await response.json();
-    const requests = Array.isArray(payload?.requests) ? payload.requests : [];
-    state.sourceRequests = mergeRequests(state.sourceRequests, requests);
+    let lastError = null;
+    for (const url of apiUrls) {
+      try {
+        const response = await fetch(`${url}?t=${Date.now()}`, { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const payload = await response.json();
+        const requests = Array.isArray(payload?.requests) ? payload.requests : [];
+        state.sourceRequests = mergeRequests(state.sourceRequests, requests);
+        lastError = null;
+        break;
+      } catch (error) {
+        lastError = error;
+      }
+    }
+    if (lastError) throw lastError;
   } catch (error) {
     reportBackgroundError('source-requests', `syncSourceRequests failed for ${apiUrl}`, error, { apiUrl, operation: 'syncSourceRequests' });
     state.sourceRequests = sortNewestFirst(state.sourceRequests);
@@ -105,35 +131,43 @@ export async function submitSourceRequest(state, { apiUrl, url, regionHint }) {
   enforceClientRateLimit();
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), SOURCE_REQUEST_TIMEOUT_MS);
+  const apiUrls = resolveApiUrls(apiUrl);
+  let lastError = null;
+  for (const url of apiUrls) {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal: controller.signal,
+        body: JSON.stringify({ url: normalizedUrl, regionHint })
+      });
 
-  const response = await fetch(apiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    signal: controller.signal,
-    body: JSON.stringify({ url: normalizedUrl, regionHint })
-  }).catch((error) => {
-    if (error?.name === 'AbortError') {
-      throw new Error('Source request timed out. Please try again.');
+      const payload = await response.json().catch((error) => {
+        reportBackgroundError('source-requests', `submitSourceRequest response parsing failed for ${url}`, error, {
+          apiUrl: url,
+          operation: 'submitSourceRequest.parseResponse'
+        });
+        return {};
+      });
+      if (!response.ok) {
+        throw new Error(clean(payload?.detail) || `HTTP ${response.status}`);
+      }
+
+      const requests = Array.isArray(payload?.requests)
+        ? payload.requests
+        : (payload?.request ? [payload.request] : []);
+      state.sourceRequests = mergeRequests(state.sourceRequests, requests);
+      clearTimeout(timeout);
+      return payload;
+    } catch (error) {
+      if (error?.name === 'AbortError') {
+        lastError = new Error('Source request timed out. Please try again.');
+        break;
+      }
+      lastError = error;
     }
-    throw error;
-  }).finally(() => {
-    clearTimeout(timeout);
-  });
-
-  const payload = await response.json().catch((error) => {
-    reportBackgroundError('source-requests', `submitSourceRequest response parsing failed for ${apiUrl}`, error, {
-      apiUrl,
-      operation: 'submitSourceRequest.parseResponse'
-    });
-    return {};
-  });
-  if (!response.ok) {
-    throw new Error(clean(payload?.detail) || `HTTP ${response.status}`);
   }
 
-  const requests = Array.isArray(payload?.requests)
-    ? payload.requests
-    : (payload?.request ? [payload.request] : []);
-  state.sourceRequests = mergeRequests(state.sourceRequests, requests);
-  return payload;
+  clearTimeout(timeout);
+  throw lastError || new Error('Source request failed. Please try again.');
 }
