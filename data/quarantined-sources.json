@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-13T17:21:18.888Z",
-  "count": 222,
+  "generatedAt": "2026-04-13T17:21:46.620Z",
+  "count": 221,
   "sources": [
     {
       "id": "gov-uk-defence-intelligence",
@@ -156,26 +156,6 @@
       "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 23,
       "consecutiveBlockedFailures": 1,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-15T12:56:06.769Z",
-      "lastFailureAt": "2026-04-13T12:56:06.769Z",
-      "lastCheckedAt": "2026-04-13T12:56:06.769Z"
-    },
-    {
-      "id": "german-interior-ministry-press",
-      "provider": "German Federal Ministry of the Interior - Press",
-      "endpoint": "https://www.bmi.bund.de/EN/press/press-releases/press-releases-node.html",
-      "kind": "html",
-      "lane": "context",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated failures (25) need manual review",
-      "quarantinedAt": "2026-04-13T12:56:06.769Z",
-      "lastErrorCategory": "http-status-error",
-      "lastErrorMessage": "HTTP 400",
-      "consecutiveFailures": 25,
-      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "replacementSuggestion": "",
       "reviewBy": "2026-04-15T12:56:06.769Z",
