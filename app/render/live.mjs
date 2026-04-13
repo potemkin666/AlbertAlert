@@ -80,8 +80,9 @@ export function renderPriority({ state, elements, view, modalController }) {
     timeMeta ? `<span>${escapeHtml(timeMeta)}</span>` : ''
   ].filter(Boolean).join('');
   elements.priorityCard.classList.toggle('context-priority', !liveCandidate);
+  const eyebrow = liveCandidate ? `<div class="eyebrow">Live Terror Incident Trigger</div>` : '';
   elements.priorityCard.innerHTML = `
-    <div class="eyebrow">${liveCandidate ? 'Live Terror Incident Trigger' : 'Context Item'}</div>
+    ${eyebrow}
     <h2>${escapeHtml(alert.title)}</h2>
     <p class="muted">${escapeHtml(laneLabels[alert.lane])} | ${escapeHtml(alert.location)} | ${escapeHtml(alert.status)}</p>
     <p>${escapeHtml(alert.summary)}</p>
