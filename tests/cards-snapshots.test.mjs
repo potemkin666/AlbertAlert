@@ -43,7 +43,7 @@ function assertSnapshot(snapshotRelativePath, actual) {
     fs.mkdirSync(path.dirname(snapshotPath), { recursive: true });
     fs.writeFileSync(snapshotPath, normalisedActual, "utf8");
   }
-  const expected = fs.readFileSync(snapshotPath, "utf8");
+  const expected = fs.readFileSync(snapshotPath, "utf8").replace(/\r\n/g, "\n");
   assert.equal(normalisedActual, expected);
 }
 

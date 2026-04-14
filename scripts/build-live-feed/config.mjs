@@ -29,8 +29,16 @@ function envInt(name, fallback, minimum = 0) {
   return Number.isFinite(parsed) && parsed >= minimum ? parsed : fallback;
 }
 
+function envString(name) {
+  const raw = process.env[name];
+  if (raw == null) return '';
+  return String(raw).trim();
+}
+
 function envPath(name, fallbackPath) {
-  const raw = clean(process.env[name]);
+  // Paths should not use `clean()` because it inserts ". " into CamelCase strings
+  // (e.g. "OneDrive" -> "One. Drive"), which breaks valid Windows paths.
+  const raw = envString(name);
   if (!raw) return fallbackPath;
   return path.isAbsolute(raw) ? raw : path.join(repoRoot, raw);
 }

@@ -25,15 +25,13 @@
     {
       "id": "frontex-news-releases",
       "provider": "Frontex a News Releases",
-      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/feed",
+      "endpoint": "https://www.frontex.europa.eu/media-centre/news/news-release/",
       "kind": "html",
       "lane": "border",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "No RSS endpoint consistently published; using the News Release listing and relying on keyword filtering.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:47:26.742Z"
+      "comment": "No RSS endpoint consistently published; using the News Release listing and relying on keyword filtering."
     },
     {
       "id": "austria-interior-ministry-news",
@@ -71,54 +69,46 @@
     {
       "id": "belgium-crisis-centre-news",
       "provider": "Belgian National Crisis Centre - News",
-      "endpoint": "https://crisiscenter.be/en/newsroom",
+      "endpoint": "https://crisiscenter.be/en/news",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Belgian crisis centre updates for threat level, emergency posture and civil contingency context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:47:52.261Z"
+      "comment": "Belgian crisis centre updates for threat level, emergency posture and civil contingency context."
     },
     {
       "id": "denmark-pet-news",
       "provider": "Danish Security and Intelligence Service - News",
-      "endpoint": "https://pet.dk/en/news-list",
+      "endpoint": "https://pet.dk/nyheder",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "PET updates on Danish terrorism threats, extremism and national security alerts.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T10:56:01.803Z"
+      "comment": "PET updates on Danish terrorism threats, extremism and national security alerts."
     },
     {
       "id": "ecfr-feeds-index",
       "provider": "ECFR - Feeds",
-      "endpoint": "https://ecfr.eu/feed/",
+      "endpoint": "https://ecfr.eu/feeds/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "ECFR feed index page for European foreign-policy and security research feed discovery.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T10:56:41.305Z"
+      "comment": "ECFR feed index page for European foreign-policy and security research feed discovery."
     },
     {
       "id": "enisa-news",
       "provider": "ENISA (EU Cybersecurity Agency) a News",
-      "endpoint": "https://www.bing.com/search?q=eu+niche+news+terrorism&cvid=d88b596836e244b4abbb16e5b1417d60&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIGCAEQABhA0gEIMzM0MGowajSoAgiwAgE&FORM=ANAB01&PC=LCTS",
+      "endpoint": "https://www.enisa.europa.eu/news",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "ENISA news on EU cybersecurity threats, state-sponsored attacks and critical infrastructure security relevant to CT context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T11:00:39.174Z"
+      "comment": "ENISA news on EU cybersecurity threats, state-sponsored attacks and critical infrastructure security relevant to CT context."
     },
     {
       "id": "enisa-rss-transition-page",
@@ -220,15 +210,13 @@
     {
       "id": "german-bfv-news",
       "provider": "German BfV - News",
-      "endpoint": "https://www.dw.com/en/germany/s-1432",
+      "endpoint": "https://www.verfassungsschutz.de/EN/service/news/news_node.html",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "German domestic intelligence updates on extremism, terrorism and hostile-state activity.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T10:57:52.544Z"
+      "comment": "German domestic intelligence updates on extremism, terrorism and hostile-state activity."
     },
     {
       "id": "german-interior-ministry-press",
@@ -321,15 +309,13 @@
     {
       "id": "czech-police-news",
       "provider": "Police of the Czech Republic - News",
-      "endpoint": "https://english.radio.cz/news",
+      "endpoint": "https://www.policie.cz/clanek/news.aspx",
       "kind": "html",
       "lane": "incidents",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Czech Police updates for arrests, security incidents and public-order operations relevant to regional threat context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:50:52.579Z"
+      "comment": "Czech Police updates for arrests, security incidents and public-order operations relevant to regional threat context."
     },
     {
       "id": "dutch-police-rss-index",
@@ -356,15 +342,13 @@
     {
       "id": "finland-police-news",
       "provider": "Finnish Police - News",
-      "endpoint": "https://poliisi.fi/en/newsroom/-/asset_publisher/ZrUg5zQFOAqI/rss",
+      "endpoint": "https://poliisi.fi/en/news",
       "kind": "html",
       "lane": "incidents",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Finnish Police updates on major incidents, terror-related investigations and national policing operations.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T10:58:18.179Z"
+      "comment": "Finnish Police updates on major incidents, terror-related investigations and national policing operations."
     },
     {
       "id": "german-bka-press",
@@ -576,15 +560,13 @@
     {
       "id": "eu-council-rss-index",
       "provider": "Council of the EU - RSS Index",
-      "endpoint": "https://securitymattersmagazine.com/news",
+      "endpoint": "https://www.consilium.europa.eu/en/about-site/rss/",
       "kind": "html",
       "lane": "oversight",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Council of the EU RSS index page for official feed discovery and source maintenance.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:51:52.686Z"
+      "comment": "Council of the EU RSS index page for official feed discovery and source maintenance."
     },
     {
       "id": "eu-ct-coordinator",
@@ -794,15 +776,13 @@
     {
       "id": "eu-council-terrorism-sanctions",
       "provider": "Council of the EU - Sanctions Against Terrorism",
-      "endpoint": "https://www.newsnow.co.uk/h/World+News/War+and+Terrorism/Terrorism?search=UK",
+      "endpoint": "https://www.consilium.europa.eu/en/policies/sanctions-against-terrorism/",
       "kind": "html",
       "lane": "sanctions",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
-      "comment": "Council of the EU policy page for sanctions against terrorism and terrorist entities.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T11:04:06.727Z"
+      "comment": "Council of the EU policy page for sanctions against terrorism and terrorist entities."
     },
     {
       "id": "unhcr-europe-news",
@@ -939,15 +919,13 @@
     {
       "id": "politico-europe",
       "provider": "Politico Europe",
-      "endpoint": "https://www.politico.eu/latest/",
+      "endpoint": "https://www.politico.eu/",
       "kind": "html",
       "lane": "context",
       "region": "europe",
       "isTrustedOfficial": false,
       "requiresKeywordMatch": true,
-      "comment": "Politico Europe used as corroborating political-security context rather than live trigger input.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T11:04:30.257Z"
+      "comment": "Politico Europe used as corroborating political-security context rather than live trigger input."
     },
     {
       "id": "rte-ireland-news-rss",
@@ -1172,15 +1150,13 @@
     {
       "id": "nctv-nl-english-news",
       "provider": "NCTV Netherlands latest news (English)",
-      "endpoint": "https://english.nctv.nl/api/rss?query=%7B%22filters%22%3A%5B%7B%22field%22%3A%22content_type%22%2C%22values%22%3A%5B%22pro%3AnewsDocument%22%5D%2C%22type%22%3A%22all%22%7D%5D%2C%22resultSearchTerm%22%3A%22%22%7D",
+      "endpoint": "https://english.nctv.nl/latest/news",
       "kind": "html",
       "lane": "prevention",
       "region": "europe",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
-      "comment": "Latest news page of the Netherlands' National Coordinator for Security and Counterterrorism (NCTV), in English, listing news and press releases.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:53:02.544Z"
+      "comment": "Latest news page of the Netherlands' National Coordinator for Security and Counterterrorism (NCTV), in English, listing news and press releases."
     },
     {
       "id": "ocam-be-english",
@@ -1468,14 +1444,12 @@
     {
       "id": "nato-news-rss",
       "provider": "NATO a News (RSS)",
-      "endpoint": "https://www.nato.int/en/news-and-events/articles/news",
+      "endpoint": "https://www.nato.int/cps/en/natohq/rss/news.rss",
       "kind": "rss",
       "lane": "context",
       "region": "international",
       "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:53:42.867Z"
+      "requiresKeywordMatch": true
     },
     {
       "id": "occrp-news",
@@ -1725,9 +1699,7 @@
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Barking and Dagenham borough news used for East London incident corroboration and civic response.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:54:18.092Z"
+      "comment": "Barking and Dagenham borough news used for East London incident corroboration and civic response."
     },
     {
       "id": "barnet-council-news",
@@ -1985,15 +1957,13 @@
     {
       "id": "homerton-healthcare-news",
       "provider": "Homerton Healthcare NHS Foundation Trust a News",
-      "endpoint": "https://hospitaltimes.co.uk/",
+      "endpoint": "https://www.homerton.nhs.uk/latest-news/",
       "kind": "html",
       "lane": "context",
       "region": "london",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
-      "comment": "Homerton Healthcare news used for East London hospital and emergency-response context.",
-      "quarantined": false,
-      "restoredAt": "2026-04-12T08:55:08.895Z"
+      "comment": "Homerton Healthcare news used for East London hospital and emergency-response context."
     },
     {
       "id": "hounslow-council-news",
@@ -2379,17 +2349,6 @@
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Richmond borough news used for West London community-safety and local incident context."
-    },
-    {
-      "id": "royal-brompton-harefield-news",
-      "provider": "Royal Brompton and Harefield Hospitals a News",
-      "endpoint": "https://www.rbht.nhs.uk/news",
-      "kind": "html",
-      "lane": "context",
-      "region": "london",
-      "isTrustedOfficial": true,
-      "requiresKeywordMatch": true,
-      "comment": "Royal Brompton and Harefield updates used for London specialist-care and hospital response context."
     },
     {
       "id": "royal-free-london-news",
