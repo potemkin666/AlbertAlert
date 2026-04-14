@@ -1,8 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-13T23:32:41.855Z",
-  "totalSourceErrors": 78,
+  "generatedAt": "2026-04-14T00:26:31.523Z",
+  "totalSourceErrors": 79,
   "top20": [
+    {
+      "id": "belgium-crisis-centre-news",
+      "provider": "Belgian National Crisis Centre - News",
+      "endpoint": "https://crisiscenter.be/en/news",
+      "finalUrl": "",
+      "category": "not-found-404",
+      "statusKind": "",
+      "message": "HTTP 404",
+      "status": 404,
+      "rankScore": 5,
+      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
     {
       "id": "dni-press-releases",
       "provider": "Office of the Director of National Intelligence - Press Releases",
@@ -136,6 +153,23 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "rusi-terrorism-conflict",
+      "provider": "RUSI - Terrorism and Conflict",
+      "endpoint": "https://www.rusi.org/explore-our-research/topics/terrorism-and-conflict",
+      "finalUrl": "",
+      "category": "not-found-404",
+      "statusKind": "",
+      "message": "HTTP 404",
+      "status": 404,
+      "rankScore": 5,
+      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     },
@@ -308,40 +342,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "city-of-london-police-fraud-reporting",
-      "provider": "City of London Police - Fraud Reporting",
-      "endpoint": "https://www.cityoflondon.police.uk/ro/report/fo/v1/fraud/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "cnwl-news",
-      "provider": "Central and North West London NHS Foundation Trust a News",
-      "endpoint": "https://www.cnwl.nhs.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
