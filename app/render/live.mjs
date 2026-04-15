@@ -90,7 +90,7 @@ export function renderPriority({ state, elements, view, modalController }) {
   elements.priorityCard.onclick = () => modalController.openDetail(alert);
 }
 
-export function renderBriefingMode({ state, elements, view, modalController }) {
+export function renderBriefingMode({ state, elements, view, modalController: _modalController }) {
   if (!state.briefingMode) {
     elements.briefingModePanel.classList.add('hidden');
     return;

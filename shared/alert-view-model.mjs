@@ -104,6 +104,7 @@ function buildIncidentSummary(alert) {
   return alert.title;
 }
 
+// eslint-disable-next-line no-unused-vars -- Kept for future use: renders people referenced in high-confidence alerts.
 function extractPeopleInvolved(alert) {
   if (!Array.isArray(alert.peopleInvolved) || !alert.peopleInvolved.length) {
     return [];

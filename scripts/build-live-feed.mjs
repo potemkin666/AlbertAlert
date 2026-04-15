@@ -74,7 +74,6 @@ import {
   mapWithConcurrency,
   readExisting,
   readJsonFile,
-  mergeSourceCatalogs,
   normaliseSourcesPayload,
   normaliseSourceRequestsPayload,
   sleep,
@@ -161,7 +160,7 @@ function sourceFailureCooldownHours(source, errorCategory) {
   return SOURCE_FAILURE_COOLDOWN_HOURS;
 }
 
-function sourceMayAutoCooldown(source, previousEntry, buildDate) {
+function getAutoCooldownStatus(source, previousEntry, buildDate) {
   if (!previousEntry) return null;
   if (previousEntry.quarantined) {
     const quarantinedAtMs = parseIsoMs(previousEntry.quarantinedAt);
@@ -2139,7 +2138,7 @@ async function main() {
   });
   const scheduledSources = eligibleSources.filter((source) => {
     const priorEntry = sourceHealthEntry(previousHealth, source.id);
-    const autoCooldown = sourceMayAutoCooldown(source, priorEntry, buildDate);
+    const autoCooldown = getAutoCooldownStatus(source, priorEntry, buildDate);
     if (autoCooldown) {
       autoDeferredSources.push({
         id: source.id,
