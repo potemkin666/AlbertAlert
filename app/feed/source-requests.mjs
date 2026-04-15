@@ -45,9 +45,16 @@ function normaliseRequestUrl(value) {
 }
 
 function enforceClientRateLimit(nowMs = Date.now()) {
+  // Discard timestamps from the future (clock skew / backwards adjustment)
+  // and timestamps outside the rate-limit window in a single pass.
   sourceRequestRateState.recentAttemptsMs = sourceRequestRateState.recentAttemptsMs.filter(
-    (attemptMs) => nowMs - attemptMs < SOURCE_REQUEST_WINDOW_MS
+    (attemptMs) => attemptMs <= nowMs && nowMs - attemptMs < SOURCE_REQUEST_WINDOW_MS
   );
+
+  if (sourceRequestRateState.lastAttemptAtMs > nowMs) {
+    // Clock moved backward — reset cooldown so the user isn't locked out.
+    sourceRequestRateState.lastAttemptAtMs = 0;
+  }
 
   if (
     sourceRequestRateState.lastAttemptAtMs

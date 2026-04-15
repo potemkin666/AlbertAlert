@@ -163,7 +163,9 @@
             <h3>Analyst Notes</h3>
             <p class="panel-copy">Capture assessments, follow-up tasks, and things to chase next.</p>
             <form id="note-form" class="note-form">
+              <label for="note-title" class="sr-only">Note title</label>
               <input id="note-title" type="text" placeholder="Note title" required>
+              <label for="note-body" class="sr-only">Note body</label>
               <textarea id="note-body" placeholder="Add your assessment or follow-up task" required></textarea>
               <button class="primary-button" type="submit">Save Note</button>
             </form>
@@ -179,6 +181,7 @@
             <h3>Add Source</h3>
             <p class="panel-copy" id="source-request-hint">Brialert will validate the link and queue it for the next hourly run.</p>
             <form id="source-request-form" class="source-request-form">
+              <label for="source-request-url" class="sr-only">Source URL</label>
               <input id="source-request-url" type="url" placeholder="https://example.com/feed" inputmode="url" autocomplete="off" required>
               <button class="primary-button" id="source-request-submit" type="submit">Add source</button>
             </form>
