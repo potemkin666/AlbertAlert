@@ -53,7 +53,8 @@ import {
   MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
   sourceScheduleIntervalMinutes,
-  sourceScheduleOffsetMinutes
+  sourceScheduleOffsetMinutes,
+  computeDynamicItemLimit
 } from '../scripts/build-live-feed/config.mjs';
 import { renderHero, renderSupporting } from '../app/render/live.mjs';
 import { filteredMapView } from '../app/render/map.mjs';
@@ -1519,4 +1520,98 @@ test('reportBackgroundError invokes diagnostics hook when present', () => {
   assert.equal(calls[0].message, 'background task failed');
   assert.equal(calls[0].detail, 'boom');
   assert.deepEqual(calls[0].context, { step: 1 });
+});
+
+// ── computeDynamicItemLimit tests ────────────────────────────────────────────
+
+test('computeDynamicItemLimit returns base lane cap for general_media with no health', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'general_media', lane: 'incidents' });
+  // base 6 × 0.75 = 4.5 → rounds to 5
+  assert.equal(limit, 5);
+});
+
+test('computeDynamicItemLimit returns low limit for tabloid profile', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'tabloid', lane: 'incidents' });
+  // base 6 × 0.35 = 2.1 → rounds to 2
+  assert.equal(limit, 2);
+});
+
+test('computeDynamicItemLimit gives official_ct sources higher limits', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'official_ct', lane: 'incidents' });
+  // base 6 × 1.5 = 9
+  assert.equal(limit, 9);
+});
+
+test('computeDynamicItemLimit uses default lane when lane is unknown', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'major_media', lane: 'unknown_lane' });
+  // default base 3 × 1.0 = 3
+  assert.equal(limit, 3);
+});
+
+test('computeDynamicItemLimit boosts reliable sources with strong health history', () => {
+  const healthy = { successfulRuns: 50, failedRuns: 2, consecutiveFailures: 0 };
+  const limit = computeDynamicItemLimit({
+    reliabilityProfile: 'official_general',
+    lane: 'incidents',
+    sourceHealth: healthy
+  });
+  // base 6 × 1.25 (official_general) × healthFactor(50/52 ≈ 0.96 → 0.75 + 0.385 = 1.135) ≈ 8.5 → 9
+  assert.ok(limit >= 8, `expected at least 8, got ${limit}`);
+});
+
+test('computeDynamicItemLimit throttles sources with consecutive failures', () => {
+  const unhealthy = { successfulRuns: 5, failedRuns: 10, consecutiveFailures: 4 };
+  const limitUnhealthy = computeDynamicItemLimit({
+    reliabilityProfile: 'general_media',
+    lane: 'incidents',
+    sourceHealth: unhealthy
+  });
+  const limitNoHealth = computeDynamicItemLimit({
+    reliabilityProfile: 'general_media',
+    lane: 'incidents'
+  });
+  assert.ok(limitUnhealthy < limitNoHealth, `unhealthy ${limitUnhealthy} should be less than no-health ${limitNoHealth}`);
+});
+
+test('computeDynamicItemLimit boosts high-reliability sources during high density', () => {
+  const limitNormal = computeDynamicItemLimit({
+    reliabilityProfile: 'official_ct',
+    lane: 'incidents',
+    filteredCount: 3
+  });
+  const limitHighDensity = computeDynamicItemLimit({
+    reliabilityProfile: 'official_ct',
+    lane: 'incidents',
+    filteredCount: 25
+  });
+  assert.ok(limitHighDensity >= limitNormal, `high density ${limitHighDensity} should be >= normal ${limitNormal}`);
+});
+
+test('computeDynamicItemLimit throttles unreliable sources during high density', () => {
+  const limitNormal = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'incidents',
+    filteredCount: 1
+  });
+  const limitHighDensity = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'incidents',
+    filteredCount: 20
+  });
+  assert.ok(limitHighDensity <= limitNormal, `high density tabloid ${limitHighDensity} should be <= normal ${limitNormal}`);
+});
+
+test('computeDynamicItemLimit never returns less than 1', () => {
+  const limit = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'prevention',
+    sourceHealth: { successfulRuns: 0, failedRuns: 20, consecutiveFailures: 10 }
+  });
+  assert.ok(limit >= 1, `limit should be at least 1, got ${limit}`);
+});
+
+test('computeDynamicItemLimit returns sensible defaults with empty options', () => {
+  const limit = computeDynamicItemLimit();
+  assert.ok(limit >= 1, `limit should be at least 1, got ${limit}`);
+  assert.ok(limit <= 10, `limit should be reasonable, got ${limit}`);
 });

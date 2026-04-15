@@ -121,8 +121,8 @@ export const TARGET_SUCCESSFUL_SOURCES_PER_RUN = Math.max(
     ? Math.floor(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))
     : 60
 );
-export const SOURCE_ITEM_LIMITS = Object.freeze({
-  tabloid: 1,
+/** Base lane caps – used as the starting point before dynamic adjustments. */
+const BASE_LANE_LIMITS = Object.freeze({
   incidents: 6,
   context: 4,
   sanctions: 4,
@@ -131,6 +131,72 @@ export const SOURCE_ITEM_LIMITS = Object.freeze({
   prevention: 4,
   default: 3
 });
+
+/** Reliability-profile multipliers applied to the base lane cap. */
+const RELIABILITY_MULTIPLIERS = Object.freeze({
+  official_ct: 1.5,
+  official_general: 1.25,
+  official_context: 1.0,
+  major_media: 1.0,
+  specialist_research: 0.85,
+  general_media: 0.75,
+  tabloid: 0.35
+});
+
+/**
+ * Compute a per-source item limit dynamically based on the source's
+ * reliability profile, lane, health history, and current event density.
+ *
+ * @param {object} options
+ * @param {string} options.reliabilityProfile – from inferReliabilityProfile()
+ * @param {string} options.lane – source lane (incidents, context, etc.)
+ * @param {object|null} [options.sourceHealth] – health entry from previous run
+ * @param {number} [options.filteredCount] – items that passed content filters this run
+ * @returns {number} positive integer item limit (minimum 1)
+ */
+export function computeDynamicItemLimit({ reliabilityProfile, lane, sourceHealth, filteredCount } = {}) {
+  const baseCap = BASE_LANE_LIMITS[lane] || BASE_LANE_LIMITS.default;
+  const multiplier = RELIABILITY_MULTIPLIERS[reliabilityProfile] || RELIABILITY_MULTIPLIERS.general_media;
+
+  // --- health-based adjustment ---------------------------------------------------
+  // Sources with a strong track record get a small bonus; sources with recent
+  // failures are throttled down.
+  let healthFactor = 1.0;
+  if (sourceHealth && typeof sourceHealth === 'object') {
+    const successfulRuns = Number(sourceHealth.successfulRuns || 0);
+    const failedRuns = Number(sourceHealth.failedRuns || 0);
+    const totalRuns = successfulRuns + failedRuns;
+    if (totalRuns >= 3) {
+      const successRate = successfulRuns / totalRuns;
+      // successRate 1.0 → +15 %; successRate 0.5 → −10 %; successRate 0 → −25 %
+      healthFactor = 0.75 + successRate * 0.4; // range 0.75 – 1.15
+    }
+    const consecutiveFailures = Number(sourceHealth.consecutiveFailures || 0);
+    if (consecutiveFailures >= 3) {
+      healthFactor *= 0.8;
+    }
+  }
+
+  // --- event-density adjustment --------------------------------------------------
+  // When a source returns many filtered items (fast-moving event), allow slightly
+  // more through for high-reliability profiles; constrain noisy sources.
+  let densityFactor = 1.0;
+  const fc = Number(filteredCount);
+  if (Number.isFinite(fc) && fc > 0) {
+    const effectiveCap = Math.max(1, Math.round(baseCap * multiplier * healthFactor));
+    if (fc > effectiveCap * 2) {
+      // High density – boost reliable sources, throttle unreliable ones.
+      if (multiplier >= 1.0) {
+        densityFactor = 1.25;
+      } else if (multiplier < 0.75) {
+        densityFactor = 0.8;
+      }
+    }
+  }
+
+  const raw = baseCap * multiplier * healthFactor * densityFactor;
+  return Math.max(1, Math.round(raw));
+}
 export const MAX_STORED_ALERTS = 120;
 export const MAX_FAILING_SOURCES_TO_LOG = 10;
 export const EXPECTED_REFRESH_MINUTES = 30;
