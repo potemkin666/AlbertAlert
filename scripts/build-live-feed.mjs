@@ -261,7 +261,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.lastErrorCategory = stat?.lastErrorCategory || null;
     next.lastErrorMessage = stat?.lastErrorMessage || null;
     if (blockedNonContent && next.consecutiveBlockedFailures >= BLOCKED_NON_CONTENT_FAIL_THRESHOLD) {
-      next.cooldownUntil = new Date(Date.parse(generatedAt) + BLOCKED_NON_CONTENT_COOLDOWN_HOURS * 3600000).toISOString();
+      next.cooldownUntil = new Date(generatedAtMs + BLOCKED_NON_CONTENT_COOLDOWN_HOURS * 3600000).toISOString();
       next.autoSkipReason = 'blocked-cooldown';
       next.nextFetchAt = next.cooldownUntil;
       return next;
@@ -272,7 +272,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'HTTP 404 not found; needs manual source URL review';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = new Date(generatedAtMs + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
       return next;
     }
     if (!next.quarantined && source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
@@ -281,7 +281,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'Repeated blocked-or-auth failures on html source';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = new Date(generatedAtMs + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
       return next;
     }
     if (!next.quarantined && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
@@ -290,7 +290,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'Repeated dead-or-moved-url failures';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = new Date(generatedAtMs + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
       return next;
     }
     if (!next.quarantined && next.consecutiveFailures >= AUTO_QUARANTINE_FAILURE_THRESHOLD) {
@@ -299,12 +299,12 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = `Repeated failures (${next.consecutiveFailures}) need manual review`;
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = new Date(generatedAtMs + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
       return next;
     }
     if (next.consecutiveFailures >= AUTO_SKIP_FAILURE_THRESHOLD) {
       const cooldownHours = sourceFailureCooldownHours(source, stat?.lastErrorCategory || '');
-      next.cooldownUntil = new Date(Date.parse(generatedAt) + cooldownHours * 3600000).toISOString();
+      next.cooldownUntil = new Date(generatedAtMs + cooldownHours * 3600000).toISOString();
       next.autoSkipReason = 'failure-cooldown';
       next.nextFetchAt = next.cooldownUntil;
     }
@@ -320,7 +320,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   next.lastErrorMessage = null;
   next.lastEmptyAt = generatedAt;
   if (!source.isTrustedOfficial && source.lane !== 'incidents' && next.consecutiveEmptyRuns >= AUTO_SKIP_EMPTY_THRESHOLD) {
-    next.cooldownUntil = new Date(Date.parse(generatedAt) + SOURCE_EMPTY_COOLDOWN_HOURS * 3600000).toISOString();
+    next.cooldownUntil = new Date(generatedAtMs + SOURCE_EMPTY_COOLDOWN_HOURS * 3600000).toISOString();
     next.autoSkipReason = 'empty-cooldown';
     next.nextFetchAt = next.cooldownUntil;
   }
