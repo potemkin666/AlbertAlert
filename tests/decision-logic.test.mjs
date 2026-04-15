@@ -52,8 +52,8 @@ import {
   MAX_HTML_PREFETCH_ITEMS,
   MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
-  sourceRefreshEveryHours,
-  sourceRefreshOffset
+  sourceScheduleIntervalMinutes,
+  sourceScheduleOffsetMinutes
 } from '../scripts/build-live-feed/config.mjs';
 import { renderHero, renderSupporting } from '../app/render/live.mjs';
 import { filteredMapView } from '../app/render/map.mjs';
@@ -1134,33 +1134,32 @@ test('source refresh cadence keeps incidents every run and rotates lower-yield l
     kind: 'rss'
   };
   const baseHour = new Date('2026-04-05T10:00:00.000Z');
-  const cadence = sourceRefreshEveryHours(oversightSource);
-  const offset = sourceRefreshOffset(oversightSource);
-  const baseHourSlot = Math.floor(baseHour.getTime() / 3600000);
-  const deltaToRefresh = (offset - (baseHourSlot % cadence) + cadence) % cadence;
-  const refreshHour = new Date(baseHour.getTime() + deltaToRefresh * 3600000);
-  const nonRefreshHour = new Date(refreshHour.getTime() + 3600000);
+  const intervalMinutes = sourceScheduleIntervalMinutes(oversightSource);
+  const offsetMinutes = sourceScheduleOffsetMinutes(oversightSource, intervalMinutes);
+  const baseMinutes = Math.floor(baseHour.getTime() / 60000);
+  const deltaToRefresh = (offsetMinutes - (baseMinutes % intervalMinutes) + intervalMinutes) % intervalMinutes;
+  const refreshHour = new Date(baseHour.getTime() + deltaToRefresh * 60000);
+  const nonRefreshHour = new Date(refreshHour.getTime() + intervalMinutes * 60000);
 
   // Incidents should refresh every run (cadence <= 0.25 hours)
   assert.equal(shouldRefreshSourceThisRun(incidentsSource, baseHour), true);
   assert.equal(shouldRefreshSourceThisRun(incidentsSource, nonRefreshHour), true);
 
-  // Oversight RSS sources still use 1-hour cadence rotation
-  assert.equal(cadence, 1);
+  // Oversight RSS sources rotate on the scheduled interval
   assert.equal(shouldRefreshSourceThisRun(oversightSource, refreshHour), true);
 });
 
 test('html source run cap is increased for candidate scheduler mode', () => {
-  assert.equal(MAX_HTML_SOURCES_PER_RUN, 32);
+  assert.equal(MAX_HTML_SOURCES_PER_RUN, 40);
 });
 
 test('html source run cap keeps control scheduler budget at legacy value', () => {
-  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 24);
+  assert.equal(CONTROL_MAX_HTML_SOURCES_PER_RUN, 30);
 });
 
 test('default fetch/runtime tuning constants remain stable', () => {
   assert.equal(DEFAULT_TIMEOUT_MS, 12000);
-  assert.equal(DEFAULT_MAX_RETRIES, 3);
+  assert.equal(DEFAULT_MAX_RETRIES, 2);
   assert.equal(FEED_SOURCE_CONCURRENCY, 4);
   assert.equal(MAX_HTML_PREFETCH_ITEMS, 12);
   assert.equal(MAX_FEED_PREFETCH_ITEMS, 8);

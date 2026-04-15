@@ -13,13 +13,10 @@ export function createModalUiController(elements, options = {}) {
     modal: elements.modal,
     modalTitle: elements.modalTitle,
     modalMeta: elements.modalMeta,
-    modalAiSummary: elements.modalAiSummary,
     modalSummary: elements.modalSummary,
     modalSceneClock: elements.modalSceneClock,
     sceneClockPanel: elements.sceneClockPanel,
-    modalAudit: elements.modalAudit,
     modalCorroboration: elements.modalCorroboration,
-    auditPanel: elements.auditPanel,
     corroborationPanel: elements.corroborationPanel,
     modalSeverity: elements.modalSeverity,
     modalStatus: elements.modalStatus,
@@ -37,7 +34,6 @@ export function createModalUiController(elements, options = {}) {
     effectiveSummary,
     buildBriefing,
     renderSceneClock,
-    buildAuditBlock,
     renderCorroboratingSources,
     severityLabel
   });

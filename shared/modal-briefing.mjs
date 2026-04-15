@@ -6,13 +6,10 @@ export function createModalController(elements, deps) {
     modal,
     modalTitle,
     modalMeta,
-    modalAiSummary,
     modalSummary,
     modalSceneClock,
     sceneClockPanel,
-    modalAudit,
     modalCorroboration,
-    auditPanel,
     corroborationPanel,
     modalSeverity,
     modalStatus,
@@ -50,15 +47,12 @@ export function createModalController(elements, deps) {
     const briefing = deps.buildBriefing(alert, summaryText);
     modalTitle.textContent = alert.title;
     modalMeta.textContent = `${alert.location} | ${alert.time}`;
-    modalAiSummary.textContent = summaryText;
     modalSummary.textContent = '';
     modalSummary.hidden = true;
     modalSceneClock.innerHTML = deps.renderSceneClock(alert);
     sceneClockPanel.hidden = false;
-    modalAudit.textContent = deps.buildAuditBlock(alert);
     const corroborationMarkup = deps.renderCorroboratingSources(alert);
     modalCorroboration.innerHTML = corroborationMarkup;
-    auditPanel.hidden = false;
     corroborationPanel.hidden = !corroborationMarkup;
     modalSeverity.textContent = deps.severityLabel(alert.severity);
     modalStatus.textContent = alert.status;

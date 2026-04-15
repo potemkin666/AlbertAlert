@@ -13,6 +13,7 @@ export const quarantinedSourcesPath = path.join(repoRoot, 'data', 'quarantined-s
 export const quarantinedSourcesReviewPath = path.join(repoRoot, 'source-quarantine.html');
 export const topSourceRemediationPath = path.join(repoRoot, 'data', 'top-20-source-remediation.json');
 export const sourceRemediationSweepPath = path.join(repoRoot, 'data', 'source-remediation-sweep.json');
+export const restoreAuditPath = path.join(repoRoot, 'data', 'restore-audit.json');
 
 export const parser = new XMLParser({
   ignoreAttributes: false,
@@ -47,7 +48,7 @@ export const sourcePath = envPath('BRIALERT_SOURCE_PATH', path.join(repoRoot, 'd
 export const sourceRequestsPath = envPath('BRIALERT_SOURCE_REQUESTS_PATH', path.join(repoRoot, 'data', 'source-requests.json'));
 
 export const DEFAULT_TIMEOUT_MS = envInt('BRIALERT_FETCH_TIMEOUT_MS', 12000, 1000);
-export const DEFAULT_MAX_RETRIES = envInt('BRIALERT_FETCH_MAX_RETRIES', 3, 1);
+export const DEFAULT_MAX_RETRIES = envInt('BRIALERT_FETCH_MAX_RETRIES', 2, 1);
 export const DEFAULT_FETCH_STAGGER_MS = envInt('BRIALERT_FETCH_STAGGER_MS', 60, 0);
 export const MAX_FETCH_STAGGER_JITTER_MS = envInt('BRIALERT_FETCH_STAGGER_JITTER_MS', 90, 0);
 export const BACKOFF_CAP_MS = envInt('BRIALERT_FETCH_BACKOFF_CAP_MS', 16000, 1000);
@@ -59,8 +60,8 @@ export const MAX_FEED_CANDIDATES_PER_SOURCE = 10;
 export const MAX_HTML_PARSING_THRESHOLD = MAX_HTML_CANDIDATES_PER_SOURCE * 2;
 export const MAX_HTML_PREFETCH_ITEMS = envInt('BRIALERT_MAX_HTML_PREFETCH_ITEMS', 12, 1);
 export const MAX_FEED_PREFETCH_ITEMS = envInt('BRIALERT_MAX_FEED_PREFETCH_ITEMS', 8, 1);
-export const MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_MAX_HTML_SOURCES_PER_RUN', 32, 1);
-export const CONTROL_MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_CONTROL_MAX_HTML_SOURCES_PER_RUN', 24, 1);
+export const MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_MAX_HTML_SOURCES_PER_RUN', 40, 1);
+export const CONTROL_MAX_HTML_SOURCES_PER_RUN = envInt('BRIALERT_CONTROL_MAX_HTML_SOURCES_PER_RUN', 30, 1);
 export const HTML_DOMAIN_CAP_PER_RUN = 3;
 export const SCHEDULER_MODE = clean(process.env.BRIALERT_SCHEDULER_AB_MODE || 'candidate').toLowerCase() === 'control'
   ? 'control'
@@ -73,13 +74,20 @@ export const PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS = new Set([
     .map((value) => clean(value))
     .filter(Boolean)
 ]);
+export const PLAYWRIGHT_FALLBACK_DOMAINS = new Set(
+  clean(process.env.BRIALERT_PLAYWRIGHT_DOMAINS || '')
+    .split(',')
+    .map((value) => clean(value).toLowerCase())
+    .filter(Boolean)
+);
+export const PLAYWRIGHT_SUSPECT_MIN_HTML_CHARS = envInt('BRIALERT_PLAYWRIGHT_MIN_HTML_CHARS', 1200, 200);
 export const PLAYWRIGHT_FALLBACK_MAX_ATTEMPTS_PER_RUN = Math.max(
   0,
   Number.isFinite(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
     ? Math.floor(Number(process.env.BRIALERT_PLAYWRIGHT_MAX_ATTEMPTS_PER_RUN))
-    : 2
+    : 4
 );
-export const PLAYWRIGHT_FALLBACK_AGGRESSIVE = clean(process.env.BRIALERT_PLAYWRIGHT_AGGRESSIVE).toLowerCase() === 'true';
+export const PLAYWRIGHT_FALLBACK_AGGRESSIVE = clean(process.env.BRIALERT_PLAYWRIGHT_AGGRESSIVE || 'true').toLowerCase() === 'true';
 export const PLAYWRIGHT_FALLBACK_TIMEOUT_MS = Math.max(
   5000,
   Number.isFinite(Number(process.env.BRIALERT_PLAYWRIGHT_TIMEOUT_MS))
@@ -111,7 +119,7 @@ export const TARGET_SUCCESSFUL_SOURCES_PER_RUN = Math.max(
   1,
   Number.isFinite(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))
     ? Math.floor(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))
-    : 30
+    : 60
 );
 export const SOURCE_ITEM_LIMITS = Object.freeze({
   tabloid: 1,
@@ -125,8 +133,8 @@ export const SOURCE_ITEM_LIMITS = Object.freeze({
 });
 export const MAX_STORED_ALERTS = 120;
 export const MAX_FAILING_SOURCES_TO_LOG = 10;
-export const EXPECTED_REFRESH_MINUTES = 15;
-export const STALE_AFTER_MINUTES = 25;
+export const EXPECTED_REFRESH_MINUTES = 30;
+export const STALE_AFTER_MINUTES = 50;
 export const SOURCE_TIMEZONE = 'Europe/London';
 export const RETRYABLE_STATUS_CODES = new Set([408, 425, 429, 500, 502, 503, 504]);
 export const FEED_BOT_USER_AGENT = 'Mozilla/5.0 (compatible; BrialertFeedBot/1.0; +https://potemkin666.github.io/Brialert/)';
@@ -145,15 +153,23 @@ export const DEFAULT_SOURCE_REFRESH_HOURS_BY_LANE = Object.freeze({
   prevention: 1,
   default: 1
 });
+export const SOURCE_REFRESH_TIER_WINDOWS_MINUTES = Object.freeze({
+  critical: [30, 60],
+  important: [120, 240],
+  background: [720, 1440]
+});
 export const SOURCE_FAILURE_COOLDOWN_HOURS = 24;
-export const SOURCE_EMPTY_COOLDOWN_HOURS = 24;
+export const SOURCE_EMPTY_COOLDOWN_HOURS = 12;
 export const SOURCE_PROTECTED_FAILURE_COOLDOWN_HOURS = 6;
 export const SOURCE_BLOCKED_FAILURE_COOLDOWN_HOURS = 12;
+export const BLOCKED_NON_CONTENT_FAIL_THRESHOLD = envInt('BRIALERT_BLOCKED_NON_CONTENT_FAIL_THRESHOLD', 3, 1);
+export const BLOCKED_NON_CONTENT_COOLDOWN_HOURS = envInt('BRIALERT_BLOCKED_NON_CONTENT_COOLDOWN_HOURS', 6, 1);
 export const AUTO_QUARANTINE_RECHECK_HOURS = 7 * 24;
-export const AUTO_SKIP_FAILURE_THRESHOLD = 4;
-export const AUTO_SKIP_EMPTY_THRESHOLD = 6;
+export const AUTO_SKIP_FAILURE_THRESHOLD = 6;
+export const AUTO_SKIP_EMPTY_THRESHOLD = 10;
 export const AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD = envInt('BRIALERT_AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD', 4, 1);
 export const AUTO_QUARANTINE_DEAD_URL_THRESHOLD = envInt('BRIALERT_AUTO_QUARANTINE_DEAD_URL_THRESHOLD', 2, 1);
+export const AUTO_QUARANTINE_FAILURE_THRESHOLD = envInt('BRIALERT_AUTO_QUARANTINE_FAILURE_THRESHOLD', 6, 1);
 export const FAIL_ON_GUARDRAIL_VIOLATION = clean(process.env.BRIALERT_FAIL_ON_GUARDRAIL_VIOLATION).toLowerCase() === 'true';
 export const OFFLINE_FIXTURE_MODE = clean(process.env.BRIALERT_OFFLINE_FIXTURE_MODE).toLowerCase() === 'true';
 export const offlineFixturesPath = envPath(
@@ -188,6 +204,80 @@ function deterministicSourceHash(value) {
 
 export function sourceDeterministicHash(value) {
   return deterministicSourceHash(value);
+}
+
+function parseIsoMs(value) {
+  const ms = new Date(value || '').getTime();
+  return Number.isFinite(ms) ? ms : 0;
+}
+
+function normaliseRefreshTier(value) {
+  const raw = clean(value).toLowerCase();
+  if (!raw) return '';
+  if (['critical', 'tier1', 'tier-1', 'high', 'p0'].includes(raw)) return 'critical';
+  if (['important', 'tier2', 'tier-2', 'medium', 'p1'].includes(raw)) return 'important';
+  if (['background', 'tier3', 'tier-3', 'low', 'p2'].includes(raw)) return 'background';
+  return '';
+}
+
+export function sourceRefreshTier(source) {
+  const explicit = normaliseRefreshTier(source?.refreshTier);
+  if (explicit) return explicit;
+  if (source?.lane === 'incidents' || source?.isTrustedOfficial) return 'critical';
+  if (['context', 'sanctions', 'oversight', 'border', 'prevention'].includes(source?.lane)) return 'important';
+  return 'background';
+}
+
+export function sourceRefreshWindowMinutes(source) {
+  const tier = sourceRefreshTier(source);
+  const window = SOURCE_REFRESH_TIER_WINDOWS_MINUTES[tier] || SOURCE_REFRESH_TIER_WINDOWS_MINUTES.background;
+  return {
+    tier,
+    min: window[0],
+    max: window[1]
+  };
+}
+
+export function sourceScheduleIntervalMinutes(source) {
+  const explicitHours = Number(source?.refreshEveryHours);
+  if (Number.isFinite(explicitHours) && explicitHours >= 0.25) {
+    return Math.max(1, Math.round(explicitHours * 60));
+  }
+  const { min, max } = sourceRefreshWindowMinutes(source);
+  const sourceKey = source?.id || source?.endpoint || source?.provider || '';
+  const range = Math.max(1, Math.floor(max - min + 1));
+  const offset = sourceKey ? sourceDeterministicHash(sourceKey) % range : 0;
+  return Math.max(1, min + offset);
+}
+
+export function sourceScheduleOffsetMinutes(source, intervalMinutes) {
+  const normalizedInterval = Math.max(1, Math.floor(intervalMinutes || 1));
+  const explicitOffset = Number(source?.refreshOffset);
+  if (Number.isFinite(explicitOffset) && explicitOffset >= 0) {
+    return Math.floor((explicitOffset * 60) % normalizedInterval);
+  }
+  const sourceKey = source?.id || source?.endpoint || source?.provider || '';
+  const hashSeed = sourceKey ? `offset:${sourceKey}` : 'offset';
+  return sourceKey ? sourceDeterministicHash(hashSeed) % normalizedInterval : 0;
+}
+
+export function sourceScheduleNextFetchAt(source, buildDate = new Date(), previousEntry = null, preferExisting = true) {
+  const nowMs = buildDate.getTime();
+  const existingMs = parseIsoMs(previousEntry?.nextFetchAt);
+  if (preferExisting && existingMs && nowMs < existingMs) return new Date(existingMs).toISOString();
+  const intervalMinutes = sourceScheduleIntervalMinutes(source);
+  const offsetMinutes = sourceScheduleOffsetMinutes(source, intervalMinutes);
+  const nowMinutes = Math.floor(nowMs / 60000);
+  const remainder = ((nowMinutes % intervalMinutes) + intervalMinutes) % intervalMinutes;
+  const base = nowMinutes - remainder;
+  let nextMinutes = base + offsetMinutes;
+  if (nextMinutes <= nowMinutes) nextMinutes += intervalMinutes;
+  return new Date(nextMinutes * 60000).toISOString();
+}
+
+export function sourceScheduleNextFetchAfterRun(source, buildDate = new Date()) {
+  const intervalMinutes = sourceScheduleIntervalMinutes(source);
+  return new Date(buildDate.getTime() + intervalMinutes * 60000).toISOString();
 }
 
 export function sourceUserAgent(source) {
@@ -228,25 +318,15 @@ export function sourceRefreshOffset(source) {
   return baseOffset * scalingFactor;
 }
 
-export function shouldRefreshSourceThisRun(source, buildDate = new Date()) {
-  const cadence = sourceRefreshEveryHours(source);
-  const offset = sourceRefreshOffset(source);
-
-  // Sub-hour cadences: refresh every run (workflow runs every 15 minutes)
-  if (cadence <= 0.25) return true;
-
-  // For cadences up to 1 hour, use 15-minute slots
-  if (cadence <= 1) {
-    const slotMinutes = 15;
-    const currentSlot = Math.floor(buildDate.getTime() / (slotMinutes * 60_000));
-    const slotsPerCadence = Math.ceil(cadence * 60 / slotMinutes);
-    const offsetSlot = Math.floor(offset * 60 / slotMinutes) % slotsPerCadence;
-    return currentSlot % slotsPerCadence === offsetSlot;
+export function shouldRefreshSourceThisRun(source, buildDate = new Date(), previousEntry = null) {
+  const explicitHours = Number(source?.refreshEveryHours);
+  if (source?.lane === 'incidents' || (Number.isFinite(explicitHours) && explicitHours <= 0.25)) {
+    return true;
   }
-
-  // Multi-hour cadences: use hourly slots
-  const hourSlot = Math.floor(buildDate.getTime() / 3600000);
-  const cadenceHours = Math.floor(cadence);
-  const offsetHours = Math.floor(offset) % cadenceHours;
-  return hourSlot % cadenceHours === offsetHours;
+  const nextFetchAtMs = parseIsoMs(previousEntry?.nextFetchAt);
+  if (nextFetchAtMs) return buildDate.getTime() >= nextFetchAtMs;
+  const intervalMinutes = sourceScheduleIntervalMinutes(source);
+  const offsetMinutes = sourceScheduleOffsetMinutes(source, intervalMinutes);
+  const nowMinutes = Math.floor(buildDate.getTime() / 60000);
+  return intervalMinutes ? (nowMinutes % intervalMinutes) === offsetMinutes : true;
 }
