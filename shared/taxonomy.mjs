@@ -265,35 +265,41 @@ const TERROR_RELEVANCE_THRESHOLDS = {
 };
 
 /**
+ * Keyword-to-family classification rules for terror keyword diversity scoring.
+ * Each entry maps a substring pattern to a semantic family name.
+ * Checked via `includes()` on the lowercased keyword hit.
+ */
+const TERROR_FAMILY_RULES = [
+  { family: 'isis', patterns: ['isis', 'islamic state', 'etat islamique', 'islamischer staat', 'estado islamico', 'stato islamico', 'islamistisch'] },
+  { family: 'jihad', patterns: ['jihad', 'djiha', 'yihad'] },
+  { family: 'extremism', patterns: ['extrem', 'radica', 'radika'] },
+  { family: 'ira', patterns: ['ira', 'republican', 'paramilitary', 'loyalist'] },
+  { family: 'farright', patterns: ['neo-nazi', 'far-right', 'far right', 'rechtsextrem', 'linksextrem'] },
+  { family: 'proscribed', patterns: ['proscribed', 'propaganda', 'lone'] }
+];
+
+/** Set of exact-match keywords that belong to the 'terror' family. */
+const TERROR_FAMILY_EXACT = new Set([
+  'counter-terror', 'counter terrorism', 'antiterrorisme', 'antiterrorismo', 'terroranschlag'
+]);
+
+/**
  * Count distinct keyword root families among terror hits.
  * Groups variants like "terror/terrorism/terrorist" as a single family
  * so that a tabloid headline repeating "terror" five times scores as 1 distinct hit.
+ * @param {string[]} hits — matched terrorism keyword strings
+ * @returns {number} count of distinct semantic families
  */
 function distinctTerrorFamilies(hits) {
   const roots = new Set();
   for (const hit of hits) {
     const h = hit.toLowerCase();
-    if (h.startsWith('terror') || h === 'counter-terror' || h === 'counter terrorism' ||
-        h === 'antiterrorisme' || h === 'antiterrorismo' || h === 'terroranschlag') {
+    if (h.startsWith('terror') || TERROR_FAMILY_EXACT.has(h)) {
       roots.add('terror');
-    } else if (h.includes('extrem') || h.includes('radica') || h.includes('radika')) {
-      roots.add('extremism');
-    } else if (h.includes('jihad') || h.includes('djiha') || h.includes('yihad')) {
-      roots.add('jihad');
-    } else if (h.includes('isis') || h.includes('islamic state') || h.includes('etat islamique') ||
-               h.includes('islamischer staat') || h.includes('estado islamico') || h.includes('stato islamico') ||
-               h.includes('islamistisch')) {
-      roots.add('isis');
-    } else if (h.includes('ira') || h.includes('republican') || h.includes('paramilitary') || h.includes('loyalist')) {
-      roots.add('ira');
-    } else if (h.includes('neo-nazi') || h.includes('far-right') || h.includes('far right') ||
-               h.includes('rechtsextrem') || h.includes('linksextrem')) {
-      roots.add('farright');
-    } else if (h.includes('proscribed') || h.includes('propaganda') || h.includes('lone')) {
-      roots.add('proscribed');
-    } else {
-      roots.add(h);
+      continue;
     }
+    const rule = TERROR_FAMILY_RULES.find((r) => r.patterns.some((p) => h.includes(p)));
+    roots.add(rule ? rule.family : h);
   }
   return roots.size;
 }
