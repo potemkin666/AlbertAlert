@@ -34,11 +34,20 @@ import {
   inferIncidentTrack,
   isTerrorRelevantIncident,
   matchesKeywords,
-  terrorismKeywords
+  terrorismKeywords,
+  incidentKeywords,
+  majorMediaProviders,
+  tabloidProviders,
+  englishFriendlyPatterns,
+  nonEnglishEndpointPatterns,
+  inferConfidenceScore,
+  sourceLooksEnglish
 } from '../shared/taxonomy.mjs';
 import {
   fusedIncidentIdFor,
-  mergeCorroboratingSources
+  mergeCorroboratingSources,
+  stableFusionTerms,
+  sameStoryKey
 } from '../shared/fusion.mjs';
 import { buildHealthBlock } from '../scripts/build-live-feed.mjs';
 import { normaliseSourcesPayload } from '../scripts/build-live-feed/io.mjs';
@@ -53,7 +62,8 @@ import {
   MAX_HTML_SOURCES_PER_RUN,
   shouldRefreshSourceThisRun,
   sourceScheduleIntervalMinutes,
-  sourceScheduleOffsetMinutes
+  sourceScheduleOffsetMinutes,
+  computeDynamicItemLimit
 } from '../scripts/build-live-feed/config.mjs';
 import { renderHero, renderSupporting } from '../app/render/live.mjs';
 import { filteredMapView } from '../app/render/map.mjs';
@@ -1519,4 +1529,344 @@ test('reportBackgroundError invokes diagnostics hook when present', () => {
   assert.equal(calls[0].message, 'background task failed');
   assert.equal(calls[0].detail, 'boom');
   assert.deepEqual(calls[0].context, { step: 1 });
+});
+
+// ── computeDynamicItemLimit tests ────────────────────────────────────────────
+
+test('computeDynamicItemLimit returns base lane cap for general_media with no health', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'general_media', lane: 'incidents' });
+  // base 6 × 0.75 = 4.5 → rounds to 5
+  assert.equal(limit, 5);
+});
+
+test('computeDynamicItemLimit returns low limit for tabloid profile', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'tabloid', lane: 'incidents' });
+  // base 6 × 0.35 = 2.1 → rounds to 2
+  assert.equal(limit, 2);
+});
+
+test('computeDynamicItemLimit gives official_ct sources higher limits', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'official_ct', lane: 'incidents' });
+  // base 6 × 1.5 = 9
+  assert.equal(limit, 9);
+});
+
+test('computeDynamicItemLimit uses default lane when lane is unknown', () => {
+  const limit = computeDynamicItemLimit({ reliabilityProfile: 'major_media', lane: 'unknown_lane' });
+  // default base 3 × 1.0 = 3
+  assert.equal(limit, 3);
+});
+
+test('computeDynamicItemLimit boosts reliable sources with strong health history', () => {
+  const healthy = { successfulRuns: 50, failedRuns: 2, consecutiveFailures: 0 };
+  const limit = computeDynamicItemLimit({
+    reliabilityProfile: 'official_general',
+    lane: 'incidents',
+    sourceHealth: healthy
+  });
+  // base 6 × 1.25 (official_general) × healthFactor(50/52 ≈ 0.96 → 0.75 + 0.385 = 1.135) ≈ 8.5 → 9
+  assert.ok(limit >= 8, `expected at least 8, got ${limit}`);
+});
+
+test('computeDynamicItemLimit throttles sources with consecutive failures', () => {
+  const unhealthy = { successfulRuns: 5, failedRuns: 10, consecutiveFailures: 4 };
+  const limitUnhealthy = computeDynamicItemLimit({
+    reliabilityProfile: 'general_media',
+    lane: 'incidents',
+    sourceHealth: unhealthy
+  });
+  const limitNoHealth = computeDynamicItemLimit({
+    reliabilityProfile: 'general_media',
+    lane: 'incidents'
+  });
+  assert.ok(limitUnhealthy < limitNoHealth, `unhealthy ${limitUnhealthy} should be less than no-health ${limitNoHealth}`);
+});
+
+test('computeDynamicItemLimit boosts high-reliability sources during high density', () => {
+  const limitNormal = computeDynamicItemLimit({
+    reliabilityProfile: 'official_ct',
+    lane: 'incidents',
+    filteredCount: 3
+  });
+  const limitHighDensity = computeDynamicItemLimit({
+    reliabilityProfile: 'official_ct',
+    lane: 'incidents',
+    filteredCount: 25
+  });
+  assert.ok(limitHighDensity >= limitNormal, `high density ${limitHighDensity} should be >= normal ${limitNormal}`);
+});
+
+test('computeDynamicItemLimit throttles unreliable sources during high density', () => {
+  const limitNormal = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'incidents',
+    filteredCount: 1
+  });
+  const limitHighDensity = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'incidents',
+    filteredCount: 20
+  });
+  assert.ok(limitHighDensity <= limitNormal, `high density tabloid ${limitHighDensity} should be <= normal ${limitNormal}`);
+});
+
+test('computeDynamicItemLimit never returns less than 1', () => {
+  const limit = computeDynamicItemLimit({
+    reliabilityProfile: 'tabloid',
+    lane: 'prevention',
+    sourceHealth: { successfulRuns: 0, failedRuns: 20, consecutiveFailures: 10 }
+  });
+  assert.ok(limit >= 1, `limit should be at least 1, got ${limit}`);
+});
+
+test('computeDynamicItemLimit returns sensible defaults with empty options', () => {
+  const limit = computeDynamicItemLimit();
+  assert.ok(limit >= 1, `limit should be at least 1, got ${limit}`);
+  assert.ok(limit <= 10, `limit should be reasonable, got ${limit}`);
+});
+
+// ── stableFusionTerms: diacritics / stemming / entity / multilingual tests ──
+
+test('fusion tokens strip diacritics so accented and plain text match', () => {
+  const accented = stableFusionTerms({
+    title: 'Attentat déjoué à Paris',
+    summary: 'Attentat déjoué à Paris par la police',
+    sourceExtract: 'Attentat déjoué à Paris'
+  });
+  const plain = stableFusionTerms({
+    title: 'Attentat dejoue a Paris',
+    summary: 'Attentat dejoue a Paris par la police',
+    sourceExtract: 'Attentat dejoue a Paris'
+  });
+  assert.deepEqual(accented, plain);
+});
+
+test('fusion tokens collapse "Islamic State" to a single canonical token', () => {
+  const tokens = stableFusionTerms({
+    title: 'Islamic State claims responsibility for London attack',
+    summary: 'Islamic State operatives planned the London attack',
+    sourceExtract: 'Islamic State fighters detained in London'
+  });
+  assert.ok(tokens.includes('islamic_state'), `expected 'islamic_state' in ${JSON.stringify(tokens)}`);
+});
+
+test('fusion tokens collapse "al-Qaeda" variants to the same canonical token', () => {
+  const tokensHyphen = stableFusionTerms({
+    title: 'al-Qaeda linked suspect arrested in Berlin',
+    summary: 'al-Qaeda linked suspect arrested in Berlin',
+    sourceExtract: 'al-Qaeda suspect detained in Berlin'
+  });
+  const tokensSpace = stableFusionTerms({
+    title: 'al Qaeda linked suspect arrested in Berlin',
+    summary: 'al Qaeda linked suspect arrested in Berlin',
+    sourceExtract: 'al Qaeda suspect detained in Berlin'
+  });
+  assert.ok(tokensHyphen.includes('alqaeda'), `expected 'alqaeda' in ${JSON.stringify(tokensHyphen)}`);
+  assert.ok(tokensSpace.includes('alqaeda'), `expected 'alqaeda' in ${JSON.stringify(tokensSpace)}`);
+});
+
+test('fusion tokens produce cross-language canonical terms for French CT vocabulary', () => {
+  const french = stableFusionTerms({
+    title: 'Attentat terroriste au Stade de France',
+    summary: 'Un attentat terroriste au Stade de France',
+    sourceExtract: 'Attentat terroriste au Stade de France par des extremistes',
+  });
+  // French "attentat" and "terroriste" should map to canonical CT tokens
+  assert.ok(french.includes('attack_ct'), `expected 'attack_ct' in ${JSON.stringify(french)}`);
+  assert.ok(french.includes('terrorist_ct'), `expected 'terrorist_ct' in ${JSON.stringify(french)}`);
+});
+
+test('fusion tokens handle German CT terms via aliases', () => {
+  const tokens = stableFusionTerms({
+    title: 'Anschlag in München vereitelt',
+    summary: 'Terroristen planten Anschlag in München',
+    sourceExtract: 'Anschlag in München vereitelt durch Polizei'
+  });
+  assert.ok(tokens.includes('attack_ct'), `expected 'attack_ct' in ${JSON.stringify(tokens)}`);
+  assert.ok(tokens.includes('munchen'), `expected 'munchen' in ${JSON.stringify(tokens)}`);
+});
+
+test('fusion tokens handle Spanish CT terms via aliases', () => {
+  const tokens = stableFusionTerms({
+    title: 'Atentado terrorista en Madrid',
+    summary: 'Terroristas planificaron atentado en Madrid',
+    sourceExtract: 'Atentado terrorista en el centro de Madrid'
+  });
+  assert.ok(tokens.includes('attack_ct'), `expected 'attack_ct' in ${JSON.stringify(tokens)}`);
+  assert.ok(tokens.includes('terrorist_ct'), `expected 'terrorist_ct' in ${JSON.stringify(tokens)}`);
+});
+
+test('sameStoryKey strips diacritics for stable dedup keys', () => {
+  const a = sameStoryKey({ title: 'Attaque à l\'aéroport de Bruxelles' });
+  const b = sameStoryKey({ title: 'Attaque a l\'aeroport de Bruxelles' });
+  assert.equal(a, b);
+});
+
+test('normaliseFusionToken handles additional English suffixes', () => {
+  const tokens = stableFusionTerms({
+    title: 'Radicalization of dangerous individuals',
+    summary: 'The radicalization and dangerousness of individuals',
+    sourceExtract: 'Radicalization programmes and dangerous activities'
+  });
+  assert.ok(tokens.includes('radicaliz_ct'), `expected 'radicaliz_ct' in ${JSON.stringify(tokens)}`);
+});
+
+// ── expanded classification and reliability heuristic tests ──
+
+test('terrorismKeywords include EU-language terrorism terms', () => {
+  // French
+  assert.ok(terrorismKeywords.includes('terrorisme'), 'should include French terrorisme');
+  assert.ok(terrorismKeywords.includes('djihadiste'), 'should include French djihadiste');
+  assert.ok(terrorismKeywords.includes('etat islamique'), 'should include French etat islamique');
+  // German
+  assert.ok(terrorismKeywords.includes('terrorismus'), 'should include German terrorismus');
+  assert.ok(terrorismKeywords.includes('rechtsextremismus'), 'should include German rechtsextremismus');
+  // Spanish
+  assert.ok(terrorismKeywords.includes('yihadista'), 'should include Spanish yihadista');
+  // Italian
+  assert.ok(terrorismKeywords.includes('radicalizzazione'), 'should include Italian radicalizzazione');
+});
+
+test('incidentKeywords include EU-language incident terms', () => {
+  assert.ok(incidentKeywords.includes('attentat'), 'should include French attentat');
+  assert.ok(incidentKeywords.includes('anschlag'), 'should include German anschlag');
+  assert.ok(incidentKeywords.includes('atentado'), 'should include Spanish atentado');
+  assert.ok(incidentKeywords.includes('attentato'), 'should include Italian attentato');
+  assert.ok(incidentKeywords.includes('sparatoria'), 'should include Italian sparatoria');
+});
+
+test('matchesKeywords detects French terrorism terms in text', () => {
+  const hits = matchesKeywords('un attentat terroriste a ete dejoue a paris', terrorismKeywords);
+  assert.ok(hits.includes('terroriste'), `expected 'terroriste' in ${JSON.stringify(hits)}`);
+});
+
+test('matchesKeywords detects German terrorism terms in text', () => {
+  const hits = matchesKeywords('terroranschlag in berlin vereitelt', terrorismKeywords);
+  assert.ok(hits.includes('terroranschlag'), `expected 'terroranschlag' in ${JSON.stringify(hits)}`);
+});
+
+test('majorMediaProviders includes European quality press', () => {
+  assert.ok(majorMediaProviders.has('Le Monde'), 'should include Le Monde');
+  assert.ok(majorMediaProviders.has('Der Spiegel'), 'should include Der Spiegel');
+  assert.ok(majorMediaProviders.has('El País'), 'should include El País');
+  assert.ok(majorMediaProviders.has('Corriere della Sera'), 'should include Corriere della Sera');
+  assert.ok(majorMediaProviders.has('AFP'), 'should include AFP');
+  assert.ok(majorMediaProviders.has('NRK'), 'should include NRK');
+});
+
+test('tabloidProviders includes European tabloids', () => {
+  assert.ok(tabloidProviders.has('Bild'), 'should include Bild');
+  assert.ok(tabloidProviders.has('Kronen Zeitung'), 'should include Kronen Zeitung');
+  assert.ok(tabloidProviders.has('Daily Express'), 'should include Daily Express');
+  assert.ok(tabloidProviders.has('Daily Mirror'), 'should include Daily Mirror');
+});
+
+test('englishFriendlyPatterns includes expanded EU English endpoints', () => {
+  assert.ok(englishFriendlyPatterns.includes('yle.fi/en'), 'should include yle.fi/en');
+  assert.ok(englishFriendlyPatterns.includes('balkaninsight.com'), 'should include balkaninsight.com');
+  assert.ok(englishFriendlyPatterns.includes('romania-insider.com'), 'should include romania-insider.com');
+  assert.ok(englishFriendlyPatterns.includes('thelocal.de'), 'should include thelocal.de');
+  assert.ok(englishFriendlyPatterns.includes('euractiv.com'), 'should include euractiv.com');
+});
+
+test('nonEnglishEndpointPatterns includes expanded EU-language outlets', () => {
+  // Portuguese
+  assert.ok(nonEnglishEndpointPatterns.includes('publico.pt'), 'should include publico.pt');
+  // Polish
+  assert.ok(nonEnglishEndpointPatterns.includes('tvn24.pl'), 'should include tvn24.pl');
+  // Romanian
+  assert.ok(nonEnglishEndpointPatterns.includes('digi24.ro'), 'should include digi24.ro');
+  // Hungarian
+  assert.ok(nonEnglishEndpointPatterns.includes('index.hu'), 'should include index.hu');
+  // Croatian
+  assert.ok(nonEnglishEndpointPatterns.includes('index.hr'), 'should include index.hr');
+});
+
+test('sourceLooksEnglish correctly identifies new EU endpoints', () => {
+  assert.equal(sourceLooksEnglish({ endpoint: 'https://yle.fi/en/news' }), true);
+  assert.equal(sourceLooksEnglish({ endpoint: 'https://publico.pt/politica' }), false);
+  assert.equal(sourceLooksEnglish({ endpoint: 'https://tvn24.pl/swiat' }), false);
+  assert.equal(sourceLooksEnglish({ endpoint: 'https://balkaninsight.com/articles' }), true);
+});
+
+test('isTerrorRelevantIncident rejects tabloid sensationalism with low keyword diversity', () => {
+  const metadata = {
+    lane: 'incidents',
+    provider: 'The Sun',
+    source: 'The Sun',
+    sourceTier: 'corroboration',
+    reliabilityProfile: 'tabloid',
+    isOfficial: false
+  };
+  // Uses only "terror" family repeatedly — low diversity, should be rejected
+  const sensationalItem = {
+    title: 'Stabbing near shopping centre',
+    summary: 'A terror-like stabbing happened. Police say no terrorism confirmed but terror fears remain.',
+    sourceExtract: 'Terror fears after a stabbing attack near a shopping centre. Suspects arrested.'
+  };
+  assert.equal(isTerrorRelevantIncident(metadata, sensationalItem), false,
+    'tabloid with only terror-family keywords should be rejected by diversity check');
+});
+
+test('isTerrorRelevantIncident accepts tabloid with diverse terror keywords', () => {
+  const metadata = {
+    lane: 'incidents',
+    provider: 'The Sun',
+    source: 'The Sun',
+    sourceTier: 'corroboration',
+    reliabilityProfile: 'tabloid',
+    isOfficial: false
+  };
+  const genuineItem = {
+    title: 'ISIS terror suspect arrested after bomb plot',
+    summary: 'An ISIS-linked terrorism suspect was arrested for planning a bomb plot in the city centre.',
+    sourceExtract: 'Counter-terror police arrested a jihad-linked suspect who was radicalised online and planned an attack.'
+  };
+  assert.equal(isTerrorRelevantIncident(metadata, genuineItem), true,
+    'tabloid with diverse terror keywords (isis+jihad+terror) should pass');
+});
+
+test('isTerrorRelevantIncident rejects tabloid when terror keywords only in body', () => {
+  const metadata = {
+    lane: 'incidents',
+    provider: 'Daily Mail',
+    source: 'Daily Mail',
+    sourceTier: 'corroboration',
+    reliabilityProfile: 'tabloid',
+    isOfficial: false
+  };
+  const item = {
+    title: 'Man arrested after knife attack in park',
+    summary: 'The isis terrorism suspect was radicalised before planning the knife attack.',
+    sourceExtract: 'Counter-terror officers investigated the knife attack.'
+  };
+  assert.equal(isTerrorRelevantIncident(metadata, item), false,
+    'tabloid with no terror keywords in title should be rejected by title-boost check');
+});
+
+test('inferConfidenceScore gives diversity bonus for multi-family terror hits', () => {
+  const base = inferConfidenceScore(
+    { lane: 'incidents' },
+    'a terrorism suspect was arrested',
+    new Date().toISOString(),
+    'major_media'
+  );
+  const diverse = inferConfidenceScore(
+    { lane: 'incidents' },
+    'an isis jihadist terrorism suspect was arrested after a bomb plot. the extremist was radicalised online.',
+    new Date().toISOString(),
+    'major_media'
+  );
+  assert.ok(diverse > base, `diverse score ${diverse} should exceed base score ${base}`);
+});
+
+test('inferConfidenceScore penalises tabloid sources with low keyword diversity', () => {
+  const tabloidScore = inferConfidenceScore(
+    { lane: 'incidents' },
+    'terror fears after a terror attack on the high street',
+    new Date().toISOString(),
+    'tabloid'
+  );
+  // Base tabloid is 0.48, with kw hits + single-family penalty should stay low
+  assert.ok(tabloidScore <= 0.52, `tabloid low-diversity score ${tabloidScore} should be ≤ 0.52`);
 });

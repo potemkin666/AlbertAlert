@@ -40,7 +40,7 @@ import {
   SOURCE_BLOCKED_FAILURE_COOLDOWN_HOURS,
   SOURCE_FAILURE_COOLDOWN_HOURS,
   TARGET_SUCCESSFUL_SOURCES_PER_RUN,
-  SOURCE_ITEM_LIMITS,
+  computeDynamicItemLimit,
   AUTO_QUARANTINE_FAILURE_THRESHOLD,
   isMachineReadableSourceKind,
   sourceDeterministicHash,
@@ -554,7 +554,7 @@ function shouldTryPlaywrightForThinHtml(source, body, playwrightBudget) {
     || PLAYWRIGHT_FALLBACK_AGGRESSIVE;
 }
 
-async function attemptSourceBuild(source, requestState, playwrightBudget) {
+async function attemptSourceBuild(source, requestState, playwrightBudget, priorHealthEntry) {
   const localErrors = [];
   const builtAlerts = [];
   let body;
@@ -627,9 +627,6 @@ async function attemptSourceBuild(source, requestState, playwrightBudget) {
   const preLimited = parsed.slice(0, preLimit);
   const hydrated = source.kind === 'html' ? await enrichHtmlItems(source, preLimited) : preLimited;
   const reliabilityProfile = inferReliabilityProfile(source, inferSourceTier(source));
-  const itemLimit = reliabilityProfile === 'tabloid'
-    ? SOURCE_ITEM_LIMITS.tabloid
-    : SOURCE_ITEM_LIMITS[source.lane] || SOURCE_ITEM_LIMITS.default;
   const filtered = hydrated.filter((item) => {
     try {
       return discardReasonForItem(source, item) === null;
@@ -637,6 +634,12 @@ async function attemptSourceBuild(source, requestState, playwrightBudget) {
       localErrors.push(summariseSourceError(source, error));
       return false;
     }
+  });
+  const itemLimit = computeDynamicItemLimit({
+    reliabilityProfile,
+    lane: source.lane,
+    sourceHealth: priorHealthEntry || null,
+    filteredCount: filtered.length
   });
   const kept = filtered.slice(0, itemLimit);
 
@@ -2265,9 +2268,6 @@ async function main() {
           const preLimited = parsed.slice(0, preLimit);
           const hydrated = source.kind === 'html' ? await enrichHtmlItems(source, preLimited) : preLimited;
           const reliabilityProfile = inferReliabilityProfile(source, inferSourceTier(source));
-          const itemLimit = reliabilityProfile === 'tabloid'
-            ? SOURCE_ITEM_LIMITS.tabloid
-            : SOURCE_ITEM_LIMITS[source.lane] || SOURCE_ITEM_LIMITS.default;
           const filtered = hydrated.filter((item) => {
             try {
               const discardReason = discardReasonForItem(source, item);
@@ -2280,6 +2280,12 @@ async function main() {
               console.error(`Source item filter failed: ${source.id} - ${error instanceof Error ? error.message : String(error)}`);
               return false;
             }
+          });
+          const itemLimit = computeDynamicItemLimit({
+            reliabilityProfile,
+            lane: source.lane,
+            sourceHealth: sourceHealthEntry(previousHealth, source.id),
+            filteredCount: filtered.length
           });
           const kept = filtered.slice(0, itemLimit);
           discardReasons.droppedByFilter += Math.max(0, hydrated.length - filtered.length);
@@ -2349,7 +2355,7 @@ async function main() {
             const fallbackSource = sourceById.get(fallbackId);
             if (!fallbackSource) continue;
             try {
-              const fallbackResult = await attemptSourceBuild(fallbackSource, requestState, playwrightBudget);
+              const fallbackResult = await attemptSourceBuild(fallbackSource, requestState, playwrightBudget, sourceHealthEntry(previousHealth, fallbackSource.id));
               if (!fallbackResult.alerts.length) continue;
               failureReasonCounts.success += 1;
               return {
