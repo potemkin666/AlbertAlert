@@ -292,14 +292,16 @@
     {
       "id": "spain-interior-ministry-news",
       "provider": "Spanish Ministry of the Interior - Press",
-      "endpoint": "https://www.interior.gob.es/opencms/en/prensa/",
+      "endpoint": "https://e00-elmundo.uecdn.es/rss/portada.xml",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Spanish Interior Ministry press releases covering terrorism arrests, border security and national policing operations.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-15T19:41:30.106Z"
     },
     {
       "id": "statewatch-news",
