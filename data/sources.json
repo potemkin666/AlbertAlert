@@ -125,14 +125,16 @@
     {
       "id": "enisa-rss-transition-page",
       "provider": "ENISA - RSS Feeds Transition Notice",
-      "endpoint": "https://www.enisa.europa.eu/rss-feeds-discontinued-new-subscription-mechanism-coming-soon",
+      "endpoint": "https://threatpost.com/feed/",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": false,
       "comment": "ENISA notice page documenting RSS feed changes and subscription transition.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-15T19:40:27.614Z"
     },
     {
       "id": "euiss-home",
