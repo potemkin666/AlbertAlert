@@ -34,7 +34,9 @@ function sendError(response, error) {
 }
 
 export default async function handler(request, response) {
-  applyCorsHeaders(request, response, 'POST,OPTIONS');
+  if (!applyCorsHeaders(request, response, 'POST,OPTIONS')) {
+    return response.status(403).json({ ok: false, error: 'origin-not-allowed', detail: 'Cross-origin request from disallowed origin.' });
+  }
   if (request.method === 'OPTIONS') {
     response.setHeader('Allow', 'POST,OPTIONS');
     return response.status(204).end();
@@ -60,6 +62,11 @@ export default async function handler(request, response) {
       });
     }
 
+    // Claim the slot before the async dispatch so concurrent requests see
+    // the lock immediately (avoids check-then-act race).
+    const previousTriggerTime = lastTriggerTime;
+    lastTriggerTime = now;
+
     const config = getRepoConfig();
 
     const dispatchUrl = `${GITHUB_API_BASE}/repos/${config.owner}/${config.repo}/actions/workflows/${WORKFLOW_FILENAME}/dispatches`;
@@ -79,25 +86,18 @@ export default async function handler(request, response) {
     });
 
     if (!dispatchResponse.ok) {
-      const errorText = await dispatchResponse.text().catch(() => '');
+      // Roll back so the next request can retry after a real failure.
+      lastTriggerTime = previousTriggerTime;
       let errorMessage = 'Failed to trigger workflow dispatch.';
-      try {
-        const errorPayload = JSON.parse(errorText);
-        errorMessage = errorPayload.message || errorMessage;
-      } catch {
-        // Use default error message
-      }
 
       if (dispatchResponse.status === 401 || dispatchResponse.status === 403) {
-        throw new ApiError('unauthorized', errorMessage, 503);
+        throw new ApiError('unauthorized', 'GitHub API authentication failed.', 503);
       }
       if (dispatchResponse.status === 404) {
-        throw new ApiError('workflow-not-found', `Workflow ${WORKFLOW_FILENAME} not found.`, 404);
+        throw new ApiError('workflow-not-found', 'Workflow not found.', 404);
       }
       throw new ApiError('trigger-failed', errorMessage, 500);
     }
-
-    lastTriggerTime = now;
 
     return response.status(200).json({
       ok: true,

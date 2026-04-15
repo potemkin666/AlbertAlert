@@ -1,17 +1,19 @@
 import { reportBackgroundError } from '../../shared/logger.mjs';
+import { DEFAULT_API_BASE } from '../../shared/api-base.mjs';
 
 const SOURCE_REQUEST_TIMEOUT_MS = 12_000;
 const SOURCE_REQUEST_WINDOW_MS = 5 * 60 * 1000;
 const SOURCE_REQUEST_MAX_PER_WINDOW = 30;
 const SOURCE_REQUEST_COOLDOWN_MS = 2_000;
-const SOURCE_REQUEST_BACKEND_BASE = 'https://brialertbackend.vercel.app';
+const SOURCE_REQUEST_BACKEND_BASE = DEFAULT_API_BASE;
 
 const sourceRequestRateState = {
   recentAttemptsMs: [],
   lastAttemptAtMs: 0
 };
 
-function clean(value) {
+/** Trim-only string coercion — intentionally simpler than taxonomy.clean() which also splits camelCase. */
+function trimString(value) {
   return String(value || '').trim();
 }
 
@@ -22,7 +24,7 @@ function currentOriginBase() {
 }
 
 function resolveApiUrls(apiUrl) {
-  const trimmed = clean(apiUrl);
+  const trimmed = trimString(apiUrl);
   if (!trimmed) return [];
   if (/^https?:\/\//i.test(trimmed)) return [trimmed];
   const bases = [SOURCE_REQUEST_BACKEND_BASE, currentOriginBase()].filter(Boolean);
@@ -32,7 +34,7 @@ function resolveApiUrls(apiUrl) {
 function normaliseRequestUrl(value) {
   let parsed;
   try {
-    parsed = new URL(clean(value));
+    parsed = new URL(trimString(value));
   } catch {
     throw new Error('Enter a valid http(s) source link.');
   }
@@ -44,9 +46,16 @@ function normaliseRequestUrl(value) {
 }
 
 function enforceClientRateLimit(nowMs = Date.now()) {
+  // Discard timestamps from the future (clock skew / backwards adjustment)
+  // and timestamps outside the rate-limit window in a single pass.
   sourceRequestRateState.recentAttemptsMs = sourceRequestRateState.recentAttemptsMs.filter(
-    (attemptMs) => nowMs - attemptMs < SOURCE_REQUEST_WINDOW_MS
+    (attemptMs) => attemptMs <= nowMs && nowMs - attemptMs < SOURCE_REQUEST_WINDOW_MS
   );
+
+  if (sourceRequestRateState.lastAttemptAtMs > nowMs) {
+    // Clock moved backward — reset cooldown so the user isn't locked out.
+    sourceRequestRateState.lastAttemptAtMs = 0;
+  }
 
   if (
     sourceRequestRateState.lastAttemptAtMs
@@ -65,11 +74,11 @@ function enforceClientRateLimit(nowMs = Date.now()) {
 
 function normalisedEndpointKey(endpoint) {
   try {
-    const url = new URL(clean(endpoint));
+    const url = new URL(trimString(endpoint));
     url.hash = '';
     return url.toString().replace(/\/$/, '');
   } catch {
-    return clean(endpoint).replace(/\/$/, '');
+    return trimString(endpoint).replace(/\/$/, '');
   }
 }
 
@@ -150,7 +159,7 @@ export async function submitSourceRequest(state, { apiUrl, url, regionHint }) {
         return {};
       });
       if (!response.ok) {
-        throw new Error(clean(payload?.detail) || `HTTP ${response.status}`);
+        throw new Error(trimString(payload?.detail) || `HTTP ${response.status}`);
       }
 
       const requests = Array.isArray(payload?.requests)

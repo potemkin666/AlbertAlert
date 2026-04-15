@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content, shrink-to-fit=no">
+  <!-- CSP connect-src must include the backend URL from shared/api-base.mjs -->
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com; style-src 'self' https://unpkg.com; img-src 'self' data: https://*.basemaps.cartocdn.com; connect-src 'self' https://brialertbackend.vercel.app; font-src 'self' https://unpkg.com data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <title>Brialert</title>
   <meta name="mobile-web-app-capable" content="yes">
@@ -163,7 +164,9 @@
             <h3>Analyst Notes</h3>
             <p class="panel-copy">Capture assessments, follow-up tasks, and things to chase next.</p>
             <form id="note-form" class="note-form">
+              <label for="note-title" class="sr-only">Note title</label>
               <input id="note-title" type="text" placeholder="Note title" required>
+              <label for="note-body" class="sr-only">Note body</label>
               <textarea id="note-body" placeholder="Add your assessment or follow-up task" required></textarea>
               <button class="primary-button" type="submit">Save Note</button>
             </form>
@@ -179,6 +182,7 @@
             <h3>Add Source</h3>
             <p class="panel-copy" id="source-request-hint">Brialert will validate the link and queue it for the next hourly run.</p>
             <form id="source-request-form" class="source-request-form">
+              <label for="source-request-url" class="sr-only">Source URL</label>
               <input id="source-request-url" type="url" placeholder="https://example.com/feed" inputmode="url" autocomplete="off" required>
               <button class="primary-button" id="source-request-submit" type="submit">Add source</button>
             </form>
@@ -261,7 +265,7 @@
     </div>
   </div>
 
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>

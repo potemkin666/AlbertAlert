@@ -376,6 +376,8 @@ export async function loadLiveFeed(state, options) {
     };
     console.error(`[feed] Fetch failed: ${liveFeedUrl}`, error);
   }
-  state.lastBrowserPollAt = new Date();
+  if (state.liveFeedFetchState === 'success') {
+    state.lastBrowserPollAt = new Date();
+  }
   if (typeof onAfterLoad === 'function') onAfterLoad();
 }

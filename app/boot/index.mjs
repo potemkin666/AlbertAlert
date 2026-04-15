@@ -14,7 +14,6 @@ import {
 import { MAP_VIEW_MODES } from '../../shared/ui-constants.mjs';
 import { createModalRuntime } from '../render/modal.mjs';
 import {
-  BRIEFING_MODE_STORAGE_KEY,
   GEO_LOOKUP_URL,
   MAP_INIT_FALLBACK_DELAY_MS,
   MAP_INIT_IDLE_TIMEOUT_MS,

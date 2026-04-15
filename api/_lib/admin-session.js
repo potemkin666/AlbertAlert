@@ -95,8 +95,12 @@ function verifySignedToken(rawToken) {
   const expectedSignature = signToken(encodedPayload);
   const expectedBuffer = Buffer.from(expectedSignature);
   const receivedBuffer = Buffer.from(encodedSignature);
-  if (expectedBuffer.length !== receivedBuffer.length) return null;
-  if (!crypto.timingSafeEqual(expectedBuffer, receivedBuffer)) return null;
+  const maxLen = Math.max(expectedBuffer.length, receivedBuffer.length);
+  const paddedExpected = Buffer.alloc(maxLen);
+  const paddedReceived = Buffer.alloc(maxLen);
+  expectedBuffer.copy(paddedExpected);
+  receivedBuffer.copy(paddedReceived);
+  if (!crypto.timingSafeEqual(paddedExpected, paddedReceived) || expectedBuffer.length !== receivedBuffer.length) return null;
   try {
     const payload = JSON.parse(base64UrlDecode(encodedPayload));
     if (!payload || typeof payload !== 'object') return null;
@@ -146,17 +150,15 @@ function serializeCookie(parts, value, maxAgeSeconds) {
 export function applyCorsHeaders(request, response, methods) {
   const requestOrigin = normaliseOrigin(request?.headers?.origin);
   const allowedOrigins = new Set(getAllowedOrigins());
-  if (requestOrigin && allowedOrigins.has(requestOrigin)) {
+  const originAllowed = !requestOrigin || allowedOrigins.has(requestOrigin);
+  if (requestOrigin && originAllowed) {
     response.setHeader('Access-Control-Allow-Origin', requestOrigin);
     response.setHeader('Access-Control-Allow-Credentials', 'true');
     response.setHeader('Vary', 'Origin');
   }
   response.setHeader('Access-Control-Allow-Methods', methods);
   response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  if (request?.method === 'OPTIONS') {
-    return !requestOrigin || allowedOrigins.has(requestOrigin);
-  }
-  return true;
+  return originAllowed;
 }
 
 export function readAdminSession(request) {

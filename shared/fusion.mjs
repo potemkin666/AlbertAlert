@@ -152,6 +152,7 @@ function normaliseFusionToken(token) {
   if (!value) return '';
   if (fusionTokenAliases.has(value)) return fusionTokenAliases.get(value);
   // English morphological stemming – applied in order of specificity
+  // Each guard ensures the result is at least 3 characters.
   if (value.endsWith('isation') && value.length > 9) return value.slice(0, -7);
   if (value.endsWith('ization') && value.length > 9) return value.slice(0, -7);
   if (value.endsWith('ement') && value.length > 7) return value.slice(0, -5);
@@ -161,12 +162,12 @@ function normaliseFusionToken(token) {
   if (value.endsWith('ous') && value.length > 5) return value.slice(0, -3);
   if (value.endsWith('ive') && value.length > 5) return value.slice(0, -3);
   if (value.endsWith('ful') && value.length > 5) return value.slice(0, -3);
-  if (value.endsWith('ing') && value.length > 6) return value.slice(0, -3);
+  if (value.endsWith('ing') && value.length > 5) return value.slice(0, -3);
   if (value.endsWith('ied') && value.length > 5) return value.slice(0, -3) + 'y';
-  if (value.endsWith('ed') && value.length > 5) return value.slice(0, -2);
+  if (value.endsWith('ed') && value.length > 4) return value.slice(0, -2);
   if (value.endsWith('ies') && value.length > 5) return value.slice(0, -3) + 'y';
-  if (value.endsWith('es') && value.length > 5 && !value.endsWith('ses')) return value.slice(0, -2);
-  if (value.endsWith('s') && value.length > 5 && !value.endsWith('is') && !value.endsWith('ss')) return value.slice(0, -1);
+  if (value.endsWith('es') && value.length > 4 && !value.endsWith('ses')) return value.slice(0, -2);
+  if (value.endsWith('s') && value.length > 4 && !value.endsWith('is') && !value.endsWith('ss')) return value.slice(0, -1);
   return value;
 }
 
