@@ -429,9 +429,10 @@ function selectHtmlSourcesForRun(rankedHtmlEntries, buildDate, maxSources) {
   }
 
   const rotateTier = (entries, weighted = false) => {
-    const sorted = [...entries].sort((left, right) => {
-      const leftSource = left?.source || {};
-      const rightSource = right?.source || {};
+    const withJitter = entries.map((entry) => ({ entry, jitter: Math.random() }));
+    const sorted = withJitter.sort((left, right) => {
+      const leftSource = left.entry?.source || {};
+      const rightSource = right.entry?.source || {};
       const leftWeight = weighted
         ? sourceDeterministicHash(`${leftSource.id || leftSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
         : 0;
@@ -439,11 +440,9 @@ function selectHtmlSourcesForRun(rankedHtmlEntries, buildDate, maxSources) {
         ? sourceDeterministicHash(`${rightSource.id || rightSource.endpoint}|${runSeed}`) % ROTATION_WEIGHT_BUCKETS
         : 0;
       if (rightWeight !== leftWeight) return rightWeight - leftWeight;
-      return left.index - right.index;
+      return left.jitter - right.jitter;
     });
-    if (!sorted.length) return [];
-    const offset = runSeed % sorted.length;
-    return [...sorted.slice(offset), ...sorted.slice(0, offset)];
+    return sorted.map((item) => item.entry);
   };
 
   const ordered = [
@@ -2116,11 +2115,12 @@ async function main() {
     .map((source, index) => ({
       source,
       index,
-      priority: sourceSchedulingPriority(source)
+      priority: sourceSchedulingPriority(source),
+      jitter: Math.random()
     }))
     .sort((left, right) => {
       if (right.priority !== left.priority) return right.priority - left.priority;
-      return left.index - right.index;
+      return left.jitter - right.jitter;
     });
   const machineReadableScheduled = rankedScheduledSources
     .filter((entry) => isMachineReadableSourceKind(entry.source?.kind))
@@ -2151,10 +2151,11 @@ async function main() {
     }
   }
   const continuationCandidates = [...continuationCandidatesById.values()]
+    .map((entry) => ({ ...entry, jitter: Math.random() }))
     .sort((left, right) => {
       const priorityDelta = sourceSchedulingPriority(right.source) - sourceSchedulingPriority(left.source);
       if (priorityDelta !== 0) return priorityDelta;
-      return left.index - right.index;
+      return left.jitter - right.jitter;
     })
     .map((entry) => entry.source);
 
