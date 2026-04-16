@@ -2475,7 +2475,7 @@ async function main() {
   const scheduledSourceIds = new Set([...machineReadableScheduled, ...htmlScheduled].map((source) => source.id));
   const scheduledSourcesInitial = [...machineReadableScheduled, ...htmlScheduled];
   const htmlDeferredForBudget = scheduledSources.filter((source) => source?.kind === 'html' && !scheduledSourceIds.has(source.id));
-  const defaultOversamplingFactor = 2;
+  const fallbackOversamplingFactor = 2;
   const htmlDeferredReasonById = new Map();
   for (const source of htmlDeferredForBudget) {
     htmlDeferredReasonById.set(source.id, htmlSelection.domainCappedSourceIds.has(source.id) ? 'domain-cap' : 'html-budget');
@@ -2813,7 +2813,7 @@ async function main() {
     const observedSuccess = midRunGuardrail.successRate();
     const continuationOversamplingFactor = observedSuccess > 0
       ? Math.min(10, 1 / Math.max(observedSuccess, CONTINUATION_MIN_OVERSAMPLE_RATE))
-      : defaultOversamplingFactor;
+      : fallbackOversamplingFactor;
 
     const remainingNeeded = TARGET_SUCCESSFUL_SOURCES_PER_RUN - successfulSourcesFound;
     // Oversample remaining candidates because many source attempts fail or return zero built alerts.
