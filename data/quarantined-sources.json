@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-16T19:01:30.233Z",
-  "count": 35,
+  "generatedAt": "2026-04-16T19:46:59.554Z",
+  "count": 33,
   "metrics": {
-    "total": 35,
-    "newThisWeek": 35,
-    "avgTimeInQuarantineHours": 2,
-    "avgHealthScore": 22,
+    "total": 33,
+    "newThisWeek": 33,
+    "avgTimeInQuarantineHours": 3,
+    "avgHealthScore": 20,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
@@ -1099,62 +1099,6 @@
       "reviewBy": "2026-04-23T16:57:11.406Z",
       "lastFailureAt": "2026-04-16T16:57:11.406Z",
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "counter-extremism-project-news",
-      "provider": "Counter Extremism Project a News",
-      "endpoint": "https://www.counterextremism.com/news",
-      "kind": "html",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 47,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T19:01:30.233Z"
-    },
-    {
-      "id": "rusi-terrorism-conflict",
-      "provider": "RUSI - Terrorism and Conflict",
-      "endpoint": "https://www.rusi.org/explore-our-research/topics/terrorism-and-conflict",
-      "kind": "html",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 47,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T19:01:30.233Z"
     }
   ]
 }
