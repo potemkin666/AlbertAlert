@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-16T16:57:11.406Z",
-  "count": 38,
+  "generatedAt": "2026-04-16T18:23:19.444Z",
+  "count": 35,
   "metrics": {
-    "total": 38,
-    "newThisWeek": 38,
-    "avgTimeInQuarantineHours": 0,
-    "avgHealthScore": 27,
+    "total": 35,
+    "newThisWeek": 35,
+    "avgTimeInQuarantineHours": 1,
+    "avgHealthScore": 22,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
@@ -210,6 +210,39 @@
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
     },
     {
+      "id": "rte-ireland-news-rss",
+      "provider": "RTE News - Ireland (RSS)",
+      "endpoint": "https://www.rte.ie/news/rss/news-ireland.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "europe",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-04-16T16:57:11.406Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 2,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T18:23:19.444Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T18:23:19.444Z",
+      "lastFailureAt": "2026-04-16T18:23:19.444Z",
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
+    },
+    {
       "id": "switzerland-fedpol-news",
       "provider": "Swiss fedpol - News",
       "endpoint": "https://www.fedpol.admin.ch/fedpol/en/home/fedpol/aktuell.html",
@@ -309,6 +342,39 @@
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
     },
     {
+      "id": "chatham-house-rss",
+      "provider": "Chatham House a Research & Commentary (RSS)",
+      "endpoint": "https://www.chathamhouse.org/publications.rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-04-16T16:57:11.406Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 2,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T18:23:19.444Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T18:23:19.444Z",
+      "lastFailureAt": "2026-04-16T18:23:19.444Z",
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
+    },
+    {
       "id": "nato-news-rss",
       "provider": "NATO a News (RSS)",
       "endpoint": "https://www.nato.int/cps/en/natohq/rss/news.rss",
@@ -340,6 +406,72 @@
       "reviewBy": "2026-04-23T16:57:11.406Z",
       "lastFailureAt": "2026-04-16T16:57:11.406Z",
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
+    },
+    {
+      "id": "occrp-news",
+      "provider": "OCCRP a Organized Crime and Corruption Reporting Project",
+      "endpoint": "https://www.occrp.org/en/announcements.rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-04-16T16:57:11.406Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 2,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T18:23:19.444Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T18:23:19.444Z",
+      "lastFailureAt": "2026-04-16T18:23:19.444Z",
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
+    },
+    {
+      "id": "rferl-security-news-rss",
+      "provider": "Radio Free Europe/Radio Liberty a Security (RSS)",
+      "endpoint": "https://www.rferl.org/api/ep_rss_all/iu/1",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-04-16T16:57:11.406Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 2,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T18:23:19.444Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T18:23:19.444Z",
+      "lastFailureAt": "2026-04-16T18:23:19.444Z",
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
     },
     {
       "id": "unodc-news",
@@ -804,6 +936,39 @@
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
     },
     {
+      "id": "daily-politics",
+      "provider": "Daily Politics",
+      "endpoint": "https://www.dailypolitics.com/feed.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-04-16T16:57:11.406Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 2,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-16T18:23:19.444Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T18:23:19.444Z",
+      "lastFailureAt": "2026-04-16T18:23:19.444Z",
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
+    },
+    {
       "id": "joint-committee-human-rights-html",
       "provider": "Joint Committee on Human Rights",
       "endpoint": "https://www.gov.uk/government/organisations/joint-committee-on-human-rights",
@@ -936,174 +1101,19 @@
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
     },
     {
-      "id": "belgium-crisis-centre-news",
-      "provider": "Belgian National Crisis Centre - News",
-      "endpoint": "https://crisiscenter.be/en/news",
-      "kind": "html",
-      "lane": "context",
-      "region": "eu",
-      "healthScore": 35,
-      "status": "auto-quarantined",
-      "reason": "Health score degraded to 35 after repeated failures",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 2,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T15:11:26.228Z"
-        },
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "german-bka-press",
-      "provider": "German BKA - Press Releases",
-      "endpoint": "https://www.bka.de/EN/Press/Listings/Press. Releases/press. Releases_node.html",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "eu",
-      "healthScore": 35,
-      "status": "auto-quarantined",
-      "reason": "Health score degraded to 35 after repeated failures",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 2,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-04-16T15:11:26.228Z"
-        },
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "policia-nacional-news",
-      "provider": "Policia Nacional - Press",
-      "endpoint": "https://www.policia.es/_en/comunicacion_prensa.php",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "eu",
-      "healthScore": 35,
-      "status": "auto-quarantined",
-      "reason": "Health score degraded to 35 after repeated failures",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 2,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T15:11:26.228Z"
-        },
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "rte-ireland-news-rss",
-      "provider": "RTE News - Ireland (RSS)",
-      "endpoint": "https://www.rte.ie/news/rss/news-ireland.xml",
-      "kind": "rss",
-      "lane": "context",
-      "region": "europe",
-      "healthScore": 50,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "chatham-house-rss",
-      "provider": "Chatham House a Research & Commentary (RSS)",
-      "endpoint": "https://www.chathamhouse.org/publications.rss",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 50,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
       "id": "counter-extremism-project-news",
       "provider": "Counter Extremism Project a News",
       "endpoint": "https://www.counterextremism.com/news",
       "kind": "html",
       "lane": "context",
       "region": "international",
-      "healthScore": 50,
+      "healthScore": 47,
       "status": "auto-quarantined",
       "reason": "Endpoint likely removed — all recent errors are HTTP 404",
       "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
@@ -1116,63 +1126,7 @@
       "replacementSuggestion": "",
       "reviewBy": "2026-04-23T16:57:11.406Z",
       "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "occrp-news",
-      "provider": "OCCRP a Organized Crime and Corruption Reporting Project",
-      "endpoint": "https://www.occrp.org/en/announcements.rss",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 50,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "rferl-security-news-rss",
-      "provider": "Radio Free Europe/Radio Liberty a Security (RSS)",
-      "endpoint": "https://www.rferl.org/api/ep_rss_all/iu/1",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 50,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
     },
     {
       "id": "rusi-terrorism-conflict",
@@ -1181,13 +1135,13 @@
       "kind": "html",
       "lane": "context",
       "region": "uk",
-      "healthScore": 50,
+      "healthScore": 47,
       "status": "auto-quarantined",
       "reason": "Endpoint likely removed — all recent errors are HTTP 404",
       "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
@@ -1200,35 +1154,7 @@
       "replacementSuggestion": "",
       "reviewBy": "2026-04-23T16:57:11.406Z",
       "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
-    },
-    {
-      "id": "daily-politics",
-      "provider": "Daily Politics",
-      "endpoint": "https://www.dailypolitics.com/feed.xml",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 50,
-      "status": "auto-quarantined",
-      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
-      "quarantinedAt": "2026-04-16T16:57:11.406Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 1,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-16T16:57:11.406Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T16:57:11.406Z",
-      "lastFailureAt": "2026-04-16T16:57:11.406Z",
-      "lastCheckedAt": "2026-04-16T16:57:11.406Z"
+      "lastCheckedAt": "2026-04-16T18:23:19.444Z"
     }
   ]
 }
