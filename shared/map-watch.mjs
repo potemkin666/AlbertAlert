@@ -71,7 +71,7 @@ function severityClass(alert) {
 
 function markerPopup(alert) {
   return `
-    <div class="map-preview-card">
+    <div class="map-preview-card" role="dialog" aria-label="${escapeHtml(alert.title)}">
       <strong>${escapeHtml(alert.title)}</strong>
       <p>${escapeHtml(alert.location || 'Unknown location')}</p>
       <div class="map-preview-meta">
@@ -233,8 +233,9 @@ function clusterPopup(entry) {
   const remaining = Math.max(0, items.length - topItems.length);
   const countryLabel = dominantCountryLabel(items);
   const statsUrl = countryLabel ? countryStatsUrl(countryLabel) : '';
+  const clusterLabel = `${items.length} alerts${countryLabel ? ` in ${countryLabel}` : ''}`;
   return `
-    <div class="map-preview-card map-cluster-card">
+    <div class="map-preview-card map-cluster-card" role="dialog" aria-label="${escapeHtml(clusterLabel)}">
       <span class="map-preview-eyebrow">${escapeHtml(items.length)} alerts${countryLabel ? ` • ${escapeHtml(countryLabel)}` : ''}</span>
       <div class="map-cluster-list">
         ${topItems.map((alert) => `
@@ -285,6 +286,38 @@ function alertPublishedAtMs(alert) {
 function isFreshAlert(alert, nowMs = Date.now()) {
   const publishedAtMs = alertPublishedAtMs(alert);
   return Number.isFinite(publishedAtMs) && (nowMs - publishedAtMs) >= 0 && (nowMs - publishedAtMs) <= FRESH_ALERT_WINDOW_MS;
+}
+
+const FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+function setupPopupAccessibility(popupElement, marker, map) {
+  if (!popupElement) return;
+  const focusableElements = popupElement.querySelectorAll(FOCUSABLE_SELECTOR);
+  const firstFocusable = focusableElements[0];
+  if (firstFocusable) firstFocusable.focus();
+
+  function handleKeyDown(event) {
+    if (event.key === 'Escape') {
+      event.stopPropagation();
+      map.closePopup();
+      return;
+    }
+    if (event.key === 'Tab' && focusableElements.length > 0) {
+      const lastFocusable = focusableElements[focusableElements.length - 1];
+      if (event.shiftKey && document.activeElement === firstFocusable) {
+        event.preventDefault();
+        lastFocusable.focus();
+      } else if (!event.shiftKey && document.activeElement === lastFocusable) {
+        event.preventDefault();
+        firstFocusable.focus();
+      }
+    }
+  }
+
+  popupElement.addEventListener('keydown', handleKeyDown);
+  marker.once('popupclose', () => {
+    popupElement.removeEventListener('keydown', handleKeyDown);
+  });
 }
 
 export function createMapController(config) {
@@ -469,6 +502,7 @@ export function createMapController(config) {
           const button = popupElement?.querySelector(`[data-open-detail="${alert.id}"]`);
           if (!button) return;
           button.addEventListener('click', () => openDetail(alert), { once: true });
+          setupPopupAccessibility(popupElement, marker, liveMap);
         });
         marker.addTo(liveMap);
         layers.push(marker);
@@ -500,6 +534,7 @@ export function createMapController(config) {
             });
           }, { once: true });
         }
+        setupPopupAccessibility(popupElement, clusterMarker, liveMap);
       });
       clusterMarker.addTo(liveMap);
       layers.push(clusterMarker);
@@ -564,3 +599,5 @@ export function createMapController(config) {
     resetView
   };
 }
+
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup };
