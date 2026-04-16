@@ -203,14 +203,16 @@
     {
       "id": "europol-newsroom-html",
       "provider": "Europol - Newsroom",
-      "endpoint": "https://www.europol.europa.eu/media-press/newsroom",
+      "endpoint": "https://www.europol.europa.eu/cms/api/rss/news",
       "kind": "html",
       "lane": "context",
       "region": "eu",
       "isTrustedOfficial": true,
       "requiresKeywordMatch": true,
       "comment": "Europol newsroom page variant for press releases, operational updates and EU policing statements.",
-      "refreshEveryHours": 1
+      "refreshEveryHours": 1,
+      "quarantined": false,
+      "restoredAt": "2026-04-16T07:44:54.026Z"
     },
     {
       "id": "finland-supo-news",
