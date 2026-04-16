@@ -161,7 +161,7 @@ function sourceFailureCooldownHours(source, errorCategory) {
 
 function quarantineRecheckAtIso(quarantinedAtIso) {
   const ms = typeof quarantinedAtIso === 'string' ? Date.parse(quarantinedAtIso) : parseIsoMs(quarantinedAtIso);
-  if (!Number.isFinite(ms)) return null;
+  if (!Number.isFinite(ms) || ms <= 0) return null;
   return new Date(ms + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
 }
 
