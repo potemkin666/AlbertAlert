@@ -115,6 +115,37 @@ export const GUARDRAIL_MIN_SUCCESSFUL_SOURCES = Math.max(
     ? Math.floor(Number(process.env.BRIALERT_GUARDRAIL_MIN_SUCCESSFUL_SOURCES))
     : 8
 );
+// ---------------------------------------------------------------------------
+// Mid-run adaptive guardrail thresholds
+// ---------------------------------------------------------------------------
+/** Fraction of GUARDRAIL_MAX_RUNTIME_MS at which we switch to fast-fail mode. */
+export const MIDRUN_RUNTIME_WARNING_RATIO = Math.max(
+  0.1,
+  Math.min(
+    0.99,
+    Number.isFinite(Number(process.env.BRIALERT_MIDRUN_RUNTIME_WARNING_RATIO))
+      ? Number(process.env.BRIALERT_MIDRUN_RUNTIME_WARNING_RATIO)
+      : 0.8
+  )
+);
+/** Fraction of GUARDRAIL_MAX_FAILED_SOURCE_RATE at which we start throttling. */
+export const MIDRUN_FAILURE_RATE_WARNING_RATIO = Math.max(
+  0.1,
+  Math.min(
+    0.99,
+    Number.isFinite(Number(process.env.BRIALERT_MIDRUN_FAILURE_RATE_WARNING_RATIO))
+      ? Number(process.env.BRIALERT_MIDRUN_FAILURE_RATE_WARNING_RATIO)
+      : 0.6
+  )
+);
+/**
+ * Minimum sources processed before the failure-rate warning can trigger.
+ * Avoids reacting to 1-of-2 failures at the very start of a run.
+ */
+export const MIDRUN_MIN_SOURCES_FOR_RATE_CHECK = envInt('BRIALERT_MIDRUN_MIN_SOURCES_FOR_RATE_CHECK', 6, 2);
+/** Per-source timeout used in fast-fail mode (ms). */
+export const MIDRUN_FAST_FAIL_TIMEOUT_MS = envInt('BRIALERT_MIDRUN_FAST_FAIL_TIMEOUT_MS', 5000, 1000);
+
 export const TARGET_SUCCESSFUL_SOURCES_PER_RUN = Math.max(
   1,
   Number.isFinite(Number(process.env.BRIALERT_TARGET_SUCCESSFUL_SOURCES_PER_RUN))

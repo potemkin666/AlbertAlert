@@ -274,7 +274,8 @@ export async function fetchText(url, attempt = 1, options = {}) {
   const source = options?.source || null;
   const configuredTimeoutMs = Number(source?.timeoutMs);
   const configuredMaxRetries = Number(source?.maxRetries);
-  const timeoutMs = configuredTimeoutMs > 0 ? configuredTimeoutMs : DEFAULT_TIMEOUT_MS;
+  const overrideTimeoutMs = Number(options?.timeoutOverrideMs);
+  const timeoutMs = overrideTimeoutMs > 0 ? overrideTimeoutMs : (configuredTimeoutMs > 0 ? configuredTimeoutMs : DEFAULT_TIMEOUT_MS);
   const maxAttempts = configuredMaxRetries > 0 ? configuredMaxRetries : DEFAULT_MAX_RETRIES;
   const endpoint = clean(url);
   const domain = endpointDomain(endpoint);
