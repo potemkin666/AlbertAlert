@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-16T18:23:19.444Z",
-  "totalSourceErrors": 196,
+  "generatedAt": "2026-04-16T19:01:30.233Z",
+  "totalSourceErrors": 202,
   "top20": [
     {
       "id": "chatham-house-rss",
@@ -293,6 +293,23 @@
       "isMachineReadable": false
     },
     {
+      "id": "us-house-homeland-security",
+      "provider": "US House Committee on Homeland Security - News",
+      "endpoint": "https://homeland.house.gov/news/",
+      "finalUrl": "https://homeland.house.gov/2024/05/18/newsletter-lessons-from-law-enforcement/",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://homeland.house.gov/2024/05/18/newsletter-lessons-from-law-enforcement/",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
       "id": "ap-top-news",
       "provider": "Associated Press a Top News",
       "endpoint": "https://apnews.com/index.rss",
@@ -310,38 +327,21 @@
       "isMachineReadable": true
     },
     {
-      "id": "barnet-council-news",
-      "provider": "Barnet Council a News",
-      "endpoint": "https://www.barnet.gov.uk/news",
+      "id": "barking-dagenham-council-news",
+      "provider": "Barking and Dagenham Council a News",
+      "endpoint": "https://www.lbbd.gov.uk/news",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
-    },
-    {
-      "id": "bdk-rss",
-      "provider": "Bund Deutscher Kriminalbeamter - RSS",
-      "endpoint": "https://www.bdk.de/rss",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
     }
   ]
 }
