@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-16T07:45:55.984Z",
-  "count": 232,
+  "generatedAt": "2026-04-16T07:46:22.853Z",
+  "count": 231,
   "sources": [
     {
       "id": "spain-interior-ministry-news",
@@ -96,26 +96,6 @@
       "lastErrorMessage": "HTTP 404",
       "consecutiveFailures": 1,
       "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-17T22:41:14.929Z",
-      "lastFailureAt": "2026-04-15T22:41:14.929Z",
-      "lastCheckedAt": "2026-04-15T22:41:14.929Z"
-    },
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://www.politiaromana.ro/en/news",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated failures (6) need manual review",
-      "quarantinedAt": "2026-04-15T22:41:14.929Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
-      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "replacementSuggestion": "",
       "reviewBy": "2026-04-17T22:41:14.929Z",
