@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-16T07:46:22.853Z",
-  "count": 231,
+  "generatedAt": "2026-04-16T07:46:48.694Z",
+  "count": 230,
   "sources": [
     {
       "id": "spain-interior-ministry-news",
@@ -221,26 +221,6 @@
       "reviewBy": "2026-04-17T08:53:22.872Z",
       "lastFailureAt": "2026-04-15T08:53:22.872Z",
       "lastCheckedAt": "2026-04-15T08:53:22.872Z"
-    },
-    {
-      "id": "dw-europe-rss",
-      "provider": "Deutsche Welle a Europe (RSS)",
-      "endpoint": "https://rss.dw.com/rdf/rss-en-eu",
-      "kind": "rss",
-      "lane": "context",
-      "region": "europe",
-      "status": "auto-quarantined",
-      "reason": "Repeated failures (6) need manual review",
-      "quarantinedAt": "2026-04-15T05:47:10.576Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 6,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-17T05:47:10.576Z",
-      "lastFailureAt": "2026-04-15T05:47:10.576Z",
-      "lastCheckedAt": "2026-04-15T05:47:10.576Z"
     },
     {
       "id": "ran-network",
