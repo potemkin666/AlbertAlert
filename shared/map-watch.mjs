@@ -473,6 +473,7 @@ export function createMapController(config) {
     if (!liveMap || items.length <= 1) return items.map((alert) => ({ type: 'single', alert }));
     const zoom = liveMap.getZoom();
     const threshold = clusterThreshold(zoom);
+    const maxRadius = threshold * 1.8;
     const clusters = [];
 
     items.forEach((alert) => {
@@ -480,7 +481,10 @@ export function createMapController(config) {
       const match = clusters.find((cluster) => {
         const dx = cluster.center.x - point.x;
         const dy = cluster.center.y - point.y;
-        return Math.hypot(dx, dy) <= threshold;
+        if (Math.hypot(dx, dy) > threshold) return false;
+        const sdx = cluster.seed.x - point.x;
+        const sdy = cluster.seed.y - point.y;
+        return Math.hypot(sdx, sdy) <= maxRadius;
       });
       if (match) {
         match.items.push(alert);
@@ -490,6 +494,7 @@ export function createMapController(config) {
       } else {
         clusters.push({
           center: { x: point.x, y: point.y },
+          seed: { x: point.x, y: point.y },
           items: [alert]
         });
       }
@@ -614,6 +619,8 @@ export function createMapController(config) {
 
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
+    const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
+    if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
     if (forceFit && mode === MAP_VIEW_MODES.london && !hasInitialLondonFrame) {
       hasInitialLondonFrame = true;
       liveMap.setView(LONDON_CENTER, INITIAL_LONDON_ZOOM);
@@ -628,7 +635,9 @@ export function createMapController(config) {
         return;
       }
     }
-    fitForMode(mode, points, state);
+    if (forceFit) {
+      fitForMode(mode, points, state);
+    }
     requestAnimationFrame(() => liveMap.invalidateSize());
   }
 
