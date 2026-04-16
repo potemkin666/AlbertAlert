@@ -322,7 +322,7 @@
       <span class="pill">Generated: 2026-04-16T07:19:33.208Z</span>
       <span class="pill">Quarantined sources: 236</span>
       <span class="pill suggest">Pending suggestions: 0</span>
-      <span class="pill">SLA: review within 48h</span>
+      <span class="pill">SLA: auto-recheck in 7 days</span>
     </div>
     <section class="audit" id="audit">
       <div class="audit-header">
@@ -353,7 +353,7 @@
             <th>Last Error</th>
             <th>Blocked Runs</th>
             <th>Dead/Moved Runs</th>
-          <th>SLA Review By</th>
+          <th>Auto-Recheck By</th>
           <th>Endpoint</th>
           <th>Action</th>
         </tr>
@@ -511,7 +511,7 @@
         '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '2026-04-16T07:19:33.208Z') + '</span>',
         '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
         '<span class="pill suggest">Pending suggestions: ' + escapeHtml(currentSuggestions.length) + '</span>',
-        '<span class="pill">SLA: review within 48h</span>',
+        '<span class="pill">SLA: auto-recheck in 7 days</span>',
         '<span class="pill' + (!restoreEnabled ? ' warn' : '') + '">' +
           modeLabel +
         '</span>'

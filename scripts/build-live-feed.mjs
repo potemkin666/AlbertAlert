@@ -159,11 +159,18 @@ function sourceFailureCooldownHours(source, errorCategory) {
   return SOURCE_FAILURE_COOLDOWN_HOURS;
 }
 
+function quarantineRecheckAtIso(quarantinedAtIso) {
+  const ms = typeof quarantinedAtIso === 'string' ? Date.parse(quarantinedAtIso) : parseIsoMs(quarantinedAtIso);
+  if (!Number.isFinite(ms)) return null;
+  return new Date(ms + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+}
+
 function sourceMayAutoCooldown(source, previousEntry, buildDate) {
   if (!previousEntry) return null;
   if (previousEntry.quarantined) {
     const quarantinedAtMs = parseIsoMs(previousEntry.quarantinedAt);
-    const quarantineRecheckAt = quarantinedAtMs + (AUTO_QUARANTINE_RECHECK_HOURS * 3600000);
+    const recheckIso = quarantineRecheckAtIso(previousEntry.quarantinedAt);
+    const quarantineRecheckAt = recheckIso ? Date.parse(recheckIso) : 0;
     if (quarantinedAtMs && buildDate.getTime() >= quarantineRecheckAt) {
       return null;
     }
@@ -277,7 +284,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'HTTP 404 not found; needs manual source URL review';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
       return next;
     }
     if (!next.quarantined && source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
@@ -286,7 +293,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'Repeated blocked-or-auth failures on html source';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
       return next;
     }
     if (!next.quarantined && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
@@ -295,7 +302,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = 'Repeated dead-or-moved-url failures';
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
       return next;
     }
     if (!next.quarantined && next.consecutiveFailures >= AUTO_QUARANTINE_FAILURE_THRESHOLD) {
@@ -304,7 +311,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
       next.quarantineReason = `Repeated failures (${next.consecutiveFailures}) need manual review`;
       next.autoSkipReason = 'review-quarantine';
       next.cooldownUntil = null;
-      next.nextFetchAt = new Date(Date.parse(generatedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
+      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
       return next;
     }
     if (next.consecutiveFailures >= AUTO_SKIP_FAILURE_THRESHOLD) {
@@ -527,7 +534,7 @@ function fallbackReplacementUrl(error) {
   return '';
 }
 
-function reviewByTimestamp(entry, hours = 48) {
+function reviewByTimestamp(entry, hours = AUTO_QUARANTINE_RECHECK_HOURS) {
   const base = clean(entry?.lastFailureAt || entry?.quarantinedAt);
   if (!base) return '';
   const baseMs = Date.parse(base);
@@ -707,7 +714,7 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
         consecutiveBlockedFailures: Number(health?.consecutiveBlockedFailures || 0),
         consecutiveDeadUrlFailures: Number(health?.consecutiveDeadUrlFailures || 0),
         replacementSuggestion: clean(source?.replacementEndpoint || source?.fallbackEndpoint || source?.canonicalEndpoint || ''),
-        reviewBy: reviewByTimestamp(health, 48),
+        reviewBy: reviewByTimestamp(health, AUTO_QUARANTINE_RECHECK_HOURS),
         lastFailureAt: clean(health?.lastFailureAt),
         lastCheckedAt: clean(health?.lastCheckedAt)
       };
@@ -995,7 +1002,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
       <span class="pill">Generated: ${clean(generatedAt)}</span>
       <span class="pill">Quarantined sources: ${entries.length}</span>
       <span class="pill suggest">Pending suggestions: 0</span>
-      <span class="pill">SLA: review within 48h</span>
+      <span class="pill">SLA: auto-recheck in 7 days</span>
     </div>
     <section class="audit" id="audit">
       <div class="audit-header">
@@ -1025,7 +1032,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
             <th>Last Error</th>
             <th>Blocked Runs</th>
             <th>Dead/Moved Runs</th>
-          <th>SLA Review By</th>
+          <th>Auto-Recheck By</th>
           <th>Endpoint</th>
           <th>Action</th>
         </tr>
@@ -1176,7 +1183,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries) {
         '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '${clean(generatedAt)}') + '</span>',
         '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
         '<span class="pill suggest">Pending suggestions: ' + escapeHtml(currentSuggestions.length) + '</span>',
-        '<span class="pill">SLA: review within 48h</span>',
+        '<span class="pill">SLA: auto-recheck in 7 days</span>',
         '<span class="pill' + (!restoreEnabled ? ' warn' : '') + '">' +
           modeLabel +
         '</span>'
@@ -2539,11 +2546,8 @@ async function main() {
     const deferred = autoDeferredSources.find((entry) => entry.id === source.id);
     if (deferred) {
       const isQuarantined = Boolean(priorEntry?.quarantined);
-      const quarantineRecheckAt = isQuarantined && priorEntry?.quarantinedAt
-        ? new Date(Date.parse(priorEntry.quarantinedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString()
-        : null;
       const deferredNextFetchAt = deferred.until
-        || quarantineRecheckAt
+        || (isQuarantined ? quarantineRecheckAtIso(priorEntry?.quarantinedAt) : null)
         || sourceScheduleNextFetchAt(source, buildDate, priorEntry, true);
       nextSourceHealth[source.id] = {
         ...(priorEntry || {}),
