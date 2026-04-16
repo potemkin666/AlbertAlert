@@ -346,8 +346,12 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     const penalty = isCritical ? HEALTH_SCORE_CRITICAL_FAILURE_PENALTY : HEALTH_SCORE_FAILURE_PENALTY;
     next.healthScore = Math.max(0, priorHealthScore - penalty);
 
-    // Derive quarantine state from health score threshold.
-    if (next.healthScore < HEALTH_SCORE_REVIEW_THRESHOLD && !next.quarantined) {
+    // Derive quarantine state from health score threshold, or immediately
+    // quarantine never-verified sources (zero successful runs) that hit a
+    // definitive failure such as 404 or dead/moved URL.
+    const neverVerified = next.successfulRuns === 0 && !prior.lastSuccessfulAt;
+    const immediateQuarantine = neverVerified && (notFoundFailure || deadUrlFailure);
+    if ((next.healthScore < HEALTH_SCORE_REVIEW_THRESHOLD || immediateQuarantine) && !next.quarantined) {
       next.quarantined = true;
       next.quarantinedAt = generatedAt;
       next.quarantineReason = analyseErrorPattern(next.recentErrors, {
@@ -1018,7 +1022,8 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
       const health = healthMap[source.id] && typeof healthMap[source.id] === 'object' ? healthMap[source.id] : {};
       const manuallyQuarantined = Boolean(source?.quarantined);
       const healthScore = Number.isFinite(Number(health?.healthScore)) ? Number(health.healthScore) : HEALTH_SCORE_INITIAL;
-      const needsReview = manuallyQuarantined || healthScore < HEALTH_SCORE_REVIEW_THRESHOLD;
+      const healthQuarantined = Boolean(health?.quarantined);
+      const needsReview = manuallyQuarantined || healthQuarantined || healthScore < HEALTH_SCORE_REVIEW_THRESHOLD;
       if (!needsReview) return null;
       return {
         id: clean(source?.id),

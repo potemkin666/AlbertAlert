@@ -230,3 +230,38 @@ test('nextSourceHealthEntry – prior recentErrors carried through from previous
   assert.equal(result.recentErrors[0].category, 'timeout');
   assert.equal(result.recentErrors[2].category, 'blocked-or-auth');
 });
+
+// ---------------------------------------------------------------------------
+// nextSourceHealthEntry() – never-verified immediate quarantine
+// ---------------------------------------------------------------------------
+
+test('nextSourceHealthEntry – never-verified source with 404 is immediately quarantined', () => {
+  const source = makeSource();
+  // Empty prior = brand-new source with no history
+  const result = nextSourceHealthEntry(source, failStat('not-found-404'), {}, '2026-01-01T00:00:00Z');
+  assert.equal(result.quarantined, true, 'should be quarantined on first 404 when never verified');
+  assert.equal(result.quarantinedAt, '2026-01-01T00:00:00Z');
+  assert.ok(result.quarantineReason, 'should have a quarantine reason');
+});
+
+test('nextSourceHealthEntry – never-verified source with dead-or-moved-url is immediately quarantined', () => {
+  const source = makeSource();
+  const result = nextSourceHealthEntry(source, failStat('dead-or-moved-url', 'DNS NXDOMAIN'), {}, '2026-01-01T00:00:00Z');
+  assert.equal(result.quarantined, true, 'should be quarantined on first dead-url when never verified');
+  assert.ok(result.quarantineReason);
+});
+
+test('nextSourceHealthEntry – never-verified source with non-definitive failure is NOT immediately quarantined', () => {
+  const source = makeSource();
+  const result = nextSourceHealthEntry(source, failStat('timeout', 'Timed out'), {}, '2026-01-01T00:00:00Z');
+  assert.equal(result.quarantined, false, 'timeout alone should not immediately quarantine a new source');
+});
+
+test('nextSourceHealthEntry – previously-verified source with 404 is NOT immediately quarantined', () => {
+  const source = makeSource();
+  // Prior entry has a successful run recorded
+  const prior = { successfulRuns: 5, lastSuccessfulAt: '2025-12-20T00:00:00Z', healthScore: 80 };
+  const result = nextSourceHealthEntry(source, failStat('not-found-404'), prior, '2026-01-01T00:00:00Z');
+  assert.equal(result.quarantined, false, 'a single 404 should not quarantine a previously-verified source');
+  assert.equal(result.healthScore, 50);
+});
