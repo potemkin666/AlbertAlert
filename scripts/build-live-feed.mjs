@@ -543,7 +543,7 @@ function isPlaywrightUnavailableError(error) {
   const meta = error && typeof error === 'object' ? error.__brialertMeta : null;
   if (meta && meta.errorCode === ERROR_CODE.PLAYWRIGHT_UNAVAILABLE) return true;
   const msg = error instanceof Error ? error.message : String(error || '');
-  return /Executable doesn't exist|browserType\.launch|PLAYWRIGHT_UNAVAILABLE/i.test(msg);
+  return /Executable doesn't exist|Playwright browser not installed/i.test(msg);
 }
 
 async function attemptSourceBuild(source, requestState, playwrightBudget, priorHealthEntry) {
