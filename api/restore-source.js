@@ -215,7 +215,9 @@ export default async function handler(request, response) {
     let previousRestoreAudit = null;
     try {
       previousRestoreAudit = (await loadJsonFile(RESTORE_AUDIT_PATH)).data;
-    } catch {}
+    } catch (auditLoadErr) {
+      console.warn(`[restore-source] Failed to load ${RESTORE_AUDIT_PATH}: ${auditLoadErr?.message || auditLoadErr}`);
+    }
     let auditPayload = previousRestoreAudit;
 
     const shardPaths = await listSourceShardPaths(quarantinedFile.config);

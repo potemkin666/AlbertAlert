@@ -169,9 +169,12 @@ function sourceMayAutoCooldown(source, previousEntry, buildDate) {
   if (!previousEntry) return null;
   if (previousEntry.quarantined) {
     const quarantinedAtMs = parseIsoMs(previousEntry.quarantinedAt);
+    if (!quarantinedAtMs) {
+      return null;
+    }
     const recheckIso = quarantineRecheckAtIso(previousEntry.quarantinedAt);
     const quarantineRecheckAt = recheckIso ? Date.parse(recheckIso) : 0;
-    if (quarantinedAtMs && buildDate.getTime() >= quarantineRecheckAt) {
+    if (buildDate.getTime() >= quarantineRecheckAt) {
       return null;
     }
     return {
