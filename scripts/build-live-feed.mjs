@@ -2538,7 +2538,8 @@ async function main() {
     const priorEntry = sourceHealthEntry(previousHealth, source.id);
     const deferred = autoDeferredSources.find((entry) => entry.id === source.id);
     if (deferred) {
-      const quarantineRecheckAt = deferred.reason === 'review-quarantine' && priorEntry?.quarantinedAt
+      const isQuarantined = Boolean(priorEntry?.quarantined);
+      const quarantineRecheckAt = isQuarantined && priorEntry?.quarantinedAt
         ? new Date(Date.parse(priorEntry.quarantinedAt) + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString()
         : null;
       const deferredNextFetchAt = deferred.until
@@ -2549,9 +2550,9 @@ async function main() {
         provider: source.provider,
         lane: source.lane,
         kind: source.kind,
-        quarantined: deferred.reason === 'review-quarantine' ? true : Boolean(priorEntry?.quarantined),
+        quarantined: isQuarantined,
         quarantinedAt: priorEntry?.quarantinedAt || null,
-        quarantineReason: deferred.reason === 'review-quarantine'
+        quarantineReason: isQuarantined
           ? clean(priorEntry?.quarantineReason || 'Needs manual review')
           : (priorEntry?.quarantineReason || null),
         autoSkipReason: deferred.reason,
