@@ -2723,12 +2723,12 @@ async function main() {
     let nextBatch = continuationCandidates.splice(0, nextBatchSize);
     // In critical-only mode, only process critical-lane sources in continuation
     if (adaptiveState.criticalOnly) {
-      const critical = nextBatch.filter((source) => source?.lane === 'incidents' || source?.isTrustedOfficial);
-      const skipped = nextBatch.length - critical.length;
-      if (skipped > 0) {
-        console.warn(`[mid-run-guardrail] Skipped ${skipped} non-critical continuation source(s).`);
+      const criticalSources = nextBatch.filter((source) => source?.lane === 'incidents' || source?.isTrustedOfficial);
+      const skippedCount = nextBatch.length - criticalSources.length;
+      if (skippedCount > 0) {
+        console.warn(`[mid-run-guardrail] Skipped ${skippedCount} non-critical continuation source(s).`);
       }
-      nextBatch = critical;
+      nextBatch = criticalSources;
     }
     if (!nextBatch.length) continue;
     await processSourceBatch(nextBatch, adaptiveState);
