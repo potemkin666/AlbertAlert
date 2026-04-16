@@ -350,6 +350,7 @@ export function createMapController(config) {
   let hasInitialLondonFrame = false;
   let initAttempts = 0;
   let isLoadingLeaflet = false;
+  const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
 
   function ensureMap() {
     if (liveMap || !mapElement) return;
@@ -473,7 +474,7 @@ export function createMapController(config) {
     if (!liveMap || items.length <= 1) return items.map((alert) => ({ type: 'single', alert }));
     const zoom = liveMap.getZoom();
     const threshold = clusterThreshold(zoom);
-    const maxRadius = threshold * 1.8;
+    const maxRadius = threshold * 1.8; // cap drift: no member further than this from the first alert in the cluster
     const clusters = [];
 
     items.forEach((alert) => {
@@ -619,7 +620,6 @@ export function createMapController(config) {
 
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
-    const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
     if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
     if (forceFit && mode === MAP_VIEW_MODES.london && !hasInitialLondonFrame) {
       hasInitialLondonFrame = true;
