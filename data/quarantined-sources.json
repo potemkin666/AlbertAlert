@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-04-16T07:19:33.208Z",
-  "count": 236,
+  "generatedAt": "2026-04-16T07:44:19.648Z",
+  "count": 235,
   "sources": [
     {
       "id": "spain-interior-ministry-news",
@@ -81,26 +81,6 @@
       "reviewBy": "2026-04-18T04:10:16.943Z",
       "lastFailureAt": "2026-04-16T04:10:16.943Z",
       "lastCheckedAt": "2026-04-16T04:10:16.943Z"
-    },
-    {
-      "id": "bdk-rss",
-      "provider": "Bund Deutscher Kriminalbeamter - RSS",
-      "endpoint": "https://www.bdk.de/rss",
-      "kind": "rss",
-      "lane": "context",
-      "region": "eu",
-      "status": "auto-quarantined",
-      "reason": "Repeated failures (6) need manual review",
-      "quarantinedAt": "2026-04-16T00:24:40.257Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 6,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-18T00:24:40.257Z",
-      "lastFailureAt": "2026-04-16T00:24:40.257Z",
-      "lastCheckedAt": "2026-04-16T00:24:40.257Z"
     },
     {
       "id": "belgium-crisis-centre-news",
@@ -4722,5 +4702,6 @@
       "lastFailureAt": "2026-04-05T13:02:51.966Z",
       "lastCheckedAt": "2026-04-16T07:19:33.208Z"
     }
-  ]
+  ],
+  "schemaVersion": 1
 }
