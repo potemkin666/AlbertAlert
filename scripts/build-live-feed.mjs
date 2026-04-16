@@ -18,6 +18,14 @@ import {
   GUARDRAIL_MAX_RUNTIME_MS,
   GUARDRAIL_MIN_SUCCESSFUL_SOURCES,
   HARD_SKIP_SOURCE_IDS,
+  HEALTH_SCORE_CRITICAL_FAILURE_PENALTY,
+  HEALTH_SCORE_DEPRIORITISE_THRESHOLD,
+  HEALTH_SCORE_EMPTY_PENALTY,
+  HEALTH_SCORE_FAILURE_PENALTY,
+  HEALTH_SCORE_INITIAL,
+  HEALTH_SCORE_LOW_INTERVAL_HOURS,
+  HEALTH_SCORE_REVIEW_THRESHOLD,
+  HEALTH_SCORE_SUCCESS_BOOST,
   HTML_DOMAIN_CAP_PER_RUN,
   MAX_HTML_SOURCES_PER_RUN,
   MAX_FAILING_SOURCES_TO_LOG,
@@ -142,29 +150,23 @@ function isNotFoundFailureCategory(category) {
   return category === 'not-found-404';
 }
 
-function quarantineRecheckAtIso(quarantinedAtIso) {
-  const ms = typeof quarantinedAtIso === 'string' ? Date.parse(quarantinedAtIso) : parseIsoMs(quarantinedAtIso);
-  if (!Number.isFinite(ms) || ms <= 0) return null;
-  return new Date(ms + AUTO_QUARANTINE_RECHECK_HOURS * 3600000).toISOString();
-}
-
 function sourceMayAutoCooldown(source, previousEntry, buildDate) {
   if (!previousEntry) return null;
-  if (previousEntry.quarantined) {
-    const quarantinedAtMs = parseIsoMs(previousEntry.quarantinedAt);
-    if (!quarantinedAtMs) {
-      return null;
+
+  // Health-score-based deprioritisation: low-health sources are deferred
+  // but never permanently blocked. Check nextFetchAt set by the health system.
+  const healthScore = Number.isFinite(Number(previousEntry.healthScore)) ? Number(previousEntry.healthScore) : HEALTH_SCORE_INITIAL;
+  if (healthScore < HEALTH_SCORE_DEPRIORITISE_THRESHOLD) {
+    const nextFetchMs = parseIsoMs(previousEntry.nextFetchAt);
+    if (nextFetchMs && buildDate.getTime() < nextFetchMs) {
+      return {
+        reason: 'health-deprioritised',
+        until: previousEntry.nextFetchAt
+      };
     }
-    const recheckIso = quarantineRecheckAtIso(previousEntry.quarantinedAt);
-    const quarantineRecheckAt = recheckIso ? Date.parse(recheckIso) : 0;
-    if (buildDate.getTime() >= quarantineRecheckAt) {
-      return null;
-    }
-    return {
-      reason: 'review-quarantine',
-      until: null
-    };
+    return null;
   }
+
   const cooldownUntilMs = parseIsoMs(previousEntry.cooldownUntil);
   if (!cooldownUntilMs || buildDate.getTime() >= cooldownUntilMs) return null;
   if (previousEntry.autoSkipReason === 'blocked-cooldown') {
@@ -191,6 +193,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   const prior = previousEntry && typeof previousEntry === 'object' ? previousEntry : {};
   const priorBlockedFailures = Number(prior.consecutiveBlockedFailures || 0);
   const priorDeadUrlFailures = Number(prior.consecutiveDeadUrlFailures || 0);
+  const priorHealthScore = Number.isFinite(Number(prior.healthScore)) ? Number(prior.healthScore) : HEALTH_SCORE_INITIAL;
   const generatedAtMs = Date.parse(generatedAt);
   const scheduleBaseDate = Number.isFinite(generatedAtMs) ? new Date(generatedAtMs) : new Date();
   const scheduledNextFetchAt = sourceScheduleNextFetchAfterRun(source, scheduleBaseDate);
@@ -214,6 +217,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     lastErrorMessage: prior.lastErrorMessage || null,
     cooldownUntil: null,
     autoSkipReason: null,
+    healthScore: priorHealthScore,
     quarantined: Boolean(prior.quarantined),
     quarantinedAt: prior.quarantinedAt || null,
     quarantineReason: prior.quarantineReason || null,
@@ -229,7 +233,8 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.lastErrorCategory = null;
     next.lastErrorMessage = null;
     next.lastSuccessfulAt = generatedAt;
-    if (next.quarantined) {
+    next.healthScore = Math.min(100, priorHealthScore + HEALTH_SCORE_SUCCESS_BOOST);
+    if (next.healthScore >= HEALTH_SCORE_REVIEW_THRESHOLD && next.quarantined) {
       next.quarantined = false;
       next.quarantinedAt = null;
       next.quarantineReason = null;
@@ -250,47 +255,41 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
     next.lastFailureAt = generatedAt;
     next.lastErrorCategory = stat?.lastErrorCategory || null;
     next.lastErrorMessage = stat?.lastErrorMessage || null;
-    if (!next.quarantined && notFoundFailure) {
+
+    // Critical failures receive a larger health penalty.
+    const isCritical = notFoundFailure || deadUrlFailure
+      || (source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD)
+      || next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD
+      || next.consecutiveFailures >= AUTO_QUARANTINE_FAILURE_THRESHOLD;
+    const penalty = isCritical ? HEALTH_SCORE_CRITICAL_FAILURE_PENALTY : HEALTH_SCORE_FAILURE_PENALTY;
+    next.healthScore = Math.max(0, priorHealthScore - penalty);
+
+    // Derive quarantine state from health score threshold.
+    if (next.healthScore < HEALTH_SCORE_REVIEW_THRESHOLD && !next.quarantined) {
       next.quarantined = true;
       next.quarantinedAt = generatedAt;
-      next.quarantineReason = 'HTTP 404 not found; needs manual source URL review';
-      next.autoSkipReason = 'review-quarantine';
-      next.cooldownUntil = null;
-      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
-      return next;
+      if (notFoundFailure) {
+        next.quarantineReason = 'HTTP 404 not found; needs manual source URL review';
+      } else if (source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
+        next.quarantineReason = 'Repeated blocked-or-auth failures on html source';
+      } else if (next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
+        next.quarantineReason = 'Repeated dead-or-moved-url failures';
+      } else {
+        next.quarantineReason = `Health score degraded to ${next.healthScore} after repeated failures`;
+      }
     }
-    if (!next.quarantined && source?.kind === 'html' && next.consecutiveBlockedFailures >= AUTO_QUARANTINE_BLOCKED_HTML_THRESHOLD) {
-      next.quarantined = true;
-      next.quarantinedAt = generatedAt;
-      next.quarantineReason = 'Repeated blocked-or-auth failures on html source';
-      next.autoSkipReason = 'review-quarantine';
-      next.cooldownUntil = null;
-      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
-      return next;
-    }
-    if (!next.quarantined && next.consecutiveDeadUrlFailures >= AUTO_QUARANTINE_DEAD_URL_THRESHOLD) {
-      next.quarantined = true;
-      next.quarantinedAt = generatedAt;
-      next.quarantineReason = 'Repeated dead-or-moved-url failures';
-      next.autoSkipReason = 'review-quarantine';
-      next.cooldownUntil = null;
-      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
-      return next;
-    }
-    if (!next.quarantined && next.consecutiveFailures >= AUTO_QUARANTINE_FAILURE_THRESHOLD) {
-      next.quarantined = true;
-      next.quarantinedAt = generatedAt;
-      next.quarantineReason = `Repeated failures (${next.consecutiveFailures}) need manual review`;
-      next.autoSkipReason = 'review-quarantine';
-      next.cooldownUntil = null;
-      next.nextFetchAt = quarantineRecheckAtIso(generatedAt);
-      return next;
-    }
-    if (blockedNonContent && next.consecutiveBlockedFailures >= BLOCKED_NON_CONTENT_FAIL_THRESHOLD) {
+
+    // Low-health sources are deprioritised with a longer interval instead of a hard block.
+    if (next.healthScore < HEALTH_SCORE_DEPRIORITISE_THRESHOLD) {
+      const deprioritiseFactor = 1 + (HEALTH_SCORE_DEPRIORITISE_THRESHOLD - next.healthScore) / HEALTH_SCORE_DEPRIORITISE_THRESHOLD;
+      const intervalHours = HEALTH_SCORE_LOW_INTERVAL_HOURS * deprioritiseFactor;
+      next.cooldownUntil = new Date(Date.parse(generatedAt) + intervalHours * 3600000).toISOString();
+      next.autoSkipReason = 'health-deprioritised';
+      next.nextFetchAt = next.cooldownUntil;
+    } else if (blockedNonContent && next.consecutiveBlockedFailures >= BLOCKED_NON_CONTENT_FAIL_THRESHOLD) {
       next.cooldownUntil = new Date(Date.parse(generatedAt) + BLOCKED_NON_CONTENT_COOLDOWN_HOURS * 3600000).toISOString();
       next.autoSkipReason = 'blocked-cooldown';
       next.nextFetchAt = next.cooldownUntil;
-      return next;
     }
     return next;
   }
@@ -303,6 +302,7 @@ function nextSourceHealthEntry(source, stat, previousEntry, generatedAt) {
   next.lastErrorCategory = null;
   next.lastErrorMessage = null;
   next.lastEmptyAt = generatedAt;
+  next.healthScore = Math.max(0, priorHealthScore - HEALTH_SCORE_EMPTY_PENALTY);
   if (!source.isTrustedOfficial && source.lane !== 'incidents' && next.consecutiveEmptyRuns >= AUTO_SKIP_EMPTY_THRESHOLD) {
     next.cooldownUntil = new Date(Date.parse(generatedAt) + SOURCE_EMPTY_COOLDOWN_HOURS * 3600000).toISOString();
     next.autoSkipReason = 'empty-cooldown';
@@ -666,8 +666,9 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
     .map((source) => {
       const health = healthMap[source.id] && typeof healthMap[source.id] === 'object' ? healthMap[source.id] : {};
       const manuallyQuarantined = Boolean(source?.quarantined);
-      const autoQuarantined = Boolean(health?.quarantined);
-      if (!manuallyQuarantined && !autoQuarantined) return null;
+      const healthScore = Number.isFinite(Number(health?.healthScore)) ? Number(health.healthScore) : HEALTH_SCORE_INITIAL;
+      const needsReview = manuallyQuarantined || healthScore < HEALTH_SCORE_REVIEW_THRESHOLD;
+      if (!needsReview) return null;
       return {
         id: clean(source?.id),
         provider: clean(source?.provider),
@@ -675,6 +676,7 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
         kind: clean(source?.kind),
         lane: clean(source?.lane),
         region: clean(source?.region),
+        healthScore,
         status: manuallyQuarantined ? 'catalog-quarantined' : 'auto-quarantined',
         reason: manuallyQuarantined
           ? 'Marked quarantined in sources catalog'
@@ -693,6 +695,8 @@ function buildQuarantinedSourceEntries(sources, sourceHealth) {
     })
     .filter(Boolean)
     .sort((left, right) => {
+      // Primary sort: lowest health score first (most in need of attention).
+      if (left.healthScore !== right.healthScore) return left.healthScore - right.healthScore;
       const rightMs = parseIsoMs(right.quarantinedAt || right.lastFailureAt || right.lastCheckedAt);
       const leftMs = parseIsoMs(left.quarantinedAt || left.lastFailureAt || left.lastCheckedAt);
       return rightMs - leftMs;
@@ -707,6 +711,7 @@ function computeQuarantineMetrics(quarantinedEntries, restoreAudit) {
   let newThisWeek = 0;
   let totalTimeMs = 0;
   let countWithTime = 0;
+  let totalHealthScore = 0;
 
   for (const entry of quarantinedEntries) {
     const qAtMs = parseIsoMs(entry.quarantinedAt);
@@ -715,10 +720,15 @@ function computeQuarantineMetrics(quarantinedEntries, restoreAudit) {
       totalTimeMs += now - qAtMs;
       countWithTime++;
     }
+    totalHealthScore += Number.isFinite(Number(entry.healthScore)) ? Number(entry.healthScore) : 0;
   }
 
   const avgTimeHours = countWithTime > 0
     ? Math.round(totalTimeMs / countWithTime / 3600000)
+    : 0;
+
+  const avgHealthScore = quarantinedEntries.length > 0
+    ? Math.round(totalHealthScore / quarantinedEntries.length)
     : 0;
 
   const auditHistory = Array.isArray(restoreAudit?.history) ? restoreAudit.history : [];
@@ -739,6 +749,7 @@ function computeQuarantineMetrics(quarantinedEntries, restoreAudit) {
     total: quarantinedEntries.length,
     newThisWeek,
     avgTimeInQuarantineHours: avgTimeHours,
+    avgHealthScore,
     reQuarantineRate,
     reQuarantined,
     restoredTotal: restoredIds.size
@@ -1018,10 +1029,11 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
     </div>
     <div class="meta" id="meta">
       <span class="pill">Generated: ${clean(generatedAt)}</span>
-      <span class="pill">Quarantined sources: ${entries.length}</span>
+      <span class="pill">Low-health sources: ${entries.length}</span>
       <span class="pill suggest">Pending suggestions: 0</span>
-      <span class="pill">SLA: auto-recheck in 7 days</span>
+      <span class="pill">SLA: deprioritised, auto-recheck 24h+</span>
       <span class="pill warn">New this week: ${metrics?.newThisWeek ?? 0}</span>
+      <span class="pill">Avg health score: ${metrics?.avgHealthScore ?? 0}/100</span>
       <span class="pill">Avg time in quarantine: ${metrics?.avgTimeInQuarantineHours ?? 0}h</span>
       <span class="pill${(metrics?.reQuarantineRate ?? 0) > 25 ? ' warn' : ''}">Re-quarantine rate: ${metrics?.reQuarantineRate ?? 0}%</span>
     </div>
@@ -1048,6 +1060,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
             <th>Provider</th>
             <th>Type</th>
             <th>Region</th>
+            <th>Health</th>
             <th>Status</th>
             <th>Reason</th>
             <th>Last Error</th>
@@ -1059,7 +1072,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
         </tr>
         </thead>
         <tbody id="quarantine-body">
-          <tr><td colspan="11" class="empty">Loading quarantined sources...</td></tr>
+          <tr><td colspan="12" class="empty">Loading quarantined sources...</td></tr>
         </tbody>
       </table>
       </div>
@@ -1202,10 +1215,11 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
           : 'Data mode: live read-only (restore unavailable)';
       meta.innerHTML = [
         '<span class="pill">Generated: ' + escapeHtml(payload.generatedAt || '${clean(generatedAt)}') + '</span>',
-        '<span class="pill">Quarantined sources: ' + escapeHtml(currentEntries.length) + '</span>',
+        '<span class="pill">Low-health sources: ' + escapeHtml(currentEntries.length) + '</span>',
         '<span class="pill suggest">Pending suggestions: ' + escapeHtml(currentSuggestions.length) + '</span>',
-        '<span class="pill">SLA: auto-recheck in 7 days</span>',
+        '<span class="pill">SLA: deprioritised, auto-recheck 24h+</span>',
         payload.metrics ? '<span class="pill warn">New this week: ' + escapeHtml(payload.metrics.newThisWeek) + '</span>' : '',
+        payload.metrics ? '<span class="pill">Avg health score: ' + escapeHtml(payload.metrics.avgHealthScore) + '/100</span>' : '',
         payload.metrics ? '<span class="pill">Avg time in quarantine: ' + escapeHtml(payload.metrics.avgTimeInQuarantineHours) + 'h</span>' : '',
         payload.metrics ? '<span class="pill' + (Number(payload.metrics.reQuarantineRate) > 25 ? ' warn' : '') + '">Re-quarantine rate: ' + escapeHtml(payload.metrics.reQuarantineRate) + '%</span>' : '',
         '<span class="pill' + (!restoreEnabled ? ' warn' : '') + '">' +
@@ -1215,7 +1229,7 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
     }
 
     function emptyState(message) {
-       body.innerHTML = '<tr><td colspan="11" class="empty">' + escapeHtml(message) + '</td></tr>';
+       body.innerHTML = '<tr><td colspan="12" class="empty">' + escapeHtml(message) + '</td></tr>';
     }
 
     function formatTimeAgo(timestampMs) {
@@ -1300,10 +1314,13 @@ function renderQuarantinedSourcesHtml(generatedAt, entries, metrics) {
     }
 
     function rowMarkup(entry) {
+      const score = Number.isFinite(Number(entry.healthScore)) ? Number(entry.healthScore) : 0;
+      const scoreClass = score === 0 ? 'danger' : score < 15 ? 'warn' : '';
       return '<tr data-source-id="' + escapeHtml(entry.id) + '" id="source-' + safeDomId(entry.id) + '">' +
         '<td>' + escapeHtml(entry.provider) + '</td>' +
         '<td>' + escapeHtml(entry.kind) + ' / ' + escapeHtml(entry.lane) + '</td>' +
         '<td>' + escapeHtml(entry.region) + '</td>' +
+        '<td><span class="pill' + (scoreClass ? ' ' + scoreClass : '') + '">' + escapeHtml(score) + '/100</span></td>' +
         '<td>' + escapeHtml(entry.status) + '</td>' +
         '<td>' + escapeHtml(entry.reason) + '</td>' +
         '<td>' + escapeHtml(entry.lastErrorCategory || 'n/a') + '</td>' +
@@ -2581,19 +2598,21 @@ async function main() {
     const priorEntry = sourceHealthEntry(previousHealth, source.id);
     const deferred = autoDeferredSources.find((entry) => entry.id === source.id);
     if (deferred) {
-      const isQuarantined = Boolean(priorEntry?.quarantined);
+      const priorHealthScore = Number.isFinite(Number(priorEntry?.healthScore)) ? Number(priorEntry.healthScore) : HEALTH_SCORE_INITIAL;
+      const isLowHealth = priorHealthScore < HEALTH_SCORE_REVIEW_THRESHOLD;
       const deferredNextFetchAt = deferred.until
-        || (isQuarantined ? quarantineRecheckAtIso(priorEntry?.quarantinedAt) : null)
+        || (isLowHealth ? priorEntry?.nextFetchAt : null)
         || sourceScheduleNextFetchAt(source, buildDate, priorEntry, true);
       nextSourceHealth[source.id] = {
         ...(priorEntry || {}),
         provider: source.provider,
         lane: source.lane,
         kind: source.kind,
-        quarantined: isQuarantined,
+        healthScore: priorHealthScore,
+        quarantined: isLowHealth,
         quarantinedAt: priorEntry?.quarantinedAt || null,
-        quarantineReason: isQuarantined
-          ? clean(priorEntry?.quarantineReason || 'Needs manual review')
+        quarantineReason: isLowHealth
+          ? clean(priorEntry?.quarantineReason || 'Low health score – needs review')
           : (priorEntry?.quarantineReason || null),
         autoSkipReason: deferred.reason,
         cooldownUntil: deferred.until,

@@ -21,7 +21,8 @@ const QUARANTINE_ONLY_FIELDS = new Set([
   'replacementSuggestion',
   'reviewBy',
   'lastFailureAt',
-  'lastCheckedAt'
+  'lastCheckedAt',
+  'healthScore'
 ]);
 
 const FEED_WORKFLOW_FILENAME = 'update-live-feed.yml';
