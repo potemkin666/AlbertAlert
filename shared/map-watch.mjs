@@ -10,6 +10,8 @@ const INITIAL_LONDON_ZOOM = 12;
 const WORLD_FALLBACK = Object.freeze({ center: [50.2, 10.4], zoom: 4 });
 const LONDON_CLUSTER_MAX_ZOOM = 12;
 const WORLD_CLUSTER_MAX_ZOOM = 7;
+const NEARBY_CLUSTER_MAX_ZOOM = 10;
+const INITIAL_NEARBY_ZOOM = 9;
 const FRESH_ALERT_WINDOW_MS = 90 * 60 * 1000;
 const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
 const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
@@ -57,6 +59,7 @@ function statusLine(mode, count) {
   if (count <= 0) return 'No alerts in current view';
   const countLabel = `${count} alert${count === 1 ? '' : 's'}`;
   if (mode === MAP_VIEW_MODES.london) return `${countLabel} in London`;
+  if (mode === MAP_VIEW_MODES.nearby) return `${countLabel} nearby`;
   return `${countLabel} in last 24h`;
 }
 
@@ -401,13 +404,25 @@ export function createMapController(config) {
     });
   }
 
-  function fitForMode(mode, points) {
+  function fitForMode(mode, points, state) {
     if (!liveMap) return;
     if (mode === 'london') {
       if (points.length) {
         liveMap.fitBounds(L.latLngBounds(points), { padding: [22, 22], maxZoom: 12 });
       } else {
         liveMap.fitBounds(LONDON_BOUNDS, { padding: [14, 14], maxZoom: 11 });
+      }
+      return;
+    }
+
+    if (mode === MAP_VIEW_MODES.nearby) {
+      const loc = state?.userLocation;
+      if (points.length) {
+        liveMap.fitBounds(L.latLngBounds(points), { padding: [22, 22], maxZoom: 11 });
+      } else if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
+        liveMap.setView([loc.lat, loc.lng], INITIAL_NEARBY_ZOOM);
+      } else {
+        liveMap.setView(WORLD_FALLBACK.center, WORLD_FALLBACK.zoom);
       }
       return;
     }
@@ -424,7 +439,11 @@ export function createMapController(config) {
     if (!liveMap) return;
     lastState = state;
     lastView = view;
-    const mode = state.mapViewMode === MAP_VIEW_MODES.world ? MAP_VIEW_MODES.world : MAP_VIEW_MODES.london;
+    const mode = state.mapViewMode === MAP_VIEW_MODES.world
+      ? MAP_VIEW_MODES.world
+      : state.mapViewMode === MAP_VIEW_MODES.nearby
+        ? MAP_VIEW_MODES.nearby
+        : MAP_VIEW_MODES.london;
     const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
     const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${item.lat.toFixed(3)},${item.lng.toFixed(3)}`).join('|')}`;
     if (!forceFit && signature === lastSignature) return;
@@ -475,7 +494,7 @@ export function createMapController(config) {
           zoomButton.addEventListener('click', () => {
             liveMap.fitBounds(L.latLngBounds(entry.items.map((item) => [item.lat, item.lng])), {
               padding: [26, 26],
-              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, mode === MAP_VIEW_MODES.london ? LONDON_CLUSTER_MAX_ZOOM : WORLD_CLUSTER_MAX_ZOOM)
+              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, mode === MAP_VIEW_MODES.london ? LONDON_CLUSTER_MAX_ZOOM : mode === MAP_VIEW_MODES.nearby ? NEARBY_CLUSTER_MAX_ZOOM : WORLD_CLUSTER_MAX_ZOOM)
             });
           }, { once: true });
         }
@@ -493,7 +512,15 @@ export function createMapController(config) {
       requestAnimationFrame(() => liveMap.invalidateSize());
       return;
     }
-    fitForMode(mode, points);
+    if (forceFit && mode === MAP_VIEW_MODES.nearby) {
+      const loc = state?.userLocation;
+      if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
+        liveMap.setView([loc.lat, loc.lng], INITIAL_NEARBY_ZOOM);
+        requestAnimationFrame(() => liveMap.invalidateSize());
+        return;
+      }
+    }
+    fitForMode(mode, points, state);
     requestAnimationFrame(() => liveMap.invalidateSize());
   }
 
@@ -513,6 +540,15 @@ export function createMapController(config) {
     if (!liveMap) return;
     if (lastMode === MAP_VIEW_MODES.world) {
       liveMap.setView(WORLD_FALLBACK.center, WORLD_FALLBACK.zoom);
+      return;
+    }
+    if (lastMode === MAP_VIEW_MODES.nearby) {
+      const loc = lastState?.userLocation;
+      if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
+        liveMap.setView([loc.lat, loc.lng], INITIAL_NEARBY_ZOOM);
+      } else {
+        liveMap.setView(WORLD_FALLBACK.center, WORLD_FALLBACK.zoom);
+      }
       return;
     }
     liveMap.fitBounds(LONDON_BOUNDS, { padding: [14, 14], maxZoom: 11 });
