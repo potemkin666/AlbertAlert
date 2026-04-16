@@ -3,7 +3,7 @@ import { filteredMapView } from '../render/map.mjs';
 import { renderNotes } from '../render/notes.mjs';
 import { renderSourceRequests } from '../render/source-requests.mjs';
 import { applyDeviceProfile } from '../utils/device.mjs';
-import { MAP_VIEW_MODES, REGION_ALL, SOURCE_REQUEST_STATUS_KINDS } from '../../shared/ui-constants.mjs';
+import { MAP_VIEW_MODES, REGION_ALL, SOURCE_REQUEST_STATUS_KINDS, resolveMapMode } from '../../shared/ui-constants.mjs';
 
 export function bindEvents({
   state,
@@ -148,11 +148,7 @@ export function bindEvents({
     const button = event.target.closest('[data-map-mode]');
     if (!button) return;
     const raw = button.dataset.mapMode;
-    const nextMode = raw === MAP_VIEW_MODES.world
-      ? MAP_VIEW_MODES.world
-      : raw === MAP_VIEW_MODES.nearby
-        ? MAP_VIEW_MODES.nearby
-        : MAP_VIEW_MODES.london;
+    const nextMode = resolveMapMode(raw);
     if (state.mapViewMode === nextMode) return;
 
     if (nextMode === MAP_VIEW_MODES.nearby && !state.userLocation) {

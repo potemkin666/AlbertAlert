@@ -1,5 +1,5 @@
 import { escapeHtml } from '../app/utils/text.mjs';
-import { MAP_VIEW_MODES } from './ui-constants.mjs';
+import { MAP_VIEW_MODES, resolveMapMode } from './ui-constants.mjs';
 
 const LONDON_CENTER = Object.freeze([51.5074, -0.1278]);
 const LONDON_BOUNDS = Object.freeze([
@@ -270,6 +270,12 @@ function clusterThreshold(zoom) {
   return 24;
 }
 
+function clusterMaxZoomForMode(mode) {
+  if (mode === MAP_VIEW_MODES.london) return LONDON_CLUSTER_MAX_ZOOM;
+  if (mode === MAP_VIEW_MODES.nearby) return NEARBY_CLUSTER_MAX_ZOOM;
+  return WORLD_CLUSTER_MAX_ZOOM;
+}
+
 function alertPublishedAtMs(alert) {
   const stamp = alert?.publishedAt || alert?.updatedAt || alert?.firstReportedAt || null;
   const timeMs = stamp ? new Date(stamp).getTime() : NaN;
@@ -439,11 +445,7 @@ export function createMapController(config) {
     if (!liveMap) return;
     lastState = state;
     lastView = view;
-    const mode = state.mapViewMode === MAP_VIEW_MODES.world
-      ? MAP_VIEW_MODES.world
-      : state.mapViewMode === MAP_VIEW_MODES.nearby
-        ? MAP_VIEW_MODES.nearby
-        : MAP_VIEW_MODES.london;
+    const mode = resolveMapMode(state.mapViewMode);
     const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
     const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${item.lat.toFixed(3)},${item.lng.toFixed(3)}`).join('|')}`;
     if (!forceFit && signature === lastSignature) return;
@@ -494,7 +496,7 @@ export function createMapController(config) {
           zoomButton.addEventListener('click', () => {
             liveMap.fitBounds(L.latLngBounds(entry.items.map((item) => [item.lat, item.lng])), {
               padding: [26, 26],
-              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, mode === MAP_VIEW_MODES.london ? LONDON_CLUSTER_MAX_ZOOM : mode === MAP_VIEW_MODES.nearby ? NEARBY_CLUSTER_MAX_ZOOM : WORLD_CLUSTER_MAX_ZOOM)
+              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, clusterMaxZoomForMode(mode))
             });
           }, { once: true });
         }

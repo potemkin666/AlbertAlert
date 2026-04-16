@@ -23,6 +23,11 @@ export const MAP_VIEW_MODES = Object.freeze({
 
 export const NEARBY_RADIUS_KM = 150;
 
+const MAP_MODE_VALUES = new Set(Object.values(MAP_VIEW_MODES));
+export function resolveMapMode(value) {
+  return MAP_MODE_VALUES.has(value) ? value : MAP_VIEW_MODES.london;
+}
+
 export const STATUS_LABELS = Object.freeze({
   update: 'Update',
   sourceUpdate: 'Source update'
