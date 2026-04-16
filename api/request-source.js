@@ -5,7 +5,7 @@ import {
   normaliseEndpoint,
   validateAbsoluteHttpUrl
 } from './_lib/github-persistence.js';
-import { applyCorsHeaders } from './_lib/admin-session.js';
+import { applyCorsHeaders, requireAdminSession } from './_lib/admin-session.js';
 import { isPrivateUrl } from './_lib/url-safety.js';
 
 const REQUESTS_PATH = 'data/source-requests.json';
@@ -281,6 +281,10 @@ export default async function handler(request, response) {
       error: 'method-not-allowed',
       message: 'Only GET and POST are supported.'
     });
+  }
+
+  if (!requireAdminSession(request, response)) {
+    return response;
   }
 
   try {
