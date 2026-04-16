@@ -55,6 +55,7 @@ const ERROR_CODE_TO_CATEGORY = Object.freeze({
   [ERROR_CODE.FETCH_TIMEOUT]: 'timeout',
   [ERROR_CODE.FETCH_NETWORK_FAILURE]: 'network-failure',
   [ERROR_CODE.NETWORK_CIRCUIT_OPEN]: 'network-failure',
+  [ERROR_CODE.PLAYWRIGHT_UNAVAILABLE]: 'brittle-selectors-or-js-rendering',
   [ERROR_CODE.PARSER_SELECTOR_OR_JS_RENDERING]: 'brittle-selectors-or-js-rendering'
 });
 let offlineFixtureCache = null;
@@ -456,7 +457,18 @@ export async function fetchTextWithPlaywright(url, options = {}) {
       errorCode: ERROR_CODE.PLAYWRIGHT_UNAVAILABLE
     });
   }
-  const browser = await playwright.chromium.launch({ headless: true });
+  let browser;
+  try {
+    browser = await playwright.chromium.launch({ headless: true });
+  } catch (launchError) {
+    const msg = launchError instanceof Error ? launchError.message : String(launchError);
+    if (/Executable doesn't exist|browserType\.launch/i.test(msg)) {
+      throw createBrialertError(`Playwright browser not installed: ${msg}`, {
+        errorCode: ERROR_CODE.PLAYWRIGHT_UNAVAILABLE
+      });
+    }
+    throw launchError;
+  }
   try {
     const context = await browser.newContext({
       userAgent: sourceUserAgent(options?.source),
@@ -541,6 +553,7 @@ function resolveErrorCode(meta, message) {
   if (/anti-bot|captcha|cloudflare|javascript and cookies/i.test(text)) return ERROR_CODE.BLOCKED_ANTI_BOT;
   if (/abort|timeout|timed out|ETIMEDOUT/i.test(text)) return ERROR_CODE.FETCH_TIMEOUT;
   if (/fetch failed|ECONNRESET|ENOTFOUND|circuit open/i.test(text)) return ERROR_CODE.FETCH_NETWORK_FAILURE;
+  if (/Executable doesn't exist|browserType\.launch|Playwright.*not installed/i.test(text)) return ERROR_CODE.PLAYWRIGHT_UNAVAILABLE;
   if (/no items parsed|selector/i.test(text)) return ERROR_CODE.PARSER_SELECTOR_OR_JS_RENDERING;
   return '';
 }

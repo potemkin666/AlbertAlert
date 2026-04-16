@@ -516,6 +516,7 @@ function reviewByTimestamp(entry, hours = AUTO_QUARANTINE_RECHECK_HOURS) {
 function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
   if (!source || source.kind !== 'html') return false;
   if (!summary) return false;
+  if (playwrightBudget?.disabled) return false;
   if ((playwrightBudget?.attempts || 0) >= (playwrightBudget?.maxAttempts || 0)) return false;
   const reason = classifyFetchFailure(summary);
   if (reason !== 'bot-block' && reason !== 'parser-failure') return false;
@@ -527,6 +528,7 @@ function shouldTryPlaywrightFallback(source, summary, playwrightBudget) {
 
 function shouldTryPlaywrightForThinHtml(source, body, playwrightBudget) {
   if (!source || source.kind !== 'html') return false;
+  if (playwrightBudget?.disabled) return false;
   if ((playwrightBudget?.attempts || 0) >= (playwrightBudget?.maxAttempts || 0)) return false;
   if (!PLAYWRIGHT_SUSPECT_MIN_HTML_CHARS || PLAYWRIGHT_SUSPECT_MIN_HTML_CHARS <= 0) return false;
   const bodySize = typeof body === 'string' ? body.trim().length : 0;
@@ -535,6 +537,13 @@ function shouldTryPlaywrightForThinHtml(source, body, playwrightBudget) {
   return PLAYWRIGHT_FALLBACK_ALLOWLIST_SOURCE_IDS.has(source.id)
     || (domain && PLAYWRIGHT_FALLBACK_DOMAINS.has(domain))
     || PLAYWRIGHT_FALLBACK_AGGRESSIVE;
+}
+
+function isPlaywrightUnavailableError(error) {
+  const meta = error && typeof error === 'object' ? error.__brialertMeta : null;
+  if (meta && meta.errorCode === ERROR_CODE.PLAYWRIGHT_UNAVAILABLE) return true;
+  const msg = error instanceof Error ? error.message : String(error || '');
+  return /Executable doesn't exist|browserType\.launch|PLAYWRIGHT_UNAVAILABLE/i.test(msg);
 }
 
 async function attemptSourceBuild(source, requestState, playwrightBudget, priorHealthEntry) {
@@ -560,14 +569,21 @@ async function attemptSourceBuild(source, requestState, playwrightBudget, priorH
     const summary = summariseSourceError(source, error);
     if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
       playwrightBudget.attempts += 1;
-      body = await fetchTextWithPlaywright(source.endpoint, {
-        source,
-        timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS,
-        contentSelectors: source?.playwright?.contentSelectors
-      });
-      usedPlaywrightFallback = true;
-      playwrightBudget.successes += 1;
-      fetchOutcome = 'success';
+      try {
+        body = await fetchTextWithPlaywright(source.endpoint, {
+          source,
+          timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS,
+          contentSelectors: source?.playwright?.contentSelectors
+        });
+        usedPlaywrightFallback = true;
+        playwrightBudget.successes += 1;
+        fetchOutcome = 'success';
+      } catch (pwError) {
+        if (isPlaywrightUnavailableError(pwError)) {
+          playwrightBudget.disabled = true;
+        }
+        throw pwError;
+      }
     } else {
       throw error;
     }
@@ -588,7 +604,10 @@ async function attemptSourceBuild(source, requestState, playwrightBudget, priorH
       playwrightBudget.successes += 1;
       parsed = parseHtmlItems(source, body);
     } catch (error) {
-      // ignore, handled below
+      if (isPlaywrightUnavailableError(error)) {
+        playwrightBudget.disabled = true;
+      }
+      // fall through to normal empty parse handling
     }
   }
 
@@ -2289,13 +2308,20 @@ async function main() {
             else if (reason === 'timeout') failureReasonCounts['timeout-or-aborted'] += 1;
             if (shouldTryPlaywrightFallback(source, summary, playwrightBudget)) {
               playwrightBudget.attempts += 1;
-              body = await fetchTextWithPlaywright(source.endpoint, {
-                source,
-                timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS
-              });
-              usedPlaywrightFallback = true;
-              playwrightBudget.successes += 1;
-              fetchOutcome = 'success';
+              try {
+                body = await fetchTextWithPlaywright(source.endpoint, {
+                  source,
+                  timeoutMs: PLAYWRIGHT_FALLBACK_TIMEOUT_MS
+                });
+                usedPlaywrightFallback = true;
+                playwrightBudget.successes += 1;
+                fetchOutcome = 'success';
+              } catch (pwError) {
+                if (isPlaywrightUnavailableError(pwError)) {
+                  playwrightBudget.disabled = true;
+                }
+                throw pwError;
+              }
             } else {
               throw error;
             }
@@ -2315,6 +2341,9 @@ async function main() {
               playwrightBudget.successes += 1;
               parsed = parseHtmlItems(source, body);
             } catch (error) {
+              if (isPlaywrightUnavailableError(error)) {
+                playwrightBudget.disabled = true;
+              }
               // fall through to normal empty parse handling
             }
           }
