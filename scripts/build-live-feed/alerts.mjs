@@ -3,6 +3,7 @@ import {
   plainText,
   terrorismKeywords,
   matchesKeywords,
+  looksLikeEntertainment,
   inferSourceTier,
   inferReliabilityProfile,
   inferIncidentTrack,
@@ -318,6 +319,7 @@ export function discardReasonForItem(source, item) {
   if (!recencyOkay(source, item.published)) {
     return hasReliableSourceDate(item.published) ? 'stale-date' : 'missing-or-invalid-date';
   }
+  if (looksLikeEntertainment(text)) return 'entertainment-content';
   if (source.lane === 'incidents' && !terrorRelevant) return 'not-terror-relevant';
   if (source.lane === 'context' && !source.isTrustedOfficial) {
     const requiredTerrorHits = reliabilityProfile === 'tabloid' ? 2 : 1;

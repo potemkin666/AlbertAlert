@@ -41,7 +41,8 @@ import {
   englishFriendlyPatterns,
   nonEnglishEndpointPatterns,
   inferConfidenceScore,
-  sourceLooksEnglish
+  sourceLooksEnglish,
+  looksLikeEntertainment
 } from '../shared/taxonomy.mjs';
 import {
   fusedIncidentIdFor,
@@ -1048,6 +1049,67 @@ test('requiresKeywordMatch rejects items with incident keywords but no terrorism
   };
 
   assert.equal(discardReasonForItem(borderSource, legitimateItem), null);
+});
+
+test('looksLikeEntertainment detects film review content', () => {
+  const filmText = "Film of the Week: The Mummy — a blockbuster sequel starring Brendan Fraser, directed by Stephen Sommers. Box office hit with an epic runtime.";
+  assert.equal(looksLikeEntertainment(filmText), true);
+});
+
+test('looksLikeEntertainment does not flag genuine security articles', () => {
+  const securityText = 'Counter-terror police arrested a suspect linked to an extremist bombing plot. The terrorism investigation revealed radicalised individuals.';
+  assert.equal(looksLikeEntertainment(securityText), false);
+});
+
+test('looksLikeEntertainment allows entertainment text with strong terror signal', () => {
+  // Article about a terrorism documentary could have both entertainment and terror terms
+  const docuText = 'A new Netflix streaming premiere: a documentary about terrorism and extremism, directed by an award-winning filmmaker, starring real footage of counter-terror operations.';
+  // ≥3 entertainment hits but also ≥2 terror hits → should NOT be flagged
+  assert.equal(looksLikeEntertainment(docuText), false);
+});
+
+test('looksLikeEntertainment does not flag text below threshold', () => {
+  // Only 2 entertainment signals — below ENTERTAINMENT_THRESHOLD of 3
+  const borderlineText = 'A review of the government security director highlights new threat levels.';
+  assert.equal(looksLikeEntertainment(borderlineText), false);
+});
+
+test('discardReasonForItem returns entertainment-content for film reviews', () => {
+  const recentDate = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+  const source = {
+    lane: 'context',
+    provider: 'Euronews a Europe',
+    isTrustedOfficial: false,
+    requiresKeywordMatch: true
+  };
+
+  const filmReview = {
+    title: "Film Of The Week: 'The Mummy' — A Box Office Sequel",
+    summary: 'This blockbuster franchise returns with a new director and an all-star cast. An attack of ancient evil, plot twists, and suspect characters — cinema at its finest.',
+    sourceExtract: 'Starring Brendan Fraser. Runtime: 125 minutes. Streaming soon on Netflix.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(source, filmReview), 'entertainment-content');
+});
+
+test('discardReasonForItem does not flag terror article as entertainment', () => {
+  const recentDate = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+  const source = {
+    lane: 'context',
+    provider: 'BBC News',
+    isTrustedOfficial: true,
+    requiresKeywordMatch: false
+  };
+
+  const terrorArticle = {
+    title: 'Counter-terror police arrest suspect in bombing plot',
+    summary: 'Terrorism investigation leads to extremist cell. Radicalised individuals charged.',
+    sourceExtract: 'The arrested suspect faces terrorism offences.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(source, terrorArticle), null);
 });
 
 test("renderHero shows requested fallback copy when live pull hasn't happened yet", () => {
