@@ -41,7 +41,8 @@ import {
   englishFriendlyPatterns,
   nonEnglishEndpointPatterns,
   inferConfidenceScore,
-  sourceLooksEnglish
+  sourceLooksEnglish,
+  looksLikeEntertainment
 } from '../shared/taxonomy.mjs';
 import {
   fusedIncidentIdFor,
@@ -976,6 +977,139 @@ test('discardReasonForItem marks missing/invalid date drops explicitly', () => {
 
   assert.equal(discardReasonForItem(source, missingDateItem), 'missing-or-invalid-date');
   assert.equal(discardReasonForItem(source, invalidDateItem), 'missing-or-invalid-date');
+});
+
+test('requiresKeywordMatch rejects items with incident keywords but no terrorism keywords', () => {
+  const recentDate = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+
+  // Context-lane non-official source — entertainment without terror keywords
+  // is caught by the insufficient-terror-hits check (which fires before requiresKeywordMatch)
+  const contextSource = {
+    lane: 'context',
+    provider: 'Euronews a Europe',
+    isTrustedOfficial: false,
+    requiresKeywordMatch: true
+  };
+
+  const pureEntertainmentItem = {
+    title: "Film Of The Week: 'The Mummy' - A Successful Exhumation?",
+    summary: 'Horror director explores a new attack angle for the wrapped menace, delivering ancient evil with a plot full of suspect twists.',
+    sourceExtract: 'The goriest entry yet, with images of rotting flesh and a device of the unknown.',
+    published: recentDate
+  };
+
+  // No terrorism keywords → blocked by insufficient-terror-hits (context-lane guard)
+  assert.equal(discardReasonForItem(contextSource, pureEntertainmentItem), 'insufficient-terror-hits');
+
+  // Incidents-lane source with requiresKeywordMatch — the requiresKeywordMatch
+  // dual-signal check is the primary guard here
+  const incidentsSource = {
+    lane: 'incidents',
+    provider: 'Test Broad Source',
+    isTrustedOfficial: false,
+    requiresKeywordMatch: true
+  };
+
+  // Has incident keywords ("attack", "plot", "suspect") but no terrorism keywords
+  // → should be blocked by the tightened requiresKeywordMatch (not-terror-relevant fires first for incidents lane)
+  const filmReviewForIncidents = {
+    title: "Film Of The Week: 'The Mummy' - A Successful Exhumation?",
+    summary: 'Horror director explores a new attack angle, delivering ancient evil with a plot full of suspect twists.',
+    sourceExtract: 'The goriest entry yet, with images of rotting flesh.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(incidentsSource, filmReviewForIncidents), 'not-terror-relevant');
+
+  // Now test the specific requiresKeywordMatch dual-signal: border-lane source
+  // (not context, not incidents) where requiresKeywordMatch is the main filter
+  const borderSource = {
+    lane: 'border',
+    provider: 'Test Border Source',
+    isTrustedOfficial: false,
+    requiresKeywordMatch: true
+  };
+
+  // Has incident keywords but NO terrorism keywords → blocked by keyword-match-required
+  const entertainmentBorder = {
+    title: "Film Of The Week: 'The Mummy' - A Successful Exhumation?",
+    summary: 'Horror director explores a new attack angle, delivering ancient evil with a plot full of suspect twists.',
+    sourceExtract: 'The goriest entry yet, with images of rotting flesh and a threat.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(borderSource, entertainmentBorder), 'keyword-match-required');
+
+  // Has both incident AND terrorism keywords → should pass
+  const legitimateItem = {
+    title: 'Bulgaria arrests terrorism suspect after bomb plot disrupted',
+    summary: 'Counter-terror police arrested a suspect linked to an extremist bombing plot.',
+    sourceExtract: 'The arrest follows a terrorism investigation into radicalised individuals.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(borderSource, legitimateItem), null);
+});
+
+test('looksLikeEntertainment detects film review content', () => {
+  const filmText = "Film of the Week: The Mummy — a blockbuster sequel starring Brendan Fraser, directed by Stephen Sommers. Box office hit with an epic runtime.";
+  assert.equal(looksLikeEntertainment(filmText), true);
+});
+
+test('looksLikeEntertainment does not flag genuine security articles', () => {
+  const securityText = 'Counter-terror police arrested a suspect linked to an extremist bombing plot. The terrorism investigation revealed radicalised individuals.';
+  assert.equal(looksLikeEntertainment(securityText), false);
+});
+
+test('looksLikeEntertainment allows entertainment text with strong terror signal', () => {
+  // Article about a terrorism documentary could have both entertainment and terror terms
+  const docuText = 'A new Netflix streaming premiere: a documentary about terrorism and extremism, directed by an award-winning filmmaker, starring real footage of counter-terror operations.';
+  // ≥3 entertainment hits but also ≥2 terror hits → should NOT be flagged
+  assert.equal(looksLikeEntertainment(docuText), false);
+});
+
+test('looksLikeEntertainment does not flag text below threshold', () => {
+  // Only 2 entertainment signals — below ENTERTAINMENT_THRESHOLD of 3
+  const borderlineText = 'A review of the government security director highlights new threat levels.';
+  assert.equal(looksLikeEntertainment(borderlineText), false);
+});
+
+test('discardReasonForItem returns entertainment-content for film reviews', () => {
+  const recentDate = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+  const source = {
+    lane: 'context',
+    provider: 'Euronews a Europe',
+    isTrustedOfficial: false,
+    requiresKeywordMatch: true
+  };
+
+  const filmReview = {
+    title: "Film Of The Week: 'The Mummy' — A Box Office Sequel",
+    summary: 'This blockbuster franchise returns with a new director and an all-star cast. An attack of ancient evil, plot twists, and suspect characters — cinema at its finest.',
+    sourceExtract: 'Starring Brendan Fraser. Runtime: 125 minutes. Streaming soon on Netflix.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(source, filmReview), 'entertainment-content');
+});
+
+test('discardReasonForItem does not flag terror article as entertainment', () => {
+  const recentDate = new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString();
+  const source = {
+    lane: 'context',
+    provider: 'BBC News',
+    isTrustedOfficial: true,
+    requiresKeywordMatch: false
+  };
+
+  const terrorArticle = {
+    title: 'Counter-terror police arrest suspect in bombing plot',
+    summary: 'Terrorism investigation leads to extremist cell. Radicalised individuals charged.',
+    sourceExtract: 'The arrested suspect faces terrorism offences.',
+    published: recentDate
+  };
+
+  assert.equal(discardReasonForItem(source, terrorArticle), null);
 });
 
 test("renderHero shows requested fallback copy when live pull hasn't happened yet", () => {

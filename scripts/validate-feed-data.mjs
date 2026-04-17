@@ -201,6 +201,8 @@ const targets = [
         { latMin: -35, latMax: 15, lngMin: -18, lngMax: -10 },
         // Eastern Canada / US east coast overlap with Mid-Atlantic box
         { latMin: 25, latMax: 60, lngMin: -60, lngMax: -50 },
+        // South America (eastern landmass overlaps Mid-Atlantic box)
+        { latMin: -35, latMax: 13, lngMin: -60, lngMax: -34 },
         // New Zealand (overlaps South Pacific box)
         { latMin: -48, latMax: -34, lngMin: 165, lngMax: 179 },
         // Eastern Australia (overlaps South Pacific box)
@@ -275,6 +277,16 @@ const targets = [
         }
         if (entry.precision != null && !VALID_GEO_PRECISIONS.has(entry.precision)) {
           fieldErrors.push(`${prefix}: "precision" must be one of [${[...VALID_GEO_PRECISIONS].join(', ')}], got ${JSON.stringify(entry.precision)}`);
+        }
+
+        // Country / country_part demonym check — entries should have at
+        // least one alternate term (e.g. "french" for France) so that
+        // news text using adjective forms gets geo-resolved correctly.
+        const DEMONYM_KINDS = new Set(['country', 'country_part']);
+        if (DEMONYM_KINDS.has(entry.kind) && Array.isArray(entry.terms) && entry.terms.length < 2) {
+          fieldErrors.push(
+            `${prefix}: country/country_part entries should have ≥2 terms (include a demonym/adjective form), got ${JSON.stringify(entry.terms)}`
+          );
         }
 
         // Coordinate range sanity

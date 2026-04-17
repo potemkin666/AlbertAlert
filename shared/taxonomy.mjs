@@ -114,6 +114,25 @@ export const terrorismKeywords = [
 export const criticalKeywords = ['attack', 'bomb', 'bombing', 'explosion', 'explosive', 'ramming', 'shooting', 'stabbing', 'hostage'];
 export const highKeywords = ['plot', 'charged', 'arrest', 'arrested', 'parcel', 'raid', 'disrupt', 'suspect'];
 
+/**
+ * Entertainment / culture negative-signal terms.
+ * If an article matches ≥ ENTERTAINMENT_THRESHOLD of these AND has no strong
+ * terrorism signal, it is almost certainly off-topic content (film reviews,
+ * TV recaps, book discussions, etc.).
+ */
+export const entertainmentSignals = [
+  'film of the week', 'review', 'cinema', 'runtime', 'director', 'starring',
+  'box office', 'sequel', 'franchise', 'screenplay', 'trailer', 'cast',
+  'Oscar', 'Oscars', 'Emmy', 'Emmys', 'Bafta',
+  'blockbuster', 'premiere', 'red carpet', 'tv series', 'tv show',
+  'streaming', 'Netflix', 'Amazon Prime',
+  'album', 'concert', 'tour dates', 'tracklist',
+  'cookbook', 'recipe', 'bestseller', 'paperback',
+  'game of the year', 'gameplay', 'console', 'esports'
+];
+
+export const ENTERTAINMENT_THRESHOLD = 3;
+
 export const majorMediaProviders = new Set([
   'Reuters', 'The Guardian', 'BBC News', 'Associated Press', 'AP News', 'The Telegraph',
   'Financial Times', 'France 24', 'DW', 'Politico Europe', 'Euronews', 'Brussels Times',
@@ -171,6 +190,18 @@ export function matchesKeywords(text, words = incidentKeywords) {
     }
     return false;
   });
+}
+
+/**
+ * Returns true when the article text looks like entertainment/culture content
+ * (≥ ENTERTAINMENT_THRESHOLD signal terms) AND lacks a strong terrorism signal
+ * (fewer than 2 terrorismKeywords hits).
+ */
+export function looksLikeEntertainment(text) {
+  const hits = matchesKeywords(text, entertainmentSignals.map((s) => s.toLowerCase()));
+  if (hits.length < ENTERTAINMENT_THRESHOLD) return false;
+  const terrorHits = matchesKeywords(text, terrorismKeywords);
+  return terrorHits.length < 2;
 }
 
 export function normaliseSourceTier(value) {
