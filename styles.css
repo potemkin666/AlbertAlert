@@ -771,8 +771,27 @@ h1 {
     inset 0 -1px 0 rgba(0, 0, 0, 0.10);
 }
 
+/* ── Aesthetic: map surface top-edge highlight ──
+   Faint horizontal light-leak along the top inner edge of the map
+   surface, mimicking light hitting the upper rim of a glass panel. */
 .map-surface::before {
-  display: none;
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 420;
+  pointer-events: none;
+  border-radius: 16px 16px 0 0;
+  background: linear-gradient(
+    90deg,
+    transparent 4%,
+    rgba(255, 255, 255, 0.14) 28%,
+    rgba(200, 225, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.14) 72%,
+    transparent 96%
+  );
 }
 
 .map-toolbar {
@@ -1520,23 +1539,26 @@ h1 {
   pointer-events: none;
 }
 
+/* ── Aesthetic: cluster inner radial gradient ──
+   Subtle radial highlight makes each cluster feel spherical rather
+   than flat, adding depth without changing the base colour palette. */
 .map-cluster--critical {
-  background: #fca5a5;
+  background: radial-gradient(circle at 38% 34%, #fecaca 0%, #fca5a5 58%, #f87171 100%);
   --cluster-ring: rgba(252, 165, 165, 0.50);
 }
 
 .map-cluster--high {
-  background: #fdba74;
+  background: radial-gradient(circle at 38% 34%, #fed7aa 0%, #fdba74 58%, #fb923c 100%);
   --cluster-ring: rgba(253, 186, 116, 0.45);
 }
 
 .map-cluster--elevated {
-  background: #f59e0b;
+  background: radial-gradient(circle at 38% 34%, #fde68a 0%, #f59e0b 58%, #d97706 100%);
   --cluster-ring: rgba(245, 158, 11, 0.40);
 }
 
 .map-cluster--moderate {
-  background: #93c5fd;
+  background: radial-gradient(circle at 38% 34%, #bfdbfe 0%, #93c5fd 58%, #60a5fa 100%);
   --cluster-ring: rgba(147, 197, 253, 0.40);
 }
 
@@ -1636,20 +1658,27 @@ h1 {
   flex-shrink: 0;
 }
 
+/* ── Aesthetic: legend dot micro-glow ──
+   Severity-matched soft glow on each legend swatch so the legend
+   mirrors the glowing dots on the map, reinforcing the colour key. */
 .map-legend-dot--critical {
   background: #dc2626;
+  box-shadow: 0 0 6px 1px rgba(220, 38, 38, 0.55);
 }
 
 .map-legend-dot--high {
   background: #ea580c;
+  box-shadow: 0 0 6px 1px rgba(234, 88, 12, 0.50);
 }
 
 .map-legend-dot--elevated {
   background: #d97706;
+  box-shadow: 0 0 6px 1px rgba(217, 119, 6, 0.45);
 }
 
 .map-legend-dot--moderate {
   background: #0284c7;
+  box-shadow: 0 0 6px 1px rgba(2, 132, 199, 0.45);
 }
 
 /* ── Dark-mode tile toggle ── */
