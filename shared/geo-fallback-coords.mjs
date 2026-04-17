@@ -24,6 +24,18 @@ export const FALLBACK_LOCATION_LABELS = Object.freeze({
   _default:     'Europe'
 });
 
+/** London bounding box shared by isLondonAlert and map-watch. */
+export const LONDON_BOUNDS = Object.freeze({
+  latMin: 51.28, latMax: 51.70,
+  lngMin: -0.52, lngMax: 0.24
+});
+
+/** World-view center & zoom used when no alerts dictate a tighter view. */
+export const WORLD_VIEW_DEFAULTS = Object.freeze({
+  center: Object.freeze([50, 10]),
+  zoom: 4
+});
+
 export function fallbackCoordsForRegion(region) {
   return FALLBACK_COORDS[region] || FALLBACK_COORDS._default;
 }

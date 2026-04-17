@@ -102,10 +102,15 @@ export function inferLocation(source, title, summary = '') {
   return fallbackLocationLabelForRegion(source.region);
 }
 
+function isValidCoord(lat, lng) {
+  return Number.isFinite(lat) && Number.isFinite(lng) &&
+    lat >= -90 && lat <= 90 && lng >= -180 && lng <= 180;
+}
+
 export function geoFor(location, title, summary, region) {
   const text = `${location || ''} ${title || ''} ${summary || ''}`;
   const match = bestGeoEntryFor(text, region);
-  if (match) return { lat: match.lat, lng: match.lng };
+  if (match && isValidCoord(match.lat, match.lng)) return { lat: match.lat, lng: match.lng };
   const fallback = fallbackCoordsForRegion(region);
   return { lat: fallback.lat, lng: fallback.lng };
 }

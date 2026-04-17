@@ -263,6 +263,20 @@ const targets = [
           fieldErrors.push(`${prefix}: "label" must be a non-empty string`);
         }
 
+        // kind / precision enum checks
+        const VALID_GEO_KINDS = new Set([
+          'neighbourhood', 'borough', 'city', 'town', 'airport_area',
+          'county', 'region', 'state', 'country', 'country_part', 'continent'
+        ]);
+        const VALID_GEO_PRECISIONS = new Set(['high', 'medium', 'low']);
+
+        if (entry.kind != null && !VALID_GEO_KINDS.has(entry.kind)) {
+          fieldErrors.push(`${prefix}: "kind" must be one of [${[...VALID_GEO_KINDS].join(', ')}], got ${JSON.stringify(entry.kind)}`);
+        }
+        if (entry.precision != null && !VALID_GEO_PRECISIONS.has(entry.precision)) {
+          fieldErrors.push(`${prefix}: "precision" must be one of [${[...VALID_GEO_PRECISIONS].join(', ')}], got ${JSON.stringify(entry.precision)}`);
+        }
+
         // Coordinate range sanity
         if (Number.isFinite(entry.lat) && (entry.lat < -90 || entry.lat > 90)) {
           fieldErrors.push(`${prefix}: "lat" out of range [-90, 90], got ${entry.lat}`);

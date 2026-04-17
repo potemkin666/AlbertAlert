@@ -137,14 +137,20 @@ test('fallbackLocationLabelForRegion returns _default for unknown region', () =>
 });
 
 // ── normaliseAlert() client-side fallback coord tests ───────────────────
-// These verify the frontend places dots on land, not in the Baltic Sea.
+// These verify the frontend places dots on land (near the fallback center),
+// with deterministic jitter so stacked dots spread into a visible cluster.
+
+const JITTER_TOLERANCE = 0.06; // slightly above the ±0.05° jitter range
 
 for (const region of ALL_REGIONS) {
-  test(`normaliseAlert() with no coords returns on-land fallback for region "${region}"`, () => {
+  test(`normaliseAlert() with no coords returns jittered fallback near center for region "${region}"`, () => {
     const alert = normaliseAlert({ id: `test-${region}`, region, title: 'Test' }, 0);
     const expected = EXPECTED[region];
-    assert.equal(alert.lat, expected.lat, `lat mismatch for normaliseAlert region "${region}"`);
-    assert.equal(alert.lng, expected.lng, `lng mismatch for normaliseAlert region "${region}"`);
+    assert.ok(Math.abs(alert.lat - expected.lat) <= JITTER_TOLERANCE,
+      `lat ${alert.lat} too far from fallback ${expected.lat} for region "${region}"`);
+    assert.ok(Math.abs(alert.lng - expected.lng) <= JITTER_TOLERANCE,
+      `lng ${alert.lng} too far from fallback ${expected.lng} for region "${region}"`);
+    assert.equal(alert.geoPrecision, 'fallback', `geoPrecision should be "fallback" for region "${region}"`);
   });
 }
 
@@ -161,9 +167,34 @@ test('normaliseAlert() preserves explicit coords and does not use fallback', () 
   assert.equal(alert.lng, -1.0);
 });
 
-test('normaliseAlert() for unknown region defaults to europe fallback coords', () => {
+test('normaliseAlert() for unknown region defaults to europe fallback coords with jitter', () => {
   const alert = normaliseAlert({ id: 'unknown-region', region: 'martian', title: 'Test' }, 0);
   assert.equal(alert.region, 'europe');
-  assert.equal(alert.lat, EXPECTED.europe.lat);
-  assert.equal(alert.lng, EXPECTED.europe.lng);
+  assert.ok(Math.abs(alert.lat - EXPECTED.europe.lat) <= JITTER_TOLERANCE,
+    `lat ${alert.lat} too far from europe fallback ${EXPECTED.europe.lat}`);
+  assert.ok(Math.abs(alert.lng - EXPECTED.europe.lng) <= JITTER_TOLERANCE,
+    `lng ${alert.lng} too far from europe fallback ${EXPECTED.europe.lng}`);
+  assert.equal(alert.geoPrecision, 'fallback');
+});
+
+test('normaliseAlert() jitter is deterministic — same id always produces same coords', () => {
+  const a1 = normaliseAlert({ id: 'jitter-stable', region: 'uk', title: 'Test' }, 0);
+  const a2 = normaliseAlert({ id: 'jitter-stable', region: 'uk', title: 'Test' }, 0);
+  assert.equal(a1.lat, a2.lat);
+  assert.equal(a1.lng, a2.lng);
+});
+
+test('normaliseAlert() different ids produce different jitter offsets', () => {
+  const a1 = normaliseAlert({ id: 'jitter-a', region: 'uk', title: 'Test' }, 0);
+  const a2 = normaliseAlert({ id: 'jitter-b', region: 'uk', title: 'Test' }, 1);
+  // Not guaranteed to differ but extremely unlikely to be identical
+  const bothSame = a1.lat === a2.lat && a1.lng === a2.lng;
+  assert.ok(!bothSame, 'different alert ids should produce different jitter offsets');
+});
+
+test('normaliseAlert() rejects out-of-range lat/lng and falls back', () => {
+  const a = normaliseAlert({ id: 'out-of-range', region: 'uk', title: 'Test', lat: 999, lng: -300 }, 0);
+  assert.ok(Math.abs(a.lat - EXPECTED.uk.lat) <= JITTER_TOLERANCE, `lat ${a.lat} should fall back near UK`);
+  assert.ok(Math.abs(a.lng - EXPECTED.uk.lng) <= JITTER_TOLERANCE, `lng ${a.lng} should fall back near UK`);
+  assert.equal(a.geoPrecision, 'fallback');
 });
