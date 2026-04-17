@@ -1,25 +1,8 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-16T23:55:39.351Z",
-  "totalSourceErrors": 4,
+  "generatedAt": "2026-04-17T03:25:46.960Z",
+  "totalSourceErrors": 1,
   "top20": [
-    {
-      "id": "daily-mail-online",
-      "provider": "Daily Mail Online - Popular Stories",
-      "endpoint": "https://www.dailymail.co.uk/home/index.rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
     {
       "id": "gnet-youth-rss",
       "provider": "Global Network on Extremism & Technology (GNET) a Youth (RSS)",
@@ -34,40 +17,6 @@
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "just-security",
-      "provider": "Just Security a Law, Rights & National Security",
-      "endpoint": "https://www.justsecurity.org/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "police-uk-all-crime-leicester",
-      "provider": "Police.uk - Street Crime Around Leicester",
-      "endpoint": "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "json",
-      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
     }
