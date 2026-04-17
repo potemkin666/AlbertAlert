@@ -1,8 +1,7 @@
 import { escapeHtml } from '../app/utils/text.mjs';
 import { MAP_VIEW_MODES, NEARBY_RADIUS_KM, resolveMapMode } from './ui-constants.mjs';
-import { FALLBACK_COORDS, LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
+import { LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
 
-const LONDON_CENTER = Object.freeze([FALLBACK_COORDS.london.lat, FALLBACK_COORDS.london.lng]);
 const LONDON_BOUNDS_ARRAY = Object.freeze([
   [LONDON_BOUNDS.latMin, LONDON_BOUNDS.lngMin],
   [LONDON_BOUNDS.latMax, LONDON_BOUNDS.lngMax]
@@ -287,6 +286,11 @@ function clusterSeverity(items) {
   return best;
 }
 
+function vignetteLevel(items) {
+  if (!items || items.length === 0) return 'none';
+  return clusterSeverity(items);
+}
+
 function clusterThreshold(zoom) {
   if (zoom <= 3) return 52;
   if (zoom <= 5) return 40;
@@ -359,6 +363,7 @@ export function createMapController(config) {
   let initAttempts = 0;
   let isLoadingLeaflet = false;
   const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
+  const mapViewport = mapElement?.parentElement;
 
   function ensureMap() {
     if (liveMap || !mapElement) return;
@@ -646,6 +651,7 @@ export function createMapController(config) {
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
     if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
+    if (mapViewport) mapViewport.dataset.vignette = vignetteLevel(items);
     if (forceFit) {
       fitForMode(mode, points, state);
     }
@@ -691,4 +697,4 @@ export function createMapController(config) {
   };
 }
 
-export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName };
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel };

@@ -9,7 +9,8 @@ import {
   _CLUSTER_FLY_DURATION,
   _clusterSeverity,
   _statusLine,
-  _normaliseCountryName
+  _normaliseCountryName,
+  _vignetteLevel
 } from '../shared/map-watch.mjs';
 import { MAP_VIEW_MODES } from '../shared/ui-constants.mjs';
 
@@ -179,5 +180,48 @@ describe('normaliseCountryName', () => {
     assert.equal(_normaliseCountryName(''), '');
     assert.equal(_normaliseCountryName(null), '');
     assert.equal(_normaliseCountryName(undefined), '');
+  });
+});
+
+describe('vignetteLevel', () => {
+  it('returns "none" for empty array', () => {
+    assert.equal(_vignetteLevel([]), 'none');
+  });
+
+  it('returns "none" for null/undefined', () => {
+    assert.equal(_vignetteLevel(null), 'none');
+    assert.equal(_vignetteLevel(undefined), 'none');
+  });
+
+  it('returns "critical" when any item is critical', () => {
+    const items = [
+      { severity: 'moderate' },
+      { severity: 'critical' },
+      { severity: 'high' }
+    ];
+    assert.equal(_vignetteLevel(items), 'critical');
+  });
+
+  it('returns "high" as highest when no critical', () => {
+    const items = [
+      { severity: 'moderate' },
+      { severity: 'high' },
+      { severity: 'elevated' }
+    ];
+    assert.equal(_vignetteLevel(items), 'high');
+  });
+
+  it('returns "elevated" as highest when no critical/high', () => {
+    const items = [{ severity: 'moderate' }, { severity: 'elevated' }];
+    assert.equal(_vignetteLevel(items), 'elevated');
+  });
+
+  it('returns "moderate" when all items are moderate', () => {
+    const items = [{ severity: 'moderate' }, { severity: 'moderate' }];
+    assert.equal(_vignetteLevel(items), 'moderate');
+  });
+
+  it('returns "moderate" for a single item with no severity', () => {
+    assert.equal(_vignetteLevel([{}]), 'moderate');
   });
 });
