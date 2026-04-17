@@ -25,7 +25,7 @@ export const NEARBY_RADIUS_KM = 150;
 
 const MAP_MODE_VALUES = new Set(Object.values(MAP_VIEW_MODES));
 export function resolveMapMode(value) {
-  return MAP_MODE_VALUES.has(value) ? value : MAP_VIEW_MODES.london;
+  return MAP_MODE_VALUES.has(value) ? value : MAP_VIEW_MODES.world;
 }
 
 export const STATUS_LABELS = Object.freeze({

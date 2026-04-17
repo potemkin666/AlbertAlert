@@ -13,6 +13,7 @@ import {
   fallbackCoordsForRegion,
   fallbackLocationLabelForRegion
 } from '../shared/geo-fallback-coords.mjs';
+import { resolveMapMode } from '../shared/ui-constants.mjs';
 
 // ── Setup: populate the in-memory geo lookup from data/geo-lookup.json ──
 
@@ -203,6 +204,11 @@ test('normaliseAlert() rejects out-of-range lat/lng and falls back', () => {
 // Build-side assigns exact fallback coordinates with geoPrecision 'country' or
 // 'region'. Without jitter, many alerts stack at the same pixel. These tests
 // verify that coarse-precision alerts get deterministic jitter applied.
+// Country-level uses ±1.5° so clusters break apart at world zoom;
+// region-level uses ±0.5°.
+
+const COUNTRY_JITTER_TOLERANCE = 1.6; // slightly above the ±1.5° country jitter range
+const REGION_JITTER_TOLERANCE = 0.6;  // slightly above the ±0.5° region jitter range
 
 test('normaliseAlert() applies jitter for geoPrecision "country"', () => {
   const a = normaliseAlert({
@@ -211,10 +217,10 @@ test('normaliseAlert() applies jitter for geoPrecision "country"', () => {
   }, 0);
   assert.notEqual(a.lat, 54.5, 'lat should be jittered away from exact fallback');
   assert.notEqual(a.lng, -2.5, 'lng should be jittered away from exact fallback');
-  assert.ok(Math.abs(a.lat - 54.5) <= JITTER_TOLERANCE,
-    `jittered lat ${a.lat} should stay near 54.5`);
-  assert.ok(Math.abs(a.lng - (-2.5)) <= JITTER_TOLERANCE,
-    `jittered lng ${a.lng} should stay near -2.5`);
+  assert.ok(Math.abs(a.lat - 54.5) <= COUNTRY_JITTER_TOLERANCE,
+    `jittered lat ${a.lat} should stay within ±1.5° of 54.5`);
+  assert.ok(Math.abs(a.lng - (-2.5)) <= COUNTRY_JITTER_TOLERANCE,
+    `jittered lng ${a.lng} should stay within ±1.5° of -2.5`);
   assert.equal(a.geoPrecision, 'country');
 });
 
@@ -225,11 +231,31 @@ test('normaliseAlert() applies jitter for geoPrecision "region"', () => {
   }, 0);
   assert.notEqual(a.lat, 51.5074, 'lat should be jittered away from exact fallback');
   assert.notEqual(a.lng, -0.1278, 'lng should be jittered away from exact fallback');
-  assert.ok(Math.abs(a.lat - 51.5074) <= JITTER_TOLERANCE,
-    `jittered lat ${a.lat} should stay near 51.5074`);
-  assert.ok(Math.abs(a.lng - (-0.1278)) <= JITTER_TOLERANCE,
-    `jittered lng ${a.lng} should stay near -0.1278`);
+  assert.ok(Math.abs(a.lat - 51.5074) <= REGION_JITTER_TOLERANCE,
+    `jittered lat ${a.lat} should stay within ±0.5° of 51.5074`);
+  assert.ok(Math.abs(a.lng - (-0.1278)) <= REGION_JITTER_TOLERANCE,
+    `jittered lng ${a.lng} should stay within ±0.5° of -0.1278`);
   assert.equal(a.geoPrecision, 'region');
+});
+
+test('normaliseAlert() country jitter is wider than region jitter', () => {
+  // Compute average absolute jitter for 20 country-level and 20 region-level ids
+  let countrySum = 0;
+  let regionSum = 0;
+  for (let i = 0; i < 20; i++) {
+    const c = normaliseAlert({
+      id: `spread-country-${i}`, region: 'uk', title: 'T',
+      lat: 54.5, lng: -2.5, geoPrecision: 'country'
+    }, i);
+    countrySum += Math.abs(c.lat - 54.5) + Math.abs(c.lng - (-2.5));
+    const r = normaliseAlert({
+      id: `spread-region-${i}`, region: 'uk', title: 'T',
+      lat: 54.5, lng: -2.5, geoPrecision: 'region'
+    }, i);
+    regionSum += Math.abs(r.lat - 54.5) + Math.abs(r.lng - (-2.5));
+  }
+  assert.ok(countrySum > regionSum,
+    `country jitter total ${countrySum.toFixed(3)} should exceed region total ${regionSum.toFixed(3)}`);
 });
 
 test('normaliseAlert() does NOT jitter for geoPrecision "city"', () => {
@@ -265,4 +291,18 @@ test('normaliseAlert() different ids at same coarse coords produce different jit
   }, 1);
   const bothSame = a1.lat === a2.lat && a1.lng === a2.lng;
   assert.ok(!bothSame, 'different alert ids should produce different jitter at coarse precision');
+});
+
+// ── resolveMapMode default tests ───────────────────────────────────────
+
+test('resolveMapMode returns world as default for invalid input', () => {
+  assert.equal(resolveMapMode('garbage'), 'world');
+  assert.equal(resolveMapMode(undefined), 'world');
+  assert.equal(resolveMapMode(''), 'world');
+});
+
+test('resolveMapMode preserves valid modes', () => {
+  assert.equal(resolveMapMode('london'), 'london');
+  assert.equal(resolveMapMode('world'), 'world');
+  assert.equal(resolveMapMode('nearby'), 'nearby');
 });

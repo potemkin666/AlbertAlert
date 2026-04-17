@@ -533,7 +533,10 @@ export function createMapController(config) {
     }
 
     if (points.length) {
-      liveMap.fitBounds(L.latLngBounds(points), { padding: [26, 26], maxZoom: 4 });
+      liveMap.fitBounds(L.latLngBounds(points), { padding: [26, 26], maxZoom: 5 });
+      // Prevent extreme zoom-out when outlier points span the globe;
+      // keep the map at zoom ≥ 3 so regional clusters remain visible.
+      if (liveMap.getZoom() < 3) liveMap.setZoom(3);
     } else {
       liveMap.setView(WORLD_FALLBACK.center, WORLD_FALLBACK.zoom);
     }
