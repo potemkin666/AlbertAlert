@@ -338,9 +338,11 @@ function setupPopupAccessibility(popupElement, marker, map) {
   }
 
   popupElement.addEventListener('keydown', handleKeyDown);
-  marker.once('popupclose', () => {
+  function cleanup() {
     popupElement.removeEventListener('keydown', handleKeyDown);
-  });
+  }
+  marker.once('popupclose', cleanup);
+  marker.once('remove', cleanup);
 }
 
 export function createMapController(config) {
@@ -553,7 +555,7 @@ export function createMapController(config) {
     lastView = view;
     const mode = resolveMapMode(state.mapViewMode);
     const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
-    const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${item.lat.toFixed(3)},${item.lng.toFixed(3)}`).join('|')}`;
+    const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${(item.lat ?? 0).toFixed(3)},${(item.lng ?? 0).toFixed(3)}`).join('|')}`;
     if (!forceFit && signature === lastSignature) return;
     lastSignature = signature;
     lastMode = mode;
@@ -614,7 +616,7 @@ export function createMapController(config) {
             liveMap.closePopup();
             liveMap.flyToBounds(L.latLngBounds(entry.items.map((item) => [item.lat, item.lng])), {
               padding: [26, 26],
-              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, clusterMaxZoomForMode(mode)),
+              maxZoom: Math.min((Number.isFinite(liveMap.getZoom()) ? liveMap.getZoom() : 3) + 2, clusterMaxZoomForMode(mode)),
               duration: CLUSTER_FLY_DURATION
             });
           }, { once: true });

@@ -68,10 +68,10 @@ describe('filteredMapView with nearby mode', () => {
     assert.equal(result.filtered[0].id, '1');
   });
 
-  it('returns no alerts when in nearby mode without location', () => {
+  it('returns all alerts when in nearby mode without location (fallback)', () => {
     const state = { mapViewMode: MAP_VIEW_MODES.nearby, userLocation: null };
     const result = filteredMapView(state, view);
-    assert.equal(result.filtered.length, 0);
+    assert.equal(result.filtered.length, 3, 'Should fall back to all alerts when user location is unavailable');
   });
 
   it('returns all alerts in world mode', () => {
