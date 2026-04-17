@@ -6,8 +6,12 @@ import {
   _SEVERITY_LEGEND_ITEMS,
   _TILE_LIGHT,
   _TILE_DARK,
-  _CLUSTER_FLY_DURATION
+  _CLUSTER_FLY_DURATION,
+  _clusterSeverity,
+  _statusLine,
+  _normaliseCountryName
 } from '../shared/map-watch.mjs';
+import { MAP_VIEW_MODES } from '../shared/ui-constants.mjs';
 
 describe('SEVERITY_LEGEND_ITEMS', () => {
   it('has four severity levels', () => {
@@ -97,5 +101,83 @@ describe('CLUSTER_FLY_DURATION', () => {
 
   it('is a reasonable animation duration (under 3 seconds)', () => {
     assert.ok(_CLUSTER_FLY_DURATION <= 3, 'Expected duration <= 3 seconds');
+  });
+});
+
+describe('clusterSeverity ordering', () => {
+  it('returns critical when any item is critical', () => {
+    assert.equal(_clusterSeverity([{ severity: 'moderate' }, { severity: 'critical' }]), 'critical');
+  });
+
+  it('returns high when items are elevated and high', () => {
+    assert.equal(_clusterSeverity([{ severity: 'elevated' }, { severity: 'high' }]), 'high');
+  });
+
+  it('returns high when items are high and elevated', () => {
+    assert.equal(_clusterSeverity([{ severity: 'high' }, { severity: 'elevated' }]), 'high');
+  });
+
+  it('returns elevated when only moderate and elevated are present', () => {
+    assert.equal(_clusterSeverity([{ severity: 'moderate' }, { severity: 'elevated' }]), 'elevated');
+  });
+
+  it('returns moderate when all items are moderate', () => {
+    assert.equal(_clusterSeverity([{ severity: 'moderate' }, { severity: 'moderate' }]), 'moderate');
+  });
+
+  it('handles missing severity gracefully', () => {
+    assert.equal(_clusterSeverity([{}, { severity: 'high' }]), 'high');
+  });
+
+  it('handles single-item clusters', () => {
+    assert.equal(_clusterSeverity([{ severity: 'elevated' }]), 'elevated');
+  });
+});
+
+describe('statusLine text', () => {
+  it('says "worldwide" in world mode', () => {
+    const text = _statusLine(MAP_VIEW_MODES.world, 5);
+    assert.ok(text.includes('worldwide'), `Expected "worldwide" in "${text}"`);
+    assert.ok(text.includes('5 alerts'), `Expected "5 alerts" in "${text}"`);
+  });
+
+  it('says "in London" in london mode', () => {
+    const text = _statusLine(MAP_VIEW_MODES.london, 3);
+    assert.ok(text.includes('in London'), `Expected "in London" in "${text}"`);
+  });
+
+  it('says "nearby" in nearby mode', () => {
+    const text = _statusLine(MAP_VIEW_MODES.nearby, 1);
+    assert.ok(text.includes('nearby'), `Expected "nearby" in "${text}"`);
+    assert.ok(text.includes('1 alert'), `Expected "1 alert" (singular) in "${text}"`);
+  });
+
+  it('says "No alerts" for 0 count', () => {
+    const text = _statusLine(MAP_VIEW_MODES.world, 0);
+    assert.ok(text.includes('No alerts'), `Expected "No alerts" in "${text}"`);
+  });
+});
+
+describe('normaliseCountryName', () => {
+  it('normalises UK aliases to United Kingdom', () => {
+    assert.equal(_normaliseCountryName('uk'), 'United Kingdom');
+    assert.equal(_normaliseCountryName('England'), 'United Kingdom');
+    assert.equal(_normaliseCountryName('Great Britain'), 'United Kingdom');
+  });
+
+  it('normalises US aliases to United States', () => {
+    assert.equal(_normaliseCountryName('usa'), 'United States');
+    assert.equal(_normaliseCountryName('U.S.'), 'United States');
+  });
+
+  it('passes through unknown countries unchanged', () => {
+    assert.equal(_normaliseCountryName('France'), 'France');
+    assert.equal(_normaliseCountryName('Germany'), 'Germany');
+  });
+
+  it('returns empty string for falsy input', () => {
+    assert.equal(_normaliseCountryName(''), '');
+    assert.equal(_normaliseCountryName(null), '');
+    assert.equal(_normaliseCountryName(undefined), '');
   });
 });

@@ -78,7 +78,7 @@ function statusLine(mode, count) {
   const countLabel = `${count} alert${count === 1 ? '' : 's'}`;
   if (mode === MAP_VIEW_MODES.london) return `${countLabel} in London`;
   if (mode === MAP_VIEW_MODES.nearby) return `${countLabel} nearby`;
-  return `${countLabel} in last 24h`;
+  return `${countLabel} worldwide`;
 }
 
 function severityClass(alert) {
@@ -100,28 +100,27 @@ function markerPopup(alert) {
     </div>`;
 }
 
+const COUNTRY_ALIAS_MAP = new Map([
+  ['uk', 'United Kingdom'],
+  ['u.k.', 'United Kingdom'],
+  ['united kingdom', 'United Kingdom'],
+  ['great britain', 'United Kingdom'],
+  ['britain', 'United Kingdom'],
+  ['england', 'United Kingdom'],
+  ['scotland', 'United Kingdom'],
+  ['wales', 'United Kingdom'],
+  ['northern ireland', 'United Kingdom'],
+  ['united states', 'United States'],
+  ['u.s.', 'United States'],
+  ['u.s.a.', 'United States'],
+  ['usa', 'United States'],
+  ['us', 'United States']
+]);
+
 function normaliseCountryName(value) {
   const raw = String(value || '').trim();
   if (!raw) return '';
-  const lower = raw.toLowerCase();
-  const aliasMap = new Map([
-    ['uk', 'United Kingdom'],
-    ['u.k.', 'United Kingdom'],
-    ['united kingdom', 'United Kingdom'],
-    ['great britain', 'United Kingdom'],
-    ['britain', 'United Kingdom'],
-    ['england', 'United Kingdom'],
-    ['scotland', 'United Kingdom'],
-    ['wales', 'United Kingdom'],
-    ['northern ireland', 'United Kingdom'],
-    ['united states', 'United States'],
-    ['u.s.', 'United States'],
-    ['u.s.a.', 'United States'],
-    ['usa', 'United States'],
-    ['us', 'United States']
-  ]);
-  if (aliasMap.has(lower)) return aliasMap.get(lower);
-  return raw;
+  return COUNTRY_ALIAS_MAP.get(raw.toLowerCase()) || raw;
 }
 
 function countryLabelFromAlert(alert) {
@@ -271,13 +270,19 @@ function clusterPopup(entry) {
     </div>`;
 }
 
+const SEVERITY_RANK = Object.freeze({ critical: 3, high: 2, elevated: 1, moderate: 0 });
+
 function clusterSeverity(items) {
+  let bestRank = 0;
   let best = 'moderate';
   for (const item of items) {
     const severity = String(item?.severity || '').toLowerCase();
-    if (severity === 'critical') return 'critical';
-    if (severity === 'high') best = best === 'moderate' ? 'high' : best;
-    if (severity === 'elevated' && best === 'moderate') best = 'elevated';
+    if (severity === 'critical') return 'critical'; // short-circuit
+    const rank = SEVERITY_RANK[severity] ?? 0;
+    if (rank > bestRank) {
+      bestRank = rank;
+      best = severity;
+    }
   }
   return best;
 }
@@ -348,7 +353,6 @@ export function createMapController(config) {
   let lastView = null;
   let tileLayer = null;
   let isDarkTiles = false;
-  let hasInitialLondonFrame = false;
   let initAttempts = 0;
   let isLoadingLeaflet = false;
   const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
@@ -511,7 +515,7 @@ export function createMapController(config) {
 
   function fitForMode(mode, points, state) {
     if (!liveMap) return;
-    if (mode === 'london') {
+    if (mode === MAP_VIEW_MODES.london) {
       if (points.length) {
         liveMap.fitBounds(L.latLngBounds(points), { padding: [22, 22], maxZoom: 12 });
       } else {
@@ -625,20 +629,6 @@ export function createMapController(config) {
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
     if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
-    if (forceFit && mode === MAP_VIEW_MODES.london && !hasInitialLondonFrame) {
-      hasInitialLondonFrame = true;
-      liveMap.setView(LONDON_CENTER, INITIAL_LONDON_ZOOM);
-      requestAnimationFrame(() => liveMap.invalidateSize());
-      return;
-    }
-    if (forceFit && mode === MAP_VIEW_MODES.nearby) {
-      const loc = state?.userLocation;
-      if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
-        liveMap.setView([loc.lat, loc.lng], INITIAL_NEARBY_ZOOM);
-        requestAnimationFrame(() => liveMap.invalidateSize());
-        return;
-      }
-    }
     if (forceFit) {
       fitForMode(mode, points, state);
     }
@@ -684,4 +674,4 @@ export function createMapController(config) {
   };
 }
 
-export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION };
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName };
