@@ -1,4 +1,5 @@
 import philosopherQuotes from './philosopher-quotes.json' with { type: 'json' };
+import dailyBriefingQuotesData from './daily-briefing-quotes.json' with { type: 'json' };
 
 export const watchLayerLabels = {
   transport: 'Transport hubs',
@@ -27,3 +28,5 @@ export const defaultNotes = [
   { title: 'Morning posture', body: 'Maintain focus on transport hubs, symbolic sites, and fast-moving public order environments with terrorism indicators.' },
   { title: 'Cross-border watch', body: 'Track whether any developing European incidents show common method, travel pathway, or propaganda overlap with UK activity.' }
 ];
+
+export const dailyBriefingQuotes = Array.from(dailyBriefingQuotesData);

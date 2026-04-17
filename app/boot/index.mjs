@@ -1,9 +1,10 @@
-import { albertQuotes, defaultNotes } from '../../shared/ui-data.mjs';
+import { albertQuotes, dailyBriefingQuotes, defaultNotes } from '../../shared/ui-data.mjs';
 import { normaliseAlert, sortAlertsByFreshness } from '../../shared/alert-view-model.mjs';
 import { deriveView } from '../../shared/feed-controller.mjs';
 import { createMapController } from '../../shared/map-watch.mjs';
 import {
   applyBriefingMode as syncBriefingMode,
+  dailyBriefingQuote,
   loadArray,
   loadSet,
   nextAlbertQuote,
@@ -154,7 +155,12 @@ export function initialiseApp() {
   state.briefingMode = false;
   state.mapViewMode = state.mapViewMode || MAP_VIEW_MODES.world;
 
-  refreshAlbertQuote();
+  const todayBriefing = dailyBriefingQuote(dailyBriefingQuotes);
+  if (todayBriefing) {
+    elements.albertQuote.textContent = todayBriefing;
+  } else {
+    refreshAlbertQuote();
+  }
   applyBriefingMode();
   rendering.renderAll();
 

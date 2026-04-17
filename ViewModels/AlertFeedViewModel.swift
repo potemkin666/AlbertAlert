@@ -90,6 +90,7 @@ final class AlertFeedViewModel: ObservableObject {
         feedErrors = result.errors
         lastUpdated = .now
         await notificationManager.scheduleNotifications(for: result.alerts)
+        await notificationManager.scheduleDailyBriefing()
     }
 
     func toggleWatchlist(for alert: TerrorAlert) {

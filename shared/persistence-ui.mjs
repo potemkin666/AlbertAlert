@@ -73,6 +73,13 @@ export function nextAlbertQuote(quotes, currentIndex) {
   return { quote: quotes[nextIndex], index: nextIndex };
 }
 
+export function dailyBriefingQuote(quotes, now = new Date()) {
+  if (!quotes || !quotes.length) return '';
+  const start = new Date(now.getUTCFullYear(), 0, 1);
+  const dayOfYear = Math.floor((now - start) / 86_400_000);
+  return quotes[dayOfYear % quotes.length];
+}
+
 export function setActiveTab(next, elements, callbacks) {
   const { tabbar } = elements;
   tabbar.querySelectorAll('.tab').forEach((item) => item.classList.toggle('active', item.dataset.tab === next));
