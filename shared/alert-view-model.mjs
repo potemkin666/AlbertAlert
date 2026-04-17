@@ -10,6 +10,7 @@ import { formatAgeFromDate } from './time-format.mjs';
 import { DEFAULT_LANE, LANE_KEYS, STATUS_LABELS } from './ui-constants.mjs';
 import { escapeHtml } from '../app/utils/text.mjs';
 import { fallbackCoordsForRegion, fallbackLocationLabelForRegion, LONDON_BOUNDS } from './geo-fallback-coords.mjs';
+import { attackTypeLabel } from './attack-type-classifier.mjs';
 
 export function formatAgeFrom(dateLike) {
   return formatAgeFromDate(dateLike);
@@ -694,6 +695,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
       publishedAt: clean(entry.publishedAt),
       confidence: plainText(entry.confidence)
     })) : [],
-    corroborationCount: Number.isFinite(alert.corroborationCount) ? alert.corroborationCount : 0
+    corroborationCount: Number.isFinite(alert.corroborationCount) ? alert.corroborationCount : 0,
+    attackType: attackTypeLabel(alert)
   };
 }

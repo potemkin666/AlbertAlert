@@ -1,6 +1,7 @@
 import { escapeHtml } from '../app/utils/text.mjs';
 import { MAP_VIEW_MODES, NEARBY_RADIUS_KM, resolveMapMode } from './ui-constants.mjs';
 import { LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
+import { attackTypeIcon } from './attack-type-classifier.mjs';
 
 // Leaflet-friendly [lat,lng] pairs derived from the shared LONDON_BOUNDS bounding box.
 const LONDON_BOUNDS_ARRAY = Object.freeze([
@@ -459,9 +460,13 @@ export function createMapController(config) {
   function mapIconForAlert(alert) {
     const level = severityClass(alert);
     const freshClass = isFreshAlert(alert) ? ' map-dot--fresh' : '';
+    const atkIcon = attackTypeIcon(alert.attackType);
+    const overlay = atkIcon
+      ? `<span class="map-dot-attack-icon" aria-label="${escapeHtml(alert.attackType)} attack">${atkIcon}</span>`
+      : '';
     return L.divIcon({
       className: `map-dot-icon${enterClass}`,
-      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>`,
+      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>${overlay}`,
       iconSize: [16, 16],
       iconAnchor: [8, 8],
       popupAnchor: [0, -8]
