@@ -63,7 +63,7 @@ final class AlertNotificationManager: AlertNotificationManaging {
         let quote = quotes[(dayOfYear - 1) % quotes.count]
 
         let content = UNMutableNotificationContent()
-        content.title = "Albert says\u{2026}"
+        content.title = "Albert says…"
         content.body = quote
         content.sound = .default
 
