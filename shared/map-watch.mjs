@@ -355,7 +355,7 @@ export function createMapController(config) {
   let lastView = null;
   let tileLayer = null;
   let isDarkTiles = false;
-  let radiusCircle = null;
+  let watchZoneCircle = null;
   let initAttempts = 0;
   let isLoadingLeaflet = false;
   const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
@@ -476,9 +476,9 @@ export function createMapController(config) {
   function clearLayers() {
     layers.forEach((layer) => layer.remove());
     layers = [];
-    if (radiusCircle) {
-      radiusCircle.remove();
-      radiusCircle = null;
+    if (watchZoneCircle) {
+      watchZoneCircle.remove();
+      watchZoneCircle = null;
     }
   }
 
@@ -636,7 +636,7 @@ export function createMapController(config) {
     // Watch-zone radius overlay for nearby mode
     const loc = state?.userLocation;
     if (mode === MAP_VIEW_MODES.nearby && loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
-      radiusCircle = L.circle([loc.lat, loc.lng], {
+      watchZoneCircle = L.circle([loc.lat, loc.lng], {
         radius: NEARBY_RADIUS_KM * 1000,
         className: 'map-radius-overlay',
         interactive: false
