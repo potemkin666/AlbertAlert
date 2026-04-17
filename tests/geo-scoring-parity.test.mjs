@@ -115,8 +115,8 @@ test('client scoring kind bonuses match build-side scoreGeoEntryMatch', () => {
 
       // Pad kind names to equal length so term-length component is the same
       const maxLen = Math.max(kindA.length, kindB.length);
-      const fakeTermA = `zzzplace${kindA.padEnd(maxLen, 'x')}`;
-      const fakeTermB = `zzzplace${kindB.padEnd(maxLen, 'x')}`;
+      const fakeTermA = `__xxtestgeo__${kindA.padEnd(maxLen, 'x')}`;
+      const fakeTermB = `__xxtestgeo__${kindB.padEnd(maxLen, 'x')}`;
       const testEntries = [
         { terms: [fakeTermA], kind: kindA, precision: 'low', lat: 10, lng: 10, label: `TestA (${kindA})` },
         { terms: [fakeTermB], kind: kindB, precision: 'low', lat: 20, lng: 20, label: `TestB (${kindB})` }
@@ -137,21 +137,21 @@ test('client scoring kind bonuses match build-side scoreGeoEntryMatch', () => {
 
 test('client scoring precision bonuses are correct (high > medium > low)', () => {
   const testEntries = [
-    { terms: ['zzz_prec_high'], kind: 'city', precision: 'high', lat: 1, lng: 1, label: 'High' },
-    { terms: ['zzz_prec_medium'], kind: 'city', precision: 'medium', lat: 2, lng: 2, label: 'Medium' },
-    { terms: ['zzz_prec_low'], kind: 'city', precision: 'low', lat: 3, lng: 3, label: 'Low' }
+    { terms: ['__xxtestgeo__prec_high'], kind: 'city', precision: 'high', lat: 1, lng: 1, label: 'High' },
+    { terms: ['__xxtestgeo__prec_medium'], kind: 'city', precision: 'medium', lat: 2, lng: 2, label: 'Medium' },
+    { terms: ['__xxtestgeo__prec_low'], kind: 'city', precision: 'low', lat: 3, lng: 3, label: 'Low' }
   ];
 
   // high should beat medium
-  let result = inferGeoPoint(fakeAlert('zzz_prec_high zzz_prec_medium'), testEntries);
+  let result = inferGeoPoint(fakeAlert('__xxtestgeo__prec_high __xxtestgeo__prec_medium'), testEntries);
   assert.equal(result.lat, 1, 'high precision should win over medium');
 
   // medium should beat low
-  result = inferGeoPoint(fakeAlert('zzz_prec_medium zzz_prec_low'), testEntries);
+  result = inferGeoPoint(fakeAlert('__xxtestgeo__prec_medium __xxtestgeo__prec_low'), testEntries);
   assert.equal(result.lat, 2, 'medium precision should win over low');
 
   // high should beat low
-  result = inferGeoPoint(fakeAlert('zzz_prec_high zzz_prec_low'), testEntries);
+  result = inferGeoPoint(fakeAlert('__xxtestgeo__prec_high __xxtestgeo__prec_low'), testEntries);
   assert.equal(result.lat, 1, 'high precision should win over low');
 });
 
