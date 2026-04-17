@@ -1,16 +1,49 @@
 {
-  "generatedAt": "2026-04-17T14:10:24.787Z",
-  "count": 38,
+  "generatedAt": "2026-04-17T17:03:11.747Z",
+  "count": 46,
   "metrics": {
-    "total": 38,
+    "total": 46,
     "newThisWeek": 37,
-    "avgTimeInQuarantineHours": 20,
+    "avgTimeInQuarantineHours": 23,
     "avgHealthScore": 20,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "portugal-pj-news",
+      "provider": "Policia Judiciaria Portugal - News",
+      "endpoint": "https://www.policiajudiciaria.pt/?p=noticias",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "europe",
+      "healthScore": 11,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T15:11:26.228Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T21:04:21.166Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T21:04:21.166Z",
+      "lastFailureAt": "2026-04-16T21:04:21.166Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
     {
       "id": "german-bka-press-releases-de",
       "provider": "BKA Germany - Press Releases",
@@ -48,39 +81,6 @@
       "reviewBy": "2026-04-24T08:04:04.612Z",
       "lastFailureAt": "2026-04-17T08:04:04.612Z",
       "lastCheckedAt": "2026-04-17T08:04:04.612Z"
-    },
-    {
-      "id": "portugal-pj-news",
-      "provider": "Policia Judiciaria Portugal - News",
-      "endpoint": "https://www.policiajudiciaria.pt/?p=noticias",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "europe",
-      "healthScore": 14,
-      "status": "auto-quarantined",
-      "reason": "Needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T15:11:26.228Z"
-        },
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T21:04:21.166Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T21:04:21.166Z",
-      "lastFailureAt": "2026-04-16T21:04:21.166Z",
-      "lastCheckedAt": "2026-04-17T14:10:24.787Z"
     },
     {
       "id": "counter-extremism-project-news",
@@ -1274,6 +1274,240 @@
       "reviewBy": "2026-04-23T16:57:11.406Z",
       "lastFailureAt": "2026-04-16T16:57:11.406Z",
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
+    },
+    {
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "http-status-error",
+          "message": "HTTP 429",
+          "at": "2026-04-17T05:46:58.069Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T05:46:58.069Z",
+      "lastFailureAt": "2026-04-17T05:46:58.069Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "police-uk-all-crime-leicester",
+      "provider": "Police.uk - Street Crime Around Leicester",
+      "endpoint": "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592",
+      "kind": "json",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-16T23:55:39.351Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T23:55:39.351Z",
+      "lastFailureAt": "2026-04-16T23:55:39.351Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "london-resilience",
+      "provider": "Resilience First - Latest Updates",
+      "endpoint": "https://resiliencefirst.org/latest-updates",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "london",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T22:57:09.120Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T22:57:09.120Z",
+      "lastFailureAt": "2026-04-16T22:57:09.120Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "semibold",
+      "provider": "Semibold",
+      "endpoint": "https://www.semibold.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T22:57:09.120Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T22:57:09.120Z",
+      "lastFailureAt": "2026-04-16T22:57:09.120Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "judiciary-uk-news",
+      "provider": "Judiciary of England and Wales a News",
+      "endpoint": "https://www.judiciary.uk/feed/",
+      "kind": "rss",
+      "lane": "oversight",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T22:57:09.120Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T22:57:09.120Z",
+      "lastFailureAt": "2026-04-16T22:57:09.120Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "gov-uk-counter-extremism-commissioner",
+      "provider": "Counter Extremism Commissioner a GOV.UK",
+      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-16T19:01:30.233Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T19:01:30.233Z",
+      "lastFailureAt": "2026-04-16T19:01:30.233Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "stay-in-the-know-latest-alerts",
+      "provider": "Stay In The Know - Latest Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T15:11:26.228Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T15:11:26.228Z",
+      "lastFailureAt": "2026-04-16T15:11:26.228Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
+    },
+    {
+      "id": "us-treasury-ofac-press-releases",
+      "provider": "U.S. Treasury (OFAC) - Press Releases",
+      "endpoint": "https://ofac.treasury.gov/press-releases",
+      "kind": "html",
+      "lane": "sanctions",
+      "region": "us",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-16T15:11:26.228Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T15:11:26.228Z",
+      "lastFailureAt": "2026-04-16T15:11:26.228Z",
+      "lastCheckedAt": "2026-04-17T17:03:11.747Z"
     }
   ]
 }
