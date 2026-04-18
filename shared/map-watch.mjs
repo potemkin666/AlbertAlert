@@ -1,8 +1,9 @@
 import { escapeHtml } from '../app/utils/text.mjs';
-import { MAP_VIEW_MODES, resolveMapMode } from './ui-constants.mjs';
-import { FALLBACK_COORDS, LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
+import { MAP_VIEW_MODES, NEARBY_RADIUS_KM, resolveMapMode } from './ui-constants.mjs';
+import { LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
+import { attackTypeIcon } from './attack-type-classifier.mjs';
 
-const LONDON_CENTER = Object.freeze([FALLBACK_COORDS.london.lat, FALLBACK_COORDS.london.lng]);
+// Leaflet-friendly [lat,lng] pairs derived from the shared LONDON_BOUNDS bounding box.
 const LONDON_BOUNDS_ARRAY = Object.freeze([
   [LONDON_BOUNDS.latMin, LONDON_BOUNDS.lngMin],
   [LONDON_BOUNDS.latMax, LONDON_BOUNDS.lngMax]
@@ -78,7 +79,7 @@ function statusLine(mode, count) {
   const countLabel = `${count} alert${count === 1 ? '' : 's'}`;
   if (mode === MAP_VIEW_MODES.london) return `${countLabel} in London`;
   if (mode === MAP_VIEW_MODES.nearby) return `${countLabel} nearby`;
-  return `${countLabel} in last 24h`;
+  return `${countLabel} worldwide`;
 }
 
 function severityClass(alert) {
@@ -100,28 +101,27 @@ function markerPopup(alert) {
     </div>`;
 }
 
+const COUNTRY_ALIAS_MAP = new Map([
+  ['uk', 'United Kingdom'],
+  ['u.k.', 'United Kingdom'],
+  ['united kingdom', 'United Kingdom'],
+  ['great britain', 'United Kingdom'],
+  ['britain', 'United Kingdom'],
+  ['england', 'United Kingdom'],
+  ['scotland', 'United Kingdom'],
+  ['wales', 'United Kingdom'],
+  ['northern ireland', 'United Kingdom'],
+  ['united states', 'United States'],
+  ['u.s.', 'United States'],
+  ['u.s.a.', 'United States'],
+  ['usa', 'United States'],
+  ['us', 'United States']
+]);
+
 function normaliseCountryName(value) {
   const raw = String(value || '').trim();
   if (!raw) return '';
-  const lower = raw.toLowerCase();
-  const aliasMap = new Map([
-    ['uk', 'United Kingdom'],
-    ['u.k.', 'United Kingdom'],
-    ['united kingdom', 'United Kingdom'],
-    ['great britain', 'United Kingdom'],
-    ['britain', 'United Kingdom'],
-    ['england', 'United Kingdom'],
-    ['scotland', 'United Kingdom'],
-    ['wales', 'United Kingdom'],
-    ['northern ireland', 'United Kingdom'],
-    ['united states', 'United States'],
-    ['u.s.', 'United States'],
-    ['u.s.a.', 'United States'],
-    ['usa', 'United States'],
-    ['us', 'United States']
-  ]);
-  if (aliasMap.has(lower)) return aliasMap.get(lower);
-  return raw;
+  return COUNTRY_ALIAS_MAP.get(raw.toLowerCase()) || raw;
 }
 
 function countryLabelFromAlert(alert) {
@@ -271,15 +271,26 @@ function clusterPopup(entry) {
     </div>`;
 }
 
+const SEVERITY_RANK = Object.freeze({ critical: 3, high: 2, elevated: 1, moderate: 0 });
+
 function clusterSeverity(items) {
+  let bestRank = 0;
   let best = 'moderate';
   for (const item of items) {
     const severity = String(item?.severity || '').toLowerCase();
-    if (severity === 'critical') return 'critical';
-    if (severity === 'high') best = best === 'moderate' ? 'high' : best;
-    if (severity === 'elevated' && best === 'moderate') best = 'elevated';
+    if (severity === 'critical') return 'critical'; // short-circuit
+    const rank = SEVERITY_RANK[severity] ?? 0;
+    if (rank > bestRank) {
+      bestRank = rank;
+      best = severity;
+    }
   }
   return best;
+}
+
+function vignetteLevel(items) {
+  if (!items || items.length === 0) return 'none';
+  return clusterSeverity(items);
 }
 
 function clusterThreshold(zoom) {
@@ -333,9 +344,11 @@ function setupPopupAccessibility(popupElement, marker, map) {
   }
 
   popupElement.addEventListener('keydown', handleKeyDown);
-  marker.once('popupclose', () => {
+  function cleanup() {
     popupElement.removeEventListener('keydown', handleKeyDown);
-  });
+  }
+  marker.once('popupclose', cleanup);
+  marker.once('remove', cleanup);
 }
 
 export function createMapController(config) {
@@ -348,10 +361,11 @@ export function createMapController(config) {
   let lastView = null;
   let tileLayer = null;
   let isDarkTiles = false;
-  let hasInitialLondonFrame = false;
+  let watchZoneCircle = null;
   let initAttempts = 0;
   let isLoadingLeaflet = false;
   const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
+  const mapViewport = mapElement?.parentElement;
 
   function ensureMap() {
     if (liveMap || !mapElement) return;
@@ -446,9 +460,13 @@ export function createMapController(config) {
   function mapIconForAlert(alert) {
     const level = severityClass(alert);
     const freshClass = isFreshAlert(alert) ? ' map-dot--fresh' : '';
+    const atkIcon = attackTypeIcon(alert.attackType);
+    const overlay = atkIcon
+      ? `<span class="map-dot-attack-icon" aria-label="${escapeHtml(alert.attackType)} attack">${atkIcon}</span>`
+      : '';
     return L.divIcon({
       className: `map-dot-icon${enterClass}`,
-      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>`,
+      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>${overlay}`,
       iconSize: [16, 16],
       iconAnchor: [8, 8],
       popupAnchor: [0, -8]
@@ -469,6 +487,10 @@ export function createMapController(config) {
   function clearLayers() {
     layers.forEach((layer) => layer.remove());
     layers = [];
+    if (watchZoneCircle) {
+      watchZoneCircle.remove();
+      watchZoneCircle = null;
+    }
   }
 
   function clusterAlerts(items) {
@@ -511,7 +533,7 @@ export function createMapController(config) {
 
   function fitForMode(mode, points, state) {
     if (!liveMap) return;
-    if (mode === 'london') {
+    if (mode === MAP_VIEW_MODES.london) {
       if (points.length) {
         liveMap.fitBounds(L.latLngBounds(points), { padding: [22, 22], maxZoom: 12 });
       } else {
@@ -533,7 +555,10 @@ export function createMapController(config) {
     }
 
     if (points.length) {
-      liveMap.fitBounds(L.latLngBounds(points), { padding: [26, 26], maxZoom: 4 });
+      liveMap.fitBounds(L.latLngBounds(points), { padding: [26, 26], maxZoom: 5 });
+      // Prevent extreme zoom-out when outlier points span the globe;
+      // keep the map at zoom ≥ 3 so regional clusters remain visible.
+      if (liveMap.getZoom() < 3) liveMap.setZoom(3);
     } else {
       liveMap.setView(WORLD_FALLBACK.center, WORLD_FALLBACK.zoom);
     }
@@ -546,7 +571,7 @@ export function createMapController(config) {
     lastView = view;
     const mode = resolveMapMode(state.mapViewMode);
     const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
-    const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${item.lat.toFixed(3)},${item.lng.toFixed(3)}`).join('|')}`;
+    const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${(item.lat ?? 0).toFixed(3)},${(item.lng ?? 0).toFixed(3)}`).join('|')}`;
     if (!forceFit && signature === lastSignature) return;
     lastSignature = signature;
     lastMode = mode;
@@ -607,7 +632,7 @@ export function createMapController(config) {
             liveMap.closePopup();
             liveMap.flyToBounds(L.latLngBounds(entry.items.map((item) => [item.lat, item.lng])), {
               padding: [26, 26],
-              maxZoom: Math.min((liveMap.getZoom() || 3) + 2, clusterMaxZoomForMode(mode)),
+              maxZoom: Math.min((Number.isFinite(liveMap.getZoom()) ? liveMap.getZoom() : 3) + 2, clusterMaxZoomForMode(mode)),
               duration: CLUSTER_FLY_DURATION
             });
           }, { once: true });
@@ -619,23 +644,20 @@ export function createMapController(config) {
       entry.items.forEach((item) => points.push([item.lat, item.lng]));
     });
 
+    // Watch-zone radius overlay for nearby mode
+    const loc = state?.userLocation;
+    if (mode === MAP_VIEW_MODES.nearby && loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
+      watchZoneCircle = L.circle([loc.lat, loc.lng], {
+        radius: NEARBY_RADIUS_KM * 1000,
+        className: 'map-radius-overlay',
+        interactive: false
+      }).addTo(liveMap);
+    }
+
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
     if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
-    if (forceFit && mode === MAP_VIEW_MODES.london && !hasInitialLondonFrame) {
-      hasInitialLondonFrame = true;
-      liveMap.setView(LONDON_CENTER, INITIAL_LONDON_ZOOM);
-      requestAnimationFrame(() => liveMap.invalidateSize());
-      return;
-    }
-    if (forceFit && mode === MAP_VIEW_MODES.nearby) {
-      const loc = state?.userLocation;
-      if (loc && Number.isFinite(loc.lat) && Number.isFinite(loc.lng)) {
-        liveMap.setView([loc.lat, loc.lng], INITIAL_NEARBY_ZOOM);
-        requestAnimationFrame(() => liveMap.invalidateSize());
-        return;
-      }
-    }
+    if (mapViewport) mapViewport.dataset.vignette = vignetteLevel(items);
     if (forceFit) {
       fitForMode(mode, points, state);
     }
@@ -681,4 +703,4 @@ export function createMapController(config) {
   };
 }
 
-export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION };
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel };

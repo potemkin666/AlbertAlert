@@ -5,6 +5,7 @@ import {
   startFeedPolling
 } from '../feed/index.mjs';
 import { syncSourceRequests } from '../feed/source-requests.mjs';
+import { checkAndPlayAlert } from '../../shared/sound-alert.mjs';
 
 export function bootstrapMap(mapController, { idleTimeoutMs, fallbackDelayMs }) {
   if (window.requestIdleCallback) {
@@ -24,6 +25,8 @@ export function startRuntimeLifecycle({
   renderSourceRequestsWithState,
   saveSourceRequests
 }) {
+  let previousAlerts = [];
+
   loadInitialResources(
     state,
     {
@@ -33,12 +36,15 @@ export function startRuntimeLifecycle({
     },
     normaliseAlert,
     () => {
+      previousAlerts = [...state.alerts];
       invalidateDerivedView();
       renderAll();
     }
   );
 
   startFeedPolling(state, pollIntervalMs, urls.liveFeedUrl, normaliseAlert, () => {
+    checkAndPlayAlert({ previousAlerts, currentAlerts: state.alerts });
+    previousAlerts = [...state.alerts];
     invalidateDerivedView();
     renderAll();
   });

@@ -124,6 +124,9 @@ export function renderFeed({ state, elements, view, modalController, invalidateD
   const items = view.responder.slice(0, visibleCount);
   elements.responderSection?.classList.toggle('hidden', !items.length);
   elements.feedList.innerHTML = items.length ? items.map((alert) => responderCardMarkup(alert, state.watched.has(alert.id))).join('') : '';
+  elements.feedList.querySelectorAll('.feed-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 40}ms`;
+  });
   elements.watchedCount.textContent = hasSearch
     ? `${items.length} matching alerts`
     : `${state.watched.size} watched | ${items.length}/${totalItems} shown`;
@@ -161,6 +164,9 @@ export function renderSupporting({ elements, view, state, modalController }) {
         ? 'No results found.'
         : 'No additional reporting has landed in this filter yet.'
     }</p>`;
+  elements.supportingList.querySelectorAll('.supporting-card').forEach((card, index) => {
+    card.style.animationDelay = `${index * 40}ms`;
+  });
   updateLoadMoreButton(elements.supportingLoadMore, items.length, totalItems, 'Load more reporting');
   elements.supportingList.querySelectorAll('[data-supporting]').forEach((card) => {
     card.addEventListener('click', () => modalController.openDetail(state.alerts.find((item) => item.id === card.dataset.supporting)));

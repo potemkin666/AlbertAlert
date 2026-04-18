@@ -10,6 +10,7 @@ import { formatAgeFromDate } from './time-format.mjs';
 import { DEFAULT_LANE, LANE_KEYS, STATUS_LABELS } from './ui-constants.mjs';
 import { escapeHtml } from '../app/utils/text.mjs';
 import { fallbackCoordsForRegion, fallbackLocationLabelForRegion, LONDON_BOUNDS } from './geo-fallback-coords.mjs';
+import { attackTypeLabel } from './attack-type-classifier.mjs';
 
 export function formatAgeFrom(dateLike) {
   return formatAgeFromDate(dateLike);
@@ -98,10 +99,31 @@ export function inferGeoPoint(alert, geoLookup = []) {
 }
 
 /**
- * Deterministic jitter for fallback markers so stacked dots spread visibly.
- * Hash of alertId → ±0.05° offset (~5 km). Same id always produces the same offset.
+ * Coarse geo-precision values where deterministic jitter should be applied
+ * to prevent markers from stacking at the exact same coordinate.
+ * Build-side fallback coords arrive with 'country' or 'region' precision
+ * and many alerts share the exact same point.
+ * Note: 'fallback' is excluded because the fallback branch already applies jitter.
  */
+const COARSE_GEO_PRECISIONS = new Set(['country', 'region', 'unknown']);
+
+/**
+ * Jitter ranges by precision level. Country-level alerts spread ±1.5° (~165 km)
+ * so the cluster breaks apart at world zoom. Region-level alerts spread ±0.5°
+ * (~55 km) — enough to be distinct at zoom 5–6. The base fallback range (±0.05°)
+ * is used only for the no-coord fallback branch where alerts already have
+ * region-level fallback coordinates.
+ */
+const JITTER_RANGE_COUNTRY = 1.5;
+const JITTER_RANGE_REGION = 0.5;
 const JITTER_RANGE = 0.05;
+
+function jitterRangeForPrecision(precision) {
+  if (precision === 'country') return JITTER_RANGE_COUNTRY;
+  if (precision === 'region' || precision === 'unknown') return JITTER_RANGE_REGION;
+  return JITTER_RANGE;
+}
+
 function simpleHash(str) {
   let h = 0;
   for (let i = 0; i < str.length; i++) {
@@ -109,12 +131,12 @@ function simpleHash(str) {
   }
   return h >>> 0; // unsigned
 }
-export function deterministicJitter(alertId) {
+export function deterministicJitter(alertId, range = JITTER_RANGE) {
   const id = String(alertId);
   const hLat = simpleHash(id);
   const hLng = simpleHash(id + '\x00');
-  const dlat = ((hLat % 10000) / 9999 * 2 - 1) * JITTER_RANGE;
-  const dlng = ((hLng % 10000) / 9999 * 2 - 1) * JITTER_RANGE;
+  const dlat = ((hLat % 10000) / 9999 * 2 - 1) * range;
+  const dlng = ((hLng % 10000) / 9999 * 2 - 1) * range;
   return { dlat, dlng };
 }
 
@@ -609,6 +631,19 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     resolvedGeoPrecision = 'fallback';
   }
 
+  // Apply jitter for coarse-precision coordinates so stacked markers spread
+  // visibly on the map. Build-side fallback coords arrive with geoPrecision
+  // 'country' or 'region' and many alerts share the exact same point.
+  // Country-level uses a wider spread (±1.5°) so clusters break apart at
+  // world zoom; region-level uses ±0.5°.
+  if (COARSE_GEO_PRECISIONS.has(resolvedGeoPrecision)) {
+    const alertId = clean(alert.id) || `live-${index}`;
+    const range = jitterRangeForPrecision(resolvedGeoPrecision);
+    const jitter = deterministicJitter(alertId, range);
+    resolvedLat += jitter.dlat;
+    resolvedLng += jitter.dlng;
+  }
+
   return {
     id: clean(alert.id) || `live-${index}`,
     title: plainText(alert.title) || 'Untitled source item',
@@ -660,6 +695,7 @@ export function normaliseAlert(alert, index, geoLookup = []) {
       publishedAt: clean(entry.publishedAt),
       confidence: plainText(entry.confidence)
     })) : [],
-    corroborationCount: Number.isFinite(alert.corroborationCount) ? alert.corroborationCount : 0
+    corroborationCount: Number.isFinite(alert.corroborationCount) ? alert.corroborationCount : 0,
+    attackType: attackTypeLabel(alert)
   };
 }

@@ -68,10 +68,10 @@ describe('filteredMapView with nearby mode', () => {
     assert.equal(result.filtered[0].id, '1');
   });
 
-  it('returns no alerts when in nearby mode without location', () => {
+  it('returns all alerts when in nearby mode without location (fallback)', () => {
     const state = { mapViewMode: MAP_VIEW_MODES.nearby, userLocation: null };
     const result = filteredMapView(state, view);
-    assert.equal(result.filtered.length, 0);
+    assert.equal(result.filtered.length, 3, 'Should fall back to all alerts when user location is unavailable');
   });
 
   it('returns all alerts in world mode', () => {
@@ -90,5 +90,10 @@ describe('MAP_VIEW_MODES', () => {
 describe('NEARBY_RADIUS_KM', () => {
   it('has a default value of 150', () => {
     assert.equal(NEARBY_RADIUS_KM, 150);
+  });
+
+  it('converts to metres for Leaflet L.circle radius', () => {
+    const radiusMetres = NEARBY_RADIUS_KM * 1000;
+    assert.equal(radiusMetres, 150_000, 'Expected 150 km = 150 000 m');
   });
 });

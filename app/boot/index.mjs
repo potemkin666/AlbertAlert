@@ -1,9 +1,10 @@
-import { albertQuotes, defaultNotes } from '../../shared/ui-data.mjs';
+import { albertQuotes, dailyBriefingQuotes, defaultNotes } from '../../shared/ui-data.mjs';
 import { normaliseAlert, sortAlertsByFreshness } from '../../shared/alert-view-model.mjs';
 import { deriveView } from '../../shared/feed-controller.mjs';
 import { createMapController } from '../../shared/map-watch.mjs';
 import {
   applyBriefingMode as syncBriefingMode,
+  dailyBriefingQuote,
   loadArray,
   loadSet,
   nextAlbertQuote,
@@ -11,6 +12,7 @@ import {
   saveSet,
   setActiveTab as applyTabState
 } from '../../shared/persistence-ui.mjs';
+import { loadSoundPreference, saveSoundPreference, playAlertSound } from '../../shared/sound-alert.mjs';
 import { MAP_VIEW_MODES } from '../../shared/ui-constants.mjs';
 import { createModalRuntime } from '../render/modal.mjs';
 import {
@@ -154,7 +156,12 @@ export function initialiseApp() {
   state.briefingMode = false;
   state.mapViewMode = state.mapViewMode || MAP_VIEW_MODES.world;
 
-  refreshAlbertQuote();
+  const todayBriefing = dailyBriefingQuote(dailyBriefingQuotes);
+  if (todayBriefing) {
+    elements.albertQuote.textContent = todayBriefing;
+  } else {
+    refreshAlbertQuote();
+  }
   applyBriefingMode();
   rendering.renderAll();
 
@@ -178,4 +185,15 @@ export function initialiseApp() {
   document.querySelector('.bulldog-card')?.addEventListener('dblclick', () => {
     elements.albertNote.classList.toggle('hidden');
   });
+
+  /* ── Sound alert preference ── */
+  if (elements.soundAlertSelect) {
+    elements.soundAlertSelect.value = loadSoundPreference();
+    elements.soundAlertSelect.addEventListener('change', () => {
+      const chosen = saveSoundPreference(elements.soundAlertSelect.value);
+      elements.soundAlertSelect.value = chosen;
+      // Play a brief preview so the user knows what they picked
+      if (chosen !== 'off') playAlertSound(chosen);
+    });
+  }
 }

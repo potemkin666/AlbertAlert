@@ -8,6 +8,18 @@ import { reportBackgroundError } from '../../shared/logger.mjs';
 const MANUAL_REFRESH_POLL_INTERVAL_MS = 5_000;
 const MANUAL_REFRESH_MAX_WAIT_MS = 90_000;
 
+/* ── Exponential backoff constants ──
+   On consecutive fetch failures the polling interval doubles each time
+   (with jitter) up to a ceiling, then resets after a success. */
+const BACKOFF_MAX_MS = 120_000;
+const BACKOFF_JITTER_RATIO = 0.25;
+
+export function nextBackoffDelay(baseMs, consecutiveFailures, maxMs = BACKOFF_MAX_MS, jitterRatio = BACKOFF_JITTER_RATIO) {
+  const raw = Math.min(baseMs * Math.pow(2, consecutiveFailures), maxMs);
+  const jitter = raw * jitterRatio * (Math.random() * 2 - 1);
+  return Math.max(0, Math.round(raw + jitter));
+}
+
 function currentOriginBase() {
   if (typeof window === 'undefined' || !window.location) return null;
   const origin = window.location.origin.trim();
@@ -62,13 +74,29 @@ export function loadInitialResources(state, urls, normaliseAlert, onAfterLoad) {
 }
 
 export function startFeedPolling(state, pollIntervalMs, liveFeedUrl, normaliseAlert, onAfterLoad) {
-  return setInterval(() => {
-    loadLiveFeed(state, {
-      liveFeedUrl,
-      normaliseAlert,
-      onAfterLoad
-    });
-  }, pollIntervalMs);
+  let consecutiveFailures = 0;
+  let timerId = null;
+
+  function scheduleNext() {
+    const delayMs = consecutiveFailures > 0
+      ? nextBackoffDelay(pollIntervalMs, consecutiveFailures - 1, BACKOFF_MAX_MS)
+      : pollIntervalMs;
+    timerId = setTimeout(async () => {
+      await loadLiveFeed(state, { liveFeedUrl, normaliseAlert, onAfterLoad });
+      if (state.liveFeedFetchState === 'error') {
+        consecutiveFailures += 1;
+      } else {
+        consecutiveFailures = 0;
+      }
+      scheduleNext();
+    }, delayMs);
+  }
+
+  scheduleNext();
+  return {
+    clear() { clearTimeout(timerId); },
+    get consecutiveFailures() { return consecutiveFailures; }
+  };
 }
 
 export function refreshLiveFeedNow(state, liveFeedUrl, normaliseAlert, onAfterLoad) {
@@ -107,6 +135,7 @@ export async function refreshLiveFeedUntilUpdated(
   const maxWaitMs = Number(options.maxWaitMs || MANUAL_REFRESH_MAX_WAIT_MS);
   const deadline = Date.now() + Math.max(0, maxWaitMs);
   let attempts = 0;
+  let consecutiveFailures = 0;
 
   while (attempts === 0 || Date.now() < deadline) {
     attempts += 1;
@@ -119,8 +148,16 @@ export async function refreshLiveFeedUntilUpdated(
         generatedAt: state?.liveFeedGeneratedAt instanceof Date ? state.liveFeedGeneratedAt.toISOString() : null
       };
     }
+    if (state.liveFeedFetchState === 'error') {
+      consecutiveFailures += 1;
+    } else {
+      consecutiveFailures = 0;
+    }
     if (Date.now() >= deadline) break;
-    await delay(pollIntervalMs);
+    const waitMs = consecutiveFailures > 0
+      ? nextBackoffDelay(pollIntervalMs, consecutiveFailures - 1, MANUAL_REFRESH_MAX_WAIT_MS)
+      : pollIntervalMs;
+    await delay(waitMs);
   }
 
   return {

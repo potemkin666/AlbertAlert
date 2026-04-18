@@ -27,7 +27,11 @@ export function filteredMapView(state, view) {
     return { ...view, filtered: base.filter((alert) => isLondonAlert(alert)) };
   }
   if (state.mapViewMode === MAP_VIEW_MODES.nearby) {
-    return { ...view, filtered: base.filter((alert) => isNearbyAlert(alert, state.userLocation)) };
+    if (state.userLocation && Number.isFinite(state.userLocation.lat) && Number.isFinite(state.userLocation.lng)) {
+      return { ...view, filtered: base.filter((alert) => isNearbyAlert(alert, state.userLocation)) };
+    }
+    // Fallback: show all alerts when user location is unavailable so the map is not blank.
+    return { ...view, filtered: base };
   }
   return { ...view, filtered: base };
 }

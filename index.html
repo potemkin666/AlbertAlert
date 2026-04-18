@@ -50,7 +50,6 @@
               <strong id="hero-updated">Just now</strong>
               <button class="secondary-button hero-refresh-button" id="hero-refresh" type="button">Refresh feed</button>
               <p class="hero-status" id="hero-status" aria-live="polite">Feed status pending.</p>
-              <a class="hero-update-link" href="source-quarantine.html">Source quarantine</a>
             </div>
           </div>
         </header>
@@ -71,6 +70,16 @@
           <button class="tab" data-tab="notes">📓 Notes</button>
           <button class="tab" data-tab="sources" aria-label="Add Source" title="Add Source">🌐+</button>
         </nav>
+
+        <div class="sound-alert-setting briefing-mode-hidden" id="sound-alert-setting">
+          <label for="sound-alert-select">🔔 Critical alert sound</label>
+          <select id="sound-alert-select">
+            <option value="off">Off</option>
+            <option value="klaxon">Klaxon</option>
+            <option value="chime">Chime</option>
+            <option value="newintel">New Intel</option>
+          </select>
+        </div>
 
         <section class="tab-panel active" data-panel="firstalert">
           <section class="briefing-mode-panel hidden" id="briefing-mode-panel">
@@ -126,9 +135,9 @@
                 <button class="map-mode-tab" id="map-mode-nearby-tab" type="button" role="tab" aria-selected="false" aria-controls="map-panel-surface" data-map-mode="nearby">Near me</button>
               </div>
             </div>
-            <p class="map-status-line" id="map-status-line">No alerts in current view</p>
             <div class="map-surface" id="map-panel-surface" role="tabpanel" aria-labelledby="map-mode-world-tab">
               <div class="map-viewport" id="map-viewport">
+                <p class="map-status-line" id="map-status-line" aria-live="polite">No alerts in current view</p>
                 <div class="map-motion-overlay" aria-hidden="true">
                   <span class="map-motion-track map-motion-track--one"></span>
                   <span class="map-motion-track map-motion-track--two"></span>

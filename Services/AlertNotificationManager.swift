@@ -4,11 +4,13 @@ import UserNotifications
 protocol AlertNotificationManaging {
     func requestAuthorizationIfNeeded() async
     func scheduleNotifications(for alerts: [TerrorAlert]) async
+    func scheduleDailyBriefing() async
 }
 
 final class AlertNotificationManager: AlertNotificationManaging {
     private let center = UNUserNotificationCenter.current()
     private let seenKey = "albertalert.seenAlertIDs"
+    private static let dailyBriefingIdentifier = "albertalert.daily-briefing"
 
     func requestAuthorizationIfNeeded() async {
         do {
@@ -45,5 +47,59 @@ final class AlertNotificationManager: AlertNotificationManaging {
 
         let updatedSeen = Array(seenIDs.union(newUrgentAlerts.map(\.id)))
         UserDefaults.standard.set(updatedSeen, forKey: seenKey)
+    }
+
+    func scheduleDailyBriefing() async {
+        center.removePendingNotificationRequests(
+            withIdentifiers: [Self.dailyBriefingIdentifier]
+        )
+
+        let quotes = Self.loadBriefingQuotes()
+        guard !quotes.isEmpty else { return }
+
+        let dayOfYear = Calendar(identifier: .gregorian).ordinality(
+            of: .day, in: .year, for: Date()
+        ) ?? 1
+        let quote = quotes[(dayOfYear - 1) % quotes.count]
+
+        let content = UNMutableNotificationContent()
+        content.title = "Albert says…"
+        content.body = quote
+        content.sound = .default
+
+        var dateComponents = DateComponents()
+        dateComponents.timeZone = TimeZone(identifier: "GMT")
+        dateComponents.hour = 7
+        dateComponents.minute = 0
+
+        let trigger = UNCalendarNotificationTrigger(
+            dateMatching: dateComponents,
+            repeats: true
+        )
+
+        let request = UNNotificationRequest(
+            identifier: Self.dailyBriefingIdentifier,
+            content: content,
+            trigger: trigger
+        )
+
+        do {
+            try await center.add(request)
+        } catch {
+        }
+    }
+
+    static func loadBriefingQuotes() -> [String] {
+        guard
+            let url = Bundle.main.url(
+                forResource: "DailyBriefingQuotes",
+                withExtension: "json"
+            ),
+            let data = try? Data(contentsOf: url),
+            let quotes = try? JSONDecoder().decode([String].self, from: data)
+        else {
+            return []
+        }
+        return quotes
     }
 }

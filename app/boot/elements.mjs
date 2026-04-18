@@ -65,6 +65,7 @@ export function createElements() {
     sourceRequestStatus: document.getElementById('source-request-status'),
     sourceRequestList: document.getElementById('source-request-list'),
     sourceRequestCount: document.getElementById('source-request-count'),
-    sourceRequestHint: document.getElementById('source-request-hint')
+    sourceRequestHint: document.getElementById('source-request-hint'),
+    soundAlertSelect: document.getElementById('sound-alert-select')
   };
 }
