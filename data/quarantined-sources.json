@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-17T23:13:58.926Z",
-  "count": 228,
+  "generatedAt": "2026-04-18T00:05:41.686Z",
+  "count": 253,
   "metrics": {
-    "total": 228,
-    "newThisWeek": 205,
+    "total": 253,
+    "newThisWeek": 230,
     "avgTimeInQuarantineHours": 6,
-    "avgHealthScore": 11,
+    "avgHealthScore": 12,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
@@ -6221,6 +6221,1038 @@
       "lastCheckedAt": "2026-04-16T21:04:21.166Z"
     },
     {
+      "id": "bdk-rss",
+      "provider": "Bund Deutscher Kriminalbeamter - RSS",
+      "endpoint": "https://www.bdk.de/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "euractiv-security-rss",
+      "provider": "Euractiv a Security & Defence (RSS)",
+      "endpoint": "https://www.euractiv.com/sections/security/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "isd-global-publications",
+      "provider": "ISD - Publications",
+      "endpoint": "https://www.isdglobal.org/publications/",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "eu",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "dw-europe-rss",
+      "provider": "Deutsche Welle a Europe (RSS)",
+      "endpoint": "https://rss.dw.com/rdf/rss-en-eu",
+      "kind": "rss",
+      "lane": "context",
+      "region": "europe",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "ap-top-news",
+      "provider": "Associated Press a Top News",
+      "endpoint": "https://apnews.com/index.rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 401",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "crisis-group",
+      "provider": "International Crisis Group a Research & Analysis",
+      "endpoint": "https://www.crisisgroup.org/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "crisis-group-europe",
+      "provider": "International Crisis Group a Europe (RSS)",
+      "endpoint": "https://www.crisisgroup.org/latest-updates/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "lawfare-blog",
+      "provider": "Lawfare a Blog (National Security Law & CT Policy)",
+      "endpoint": "https://www.lawfaremedia.org/feeds/all",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "long-war-journal",
+      "provider": "Long War Journal a News Feed",
+      "endpoint": "https://feeds.feedburner.com/Long. War. Journal",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "henry-jackson-society-news",
+      "provider": "Henry Jackson Society a Publications",
+      "endpoint": "https://henryjacksonsociety.org/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-sun-all",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/all/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-sun-all-english",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/news-app-english-001-all/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-sun-homepage",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/favourite-homepage/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-sun-news-english",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/news-app-english-007-news/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "metro",
+      "provider": "Metro",
+      "endpoint": "https://metro.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "pinknews",
+      "provider": "Pink. News",
+      "endpoint": "https://www.pinknews.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-daily-mash",
+      "provider": "The Daily Mash",
+      "endpoint": "https://www.thedailymash.co.uk/feed",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-scottish-sun",
+      "provider": "The Scottish Sun",
+      "endpoint": "https://www.thescottishsun.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "the-sun",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "elluminet-press",
+      "provider": "Elluminet Press",
+      "endpoint": "https://www.elluminetpress.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Health score degraded to 20 after repeated failures",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "faded-spring",
+      "provider": "Faded Spring",
+      "endpoint": "https://fadedspring.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "ian-neate-blog",
+      "provider": "Ian Neate's Blog",
+      "endpoint": "https://ianneateblog.wordpress.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "sks-business-services",
+      "provider": "SKS Business Services",
+      "endpoint": "https://www.sksbusinessservices.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
+      "id": "streetspace",
+      "provider": "Streetspace",
+      "endpoint": "https://streetspacegroup.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T19:01:30.233Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
       "id": "german-interior-ministry-press",
       "provider": "German Federal Ministry of the Interior - Press",
       "endpoint": "https://www.bmi.bund.de/EN/press/press-releases/press-releases-node.html",
@@ -7635,6 +8667,39 @@
       "lastCheckedAt": "2026-04-17T08:04:04.612Z"
     },
     {
+      "id": "evening-shire",
+      "provider": "Evening Shire",
+      "endpoint": "https://eveningshire.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 20,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T22:57:09.120Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T22:57:09.120Z",
+      "lastFailureAt": "2026-04-16T22:57:09.120Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
       "id": "denmark-pet-news",
       "provider": "Danish Security and Intelligence Service - News",
       "endpoint": "https://pet.dk/nyheder",
@@ -8724,6 +9789,44 @@
       "lastCheckedAt": "2026-04-16T16:57:11.406Z"
     },
     {
+      "id": "police-scotland-news",
+      "provider": "Police Scotland news",
+      "endpoint": "https://www.scotland.police.uk/what-s-happening/news/",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Health score degraded to 23 after repeated failures",
+      "quarantinedAt": "2026-04-18T00:05:41.686Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 3,
+      "consecutiveBlockedFailures": 1,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "at": "2026-04-16T21:58:32.608Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-18T00:05:41.686Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-25T00:05:41.686Z",
+      "lastFailureAt": "2026-04-18T00:05:41.686Z",
+      "lastCheckedAt": "2026-04-18T00:05:41.686Z"
+    },
+    {
       "id": "dutch-police-rss-index",
       "provider": "Politie.nl - RSS",
       "endpoint": "https://www.politie.nl/rss",
@@ -8732,7 +9835,7 @@
       "region": "eu",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8754,7 +9857,7 @@
       "region": "eu",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8776,7 +9879,7 @@
       "region": "europe",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8798,7 +9901,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8820,7 +9923,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8842,7 +9945,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8864,7 +9967,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8886,7 +9989,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8908,7 +10011,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8930,7 +10033,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8952,7 +10055,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8974,7 +10077,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -8986,39 +10089,6 @@
       "reviewBy": "",
       "lastFailureAt": "",
       "lastCheckedAt": "2026-04-17T23:13:58.926Z"
-    },
-    {
-      "id": "evening-shire",
-      "provider": "Evening Shire",
-      "endpoint": "https://eveningshire.com/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 23,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-16T21:04:21.166Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-16T22:57:09.120Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T22:57:09.120Z",
-      "lastFailureAt": "2026-04-16T22:57:09.120Z",
-      "lastCheckedAt": "2026-04-17T20:09:53.653Z"
     },
     {
       "id": "quadrant2design-exhibiting-guides",
