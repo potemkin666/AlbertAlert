@@ -89,8 +89,8 @@ export function shouldPlayAlert({
 function getAudioContext() {
   const Ctx = typeof AudioContext !== 'undefined'
     ? AudioContext
-    : typeof webkitAudioContext !== 'undefined'
-      ? webkitAudioContext
+    : typeof globalThis.webkitAudioContext !== 'undefined'
+      ? globalThis.webkitAudioContext
       : null;
   return Ctx ? new Ctx() : null;
 }
