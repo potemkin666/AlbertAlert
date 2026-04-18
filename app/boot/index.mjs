@@ -12,7 +12,7 @@ import {
   saveSet,
   setActiveTab as applyTabState
 } from '../../shared/persistence-ui.mjs';
-import { loadSoundPreference, saveSoundPreference, playAlertSound } from '../../shared/sound-alert.mjs';
+
 import { MAP_VIEW_MODES } from '../../shared/ui-constants.mjs';
 import { createModalRuntime } from '../render/modal.mjs';
 import {
@@ -186,14 +186,4 @@ export function initialiseApp() {
     elements.albertNote.classList.toggle('hidden');
   });
 
-  /* ── Sound alert preference ── */
-  if (elements.soundAlertSelect) {
-    elements.soundAlertSelect.value = loadSoundPreference();
-    elements.soundAlertSelect.addEventListener('change', () => {
-      const chosen = saveSoundPreference(elements.soundAlertSelect.value);
-      elements.soundAlertSelect.value = chosen;
-      // Play a brief preview so the user knows what they picked
-      if (chosen !== 'off') playAlertSound(chosen);
-    });
-  }
 }
