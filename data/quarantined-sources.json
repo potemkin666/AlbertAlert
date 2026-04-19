@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-19T13:19:06.686Z",
-  "count": 437,
+  "generatedAt": "2026-04-19T14:11:10.963Z",
+  "count": 438,
   "metrics": {
-    "total": 437,
+    "total": 438,
     "newThisWeek": 259,
-    "avgTimeInQuarantineHours": 42,
+    "avgTimeInQuarantineHours": 43,
     "avgHealthScore": 4,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -3832,6 +3832,49 @@
       "lastCheckedAt": "2026-04-19T07:32:24.475Z"
     },
     {
+      "id": "surgezirc-uk",
+      "provider": "Surge. Zirc UK",
+      "endpoint": "https://surgezirc.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-04-17T08:04:04.612Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 1,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T21:04:21.166Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-16T22:57:09.120Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-17T08:04:04.612Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-19T14:11:10.963Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-26T14:11:10.963Z",
+      "lastFailureAt": "2026-04-19T14:11:10.963Z",
+      "lastCheckedAt": "2026-04-19T14:11:10.963Z"
+    },
+    {
       "id": "police-uk-all-crime-leicester",
       "provider": "Police.uk - Street Crime Around Leicester",
       "endpoint": "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592",
@@ -5310,6 +5353,44 @@
       "reviewBy": "2026-04-25T07:21:41.099Z",
       "lastFailureAt": "2026-04-18T07:21:41.099Z",
       "lastCheckedAt": "2026-04-18T07:21:41.099Z"
+    },
+    {
+      "id": "daily-mail-online",
+      "provider": "Daily Mail Online - Popular Stories",
+      "endpoint": "https://www.dailymail.co.uk/home/index.rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 2,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T21:58:32.608Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T22:57:09.120Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-16T23:55:39.351Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-23T23:55:39.351Z",
+      "lastFailureAt": "2026-04-16T23:55:39.351Z",
+      "lastCheckedAt": "2026-04-19T14:11:10.963Z"
     },
     {
       "id": "gov-uk-news-and-communications-atom",
@@ -13539,44 +13620,6 @@
       "lastCheckedAt": "2026-04-17T20:09:53.653Z"
     },
     {
-      "id": "daily-mail-online",
-      "provider": "Daily Mail Online - Popular Stories",
-      "endpoint": "https://www.dailymail.co.uk/home/index.rss",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 5,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-16T21:58:32.608Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-16T22:57:09.120Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-16T23:55:39.351Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-23T23:55:39.351Z",
-      "lastFailureAt": "2026-04-16T23:55:39.351Z",
-      "lastCheckedAt": "2026-04-19T10:46:47.709Z"
-    },
-    {
       "id": "london-resilience",
       "provider": "Resilience First - Latest Updates",
       "endpoint": "https://resiliencefirst.org/latest-updates",
@@ -13846,44 +13889,6 @@
       "lastCheckedAt": "2026-04-19T13:19:06.686Z"
     },
     {
-      "id": "surgezirc-uk",
-      "provider": "Surge. Zirc UK",
-      "endpoint": "https://surgezirc.co.uk/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 8,
-      "status": "auto-quarantined",
-      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
-      "quarantinedAt": "2026-04-17T08:04:04.612Z",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T21:04:21.166Z"
-        },
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-16T22:57:09.120Z"
-        },
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-04-17T08:04:04.612Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T08:04:04.612Z",
-      "lastFailureAt": "2026-04-17T08:04:04.612Z",
-      "lastCheckedAt": "2026-04-19T10:46:47.709Z"
-    },
-    {
       "id": "arcticdry",
       "provider": "Arctic. Dry",
       "endpoint": "https://www.arcticdry.co.uk/feed/",
@@ -13910,6 +13915,39 @@
       "reviewBy": "2026-04-24T08:04:04.612Z",
       "lastFailureAt": "2026-04-17T08:04:04.612Z",
       "lastCheckedAt": "2026-04-19T11:44:44.316Z"
+    },
+    {
+      "id": "thank-you-for-the-days",
+      "provider": "Thank you for the days",
+      "endpoint": "https://thankyouforthedays.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 8,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-16T16:57:11.406Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-17T08:04:04.612Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T08:04:04.612Z",
+      "lastFailureAt": "2026-04-17T08:04:04.612Z",
+      "lastCheckedAt": "2026-04-19T14:11:10.963Z"
     },
     {
       "id": "gnet-youth-rss",
@@ -13996,39 +14034,6 @@
       "reviewBy": "2026-04-25T09:29:55.311Z",
       "lastFailureAt": "2026-04-18T09:29:55.311Z",
       "lastCheckedAt": "2026-04-18T09:29:55.311Z"
-    },
-    {
-      "id": "thank-you-for-the-days",
-      "provider": "Thank you for the days",
-      "endpoint": "https://thankyouforthedays.co.uk/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 11,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-04-16T16:57:11.406Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-04-17T08:04:04.612Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T08:04:04.612Z",
-      "lastFailureAt": "2026-04-17T08:04:04.612Z",
-      "lastCheckedAt": "2026-04-19T10:46:47.709Z"
     },
     {
       "id": "barking-dagenham-council-news",
@@ -15322,7 +15327,7 @@
       "region": "uk",
       "healthScore": 23,
       "status": "auto-quarantined",
-      "reason": "Needs review",
+      "reason": "Low health score – needs review",
       "quarantinedAt": "",
       "lastErrorCategory": "",
       "lastErrorMessage": "",
@@ -15340,6 +15345,34 @@
       "reviewBy": "2026-04-24T22:12:37.099Z",
       "lastFailureAt": "2026-04-17T22:12:37.099Z",
       "lastCheckedAt": "2026-04-19T13:19:06.686Z"
+    },
+    {
+      "id": "a-lady-in-london",
+      "provider": "A Lady in London",
+      "endpoint": "https://www.aladyinlondon.com/feed",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 23,
+      "status": "auto-quarantined",
+      "reason": "Needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-17T22:12:37.099Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T22:12:37.099Z",
+      "lastFailureAt": "2026-04-17T22:12:37.099Z",
+      "lastCheckedAt": "2026-04-19T14:11:10.963Z"
     }
   ]
 }
