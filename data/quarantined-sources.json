@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-19T19:32:35.264Z",
-  "count": 442,
+  "generatedAt": "2026-04-19T20:02:27.236Z",
+  "count": 443,
   "metrics": {
-    "total": 442,
+    "total": 443,
     "newThisWeek": 260,
-    "avgTimeInQuarantineHours": 48,
+    "avgTimeInQuarantineHours": 49,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -16246,7 +16246,7 @@
       "kind": "rss",
       "lane": "context",
       "region": "uk",
-      "healthScore": 23,
+      "healthScore": 20,
       "status": "auto-quarantined",
       "reason": "Low health score – needs review",
       "quarantinedAt": "",
@@ -16265,7 +16265,7 @@
       "replacementSuggestion": "",
       "reviewBy": "2026-04-24T22:12:37.099Z",
       "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T16:03:49.134Z"
+      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
     },
     {
       "id": "everything-zany",
@@ -16274,7 +16274,7 @@
       "kind": "rss",
       "lane": "context",
       "region": "uk",
-      "healthScore": 23,
+      "healthScore": 20,
       "status": "auto-quarantined",
       "reason": "Low health score – needs review",
       "quarantinedAt": "",
@@ -16293,7 +16293,7 @@
       "replacementSuggestion": "",
       "reviewBy": "2026-04-24T22:12:37.099Z",
       "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T16:03:49.134Z"
+      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
     },
     {
       "id": "manic-mum-life",
@@ -16302,7 +16302,7 @@
       "kind": "rss",
       "lane": "context",
       "region": "uk",
-      "healthScore": 23,
+      "healthScore": 20,
       "status": "auto-quarantined",
       "reason": "Low health score – needs review",
       "quarantinedAt": "",
@@ -16321,7 +16321,29 @@
       "replacementSuggestion": "",
       "reviewBy": "2026-04-24T22:12:37.099Z",
       "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T16:03:49.134Z"
+      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
+    },
+    {
+      "id": "bbc-news-england-legacy",
+      "provider": "BBC News a England (Legacy RSS)",
+      "endpoint": "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/england/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 24,
+      "status": "auto-quarantined",
+      "reason": "empty-cooldown",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [],
+      "replacementSuggestion": "",
+      "reviewBy": "",
+      "lastFailureAt": "",
+      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
     }
   ]
 }
