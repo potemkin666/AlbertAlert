@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-04-19T14:11:10.963Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "brittle-selectors-or-js-rendering": 1,
-    "network-failure": 1
-  },
-  "byKind": {
-    "html": 1,
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "telegraph-world-news",
-      "provider": "The Telegraph a World News",
-      "endpoint": "https://www.telegraph.co.uk/world-news/",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "surgezirc-uk",
-      "provider": "Surge. Zirc UK",
-      "endpoint": "https://surgezirc.co.uk/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "telegraph-world-news",
-      "provider": "The Telegraph a World News",
-      "endpoint": "https://www.telegraph.co.uk/world-news/",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "surgezirc-uk",
-      "provider": "Surge. Zirc UK",
-      "endpoint": "https://surgezirc.co.uk/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-04-19T15:12:28.774Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
