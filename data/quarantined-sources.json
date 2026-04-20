@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-04-19T23:10:09.256Z",
+  "generatedAt": "2026-04-20T00:04:00.988Z",
   "count": 443,
   "metrics": {
     "total": 443,
     "newThisWeek": 260,
-    "avgTimeInQuarantineHours": 52,
+    "avgTimeInQuarantineHours": 53,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -15854,6 +15854,34 @@
       "lastCheckedAt": "2026-04-19T10:46:47.709Z"
     },
     {
+      "id": "arcticdry",
+      "provider": "Arctic. Dry",
+      "endpoint": "https://www.arcticdry.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 5,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-17T08:04:04.612Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T08:04:04.612Z",
+      "lastFailureAt": "2026-04-17T08:04:04.612Z",
+      "lastCheckedAt": "2026-04-20T00:04:00.988Z"
+    },
+    {
       "id": "gctf-news",
       "provider": "Global Counterterrorism Forum (GCTF) a News",
       "endpoint": "https://www.thegctf.org/News/",
@@ -15925,9 +15953,9 @@
       "lastCheckedAt": "2026-04-19T18:05:04.781Z"
     },
     {
-      "id": "arcticdry",
-      "provider": "Arctic. Dry",
-      "endpoint": "https://www.arcticdry.co.uk/feed/",
+      "id": "church-of-england-newspaper",
+      "provider": "Church of England Newspaper",
+      "endpoint": "https://www.churchnewspaper.com/feed",
       "kind": "rss",
       "lane": "context",
       "region": "uk",
@@ -15943,14 +15971,14 @@
       "recentErrors": [
         {
           "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-04-17T08:04:04.612Z"
+          "message": "HTTP 401",
+          "at": "2026-04-17T22:12:37.099Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T08:04:04.612Z",
-      "lastFailureAt": "2026-04-17T08:04:04.612Z",
-      "lastCheckedAt": "2026-04-19T11:44:44.316Z"
+      "reviewBy": "2026-04-24T22:12:37.099Z",
+      "lastFailureAt": "2026-04-17T22:12:37.099Z",
+      "lastCheckedAt": "2026-04-20T00:04:00.988Z"
     },
     {
       "id": "gnet-youth-rss",
@@ -16082,34 +16110,6 @@
       "lastCheckedAt": "2026-04-19T21:08:30.446Z"
     },
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 11,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-04-17T22:12:37.099Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T22:12:37.099Z",
-      "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T22:01:43.175Z"
-    },
-    {
       "id": "really-ree",
       "provider": "Really Ree",
       "endpoint": "https://reallyree.com/feed/",
@@ -16199,6 +16199,90 @@
       "lastCheckedAt": "2026-04-19T16:03:49.134Z"
     },
     {
+      "id": "bbc-news-front-page-legacy",
+      "provider": "BBC News a Front Page (Legacy RSS)",
+      "endpoint": "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 17,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-17T22:12:37.099Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T22:12:37.099Z",
+      "lastFailureAt": "2026-04-17T22:12:37.099Z",
+      "lastCheckedAt": "2026-04-20T00:04:00.988Z"
+    },
+    {
+      "id": "everything-zany",
+      "provider": "Everything Zany",
+      "endpoint": "https://everythingzany.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 17,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-17T22:12:37.099Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T22:12:37.099Z",
+      "lastFailureAt": "2026-04-17T22:12:37.099Z",
+      "lastCheckedAt": "2026-04-20T00:04:00.988Z"
+    },
+    {
+      "id": "manic-mum-life",
+      "provider": "Manic Mum Life",
+      "endpoint": "https://www.manic-mumdays.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 17,
+      "status": "auto-quarantined",
+      "reason": "Low health score – needs review",
+      "quarantinedAt": "",
+      "lastErrorCategory": "",
+      "lastErrorMessage": "",
+      "consecutiveFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-17T22:12:37.099Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-04-24T22:12:37.099Z",
+      "lastFailureAt": "2026-04-17T22:12:37.099Z",
+      "lastCheckedAt": "2026-04-20T00:04:00.988Z"
+    },
+    {
       "id": "bbc-news-uk-politics-legacy",
       "provider": "BBC News a UK Politics (Legacy RSS)",
       "endpoint": "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/uk_politics/rss.xml",
@@ -16263,90 +16347,6 @@
       "reviewBy": "2026-04-26T03:30:54.684Z",
       "lastFailureAt": "2026-04-19T03:30:54.684Z",
       "lastCheckedAt": "2026-04-19T03:30:54.684Z"
-    },
-    {
-      "id": "bbc-news-front-page-legacy",
-      "provider": "BBC News a Front Page (Legacy RSS)",
-      "endpoint": "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/front_page/rss.xml",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 20,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-17T22:12:37.099Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T22:12:37.099Z",
-      "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
-    },
-    {
-      "id": "everything-zany",
-      "provider": "Everything Zany",
-      "endpoint": "https://everythingzany.com/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 20,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-04-17T22:12:37.099Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T22:12:37.099Z",
-      "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
-    },
-    {
-      "id": "manic-mum-life",
-      "provider": "Manic Mum Life",
-      "endpoint": "https://www.manic-mumdays.co.uk/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 20,
-      "status": "auto-quarantined",
-      "reason": "Low health score – needs review",
-      "quarantinedAt": "",
-      "lastErrorCategory": "",
-      "lastErrorMessage": "",
-      "consecutiveFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-04-17T22:12:37.099Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-04-24T22:12:37.099Z",
-      "lastFailureAt": "2026-04-17T22:12:37.099Z",
-      "lastCheckedAt": "2026-04-19T20:02:27.236Z"
     },
     {
       "id": "bbc-news-england-legacy",
