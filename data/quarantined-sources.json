@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-04-29T01:25:57.440Z",
+  "generatedAt": "2026-04-29T05:04:06.775Z",
   "count": 4,
   "metrics": {
     "total": 4,
     "newThisWeek": 1,
-    "avgTimeInQuarantineHours": 45,
-    "avgHealthScore": 61,
+    "avgTimeInQuarantineHours": 49,
+    "avgHealthScore": 60,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
@@ -18,14 +18,14 @@
       "kind": "rss",
       "lane": "context",
       "region": "international",
-      "healthScore": 5,
+      "healthScore": 0,
       "status": "auto-quarantined",
       "reason": "Persistent timeouts — endpoint may be overloaded or unreachable",
       "quarantinedAt": "2026-04-27T04:20:08.357Z",
       "lastErrorCategory": "timeout",
       "lastErrorMessage": "This operation was aborted",
-      "consecutiveFailures": 4,
-      "consecutiveTimeoutFailures": 4,
+      "consecutiveFailures": 5,
+      "consecutiveTimeoutFailures": 5,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
@@ -48,12 +48,17 @@
           "category": "timeout",
           "message": "This operation was aborted",
           "at": "2026-04-27T04:20:08.357Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-29T05:04:06.775Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-04T04:20:08.357Z",
-      "lastFailureAt": "2026-04-27T04:20:08.357Z",
-      "lastCheckedAt": "2026-04-27T04:20:08.357Z"
+      "reviewBy": "2026-05-06T05:04:06.775Z",
+      "lastFailureAt": "2026-04-29T05:04:06.775Z",
+      "lastCheckedAt": "2026-04-29T05:04:06.775Z"
     },
     {
       "id": "spain-interior-ministry-news",
