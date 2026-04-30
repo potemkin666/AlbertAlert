@@ -1,16 +1,800 @@
 {
-  "generatedAt": "2026-04-30T07:40:11.519Z",
-  "count": 4,
+  "generatedAt": "2026-04-30T09:27:37.716Z",
+  "count": 20,
   "metrics": {
-    "total": 4,
-    "newThisWeek": 1,
-    "avgTimeInQuarantineHours": 75,
-    "avgHealthScore": 60,
+    "total": 20,
+    "newThisWeek": 17,
+    "avgTimeInQuarantineHours": 5,
+    "avgHealthScore": 12,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "austria-interior-ministry-rss-index",
+      "provider": "Austrian Interior Ministry - News",
+      "endpoint": "https://www.bmi.gv.at/rss_feed/start.aspx",
+      "kind": "rss",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Health score degraded to 0 after repeated failures",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "unknown",
+      "lastErrorMessage": "Cannot read properties of undefined (reading 'tag. Name')",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "http-status-error",
+          "message": "HTTP 503",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 503",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 503",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "unknown",
+          "message": "Cannot read properties of undefined (reading 'tagName')",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "unknown",
+          "message": "Cannot read properties of undefined (reading 'tagName')",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "bdk-rss",
+      "provider": "Bund Deutscher Kriminalbeamter - RSS",
+      "endpoint": "https://www.bdk.de/rss/alle-nachrichten/RSS",
+      "kind": "rss",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "de-bmj-press-rss",
+      "provider": "German Federal Ministry of Justice - RSS",
+      "endpoint": "https://www.bmj.de/DE/presse/newsletter/rssnewsfeed/rss_node.html",
+      "kind": "rss",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "dw-europe-rss",
+      "provider": "Deutsche Welle a Europe (RSS)",
+      "endpoint": "https://rss.dw.com/rdf/rss-en-eu",
+      "kind": "rss",
+      "lane": "context",
+      "region": "europe",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "crisis-group",
+      "provider": "International Crisis Group a Research & Analysis",
+      "endpoint": "https://www.crisisgroup.org/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "the-sun-all",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feeds/all/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "the-sun",
+      "provider": "The Sun",
+      "endpoint": "https://www.thesun.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "streetspace",
+      "provider": "Streetspace",
+      "endpoint": "https://streetspacegroup.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "mi5-news-rss",
+      "provider": "MI5 - News and Updates (RSS)",
+      "endpoint": "https://www.mi5.gov.uk/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "act-campaign-feed",
+      "provider": "Action Counters Terrorism (ACT)",
+      "endpoint": "https://act.campaign.gov.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "cumbria-police-news",
+      "provider": "Cumbria Police - News RSS",
+      "endpoint": "https://www.news.cumbria.police.uk/feeds/news/cumbria.rss",
+      "kind": "rss",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "judiciary-uk-news",
+      "provider": "Judiciary of England and Wales a News",
+      "endpoint": "https://www.judiciary.uk/feed/",
+      "kind": "rss",
+      "lane": "oversight",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "ctc-sentinel",
+      "provider": "Combating Terrorism Center at West Point - CTC Sentinel",
+      "endpoint": "https://ctc.westpoint.edu/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "fbi-national-press-releases",
+      "provider": "FBI - National Press Releases (RSS)",
+      "endpoint": "https://www.fbi.gov/feeds/national-press-releases/RSS",
+      "kind": "rss",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "fbi-stories",
+      "provider": "FBI - Top Stories (RSS)",
+      "endpoint": "https://www.fbi.gov/feeds/fbi-top-stories/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
+    {
+      "id": "fbi-top-stories",
+      "provider": "FBI - Top Stories (RSS)",
+      "endpoint": "https://www.fbi.gov/feeds/fbi-top-stories/rss.xml?source=fbi-top-stories",
+      "kind": "rss",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T09:27:37.716Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T20:09:19.283Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T00:08:00.385Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T12:19:51.902Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T09:27:37.716Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T09:27:37.716Z",
+      "lastFailureAt": "2026-04-30T09:27:37.716Z",
+      "lastCheckedAt": "2026-04-30T09:27:37.716Z"
+    },
     {
       "id": "above-top-secret-rss",
       "provider": "Above. Top. Secret Forum",
