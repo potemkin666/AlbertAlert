@@ -1,16 +1,310 @@
 {
-  "generatedAt": "2026-04-30T17:09:38.083Z",
-  "count": 39,
+  "generatedAt": "2026-04-30T19:01:21.418Z",
+  "count": 45,
   "metrics": {
-    "total": 39,
-    "newThisWeek": 36,
+    "total": 45,
+    "newThisWeek": 42,
     "avgTimeInQuarantineHours": 7,
-    "avgHealthScore": 6,
+    "avgHealthScore": 5,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "sk-sis-news",
+      "provider": "Slovak Information Service - News",
+      "endpoint": "https://www.sis.gov.sk/news/news.html",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
+    {
+      "id": "sk-defence-press",
+      "provider": "Slovak Ministry of Defence - Press",
+      "endpoint": "https://www.mosr.sk/tlacove-spravy/",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
+    {
+      "id": "ec-police-news",
+      "provider": "Policía Nacional del Ecuador - Noticias",
+      "endpoint": "https://noticias.policia.gob.ec/",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
+    {
+      "id": "ec-uafe-aml-cft",
+      "provider": "UAFE Ecuador",
+      "endpoint": "https://www.uafe.gob.ec/",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 2,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
+    {
+      "id": "ec-nctc-los-lobos",
+      "provider": "US NCTC - Los Lobos",
+      "endpoint": "https://www.dni.gov/nctc/terrorist_groups/los_lobos.html",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
+    {
+      "id": "uk-sanctions-list",
+      "provider": "UK Sanctions List (FCDO) a Consolidated List (XML Service)",
+      "endpoint": "https://sanctionslist.fcdo.gov.uk/docs/UK-Sanctions-List.xml",
+      "kind": "html",
+      "lane": "sanctions",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-04-30T19:01:21.418Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-04-30T19:01:21.418Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-07T19:01:21.418Z",
+      "lastFailureAt": "2026-04-30T19:01:21.418Z",
+      "lastCheckedAt": "2026-04-30T19:01:21.418Z"
+    },
     {
       "id": "statewatch-news",
       "provider": "Statewatch - News",
