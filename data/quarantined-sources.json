@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-01T07:23:12.181Z",
-  "count": 128,
+  "generatedAt": "2026-05-01T07:39:32.799Z",
+  "count": 132,
   "metrics": {
-    "total": 128,
-    "newThisWeek": 125,
+    "total": 132,
+    "newThisWeek": 129,
     "avgTimeInQuarantineHours": 8,
     "avgHealthScore": 2,
     "reQuarantineRate": 0,
@@ -11,6 +11,202 @@
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "ct-policing-london",
+      "provider": "Counter Terrorism Policing London",
+      "endpoint": "https://www.counterterrorism.police.uk/counter-terrorism-policing-london",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T21:08:24.775Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T07:35:36.877Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "at": "2026-05-01T07:39:32.799Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T07:39:32.799Z",
+      "lastFailureAt": "2026-05-01T07:39:32.799Z",
+      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+    },
+    {
+      "id": "ct-policing-north-west",
+      "provider": "Counter Terrorism Policing North West",
+      "endpoint": "https://www.counterterrorism.police.uk/north-west",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T21:08:24.775Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T07:35:36.877Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T07:39:32.799Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T07:39:32.799Z",
+      "lastFailureAt": "2026-05-01T07:39:32.799Z",
+      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+    },
+    {
+      "id": "ct-policing-uk-latest-news",
+      "provider": "Counter Terrorism Policing UK a Latest News",
+      "endpoint": "https://www.counterterrorism.police.uk/latest-news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T21:08:24.775Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T07:35:36.877Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T07:39:32.799Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T07:39:32.799Z",
+      "lastFailureAt": "2026-05-01T07:39:32.799Z",
+      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+    },
+    {
+      "id": "ct-policing-uk-rss-feed",
+      "provider": "Counter Terrorism Policing UK - Latest News",
+      "endpoint": "https://www.counterterrorism.police.uk/latest-news?source=ct-policing-uk-rss-feed",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T22:06:21.687Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T07:25:44.774Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T07:35:36.877Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T07:39:32.799Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T07:39:32.799Z",
+      "lastFailureAt": "2026-05-01T07:39:32.799Z",
+      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+    },
     {
       "id": "enisa-news",
       "provider": "ENISA (EU Cybersecurity Agency) a News",
