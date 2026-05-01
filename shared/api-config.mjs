@@ -2,14 +2,14 @@
  * Centralised API base URL for the AlbertAlert backend.
  *
  * All frontend modules that need to call the backend should import from here
- * rather than hardcoding the URL.  The value can be overridden at runtime via
+ * rather than hardcoding the URL. The value can be overridden at runtime via
  * a `<meta name="albertalert-api-base">` tag in index.html or by setting
  * `globalThis.__ALBERTALERT_API_BASE`.
  *
  * @module api-config
  */
 
-const DEFAULT_API_BASE = 'https://albertalertbackend.vercel.app';
+const DEFAULT_API_BASE = 'https://brialertbackend.vercel.app';
 
 function resolveApiBase() {
   // 1. Explicit global override (useful for tests / staging).
