@@ -1,16 +1,163 @@
 {
-  "generatedAt": "2026-04-30T23:05:08.470Z",
-  "count": 64,
+  "generatedAt": "2026-05-01T04:19:52.575Z",
+  "count": 67,
   "metrics": {
-    "total": 64,
-    "newThisWeek": 61,
-    "avgTimeInQuarantineHours": 8,
+    "total": 67,
+    "newThisWeek": 64,
+    "avgTimeInQuarantineHours": 12,
     "avgHealthScore": 4,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "sk-sis-annual-report",
+      "provider": "Slovak Information Service - Annual Report",
+      "endpoint": "https://www.sis.gov.sk/for-you/sis-annual-report.html",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-05-01T04:19:52.575Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T14:17:09.800Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-29T05:04:06.775Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-05-01T04:19:52.575Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T04:19:52.575Z",
+      "lastFailureAt": "2026-05-01T04:19:52.575Z",
+      "lastCheckedAt": "2026-05-01T04:19:52.575Z"
+    },
+    {
+      "id": "ec-police-organised-crime",
+      "provider": "Policía Nacional del Ecuador - Lucha contra el crimen organizado",
+      "endpoint": "https://noticias.policia.gob.ec/categor%C3%ADas/lucha-contra-el-crimen-organizado/",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-05-01T04:19:52.575Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T14:17:09.800Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-29T05:04:06.775Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-05-01T04:19:52.575Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T04:19:52.575Z",
+      "lastFailureAt": "2026-05-01T04:19:52.575Z",
+      "lastCheckedAt": "2026-05-01T04:19:52.575Z"
+    },
+    {
+      "id": "ec-cancilleria-security",
+      "provider": "Cancillería del Ecuador",
+      "endpoint": "https://www.cancilleria.gob.ec/",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-05-01T04:19:52.575Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-27T14:17:09.800Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-04-29T05:04:06.775Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-05-01T04:19:52.575Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T04:19:52.575Z",
+      "lastFailureAt": "2026-05-01T04:19:52.575Z",
+      "lastCheckedAt": "2026-05-01T04:19:52.575Z"
+    },
     {
       "id": "finland-police-news",
       "provider": "Finnish Police - Newsroom",
