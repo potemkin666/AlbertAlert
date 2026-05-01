@@ -85,7 +85,7 @@ for (const { location, expectedLabel } of SPECIFICITY_CASES) {
   });
 }
 
-test('inferGeoPoint prioritises explicit location over more specific summary mentions', () => {
+test('inferGeoPoint prioritizes explicit location over more specific summary mentions', () => {
   const result = inferGeoPoint(fakeAlert('Poland', 'Background item', 'Memorial coverage mentioning Auschwitz'), geoLookup);
   assert.ok(result, 'expected a geo result for explicit Poland location');
   const expected = geoLookup.find((entry) => entry.label === 'Poland');

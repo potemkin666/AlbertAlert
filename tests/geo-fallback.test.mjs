@@ -101,7 +101,7 @@ test('geoFor() resolves "paris" to Paris coordinates', () => {
   assert.equal(result.lng, 2.3522);
 });
 
-test('geoFor() prioritises explicit location over more specific summary mentions', () => {
+test('geoFor() prioritizes explicit location over more specific summary mentions', () => {
   const result = geoFor('Poland', 'Background item', 'Memorial coverage mentioning Auschwitz', 'europe');
   assert.equal(result.lat, 51.9194);
   assert.equal(result.lng, 19.1451);
