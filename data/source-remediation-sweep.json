@@ -1,11 +1,86 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-01T22:28:08.690Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-05-01T23:37:06.119Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "blocked-or-auth": 1,
+    "http-status-error": 1
+  },
+  "byKind": {
+    "rss": 2
+  },
+  "machineReadableErrorCount": 2,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "love-my-dress",
+      "provider": "Love My Dress",
+      "endpoint": "https://www.lovemydress.net/feed",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 520",
+      "status": 520,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "love-my-dress",
+      "provider": "Love My Dress",
+      "endpoint": "https://www.lovemydress.net/feed",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 520",
+      "status": 520,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
