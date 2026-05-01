@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-01T07:39:32.799Z",
+  "generatedAt": "2026-05-01T09:24:40.004Z",
   "count": 132,
   "metrics": {
     "total": 132,
     "newThisWeek": 129,
-    "avgTimeInQuarantineHours": 8,
+    "avgTimeInQuarantineHours": 10,
     "avgHealthScore": 2,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -20,13 +20,13 @@
       "region": "london",
       "healthScore": 0,
       "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-05-01T07:39:32.799Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T09:24:40.004Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 6,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 6,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -50,15 +50,15 @@
           "at": "2026-04-29T07:35:36.877Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-05-01T07:39:32.799Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T09:24:40.004Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T07:39:32.799Z",
-      "lastFailureAt": "2026-05-01T07:39:32.799Z",
-      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+      "reviewBy": "2026-05-08T09:24:40.004Z",
+      "lastFailureAt": "2026-05-01T09:24:40.004Z",
+      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
     },
     {
       "id": "ct-policing-north-west",
@@ -70,7 +70,7 @@
       "healthScore": 0,
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 6,
@@ -101,13 +101,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-01T07:39:32.799Z"
+          "at": "2026-05-01T09:24:40.004Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T07:39:32.799Z",
-      "lastFailureAt": "2026-05-01T07:39:32.799Z",
-      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+      "reviewBy": "2026-05-08T09:24:40.004Z",
+      "lastFailureAt": "2026-05-01T09:24:40.004Z",
+      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
     },
     {
       "id": "ct-policing-uk-latest-news",
@@ -119,7 +119,7 @@
       "healthScore": 0,
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 6,
@@ -150,13 +150,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-01T07:39:32.799Z"
+          "at": "2026-05-01T09:24:40.004Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T07:39:32.799Z",
-      "lastFailureAt": "2026-05-01T07:39:32.799Z",
-      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+      "reviewBy": "2026-05-08T09:24:40.004Z",
+      "lastFailureAt": "2026-05-01T09:24:40.004Z",
+      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
     },
     {
       "id": "ct-policing-uk-rss-feed",
@@ -168,7 +168,7 @@
       "healthScore": 0,
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-05-01T07:39:32.799Z",
+      "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 6,
@@ -199,13 +199,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-01T07:39:32.799Z"
+          "at": "2026-05-01T09:24:40.004Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T07:39:32.799Z",
-      "lastFailureAt": "2026-05-01T07:39:32.799Z",
-      "lastCheckedAt": "2026-05-01T07:39:32.799Z"
+      "reviewBy": "2026-05-08T09:24:40.004Z",
+      "lastFailureAt": "2026-05-01T09:24:40.004Z",
+      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
     },
     {
       "id": "enisa-news",
