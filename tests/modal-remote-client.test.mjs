@@ -22,7 +22,7 @@ test('requestRemoteLongBrief stops retrying on terminal HTTP statuses like 501',
   }
 });
 
-test('requestRemoteLongBrief uses Vercel backend URL as the primary endpoint', async () => {
+test('requestRemoteLongBrief uses the configured backend URL as the primary endpoint', async () => {
   const previousFetch = globalThis.fetch;
   const calledUrls = [];
   globalThis.fetch = async (url) => {
@@ -37,7 +37,7 @@ test('requestRemoteLongBrief uses Vercel backend URL as the primary endpoint', a
     const result = await requestRemoteLongBrief([{ headline: 'one' }]);
     assert.equal(result, 'remote brief');
     assert.deepEqual(calledUrls, [
-      'https://albertalertbackend.vercel.app/api/generate-brief'
+      'https://brialertbackend.vercel.app/api/generate-brief'
     ]);
   } finally {
     globalThis.fetch = previousFetch;
