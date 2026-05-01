@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-01T18:47:33.071Z",
-  "count": 195,
+  "generatedAt": "2026-05-01T20:16:16.792Z",
+  "count": 204,
   "metrics": {
-    "total": 195,
-    "newThisWeek": 192,
+    "total": 204,
+    "newThisWeek": 201,
     "avgTimeInQuarantineHours": 14,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
@@ -11,6 +11,447 @@
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 401",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "ec-ap-latin-america",
+      "provider": "Associated Press - Latin America",
+      "endpoint": "https://apnews.com/hub/latin-america",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "ec-guardian-ecuador",
+      "provider": "The Guardian - Ecuador",
+      "endpoint": "https://www.theguardian.com/world/ecuador",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "unsc-counter-terrorism-committee",
+      "provider": "UN Security Council - Counter-Terrorism Committee (CTC) Updates",
+      "endpoint": "https://www.un.org/securitycouncil/ctc/news",
+      "kind": "html",
+      "lane": "oversight",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "barnet-council-news",
+      "provider": "Barnet Post",
+      "endpoint": "https://barnetpost.co.uk/",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "london-city-airport-media-centre",
+      "provider": "London City Airport a Media Centre",
+      "endpoint": "https://www.londoncityairport.com/media-centre",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
+      "kind": "html",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "icsr-kcl",
+      "provider": "Centre for Statecraft & National Security - Publications",
+      "endpoint": "https://csns.uk/publications/",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
+    {
+      "id": "rand-terrorism-topic",
+      "provider": "RAND - Terrorism Topic",
+      "endpoint": "https://www.rand.org/topics/terrorism.html?source=rand-terrorism-topic",
+      "kind": "html",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T20:16:16.792Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T11:01:40.415Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T18:01:23.816Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T19:55:57.182Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T20:16:16.792Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T20:16:16.792Z",
+      "lastFailureAt": "2026-05-01T20:16:16.792Z",
+      "lastCheckedAt": "2026-05-01T20:16:16.792Z"
+    },
     {
       "id": "ecfr-feeds-index",
       "provider": "ECFR - Newsroom",
