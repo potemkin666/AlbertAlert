@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-01T11:01:29.469Z",
-  "count": 132,
+  "generatedAt": "2026-05-01T12:10:27.497Z",
+  "count": 133,
   "metrics": {
-    "total": 132,
-    "newThisWeek": 129,
-    "avgTimeInQuarantineHours": 11,
+    "total": 133,
+    "newThisWeek": 130,
+    "avgTimeInQuarantineHours": 12,
     "avgHealthScore": 2,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "london-gov-press-releases-html",
+      "provider": "London.gov.uk - News",
+      "endpoint": "https://www.london.gov.uk?source=london-gov-press-releases-html",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T12:10:27.497Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T06:28:15.261Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T11:57:19.950Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T12:10:27.497Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T12:10:27.497Z",
+      "lastFailureAt": "2026-05-01T12:10:27.497Z",
+      "lastCheckedAt": "2026-05-01T12:10:27.497Z"
+    },
     {
       "id": "ct-policing-london",
       "provider": "Counter Terrorism Policing London",
