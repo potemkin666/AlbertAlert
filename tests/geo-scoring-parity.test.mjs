@@ -85,6 +85,15 @@ for (const { location, expectedLabel } of SPECIFICITY_CASES) {
   });
 }
 
+test('inferGeoPoint prioritises explicit location over more specific summary mentions', () => {
+  const result = inferGeoPoint(fakeAlert('Poland', 'Background item', 'Memorial coverage mentioning Auschwitz'), geoLookup);
+  assert.ok(result, 'expected a geo result for explicit Poland location');
+  const expected = geoLookup.find((entry) => entry.label === 'Poland');
+  assert.ok(expected, 'expected geo-lookup entry with label "Poland"');
+  assert.equal(result.lat, expected.lat);
+  assert.equal(result.lng, expected.lng);
+});
+
 // ── Scoring consistency: kind bonus table matches between client & build ─
 
 test('client scoring kind bonuses match build-side scoreGeoEntryMatch', () => {

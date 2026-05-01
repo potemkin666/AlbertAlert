@@ -57,8 +57,8 @@ export function isLondonAlert(alert) {
   ].some((term) => haystack.includes(term));
 }
 
-export function inferGeoPoint(alert, geoLookup = []) {
-  const haystack = `${clean(alert.location)} ${clean(alert.title)} ${clean(alert.summary)}`.toLowerCase();
+function inferGeoPointForText(text, geoLookup = []) {
+  const haystack = clean(text).toLowerCase();
   if (!haystack.trim()) return null;
 
   let best = null;
@@ -99,6 +99,11 @@ export function inferGeoPoint(alert, geoLookup = []) {
 
   if (best) return { lat: best.lat, lng: best.lng };
   return null;
+}
+
+export function inferGeoPoint(alert, geoLookup = []) {
+  return inferGeoPointForText(clean(alert.location), geoLookup)
+    || inferGeoPointForText(`${clean(alert.title)} ${clean(alert.summary)}`, geoLookup);
 }
 
 /**
@@ -613,14 +618,16 @@ export function normaliseAlert(alert, index, geoLookup = []) {
     console.warn(`Unknown alert region "${rawRegion}" normalized to "europe".`);
   }
   const region = ALLOWED_REGIONS.has(rawRegion) ? rawRegion : 'europe';
+  const explicitLat = Number(alert.lat);
+  const explicitLng = Number(alert.lng);
 
   // Resolve coordinates: explicit → geo-lookup → fallback (with jitter)
-  const hasValidExplicit = (Number.isFinite(alert.lat) && alert.lat >= -90 && alert.lat <= 90) &&
-    (Number.isFinite(alert.lng) && alert.lng >= -180 && alert.lng <= 180);
+  const hasValidExplicit = (Number.isFinite(explicitLat) && explicitLat >= -90 && explicitLat <= 90) &&
+    (Number.isFinite(explicitLng) && explicitLng >= -180 && explicitLng <= 180);
   let resolvedLat, resolvedLng, resolvedGeoPrecision;
   if (hasValidExplicit) {
-    resolvedLat = alert.lat;
-    resolvedLng = alert.lng;
+    resolvedLat = explicitLat;
+    resolvedLng = explicitLng;
     resolvedGeoPrecision = clean(alert.geoPrecision);
   } else if (geoPoint) {
     resolvedLat = geoPoint.lat;
