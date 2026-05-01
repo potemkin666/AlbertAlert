@@ -1,11 +1,10 @@
+import { API_BASE } from '../../shared/api-config.mjs';
 import { reportBackgroundError } from '../../shared/logger.mjs';
 
 const SOURCE_REQUEST_TIMEOUT_MS = 12_000;
 const SOURCE_REQUEST_WINDOW_MS = 5 * 60 * 1000;
 const SOURCE_REQUEST_MAX_PER_WINDOW = 30;
 const SOURCE_REQUEST_COOLDOWN_MS = 2_000;
-const SOURCE_REQUEST_BACKEND_BASE = 'https://albertalertbackend.vercel.app';
-
 const sourceRequestRateState = {
   recentAttemptsMs: [],
   lastAttemptAtMs: 0
@@ -25,7 +24,7 @@ function resolveApiUrls(apiUrl) {
   const trimmed = clean(apiUrl);
   if (!trimmed) return [];
   if (/^https?:\/\//i.test(trimmed)) return [trimmed];
-  const bases = [SOURCE_REQUEST_BACKEND_BASE, currentOriginBase()].filter(Boolean);
+  const bases = [API_BASE, currentOriginBase()].filter(Boolean);
   return bases.map((base) => `${base}${trimmed}`);
 }
 

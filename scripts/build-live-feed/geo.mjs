@@ -65,16 +65,27 @@ function fallbackGeoEntryFor(region) {
   return geoLookup.find((entry) => (entry.terms || []).includes(term)) || null;
 }
 
-function bestGeoEntryFor(text, region) {
+function bestGeoEntryForText(text) {
   const haystack = normaliseGeoText(text);
-  if (!haystack) return fallbackGeoEntryFor(region);
+  if (!haystack) return null;
 
   const scored = geoLookup
     .map((entry) => ({ entry, score: scoreGeoEntryMatch(entry, haystack) }))
     .filter((item) => item.score > 0)
     .sort((a, b) => b.score - a.score);
 
-  if (scored.length) return scored[0].entry;
+  return scored.length ? scored[0].entry : null;
+}
+
+function bestGeoEntryFor(text, region) {
+  return bestGeoEntryForText(text) || fallbackGeoEntryFor(region);
+}
+
+function bestGeoEntryForTexts(texts, region) {
+  for (const text of texts) {
+    const match = bestGeoEntryForText(text);
+    if (match) return match;
+  }
   return fallbackGeoEntryFor(region);
 }
 
@@ -116,8 +127,10 @@ const HARD_FALLBACK_COORDS = {
 const DEFAULT_FALLBACK_COORDS = { lat: 50, lng: 10 };
 
 export function geoFor(location, title, summary, region) {
-  const text = `${location || ''} ${title || ''} ${summary || ''}`;
-  const match = bestGeoEntryFor(text, region);
+  const match = bestGeoEntryForTexts([
+    location || '',
+    `${title || ''} ${summary || ''}`
+  ], region);
   if (match) return { lat: match.lat, lng: match.lng };
   const fallback = HARD_FALLBACK_COORDS[region] || DEFAULT_FALLBACK_COORDS;
   return { lat: fallback.lat, lng: fallback.lng };

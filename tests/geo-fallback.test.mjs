@@ -101,6 +101,12 @@ test('geoFor() resolves "paris" to Paris coordinates', () => {
   assert.equal(result.lng, 2.3522);
 });
 
+test('geoFor() prioritizes explicit location over more specific summary mentions', () => {
+  const result = geoFor('Poland', 'Background item', 'Memorial coverage mentioning Auschwitz', 'europe');
+  assert.equal(result.lat, 51.9194);
+  assert.equal(result.lng, 19.1451);
+});
+
 // ── inferLocation() with recognisable text resolves correctly ────────────
 
 test('inferLocation() resolves "birmingham" in title to Birmingham label', () => {
@@ -164,6 +170,12 @@ for (const region of ALL_REGIONS) {
 
 test('normaliseAlert() preserves explicit coords and does not use fallback', () => {
   const alert = normaliseAlert({ id: 'explicit', region: 'uk', title: 'Test', lat: 51.0, lng: -1.0 }, 0);
+  assert.equal(alert.lat, 51.0);
+  assert.equal(alert.lng, -1.0);
+});
+
+test('normaliseAlert() coerces numeric string coords and preserves them', () => {
+  const alert = normaliseAlert({ id: 'explicit-strings', region: 'uk', title: 'Test', lat: '51.0', lng: '-1.0' }, 0);
   assert.equal(alert.lat, 51.0);
   assert.equal(alert.lng, -1.0);
 });
