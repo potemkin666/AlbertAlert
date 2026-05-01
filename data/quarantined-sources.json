@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-01T20:16:16.792Z",
-  "count": 204,
+  "generatedAt": "2026-05-01T21:34:23.032Z",
+  "count": 205,
   "metrics": {
-    "total": 204,
-    "newThisWeek": 201,
-    "avgTimeInQuarantineHours": 14,
+    "total": 205,
+    "newThisWeek": 202,
+    "avgTimeInQuarantineHours": 16,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "me-ministry-defence",
+      "provider": "Montenegro Ministry of Defence",
+      "endpoint": "https://www.gov.me/en/mod",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-01T21:34:23.032Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T19:49:39.407Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T21:19:29.949Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T21:34:23.032Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-08T21:34:23.032Z",
+      "lastFailureAt": "2026-05-01T21:34:23.032Z",
+      "lastCheckedAt": "2026-05-01T21:34:23.032Z"
+    },
     {
       "id": "financial-times-world",
       "provider": "Reuters - World News",
