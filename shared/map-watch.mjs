@@ -469,14 +469,14 @@ export function createMapController(config) {
       button.type = 'button';
       button.setAttribute('aria-label', 'Toggle dark map');
       button.title = 'Toggle dark map';
-      button.textContent = 'Dark';
+      button.textContent = 'dark';
       button.dataset.theme = 'light';
       L.DomEvent.disableClickPropagation(button);
       button.addEventListener('click', () => {
         isDarkTiles = !isDarkTiles;
         if (tileLayer) liveMap.removeLayer(tileLayer);
         tileLayer = L.tileLayer(isDarkTiles ? TILE_DARK : TILE_LIGHT, TILE_OPTIONS).addTo(liveMap);
-        button.textContent = isDarkTiles ? 'Light' : 'Dark';
+        button.textContent = isDarkTiles ? 'light' : 'dark';
         button.dataset.theme = isDarkTiles ? 'dark' : 'light';
         button.setAttribute('aria-label', isDarkTiles ? 'Toggle light map' : 'Toggle dark map');
         button.title = isDarkTiles ? 'Toggle light map' : 'Toggle dark map';
@@ -548,7 +548,9 @@ export function createMapController(config) {
         // around the source point before the next ring expands outward.
         const ring = Math.floor(itemIndex / COINCIDENT_ALERTS_PER_RING);
         const radius = spreadRadius + (ring * COINCIDENT_ALERT_RING_SPACING_PX);
-        const angle = (Math.PI * 2 * itemIndex) / group.length - (Math.PI / 2);
+        const positionInRing = itemIndex % COINCIDENT_ALERTS_PER_RING;
+        const itemsInRing = Math.min(COINCIDENT_ALERTS_PER_RING, group.length - (ring * COINCIDENT_ALERTS_PER_RING));
+        const angle = (Math.PI * 2 * positionInRing) / itemsInRing - (Math.PI / 2);
         const point = {
           x: basePoint.x + (Math.cos(angle) * radius),
           y: basePoint.y + (Math.sin(angle) * radius)
