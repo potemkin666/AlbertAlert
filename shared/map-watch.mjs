@@ -13,6 +13,13 @@ const LONDON_CLUSTER_MAX_ZOOM = 12;
 const WORLD_CLUSTER_MAX_ZOOM = 7;
 const NEARBY_CLUSTER_MAX_ZOOM = 10;
 const INITIAL_NEARBY_ZOOM = 9;
+const COINCIDENT_ALERT_KEY_PRECISION = 7;
+const COINCIDENT_ALERTS_PER_RING = 8;
+const COINCIDENT_ALERT_RING_SPACING_PX = 8;
+const COINCIDENT_ALERT_SPREAD_RADIUS_PX = Object.freeze({
+  compact: 10,
+  expanded: 14
+});
 const FRESH_ALERT_WINDOW_MS = 90 * 60 * 1000;
 const LEAFLET_CSS_URL = './assets/vendor/leaflet/leaflet.css';
 const LEAFLET_JS_URL = './assets/vendor/leaflet/leaflet.js';
@@ -519,13 +526,15 @@ export function createMapController(config) {
     if (!liveMap || items.length <= 1) return items;
     const groups = new Map();
     items.forEach((alert, index) => {
-      const key = `${Number(alert.lat).toFixed(5)}:${Number(alert.lng).toFixed(5)}`;
+      const key = `${Number(alert.lat).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}:${Number(alert.lng).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}`;
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push({ alert, index });
     });
     if (![...groups.values()].some((group) => group.length > 1)) return items;
 
-    const spreadRadius = zoom >= 10 ? 14 : 10;
+    const spreadRadius = zoom >= 10
+      ? COINCIDENT_ALERT_SPREAD_RADIUS_PX.expanded
+      : COINCIDENT_ALERT_SPREAD_RADIUS_PX.compact;
     const positioned = new Array(items.length);
     groups.forEach((group) => {
       if (group.length === 1) {
@@ -535,8 +544,10 @@ export function createMapController(config) {
       const baseAlert = group[0].alert;
       const basePoint = liveMap.project([baseAlert.lat, baseAlert.lng], zoom);
       group.forEach(({ alert, index }, itemIndex) => {
-        const ring = Math.floor(itemIndex / 8);
-        const radius = spreadRadius + (ring * 8);
+        // Fan exact duplicates into concentric rings so up to eight markers fit
+        // around the source point before the next ring expands outward.
+        const ring = Math.floor(itemIndex / COINCIDENT_ALERTS_PER_RING);
+        const radius = spreadRadius + (ring * COINCIDENT_ALERT_RING_SPACING_PX);
         const angle = (Math.PI * 2 * itemIndex) / group.length - (Math.PI / 2);
         const point = {
           x: basePoint.x + (Math.cos(angle) * radius),
