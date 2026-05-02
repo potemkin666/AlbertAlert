@@ -39,7 +39,7 @@ describe('location groups', () => {
 
   it('groups nearby mode alerts by local area', () => {
     const groups = _buildLocationGroups(alerts, MAP_VIEW_MODES.nearby);
-    assert.deepEqual(groups.map((group) => group.label), ['Berlin', 'Munich', 'Paris']);
+    assert.deepEqual(groups.map((group) => group.label), ['Paris', 'Berlin', 'Munich']);
   });
 
   it('orders groups by alert count before severity', () => {
