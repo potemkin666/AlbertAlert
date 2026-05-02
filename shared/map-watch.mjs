@@ -342,6 +342,18 @@ function alertCoordinateKey(alert) {
   return `${Number(alert.lat).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}:${Number(alert.lng).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}`;
 }
 
+function coincidentAlertOffset(itemIndex, groupLength, spreadRadius) {
+  const ring = Math.floor(itemIndex / COINCIDENT_ALERTS_PER_RING);
+  const radius = spreadRadius + (ring * COINCIDENT_ALERT_RING_SPACING_PX);
+  const positionInRing = itemIndex % COINCIDENT_ALERTS_PER_RING;
+  const itemsInRing = Math.min(COINCIDENT_ALERTS_PER_RING, groupLength - (ring * COINCIDENT_ALERTS_PER_RING));
+  const angle = (Math.PI * 2 * positionInRing) / itemsInRing - (Math.PI / 2);
+  return {
+    x: Math.cos(angle) * radius,
+    y: Math.sin(angle) * radius
+  };
+}
+
 function alertPublishedAtMs(alert) {
   const stamp = alert?.publishedAt || alert?.updatedAt || alert?.firstReportedAt || null;
   const timeMs = stamp ? new Date(stamp).getTime() : NaN;
@@ -550,14 +562,10 @@ export function createMapController(config) {
       group.forEach(({ alert, index }, itemIndex) => {
         // Fan exact duplicates into concentric rings so up to eight markers fit
         // around the source point before the next ring expands outward.
-        const ring = Math.floor(itemIndex / COINCIDENT_ALERTS_PER_RING);
-        const radius = spreadRadius + (ring * COINCIDENT_ALERT_RING_SPACING_PX);
-        const positionInRing = itemIndex % COINCIDENT_ALERTS_PER_RING;
-        const itemsInRing = Math.min(COINCIDENT_ALERTS_PER_RING, group.length - (ring * COINCIDENT_ALERTS_PER_RING));
-        const angle = (Math.PI * 2 * positionInRing) / itemsInRing - (Math.PI / 2);
+        const offset = coincidentAlertOffset(itemIndex, group.length, spreadRadius);
         const point = {
-          x: basePoint.x + (Math.cos(angle) * radius),
-          y: basePoint.y + (Math.sin(angle) * radius)
+          x: basePoint.x + offset.x,
+          y: basePoint.y + offset.y
         };
         const latLng = liveMap.unproject(point, zoom);
         positioned[index] = { ...alert, lat: latLng.lat, lng: latLng.lng };
@@ -783,4 +791,4 @@ export function createMapController(config) {
   };
 }
 
-export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel, clusterAnchorFor as _clusterAnchorFor, shouldClusterAtZoom as _shouldClusterAtZoom };
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel, clusterAnchorFor as _clusterAnchorFor, shouldClusterAtZoom as _shouldClusterAtZoom, alertCoordinateKey as _alertCoordinateKey, coincidentAlertOffset as _coincidentAlertOffset };

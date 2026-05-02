@@ -12,7 +12,9 @@ import {
   _statusLine,
   _normaliseCountryName,
   _vignetteLevel,
-  _shouldClusterAtZoom
+  _shouldClusterAtZoom,
+  _alertCoordinateKey,
+  _coincidentAlertOffset
 } from '../shared/map-watch.mjs';
 import { MAP_VIEW_MODES } from '../shared/ui-constants.mjs';
 
@@ -118,6 +120,36 @@ describe('shouldClusterAtZoom', () => {
     assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.london, 12), false);
     assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.nearby, 9), true);
     assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.nearby, 10), false);
+  });
+
+  it('falls back to world thresholds for invalid modes', () => {
+    assert.equal(_shouldClusterAtZoom('invalid-mode', 6), true);
+    assert.equal(_shouldClusterAtZoom('invalid-mode', 7), false);
+  });
+});
+
+describe('alertCoordinateKey', () => {
+  it('rounds coordinates to a stable duplicate-detection key', () => {
+    assert.equal(
+      _alertCoordinateKey({ lat: 51.123456789, lng: -0.987654321 }),
+      '51.1234568:-0.9876543'
+    );
+  });
+});
+
+describe('coincidentAlertOffset', () => {
+  it('starts the first duplicate at the top of the first ring', () => {
+    const offset = _coincidentAlertOffset(0, 3, 10);
+    assert.ok(Math.abs(offset.x) < 1e-9, `Expected x≈0, got ${offset.x}`);
+    assert.equal(offset.y, -10);
+  });
+
+  it('moves overflow duplicates onto a wider outer ring', () => {
+    const inner = _coincidentAlertOffset(0, 10, 10);
+    const outer = _coincidentAlertOffset(8, 10, 10);
+    assert.ok(Math.hypot(outer.x, outer.y) > Math.hypot(inner.x, inner.y));
+    assert.ok(Math.abs(outer.x) < 1e-9, `Expected x≈0, got ${outer.x}`);
+    assert.equal(outer.y, -18);
   });
 });
 
