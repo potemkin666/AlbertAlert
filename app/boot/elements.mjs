@@ -19,7 +19,7 @@ export function createElements() {
     heroWeatherTemp: document.getElementById('hero-weather-temp'),
     heroWeatherSummary: document.getElementById('hero-weather-summary'),
     heroWeatherMeta: document.getElementById('hero-weather-meta'),
-    mapElement: document.getElementById('leaflet-map'),
+    mapElement: document.getElementById('locations-panel'),
     mapPanelSurface: document.getElementById('map-panel-surface'),
     mapStatusLine: document.getElementById('map-status-line'),
     mapEmptyState: document.getElementById('map-empty-state'),

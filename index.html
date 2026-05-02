@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content, shrink-to-fit=no">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: https://*.basemaps.cartocdn.com; connect-src 'self' https://brialertbackend.vercel.app https://api.open-meteo.com; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://brialertbackend.vercel.app https://api.open-meteo.com; font-src 'self' data:; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
   <title>AlbertAlert</title>
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="theme-color" content="#070914">
@@ -13,7 +13,6 @@
   <meta name="apple-mobile-web-app-title" content="AlbertAlert">
   <meta name="format-detection" content="telephone=no, date=no, email=no, address=no">
   <meta name="description" content="Responder-first terrorism incident briefing workflow for iPhone web app use.">
-  <link rel="stylesheet" href="./assets/vendor/leaflet/leaflet.css">
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="apple-touch-icon" href="assets/albert-icon.jpg">
   <link rel="icon" href="assets/albert-icon.jpg" type="image/jpeg">
@@ -65,7 +64,7 @@
 
         <nav class="tabbar briefing-mode-hidden" id="tabbar">
           <button class="tab active" data-tab="firstalert">Live</button>
-          <button class="tab" data-tab="map">Map</button>
+          <button class="tab" data-tab="map">Locations</button>
           <button class="tab" data-tab="watchlists" aria-label="Watchlists" title="Watchlists">👁️</button>
           <button class="tab" data-tab="notes">📓 Notes</button>
           <button class="tab" data-tab="sources" aria-label="Add Source" title="Add Source">🌐+</button>
@@ -118,8 +117,8 @@
         <section class="tab-panel" data-panel="map">
           <article class="panel map-panel">
             <div class="map-header-row">
-              <h3>Map</h3>
-              <div class="map-mode-tabs" id="map-mode-tabs" role="tablist" aria-label="Map mode">
+              <h3>Locations</h3>
+              <div class="map-mode-tabs" id="map-mode-tabs" role="tablist" aria-label="Location mode">
                 <button class="map-mode-tab" id="map-mode-london-tab" type="button" role="tab" aria-selected="false" aria-controls="map-panel-surface" data-map-mode="london">London</button>
                 <button class="map-mode-tab active" id="map-mode-world-tab" type="button" role="tab" aria-selected="true" aria-controls="map-panel-surface" data-map-mode="world">World</button>
                 <button class="map-mode-tab" id="map-mode-nearby-tab" type="button" role="tab" aria-selected="false" aria-controls="map-panel-surface" data-map-mode="nearby">Near me</button>
@@ -128,8 +127,8 @@
             <div class="map-surface" id="map-panel-surface" role="tabpanel" aria-labelledby="map-mode-world-tab">
               <div class="map-viewport" id="map-viewport">
                 <p class="map-status-line" id="map-status-line" aria-live="polite">No alerts in current view</p>
-                <div class="leaflet-map" id="leaflet-map" aria-label="Interactive alert map"></div>
-                <p class="map-empty-state hidden" id="map-empty-state">No mapped alerts for this view.</p>
+                <div class="locations-panel-shell" id="locations-panel" aria-label="Location intelligence panel"></div>
+                <p class="map-empty-state hidden" id="map-empty-state">No alerts for this view.</p>
               </div>
             </div>
           </article>
@@ -253,7 +252,6 @@
     </div>
   </div>
 
-  <script src="./assets/vendor/leaflet/leaflet.js"></script>
   <script type="module" src="app.js"></script>
 </body>
 </html>
