@@ -473,14 +473,14 @@ export function createMapController(config) {
       button.type = 'button';
       button.setAttribute('aria-label', 'Toggle dark map');
       button.title = 'Toggle dark map';
-      button.textContent = 'dark';
+      button.textContent = 'dark map';
       button.dataset.theme = 'light';
       L.DomEvent.disableClickPropagation(button);
       button.addEventListener('click', () => {
         isDarkTiles = !isDarkTiles;
         if (tileLayer) liveMap.removeLayer(tileLayer);
         tileLayer = L.tileLayer(isDarkTiles ? TILE_DARK : TILE_LIGHT, TILE_OPTIONS).addTo(liveMap);
-        button.textContent = isDarkTiles ? 'light' : 'dark';
+        button.textContent = isDarkTiles ? 'light map' : 'dark map';
         button.dataset.theme = isDarkTiles ? 'dark' : 'light';
         button.setAttribute('aria-label', isDarkTiles ? 'Toggle light map' : 'Toggle dark map');
         button.title = isDarkTiles ? 'Toggle light map' : 'Toggle dark map';
@@ -539,7 +539,7 @@ export function createMapController(config) {
     const spreadRadius = zoom >= 10
       ? COINCIDENT_ALERT_SPREAD_RADIUS_PX.expanded
       : COINCIDENT_ALERT_SPREAD_RADIUS_PX.compact;
-    const positioned = new Array(items.length);
+    const positioned = [...items];
     groups.forEach((group) => {
       if (group.length === 1) {
         positioned[group[0].index] = group[0].alert;
