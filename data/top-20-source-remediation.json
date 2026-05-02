@@ -1,41 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-01T23:37:06.119Z",
+  "generatedAt": "2026-05-02T01:21:35.839Z",
   "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
+      "id": "hedayah-news",
+      "provider": "Hedayah - News",
+      "endpoint": "https://hedayah.com/news/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "not-found-404",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 404",
+      "status": 404,
+      "rankScore": 5,
+      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "love-my-dress",
-      "provider": "Love My Dress",
-      "endpoint": "https://www.lovemydress.net/feed",
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "HTTP 520",
-      "status": 520,
+      "message": "fetch failed",
+      "status": 0,
       "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
