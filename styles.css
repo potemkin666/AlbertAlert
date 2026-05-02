@@ -951,106 +951,6 @@ h1 {
   );
 }
 
-.map-motion-overlay {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 410;
-  overflow: hidden;
-}
-
-.map-motion-track {
-  position: absolute;
-  left: -18%;
-  width: 136%;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.08) 20%, rgba(162, 211, 255, 0.36) 52%, rgba(255, 255, 255, 0.10) 84%, transparent 100%);
-  opacity: 0.68;
-}
-
-.map-motion-track--one {
-  top: 24%;
-  transform: rotate(-14deg);
-}
-
-.map-motion-track--two {
-  top: 50%;
-  transform: rotate(8deg);
-  opacity: 0.52;
-}
-
-.map-motion-track--three {
-  top: 73%;
-  transform: rotate(-5deg);
-  opacity: 0.42;
-}
-
-.map-motion-blip {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.96) 0%, rgba(179, 226, 255, 0.92) 56%, rgba(73, 169, 255, 0.82) 100%);
-  box-shadow: 0 0 0 2px rgba(146, 212, 255, 0.18), 0 0 14px rgba(111, 199, 255, 0.5);
-}
-
-.map-motion-blip::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: rgba(167, 221, 255, 0.42);
-  animation: map-motion-pulse 1.8s ease-out infinite;
-}
-
-.map-motion-blip--one {
-  top: 20%;
-  animation: map-motion-flight-1 10s linear infinite;
-}
-
-.map-motion-blip--two {
-  top: 47%;
-  animation: map-motion-flight-2 13s linear infinite;
-}
-
-.map-motion-blip--three {
-  top: 70%;
-  animation: map-motion-flight-3 16s linear infinite;
-}
-
-@keyframes map-motion-flight-1 {
-  0% { transform: translate3d(-10%, 0, 0); opacity: 0; }
-  8% { opacity: 0.95; }
-  82% { opacity: 0.9; }
-  100% { transform: translate3d(1220%, 0, 0); opacity: 0; }
-}
-
-@keyframes map-motion-flight-2 {
-  0% { transform: translate3d(1180%, 0, 0); opacity: 0; }
-  10% { opacity: 0.9; }
-  82% { opacity: 0.85; }
-  100% { transform: translate3d(-12%, 0, 0); opacity: 0; }
-}
-
-@keyframes map-motion-flight-3 {
-  0% { transform: translate3d(-12%, 0, 0); opacity: 0; }
-  12% { opacity: 0.84; }
-  80% { opacity: 0.8; }
-  100% { transform: translate3d(1220%, 0, 0); opacity: 0; }
-}
-
-@keyframes map-motion-pulse {
-  0% { transform: scale(1); opacity: 0.6; }
-  100% { transform: scale(2.25); opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .map-motion-overlay {
-    display: none;
-  }
-}
-
 .map-chip {
   padding: 8px 12px;
   border-radius: 999px;
@@ -1354,31 +1254,35 @@ h1 {
   position: relative;
 }
 
-/* ── Aesthetic: dot glow ──
-   Soft coloured halo lifts each severity dot off the desaturated tiles,
-   giving depth without clutter. The halo colour inherits from the dot's
-   background via a layered box-shadow. */
 .map-dot {
   position: relative;
   display: block;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.92);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  background: linear-gradient(180deg, var(--map-dot-top), var(--map-dot-bottom));
   box-shadow:
     0 0 0 1px rgba(15, 23, 42, 0.28),
-    0 0 6px 2px rgba(255, 255, 255, 0.18);
-  transition: box-shadow 0.25s ease, transform 0.25s ease;
+    0 8px 18px rgba(15, 23, 42, 0.26),
+    0 0 0 6px var(--map-dot-halo);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-/* ── Aesthetic: dot hover glow intensification ──
-   On hover the dot scales up AND the severity-coloured halo intensifies
-   dramatically, making the dot "light up" under the cursor. */
 .map-dot:hover {
-  transform: scale(1.25);
+  transform: scale(1.08);
   box-shadow:
     0 0 0 2px rgba(255, 255, 255, 0.96),
-    0 0 14px 5px rgba(255, 255, 255, 0.28);
+    0 10px 22px rgba(15, 23, 42, 0.32),
+    0 0 0 8px var(--map-dot-halo);
+}
+
+.map-dot-core {
+  position: absolute;
+  inset: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
 .map-dot--fresh::after {
@@ -1396,65 +1300,27 @@ h1 {
 }
 
 .map-dot--critical {
-  background: #dc2626;
-  box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.28),
-    0 0 8px 3px rgba(220, 38, 38, 0.45);
-}
-.map-dot--critical:hover {
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.96),
-    0 0 18px 7px rgba(220, 38, 38, 0.62);
+  --map-dot-top: #f87171;
+  --map-dot-bottom: #b91c1c;
+  --map-dot-halo: rgba(248, 113, 113, 0.28);
 }
 
 .map-dot--high {
-  background: #ea580c;
-  box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.28),
-    0 0 8px 3px rgba(234, 88, 12, 0.40);
-}
-.map-dot--high:hover {
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.96),
-    0 0 18px 7px rgba(234, 88, 12, 0.58);
+  --map-dot-top: #fb923c;
+  --map-dot-bottom: #c2410c;
+  --map-dot-halo: rgba(251, 146, 60, 0.26);
 }
 
 .map-dot--elevated {
-  background: #d97706;
-  box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.28),
-    0 0 8px 3px rgba(217, 119, 6, 0.35);
-}
-.map-dot--elevated:hover {
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.96),
-    0 0 18px 7px rgba(217, 119, 6, 0.52);
+  --map-dot-top: #fbbf24;
+  --map-dot-bottom: #b45309;
+  --map-dot-halo: rgba(251, 191, 36, 0.24);
 }
 
 .map-dot--moderate {
-  background: #0284c7;
-  box-shadow:
-    0 0 0 1px rgba(15, 23, 42, 0.28),
-    0 0 8px 3px rgba(2, 132, 199, 0.35);
-}
-.map-dot--moderate:hover {
-  box-shadow:
-    0 0 0 2px rgba(255, 255, 255, 0.96),
-    0 0 18px 7px rgba(2, 132, 199, 0.52);
-}
-
-/* ── Attack-type icon overlay ──
-   Small emoji badge offset from the severity dot, showing the
-   classified attack type (vehicle / blade / IED / shooter). */
-.map-dot-attack-icon {
-  position: absolute;
-  bottom: -2px;
-  right: -6px;
-  font-size: 10px;
-  line-height: 1;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5));
-  pointer-events: none;
-  z-index: 1;
+  --map-dot-top: #38bdf8;
+  --map-dot-bottom: #0369a1;
+  --map-dot-halo: rgba(56, 189, 248, 0.22);
 }
 
 .map-pin-shell {
@@ -1468,147 +1334,11 @@ h1 {
   opacity: 0.9;
 }
 
-.map-ring {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-.map-ring--active {
-  width: 38px;
-  height: 38px;
-  border: 2px solid rgba(255, 116, 92, 0.46);
-  box-shadow: 0 0 0 8px rgba(255, 116, 92, 0.12), 0 0 28px rgba(255, 107, 82, 0.28);
-  animation: map-ring-pulse 2.2s ease-out infinite;
-}
-
-.map-ring--disrupted {
-  width: 34px;
-  height: 34px;
-  border: 2px dashed rgba(255, 184, 84, 0.8);
-  box-shadow: 0 0 0 6px rgba(255, 184, 84, 0.10), 0 0 18px rgba(255, 173, 77, 0.18);
-}
-
-.map-ring--case {
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(113, 209, 232, 0.52);
-  box-shadow: 0 0 0 5px rgba(113, 209, 232, 0.10);
-}
-
-.map-ring--arrest {
-  width: 32px;
-  height: 32px;
-  border: 2px solid rgba(120, 164, 255, 0.72);
-  box-shadow: 0 0 0 6px rgba(120, 164, 255, 0.10), 0 0 18px rgba(82, 126, 230, 0.14);
-}
-
-.map-ring--context {
-  width: 28px;
-  height: 28px;
-  border: 2px dotted rgba(84, 212, 188, 0.56);
-  box-shadow: 0 0 0 4px rgba(84, 212, 188, 0.08);
-}
-
-.map-pin {
-  position: relative;
-  display: block;
-  width: 22px;
-  height: 22px;
-  border-radius: 50% 50% 50% 0;
-  border: 2px solid rgba(255, 255, 255, 0.96);
-  transform: translate(10px, 10px) rotate(-45deg);
-  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.08), 0 10px 20px rgba(0, 0, 0, 0.35);
-}
-
-.map-pin::after {
-  content: "";
-  position: absolute;
-  inset: 4px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.94);
-}
-
-.map-pin--critical {
-  background: linear-gradient(180deg, #ff6b52, #c42d1f);
-}
-
-.map-pin--high {
-  background: linear-gradient(180deg, #ffad4d, #c96a10);
-}
-
-.map-pin--elevated {
-  background: linear-gradient(180deg, #f2d55b, #b89a21);
-}
-
-.map-pin--moderate {
-  background: linear-gradient(180deg, #4fd2d0, #1d8381);
-}
-
-.map-pin--active {
-  filter: saturate(1.08);
-}
-
-.map-pin--disrupted {
-  box-shadow: 0 0 0 7px rgba(255, 201, 110, 0.10), 0 10px 20px rgba(0, 0, 0, 0.35);
-}
-
-.map-pin--arrest {
-  box-shadow: 0 0 0 7px rgba(120, 164, 255, 0.10), 0 10px 20px rgba(0, 0, 0, 0.35);
-}
-
-.map-pin--context {
-  box-shadow: 0 0 0 5px rgba(84, 212, 188, 0.08), 0 10px 18px rgba(0, 0, 0, 0.28);
-}
-
-.map-pin-glyph {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -62%);
-  display: grid;
-  place-items: center;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: rgba(10, 16, 28, 0.82);
-  color: #f8fafc;
-  font-size: 9px;
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: 0.02em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.34);
-  pointer-events: none;
-}
-
-.map-pin-glyph--active {
-  background: rgba(114, 23, 16, 0.88);
-}
-
-.map-pin-glyph--disrupted {
-  background: rgba(111, 69, 10, 0.88);
-}
-
-.map-pin-glyph--arrest {
-  background: rgba(19, 42, 98, 0.88);
-}
-
-.map-pin-glyph--context {
-  background: rgba(16, 77, 79, 0.88);
-}
-
 .map-cluster-icon {
   background: transparent;
   border: 0;
 }
 
-/* ── Aesthetic: cluster pulse ring ──
-   Pulsing ring behind each cluster draws attention to grouped alerts.
-   The ring colour matches the cluster severity via a shared
-   --cluster-ring custom property set on each severity variant. */
 .map-cluster {
   display: grid;
   place-items: center;
@@ -1616,75 +1346,46 @@ h1 {
   height: 34px;
   border-radius: 50%;
   border: 2px solid rgba(255, 255, 255, 0.92);
-  color: #0f172a;
-  font-size: 12px;
-  font-weight: 800;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.25);
-  --cluster-ring: rgba(148, 163, 184, 0.35);
+  color: #f8fafc;
+  box-shadow:
+    0 8px 22px rgba(15, 23, 42, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
   position: relative;
+  overflow: hidden;
+  isolation: isolate;
 }
 
 .map-cluster::before {
   content: "";
   position: absolute;
-  inset: -4px;
+  inset: 3px;
   border-radius: 50%;
-  border: 2px solid var(--cluster-ring);
-  animation: map-cluster-ring-pulse 2.4s ease-out infinite;
+  background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0) 58%);
   pointer-events: none;
 }
 
-/* ── Aesthetic: cluster inner radial gradient ──
-   Subtle radial highlight makes each cluster feel spherical rather
-   than flat, adding depth without changing the base colour palette. */
+.map-cluster-count {
+  position: relative;
+  z-index: 1;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+}
+
 .map-cluster--critical {
-  background: radial-gradient(circle at 38% 34%, #fecaca 0%, #fca5a5 58%, #f87171 100%);
-  --cluster-ring: rgba(252, 165, 165, 0.50);
+  background: linear-gradient(180deg, #ef4444, #991b1b);
 }
 
 .map-cluster--high {
-  background: radial-gradient(circle at 38% 34%, #fed7aa 0%, #fdba74 58%, #fb923c 100%);
-  --cluster-ring: rgba(253, 186, 116, 0.45);
+  background: linear-gradient(180deg, #f97316, #9a3412);
 }
 
 .map-cluster--elevated {
-  background: radial-gradient(circle at 38% 34%, #fde68a 0%, #f59e0b 58%, #d97706 100%);
-  --cluster-ring: rgba(245, 158, 11, 0.40);
+  background: linear-gradient(180deg, #f59e0b, #92400e);
 }
 
 .map-cluster--moderate {
-  background: radial-gradient(circle at 38% 34%, #bfdbfe 0%, #93c5fd 58%, #60a5fa 100%);
-  --cluster-ring: rgba(147, 197, 253, 0.40);
-}
-
-@keyframes map-cluster-ring-pulse {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
-  }
-  70% {
-    transform: scale(1.55);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.55);
-    opacity: 0;
-  }
-}
-
-@keyframes map-ring-pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(255, 116, 92, 0.18), 0 0 18px rgba(255, 107, 82, 0.20);
-    opacity: 0.9;
-  }
-  70% {
-    box-shadow: 0 0 0 10px rgba(255, 116, 92, 0.04), 0 0 30px rgba(255, 107, 82, 0.10);
-    opacity: 0.78;
-  }
-  100% {
-    box-shadow: 0 0 0 0 rgba(255, 116, 92, 0), 0 0 18px rgba(255, 107, 82, 0.18);
-    opacity: 0.9;
-  }
+  background: linear-gradient(180deg, #0ea5e9, #075985);
 }
 
 @keyframes map-fresh-dot-pulse {
@@ -1707,11 +1408,6 @@ h1 {
   .map-marker-enter {
     animation: none !important;
   }
-  .map-cluster::before {
-    animation: none;
-    opacity: 0.35;
-    transform: scale(1.2);
-  }
   .map-empty-state {
     animation: none;
   }
@@ -1723,15 +1419,15 @@ h1 {
 .map-severity-legend {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 8px 10px;
-  border-radius: 10px;
-  background: rgba(9, 14, 25, 0.72);
+  gap: 6px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(9, 14, 25, 0.76);
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
   backdrop-filter: blur(12px) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
-    0 4px 14px rgba(0, 0, 0, 0.28),
+    0 10px 24px rgba(0, 0, 0, 0.26),
     inset 0 1px 0 rgba(255, 255, 255, 0.06);
   font-size: 11px;
   color: #f8fafc;
@@ -1746,34 +1442,31 @@ h1 {
 
 .map-legend-dot {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
   flex-shrink: 0;
 }
 
-/* ── Aesthetic: legend dot micro-glow ──
-   Severity-matched soft glow on each legend swatch so the legend
-   mirrors the glowing dots on the map, reinforcing the colour key. */
 .map-legend-dot--critical {
-  background: #dc2626;
-  box-shadow: 0 0 6px 1px rgba(220, 38, 38, 0.55);
+  background: linear-gradient(180deg, #f87171, #b91c1c);
+  box-shadow: 0 0 6px 1px rgba(248, 113, 113, 0.45);
 }
 
 .map-legend-dot--high {
-  background: #ea580c;
-  box-shadow: 0 0 6px 1px rgba(234, 88, 12, 0.50);
+  background: linear-gradient(180deg, #fb923c, #c2410c);
+  box-shadow: 0 0 6px 1px rgba(251, 146, 60, 0.42);
 }
 
 .map-legend-dot--elevated {
-  background: #d97706;
-  box-shadow: 0 0 6px 1px rgba(217, 119, 6, 0.45);
+  background: linear-gradient(180deg, #fbbf24, #b45309);
+  box-shadow: 0 0 6px 1px rgba(251, 191, 36, 0.38);
 }
 
 .map-legend-dot--moderate {
-  background: #0284c7;
-  box-shadow: 0 0 6px 1px rgba(2, 132, 199, 0.45);
+  background: linear-gradient(180deg, #38bdf8, #0369a1);
+  box-shadow: 0 0 6px 1px rgba(56, 189, 248, 0.34);
 }
 
 /* ── Watch-zone radius overlay ──
@@ -1786,19 +1479,21 @@ h1 {
   stroke-dasharray: 8 6;
 }
 
-/* ── Dark-mode tile toggle ── */
 .map-tile-toggle {
   display: grid;
   place-items: center;
-  width: 34px;
+  min-width: 48px;
   height: 34px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 8px;
+  border-radius: 999px;
   background: rgba(9, 14, 25, 0.68);
   -webkit-backdrop-filter: blur(12px) saturate(1.2);
   backdrop-filter: blur(12px) saturate(1.2);
   color: #f8fafc;
-  font-size: 16px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   cursor: pointer;
   box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.24),
@@ -1808,6 +1503,11 @@ h1 {
 
 .map-tile-toggle:hover {
   background: rgba(20, 28, 46, 0.95);
+}
+
+.map-tile-toggle[data-theme="dark"] {
+  background: rgba(226, 232, 240, 0.92);
+  color: #101827;
 }
 
 /* ── Hover tooltip ── */

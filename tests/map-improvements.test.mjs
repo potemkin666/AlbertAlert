@@ -11,7 +11,8 @@ import {
   _clusterAnchorFor,
   _statusLine,
   _normaliseCountryName,
-  _vignetteLevel
+  _vignetteLevel,
+  _shouldClusterAtZoom
 } from '../shared/map-watch.mjs';
 import { MAP_VIEW_MODES } from '../shared/ui-constants.mjs';
 
@@ -103,6 +104,20 @@ describe('CLUSTER_FLY_DURATION', () => {
 
   it('is a reasonable animation duration (under 3 seconds)', () => {
     assert.ok(_CLUSTER_FLY_DURATION <= 3, 'Expected duration <= 3 seconds');
+  });
+});
+
+describe('shouldClusterAtZoom', () => {
+  it('stops clustering in world mode at the max cluster zoom', () => {
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.world, 6), true);
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.world, 7), false);
+  });
+
+  it('uses per-mode cutoffs for london and nearby modes', () => {
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.london, 11), true);
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.london, 12), false);
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.nearby, 9), true);
+    assert.equal(_shouldClusterAtZoom(MAP_VIEW_MODES.nearby, 10), false);
   });
 });
 

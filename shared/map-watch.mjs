@@ -1,7 +1,6 @@
 import { escapeHtml } from '../app/utils/text.mjs';
 import { MAP_VIEW_MODES, NEARBY_RADIUS_KM, resolveMapMode } from './ui-constants.mjs';
 import { LONDON_BOUNDS, WORLD_VIEW_DEFAULTS } from './geo-fallback-coords.mjs';
-import { attackTypeIcon } from './attack-type-classifier.mjs';
 
 // Leaflet-friendly [lat,lng] pairs derived from the shared LONDON_BOUNDS bounding box.
 const LONDON_BOUNDS_ARRAY = Object.freeze([
@@ -327,6 +326,11 @@ function clusterMaxZoomForMode(mode) {
   return WORLD_CLUSTER_MAX_ZOOM;
 }
 
+function shouldClusterAtZoom(mode, zoom) {
+  if (!Number.isFinite(zoom)) return true;
+  return zoom < clusterMaxZoomForMode(mode);
+}
+
 function alertPublishedAtMs(alert) {
   const stamp = alert?.publishedAt || alert?.updatedAt || alert?.firstReportedAt || null;
   const timeMs = stamp ? new Date(stamp).getTime() : NaN;
@@ -385,7 +389,6 @@ export function createMapController(config) {
   let watchZoneCircle = null;
   let initAttempts = 0;
   let isLoadingLeaflet = false;
-  const motionOverlay = mapElement?.parentElement?.querySelector('.map-motion-overlay');
   const mapViewport = mapElement?.parentElement;
 
   function ensureMap() {
@@ -459,13 +462,15 @@ export function createMapController(config) {
       button.type = 'button';
       button.setAttribute('aria-label', 'Toggle dark map');
       button.title = 'Toggle dark map';
-      button.textContent = '🌙';
+      button.textContent = 'Dark';
+      button.dataset.theme = 'light';
       L.DomEvent.disableClickPropagation(button);
       button.addEventListener('click', () => {
         isDarkTiles = !isDarkTiles;
         if (tileLayer) liveMap.removeLayer(tileLayer);
         tileLayer = L.tileLayer(isDarkTiles ? TILE_DARK : TILE_LIGHT, TILE_OPTIONS).addTo(liveMap);
-        button.textContent = isDarkTiles ? '☀️' : '🌙';
+        button.textContent = isDarkTiles ? 'Light' : 'Dark';
+        button.dataset.theme = isDarkTiles ? 'dark' : 'light';
         button.setAttribute('aria-label', isDarkTiles ? 'Toggle light map' : 'Toggle dark map');
         button.title = isDarkTiles ? 'Toggle light map' : 'Toggle dark map';
       });
@@ -481,16 +486,12 @@ export function createMapController(config) {
   function mapIconForAlert(alert) {
     const level = severityClass(alert);
     const freshClass = isFreshAlert(alert) ? ' map-dot--fresh' : '';
-    const atkIcon = attackTypeIcon(alert.attackType);
-    const overlay = atkIcon
-      ? `<span class="map-dot-attack-icon" aria-label="${escapeHtml(alert.attackType)} attack">${atkIcon}</span>`
-      : '';
     return L.divIcon({
       className: `map-dot-icon${enterClass}`,
-      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"></span>${overlay}`,
-      iconSize: [16, 16],
-      iconAnchor: [8, 8],
-      popupAnchor: [0, -8]
+      html: `<span class="map-dot map-dot--${level}${freshClass}" aria-hidden="true"><span class="map-dot-core"></span></span>`,
+      iconSize: [18, 18],
+      iconAnchor: [9, 9],
+      popupAnchor: [0, -10]
     });
   }
 
@@ -499,7 +500,7 @@ export function createMapController(config) {
     const size = items.length >= 20 ? 40 : items.length >= 10 ? 36 : 32;
     return L.divIcon({
       className: `map-cluster-icon${enterClass}`,
-      html: `<span class="map-cluster map-cluster--${level}" style="width:${size}px;height:${size}px;">${items.length}</span>`,
+      html: `<span class="map-cluster map-cluster--${level}" style="width:${size}px;height:${size}px;"><span class="map-cluster-count">${items.length}</span></span>`,
       iconSize: [size, size],
       iconAnchor: [size / 2, size / 2]
     });
@@ -514,9 +515,44 @@ export function createMapController(config) {
     }
   }
 
-  function clusterAlerts(items) {
+  function spreadCoincidentAlerts(items, zoom) {
+    if (!liveMap || items.length <= 1) return items;
+    const groups = new Map();
+    items.forEach((alert, index) => {
+      const key = `${Number(alert.lat).toFixed(5)}:${Number(alert.lng).toFixed(5)}`;
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push({ alert, index });
+    });
+    if (![...groups.values()].some((group) => group.length > 1)) return items;
+
+    const spreadRadius = zoom >= 10 ? 14 : 10;
+    const positioned = new Array(items.length);
+    groups.forEach((group) => {
+      if (group.length === 1) {
+        positioned[group[0].index] = group[0].alert;
+        return;
+      }
+      const baseAlert = group[0].alert;
+      const basePoint = liveMap.project([baseAlert.lat, baseAlert.lng], zoom);
+      group.forEach(({ alert, index }, itemIndex) => {
+        const ring = Math.floor(itemIndex / 8);
+        const radius = spreadRadius + (ring * 8);
+        const angle = (Math.PI * 2 * itemIndex) / group.length - (Math.PI / 2);
+        const point = {
+          x: basePoint.x + (Math.cos(angle) * radius),
+          y: basePoint.y + (Math.sin(angle) * radius)
+        };
+        const latLng = liveMap.unproject(point, zoom);
+        positioned[index] = { ...alert, lat: latLng.lat, lng: latLng.lng };
+      });
+    });
+    return positioned;
+  }
+
+  function clusterAlerts(mode, items) {
     if (!liveMap || items.length <= 1) return items.map((alert) => ({ type: 'single', alert }));
     const zoom = liveMap.getZoom();
+    if (!shouldClusterAtZoom(mode, zoom)) return items.map((alert) => ({ type: 'single', alert }));
     const threshold = clusterThreshold(zoom);
     const maxRadius = threshold * 1.8; // cap drift: no member further than this from the first alert in the cluster
     const clusters = [];
@@ -594,15 +630,19 @@ export function createMapController(config) {
     lastState = state;
     lastView = view;
     const mode = resolveMapMode(state.mapViewMode);
-    const items = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
-    const signature = `${mode}:${liveMap.getZoom()}:${items.map((item) => `${item.id}:${(item.lat ?? 0).toFixed(3)},${(item.lng ?? 0).toFixed(3)}`).join('|')}`;
+    const zoom = liveMap.getZoom();
+    const mappedAlerts = view.filtered.filter((alert) => Number.isFinite(alert.lat) && Number.isFinite(alert.lng));
+    const items = shouldClusterAtZoom(mode, zoom)
+      ? mappedAlerts
+      : spreadCoincidentAlerts(mappedAlerts, zoom);
+    const signature = `${mode}:${zoom}:${items.map((item) => `${item.id}:${(item.lat ?? 0).toFixed(3)},${(item.lng ?? 0).toFixed(3)}`).join('|')}`;
     if (!forceFit && signature === lastSignature) return;
     lastSignature = signature;
     lastMode = mode;
 
     clearLayers();
     const points = [];
-    const clustered = clusterAlerts(items);
+    const clustered = clusterAlerts(mode, items);
     clustered.forEach((entry) => {
       if (entry.type === 'single') {
         const alert = entry.alert;
@@ -680,7 +720,6 @@ export function createMapController(config) {
 
     if (mapStatusLine) mapStatusLine.textContent = statusLine(mode, items.length);
     if (mapEmptyState) mapEmptyState.classList.toggle('hidden', items.length > 0);
-    if (motionOverlay && items.length > 0) motionOverlay.classList.add('hidden');
     if (mapViewport) mapViewport.dataset.vignette = vignetteLevel(items);
     if (forceFit) {
       fitForMode(mode, points, state);
@@ -727,4 +766,4 @@ export function createMapController(config) {
   };
 }
 
-export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel, clusterAnchorFor as _clusterAnchorFor };
+export { markerPopup as _markerPopup, clusterPopup as _clusterPopup, SEVERITY_LEGEND_ITEMS as _SEVERITY_LEGEND_ITEMS, TILE_LIGHT as _TILE_LIGHT, TILE_DARK as _TILE_DARK, CLUSTER_FLY_DURATION as _CLUSTER_FLY_DURATION, clusterSeverity as _clusterSeverity, statusLine as _statusLine, normaliseCountryName as _normaliseCountryName, vignetteLevel as _vignetteLevel, clusterAnchorFor as _clusterAnchorFor, shouldClusterAtZoom as _shouldClusterAtZoom };
