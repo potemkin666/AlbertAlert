@@ -14,6 +14,7 @@ const WORLD_CLUSTER_MAX_ZOOM = 7;
 const NEARBY_CLUSTER_MAX_ZOOM = 10;
 const INITIAL_NEARBY_ZOOM = 9;
 const COINCIDENT_ALERT_KEY_PRECISION = 7;
+const COINCIDENT_ALERT_ZOOM_THRESHOLD = 10;
 const COINCIDENT_ALERTS_PER_RING = 8;
 const COINCIDENT_ALERT_RING_SPACING_PX = 8;
 const COINCIDENT_ALERT_SPREAD_RADIUS_PX = Object.freeze({
@@ -548,7 +549,7 @@ export function createMapController(config) {
     });
     if (![...groups.values()].some((group) => group.length > 1)) return items;
 
-    const spreadRadius = zoom >= 10
+    const spreadRadius = zoom >= COINCIDENT_ALERT_ZOOM_THRESHOLD
       ? COINCIDENT_ALERT_SPREAD_RADIUS_PX.expanded
       : COINCIDENT_ALERT_SPREAD_RADIUS_PX.compact;
     const positioned = [...items];
@@ -560,8 +561,8 @@ export function createMapController(config) {
       const baseAlert = group[0].alert;
       const basePoint = liveMap.project([baseAlert.lat, baseAlert.lng], zoom);
       group.forEach(({ alert, index }, itemIndex) => {
-        // Fan exact duplicates into concentric rings so up to eight markers fit
-        // around the source point before the next ring expands outward.
+        // Fan exact duplicates into concentric rings so each ring can hold up to
+        // COINCIDENT_ALERTS_PER_RING markers before the next ring expands outward.
         const offset = coincidentAlertOffset(itemIndex, group.length, spreadRadius);
         const point = {
           x: basePoint.x + offset.x,
