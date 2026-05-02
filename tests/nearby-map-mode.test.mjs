@@ -92,7 +92,7 @@ describe('NEARBY_RADIUS_KM', () => {
     assert.equal(NEARBY_RADIUS_KM, 150);
   });
 
-  it('converts to metres for Leaflet L.circle radius', () => {
+  it('converts cleanly to metres for nearby summaries or ranges', () => {
     const radiusMetres = NEARBY_RADIUS_KM * 1000;
     assert.equal(radiusMetres, 150_000, 'Expected 150 km = 150 000 m');
   });
