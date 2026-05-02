@@ -338,6 +338,10 @@ function shouldClusterAtZoom(mode, zoom) {
   return zoom < clusterMaxZoomForMode(mode);
 }
 
+function alertCoordinateKey(alert) {
+  return `${Number(alert.lat).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}:${Number(alert.lng).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}`;
+}
+
 function alertPublishedAtMs(alert) {
   const stamp = alert?.publishedAt || alert?.updatedAt || alert?.firstReportedAt || null;
   const timeMs = stamp ? new Date(stamp).getTime() : NaN;
@@ -526,7 +530,7 @@ export function createMapController(config) {
     if (!liveMap || items.length <= 1) return items;
     const groups = new Map();
     items.forEach((alert, index) => {
-      const key = `${Number(alert.lat).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}:${Number(alert.lng).toFixed(COINCIDENT_ALERT_KEY_PRECISION)}`;
+      const key = alertCoordinateKey(alert);
       if (!groups.has(key)) groups.set(key, []);
       groups.get(key).push({ alert, index });
     });
