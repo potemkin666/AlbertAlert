@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-03T20:55:32.799Z",
-  "count": 219,
+  "generatedAt": "2026-05-03T22:00:16.412Z",
+  "count": 220,
   "metrics": {
-    "total": 219,
-    "newThisWeek": 216,
-    "avgTimeInQuarantineHours": 59,
+    "total": 220,
+    "newThisWeek": 217,
+    "avgTimeInQuarantineHours": 60,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "eurojust-press-releases",
+      "provider": "Eurojust - Press Releases",
+      "endpoint": "https://www.eurojust.europa.eu/news/press-releases",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T22:00:16.412Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-26T04:16:22.766Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T19:49:39.407Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T21:19:29.949Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T21:34:23.032Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T22:00:16.412Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T22:00:16.412Z",
+      "lastFailureAt": "2026-05-03T22:00:16.412Z",
+      "lastCheckedAt": "2026-05-03T22:00:16.412Z"
+    },
     {
       "id": "denmark-pet-news",
       "provider": "Danish Security and Intelligence Service - News",
@@ -759,16 +808,11 @@
       "quarantinedAt": "2026-05-01T21:34:23.032Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-25T19:40:51.795Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -788,12 +832,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T21:34:23.032Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T22:00:16.412Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T21:34:23.032Z",
-      "lastFailureAt": "2026-05-01T21:34:23.032Z",
-      "lastCheckedAt": "2026-05-01T21:34:23.032Z"
+      "reviewBy": "2026-05-10T22:00:16.412Z",
+      "lastFailureAt": "2026-05-03T22:00:16.412Z",
+      "lastCheckedAt": "2026-05-03T22:00:16.412Z"
     },
     {
       "id": "financial-times-world",
