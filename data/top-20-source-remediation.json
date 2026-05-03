@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-03T22:00:16.412Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "eurojust-press-releases",
-      "provider": "Eurojust - Press Releases",
-      "endpoint": "https://www.eurojust.europa.eu/news/press-releases",
-      "finalUrl": "",
-      "category": "not-found-404",
-      "statusKind": "",
-      "message": "HTTP 404",
-      "status": 404,
-      "rankScore": 5,
-      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "ec-ministry-interior-open-data",
-      "provider": "Ecuador Open Data - Ministerio del Interior",
-      "endpoint": "https://datosabiertos.presidencia.gob.ec/dataset/?organization=ministerio-del-interior",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "me-ministry-defence",
-      "provider": "Montenegro Ministry of Defence",
-      "endpoint": "https://www.gov.me/en/mod",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-05-03T22:52:17.733Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
