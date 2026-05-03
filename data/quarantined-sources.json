@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-03T09:15:55.030Z",
-  "count": 205,
+  "generatedAt": "2026-05-03T10:40:27.179Z",
+  "count": 206,
   "metrics": {
-    "total": 205,
-    "newThisWeek": 202,
-    "avgTimeInQuarantineHours": 51,
+    "total": 206,
+    "newThisWeek": 203,
+    "avgTimeInQuarantineHours": 52,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "ec-csis-ecuador-crises",
+      "provider": "CSIS - Ecuador compounding crises",
+      "endpoint": "https://www.csis.org/analysis/eye-storm-ecuadors-compounding-crises",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-03T10:40:27.179Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-26T09:42:47.504Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-27T16:18:17.647Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-04-29T07:35:36.877Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-01T09:24:40.004Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T10:40:27.179Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T10:40:27.179Z",
+      "lastFailureAt": "2026-05-03T10:40:27.179Z",
+      "lastCheckedAt": "2026-05-03T10:40:27.179Z"
+    },
     {
       "id": "me-ministry-defence",
       "provider": "Montenegro Ministry of Defence",
@@ -3601,16 +3650,11 @@
       "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-25T19:40:51.795Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3630,12 +3674,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T09:24:40.004Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T10:40:27.179Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T09:24:40.004Z",
-      "lastFailureAt": "2026-05-01T09:24:40.004Z",
-      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
+      "reviewBy": "2026-05-10T10:40:27.179Z",
+      "lastFailureAt": "2026-05-03T10:40:27.179Z",
+      "lastCheckedAt": "2026-05-03T10:40:27.179Z"
     },
     {
       "id": "ct-policing-north-west",
@@ -3650,16 +3699,11 @@
       "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-25T19:40:51.795Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3679,12 +3723,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T09:24:40.004Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T10:40:27.179Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T09:24:40.004Z",
-      "lastFailureAt": "2026-05-01T09:24:40.004Z",
-      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
+      "reviewBy": "2026-05-10T10:40:27.179Z",
+      "lastFailureAt": "2026-05-03T10:40:27.179Z",
+      "lastCheckedAt": "2026-05-03T10:40:27.179Z"
     },
     {
       "id": "ct-policing-uk-latest-news",
@@ -3699,16 +3748,11 @@
       "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-25T19:40:51.795Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3728,12 +3772,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T09:24:40.004Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T10:40:27.179Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T09:24:40.004Z",
-      "lastFailureAt": "2026-05-01T09:24:40.004Z",
-      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
+      "reviewBy": "2026-05-10T10:40:27.179Z",
+      "lastFailureAt": "2026-05-03T10:40:27.179Z",
+      "lastCheckedAt": "2026-05-03T10:40:27.179Z"
     },
     {
       "id": "ct-policing-uk-rss-feed",
@@ -3748,16 +3797,11 @@
       "quarantinedAt": "2026-05-01T09:24:40.004Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-25T19:40:51.795Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3777,12 +3821,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T09:24:40.004Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T10:40:27.179Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T09:24:40.004Z",
-      "lastFailureAt": "2026-05-01T09:24:40.004Z",
-      "lastCheckedAt": "2026-05-01T09:24:40.004Z"
+      "reviewBy": "2026-05-10T10:40:27.179Z",
+      "lastFailureAt": "2026-05-03T10:40:27.179Z",
+      "lastCheckedAt": "2026-05-03T10:40:27.179Z"
     },
     {
       "id": "enisa-news",
