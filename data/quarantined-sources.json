@@ -1,16 +1,702 @@
 {
-  "generatedAt": "2026-05-03T11:57:28.252Z",
-  "count": 206,
+  "generatedAt": "2026-05-03T13:30:52.729Z",
+  "count": 220,
   "metrics": {
-    "total": 206,
-    "newThisWeek": 203,
-    "avgTimeInQuarantineHours": 54,
+    "total": 220,
+    "newThisWeek": 217,
+    "avgTimeInQuarantineHours": 52,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "denmark-pet-news",
+      "provider": "Danish Security and Intelligence Service - News",
+      "endpoint": "https://pet.dk/nyheder",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "de-sachsen-police-rss",
+      "provider": "Saxony Police - RSS",
+      "endpoint": "https://www.polizei.sachsen.de/de/presse_rss_pdl.xml",
+      "kind": "rss",
+      "lane": "incidents",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "pet-dk-english",
+      "provider": "PET (Denmark) a English News",
+      "endpoint": "https://pet.dk/en/news-and-publications/news",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "europe",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "nato-news-rss",
+      "provider": "NATO - News and Events",
+      "endpoint": "https://www.nato.int/en/news-and-events/index.html",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "aviation-herald-rss",
+      "provider": "The Aviation Herald",
+      "endpoint": "https://avherald.com/rss.php",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "broadcastify-feeds-rss",
+      "provider": "Broadcastify - Feeds",
+      "endpoint": "https://www.broadcastify.com/feeds/rss/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "maritime-executive-rss",
+      "provider": "The Maritime Executive",
+      "endpoint": "https://www.maritime-executive.com/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "godlike-productions-rss",
+      "provider": "Godlike Productions",
+      "endpoint": "https://www.godlikeproductions.com/external.php?type=RSS2",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "moon-of-alabama-atom",
+      "provider": "Moon of Alabama",
+      "endpoint": "https://www.moonofalabama.org/atom.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "time-out-london-rss",
+      "provider": "Time Out London",
+      "endpoint": "https://www.timeout.com/london/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "national-trust-news-rss",
+      "provider": "National Trust",
+      "endpoint": "https://www.nationaltrust.org.uk/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "visitbritain-rss",
+      "provider": "Visit. Britain",
+      "endpoint": "https://www.visitbritain.org/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "time-out-uk-rss",
+      "provider": "Time Out UK",
+      "endpoint": "https://www.timeout.com/uk/rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
+    {
+      "id": "cps-news-category-feed",
+      "provider": "Crown Prosecution Service - News",
+      "endpoint": "https://www.cps.gov.uk/cps/news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-03T13:30:52.729Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-25T19:40:51.795Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-27T09:47:00.583Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-29T11:50:06.590Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-03T13:30:52.729Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
+    },
     {
       "id": "ec-csis-ecuador-crises",
       "provider": "CSIS - Ecuador compounding crises",
@@ -3601,16 +4287,11 @@
       "quarantinedAt": "2026-05-01T12:10:27.497Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-26T04:16:22.766Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3630,12 +4311,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-01T12:10:27.497Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-03T13:30:52.729Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-08T12:10:27.497Z",
-      "lastFailureAt": "2026-05-01T12:10:27.497Z",
-      "lastCheckedAt": "2026-05-01T12:10:27.497Z"
+      "reviewBy": "2026-05-10T13:30:52.729Z",
+      "lastFailureAt": "2026-05-03T13:30:52.729Z",
+      "lastCheckedAt": "2026-05-03T13:30:52.729Z"
     },
     {
       "id": "ct-policing-london",
