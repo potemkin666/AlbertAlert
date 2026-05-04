@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-03T22:52:17.733Z",
-  "count": 220,
+  "generatedAt": "2026-05-04T00:01:07.679Z",
+  "count": 221,
   "metrics": {
-    "total": 220,
-    "newThisWeek": 217,
-    "avgTimeInQuarantineHours": 61,
+    "total": 221,
+    "newThisWeek": 218,
+    "avgTimeInQuarantineHours": 62,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-05-04T00:01:07.679Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-28T19:16:18.483Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-28T20:58:08.387Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-04-30T06:43:12.994Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-01T23:37:06.119Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-04T00:01:07.679Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-11T00:01:07.679Z",
+      "lastFailureAt": "2026-05-04T00:01:07.679Z",
+      "lastCheckedAt": "2026-05-04T00:01:07.679Z"
+    },
     {
       "id": "eurojust-press-releases",
       "provider": "Eurojust - Press Releases",
