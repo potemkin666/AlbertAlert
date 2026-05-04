@@ -1,16 +1,114 @@
 {
-  "generatedAt": "2026-05-04T03:49:25.582Z",
-  "count": 222,
+  "generatedAt": "2026-05-04T06:52:36.217Z",
+  "count": 224,
   "metrics": {
-    "total": 222,
-    "newThisWeek": 219,
-    "avgTimeInQuarantineHours": 65,
+    "total": 224,
+    "newThisWeek": 220,
+    "avgTimeInQuarantineHours": 68,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "germany-federal-prosecutor-current-press-en",
+      "provider": "German Federal Public Prosecutor - Current Press Releases (EN)",
+      "endpoint": "https://www.generalbundesanwalt.de/EN/Press/current_press_releases/current_press_releases_node.html",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-04T06:52:36.217Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-28T01:25:07.738Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-30T04:05:41.045Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-02T04:51:21.217Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-04T06:52:36.217Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-11T06:52:36.217Z",
+      "lastFailureAt": "2026-05-04T06:52:36.217Z",
+      "lastCheckedAt": "2026-05-04T06:52:36.217Z"
+    },
+    {
+      "id": "netherlands-om-terrorismefinanciering-nieuws",
+      "provider": "Dutch Public Prosecution Service - Terrorismefinanciering Nieuws",
+      "endpoint": "https://www.om.nl/onderwerpen/terrorismefinanciering/nieuws",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-05-04T06:52:36.217Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-26T08:16:04.847Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-28T01:25:07.738Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-04-30T04:05:41.045Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-02T04:51:21.217Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-04T06:52:36.217Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-11T06:52:36.217Z",
+      "lastFailureAt": "2026-05-04T06:52:36.217Z",
+      "lastCheckedAt": "2026-05-04T06:52:36.217Z"
+    },
     {
       "id": "hedayah-news",
       "provider": "Hedayah - News",
