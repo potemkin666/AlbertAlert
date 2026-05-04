@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-04T08:10:37.982Z",
+  "generatedAt": "2026-05-04T09:32:23.348Z",
   "totalSourceErrors": 2,
   "byCategory": {
-    "brittle-selectors-or-js-rendering": 1,
+    "anti-bot-protection": 1,
     "timeout": 1
   },
   "byKind": {
@@ -17,12 +17,12 @@
       "provider": "Council of the EU - Press Releases",
       "endpoint": "https://www.consilium.europa.eu/en/press/press-releases/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "oversight",
@@ -30,9 +30,9 @@
       "isMachineReadable": false
     },
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "de-bfv-islamist-extremism",
+      "provider": "BfV - Islamist Extremism and Terrorism",
+      "endpoint": "https://www.verfassungsschutz.de/EN/topics/islamist-extremism-and-islamist-terrorism/islamist-extremism-and-islamist-terrorism_node.html",
       "finalUrl": "",
       "category": "timeout",
       "statusKind": "",
@@ -42,7 +42,7 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
@@ -53,12 +53,12 @@
       "provider": "Council of the EU - Press Releases",
       "endpoint": "https://www.consilium.europa.eu/en/press/press-releases/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "oversight",
@@ -66,9 +66,9 @@
       "isMachineReadable": false
     },
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "de-bfv-islamist-extremism",
+      "provider": "BfV - Islamist Extremism and Terrorism",
+      "endpoint": "https://www.verfassungsschutz.de/EN/topics/islamist-extremism-and-islamist-terrorism/islamist-extremism-and-islamist-terrorism_node.html",
       "finalUrl": "",
       "category": "timeout",
       "statusKind": "",
@@ -78,7 +78,7 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
