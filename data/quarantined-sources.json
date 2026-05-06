@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-06T15:49:54.776Z",
-  "count": 225,
+  "generatedAt": "2026-05-06T17:53:42.304Z",
+  "count": 224,
   "metrics": {
-    "total": 225,
-    "newThisWeek": 221,
-    "avgTimeInQuarantineHours": 124,
+    "total": 224,
+    "newThisWeek": 220,
+    "avgTimeInQuarantineHours": 126,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -10839,50 +10839,6 @@
       "reviewBy": "2026-05-12T10:57:48.551Z",
       "lastFailureAt": "2026-05-05T10:57:48.551Z",
       "lastCheckedAt": "2026-05-05T10:57:48.551Z"
-    },
-    {
-      "id": "europarl-committee-libe",
-      "provider": "European Parliament - LIBE Press Releases",
-      "endpoint": "https://www.europarl.europa.eu/committees/en/libe/home/press-releases",
-      "kind": "html",
-      "lane": "oversight",
-      "region": "eu",
-      "healthScore": 25,
-      "status": "auto-quarantined",
-      "reason": "Persistent timeouts — endpoint may be overloaded or unreachable",
-      "quarantinedAt": "2026-05-05T08:41:20.717Z",
-      "lastErrorCategory": "timeout",
-      "lastErrorMessage": "This operation was aborted",
-      "consecutiveFailures": 4,
-      "consecutiveTimeoutFailures": 4,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-05T00:08:30.260Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-05T03:49:07.774Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-05T06:30:23.036Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-05T08:41:20.717Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-05-12T08:41:20.717Z",
-      "lastFailureAt": "2026-05-05T08:41:20.717Z",
-      "lastCheckedAt": "2026-05-05T08:41:20.717Z"
     },
     {
       "id": "spain-interior-ministry-news",
