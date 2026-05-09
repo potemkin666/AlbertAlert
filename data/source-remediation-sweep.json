@@ -1,86 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-09T14:27:18.335Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "blocked-or-auth": 1,
-    "brittle-selectors-or-js-rendering": 1
-  },
-  "byKind": {
-    "rss": 2
-  },
-  "machineReadableErrorCount": 2,
+  "generatedAt": "2026-05-09T15:37:41.559Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "england-naturally",
-      "provider": "England, Naturally",
-      "endpoint": "https://englandnaturally.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "usgs-earthquakes-all-hour",
-      "provider": "USGS - Earthquakes (All Hour)",
-      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "england-naturally",
-      "provider": "England, Naturally",
-      "endpoint": "https://englandnaturally.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "usgs-earthquakes-all-hour",
-      "provider": "USGS - Earthquakes (All Hour)",
-      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
