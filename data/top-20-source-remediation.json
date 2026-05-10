@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-10T06:45:26.881Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-05-10T07:36:07.362Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
+      "id": "hedayah-news",
+      "provider": "Hedayah - News",
+      "endpoint": "https://hedayah.com/news/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "not-found-404",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 404",
+      "status": 404,
+      "rankScore": 5,
+      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
+    },
+    {
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
