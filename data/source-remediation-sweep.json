@@ -1,119 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-10T18:39:12.833Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-05-10T20:08:42.247Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 3
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "html": 3
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 3,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "kingston-council-news",
-      "provider": "Kingston Council a News",
-      "endpoint": "https://www.kingston.gov.uk/news",
+      "id": "arcticdry",
+      "provider": "Arctic. Dry",
+      "endpoint": "https://www.arcticdry.co.uk/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "merton-council-news",
-      "provider": "Merton Council a News",
-      "endpoint": "https://www.merton.gov.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "southwark-newsroom",
-      "provider": "Southwark Council - News",
-      "endpoint": "https://www.southwark.gov.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "kingston-council-news",
-      "provider": "Kingston Council a News",
-      "endpoint": "https://www.kingston.gov.uk/news",
+      "id": "arcticdry",
+      "provider": "Arctic. Dry",
+      "endpoint": "https://www.arcticdry.co.uk/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "merton-council-news",
-      "provider": "Merton Council a News",
-      "endpoint": "https://www.merton.gov.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "southwark-newsroom",
-      "provider": "Southwark Council - News",
-      "endpoint": "https://www.southwark.gov.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
