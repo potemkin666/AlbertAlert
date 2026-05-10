@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-10T03:57:14.035Z",
+  "generatedAt": "2026-05-10T06:45:26.881Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "secret-london-rss",
-      "provider": "Secret London",
-      "endpoint": "https://secretldn.com/feed/",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
+      "message": "Blocked by blocked access page",
+      "status": 200,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
     }
