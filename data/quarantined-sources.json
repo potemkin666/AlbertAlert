@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-09T22:54:22.666Z",
-  "count": 228,
+  "generatedAt": "2026-05-10T00:01:29.814Z",
+  "count": 229,
   "metrics": {
-    "total": 228,
-    "newThisWeek": 25,
+    "total": 229,
+    "newThisWeek": 26,
     "avgTimeInQuarantineHours": 200,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
@@ -11,6 +11,55 @@
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "ec-ministry-interior-open-data",
+      "provider": "Ecuador Open Data - Ministerio del Interior",
+      "endpoint": "https://datosabiertos.presidencia.gob.ec/dataset/?organization=ministerio-del-interior",
+      "kind": "html",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-05-10T00:01:29.814Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-01T21:34:23.032Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-03T22:00:16.412Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-05T22:39:26.340Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-07T23:37:51.937Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-10T00:01:29.814Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-17T00:01:29.814Z",
+      "lastFailureAt": "2026-05-10T00:01:29.814Z",
+      "lastCheckedAt": "2026-05-10T00:01:29.814Z"
+    },
     {
       "id": "homerton-healthcare-news",
       "provider": "Homerton Healthcare NHS Foundation Trust a News",
@@ -465,16 +514,11 @@
       "quarantinedAt": "2026-05-03T22:00:16.412Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-04-29T21:19:29.949Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -494,12 +538,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-05-07T23:37:51.937Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-10T00:01:29.814Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-14T23:37:51.937Z",
-      "lastFailureAt": "2026-05-07T23:37:51.937Z",
-      "lastCheckedAt": "2026-05-07T23:37:51.937Z"
+      "reviewBy": "2026-05-17T00:01:29.814Z",
+      "lastFailureAt": "2026-05-10T00:01:29.814Z",
+      "lastCheckedAt": "2026-05-10T00:01:29.814Z"
     },
     {
       "id": "denmark-pet-news",
@@ -1249,16 +1298,11 @@
       "quarantinedAt": "2026-05-01T21:34:23.032Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 9,
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 9,
+      "consecutiveBlockedFailures": 10,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-04-29T21:19:29.949Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1278,12 +1322,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-07T23:37:51.937Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-10T00:01:29.814Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-14T23:37:51.937Z",
-      "lastFailureAt": "2026-05-07T23:37:51.937Z",
-      "lastCheckedAt": "2026-05-07T23:37:51.937Z"
+      "reviewBy": "2026-05-17T00:01:29.814Z",
+      "lastFailureAt": "2026-05-10T00:01:29.814Z",
+      "lastCheckedAt": "2026-05-10T00:01:29.814Z"
     },
     {
       "id": "financial-times-world",
