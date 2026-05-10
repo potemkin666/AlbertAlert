@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-05-10T11:28:43.907Z",
-  "count": 229,
+  "generatedAt": "2026-05-10T12:18:47.514Z",
+  "count": 230,
   "metrics": {
-    "total": 229,
-    "newThisWeek": 25,
+    "total": 230,
+    "newThisWeek": 26,
     "avgTimeInQuarantineHours": 212,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
@@ -11,6 +11,55 @@
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "eu-council-press-releases-html",
+      "provider": "Council of the EU - Press Releases",
+      "endpoint": "https://www.consilium.europa.eu/en/press/press-releases/",
+      "kind": "html",
+      "lane": "oversight",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-05-10T12:18:47.514Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 5,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-02T07:12:34.064Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-04T09:32:23.348Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-06T11:33:27.304Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-08T12:04:03.731Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-10T12:18:47.514Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-17T12:18:47.514Z",
+      "lastFailureAt": "2026-05-10T12:18:47.514Z",
+      "lastCheckedAt": "2026-05-10T12:18:47.514Z"
+    },
     {
       "id": "ec-ministry-interior-open-data",
       "provider": "Ecuador Open Data - Ministerio del Interior",
