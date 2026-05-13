@@ -1,29 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-13T18:33:59.929Z",
+  "generatedAt": "2026-05-13T20:25:49.042Z",
   "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "age-uk-discover",
-      "provider": "Age UK",
-      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "sans-isc-full",
-      "provider": "SANS Internet Storm Center (Full Feed)",
-      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
+      "id": "zerohedge-feed",
+      "provider": "Zero. Hedge",
+      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -36,6 +19,23 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "eu-home-affairs-news",
+      "provider": "European Commission - Home Affairs News",
+      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
