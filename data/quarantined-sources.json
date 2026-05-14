@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-14T08:19:25.312Z",
+  "generatedAt": "2026-05-14T11:07:44.420Z",
   "count": 227,
   "metrics": {
     "total": 227,
     "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 303,
+    "avgTimeInQuarantineHours": 306,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -465,16 +465,11 @@
       "quarantinedAt": "2026-05-04T03:49:25.582Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-05-04T03:49:25.582Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -494,12 +489,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-05-12T10:16:41.027Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-14T11:07:44.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-19T10:16:41.027Z",
-      "lastFailureAt": "2026-05-12T10:16:41.027Z",
-      "lastCheckedAt": "2026-05-12T10:16:41.027Z"
+      "reviewBy": "2026-05-21T11:07:44.420Z",
+      "lastFailureAt": "2026-05-14T11:07:44.420Z",
+      "lastCheckedAt": "2026-05-14T11:07:44.420Z"
     },
     {
       "id": "gnet-research",
