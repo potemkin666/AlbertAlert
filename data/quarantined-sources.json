@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-16T00:05:30.050Z",
+  "generatedAt": "2026-05-16T04:03:40.973Z",
   "count": 227,
   "metrics": {
     "total": 227,
     "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 343,
+    "avgTimeInQuarantineHours": 347,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-05-10T00:01:29.814Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 8,
+      "consecutiveBlockedFailures": 9,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-05T22:39:26.340Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -151,12 +146,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-05-14T01:34:36.214Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-16T04:03:40.973Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-21T01:34:36.214Z",
-      "lastFailureAt": "2026-05-14T01:34:36.214Z",
-      "lastCheckedAt": "2026-05-14T01:34:36.214Z"
+      "reviewBy": "2026-05-23T04:03:40.973Z",
+      "lastFailureAt": "2026-05-16T04:03:40.973Z",
+      "lastCheckedAt": "2026-05-16T04:03:40.973Z"
     },
     {
       "id": "homerton-healthcare-news",
@@ -563,16 +563,11 @@
       "quarantinedAt": "2026-05-03T22:00:16.412Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-05-05T22:39:26.340Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -592,12 +587,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-05-14T01:34:36.214Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-16T04:03:40.973Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-21T01:34:36.214Z",
-      "lastFailureAt": "2026-05-14T01:34:36.214Z",
-      "lastCheckedAt": "2026-05-14T01:34:36.214Z"
+      "reviewBy": "2026-05-23T04:03:40.973Z",
+      "lastFailureAt": "2026-05-16T04:03:40.973Z",
+      "lastCheckedAt": "2026-05-16T04:03:40.973Z"
     },
     {
       "id": "denmark-pet-news",
@@ -1347,16 +1347,11 @@
       "quarantinedAt": "2026-05-01T21:34:23.032Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 12,
+      "consecutiveFailures": 13,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 12,
+      "consecutiveBlockedFailures": 13,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-05T22:39:26.340Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1376,12 +1371,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-14T01:34:36.214Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-16T04:03:40.973Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-21T01:34:36.214Z",
-      "lastFailureAt": "2026-05-14T01:34:36.214Z",
-      "lastCheckedAt": "2026-05-14T01:34:36.214Z"
+      "reviewBy": "2026-05-23T04:03:40.973Z",
+      "lastFailureAt": "2026-05-16T04:03:40.973Z",
+      "lastCheckedAt": "2026-05-16T04:03:40.973Z"
     },
     {
       "id": "ec-ap-latin-america",
