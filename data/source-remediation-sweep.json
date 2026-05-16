@@ -1,84 +1,49 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-16T07:26:58.616Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-05-16T08:31:47.173Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1,
-    "network-failure": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "rss": 2
+    "rss": 1
   },
-  "machineReadableErrorCount": 2,
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "arcticdry",
-      "provider": "Arctic. Dry",
-      "endpoint": "https://www.arcticdry.co.uk/feed/",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by blocked access page",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "surgezirc-uk",
-      "provider": "Surge. Zirc UK",
-      "endpoint": "https://surgezirc.co.uk/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "arcticdry",
-      "provider": "Arctic. Dry",
-      "endpoint": "https://www.arcticdry.co.uk/feed/",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by blocked access page",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "surgezirc-uk",
-      "provider": "Surge. Zirc UK",
-      "endpoint": "https://surgezirc.co.uk/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
     }
