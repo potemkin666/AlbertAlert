@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-17T19:53:39.899Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-05-17T21:06:15.592Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "age-uk-discover",
+      "provider": "Age UK",
+      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
