@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-19T21:09:41.833Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-05-19T22:55:45.182Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "age-uk-discover",
+      "provider": "Age UK",
+      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "wales-online",
+      "provider": "Wales. Online",
+      "endpoint": "https://www.walesonline.co.uk/?service=rss",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
