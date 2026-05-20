@@ -1,38 +1,39 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-20T22:33:24.481Z",
+  "generatedAt": "2026-05-20T23:59:08.475Z",
   "totalSourceErrors": 2,
   "byCategory": {
-    "network-failure": 1,
+    "brittle-selectors-or-js-rendering": 1,
     "timeout": 1
   },
   "byKind": {
-    "html": 2
+    "rss": 1,
+    "html": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "de-brandenburg-police-overregional-rss",
+      "provider": "Brandenburg Police - Overregional RSS",
+      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     },
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "judiciary-rss-feeds-page",
+      "provider": "Judiciary UK - RSS Feeds",
+      "endpoint": "https://www.judiciary.uk/rss-feeds/",
       "finalUrl": "",
       "category": "timeout",
       "statusKind": "",
@@ -42,33 +43,33 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "de-brandenburg-police-overregional-rss",
+      "provider": "Brandenburg Police - Overregional RSS",
+      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     },
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "judiciary-rss-feeds-page",
+      "provider": "Judiciary UK - RSS Feeds",
+      "endpoint": "https://www.judiciary.uk/rss-feeds/",
       "finalUrl": "",
       "category": "timeout",
       "statusKind": "",
@@ -78,7 +79,7 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
