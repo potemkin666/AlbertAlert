@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-21T22:07:16.713Z",
-  "count": 230,
+  "generatedAt": "2026-05-21T23:20:12.036Z",
+  "count": 231,
   "metrics": {
-    "total": 230,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 480,
+    "total": 231,
+    "newThisWeek": 4,
+    "avgTimeInQuarantineHours": 479,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "age-uk-discover",
+      "provider": "Age UK",
+      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-05-21T23:20:12.036Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-13T18:33:59.929Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-15T19:53:20.428Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-17T21:06:15.592Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-19T22:55:45.182Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-21T23:20:12.036Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-28T23:20:12.036Z",
+      "lastFailureAt": "2026-05-21T23:20:12.036Z",
+      "lastCheckedAt": "2026-05-21T23:20:12.036Z"
+    },
     {
       "id": "secret-london-rss",
       "provider": "Secret London",
