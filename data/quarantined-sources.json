@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-22T18:05:32.865Z",
-  "count": 230,
+  "generatedAt": "2026-05-22T20:11:06.104Z",
+  "count": 229,
   "metrics": {
-    "total": 230,
+    "total": 229,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 498,
+    "avgTimeInQuarantineHours": 500,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -269,16 +269,11 @@
       "quarantinedAt": "2026-05-10T12:18:47.514Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 10,
+      "consecutiveBlockedFailures": 11,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-12T12:33:27.548Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -298,12 +293,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-05-20T18:31:14.631Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-22T20:11:06.104Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-27T18:31:14.631Z",
-      "lastFailureAt": "2026-05-20T18:31:14.631Z",
-      "lastCheckedAt": "2026-05-20T18:31:14.631Z"
+      "reviewBy": "2026-05-29T20:11:06.104Z",
+      "lastFailureAt": "2026-05-22T20:11:06.104Z",
+      "lastCheckedAt": "2026-05-22T20:11:06.104Z"
     },
     {
       "id": "ec-ministry-interior-open-data",
@@ -502,55 +502,6 @@
       "lastCheckedAt": "2026-05-22T01:38:41.113Z"
     },
     {
-      "id": "jamestown-terrorism-monitor",
-      "provider": "Jamestown Foundation - Terrorism Monitor",
-      "endpoint": "https://jamestown.org/publications/tm/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-05-06T09:35:08.146Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 13,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-12T12:33:27.548Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-14T13:08:06.259Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-16T14:31:27.610Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-18T16:37:22.050Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-05-20T18:31:14.631Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-05-27T18:31:14.631Z",
-      "lastFailureAt": "2026-05-20T18:31:14.631Z",
-      "lastCheckedAt": "2026-05-20T18:31:14.631Z"
-    },
-    {
       "id": "germany-federal-prosecutor-current-press-en",
       "provider": "German Federal Public Prosecutor - Current Press Releases (EN)",
       "endpoint": "https://www.generalbundesanwalt.de/EN/Press/current_press_releases/current_press_releases_node.html",
@@ -563,16 +514,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-05-12T12:33:27.548Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -592,12 +538,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-05-20T18:31:14.631Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-22T20:11:06.104Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-27T18:31:14.631Z",
-      "lastFailureAt": "2026-05-20T18:31:14.631Z",
-      "lastCheckedAt": "2026-05-20T18:31:14.631Z"
+      "reviewBy": "2026-05-29T20:11:06.104Z",
+      "lastFailureAt": "2026-05-22T20:11:06.104Z",
+      "lastCheckedAt": "2026-05-22T20:11:06.104Z"
     },
     {
       "id": "netherlands-om-terrorismefinanciering-nieuws",
@@ -612,16 +563,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-05-12T12:33:27.548Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -641,12 +587,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-05-20T18:31:14.631Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-05-22T20:11:06.104Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-27T18:31:14.631Z",
-      "lastFailureAt": "2026-05-20T18:31:14.631Z",
-      "lastCheckedAt": "2026-05-20T18:31:14.631Z"
+      "reviewBy": "2026-05-29T20:11:06.104Z",
+      "lastFailureAt": "2026-05-22T20:11:06.104Z",
+      "lastCheckedAt": "2026-05-22T20:11:06.104Z"
     },
     {
       "id": "hedayah-news",
