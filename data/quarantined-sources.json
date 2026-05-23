@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-05-23T17:13:25.479Z",
-  "count": 229,
+  "generatedAt": "2026-05-23T18:41:41.198Z",
+  "count": 230,
   "metrics": {
-    "total": 229,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 521,
+    "total": 230,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 520,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "thank-you-for-the-days",
+      "provider": "Thank you for the days",
+      "endpoint": "https://thankyouforthedays.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
+      "quarantinedAt": "2026-05-23T18:41:41.198Z",
+      "lastErrorCategory": "timeout",
+      "lastErrorMessage": "This operation was aborted",
+      "consecutiveFailures": 4,
+      "consecutiveTimeoutFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "http-status-error",
+          "message": "HTTP 503",
+          "at": "2026-05-12T20:10:14.261Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-05-17T13:49:20.976Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-05-19T16:58:12.651Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-05-21T18:11:19.260Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-05-23T18:41:41.198Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-05-30T18:41:41.198Z",
+      "lastFailureAt": "2026-05-23T18:41:41.198Z",
+      "lastCheckedAt": "2026-05-23T18:41:41.198Z"
+    },
     {
       "id": "age-uk-discover",
       "provider": "Age UK",
