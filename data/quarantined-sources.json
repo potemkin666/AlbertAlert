@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-23T22:31:49.002Z",
+  "generatedAt": "2026-05-23T23:41:57.824Z",
   "count": 230,
   "metrics": {
     "total": 230,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 524,
+    "avgTimeInQuarantineHours": 525,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -73,16 +73,11 @@
       "quarantinedAt": "2026-05-21T23:20:12.036Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-13T18:33:59.929Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -102,12 +97,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-05-21T23:20:12.036Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-23T23:41:57.824Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-05-28T23:20:12.036Z",
-      "lastFailureAt": "2026-05-21T23:20:12.036Z",
-      "lastCheckedAt": "2026-05-21T23:20:12.036Z"
+      "reviewBy": "2026-05-30T23:41:57.824Z",
+      "lastFailureAt": "2026-05-23T23:41:57.824Z",
+      "lastCheckedAt": "2026-05-23T23:41:57.824Z"
     },
     {
       "id": "secret-london-rss",
