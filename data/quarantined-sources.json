@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-24T11:33:53.705Z",
-  "count": 230,
+  "generatedAt": "2026-05-24T12:49:07.459Z",
+  "count": 229,
   "metrics": {
-    "total": 230,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 537,
+    "total": 229,
+    "newThisWeek": 2,
+    "avgTimeInQuarantineHours": 540,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -108,55 +108,6 @@
       "reviewBy": "2026-05-30T23:41:57.824Z",
       "lastFailureAt": "2026-05-23T23:41:57.824Z",
       "lastCheckedAt": "2026-05-23T23:41:57.824Z"
-    },
-    {
-      "id": "secret-london-rss",
-      "provider": "Secret London",
-      "endpoint": "https://secretldn.com/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "london",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "HTML structure changed — selectors no longer match; needs parser update",
-      "quarantinedAt": "2026-05-20T11:40:49.001Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 7,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-05-14T05:36:41.907Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-05-16T06:33:19.218Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-05-18T08:42:31.897Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-05-20T11:40:49.001Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-05-22T12:36:23.685Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-05-29T12:36:23.685Z",
-      "lastFailureAt": "2026-05-22T12:36:23.685Z",
-      "lastCheckedAt": "2026-05-22T12:36:23.685Z"
     },
     {
       "id": "paris-prefecture-police-press-releases",
