@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-25T23:17:12.811Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-05-26T01:33:22.268Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "age-uk-discover",
+      "provider": "Age UK",
+      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "nelft-news",
+      "provider": "North East London NHS Foundation Trust a News",
+      "endpoint": "https://www.nelft.nhs.uk/news-events/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "ocam-be-english",
+      "provider": "CUTA (Belgium) threat analysis",
+      "endpoint": "https://cuta.belgium.be/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
