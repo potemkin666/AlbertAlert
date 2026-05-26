@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-26T08:51:26.719Z",
+  "generatedAt": "2026-05-26T10:13:06.550Z",
   "count": 229,
   "metrics": {
     "total": 229,
     "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 584,
+    "avgTimeInQuarantineHours": 586,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -317,7 +317,7 @@
       "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
       "quarantinedAt": "2026-05-10T00:01:29.814Z",
       "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorMessage": "Blocked by blocked access page",
       "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 14,
@@ -345,14 +345,14 @@
         },
         {
           "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-26T08:51:26.719Z"
+          "message": "Blocked by blocked access page",
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "homerton-healthcare-news",
@@ -689,13 +689,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "denmark-pet-news",
@@ -1443,11 +1443,11 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T21:34:23.032Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 18,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 18,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -1471,15 +1471,15 @@
           "at": "2026-05-24T07:44:59.714Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-05-26T08:51:26.719Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "ec-ap-latin-america",
@@ -1522,13 +1522,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "ec-guardian-ecuador",
@@ -1571,13 +1571,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "unsc-counter-terrorism-committee",
@@ -1620,13 +1620,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "barnet-council-news",
@@ -1669,13 +1669,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "london-city-airport-media-centre",
@@ -1688,8 +1688,8 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 18,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 18,
@@ -1716,15 +1716,15 @@
           "at": "2026-05-24T07:44:59.714Z"
         },
         {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-26T08:51:26.719Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "icsr-kcl",
@@ -1767,13 +1767,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "rand-terrorism-topic",
@@ -1816,13 +1816,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-05-26T08:51:26.719Z"
+          "at": "2026-05-26T10:13:06.550Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T08:51:26.719Z",
-      "lastFailureAt": "2026-05-26T08:51:26.719Z",
-      "lastCheckedAt": "2026-05-26T08:51:26.719Z"
+      "reviewBy": "2026-06-02T10:13:06.550Z",
+      "lastFailureAt": "2026-05-26T10:13:06.550Z",
+      "lastCheckedAt": "2026-05-26T10:13:06.550Z"
     },
     {
       "id": "ecfr-feeds-index",
