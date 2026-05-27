@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-27T18:46:55.166Z",
+  "generatedAt": "2026-05-27T21:12:24.917Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 613,
+    "avgTimeInQuarantineHours": 615,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-05-23T18:41:41.198Z",
       "lastErrorCategory": "timeout",
       "lastErrorMessage": "This operation was aborted",
-      "consecutiveFailures": 5,
-      "consecutiveTimeoutFailures": 5,
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 6,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-17T13:49:20.976Z"
-        },
         {
           "category": "timeout",
           "message": "This operation was aborted",
@@ -151,12 +146,17 @@
           "category": "timeout",
           "message": "This operation was aborted",
           "at": "2026-05-25T20:19:18.266Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-05-27T21:12:24.917Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-01T20:19:18.266Z",
-      "lastFailureAt": "2026-05-25T20:19:18.266Z",
-      "lastCheckedAt": "2026-05-25T20:19:18.266Z"
+      "reviewBy": "2026-06-03T21:12:24.917Z",
+      "lastFailureAt": "2026-05-27T21:12:24.917Z",
+      "lastCheckedAt": "2026-05-27T21:12:24.917Z"
     },
     {
       "id": "age-uk-discover",
