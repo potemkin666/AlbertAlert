@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-28T00:14:00.569Z",
+  "generatedAt": "2026-05-28T04:58:21.617Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 618,
+    "avgTimeInQuarantineHours": 623,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -171,16 +171,11 @@
       "quarantinedAt": "2026-05-21T23:20:12.036Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-17T21:06:15.592Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -200,12 +195,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-05-26T01:33:22.268Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-28T04:58:21.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-02T01:33:22.268Z",
-      "lastFailureAt": "2026-05-26T01:33:22.268Z",
-      "lastCheckedAt": "2026-05-26T01:33:22.268Z"
+      "reviewBy": "2026-06-04T04:58:21.617Z",
+      "lastFailureAt": "2026-05-28T04:58:21.617Z",
+      "lastCheckedAt": "2026-05-28T04:58:21.617Z"
     },
     {
       "id": "paris-prefecture-police-press-releases",
