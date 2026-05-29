@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-05-29T20:40:43.537Z",
-  "count": 231,
+  "generatedAt": "2026-05-29T22:46:27.789Z",
+  "count": 230,
   "metrics": {
-    "total": 231,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 663,
+    "total": 230,
+    "newThisWeek": 2,
+    "avgTimeInQuarantineHours": 667,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -108,55 +108,6 @@
       "reviewBy": "2026-06-05T17:59:06.021Z",
       "lastFailureAt": "2026-05-29T17:59:06.021Z",
       "lastCheckedAt": "2026-05-29T17:59:06.021Z"
-    },
-    {
-      "id": "thank-you-for-the-days",
-      "provider": "Thank you for the days",
-      "endpoint": "https://thankyouforthedays.co.uk/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
-      "quarantinedAt": "2026-05-23T18:41:41.198Z",
-      "lastErrorCategory": "timeout",
-      "lastErrorMessage": "This operation was aborted",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 6,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-19T16:58:12.651Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-21T18:11:19.260Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-23T18:41:41.198Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-25T20:19:18.266Z"
-        },
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-05-27T21:12:24.917Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-06-03T21:12:24.917Z",
-      "lastFailureAt": "2026-05-27T21:12:24.917Z",
-      "lastCheckedAt": "2026-05-27T21:12:24.917Z"
     },
     {
       "id": "age-uk-discover",
