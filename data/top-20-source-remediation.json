@@ -1,25 +1,8 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-05-30T07:50:13.704Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-05-30T07:58:56.844Z",
+  "totalSourceErrors": 1,
   "top20": [
-    {
-      "id": "age-uk-discover",
-      "provider": "Age UK",
-      "endpoint": "https://www.ageuk.org.uk/discover/rss/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
     {
       "id": "zerohedge-feed",
       "provider": "Zero. Hedge",
