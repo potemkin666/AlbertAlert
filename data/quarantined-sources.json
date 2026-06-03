@@ -1,65 +1,16 @@
 {
-  "generatedAt": "2026-06-02T22:44:46.244Z",
-  "count": 231,
+  "generatedAt": "2026-06-03T01:49:28.792Z",
+  "count": 230,
   "metrics": {
-    "total": 231,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 758,
+    "total": 230,
+    "newThisWeek": 3,
+    "avgTimeInQuarantineHours": 765,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
-    {
-      "id": "zerohedge-feed",
-      "provider": "Zero. Hedge",
-      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
-      "quarantinedAt": "2026-05-31T23:12:21.673Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-05-30T07:50:13.704Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-05-30T10:13:45.466Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-05-30T12:00:50.747Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-05-30T13:57:57.417Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-05-31T23:12:21.673Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-06-07T23:12:21.673Z",
-      "lastFailureAt": "2026-05-31T23:12:21.673Z",
-      "lastCheckedAt": "2026-05-31T23:12:21.673Z"
-    },
     {
       "id": "diamond-geezer-rss",
       "provider": "Diamond Geezer",
