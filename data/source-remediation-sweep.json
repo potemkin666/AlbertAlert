@@ -1,37 +1,38 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-06T16:48:41.197Z",
+  "generatedAt": "2026-06-06T18:18:03.618Z",
   "totalSourceErrors": 2,
   "byCategory": {
-    "network-failure": 2
+    "moved-temporarily": 1,
+    "network-failure": 1
   },
   "byKind": {
-    "rss": 2
+    "html": 2
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 2,
   "top20": [
     {
-      "id": "leiden-security-global-affairs-feed",
-      "provider": "Leiden Security and Global Affairs Blog",
-      "endpoint": "https://www.leidensecurityandglobalaffairs.nl/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "finalUrl": "https://committees.parliament.uk/committee/24/defence-committee/news/?__cf_chl_rt_tk=5. GqgH7. BpawbQ.YM97q0weTBuvz.L3WXHtd. Ba.102. QuU-1780769840-1.0.1.1-hg9. TixJPTm91IPwLKGHI_AYuO1e6M2S2. CmaEDA7NBo4",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://committees.parliament.uk/committee/24/defence-committee/news/?__cf_chl_rt_tk=5. GqgH7. BpawbQ.YM97q0weTBuvz.L3WXHtd. Ba.102. QuU-1780769840-1.0.1.1-hg9. TixJPTm91IPwLKGHI_AYuO1e6M2S2. CmaEDA7NBo4",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "urban-terrorism-europe-feed",
-      "provider": "Urban Terrorism in Europe (University of Birmingham)",
-      "endpoint": "https://blog.bham.ac.uk/urbterr/feed/",
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
       "finalUrl": "",
       "category": "network-failure",
       "statusKind": "",
@@ -40,34 +41,34 @@
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "leiden-security-global-affairs-feed",
-      "provider": "Leiden Security and Global Affairs Blog",
-      "endpoint": "https://www.leidensecurityandglobalaffairs.nl/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "finalUrl": "https://committees.parliament.uk/committee/24/defence-committee/news/?__cf_chl_rt_tk=5. GqgH7. BpawbQ.YM97q0weTBuvz.L3WXHtd. Ba.102. QuU-1780769840-1.0.1.1-hg9. TixJPTm91IPwLKGHI_AYuO1e6M2S2. CmaEDA7NBo4",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://committees.parliament.uk/committee/24/defence-committee/news/?__cf_chl_rt_tk=5. GqgH7. BpawbQ.YM97q0weTBuvz.L3WXHtd. Ba.102. QuU-1780769840-1.0.1.1-hg9. TixJPTm91IPwLKGHI_AYuO1e6M2S2. CmaEDA7NBo4",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "urban-terrorism-europe-feed",
-      "provider": "Urban Terrorism in Europe (University of Birmingham)",
-      "endpoint": "https://blog.bham.ac.uk/urbterr/feed/",
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
       "finalUrl": "",
       "category": "network-failure",
       "statusKind": "",
@@ -76,10 +77,10 @@
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
