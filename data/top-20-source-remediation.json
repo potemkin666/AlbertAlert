@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-07T08:37:05.854Z",
-  "totalSourceErrors": 5,
+  "generatedAt": "2026-06-07T08:43:00.015Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
       "id": "bellingcat",
@@ -21,40 +21,6 @@
       "isMachineReadable": true
     },
     {
-      "id": "ec-wola-ecuador-bukele-model",
-      "provider": "WOLA - Ecuador security analysis",
-      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
       "id": "mi5-news-rss-direct",
       "provider": "MI5 - News RSS",
       "endpoint": "https://www.mi5.gov.uk/news",
@@ -62,7 +28,7 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -70,23 +36,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
-    },
-    {
-      "id": "thank-you-for-the-days",
-      "provider": "Thank you for the days",
-      "endpoint": "https://thankyouforthedays.co.uk/feed/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
     }
   ]
 }
