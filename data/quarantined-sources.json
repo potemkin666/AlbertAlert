@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2026-06-07T05:17:00.377Z",
-  "count": 230,
+  "generatedAt": "2026-06-07T08:37:05.854Z",
+  "count": 231,
   "metrics": {
-    "total": 230,
-    "newThisWeek": 2,
+    "total": 231,
+    "newThisWeek": 3,
     "avgTimeInQuarantineHours": 860,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
@@ -11,6 +11,55 @@
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "bellingcat",
+      "provider": "Bellingcat a Investigations",
+      "endpoint": "https://www.bellingcat.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-06-07T08:37:05.854Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-29T22:46:27.789Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-05-31T23:12:21.673Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-03T01:49:28.792Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-05T06:46:15.562Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-07T08:37:05.854Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-06-14T08:37:05.854Z",
+      "lastFailureAt": "2026-06-07T08:37:05.854Z",
+      "lastCheckedAt": "2026-06-07T08:37:05.854Z"
+    },
     {
       "id": "financial-times-world",
       "provider": "Reuters - World News",
