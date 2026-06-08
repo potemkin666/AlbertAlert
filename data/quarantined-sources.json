@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-06-08T00:21:12.467Z",
-  "count": 232,
+  "generatedAt": "2026-06-08T05:21:27.942Z",
+  "count": 233,
   "metrics": {
-    "total": 232,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 872,
+    "total": 233,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 873,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "northumbria-police-news",
+      "provider": "North East Bylines",
+      "endpoint": "https://northeastbylines.co.uk/feed/",
+      "kind": "rss",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-06-08T05:21:27.942Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-05-30T22:39:07.403Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-01T23:59:29.082Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-04T02:13:24.219Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-06T04:06:34.832Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-08T05:21:27.942Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-06-15T05:21:27.942Z",
+      "lastFailureAt": "2026-06-08T05:21:27.942Z",
+      "lastCheckedAt": "2026-06-08T05:21:27.942Z"
+    },
     {
       "id": "quadrant2design-exhibiting-guides",
       "provider": "Quadrant2. Design Exhibiting Guides",
