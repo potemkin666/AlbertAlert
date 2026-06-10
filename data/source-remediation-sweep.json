@@ -1,38 +1,38 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-10T06:45:09.008Z",
+  "generatedAt": "2026-06-10T09:07:43.168Z",
   "totalSourceErrors": 2,
   "byCategory": {
-    "moved-temporarily": 1,
+    "brittle-selectors-or-js-rendering": 1,
     "blocked-or-auth": 1
   },
   "byKind": {
-    "rss": 2
+    "html": 2
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 2,
   "top20": [
     {
-      "id": "the-week-uk",
-      "provider": "The Week UK",
-      "endpoint": "https://www.theweek.co.uk/feeds/all",
-      "finalUrl": "https://theweek.com/feeds.xml",
-      "category": "moved-temporarily",
+      "id": "belgian-federal-police-news",
+      "provider": "Belgian Federal Police - News",
+      "endpoint": "https://www.police.be/5998/en/node/10868",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://theweek.com/feeds.xml",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "northumbria-police-news",
-      "provider": "North East Bylines",
-      "endpoint": "https://northeastbylines.co.uk/feed/",
+      "id": "royal-free-london-news",
+      "provider": "Royal Free London NHS Foundation Trust a News",
+      "endpoint": "https://www.royalfree.nhs.uk/news",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
@@ -41,34 +41,34 @@
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "the-week-uk",
-      "provider": "The Week UK",
-      "endpoint": "https://www.theweek.co.uk/feeds/all",
-      "finalUrl": "https://theweek.com/feeds.xml",
-      "category": "moved-temporarily",
+      "id": "belgian-federal-police-news",
+      "provider": "Belgian Federal Police - News",
+      "endpoint": "https://www.police.be/5998/en/node/10868",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://theweek.com/feeds.xml",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "northumbria-police-news",
-      "provider": "North East Bylines",
-      "endpoint": "https://northeastbylines.co.uk/feed/",
+      "id": "royal-free-london-news",
+      "provider": "Royal Free London NHS Foundation Trust a News",
+      "endpoint": "https://www.royalfree.nhs.uk/news",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
@@ -77,10 +77,10 @@
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
