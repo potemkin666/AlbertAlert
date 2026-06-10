@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-09T23:28:01.301Z",
+  "generatedAt": "2026-06-10T01:45:01.565Z",
   "count": 234,
   "metrics": {
     "total": 234,
     "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 907,
+    "avgTimeInQuarantineHours": 909,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -904,18 +904,13 @@
       "status": "auto-quarantined",
       "reason": "Endpoint likely removed — all recent errors are HTTP 404",
       "quarantinedAt": "2026-05-04T03:49:25.582Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 23,
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 24,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-05-30T19:57:08.935Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -935,12 +930,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-06-08T00:21:12.467Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-10T01:45:01.565Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-15T00:21:12.467Z",
-      "lastFailureAt": "2026-06-08T00:21:12.467Z",
-      "lastCheckedAt": "2026-06-08T00:21:12.467Z"
+      "reviewBy": "2026-06-17T01:45:01.565Z",
+      "lastFailureAt": "2026-06-10T01:45:01.565Z",
+      "lastCheckedAt": "2026-06-10T01:45:01.565Z"
     },
     {
       "id": "eurojust-press-releases",
