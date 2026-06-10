@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-10T01:45:01.565Z",
+  "generatedAt": "2026-06-10T06:45:09.008Z",
   "count": 234,
   "metrics": {
     "total": 234,
     "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 909,
+    "avgTimeInQuarantineHours": 914,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-06-08T05:21:27.942Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-05-30T22:39:07.403Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -151,12 +146,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-08T05:21:27.942Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-10T06:45:09.008Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-15T05:21:27.942Z",
-      "lastFailureAt": "2026-06-08T05:21:27.942Z",
-      "lastCheckedAt": "2026-06-08T05:21:27.942Z"
+      "reviewBy": "2026-06-17T06:45:09.008Z",
+      "lastFailureAt": "2026-06-10T06:45:09.008Z",
+      "lastCheckedAt": "2026-06-10T06:45:09.008Z"
     },
     {
       "id": "quadrant2design-exhibiting-guides",
