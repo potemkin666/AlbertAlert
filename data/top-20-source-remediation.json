@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-11T03:23:26.356Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-06-11T05:14:07.035Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "finalUrl": "https://www.policia.es/_es/cookies.php",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "gov-uk-counter-extremism-commissioner",
+      "provider": "Counter Extremism Commissioner a GOV.UK",
+      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
