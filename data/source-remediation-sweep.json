@@ -1,11 +1,87 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-13T16:44:40.331Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "generatedAt": "2026-06-13T17:36:41.926Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "anti-bot-protection": 1,
+    "blocked-or-auth": 1
+  },
+  "byKind": {
+    "html": 1,
+    "rss": 1
+  },
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "zerohedge-feed",
+      "provider": "Zero. Hedge",
+      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "zerohedge-feed",
+      "provider": "Zero. Hedge",
+      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
