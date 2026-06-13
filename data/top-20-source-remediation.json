@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-13T11:42:04.771Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-06-13T12:54:30.800Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "a-lady-in-london",
+      "provider": "A Lady in London",
+      "endpoint": "https://www.aladyinlondon.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 401",
+      "status": 401,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "manic-mum-life",
+      "provider": "Manic Mum Life",
+      "endpoint": "https://www.manic-mumdays.co.uk/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 401",
+      "status": 401,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "really-ree",
+      "provider": "Really Ree",
+      "endpoint": "https://reallyree.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 401",
+      "status": 401,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
