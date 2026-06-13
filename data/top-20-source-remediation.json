@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-13T19:37:38.454Z",
+  "generatedAt": "2026-06-13T20:41:27.211Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "institute-global-home",
-      "provider": "Institute for Global Change",
-      "endpoint": "https://institute.global/insights",
+      "id": "me-vijesti-black-chronicle",
+      "provider": "Vijesti - Black Chronicle",
+      "endpoint": "https://en.vijesti.me/news-b/black-chronicle",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 502",
+      "status": 502,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
