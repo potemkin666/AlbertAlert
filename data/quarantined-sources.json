@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-13T08:17:42.568Z",
-  "count": 233,
+  "generatedAt": "2026-06-13T09:45:32.630Z",
+  "count": 232,
   "metrics": {
-    "total": 233,
+    "total": 232,
     "newThisWeek": 8,
-    "avgTimeInQuarantineHours": 983,
+    "avgTimeInQuarantineHours": 987,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -451,55 +451,6 @@
       "reviewBy": "2026-06-18T22:43:54.061Z",
       "lastFailureAt": "2026-06-11T22:43:54.061Z",
       "lastCheckedAt": "2026-06-11T22:43:54.061Z"
-    },
-    {
-      "id": "parliament-private-bills-rss",
-      "provider": "Parliament - Private Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/privatebills.rss",
-      "kind": "rss",
-      "lane": "oversight",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "HTML structure changed — selectors no longer match; needs parser update",
-      "quarantinedAt": "2026-05-29T20:40:43.537Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 12,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-02T22:44:46.244Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-05T01:47:01.458Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-07T05:17:00.377Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-09T08:06:12.908Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-11T09:12:02.152Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-06-18T09:12:02.152Z",
-      "lastFailureAt": "2026-06-11T09:12:02.152Z",
-      "lastCheckedAt": "2026-06-11T09:12:02.152Z"
     },
     {
       "id": "west-yorkshire-police-appeals-rss",
@@ -8256,16 +8207,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 26,
+      "consecutiveFailures": 27,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-02T22:44:46.244Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8285,12 +8231,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-11T09:12:02.152Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-13T09:45:32.630Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-18T09:12:02.152Z",
-      "lastFailureAt": "2026-06-11T09:12:02.152Z",
-      "lastCheckedAt": "2026-06-11T09:12:02.152Z"
+      "reviewBy": "2026-06-20T09:45:32.630Z",
+      "lastFailureAt": "2026-06-13T09:45:32.630Z",
+      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
     },
     {
       "id": "ec-police-organised-crime",
@@ -8305,16 +8256,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 26,
+      "consecutiveFailures": 27,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-02T22:44:46.244Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8334,12 +8280,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-11T09:12:02.152Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-13T09:45:32.630Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-18T09:12:02.152Z",
-      "lastFailureAt": "2026-06-11T09:12:02.152Z",
-      "lastCheckedAt": "2026-06-11T09:12:02.152Z"
+      "reviewBy": "2026-06-20T09:45:32.630Z",
+      "lastFailureAt": "2026-06-13T09:45:32.630Z",
+      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
     },
     {
       "id": "ec-cancilleria-security",
@@ -8354,16 +8305,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 26,
+      "consecutiveFailures": 27,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-02T22:44:46.244Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8383,12 +8329,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-11T09:12:02.152Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-13T09:45:32.630Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-18T09:12:02.152Z",
-      "lastFailureAt": "2026-06-11T09:12:02.152Z",
-      "lastCheckedAt": "2026-06-11T09:12:02.152Z"
+      "reviewBy": "2026-06-20T09:45:32.630Z",
+      "lastFailureAt": "2026-06-13T09:45:32.630Z",
+      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
     },
     {
       "id": "finland-police-news",
