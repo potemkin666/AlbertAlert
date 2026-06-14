@@ -1,41 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-14T15:39:53.388Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-06-14T16:45:11.955Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "disneyrollergirl",
-      "provider": "Disneyrollergirl",
-      "endpoint": "https://www.disneyrollergirl.net/feed/",
+      "id": "joint-committee-human-rights-html",
+      "provider": "Joint Committee on Human Rights",
+      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
