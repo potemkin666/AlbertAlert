@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-06-15T08:31:05.522Z",
-  "count": 233,
+  "generatedAt": "2026-06-15T10:45:32.715Z",
+  "count": 234,
   "metrics": {
-    "total": 233,
-    "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 1030,
+    "total": 234,
+    "newThisWeek": 6,
+    "avgTimeInQuarantineHours": 1027,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "byline-times-feed",
+      "provider": "Byline Times",
+      "endpoint": "https://bylinetimes.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-06-15T10:45:32.715Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-07T05:17:00.377Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-09T08:06:12.908Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-11T09:12:02.152Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-13T09:45:32.630Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-15T10:45:32.715Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-06-22T10:45:32.715Z",
+      "lastFailureAt": "2026-06-15T10:45:32.715Z",
+      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
+    },
     {
       "id": "chathamhouse-intl-security-feed",
       "provider": "Chatham House a International Security Programme (RSS)",
@@ -8256,16 +8305,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 27,
+      "consecutiveFailures": 28,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-05T01:47:01.458Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8285,12 +8329,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-13T09:45:32.630Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-15T10:45:32.715Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-20T09:45:32.630Z",
-      "lastFailureAt": "2026-06-13T09:45:32.630Z",
-      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
+      "reviewBy": "2026-06-22T10:45:32.715Z",
+      "lastFailureAt": "2026-06-15T10:45:32.715Z",
+      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
     },
     {
       "id": "ec-police-organised-crime",
@@ -8305,16 +8354,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 27,
+      "consecutiveFailures": 28,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-05T01:47:01.458Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8334,12 +8378,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-13T09:45:32.630Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-15T10:45:32.715Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-20T09:45:32.630Z",
-      "lastFailureAt": "2026-06-13T09:45:32.630Z",
-      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
+      "reviewBy": "2026-06-22T10:45:32.715Z",
+      "lastFailureAt": "2026-06-15T10:45:32.715Z",
+      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
     },
     {
       "id": "ec-cancilleria-security",
@@ -8354,16 +8403,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 27,
+      "consecutiveFailures": 28,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-05T01:47:01.458Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8383,12 +8427,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-13T09:45:32.630Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-15T10:45:32.715Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-20T09:45:32.630Z",
-      "lastFailureAt": "2026-06-13T09:45:32.630Z",
-      "lastCheckedAt": "2026-06-13T09:45:32.630Z"
+      "reviewBy": "2026-06-22T10:45:32.715Z",
+      "lastFailureAt": "2026-06-15T10:45:32.715Z",
+      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
     },
     {
       "id": "finland-police-news",
