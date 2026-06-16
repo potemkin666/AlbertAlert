@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-16T21:13:22.297Z",
+  "generatedAt": "2026-06-16T22:24:30.926Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "the-canary-feed",
-      "provider": "The Canary",
-      "endpoint": "https://www.thecanary.co/feed/",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "the-canary-feed",
-      "provider": "The Canary",
-      "endpoint": "https://www.thecanary.co/feed/",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
