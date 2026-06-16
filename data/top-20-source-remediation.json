@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-16T08:22:00.306Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-06-16T10:24:17.532Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "northumbria-police-news",
+      "provider": "North East Bylines",
+      "endpoint": "https://northeastbylines.co.uk/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
