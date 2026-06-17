@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-17T09:19:30.948Z",
-  "count": 233,
+  "generatedAt": "2026-06-17T11:22:25.019Z",
+  "count": 232,
   "metrics": {
-    "total": 233,
-    "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 1073,
+    "total": 232,
+    "newThisWeek": 4,
+    "avgTimeInQuarantineHours": 1080,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -59,55 +59,6 @@
       "reviewBy": "2026-06-24T09:19:30.948Z",
       "lastFailureAt": "2026-06-17T09:19:30.948Z",
       "lastCheckedAt": "2026-06-17T09:19:30.948Z"
-    },
-    {
-      "id": "byline-times-feed",
-      "provider": "Byline Times",
-      "endpoint": "https://bylinetimes.com/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-06-15T10:45:32.715Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-07T05:17:00.377Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-09T08:06:12.908Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-11T09:12:02.152Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-13T09:45:32.630Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T10:45:32.715Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-06-22T10:45:32.715Z",
-      "lastFailureAt": "2026-06-15T10:45:32.715Z",
-      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
     },
     {
       "id": "chathamhouse-intl-security-feed",
@@ -8305,16 +8256,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 28,
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-07T05:17:00.377Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8334,12 +8280,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-15T10:45:32.715Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-17T11:22:25.019Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-22T10:45:32.715Z",
-      "lastFailureAt": "2026-06-15T10:45:32.715Z",
-      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
+      "reviewBy": "2026-06-24T11:22:25.019Z",
+      "lastFailureAt": "2026-06-17T11:22:25.019Z",
+      "lastCheckedAt": "2026-06-17T11:22:25.019Z"
     },
     {
       "id": "ec-police-organised-crime",
@@ -8354,16 +8305,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 28,
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-07T05:17:00.377Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8383,12 +8329,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-15T10:45:32.715Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-17T11:22:25.019Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-22T10:45:32.715Z",
-      "lastFailureAt": "2026-06-15T10:45:32.715Z",
-      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
+      "reviewBy": "2026-06-24T11:22:25.019Z",
+      "lastFailureAt": "2026-06-17T11:22:25.019Z",
+      "lastCheckedAt": "2026-06-17T11:22:25.019Z"
     },
     {
       "id": "ec-cancilleria-security",
@@ -8403,16 +8354,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 28,
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-06-07T05:17:00.377Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -8432,12 +8378,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-15T10:45:32.715Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-17T11:22:25.019Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-22T10:45:32.715Z",
-      "lastFailureAt": "2026-06-15T10:45:32.715Z",
-      "lastCheckedAt": "2026-06-15T10:45:32.715Z"
+      "reviewBy": "2026-06-24T11:22:25.019Z",
+      "lastFailureAt": "2026-06-17T11:22:25.019Z",
+      "lastCheckedAt": "2026-06-17T11:22:25.019Z"
     },
     {
       "id": "finland-police-news",
