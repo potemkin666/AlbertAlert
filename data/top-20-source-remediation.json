@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-17T18:27:41.422Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "sans-isc-full",
-      "provider": "SANS Internet Storm Center (Full Feed)",
-      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "reddit-unitedkingdom-rss",
-      "provider": "Reddit - r/unitedkingdom",
-      "endpoint": "https://www.reddit.com/r/unitedkingdom/.rss",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-06-17T19:21:19.654Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
