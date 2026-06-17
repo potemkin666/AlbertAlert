@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-06-17T07:24:09.227Z",
-  "count": 232,
+  "generatedAt": "2026-06-17T09:19:30.948Z",
+  "count": 233,
   "metrics": {
-    "total": 232,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 1076,
+    "total": 233,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 1073,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-06-17T09:19:30.948Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-09T04:07:06.248Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-11T05:14:07.035Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-13T06:56:49.833Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-15T08:31:05.522Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-17T09:19:30.948Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-06-24T09:19:30.948Z",
+      "lastFailureAt": "2026-06-17T09:19:30.948Z",
+      "lastCheckedAt": "2026-06-17T09:19:30.948Z"
+    },
     {
       "id": "byline-times-feed",
       "provider": "Byline Times",
