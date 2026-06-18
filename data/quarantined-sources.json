@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-18T09:10:21.691Z",
+  "generatedAt": "2026-06-18T11:05:59.522Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1104,
+    "avgTimeInQuarantineHours": 1106,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -267,18 +267,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-06-08T05:21:27.942Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 10,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-08T05:21:27.942Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -298,12 +293,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-16T10:24:17.532Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-18T11:05:59.522Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-23T10:24:17.532Z",
-      "lastFailureAt": "2026-06-16T10:24:17.532Z",
-      "lastCheckedAt": "2026-06-16T10:24:17.532Z"
+      "reviewBy": "2026-06-25T11:05:59.522Z",
+      "lastFailureAt": "2026-06-18T11:05:59.522Z",
+      "lastCheckedAt": "2026-06-18T11:05:59.522Z"
     },
     {
       "id": "quadrant2design-exhibiting-guides",
