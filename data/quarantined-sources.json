@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-18T03:25:08.935Z",
+  "generatedAt": "2026-06-18T05:15:16.695Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1099,
+    "avgTimeInQuarantineHours": 1100,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -2031,18 +2031,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 28,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 28,
+      "consecutiveBlockedFailures": 29,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-07T21:27:35.448Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2062,12 +2057,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-16T03:56:46.907Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-18T05:15:16.695Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-23T03:56:46.907Z",
-      "lastFailureAt": "2026-06-16T03:56:46.907Z",
-      "lastCheckedAt": "2026-06-16T03:56:46.907Z"
+      "reviewBy": "2026-06-25T05:15:16.695Z",
+      "lastFailureAt": "2026-06-18T05:15:16.695Z",
+      "lastCheckedAt": "2026-06-18T05:15:16.695Z"
     },
     {
       "id": "ecfr-feeds-index",
@@ -2815,18 +2815,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 28,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 28,
+      "consecutiveBlockedFailures": 29,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-07T20:03:38.959Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2846,12 +2841,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-16T03:56:46.907Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-18T05:15:16.695Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-23T03:56:46.907Z",
-      "lastFailureAt": "2026-06-16T03:56:46.907Z",
-      "lastCheckedAt": "2026-06-16T03:56:46.907Z"
+      "reviewBy": "2026-06-25T05:15:16.695Z",
+      "lastFailureAt": "2026-06-18T05:15:16.695Z",
+      "lastCheckedAt": "2026-06-18T05:15:16.695Z"
     },
     {
       "id": "reuters-uk",
@@ -2864,18 +2864,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 28,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 28,
+      "consecutiveBlockedFailures": 29,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-06-07T20:03:38.959Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
@@ -2895,12 +2890,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-06-16T03:56:46.907Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-18T05:15:16.695Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-23T03:56:46.907Z",
-      "lastFailureAt": "2026-06-16T03:56:46.907Z",
-      "lastCheckedAt": "2026-06-16T03:56:46.907Z"
+      "reviewBy": "2026-06-25T05:15:16.695Z",
+      "lastFailureAt": "2026-06-18T05:15:16.695Z",
+      "lastCheckedAt": "2026-06-18T05:15:16.695Z"
     },
     {
       "id": "soufan-center-intelbrief",
