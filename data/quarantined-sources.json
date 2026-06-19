@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-06-19T09:21:09.528Z",
-  "count": 232,
+  "generatedAt": "2026-06-19T11:10:45.769Z",
+  "count": 233,
   "metrics": {
-    "total": 232,
-    "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 1119,
+    "total": 233,
+    "newThisWeek": 6,
+    "avgTimeInQuarantineHours": 1115,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "the-canary-feed",
+      "provider": "The Canary",
+      "endpoint": "https://www.thecanary.co/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-06-19T11:10:45.769Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-06-16T18:17:20.812Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-06-16T19:53:39.838Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-06-16T21:13:22.297Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-06-17T23:13:09.932Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-19T11:10:45.769Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-06-26T11:10:45.769Z",
+      "lastFailureAt": "2026-06-19T11:10:45.769Z",
+      "lastCheckedAt": "2026-06-19T11:10:45.769Z"
+    },
     {
       "id": "londonist-rss",
       "provider": "Londonist",
@@ -122,16 +171,11 @@
       "quarantinedAt": "2026-06-17T09:19:30.948Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-09T04:07:06.248Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -151,12 +195,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-06-17T09:19:30.948Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-06-19T11:10:45.769Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-24T09:19:30.948Z",
-      "lastFailureAt": "2026-06-17T09:19:30.948Z",
-      "lastCheckedAt": "2026-06-17T09:19:30.948Z"
+      "reviewBy": "2026-06-26T11:10:45.769Z",
+      "lastFailureAt": "2026-06-19T11:10:45.769Z",
+      "lastCheckedAt": "2026-06-19T11:10:45.769Z"
     },
     {
       "id": "chathamhouse-intl-security-feed",
