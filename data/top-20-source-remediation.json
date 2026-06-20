@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-19T23:30:26.905Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-06-20T00:03:10.799Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "arcticdry",
+      "provider": "Arctic. Dry",
+      "endpoint": "https://www.arcticdry.co.uk/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
