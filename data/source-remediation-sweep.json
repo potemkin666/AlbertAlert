@@ -1,23 +1,20 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-21T09:31:43.599Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-06-21T10:51:42.452Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1,
-    "blocked-or-auth": 1,
-    "timeout": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1,
-    "html": 2
+    "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 2,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "byline-times-feed",
-      "provider": "Byline Times",
-      "endpoint": "https://bylinetimes.com/feed/",
+      "id": "lobsters-rss",
+      "provider": "Lobsters",
+      "endpoint": "https://lobste.rs/rss",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -30,47 +27,13 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "kingston-council-news",
-      "provider": "Kingston Council a News",
-      "endpoint": "https://www.kingston.gov.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "byline-times-feed",
-      "provider": "Byline Times",
-      "endpoint": "https://bylinetimes.com/feed/",
+      "id": "lobsters-rss",
+      "provider": "Lobsters",
+      "endpoint": "https://lobste.rs/rss",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -83,40 +46,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "kingston-council-news",
-      "provider": "Kingston Council a News",
-      "endpoint": "https://www.kingston.gov.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
