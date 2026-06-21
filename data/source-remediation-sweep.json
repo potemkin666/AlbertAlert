@@ -1,26 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-21T18:46:45.826Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-06-21T19:38:08.479Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1,
-    "timeout": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1,
-    "html": 1
+    "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -29,34 +27,17 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "police-scotland-news",
-      "provider": "Police Scotland news",
-      "endpoint": "https://www.scotland.police.uk/what-s-happening/news/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -65,23 +46,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "police-scotland-news",
-      "provider": "Police Scotland news",
-      "endpoint": "https://www.scotland.police.uk/what-s-happening/news/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
