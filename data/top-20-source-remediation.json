@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-22T18:33:12.963Z",
+  "generatedAt": "2026-06-22T19:51:21.087Z",
   "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "independent-top-stories",
-      "provider": "The Independent - Top Stories",
-      "endpoint": "https://www.independent.co.uk/rss",
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -15,25 +15,25 @@
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
-      "id": "lancashire-constabulary-news",
-      "provider": "Lancashire Police - Newsroom",
-      "endpoint": "https://news.lancashire.police.uk/",
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
+      "message": "HTTP 429",
+      "status": 429,
       "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     }
