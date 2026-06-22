@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-22T12:43:54.115Z",
+  "generatedAt": "2026-06-22T15:05:12.720Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1198,
+    "avgTimeInQuarantineHours": 1201,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -73,16 +73,11 @@
       "quarantinedAt": "2026-06-18T13:51:30.830Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 7,
+      "consecutiveFailures": 8,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-12T11:32:40.355Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -102,12 +97,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-20T14:25:16.190Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-22T15:05:12.720Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-27T14:25:16.190Z",
-      "lastFailureAt": "2026-06-20T14:25:16.190Z",
-      "lastCheckedAt": "2026-06-20T14:25:16.190Z"
+      "reviewBy": "2026-06-29T15:05:12.720Z",
+      "lastFailureAt": "2026-06-22T15:05:12.720Z",
+      "lastCheckedAt": "2026-06-22T15:05:12.720Z"
     },
     {
       "id": "policia-nacional-news",
@@ -610,18 +610,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-10T12:18:47.514Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 26,
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 27,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 25,
+      "consecutiveBlockedFailures": 26,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-12T11:32:40.355Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -641,12 +636,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-20T14:25:16.190Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-22T15:05:12.720Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-27T14:25:16.190Z",
-      "lastFailureAt": "2026-06-20T14:25:16.190Z",
-      "lastCheckedAt": "2026-06-20T14:25:16.190Z"
+      "reviewBy": "2026-06-29T15:05:12.720Z",
+      "lastFailureAt": "2026-06-22T15:05:12.720Z",
+      "lastCheckedAt": "2026-06-22T15:05:12.720Z"
     },
     {
       "id": "ec-ministry-interior-open-data",
@@ -808,16 +808,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 29,
+      "consecutiveFailures": 30,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-12T11:32:40.355Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -837,12 +832,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-20T14:25:16.190Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-22T15:05:12.720Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-27T14:25:16.190Z",
-      "lastFailureAt": "2026-06-20T14:25:16.190Z",
-      "lastCheckedAt": "2026-06-20T14:25:16.190Z"
+      "reviewBy": "2026-06-29T15:05:12.720Z",
+      "lastFailureAt": "2026-06-22T15:05:12.720Z",
+      "lastCheckedAt": "2026-06-22T15:05:12.720Z"
     },
     {
       "id": "netherlands-om-terrorismefinanciering-nieuws",
@@ -857,16 +857,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 29,
+      "consecutiveFailures": 30,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-12T11:32:40.355Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -886,12 +881,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-20T14:25:16.190Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-22T15:05:12.720Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-27T14:25:16.190Z",
-      "lastFailureAt": "2026-06-20T14:25:16.190Z",
-      "lastCheckedAt": "2026-06-20T14:25:16.190Z"
+      "reviewBy": "2026-06-29T15:05:12.720Z",
+      "lastFailureAt": "2026-06-22T15:05:12.720Z",
+      "lastCheckedAt": "2026-06-22T15:05:12.720Z"
     },
     {
       "id": "hedayah-news",
