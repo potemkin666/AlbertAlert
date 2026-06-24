@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-24T08:20:47.562Z",
+  "generatedAt": "2026-06-24T09:53:52.100Z",
   "count": 233,
   "metrics": {
     "total": 233,
-    "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 1228,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 1230,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -1002,18 +1002,13 @@
       "status": "auto-quarantined",
       "reason": "Endpoint likely removed — all recent errors are HTTP 404",
       "quarantinedAt": "2026-05-04T03:49:25.582Z",
-      "lastErrorCategory": "network-failure",
-      "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 30,
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 31,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-14T03:55:29.386Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1033,12 +1028,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-24T09:53:52.100Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-29T08:30:51.363Z",
-      "lastFailureAt": "2026-06-22T08:30:51.363Z",
-      "lastCheckedAt": "2026-06-22T08:30:51.363Z"
+      "reviewBy": "2026-07-01T09:53:52.100Z",
+      "lastFailureAt": "2026-06-24T09:53:52.100Z",
+      "lastCheckedAt": "2026-06-24T09:53:52.100Z"
     },
     {
       "id": "eurojust-press-releases",
@@ -2229,16 +2229,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 5,
+      "consecutiveBlockedFailures": 6,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-14T03:55:29.386Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2258,12 +2253,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-24T09:53:52.100Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-29T08:30:51.363Z",
-      "lastFailureAt": "2026-06-22T08:30:51.363Z",
-      "lastCheckedAt": "2026-06-22T08:30:51.363Z"
+      "reviewBy": "2026-07-01T09:53:52.100Z",
+      "lastFailureAt": "2026-06-24T09:53:52.100Z",
+      "lastCheckedAt": "2026-06-24T09:53:52.100Z"
     },
     {
       "id": "me-police-administration",
@@ -2621,16 +2621,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 31,
+      "consecutiveBlockedFailures": 32,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-14T03:55:29.386Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2650,12 +2645,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-24T09:53:52.100Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-29T08:30:51.363Z",
-      "lastFailureAt": "2026-06-22T08:30:51.363Z",
-      "lastCheckedAt": "2026-06-22T08:30:51.363Z"
+      "reviewBy": "2026-07-01T09:53:52.100Z",
+      "lastFailureAt": "2026-06-24T09:53:52.100Z",
+      "lastCheckedAt": "2026-06-24T09:53:52.100Z"
     },
     {
       "id": "politico-europe",
@@ -2768,16 +2768,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 31,
+      "consecutiveBlockedFailures": 32,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-14T03:55:29.386Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2797,12 +2792,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-24T09:53:52.100Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-29T08:30:51.363Z",
-      "lastFailureAt": "2026-06-22T08:30:51.363Z",
-      "lastCheckedAt": "2026-06-22T08:30:51.363Z"
+      "reviewBy": "2026-07-01T09:53:52.100Z",
+      "lastFailureAt": "2026-06-24T09:53:52.100Z",
+      "lastCheckedAt": "2026-06-24T09:53:52.100Z"
     },
     {
       "id": "just-security",
@@ -3160,16 +3160,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 31,
+      "consecutiveBlockedFailures": 32,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-14T03:55:29.386Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3189,12 +3184,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-24T09:53:52.100Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-06-29T08:30:51.363Z",
-      "lastFailureAt": "2026-06-22T08:30:51.363Z",
-      "lastCheckedAt": "2026-06-22T08:30:51.363Z"
+      "reviewBy": "2026-07-01T09:53:52.100Z",
+      "lastFailureAt": "2026-06-24T09:53:52.100Z",
+      "lastCheckedAt": "2026-06-24T09:53:52.100Z"
     },
     {
       "id": "ec-cfr-ecuador-narco-state",
