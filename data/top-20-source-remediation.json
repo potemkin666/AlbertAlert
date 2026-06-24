@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-24T17:23:50.138Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "breitbart-london-feed",
-      "provider": "Breitbart London",
-      "endpoint": "https://www.breitbart.com/london/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "uk-parliament-home-affairs-committee",
-      "provider": "UK Parliament a Home Affairs Committee (News)",
-      "endpoint": "https://committees.parliament.uk/committee/83/home-affairs-committee/news/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-06-24T18:12:22.986Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
