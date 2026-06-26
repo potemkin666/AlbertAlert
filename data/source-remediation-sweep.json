@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-26T20:12:41.097Z",
+  "generatedAt": "2026-06-26T21:12:17.947Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "network-failure": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
     "html": 1
@@ -12,38 +12,38 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "german-bka-press-releases-de",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
