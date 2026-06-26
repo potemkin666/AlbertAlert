@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-25T23:36:27.315Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-06-26T01:14:31.198Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "brittle-selectors-or-js-rendering": 1
+  },
+  "byKind": {
+    "rss": 1
+  },
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "usgs-earthquakes-all-hour",
+      "provider": "USGS - Earthquakes (All Hour)",
+      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "usgs-earthquakes-all-hour",
+      "provider": "USGS - Earthquakes (All Hour)",
+      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
