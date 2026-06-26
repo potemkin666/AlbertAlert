@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-06-26T03:54:34.484Z",
+  "generatedAt": "2026-06-26T05:43:25.505Z",
   "count": 231,
   "metrics": {
     "total": 231,
     "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 1282,
+    "avgTimeInQuarantineHours": 1284,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -220,16 +220,11 @@
       "quarantinedAt": "2026-06-13T22:57:44.034Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -249,12 +244,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "secret-london-rss",
@@ -414,18 +414,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-06-07T20:03:38.959Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 14,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -445,12 +440,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "semibold",
@@ -463,18 +463,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-06-07T20:03:38.959Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 14,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -494,12 +489,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "bellingcat",
@@ -563,16 +563,11 @@
       "quarantinedAt": "2026-05-11T20:27:27.542Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 27,
+      "consecutiveFailures": 28,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 27,
+      "consecutiveBlockedFailures": 28,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -592,12 +587,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "eu-council-press-releases-html",
@@ -661,16 +661,11 @@
       "quarantinedAt": "2026-05-10T00:01:29.814Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 28,
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 28,
+      "consecutiveBlockedFailures": 29,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -690,12 +685,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "homerton-healthcare-news",
@@ -710,16 +710,11 @@
       "quarantinedAt": "2026-05-09T18:40:05.692Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 28,
+      "consecutiveFailures": 29,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -739,12 +734,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "paris-prefecture-police-rss-page",
@@ -955,16 +955,11 @@
       "quarantinedAt": "2026-05-03T22:00:16.412Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -984,12 +979,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "denmark-pet-news",
@@ -1004,16 +1004,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1033,12 +1028,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "de-sachsen-police-rss",
@@ -1053,16 +1053,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1082,12 +1077,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "pet-dk-english",
@@ -1102,16 +1102,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1131,12 +1126,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "nato-news-rss",
@@ -1151,16 +1151,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1180,12 +1175,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "aviation-herald-rss",
@@ -1200,16 +1200,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1229,12 +1224,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "broadcastify-feeds-rss",
@@ -1249,16 +1249,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1278,12 +1273,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "maritime-executive-rss",
@@ -1298,16 +1298,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1327,12 +1322,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "godlike-productions-rss",
@@ -1347,16 +1347,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1376,12 +1371,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "moon-of-alabama-atom",
@@ -1396,16 +1396,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1425,12 +1420,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "time-out-london-rss",
@@ -1445,16 +1445,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1474,12 +1469,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "national-trust-news-rss",
@@ -1494,16 +1494,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1523,12 +1518,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "visitbritain-rss",
@@ -1543,16 +1543,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1572,12 +1567,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "time-out-uk-rss",
@@ -1592,16 +1592,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1621,12 +1616,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "cps-news-category-feed",
@@ -1641,16 +1641,11 @@
       "quarantinedAt": "2026-05-03T13:30:52.729Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1670,12 +1665,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ec-csis-ecuador-crises",
@@ -1739,16 +1739,11 @@
       "quarantinedAt": "2026-05-01T21:34:23.032Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1768,12 +1763,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ec-ap-latin-america",
@@ -1837,16 +1837,11 @@
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1866,12 +1861,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "unsc-counter-terrorism-committee",
@@ -1886,16 +1886,11 @@
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 17,
+      "consecutiveBlockedFailures": 18,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1915,12 +1910,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "barnet-council-news",
@@ -1984,16 +1984,11 @@
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2013,12 +2008,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "icsr-kcl",
@@ -2180,16 +2180,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2209,12 +2204,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "me-ministry-interior",
@@ -2229,16 +2229,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2258,12 +2253,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "me-govme-all-news",
@@ -2278,16 +2278,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2307,12 +2302,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "me-national-security-agency",
@@ -2327,16 +2327,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2356,12 +2351,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "me-national-security-authority",
@@ -2376,16 +2376,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2405,12 +2400,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "me-customs-administration",
@@ -2425,16 +2425,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2454,12 +2449,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "de-cemas-digital-seismograph",
@@ -2768,16 +2768,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2797,12 +2792,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "occrp-news",
@@ -2817,16 +2817,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2846,12 +2841,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "resolve-network-research",
@@ -2962,18 +2962,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2993,12 +2988,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ec-primicias-seguridad",
@@ -3013,16 +3013,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3042,12 +3037,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ec-planv-crimen-organizado",
@@ -3160,16 +3160,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3189,12 +3184,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "gnet-youth-rss",
@@ -3209,16 +3209,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3238,12 +3233,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "london-resilience",
@@ -3454,16 +3454,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3483,12 +3478,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ct-policing-what-you-can-do",
@@ -3503,16 +3503,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3532,12 +3527,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "frontex-news-releases",
@@ -3550,18 +3550,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -3581,12 +3576,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "eurojust-press-news-html",
@@ -3601,16 +3601,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3630,12 +3625,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "netherlands-om-terrorisme",
@@ -3650,16 +3650,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3679,12 +3674,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "eu-council-jha-meetings",
@@ -3699,16 +3699,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -3728,12 +3723,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "europol-tesat-report",
@@ -3748,16 +3748,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3777,12 +3772,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "netherlands-nctv-news",
@@ -3797,16 +3797,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3826,12 +3821,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "switzerland-fedpol-news",
@@ -3846,16 +3846,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3875,12 +3870,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "netherlands-prosecution-news",
@@ -3895,16 +3895,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3924,12 +3919,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ec-fcdo-ecuador-safety-security",
@@ -3944,16 +3944,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3973,12 +3968,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "unsc-1267-press-releases",
@@ -3993,16 +3993,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4022,12 +4017,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "unsc-consolidated-list",
@@ -4042,16 +4042,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4071,12 +4066,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "bromley-council-news",
@@ -4091,16 +4091,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4120,12 +4115,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "east-london-nhs-news",
@@ -4140,16 +4140,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4169,12 +4164,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "harrow-council-news",
@@ -4189,16 +4189,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4218,12 +4213,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "heathrow-media-centre",
@@ -4238,16 +4238,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4267,12 +4262,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "imperial-healthcare-news",
@@ -4287,16 +4287,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4316,12 +4311,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "kensington-chelsea-newsroom",
@@ -4336,16 +4336,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4365,12 +4360,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "london-ambulance-news",
@@ -4385,16 +4385,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4414,12 +4409,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "london-councils-news",
@@ -4434,16 +4434,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -4463,12 +4458,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "london-fire-brigade-news",
@@ -4483,16 +4483,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4512,12 +4507,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "port-of-london-authority-news",
@@ -4532,16 +4532,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -4561,12 +4556,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "westminster-city-council-news",
@@ -4581,16 +4581,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4610,12 +4605,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "whittington-health-news",
@@ -4630,16 +4630,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4659,12 +4654,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "national-crime-agency-news",
@@ -4679,16 +4679,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4708,12 +4703,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "report-fraud-newsroom",
@@ -4728,16 +4728,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -4757,12 +4752,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "uk-college-policing-news",
@@ -4777,16 +4777,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4806,12 +4801,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "echr-uk-grand-chamber-rss",
@@ -4826,16 +4826,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4855,12 +4850,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "uk-ncsc-threat-reports",
@@ -4875,16 +4875,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4904,12 +4899,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "uk-parliament-business-news",
@@ -4924,16 +4924,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4953,12 +4948,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "uk-parliament-rss-feeds-index",
@@ -4973,16 +4973,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -5002,12 +4997,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "us-house-homeland-security",
@@ -5022,16 +5022,11 @@
       "quarantinedAt": "2026-05-01T15:41:41.977Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -5051,12 +5046,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "london-gov-press-releases-html",
@@ -5071,16 +5071,11 @@
       "quarantinedAt": "2026-05-01T12:10:27.497Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-15T23:46:18.512Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -5100,12 +5095,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-24T03:56:39.788Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-26T05:43:25.505Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-01T03:56:39.788Z",
-      "lastFailureAt": "2026-06-24T03:56:39.788Z",
-      "lastCheckedAt": "2026-06-24T03:56:39.788Z"
+      "reviewBy": "2026-07-03T05:43:25.505Z",
+      "lastFailureAt": "2026-06-26T05:43:25.505Z",
+      "lastCheckedAt": "2026-06-26T05:43:25.505Z"
     },
     {
       "id": "ct-policing-london",
