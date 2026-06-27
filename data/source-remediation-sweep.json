@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-27T03:54:54.225Z",
+  "generatedAt": "2026-06-27T05:31:39.220Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
     "rss": 1
@@ -12,16 +12,16 @@
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "ian-visits-rss",
-      "provider": "Ian. Visits",
-      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "No items parsed from source payload",
       "status": 200,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
@@ -31,16 +31,16 @@
   ],
   "sources": [
     {
-      "id": "ian-visits-rss",
-      "provider": "Ian. Visits",
-      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "No items parsed from source payload",
       "status": 200,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
