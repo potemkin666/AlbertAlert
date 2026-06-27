@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-27T16:59:16.562Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-06-27T17:31:52.642Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "anti-bot-protection": 1
+  },
+  "byKind": {
+    "rss": 1
+  },
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "evening-shire",
+      "provider": "Evening Shire",
+      "endpoint": "https://eveningshire.com/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "evening-shire",
+      "provider": "Evening Shire",
+      "endpoint": "https://eveningshire.com/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
