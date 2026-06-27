@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-26T23:33:52.416Z",
+  "generatedAt": "2026-06-27T01:10:49.528Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "zerohedge-feed",
+      "provider": "Zero. Hedge",
+      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
