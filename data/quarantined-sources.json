@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-06-28T09:19:27.589Z",
-  "count": 233,
+  "generatedAt": "2026-06-28T10:27:16.617Z",
+  "count": 234,
   "metrics": {
-    "total": 233,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 1324,
+    "total": 234,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 1320,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "england-naturally",
+      "provider": "England, Naturally",
+      "endpoint": "https://englandnaturally.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-06-28T10:27:16.617Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-20T07:37:27.852Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-22T08:30:51.363Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-24T09:53:52.100Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-06-28T10:27:16.617Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
+    },
     {
       "id": "eu-cellar-rss-atom",
       "provider": "Publications Office of the European Union (CELLAR) a RSS/Atom Feeds",
@@ -1004,16 +1053,11 @@
       "quarantinedAt": "2026-05-04T03:49:25.582Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-18T07:18:06.162Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1033,12 +1077,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-28T10:27:16.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-03T10:16:26.727Z",
-      "lastFailureAt": "2026-06-26T10:16:26.727Z",
-      "lastCheckedAt": "2026-06-26T10:16:26.727Z"
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
     },
     {
       "id": "eurojust-press-releases",
@@ -2227,18 +2276,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "unknown",
-      "lastErrorMessage": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "consecutiveFailures": 33,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 34,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-18T07:18:06.162Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2258,12 +2302,17 @@
           "category": "unknown",
           "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
           "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-28T10:27:16.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-03T10:16:26.727Z",
-      "lastFailureAt": "2026-06-26T10:16:26.727Z",
-      "lastCheckedAt": "2026-06-26T10:16:26.727Z"
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
     },
     {
       "id": "me-police-administration",
@@ -2619,18 +2668,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "unknown",
-      "lastErrorMessage": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "consecutiveFailures": 33,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 34,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-18T07:18:06.162Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2650,12 +2694,17 @@
           "category": "unknown",
           "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
           "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-28T10:27:16.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-03T10:16:26.727Z",
-      "lastFailureAt": "2026-06-26T10:16:26.727Z",
-      "lastCheckedAt": "2026-06-26T10:16:26.727Z"
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
     },
     {
       "id": "politico-europe",
@@ -2768,16 +2817,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 33,
+      "consecutiveFailures": 34,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 33,
+      "consecutiveBlockedFailures": 34,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-18T07:18:06.162Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2797,12 +2841,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-28T10:27:16.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-03T10:16:26.727Z",
-      "lastFailureAt": "2026-06-26T10:16:26.727Z",
-      "lastCheckedAt": "2026-06-26T10:16:26.727Z"
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
     },
     {
       "id": "just-security",
@@ -3160,16 +3209,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 33,
+      "consecutiveFailures": 34,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 33,
+      "consecutiveBlockedFailures": 34,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-18T07:18:06.162Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3189,12 +3233,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-06-26T10:16:26.727Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-28T10:27:16.617Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-03T10:16:26.727Z",
-      "lastFailureAt": "2026-06-26T10:16:26.727Z",
-      "lastCheckedAt": "2026-06-26T10:16:26.727Z"
+      "reviewBy": "2026-07-05T10:27:16.617Z",
+      "lastFailureAt": "2026-06-28T10:27:16.617Z",
+      "lastCheckedAt": "2026-06-28T10:27:16.617Z"
     },
     {
       "id": "ec-cfr-ecuador-narco-state",
