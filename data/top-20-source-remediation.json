@@ -1,8 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-06-29T15:23:38.780Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-06-29T16:48:53.971Z",
+  "totalSourceErrors": 5,
   "top20": [
+    {
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
     {
       "id": "gnet-research",
       "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
@@ -21,9 +38,9 @@
       "isMachineReadable": true
     },
     {
-      "id": "ocam-be-english",
-      "provider": "CUTA (Belgium) threat analysis",
-      "endpoint": "https://cuta.belgium.be/",
+      "id": "ec-cancilleria-security",
+      "provider": "Cancillería del Ecuador",
+      "endpoint": "https://www.cancilleria.gob.ec/",
       "finalUrl": "",
       "category": "network-failure",
       "statusKind": "",
@@ -33,7 +50,41 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "prevention",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "ec-police-organised-crime",
+      "provider": "Policía Nacional del Ecuador - Lucha contra el crimen organizado",
+      "endpoint": "https://noticias.policia.gob.ec/categor%C3%ADas/lucha-contra-el-crimen-organizado/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-sis-annual-report",
+      "provider": "Slovak Information Service - Annual Report",
+      "endpoint": "https://www.sis.gov.sk/for-you/sis-annual-report.html",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
