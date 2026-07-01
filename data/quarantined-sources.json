@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-01T01:18:51.373Z",
-  "count": 239,
+  "generatedAt": "2026-07-01T02:32:01.798Z",
+  "count": 240,
   "metrics": {
-    "total": 239,
-    "newThisWeek": 8,
-    "avgTimeInQuarantineHours": 1353,
+    "total": 240,
+    "newThisWeek": 9,
+    "avgTimeInQuarantineHours": 1349,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-01T02:32:01.798Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-29T11:53:23.130Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-29T13:48:55.454Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-29T15:23:38.780Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-29T16:48:53.971Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-01T02:32:01.798Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-08T02:32:01.798Z",
+      "lastFailureAt": "2026-07-01T02:32:01.798Z",
+      "lastCheckedAt": "2026-07-01T02:32:01.798Z"
+    },
     {
       "id": "barking-dagenham-council-news",
       "provider": "Barking and Dagenham Council a News",
