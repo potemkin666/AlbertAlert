@@ -1,87 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-01T20:14:43.757Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-07-01T21:11:04.331Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1,
-    "anti-bot-protection": 1
+    "timeout": 1
   },
   "byKind": {
-    "rss": 1,
-    "html": 1
+    "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "parliament-all-bills-rss",
+      "provider": "Parliament - All Bills RSS",
+      "endpoint": "https://bills.parliament.uk/rss/allbills.rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "timeout",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "parliament-all-bills-rss",
+      "provider": "Parliament - All Bills RSS",
+      "endpoint": "https://bills.parliament.uk/rss/allbills.rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "timeout",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
