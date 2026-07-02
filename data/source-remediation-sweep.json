@@ -1,11 +1,120 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-02T05:31:20.048Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-07-02T06:39:37.438Z",
+  "totalSourceErrors": 3,
+  "byCategory": {
+    "brittle-selectors-or-js-rendering": 1,
+    "blocked-or-auth": 2
+  },
+  "byKind": {
+    "html": 3
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 3,
+  "top20": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-home-affairs-committee",
+      "provider": "UK Parliament a Home Affairs Committee (News)",
+      "endpoint": "https://committees.parliament.uk/committee/83/home-affairs-committee/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-home-affairs-committee",
+      "provider": "UK Parliament a Home Affairs Committee (News)",
+      "endpoint": "https://committees.parliament.uk/committee/83/home-affairs-committee/news/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
