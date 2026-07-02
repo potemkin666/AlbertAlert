@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-02T13:39:47.288Z",
+  "generatedAt": "2026-07-02T14:58:57.646Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "lifestylelinked",
-      "provider": "Life. Style. Linked",
-      "endpoint": "https://lifestylelinked.com/feed/",
+      "id": "eu-home-affairs-news",
+      "provider": "European Commission - Home Affairs News",
+      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
