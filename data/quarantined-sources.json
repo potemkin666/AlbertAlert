@@ -1,16 +1,114 @@
 {
-  "generatedAt": "2026-07-03T11:22:30.044Z",
-  "count": 237,
+  "generatedAt": "2026-07-03T12:24:05.360Z",
+  "count": 239,
   "metrics": {
-    "total": 237,
-    "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 1421,
+    "total": 239,
+    "newThisWeek": 9,
+    "avgTimeInQuarantineHours": 1410,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "eppo-news-node-7",
+      "provider": "European Public Prosecutor's Office - News (RSS)",
+      "endpoint": "https://www.eppo.europa.eu/en/news.xml",
+      "kind": "rss",
+      "lane": "oversight",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-07-03T12:24:05.360Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-25T09:49:56.475Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-27T10:19:24.014Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-29T11:53:23.130Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-01T12:11:26.000Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-03T12:24:05.360Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-10T12:24:05.360Z",
+      "lastFailureAt": "2026-07-03T12:24:05.360Z",
+      "lastCheckedAt": "2026-07-03T12:24:05.360Z"
+    },
+    {
+      "id": "eu-eppo-news",
+      "provider": "European Public Prosecutor's Office - News",
+      "endpoint": "https://www.eppo.europa.eu/en/news",
+      "kind": "html",
+      "lane": "oversight",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-07-03T12:24:05.360Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-25T09:49:56.475Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-27T10:19:24.014Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-29T11:53:23.130Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-01T12:11:26.000Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-03T12:24:05.360Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-10T12:24:05.360Z",
+      "lastFailureAt": "2026-07-03T12:24:05.360Z",
+      "lastCheckedAt": "2026-07-03T12:24:05.360Z"
+    },
     {
       "id": "west-yorkshire-police-news",
       "provider": "West Yorkshire Police a News",
