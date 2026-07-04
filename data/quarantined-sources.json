@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-04T21:56:31.829Z",
-  "count": 238,
+  "generatedAt": "2026-07-04T22:24:53.719Z",
+  "count": 237,
   "metrics": {
-    "total": 238,
-    "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 1448,
+    "total": 237,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 1454,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -255,55 +255,6 @@
       "reviewBy": "2026-07-10T03:21:21.570Z",
       "lastFailureAt": "2026-07-03T03:21:21.570Z",
       "lastCheckedAt": "2026-07-03T03:21:21.570Z"
-    },
-    {
-      "id": "institute-global-home",
-      "provider": "Institute for Global Change",
-      "endpoint": "https://institute.global/insights",
-      "kind": "html",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-06-30T21:39:16.943Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 7,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 7,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-24T20:12:25.279Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-26T21:12:17.947Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-28T21:36:59.932Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-30T21:39:16.943Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-02T22:03:45.212Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-07-09T22:03:45.212Z",
-      "lastFailureAt": "2026-07-02T22:03:45.212Z",
-      "lastCheckedAt": "2026-07-02T22:03:45.212Z"
     },
     {
       "id": "eu-cellar-rss-atom",
