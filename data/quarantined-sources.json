@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-04T17:35:12.504Z",
-  "count": 237,
+  "generatedAt": "2026-07-04T17:54:27.705Z",
+  "count": 238,
   "metrics": {
-    "total": 237,
-    "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 1450,
+    "total": 238,
+    "newThisWeek": 7,
+    "avgTimeInQuarantineHours": 1444,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "tenura",
+      "provider": "Tenura",
+      "endpoint": "https://www.tenura.co.uk/rss.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-07-04T17:54:27.705Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-26T16:20:26.949Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-28T16:36:20.452Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-06-30T16:58:09.240Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-02T17:38:29.335Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-04T17:54:27.705Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-11T17:54:27.705Z",
+      "lastFailureAt": "2026-07-04T17:54:27.705Z",
+      "lastCheckedAt": "2026-07-04T17:54:27.705Z"
+    },
     {
       "id": "eppo-news-node-7",
       "provider": "European Public Prosecutor's Office - News (RSS)",
@@ -465,16 +514,11 @@
       "quarantinedAt": "2026-06-18T13:51:30.830Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 13,
+      "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-24T15:35:14.420Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -494,12 +538,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-02T17:38:29.335Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-04T17:54:27.705Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-09T17:38:29.335Z",
-      "lastFailureAt": "2026-07-02T17:38:29.335Z",
-      "lastCheckedAt": "2026-07-02T17:38:29.335Z"
+      "reviewBy": "2026-07-11T17:54:27.705Z",
+      "lastFailureAt": "2026-07-04T17:54:27.705Z",
+      "lastCheckedAt": "2026-07-04T17:54:27.705Z"
     },
     {
       "id": "policia-nacional-news",
@@ -906,16 +955,11 @@
       "quarantinedAt": "2026-05-10T12:18:47.514Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 31,
+      "consecutiveBlockedFailures": 32,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-06-24T15:35:14.420Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -935,12 +979,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-02T17:38:29.335Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-04T17:54:27.705Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-09T17:38:29.335Z",
-      "lastFailureAt": "2026-07-02T17:38:29.335Z",
-      "lastCheckedAt": "2026-07-02T17:38:29.335Z"
+      "reviewBy": "2026-07-11T17:54:27.705Z",
+      "lastFailureAt": "2026-07-04T17:54:27.705Z",
+      "lastCheckedAt": "2026-07-04T17:54:27.705Z"
     },
     {
       "id": "ec-ministry-interior-open-data",
@@ -1102,16 +1151,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 35,
+      "consecutiveFailures": 36,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-24T15:35:14.420Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1131,12 +1175,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-07-02T17:38:29.335Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-04T17:54:27.705Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-09T17:38:29.335Z",
-      "lastFailureAt": "2026-07-02T17:38:29.335Z",
-      "lastCheckedAt": "2026-07-02T17:38:29.335Z"
+      "reviewBy": "2026-07-11T17:54:27.705Z",
+      "lastFailureAt": "2026-07-04T17:54:27.705Z",
+      "lastCheckedAt": "2026-07-04T17:54:27.705Z"
     },
     {
       "id": "netherlands-om-terrorismefinanciering-nieuws",
@@ -1151,16 +1200,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 35,
+      "consecutiveFailures": 36,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-06-24T15:35:14.420Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1180,12 +1224,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-07-02T17:38:29.335Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-04T17:54:27.705Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-09T17:38:29.335Z",
-      "lastFailureAt": "2026-07-02T17:38:29.335Z",
-      "lastCheckedAt": "2026-07-02T17:38:29.335Z"
+      "reviewBy": "2026-07-11T17:54:27.705Z",
+      "lastFailureAt": "2026-07-04T17:54:27.705Z",
+      "lastCheckedAt": "2026-07-04T17:54:27.705Z"
     },
     {
       "id": "hedayah-news",
