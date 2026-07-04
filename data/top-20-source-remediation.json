@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-04T01:47:03.679Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-07-04T03:18:22.799Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
       "finalUrl": "",
       "category": "timeout",
       "statusKind": "",
@@ -17,23 +17,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "north-wales-community-alert",
-      "provider": "North Wales Community Alert",
-      "endpoint": "https://www.northwalescommunityalert.co.uk/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     }
