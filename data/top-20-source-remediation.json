@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-04T15:30:37.048Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-04T16:02:00.784Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "osce-press-releases",
+      "provider": "OSCE a Press Releases",
+      "endpoint": "https://news.osce.org/news/list?item_type=press-release&lang=en&page=1",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
