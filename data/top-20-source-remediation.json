@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-05T20:56:33.721Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-07-05T21:28:39.676Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
