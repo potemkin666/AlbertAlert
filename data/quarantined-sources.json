@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-05T18:38:42.013Z",
-  "count": 239,
+  "generatedAt": "2026-07-05T18:59:31.071Z",
+  "count": 240,
   "metrics": {
-    "total": 239,
-    "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 1462,
+    "total": 240,
+    "newThisWeek": 8,
+    "avgTimeInQuarantineHours": 1456,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "evening-shire",
+      "provider": "Evening Shire",
+      "endpoint": "https://eveningshire.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-05T18:59:31.071Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-27T17:31:52.642Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-06-29T18:00:39.274Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-01T18:15:38.090Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-03T18:35:56.017Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-07-05T18:59:31.071Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-12T18:59:31.071Z",
+      "lastFailureAt": "2026-07-05T18:59:31.071Z",
+      "lastCheckedAt": "2026-07-05T18:59:31.071Z"
+    },
     {
       "id": "west-yorkshire-police-news-appeals",
       "provider": "West Yorkshire Police - News Appeals",
