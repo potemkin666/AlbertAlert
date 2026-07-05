@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-05T01:41:46.334Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-05T03:21:20.668Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "barking-dagenham-council-news",
+      "provider": "Barking and Dagenham Council a News",
+      "endpoint": "https://www.lbbd.gov.uk/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "royal-greenwich-news",
+      "provider": "Royal Borough of Greenwich a News",
+      "endpoint": "https://www.royalgreenwich.gov.uk/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-isc",
+      "provider": "UK Parliament a Intelligence and Security Committee (Reports & News)",
+      "endpoint": "https://isc.independent.gov.uk/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
