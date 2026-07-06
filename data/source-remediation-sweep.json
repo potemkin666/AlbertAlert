@@ -1,6 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-06T19:43:42.070Z",
+  "generatedAt": "2026-07-06T20:50:00.617Z",
   "totalSourceErrors": 1,
   "byCategory": {
     "http-status-error": 1
@@ -12,9 +12,9 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "west-yorkshire-police-missing-rss",
-      "provider": "West Yorkshire Police - Missing",
-      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
       "category": "http-status-error",
       "statusKind": "",
@@ -24,16 +24,16 @@
       "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "west-yorkshire-police-missing-rss",
-      "provider": "West Yorkshire Police - Missing",
-      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
       "category": "http-status-error",
       "statusKind": "",
@@ -43,7 +43,7 @@
       "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
