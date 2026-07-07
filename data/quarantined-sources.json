@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-07T06:42:12.389Z",
+  "generatedAt": "2026-07-07T06:55:25.877Z",
   "count": 240,
   "metrics": {
     "total": 240,
@@ -9803,13 +9803,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-07-07T06:42:12.389Z"
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "sk-defence-press",
@@ -9852,13 +9852,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-07-07T06:42:12.389Z"
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "ec-police-news",
@@ -9901,13 +9901,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-07-07T06:42:12.389Z"
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "ec-uafe-aml-cft",
@@ -9920,11 +9920,11 @@
       "status": "auto-quarantined",
       "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 39,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 6,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -9948,15 +9948,15 @@
           "at": "2026-07-05T06:30:19.615Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-07-07T06:42:12.389Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "ec-nctc-los-lobos",
@@ -9999,13 +9999,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-07-07T06:42:12.389Z"
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "uk-sanctions-list",
@@ -10048,13 +10048,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-07-07T06:42:12.389Z"
+          "at": "2026-07-07T06:55:25.877Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T06:42:12.389Z",
-      "lastFailureAt": "2026-07-07T06:42:12.389Z",
-      "lastCheckedAt": "2026-07-07T06:42:12.389Z"
+      "reviewBy": "2026-07-14T06:55:25.877Z",
+      "lastFailureAt": "2026-07-07T06:55:25.877Z",
+      "lastCheckedAt": "2026-07-07T06:55:25.877Z"
     },
     {
       "id": "statewatch-news",
