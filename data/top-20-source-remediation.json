@@ -1,46 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-07T16:59:32.926Z",
-  "totalSourceErrors": 4,
+  "generatedAt": "2026-07-07T17:44:28.022Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "policia-nacional-news",
-      "provider": "Policia Nacional - Press",
-      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
-      "finalUrl": "https://www.policia.es/_es/cookies.php",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "zerohedge-feed",
-      "provider": "Zero. Hedge",
-      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -53,23 +19,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "ocam-be-english",
-      "provider": "CUTA (Belgium) threat analysis",
-      "endpoint": "https://cuta.belgium.be/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
