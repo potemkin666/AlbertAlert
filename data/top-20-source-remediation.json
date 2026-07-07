@@ -1,25 +1,8 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-07T14:27:25.551Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-07-07T15:38:44.784Z",
+  "totalSourceErrors": 1,
   "top20": [
-    {
-      "id": "brent-council-news",
-      "provider": "Brent Council a News",
-      "endpoint": "https://www.brent.gov.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
     {
       "id": "zerohedge-feed",
       "provider": "Zero. Hedge",
@@ -36,23 +19,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "belgium-crisis-centre-news",
-      "provider": "Centre de Crise - Newsroom",
-      "endpoint": "https://centredecrise.be/fr/newsroom",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
