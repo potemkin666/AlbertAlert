@@ -1,51 +1,86 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-09T15:14:21.478Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-07-09T16:27:05.892Z",
+  "totalSourceErrors": 2,
   "byCategory": {
-    "brittle-selectors-or-js-rendering": 1
+    "network-failure": 1,
+    "timeout": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 2
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 2,
   "top20": [
     {
-      "id": "secret-london-rss",
-      "provider": "Secret London",
-      "endpoint": "https://secretldn.com/feed/",
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
+    },
+    {
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "secret-london-rss",
-      "provider": "Secret London",
-      "endpoint": "https://secretldn.com/feed/",
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
+    },
+    {
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
