@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-09T16:27:05.892Z",
-  "count": 239,
+  "generatedAt": "2026-07-09T17:21:26.126Z",
+  "count": 240,
   "metrics": {
-    "total": 239,
-    "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 1555,
+    "total": 240,
+    "newThisWeek": 7,
+    "avgTimeInQuarantineHours": 1550,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "ocam-be-english",
+      "provider": "CUTA (Belgium) threat analysis",
+      "endpoint": "https://cuta.belgium.be/",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "europe",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-07-09T17:21:26.126Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-01T15:34:19.048Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-03T16:13:50.805Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-05T16:29:15.332Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-07T16:59:32.926Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-09T17:21:26.126Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-16T17:21:26.126Z",
+      "lastFailureAt": "2026-07-09T17:21:26.126Z",
+      "lastCheckedAt": "2026-07-09T17:21:26.126Z"
+    },
     {
       "id": "paris-prefecture-police-press-releases",
       "provider": "Paris Prefecture of Police - Press Releases",
@@ -612,16 +661,11 @@
       "quarantinedAt": "2026-06-17T09:19:30.948Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 16,
+      "consecutiveFailures": 17,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-06-29T13:48:55.454Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -641,12 +685,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-07T16:59:32.926Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-09T17:21:26.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-14T16:59:32.926Z",
-      "lastFailureAt": "2026-07-07T16:59:32.926Z",
-      "lastCheckedAt": "2026-07-07T16:59:32.926Z"
+      "reviewBy": "2026-07-16T17:21:26.126Z",
+      "lastFailureAt": "2026-07-09T17:21:26.126Z",
+      "lastCheckedAt": "2026-07-09T17:21:26.126Z"
     },
     {
       "id": "chathamhouse-intl-security-feed",
