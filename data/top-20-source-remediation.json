@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-10T20:03:59.553Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "stay-in-the-know-latest-alerts",
-      "provider": "Stay In The Know - Latest Alerts",
-      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-07-10T21:01:19.259Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
