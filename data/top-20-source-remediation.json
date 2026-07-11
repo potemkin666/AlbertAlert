@@ -1,17 +1,17 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-11T21:51:03.772Z",
+  "generatedAt": "2026-07-11T22:27:39.969Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
+      "id": "church-of-england-newspaper",
+      "provider": "Church of England Newspaper",
+      "endpoint": "https://www.churchnewspaper.com/feed",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",

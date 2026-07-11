@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-11T21:51:03.772Z",
-  "count": 241,
+  "generatedAt": "2026-07-11T22:27:39.969Z",
+  "count": 242,
   "metrics": {
-    "total": 241,
-    "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 1596,
+    "total": 242,
+    "newThisWeek": 6,
+    "avgTimeInQuarantineHours": 1590,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "church-of-england-newspaper",
+      "provider": "Church of England Newspaper",
+      "endpoint": "https://www.churchnewspaper.com/feed",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-07-11T22:27:39.969Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-03T20:32:28.658Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-05T20:56:33.721Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-07T21:35:02.268Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-09T22:08:57.261Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-11T22:27:39.969Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-18T22:27:39.969Z",
+      "lastFailureAt": "2026-07-11T22:27:39.969Z",
+      "lastCheckedAt": "2026-07-11T22:27:39.969Z"
+    },
     {
       "id": "counter-terrorism-policing-uk-rss",
       "provider": "Counter Terrorism Policing UK",
