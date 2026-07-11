@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-11T19:57:40.486Z",
+  "generatedAt": "2026-07-11T20:23:53.506Z",
   "count": 241,
   "metrics": {
     "total": 241,
@@ -169,18 +169,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-07-05T18:59:31.071Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 8,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-01T18:15:38.090Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -200,12 +195,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-07-09T20:15:26.699Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-11T20:23:53.506Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-16T20:15:26.699Z",
-      "lastFailureAt": "2026-07-09T20:15:26.699Z",
-      "lastCheckedAt": "2026-07-09T20:15:26.699Z"
+      "reviewBy": "2026-07-18T20:23:53.506Z",
+      "lastFailureAt": "2026-07-11T20:23:53.506Z",
+      "lastCheckedAt": "2026-07-11T20:23:53.506Z"
     },
     {
       "id": "jamestown-terrorism-monitor",
