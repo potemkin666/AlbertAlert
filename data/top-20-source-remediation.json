@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-12T17:52:51.250Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-12T18:30:19.986Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "stay-in-the-know-home",
+      "provider": "Stay In The Know - Community Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
