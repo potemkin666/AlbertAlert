@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-12T10:07:19.082Z",
-  "count": 242,
+  "generatedAt": "2026-07-12T11:05:39.575Z",
+  "count": 243,
   "metrics": {
-    "total": 242,
+    "total": 243,
     "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 1601,
+    "avgTimeInQuarantineHours": 1596,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-12T11:05:39.575Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-04T08:26:36.792Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-06T08:45:18.784Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-08T09:27:35.135Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-10T10:41:40.703Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-12T11:05:39.575Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-19T11:05:39.575Z",
+      "lastFailureAt": "2026-07-12T11:05:39.575Z",
+      "lastCheckedAt": "2026-07-12T11:05:39.575Z"
+    },
     {
       "id": "church-of-england-newspaper",
       "provider": "Church of England Newspaper",
