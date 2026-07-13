@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-13T17:43:21.236Z",
+  "generatedAt": "2026-07-13T18:45:32.168Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "moved-temporarily": 1
+    "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "policia-nacional-news",
-      "provider": "Policia Nacional - Press",
-      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
-      "finalUrl": "https://www.policia.es/_es/cookies.php",
-      "category": "moved-temporarily",
+      "id": "secret-london-rss",
+      "provider": "Secret London",
+      "endpoint": "https://secretldn.com/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
       "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "policia-nacional-news",
-      "provider": "Policia Nacional - Press",
-      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
-      "finalUrl": "https://www.policia.es/_es/cookies.php",
-      "category": "moved-temporarily",
+      "id": "secret-london-rss",
+      "provider": "Secret London",
+      "endpoint": "https://secretldn.com/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
       "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
