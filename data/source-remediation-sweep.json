@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-13T17:00:22.207Z",
+  "generatedAt": "2026-07-13T17:43:21.236Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "moved-temporarily": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "independent-top-stories",
-      "provider": "The Independent - Top Stories",
-      "endpoint": "https://www.independent.co.uk/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "finalUrl": "https://www.policia.es/_es/cookies.php",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "No items parsed from source payload",
       "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "independent-top-stories",
-      "provider": "The Independent - Top Stories",
-      "endpoint": "https://www.independent.co.uk/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "finalUrl": "https://www.policia.es/_es/cookies.php",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "No items parsed from source payload",
       "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
