@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-14T10:44:23.302Z",
+  "generatedAt": "2026-07-14T11:36:51.204Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "hammersmith-fulham-news",
-      "provider": "Hammersmith and Fulham Council a News",
-      "endpoint": "https://www.lbhf.gov.uk/news",
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
