@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-14T20:37:25.217Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "blocked-or-auth": 1
-  },
-  "byKind": {
-    "html": 1
-  },
+  "generatedAt": "2026-07-14T20:57:32.108Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://politiaromana.ro/en",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://politiaromana.ro/en",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
