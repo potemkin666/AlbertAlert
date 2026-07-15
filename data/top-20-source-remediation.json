@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-15T22:51:49.580Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-15T23:30:07.703Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "church-of-england-newspaper",
+      "provider": "Church of England Newspaper",
+      "endpoint": "https://www.churchnewspaper.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
