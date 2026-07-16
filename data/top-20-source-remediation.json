@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-16T08:54:38.709Z",
+  "generatedAt": "2026-07-16T09:53:34.679Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "reddit-unitedkingdom-rss",
-      "provider": "Reddit - r/unitedkingdom",
-      "endpoint": "https://www.reddit.com/r/unitedkingdom/.rss",
+      "id": "euaa-news",
+      "provider": "EUAA (EU Agency for Asylum) - Press Releases",
+      "endpoint": "https://euaa.europa.eu/news-events/press-releases",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "timeout",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
+      "message": "This operation was aborted",
+      "status": 0,
       "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "border",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
