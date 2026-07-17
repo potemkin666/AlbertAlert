@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-17T18:01:32.649Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "blocked-or-auth": 1,
-    "unknown": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "clingendael-publications",
-      "provider": "European Council on Foreign Relations (ECFR)",
-      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-cifas-newsroom",
-      "provider": "Cifas - Newsroom",
-      "endpoint": "https://www.cifas.org.uk/newsroom",
-      "finalUrl": "",
-      "category": "unknown",
-      "statusKind": "",
-      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "clingendael-publications",
-      "provider": "European Council on Foreign Relations (ECFR)",
-      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-cifas-newsroom",
-      "provider": "Cifas - Newsroom",
-      "endpoint": "https://www.cifas.org.uk/newsroom",
-      "finalUrl": "",
-      "category": "unknown",
-      "statusKind": "",
-      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-07-17T18:29:08.433Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
