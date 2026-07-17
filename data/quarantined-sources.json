@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-17T13:37:22.687Z",
-  "count": 240,
+  "generatedAt": "2026-07-17T14:43:55.867Z",
+  "count": 241,
   "metrics": {
-    "total": 240,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1729,
+    "total": 241,
+    "newThisWeek": 4,
+    "avgTimeInQuarantineHours": 1723,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "ealing-council-news",
+      "provider": "Ealing Council a News",
+      "endpoint": "https://www.ealing.gov.uk/news",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-17T14:43:55.867Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-09T12:17:04.834Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-11T12:31:40.650Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-13T13:27:09.968Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-15T13:37:26.623Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-17T14:43:55.867Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-24T14:43:55.867Z",
+      "lastFailureAt": "2026-07-17T14:43:55.867Z",
+      "lastCheckedAt": "2026-07-17T14:43:55.867Z"
+    },
     {
       "id": "rewards-for-justice",
       "provider": "U.S. Department of State - Rewards for Justice",
@@ -269,16 +318,11 @@
       "quarantinedAt": "2026-07-05T10:25:03.760Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-07T11:13:02.517Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -298,12 +342,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-15T13:37:26.623Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-17T14:43:55.867Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-22T13:37:26.623Z",
-      "lastFailureAt": "2026-07-15T13:37:26.623Z",
-      "lastCheckedAt": "2026-07-15T13:37:26.623Z"
+      "reviewBy": "2026-07-24T14:43:55.867Z",
+      "lastFailureAt": "2026-07-17T14:43:55.867Z",
+      "lastCheckedAt": "2026-07-17T14:43:55.867Z"
     },
     {
       "id": "tenura",
