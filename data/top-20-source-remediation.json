@@ -1,8 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-17T04:42:23.397Z",
+  "generatedAt": "2026-07-17T06:02:44.161Z",
   "totalSourceErrors": 2,
   "top20": [
+    {
+      "id": "byline-times-feed",
+      "provider": "Byline Times",
+      "endpoint": "https://bylinetimes.com/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "zerohedge-feed",
       "provider": "Zero. Hedge",
@@ -19,23 +36,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "osce-press-releases",
-      "provider": "OSCE a Press Releases",
-      "endpoint": "https://news.osce.org/news/list?item_type=press-release&lang=en&page=1",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
