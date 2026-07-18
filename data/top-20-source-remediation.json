@@ -1,41 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-18T00:43:56.442Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-07-18T01:44:46.626Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "ian-visits-rss",
-      "provider": "Ian. Visits",
-      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
+      "id": "ec-wola-ecuador-bukele-model",
+      "provider": "WOLA - Ecuador security analysis",
+      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
