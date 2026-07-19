@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-19T10:07:39.939Z",
+  "generatedAt": "2026-07-19T11:06:18.420Z",
   "count": 241,
   "metrics": {
     "total": 241,
     "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1762,
+    "avgTimeInQuarantineHours": 1763,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -9873,16 +9873,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 44,
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-07-09T07:58:55.627Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -9902,12 +9897,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-07-17T10:43:56.873Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-19T11:06:18.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T10:43:56.873Z",
-      "lastFailureAt": "2026-07-17T10:43:56.873Z",
-      "lastCheckedAt": "2026-07-17T10:43:56.873Z"
+      "reviewBy": "2026-07-26T11:06:18.420Z",
+      "lastFailureAt": "2026-07-19T11:06:18.420Z",
+      "lastCheckedAt": "2026-07-19T11:06:18.420Z"
     },
     {
       "id": "ec-police-news",
@@ -9922,16 +9922,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 44,
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-07-09T07:58:55.627Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -9951,12 +9946,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-07-17T10:43:56.873Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-07-19T11:06:18.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T10:43:56.873Z",
-      "lastFailureAt": "2026-07-17T10:43:56.873Z",
-      "lastCheckedAt": "2026-07-17T10:43:56.873Z"
+      "reviewBy": "2026-07-26T11:06:18.420Z",
+      "lastFailureAt": "2026-07-19T11:06:18.420Z",
+      "lastCheckedAt": "2026-07-19T11:06:18.420Z"
     },
     {
       "id": "ec-uafe-aml-cft",
@@ -9969,18 +9969,13 @@
       "status": "auto-quarantined",
       "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
-      "lastErrorCategory": "network-failure",
-      "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 44,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-09T07:58:55.627Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -10000,12 +9995,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-07-17T10:43:56.873Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-19T11:06:18.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T10:43:56.873Z",
-      "lastFailureAt": "2026-07-17T10:43:56.873Z",
-      "lastCheckedAt": "2026-07-17T10:43:56.873Z"
+      "reviewBy": "2026-07-26T11:06:18.420Z",
+      "lastFailureAt": "2026-07-19T11:06:18.420Z",
+      "lastCheckedAt": "2026-07-19T11:06:18.420Z"
     },
     {
       "id": "ec-nctc-los-lobos",
@@ -10020,16 +10020,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 44,
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-09T07:58:55.627Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -10049,12 +10044,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-17T10:43:56.873Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-19T11:06:18.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T10:43:56.873Z",
-      "lastFailureAt": "2026-07-17T10:43:56.873Z",
-      "lastCheckedAt": "2026-07-17T10:43:56.873Z"
+      "reviewBy": "2026-07-26T11:06:18.420Z",
+      "lastFailureAt": "2026-07-19T11:06:18.420Z",
+      "lastCheckedAt": "2026-07-19T11:06:18.420Z"
     },
     {
       "id": "uk-sanctions-list",
@@ -10069,16 +10069,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 44,
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-09T07:58:55.627Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -10098,12 +10093,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-17T10:43:56.873Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-19T11:06:18.420Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T10:43:56.873Z",
-      "lastFailureAt": "2026-07-17T10:43:56.873Z",
-      "lastCheckedAt": "2026-07-17T10:43:56.873Z"
+      "reviewBy": "2026-07-26T11:06:18.420Z",
+      "lastFailureAt": "2026-07-19T11:06:18.420Z",
+      "lastCheckedAt": "2026-07-19T11:06:18.420Z"
     },
     {
       "id": "statewatch-news",
