@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-19T09:21:50.987Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-07-19T10:07:39.939Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "de-brandenburg-police-overregional-rss",
-      "provider": "Brandenburg Police - Overregional RSS",
-      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "No items parsed from source payload",
+      "message": "Blocked by anti-bot protection",
       "status": 200,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "incidents",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }

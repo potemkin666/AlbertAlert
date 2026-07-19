@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-19T09:21:50.987Z",
-  "count": 240,
+  "generatedAt": "2026-07-19T10:07:39.939Z",
+  "count": 241,
   "metrics": {
-    "total": 240,
-    "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 1768,
+    "total": 241,
+    "newThisWeek": 3,
+    "avgTimeInQuarantineHours": 1762,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "kind": "html",
+      "lane": "oversight",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-19T10:07:39.939Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-11T06:54:57.343Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-13T07:47:12.461Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-15T09:01:02.112Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-17T09:41:17.754Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-19T10:07:39.939Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-26T10:07:39.939Z",
+      "lastFailureAt": "2026-07-19T10:07:39.939Z",
+      "lastCheckedAt": "2026-07-19T10:07:39.939Z"
+    },
     {
       "id": "ealing-council-news",
       "provider": "Ealing Council a News",
@@ -514,16 +563,11 @@
       "quarantinedAt": "2026-07-01T02:32:01.798Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-09T06:34:24.391Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -543,12 +587,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-17T09:41:17.754Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-19T10:07:39.939Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-24T09:41:17.754Z",
-      "lastFailureAt": "2026-07-17T09:41:17.754Z",
-      "lastCheckedAt": "2026-07-17T09:41:17.754Z"
+      "reviewBy": "2026-07-26T10:07:39.939Z",
+      "lastFailureAt": "2026-07-19T10:07:39.939Z",
+      "lastCheckedAt": "2026-07-19T10:07:39.939Z"
     },
     {
       "id": "police-ombudsman-current-investigations",
