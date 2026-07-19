@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-19T13:41:28.110Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-19T14:33:53.107Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "huffpost-uk",
+      "provider": "Huff. Post UK",
+      "endpoint": "https://www.huffingtonpost.co.uk/feeds/index.xml",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
