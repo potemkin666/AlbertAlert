@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-20T04:53:08.448Z",
+  "generatedAt": "2026-07-20T06:14:04.969Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "north-wales-community-alert",
-      "provider": "North Wales Community Alert",
-      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "id": "ec-csis-ecuador-crises",
+      "provider": "CSIS - Ecuador compounding crises",
+      "endpoint": "https://www.csis.org/analysis/eye-storm-ecuadors-compounding-crises",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "prevention",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
