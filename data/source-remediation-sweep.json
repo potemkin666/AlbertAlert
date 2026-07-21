@@ -1,14 +1,15 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-21T06:15:23.034Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-07-21T07:31:20.803Z",
+  "totalSourceErrors": 3,
   "byCategory": {
-    "anti-bot-protection": 1
+    "anti-bot-protection": 1,
+    "blocked-or-auth": 2
   },
   "byKind": {
-    "rss": 1
+    "rss": 3
   },
-  "machineReadableErrorCount": 1,
+  "machineReadableErrorCount": 3,
   "htmlErrorCount": 0,
   "top20": [
     {
@@ -19,6 +20,40 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "the-stratfordian",
+      "provider": "The Stratfordian",
+      "endpoint": "https://thestratfordian.co.uk/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
       "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -38,6 +73,40 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "the-stratfordian",
+      "provider": "The Stratfordian",
+      "endpoint": "https://thestratfordian.co.uk/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
       "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
