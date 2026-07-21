@@ -1,11 +1,86 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-21T09:28:28.483Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "generatedAt": "2026-07-21T10:21:23.053Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "anti-bot-protection": 2
+  },
+  "byKind": {
+    "rss": 1,
+    "html": 1
+  },
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
