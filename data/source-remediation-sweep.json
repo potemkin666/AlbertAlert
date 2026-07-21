@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-21T00:52:31.610Z",
+  "generatedAt": "2026-07-21T01:41:09.183Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "network-failure": 1
+    "http-status-error": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "allafrica-international-terrorism-rdf",
-      "provider": "All. Africa - International Terrorism",
-      "endpoint": "https://allafrica.com/tools/headlines/rdf/terrorism/headlines.rdf",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
+      "message": "HTTP 500",
+      "status": 500,
       "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "allafrica-international-terrorism-rdf",
-      "provider": "All. Africa - International Terrorism",
-      "endpoint": "https://allafrica.com/tools/headlines/rdf/terrorism/headlines.rdf",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
-      "category": "network-failure",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
+      "message": "HTTP 500",
+      "status": 500,
       "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
