@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-21T06:10:20.343Z",
-  "count": 240,
+  "generatedAt": "2026-07-21T06:15:23.034Z",
+  "count": 241,
   "metrics": {
-    "total": 240,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 1812,
+    "total": 241,
+    "newThisWeek": 4,
+    "avgTimeInQuarantineHours": 1804,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "byline-times-feed",
+      "provider": "Byline Times",
+      "endpoint": "https://bylinetimes.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-21T06:15:23.034Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-13T03:18:51.464Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-15T04:39:15.945Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-17T06:02:44.161Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-19T06:10:37.832Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-21T06:15:23.034Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-28T06:15:23.034Z",
+      "lastFailureAt": "2026-07-21T06:15:23.034Z",
+      "lastCheckedAt": "2026-07-21T06:15:23.034Z"
+    },
     {
       "id": "uk-iopc-news",
       "provider": "Independent Office for Police Conduct a News",
