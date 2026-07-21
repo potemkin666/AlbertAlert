@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-21T14:53:40.997Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-21T15:38:45.372Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "ealing-council-news",
+      "provider": "Ealing Council a News",
+      "endpoint": "https://www.ealing.gov.uk/news",
+      "finalUrl": "http://ealingnewsextra.co.uk/",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "http://ealingnewsextra.co.uk/",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "surgezirc-uk",
+      "provider": "Surge. Zirc UK",
+      "endpoint": "https://surgezirc.co.uk/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
