@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-21T03:18:11.837Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "bedfordshire-police-news",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 401",
-      "status": 401,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "bedfordshire-police-news-search",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news?source=bedfordshire-police-news-search",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 401",
-      "status": 401,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-07-21T04:45:28.812Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
