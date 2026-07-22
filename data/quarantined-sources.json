@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-22T00:51:22.312Z",
+  "generatedAt": "2026-07-22T01:41:25.799Z",
   "count": 244,
   "metrics": {
     "total": 244,
     "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 1800,
+    "avgTimeInQuarantineHours": 1801,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -367,16 +367,11 @@
       "quarantinedAt": "2026-07-11T22:27:39.969Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-07-11T22:27:39.969Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -396,12 +391,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-07-20T00:55:46.797Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-22T01:41:25.799Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-27T00:55:46.797Z",
-      "lastFailureAt": "2026-07-20T00:55:46.797Z",
-      "lastCheckedAt": "2026-07-20T00:55:46.797Z"
+      "reviewBy": "2026-07-29T01:41:25.799Z",
+      "lastFailureAt": "2026-07-22T01:41:25.799Z",
+      "lastCheckedAt": "2026-07-22T01:41:25.799Z"
     },
     {
       "id": "counter-terrorism-policing-uk-rss",
