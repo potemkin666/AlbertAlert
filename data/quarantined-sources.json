@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-23T13:11:33.514Z",
+  "generatedAt": "2026-07-23T14:26:17.475Z",
   "count": 244,
   "metrics": {
     "total": 244,
     "newThisWeek": 8,
-    "avgTimeInQuarantineHours": 1833,
+    "avgTimeInQuarantineHours": 1834,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -72,17 +72,12 @@
       "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 6,
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-07-13T10:45:48.879Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -102,12 +97,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-07-21T13:09:10.875Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-23T14:26:17.475Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-28T13:09:10.875Z",
-      "lastFailureAt": "2026-07-21T13:09:10.875Z",
-      "lastCheckedAt": "2026-07-21T13:09:10.875Z"
+      "reviewBy": "2026-07-30T14:26:17.475Z",
+      "lastFailureAt": "2026-07-23T14:26:17.475Z",
+      "lastCheckedAt": "2026-07-23T14:26:17.475Z"
     },
     {
       "id": "royal-greenwich-news",
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-07-13T10:45:48.879Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -151,12 +146,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-07-21T13:09:10.875Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-07-23T14:26:17.475Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-28T13:09:10.875Z",
-      "lastFailureAt": "2026-07-21T13:09:10.875Z",
-      "lastCheckedAt": "2026-07-21T13:09:10.875Z"
+      "reviewBy": "2026-07-30T14:26:17.475Z",
+      "lastFailureAt": "2026-07-23T14:26:17.475Z",
+      "lastCheckedAt": "2026-07-23T14:26:17.475Z"
     },
     {
       "id": "uk-parliament-isc",
@@ -171,16 +171,11 @@
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-07-13T10:45:48.879Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -200,12 +195,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-07-21T13:09:10.875Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-07-23T14:26:17.475Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-28T13:09:10.875Z",
-      "lastFailureAt": "2026-07-21T13:09:10.875Z",
-      "lastCheckedAt": "2026-07-21T13:09:10.875Z"
+      "reviewBy": "2026-07-30T14:26:17.475Z",
+      "lastFailureAt": "2026-07-23T14:26:17.475Z",
+      "lastCheckedAt": "2026-07-23T14:26:17.475Z"
     },
     {
       "id": "byline-times-feed",
