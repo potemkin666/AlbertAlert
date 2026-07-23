@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-23T20:36:31.794Z",
-  "count": 247,
+  "generatedAt": "2026-07-23T20:55:59.252Z",
+  "count": 248,
   "metrics": {
-    "total": 247,
-    "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 1818,
+    "total": 248,
+    "newThisWeek": 12,
+    "avgTimeInQuarantineHours": 1811,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "secret-london-rss",
+      "provider": "Secret London",
+      "endpoint": "https://secretldn.com/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-07-23T20:55:59.252Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-15T19:00:20.464Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-17T19:36:26.542Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-19T20:05:04.777Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-21T20:49:50.326Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-23T20:55:59.252Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-30T20:55:59.252Z",
+      "lastFailureAt": "2026-07-23T20:55:59.252Z",
+      "lastCheckedAt": "2026-07-23T20:55:59.252Z"
+    },
     {
       "id": "institute-global-home",
       "provider": "Institute for Global Change",
