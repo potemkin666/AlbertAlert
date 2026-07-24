@@ -1,86 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-24T03:17:38.924Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-07-24T04:45:22.253Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1,
-    "anti-bot-protection": 1
+    "http-status-error": 1
   },
   "byKind": {
-    "rss": 2
+    "html": 1
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "eu-home-affairs-news",
+      "provider": "European Commission - Home Affairs News",
+      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "guido-fawkes-feed",
-      "provider": "Guido Fawkes",
-      "endpoint": "https://order-order.com/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "eu-home-affairs-news",
+      "provider": "European Commission - Home Affairs News",
+      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "guido-fawkes-feed",
-      "provider": "Guido Fawkes",
-      "endpoint": "https://order-order.com/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
