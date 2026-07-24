@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-24T09:26:19.602Z",
-  "count": 248,
+  "generatedAt": "2026-07-24T10:20:09.295Z",
+  "count": 249,
   "metrics": {
-    "total": 248,
-    "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 1823,
+    "total": 249,
+    "newThisWeek": 12,
+    "avgTimeInQuarantineHours": 1817,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
+      "kind": "html",
+      "lane": "context",
+      "region": "europe",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-07-24T10:20:09.295Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-16T06:58:50.354Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-07-18T07:43:04.939Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-20T09:18:05.817Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-22T09:28:34.958Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-24T10:20:09.295Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-07-31T10:20:09.295Z",
+      "lastFailureAt": "2026-07-24T10:20:09.295Z",
+      "lastCheckedAt": "2026-07-24T10:20:09.295Z"
+    },
     {
       "id": "secret-london-rss",
       "provider": "Secret London",
