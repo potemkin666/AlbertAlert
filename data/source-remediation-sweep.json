@@ -1,20 +1,20 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-24T04:45:22.253Z",
+  "generatedAt": "2026-07-24T06:08:18.820Z",
   "totalSourceErrors": 1,
   "byCategory": {
     "http-status-error": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "eu-home-affairs-news",
-      "provider": "European Commission - Home Affairs News",
-      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
+      "id": "reddit-unitedkingdom-rss",
+      "provider": "Reddit - r/unitedkingdom",
+      "endpoint": "https://www.reddit.com/r/unitedkingdom/.rss",
       "finalUrl": "",
       "category": "http-status-error",
       "statusKind": "",
@@ -23,17 +23,17 @@
       "rankScore": 1,
       "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "eu-home-affairs-news",
-      "provider": "European Commission - Home Affairs News",
-      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
+      "id": "reddit-unitedkingdom-rss",
+      "provider": "Reddit - r/unitedkingdom",
+      "endpoint": "https://www.reddit.com/r/unitedkingdom/.rss",
       "finalUrl": "",
       "category": "http-status-error",
       "statusKind": "",
@@ -42,10 +42,10 @@
       "rankScore": 1,
       "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
