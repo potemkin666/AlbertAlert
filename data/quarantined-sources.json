@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-25T07:50:58.870Z",
-  "count": 249,
+  "generatedAt": "2026-07-25T08:49:09.009Z",
+  "count": 248,
   "metrics": {
-    "total": 249,
-    "newThisWeek": 12,
-    "avgTimeInQuarantineHours": 1837,
+    "total": 248,
+    "newThisWeek": 11,
+    "avgTimeInQuarantineHours": 1845,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -500,55 +500,6 @@
       "reviewBy": "2026-07-30T14:26:17.475Z",
       "lastFailureAt": "2026-07-23T14:26:17.475Z",
       "lastCheckedAt": "2026-07-23T14:26:17.475Z"
-    },
-    {
-      "id": "byline-times-feed",
-      "provider": "Byline Times",
-      "endpoint": "https://bylinetimes.com/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-07-21T07:31:20.803Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 7,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-15T04:39:15.945Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-17T06:02:44.161Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-19T06:10:37.832Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-21T07:31:20.803Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-23T08:21:19.821Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-07-30T08:21:19.821Z",
-      "lastFailureAt": "2026-07-23T08:21:19.821Z",
-      "lastCheckedAt": "2026-07-23T08:21:19.821Z"
     },
     {
       "id": "uk-iopc-news",
