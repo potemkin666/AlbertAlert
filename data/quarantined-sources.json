@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-07-25T16:52:26.267Z",
-  "count": 248,
+  "generatedAt": "2026-07-25T17:31:54.065Z",
+  "count": 249,
   "metrics": {
-    "total": 248,
-    "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 1853,
+    "total": 249,
+    "newThisWeek": 12,
+    "avgTimeInQuarantineHours": 1846,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "surgezirc-uk",
+      "provider": "Surge. Zirc UK",
+      "endpoint": "https://surgezirc.co.uk/feed/",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-07-25T17:31:54.065Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-17T14:43:55.867Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-19T15:32:17.318Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-21T15:38:45.372Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-23T17:08:39.698Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-25T17:31:54.065Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-01T17:31:54.065Z",
+      "lastFailureAt": "2026-07-25T17:31:54.065Z",
+      "lastCheckedAt": "2026-07-25T17:31:54.065Z"
+    },
     {
       "id": "west-yorkshire-police-news",
       "provider": "West Yorkshire Police a News",
@@ -563,16 +612,11 @@
       "quarantinedAt": "2026-07-17T14:43:55.867Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 9,
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 9,
+      "consecutiveBlockedFailures": 10,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-15T13:37:26.623Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -592,12 +636,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-23T17:08:39.698Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-25T17:31:54.065Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-30T17:08:39.698Z",
-      "lastFailureAt": "2026-07-23T17:08:39.698Z",
-      "lastCheckedAt": "2026-07-23T17:08:39.698Z"
+      "reviewBy": "2026-08-01T17:31:54.065Z",
+      "lastFailureAt": "2026-07-25T17:31:54.065Z",
+      "lastCheckedAt": "2026-07-25T17:31:54.065Z"
     },
     {
       "id": "rewards-for-justice",
@@ -759,16 +808,11 @@
       "quarantinedAt": "2026-07-05T10:25:03.760Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 15,
+      "consecutiveFailures": 16,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-15T13:37:26.623Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -788,12 +832,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-23T17:08:39.698Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-25T17:31:54.065Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-30T17:08:39.698Z",
-      "lastFailureAt": "2026-07-23T17:08:39.698Z",
-      "lastCheckedAt": "2026-07-23T17:08:39.698Z"
+      "reviewBy": "2026-08-01T17:31:54.065Z",
+      "lastFailureAt": "2026-07-25T17:31:54.065Z",
+      "lastCheckedAt": "2026-07-25T17:31:54.065Z"
     },
     {
       "id": "tenura",
