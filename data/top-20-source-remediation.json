@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-25T03:17:11.629Z",
+  "generatedAt": "2026-07-25T04:42:49.293Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "gov-uk-parliament-jcnss",
-      "provider": "Gov. Wire - Home Office",
-      "endpoint": "https://www.govwire.co.uk/rss/home-office",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
       "category": "http-status-error",
       "statusKind": "",
@@ -15,10 +15,10 @@
       "rankScore": 1,
       "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
+      "sourceKind": "html",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
