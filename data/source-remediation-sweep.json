@@ -1,16 +1,15 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-25T11:36:37.370Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-07-25T11:58:58.916Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 3
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 2,
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
       "id": "gb-news-uk-politics-rss",
@@ -28,40 +27,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-iopc-news",
-      "provider": "Independent Office for Police Conduct a News",
-      "endpoint": "https://www.policeconduct.gov.uk/news",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
@@ -81,40 +46,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-iopc-news",
-      "provider": "Independent Office for Police Conduct a News",
-      "endpoint": "https://www.policeconduct.gov.uk/news",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
