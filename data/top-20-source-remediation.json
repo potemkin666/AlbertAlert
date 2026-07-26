@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-26T11:10:23.421Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "hacker-news-rss",
-      "provider": "Hacker News",
-      "endpoint": "https://news.ycombinator.com/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-07-26T11:53:00.474Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
