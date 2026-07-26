@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-26T10:13:53.560Z",
+  "generatedAt": "2026-07-26T11:10:23.421Z",
   "count": 249,
   "metrics": {
     "total": 249,
     "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 1863,
+    "avgTimeInQuarantineHours": 1864,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-07-24T10:20:09.295Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 6,
+      "consecutiveBlockedFailures": 7,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-16T06:58:50.354Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
@@ -151,12 +146,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-24T10:20:09.295Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-07-26T11:10:23.421Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-07-31T10:20:09.295Z",
-      "lastFailureAt": "2026-07-24T10:20:09.295Z",
-      "lastCheckedAt": "2026-07-24T10:20:09.295Z"
+      "reviewBy": "2026-08-02T11:10:23.421Z",
+      "lastFailureAt": "2026-07-26T11:10:23.421Z",
+      "lastCheckedAt": "2026-07-26T11:10:23.421Z"
     },
     {
       "id": "secret-london-rss",
