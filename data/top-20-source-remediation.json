@@ -1,17 +1,17 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-26T04:49:12.391Z",
+  "generatedAt": "2026-07-26T06:11:20.968Z",
   "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "clingendael-publications",
+      "provider": "European Council on Foreign Relations (ECFR)",
+      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by blocked access page",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -21,21 +21,21 @@
       "isMachineReadable": true
     },
     {
-      "id": "uk-parliament-defence-committee",
-      "provider": "UK Parliament a Defence Select Committee",
-      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "id": "the-stratfordian",
+      "provider": "The Stratfordian",
+      "endpoint": "https://thestratfordian.co.uk/feed",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "Blocked by blocked access page",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
