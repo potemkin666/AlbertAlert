@@ -1,11 +1,85 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-26T01:40:56.906Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-07-26T03:17:42.965Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "timeout": 2
+  },
+  "byKind": {
+    "html": 2
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 2,
+  "top20": [
+    {
+      "id": "gov-scot-access-to-justice-latest",
+      "provider": "Scottish Government - Access to Justice Latest",
+      "endpoint": "https://www.gov.scot/policies/access-to-justice/latest/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "scottish-government-justice-news",
+      "provider": "Scottish Government - Justice and Safety",
+      "endpoint": "https://www.gov.scot/policies/community-safety/latest/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "gov-scot-access-to-justice-latest",
+      "provider": "Scottish Government - Access to Justice Latest",
+      "endpoint": "https://www.gov.scot/policies/access-to-justice/latest/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "scottish-government-justice-news",
+      "provider": "Scottish Government - Justice and Safety",
+      "endpoint": "https://www.gov.scot/policies/community-safety/latest/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
