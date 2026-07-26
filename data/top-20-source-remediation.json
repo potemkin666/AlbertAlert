@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-26T08:21:09.711Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-26T09:25:20.096Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "ec-csis-ecuador-crises",
+      "provider": "CSIS - Ecuador compounding crises",
+      "endpoint": "https://www.csis.org/analysis/eye-storm-ecuadors-compounding-crises",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
