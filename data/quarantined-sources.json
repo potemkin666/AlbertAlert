@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-27T03:20:26.743Z",
+  "generatedAt": "2026-07-27T04:53:09.438Z",
   "count": 251,
   "metrics": {
     "total": 251,
     "newThisWeek": 13,
-    "avgTimeInQuarantineHours": 1865,
+    "avgTimeInQuarantineHours": 1866,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -759,16 +759,11 @@
       "quarantinedAt": "2026-07-16T23:57:47.424Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 500",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "http-status-error",
-          "message": "HTTP 500",
-          "at": "2026-07-16T23:57:47.424Z"
-        },
         {
           "category": "http-status-error",
           "message": "HTTP 500",
@@ -788,12 +783,17 @@
           "category": "http-status-error",
           "message": "HTTP 500",
           "at": "2026-07-25T04:42:49.293Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 500",
+          "at": "2026-07-27T04:53:09.438Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-01T04:42:49.293Z",
-      "lastFailureAt": "2026-07-25T04:42:49.293Z",
-      "lastCheckedAt": "2026-07-25T04:42:49.293Z"
+      "reviewBy": "2026-08-03T04:53:09.438Z",
+      "lastFailureAt": "2026-07-27T04:53:09.438Z",
+      "lastCheckedAt": "2026-07-27T04:53:09.438Z"
     },
     {
       "id": "church-of-england-newspaper",
