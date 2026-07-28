@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-28T14:25:14.510Z",
+  "generatedAt": "2026-07-28T15:20:41.539Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "network-failure": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "dni-press-releases",
-      "provider": "Office of the Director of National Intelligence - Press Releases",
-      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "id": "office-breaks",
+      "provider": "Office Breaks",
+      "endpoint": "https://office-breaks.com/feed/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "fetch failed",
       "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "dni-press-releases",
-      "provider": "Office of the Director of National Intelligence - Press Releases",
-      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "id": "office-breaks",
+      "provider": "Office Breaks",
+      "endpoint": "https://office-breaks.com/feed/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "fetch failed",
       "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
