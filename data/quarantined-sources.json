@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-28T04:43:18.601Z",
+  "generatedAt": "2026-07-28T06:07:46.117Z",
   "count": 251,
   "metrics": {
     "total": 251,
     "newThisWeek": 13,
-    "avgTimeInQuarantineHours": 1890,
+    "avgTimeInQuarantineHours": 1892,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -808,16 +808,11 @@
       "quarantinedAt": "2026-07-11T22:27:39.969Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 13,
+      "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-07-17T23:57:23.334Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -837,12 +832,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-07-26T04:49:12.391Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-07-28T06:07:46.117Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-02T04:49:12.391Z",
-      "lastFailureAt": "2026-07-26T04:49:12.391Z",
-      "lastCheckedAt": "2026-07-26T04:49:12.391Z"
+      "reviewBy": "2026-08-04T06:07:46.117Z",
+      "lastFailureAt": "2026-07-28T06:07:46.117Z",
+      "lastCheckedAt": "2026-07-28T06:07:46.117Z"
     },
     {
       "id": "evening-shire",
