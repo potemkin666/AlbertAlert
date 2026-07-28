@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-28T16:21:02.106Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-28T17:04:02.591Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "crisis-group",
+      "provider": "International Crisis Group a Research & Analysis",
+      "endpoint": "https://www.crisisgroup.org/rss",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "really-ree",
+      "provider": "Really Ree",
+      "endpoint": "https://reallyree.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 401",
+      "status": 401,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
