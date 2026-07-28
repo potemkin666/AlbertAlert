@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-07-28T10:29:38.876Z",
-  "count": 251,
+  "generatedAt": "2026-07-28T11:20:30.557Z",
+  "count": 250,
   "metrics": {
-    "total": 251,
-    "newThisWeek": 13,
-    "avgTimeInQuarantineHours": 1896,
+    "total": 250,
+    "newThisWeek": 12,
+    "avgTimeInQuarantineHours": 1904,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -206,55 +206,6 @@
       "reviewBy": "2026-08-02T17:28:21.274Z",
       "lastFailureAt": "2026-07-26T17:28:21.274Z",
       "lastCheckedAt": "2026-07-26T17:28:21.274Z"
-    },
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "kind": "html",
-      "lane": "context",
-      "region": "europe",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-07-24T10:20:09.295Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 7,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 7,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-07-18T07:43:04.939Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-20T09:18:05.817Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-22T09:28:34.958Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-24T10:20:09.295Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-26T11:10:23.421Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-08-02T11:10:23.421Z",
-      "lastFailureAt": "2026-07-26T11:10:23.421Z",
-      "lastCheckedAt": "2026-07-26T11:10:23.421Z"
     },
     {
       "id": "secret-london-rss",
