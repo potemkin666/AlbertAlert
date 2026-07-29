@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-29T04:44:55.872Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-07-29T06:10:16.505Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "de-bfv-islamist-extremism",
-      "provider": "BfV - Islamist Extremism and Terrorism",
-      "endpoint": "https://www.verfassungsschutz.de/EN/topics/islamist-extremism-and-islamist-terrorism/islamist-extremism-and-islamist-terrorism_node.html",
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
+      "message": "HTTP 500",
+      "status": 500,
       "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
+    },
+    {
+      "id": "sk-iom-press-rss",
+      "provider": "IOM Slovakia - Press RSS",
+      "endpoint": "https://iom.sk/en/press-room/press-releases-articles?format=feed&type=rss",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
     }
   ]
 }
