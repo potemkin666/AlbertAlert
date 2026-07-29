@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-29T18:59:35.124Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-29T19:34:26.789Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "zerohedge-feed",
+      "provider": "Zero. Hedge",
+      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
