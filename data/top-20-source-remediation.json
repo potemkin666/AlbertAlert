@@ -1,29 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-30T10:28:02.901Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-07-30T11:18:51.534Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "ec-csis-ecuador-crises",
-      "provider": "CSIS - Ecuador compounding crises",
-      "endpoint": "https://www.csis.org/analysis/eye-storm-ecuadors-compounding-crises",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "guys-st-thomas-news",
-      "provider": "Guy's and St Thomas' NHS Foundation Trust a News",
-      "endpoint": "https://www.guysandstthomas.nhs.uk/news",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
@@ -33,7 +16,7 @@
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
