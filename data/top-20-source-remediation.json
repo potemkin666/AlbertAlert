@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-30T08:26:27.582Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-30T09:24:31.617Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "the-daily-mash",
+      "provider": "The Daily Mash",
+      "endpoint": "https://www.thedailymash.co.uk/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
