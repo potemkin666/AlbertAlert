@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-31T09:38:29.656Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-31T11:08:20.985Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "curia-press-rss-en",
+      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
+      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
