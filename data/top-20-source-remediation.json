@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-31T01:42:20.689Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-31T03:18:36.992Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "breitbart-london-feed",
+      "provider": "Breitbart London",
+      "endpoint": "https://www.breitbart.com/london/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
