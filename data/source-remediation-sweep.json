@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-31T23:34:25.909Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "blocked-or-auth": 1,
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "gov-uk-parliament-jcnss",
-      "provider": "Gov. Wire - Home Office",
-      "endpoint": "https://www.govwire.co.uk/rss/home-office",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "west-yorkshire-police-missing-rss",
-      "provider": "West Yorkshire Police - Missing",
-      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "gov-uk-parliament-jcnss",
-      "provider": "Gov. Wire - Home Office",
-      "endpoint": "https://www.govwire.co.uk/rss/home-office",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "west-yorkshire-police-missing-rss",
-      "provider": "West Yorkshire Police - Missing",
-      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-07-31T23:52:54.327Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
