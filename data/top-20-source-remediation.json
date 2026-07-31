@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-07-31T22:52:24.054Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-07-31T23:34:25.909Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "gov-uk-parliament-jcnss",
+      "provider": "Gov. Wire - Home Office",
+      "endpoint": "https://www.govwire.co.uk/rss/home-office",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "west-yorkshire-police-missing-rss",
+      "provider": "West Yorkshire Police - Missing",
+      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
