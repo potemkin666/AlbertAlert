@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-01T12:56:22.516Z",
+  "generatedAt": "2026-08-01T13:41:28.318Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
     "html": 1
@@ -12,38 +12,38 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
