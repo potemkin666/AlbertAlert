@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-01T06:10:29.955Z",
+  "generatedAt": "2026-08-01T07:29:20.340Z",
   "count": 251,
   "metrics": {
     "total": 251,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 1987,
+    "avgTimeInQuarantineHours": 1988,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -806,18 +806,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
       "quarantinedAt": "2026-07-11T22:27:39.969Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 15,
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 16,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-07-22T01:41:25.799Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -837,12 +832,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-07-30T07:12:14.951Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-01T07:29:20.340Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-06T07:12:14.951Z",
-      "lastFailureAt": "2026-07-30T07:12:14.951Z",
-      "lastCheckedAt": "2026-07-30T07:12:14.951Z"
+      "reviewBy": "2026-08-08T07:29:20.340Z",
+      "lastFailureAt": "2026-08-01T07:29:20.340Z",
+      "lastCheckedAt": "2026-08-01T07:29:20.340Z"
     },
     {
       "id": "evening-shire",
