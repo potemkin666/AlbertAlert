@@ -1,11 +1,86 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-01T14:36:05.593Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-01T15:34:15.057Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "blocked-or-auth": 1,
+    "unknown": 1
+  },
+  "byKind": {
+    "html": 2
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 2,
+  "top20": [
+    {
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-cifas-newsroom",
+      "provider": "Cifas - Newsroom",
+      "endpoint": "https://www.cifas.org.uk/newsroom",
+      "finalUrl": "",
+      "category": "unknown",
+      "statusKind": "",
+      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-cifas-newsroom",
+      "provider": "Cifas - Newsroom",
+      "endpoint": "https://www.cifas.org.uk/newsroom",
+      "finalUrl": "",
+      "category": "unknown",
+      "statusKind": "",
+      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
