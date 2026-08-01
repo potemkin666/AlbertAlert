@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-01T20:50:55.032Z",
+  "generatedAt": "2026-08-01T21:29:14.613Z",
   "count": 251,
   "metrics": {
     "total": 251,
@@ -3648,18 +3648,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 50,
+      "lastErrorCategory": "unknown",
+      "lastErrorMessage": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "consecutiveFailures": 51,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 50,
+      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-07-22T17:01:13.265Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3679,12 +3674,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-30T18:42:35.276Z"
+        },
+        {
+          "category": "unknown",
+          "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+          "at": "2026-08-01T21:29:14.613Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-06T18:42:35.276Z",
-      "lastFailureAt": "2026-07-30T18:42:35.276Z",
-      "lastCheckedAt": "2026-07-30T18:42:35.276Z"
+      "reviewBy": "2026-08-08T21:29:14.613Z",
+      "lastFailureAt": "2026-08-01T21:29:14.613Z",
+      "lastCheckedAt": "2026-08-01T21:29:14.613Z"
     },
     {
       "id": "counter-extremism-project-news",
@@ -4336,16 +4336,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 50,
+      "consecutiveFailures": 51,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 50,
+      "consecutiveBlockedFailures": 51,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-22T17:01:13.265Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4365,12 +4360,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-30T18:42:35.276Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-01T21:29:14.613Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-06T18:42:35.276Z",
-      "lastFailureAt": "2026-07-30T18:42:35.276Z",
-      "lastCheckedAt": "2026-07-30T18:42:35.276Z"
+      "reviewBy": "2026-08-08T21:29:14.613Z",
+      "lastFailureAt": "2026-08-01T21:29:14.613Z",
+      "lastCheckedAt": "2026-08-01T21:29:14.613Z"
     },
     {
       "id": "wiltshire-999s",
