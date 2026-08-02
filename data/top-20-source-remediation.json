@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-02T17:52:34.478Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-02T18:27:19.914Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "the-canary-feed",
+      "provider": "The Canary",
+      "endpoint": "https://www.thecanary.co/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
