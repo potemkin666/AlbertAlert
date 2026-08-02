@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-02T13:35:39.530Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-02T14:42:33.569Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "requested-rss-feed-364751d1cc8d",
+      "provider": "RSS Feed",
+      "endpoint": "https://www.govwire.co.uk/rss/department-for-business-and-trade",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "requested-rss-feed-b3c5f204dee8",
+      "provider": "RSS Feed",
+      "endpoint": "https://www.govwire.co.uk/rss/department-for-transport",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
