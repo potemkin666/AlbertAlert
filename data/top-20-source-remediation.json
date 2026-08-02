@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-02T16:26:32.448Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-02T16:51:46.093Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "barking-dagenham-council-news",
+      "provider": "Barking and Dagenham Council a News",
+      "endpoint": "https://www.lbbd.gov.uk/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "royal-greenwich-news",
+      "provider": "Royal Borough of Greenwich a News",
+      "endpoint": "https://www.royalgreenwich.gov.uk/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "uk-parliament-isc",
+      "provider": "UK Parliament a Intelligence and Security Committee (Reports & News)",
+      "endpoint": "https://isc.independent.gov.uk/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
