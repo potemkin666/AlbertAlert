@@ -1,11 +1,87 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-01T23:51:56.111Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "generatedAt": "2026-08-02T00:56:55.921Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "blocked-or-auth": 1,
+    "http-status-error": 1
+  },
+  "byKind": {
+    "rss": 1,
+    "html": 1
+  },
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "uk-human-rights-blog",
+      "provider": "UK Human Rights Blog",
+      "endpoint": "https://ukhumanrightsblog.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "uk-human-rights-blog",
+      "provider": "UK Human Rights Blog",
+      "endpoint": "https://ukhumanrightsblog.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
