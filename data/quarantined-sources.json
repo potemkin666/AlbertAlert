@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-02T18:27:19.914Z",
-  "count": 251,
+  "generatedAt": "2026-08-02T18:58:48.003Z",
+  "count": 252,
   "metrics": {
-    "total": 251,
-    "newThisWeek": 1,
-    "avgTimeInQuarantineHours": 2023,
+    "total": 252,
+    "newThisWeek": 2,
+    "avgTimeInQuarantineHours": 2016,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "europarl-pressreleases-committees",
+      "provider": "European Parliament a Press Releases (Committees) (RSS)",
+      "endpoint": "https://www.europarl.europa.eu/rss/doc/press-releases-committees/en.xml",
+      "kind": "rss",
+      "lane": "oversight",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-02T18:58:48.003Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-25T17:31:54.065Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-27T18:05:54.112Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-29T18:27:53.276Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-07-31T18:45:08.696Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-02T18:58:48.003Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-09T18:58:48.003Z",
+      "lastFailureAt": "2026-08-02T18:58:48.003Z",
+      "lastCheckedAt": "2026-08-02T18:58:48.003Z"
+    },
     {
       "id": "psni-news",
       "provider": "Police Service of Northern Ireland a News",
@@ -171,16 +220,11 @@
       "quarantinedAt": "2026-07-25T17:31:54.065Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 9,
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-23T17:08:39.698Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -200,12 +244,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-31T18:45:08.696Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-02T18:58:48.003Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-07T18:45:08.696Z",
-      "lastFailureAt": "2026-07-31T18:45:08.696Z",
-      "lastCheckedAt": "2026-07-31T18:45:08.696Z"
+      "reviewBy": "2026-08-09T18:58:48.003Z",
+      "lastFailureAt": "2026-08-02T18:58:48.003Z",
+      "lastCheckedAt": "2026-08-02T18:58:48.003Z"
     },
     {
       "id": "west-yorkshire-police-news",
@@ -710,16 +759,11 @@
       "quarantinedAt": "2026-07-17T14:43:55.867Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 13,
+      "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 13,
+      "consecutiveBlockedFailures": 14,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-23T17:08:39.698Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -739,12 +783,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-07-31T18:45:08.696Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-02T18:58:48.003Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-07T18:45:08.696Z",
-      "lastFailureAt": "2026-07-31T18:45:08.696Z",
-      "lastCheckedAt": "2026-07-31T18:45:08.696Z"
+      "reviewBy": "2026-08-09T18:58:48.003Z",
+      "lastFailureAt": "2026-08-02T18:58:48.003Z",
+      "lastCheckedAt": "2026-08-02T18:58:48.003Z"
     },
     {
       "id": "rewards-for-justice",
@@ -906,16 +955,11 @@
       "quarantinedAt": "2026-07-05T10:25:03.760Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 19,
+      "consecutiveFailures": 20,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-07-23T17:08:39.698Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -935,12 +979,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-07-31T18:45:08.696Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-02T18:58:48.003Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-07T18:45:08.696Z",
-      "lastFailureAt": "2026-07-31T18:45:08.696Z",
-      "lastCheckedAt": "2026-07-31T18:45:08.696Z"
+      "reviewBy": "2026-08-09T18:58:48.003Z",
+      "lastFailureAt": "2026-08-02T18:58:48.003Z",
+      "lastCheckedAt": "2026-08-02T18:58:48.003Z"
     },
     {
       "id": "tenura",
