@@ -1,33 +1,34 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-03T17:24:08.209Z",
+  "generatedAt": "2026-08-03T18:11:42.689Z",
   "totalSourceErrors": 2,
   "byCategory": {
     "blocked-or-auth": 1,
     "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 2
+    "html": 1,
+    "rss": 1
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "silverspoon-london",
-      "provider": "Silver. Spoon London",
-      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
       "message": "Blocked by blocked access page",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
       "id": "zerohedge-feed",
@@ -49,21 +50,21 @@
   ],
   "sources": [
     {
-      "id": "silverspoon-london",
-      "provider": "Silver. Spoon London",
-      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
       "message": "Blocked by blocked access page",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     },
     {
       "id": "zerohedge-feed",
