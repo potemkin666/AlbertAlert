@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-04T01:46:46.945Z",
+  "generatedAt": "2026-08-04T03:17:39.551Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "network-failure": 1
   },
   "byKind": {
     "rss": 1
@@ -12,16 +12,16 @@
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "uk-human-rights-blog",
-      "provider": "UK Human Rights Blog",
-      "endpoint": "https://ukhumanrightsblog.com/feed",
+      "id": "urban-terrorism-europe-feed",
+      "provider": "Urban Terrorism in Europe (University of Birmingham)",
+      "endpoint": "https://blog.bham.ac.uk/urbterr/feed/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
@@ -31,16 +31,16 @@
   ],
   "sources": [
     {
-      "id": "uk-human-rights-blog",
-      "provider": "UK Human Rights Blog",
-      "endpoint": "https://ukhumanrightsblog.com/feed",
+      "id": "urban-terrorism-europe-feed",
+      "provider": "Urban Terrorism in Europe (University of Birmingham)",
+      "endpoint": "https://blog.bham.ac.uk/urbterr/feed/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
