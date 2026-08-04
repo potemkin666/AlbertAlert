@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-04T06:08:23.058Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "anti-bot-protection": 1,
-    "timeout": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "hacker-news-rss",
-      "provider": "Hacker News",
-      "endpoint": "https://news.ycombinator.com/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://politiaromana.ro/en",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "hacker-news-rss",
-      "provider": "Hacker News",
-      "endpoint": "https://news.ycombinator.com/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "romanian-police-news",
-      "provider": "Romanian Police - News",
-      "endpoint": "https://politiaromana.ro/en",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-08-04T07:32:30.696Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
