@@ -1,56 +1,20 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-04T13:19:03.790Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-08-04T14:26:35.064Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 2,
-    "blocked-or-auth": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 2,
     "html": 1
   },
-  "machineReadableErrorCount": 2,
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "gov-uk-counter-extremism-commissioner",
-      "provider": "Counter Extremism Commissioner a GOV.UK",
-      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-iopc-news",
-      "provider": "Independent Office for Police Conduct a News",
-      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -60,50 +24,16 @@
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "gov-uk-counter-extremism-commissioner",
-      "provider": "Counter Extremism Commissioner a GOV.UK",
-      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-iopc-news",
-      "provider": "Independent Office for Police Conduct a News",
-      "endpoint": "https://www.policeconduct.gov.uk/news",
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -113,7 +43,7 @@
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
