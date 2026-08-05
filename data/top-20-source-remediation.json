@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-05T22:31:32.279Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-05T23:03:21.630Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "de-brandenburg-police-overregional-rss",
+      "provider": "Brandenburg Police - Overregional RSS",
+      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "rand-terrorism-topic",
+      "provider": "RAND - Terrorism Topic",
+      "endpoint": "https://www.rand.org/topics/terrorism.html?source=rand-terrorism-topic",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
