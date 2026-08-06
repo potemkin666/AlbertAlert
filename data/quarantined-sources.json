@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-06T13:14:58.574Z",
-  "count": 255,
+  "generatedAt": "2026-08-06T14:25:37.992Z",
+  "count": 254,
   "metrics": {
-    "total": 255,
+    "total": 254,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 2081,
+    "avgTimeInQuarantineHours": 2087,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -857,16 +857,11 @@
       "quarantinedAt": "2026-07-19T10:07:39.939Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 14,
+      "consecutiveBlockedFailures": 15,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-27T12:13:02.711Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -886,12 +881,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-04T13:19:03.790Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-06T14:25:37.992Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-11T13:19:03.790Z",
-      "lastFailureAt": "2026-08-04T13:19:03.790Z",
-      "lastCheckedAt": "2026-08-04T13:19:03.790Z"
+      "reviewBy": "2026-08-13T14:25:37.992Z",
+      "lastFailureAt": "2026-08-06T14:25:37.992Z",
+      "lastCheckedAt": "2026-08-06T14:25:37.992Z"
     },
     {
       "id": "ealing-council-news",
@@ -1284,55 +1284,6 @@
       "reviewBy": "2026-08-11T22:30:04.592Z",
       "lastFailureAt": "2026-08-04T22:30:04.592Z",
       "lastCheckedAt": "2026-08-04T22:30:04.592Z"
-    },
-    {
-      "id": "gnet-research",
-      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
-      "endpoint": "https://gnet-research.org/feed/",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-07-01T02:32:01.798Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 23,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-27T12:13:02.711Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-29T12:16:16.238Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-31T12:53:38.662Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-02T12:59:18.334Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-04T13:19:03.790Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-08-11T13:19:03.790Z",
-      "lastFailureAt": "2026-08-04T13:19:03.790Z",
-      "lastCheckedAt": "2026-08-04T13:19:03.790Z"
     },
     {
       "id": "police-ombudsman-current-investigations",
