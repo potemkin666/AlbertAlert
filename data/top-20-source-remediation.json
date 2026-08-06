@@ -1,25 +1,8 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-06T06:15:09.710Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-06T07:33:47.114Z",
+  "totalSourceErrors": 1,
   "top20": [
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
     {
       "id": "hacker-news-rss",
       "provider": "Hacker News",
