@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-07T22:49:31.685Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-07T23:16:51.453Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
+      "id": "rand-terrorism-topic",
+      "provider": "RAND - Terrorism Topic",
+      "endpoint": "https://www.rand.org/topics/terrorism.html?source=rand-terrorism-topic",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
@@ -17,23 +17,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
