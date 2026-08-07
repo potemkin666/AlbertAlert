@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-07T10:30:18.728Z",
+  "generatedAt": "2026-08-07T10:51:37.219Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "hackney-council-news",
-      "provider": "Hackney Council a News",
-      "endpoint": "https://news.hackney.gov.uk/",
+      "id": "office-breaks",
+      "provider": "Office Breaks",
+      "endpoint": "https://office-breaks.com/feed/",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "HTTP 502",
-      "status": 502,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
