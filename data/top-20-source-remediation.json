@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-07T17:22:29.627Z",
+  "generatedAt": "2026-08-07T17:56:52.168Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "dni-press-releases",
-      "provider": "Office of the Director of National Intelligence - Press Releases",
-      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     }
