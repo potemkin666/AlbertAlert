@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-07T16:51:35.983Z",
-  "count": 253,
+  "generatedAt": "2026-08-07T17:22:29.627Z",
+  "count": 254,
   "metrics": {
-    "total": 253,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 2119,
+    "total": 254,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 2111,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "kind": "html",
+      "lane": "context",
+      "region": "us",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-08-07T17:22:29.627Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-07-30T15:19:17.324Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-01T15:34:15.057Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-03T16:26:19.368Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-05T17:06:29.452Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-07T17:22:29.627Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-14T17:22:29.627Z",
+      "lastFailureAt": "2026-08-07T17:22:29.627Z",
+      "lastCheckedAt": "2026-08-07T17:22:29.627Z"
+    },
     {
       "id": "europarl-committee-libe",
       "provider": "European Parliament - LIBE Press Releases",
