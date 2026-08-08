@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-08T09:49:14.491Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "cheshire-police-news",
-      "provider": "North West Bylines - Cheshire",
-      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-08-08T10:19:01.532Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
