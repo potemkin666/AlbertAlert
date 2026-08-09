@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-09T12:15:27.796Z",
-  "count": 254,
+  "generatedAt": "2026-08-09T12:56:17.056Z",
+  "count": 255,
   "metrics": {
-    "total": 254,
-    "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 2154,
+    "total": 255,
+    "newThisWeek": 6,
+    "avgTimeInQuarantineHours": 2146,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "guys-st-thomas-news",
+      "provider": "Guy's and St Thomas' NHS Foundation Trust a News",
+      "endpoint": "https://www.guysandstthomas.nhs.uk/news",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-08-09T12:56:17.056Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-01T11:09:42.172Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-03T12:14:57.281Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-05T12:21:19.153Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-07T12:24:03.245Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-09T12:56:17.056Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-16T12:56:17.056Z",
+      "lastFailureAt": "2026-08-09T12:56:17.056Z",
+      "lastCheckedAt": "2026-08-09T12:56:17.056Z"
+    },
     {
       "id": "dni-press-releases",
       "provider": "Office of the Director of National Intelligence - Press Releases",
@@ -2866,16 +2915,11 @@
       "quarantinedAt": "2026-05-03T10:40:27.179Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 53,
+      "consecutiveFailures": 54,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 53,
+      "consecutiveBlockedFailures": 54,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-30T10:28:02.901Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2895,12 +2939,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-07T12:24:03.245Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-09T12:56:17.056Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-14T12:24:03.245Z",
-      "lastFailureAt": "2026-08-07T12:24:03.245Z",
-      "lastCheckedAt": "2026-08-07T12:24:03.245Z"
+      "reviewBy": "2026-08-16T12:56:17.056Z",
+      "lastFailureAt": "2026-08-09T12:56:17.056Z",
+      "lastCheckedAt": "2026-08-09T12:56:17.056Z"
     },
     {
       "id": "me-ministry-defence",
