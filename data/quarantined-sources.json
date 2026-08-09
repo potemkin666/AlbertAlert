@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-09T01:44:13.201Z",
+  "generatedAt": "2026-08-09T02:54:49.549Z",
   "count": 254,
   "metrics": {
     "total": 254,
     "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 2144,
+    "avgTimeInQuarantineHours": 2145,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -563,16 +563,11 @@
       "quarantinedAt": "2026-07-23T19:35:48.452Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 429",
-      "consecutiveFailures": 13,
+      "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-07-29T20:51:22.334Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -592,12 +587,17 @@
           "category": "http-status-error",
           "message": "HTTP 429",
           "at": "2026-08-06T23:27:17.070Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 429",
+          "at": "2026-08-09T02:54:49.549Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-13T23:27:17.070Z",
-      "lastFailureAt": "2026-08-06T23:27:17.070Z",
-      "lastCheckedAt": "2026-08-06T23:27:17.070Z"
+      "reviewBy": "2026-08-16T02:54:49.549Z",
+      "lastFailureAt": "2026-08-09T02:54:49.549Z",
+      "lastCheckedAt": "2026-08-09T02:54:49.549Z"
     },
     {
       "id": "west-yorkshire-police-news-appeals",
