@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-09T16:49:28.258Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-09T17:20:30.461Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "de-bundespolizei-presseportal",
+      "provider": "Bundespolizei via Presseportal",
+      "endpoint": "https://www.presseportal.de/blaulicht/d/bundespolizei",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 503",
+      "status": 503,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
