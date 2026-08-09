@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-09T11:14:05.002Z",
+  "generatedAt": "2026-08-09T11:49:46.690Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
     "rss": 1
@@ -12,16 +12,16 @@
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
+      "id": "my-london-rss",
+      "provider": "My. London",
+      "endpoint": "https://www.mylondon.news/?service=rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "No items parsed from source payload",
+      "status": 202,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
@@ -31,16 +31,16 @@
   ],
   "sources": [
     {
-      "id": "office-breaks",
-      "provider": "Office Breaks",
-      "endpoint": "https://office-breaks.com/feed/",
+      "id": "my-london-rss",
+      "provider": "My. London",
+      "endpoint": "https://www.mylondon.news/?service=rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "No items parsed from source payload",
+      "status": 202,
       "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
