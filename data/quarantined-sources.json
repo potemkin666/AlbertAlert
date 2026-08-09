@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-09T08:20:05.074Z",
+  "generatedAt": "2026-08-09T08:55:53.570Z",
   "count": 254,
   "metrics": {
     "total": 254,
     "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 2150,
+    "avgTimeInQuarantineHours": 2151,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -1053,16 +1053,11 @@
       "quarantinedAt": "2026-07-11T22:27:39.969Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 19,
+      "consecutiveFailures": 20,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-07-30T07:12:14.951Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1082,12 +1077,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-07T08:31:33.463Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T08:55:53.570Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-14T08:31:33.463Z",
-      "lastFailureAt": "2026-08-07T08:31:33.463Z",
-      "lastCheckedAt": "2026-08-07T08:31:33.463Z"
+      "reviewBy": "2026-08-16T08:55:53.570Z",
+      "lastFailureAt": "2026-08-09T08:55:53.570Z",
+      "lastCheckedAt": "2026-08-09T08:55:53.570Z"
     },
     {
       "id": "evening-shire",
