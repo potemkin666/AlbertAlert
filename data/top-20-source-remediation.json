@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-10T10:40:36.777Z",
+  "generatedAt": "2026-08-10T11:28:44.837Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "id": "guardian-uk-top-stories",
+      "provider": "The Guardian - UK Top Stories",
+      "endpoint": "https://www.theguardian.com/uk/rss",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
