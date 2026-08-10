@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-10T06:45:20.995Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "blocked-or-auth": 1,
-    "brittle-selectors-or-js-rendering": 1
-  },
-  "byKind": {
-    "html": 1,
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "ec-wola-ecuador-bukele-model",
-      "provider": "WOLA - Ecuador security analysis",
-      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "manchester-evening-news",
-      "provider": "Manchester Evening News",
-      "endpoint": "https://www.manchestereveningnews.co.uk/?service=rss",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "ec-wola-ecuador-bukele-model",
-      "provider": "WOLA - Ecuador security analysis",
-      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "manchester-evening-news",
-      "provider": "Manchester Evening News",
-      "endpoint": "https://www.manchestereveningnews.co.uk/?service=rss",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-08-10T07:38:04.205Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
