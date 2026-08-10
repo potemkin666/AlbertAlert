@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-10T04:43:52.489Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-10T05:36:38.140Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "unknown": 1
+  },
+  "byKind": {
+    "html": 1
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "uk-cifas-newsroom",
+      "provider": "Cifas - Newsroom",
+      "endpoint": "https://www.cifas.org.uk/newsroom",
+      "finalUrl": "",
+      "category": "unknown",
+      "statusKind": "",
+      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "uk-cifas-newsroom",
+      "provider": "Cifas - Newsroom",
+      "endpoint": "https://www.cifas.org.uk/newsroom",
+      "finalUrl": "",
+      "category": "unknown",
+      "statusKind": "",
+      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
