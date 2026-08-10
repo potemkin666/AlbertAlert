@@ -1,86 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-10T11:57:36.568Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "blocked-or-auth": 1,
-    "http-status-error": 1
-  },
-  "byKind": {
-    "html": 2
-  },
+  "generatedAt": "2026-08-10T12:24:51.703Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
-  "top20": [
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "eu-home-affairs-news",
-      "provider": "European Commission - Home Affairs News",
-      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "eu-home-affairs-news",
-      "provider": "European Commission - Home Affairs News",
-      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
