@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-11T11:23:37.205Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-11T11:52:08.599Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "de-bayern-stmi-press-rss",
+      "provider": "Bavarian Interior Ministry - Press RSS",
+      "endpoint": "https://www.stmi.bayern.de/news/rss/pressemitteilungen?type=9818",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
