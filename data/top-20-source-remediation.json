@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-11T03:39:35.946Z",
+  "generatedAt": "2026-08-11T04:41:07.257Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "institute-global-home",
-      "provider": "Institute for Global Change",
-      "endpoint": "https://institute.global/insights",
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
