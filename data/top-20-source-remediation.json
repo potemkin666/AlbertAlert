@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-11T06:27:28.854Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "deadline-news",
-      "provider": "Deadline News",
-      "endpoint": "https://www.deadlinenews.co.uk/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "zerohedge-feed",
-      "provider": "Zero. Hedge",
-      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-08-11T06:52:59.666Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
