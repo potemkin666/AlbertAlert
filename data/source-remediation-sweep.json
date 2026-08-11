@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-11T00:59:45.878Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "http-status-error": 1
-  },
-  "byKind": {
-    "html": 1
-  },
+  "generatedAt": "2026-08-11T01:38:08.343Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "north-wales-community-alert",
-      "provider": "North Wales Community Alert",
-      "endpoint": "https://www.northwalescommunityalert.co.uk/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "north-wales-community-alert",
-      "provider": "North Wales Community Alert",
-      "endpoint": "https://www.northwalescommunityalert.co.uk/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
