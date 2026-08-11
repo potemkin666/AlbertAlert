@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-11T06:52:59.666Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-11T07:49:56.488Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "eu-council-terrorism-sanctions",
+      "provider": "Eurojust - Press Releases",
+      "endpoint": "https://www.eurojust.europa.eu/rss/press-releases.xml?source=eu-council-terrorism-sanctions",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "sanctions",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
