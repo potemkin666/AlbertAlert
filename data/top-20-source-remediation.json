@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-12T20:24:36.238Z",
+  "generatedAt": "2026-08-12T20:50:52.861Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "czech-police-news",
-      "provider": "Police of the Czech Republic - News",
-      "endpoint": "https://policie.gov.cz/clanek/Police-of-the-Czech-Republic.aspx",
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
       "finalUrl": "",
       "category": "network-failure",
       "statusKind": "",
@@ -16,7 +16,7 @@
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
