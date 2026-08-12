@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-12T23:25:42.426Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-12T23:50:08.774Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "cheshire-police-news",
+      "provider": "North West Bylines - Cheshire",
+      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
