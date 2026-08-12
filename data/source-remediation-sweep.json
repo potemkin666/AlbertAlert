@@ -1,85 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-12T11:26:51.996Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-12T11:50:30.858Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "timeout": 2
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "html": 2
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "london-gov-rss-80603",
-      "provider": "Mayor of London - Press Releases",
-      "endpoint": "https://www.london.gov.uk/media-centre/mayors-press-releases",
+      "id": "guardian-uk-top-stories",
+      "provider": "The Guardian - UK Top Stories",
+      "endpoint": "https://www.theguardian.com/uk/rss",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "london-gov-rss-80632",
-      "provider": "London Assembly - Press Releases",
-      "endpoint": "https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-press-releases",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "london-gov-rss-80603",
-      "provider": "Mayor of London - Press Releases",
-      "endpoint": "https://www.london.gov.uk/media-centre/mayors-press-releases",
+      "id": "guardian-uk-top-stories",
+      "provider": "The Guardian - UK Top Stories",
+      "endpoint": "https://www.theguardian.com/uk/rss",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "london-gov-rss-80632",
-      "provider": "London Assembly - Press Releases",
-      "endpoint": "https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-press-releases",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
