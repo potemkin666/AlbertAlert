@@ -1,16 +1,15 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-12T17:53:22.312Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-12T18:25:32.222Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1,
-    "anti-bot-protection": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "html": 2
+    "html": 1
   },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
+  "htmlErrorCount": 1,
   "top20": [
     {
       "id": "fra-rss",
@@ -26,23 +25,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
@@ -62,23 +44,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
