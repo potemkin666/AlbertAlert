@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-12T11:50:30.858Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
+  "generatedAt": "2026-08-12T12:25:40.364Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
