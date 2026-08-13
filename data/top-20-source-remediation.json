@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-13T06:44:32.985Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-13T07:36:39.226Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
