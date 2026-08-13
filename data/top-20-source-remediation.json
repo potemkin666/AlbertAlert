@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-13T09:32:15.868Z",
+  "generatedAt": "2026-08-13T10:04:08.786Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "eu-home-affairs-news",
+      "provider": "European Commission - Home Affairs News",
+      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
