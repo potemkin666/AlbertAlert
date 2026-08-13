@@ -1,6 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-13T03:54:26.384Z",
+  "generatedAt": "2026-08-13T04:47:46.166Z",
   "totalSourceErrors": 2,
   "top20": [
     {
@@ -8,12 +8,12 @@
       "provider": "Euronews a Europe",
       "endpoint": "https://www.euronews.com/news/europe",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "page.goto: Timeout 12000ms exceeded. Call log: - navigating to \"https://www.euronews.com/news/europe\", waiting until \"domcontentloaded\"",
+      "message": "Blocked by blocked access page",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
@@ -21,21 +21,21 @@
       "isMachineReadable": false
     },
     {
-      "id": "institute-global-home",
-      "provider": "Institute for Global Change",
-      "endpoint": "https://institute.global/insights",
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
