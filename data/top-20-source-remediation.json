@@ -1,33 +1,16 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-14T15:56:40.137Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-08-14T16:22:38.737Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "gov-uk-counter-extremism-commissioner",
-      "provider": "Counter Extremism Commissioner a GOV.UK",
-      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-iopc-news",
-      "provider": "Independent Office for Police Conduct a News",
-      "endpoint": "https://www.policeconduct.gov.uk/news",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "Blocked by blocked access page",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -36,23 +19,6 @@
       "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
-    },
-    {
-      "id": "eu-ejustice-news-rss",
-      "provider": "European e-Justice - News RSS",
-      "endpoint": "https://e-justice.europa.eu/rss/news_en",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 503",
-      "status": 503,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
     }
   ]
 }
