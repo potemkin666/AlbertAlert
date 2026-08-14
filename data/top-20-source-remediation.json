@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-14T22:09:50.375Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-14T22:43:27.856Z",
+  "totalSourceErrors": 3,
   "top20": [
     {
-      "id": "clingendael-publications",
-      "provider": "European Council on Foreign Relations (ECFR)",
-      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
+      "id": "breitbart-london-feed",
+      "provider": "Breitbart London",
+      "endpoint": "https://www.breitbart.com/london/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
@@ -21,9 +21,26 @@
       "isMachineReadable": true
     },
     {
-      "id": "silverspoon-london",
-      "provider": "Silver. Spoon London",
-      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "office-breaks",
+      "provider": "Office Breaks",
+      "endpoint": "https://office-breaks.com/feed/",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
