@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-14T17:51:51.263Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-14T18:24:34.586Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
