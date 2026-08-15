@@ -1,16 +1,16 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-15T07:17:40.242Z",
+  "generatedAt": "2026-08-15T07:44:49.451Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "huffpost-uk",
-      "provider": "Huff. Post UK",
-      "endpoint": "https://www.huffingtonpost.co.uk/feeds/index.xml",
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
