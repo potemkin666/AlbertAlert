@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T05:11:02.720Z",
+  "generatedAt": "2026-08-15T05:48:38.576Z",
   "count": 261,
   "metrics": {
     "total": 261,
@@ -1492,18 +1492,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-07-05T18:59:31.071Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 25,
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 26,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-05T03:18:00.915Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1523,12 +1518,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-13T05:39:22.640Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-15T05:48:38.576Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T05:39:22.640Z",
-      "lastFailureAt": "2026-08-13T05:39:22.640Z",
-      "lastCheckedAt": "2026-08-13T05:39:22.640Z"
+      "reviewBy": "2026-08-22T05:48:38.576Z",
+      "lastFailureAt": "2026-08-15T05:48:38.576Z",
+      "lastCheckedAt": "2026-08-15T05:48:38.576Z"
     },
     {
       "id": "tenura",
@@ -9824,16 +9824,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 57,
+      "consecutiveFailures": 58,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-08-05T03:18:00.915Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -9853,12 +9848,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-08-13T05:39:22.640Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-08-15T05:48:38.576Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T05:39:22.640Z",
-      "lastFailureAt": "2026-08-13T05:39:22.640Z",
-      "lastCheckedAt": "2026-08-13T05:39:22.640Z"
+      "reviewBy": "2026-08-22T05:48:38.576Z",
+      "lastFailureAt": "2026-08-15T05:48:38.576Z",
+      "lastCheckedAt": "2026-08-15T05:48:38.576Z"
     },
     {
       "id": "ec-police-organised-crime",
@@ -9873,16 +9873,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 57,
+      "consecutiveFailures": 58,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-08-05T03:18:00.915Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -9902,12 +9897,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-08-13T05:39:22.640Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-08-15T05:48:38.576Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T05:39:22.640Z",
-      "lastFailureAt": "2026-08-13T05:39:22.640Z",
-      "lastCheckedAt": "2026-08-13T05:39:22.640Z"
+      "reviewBy": "2026-08-22T05:48:38.576Z",
+      "lastFailureAt": "2026-08-15T05:48:38.576Z",
+      "lastCheckedAt": "2026-08-15T05:48:38.576Z"
     },
     {
       "id": "ec-cancilleria-security",
@@ -9922,16 +9922,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 57,
+      "consecutiveFailures": 58,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-08-05T03:18:00.915Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -9951,12 +9946,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-08-13T05:39:22.640Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-08-15T05:48:38.576Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T05:39:22.640Z",
-      "lastFailureAt": "2026-08-13T05:39:22.640Z",
-      "lastCheckedAt": "2026-08-13T05:39:22.640Z"
+      "reviewBy": "2026-08-22T05:48:38.576Z",
+      "lastFailureAt": "2026-08-15T05:48:38.576Z",
+      "lastCheckedAt": "2026-08-15T05:48:38.576Z"
     },
     {
       "id": "finland-police-news",
