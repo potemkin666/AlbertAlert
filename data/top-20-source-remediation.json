@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-15T10:42:51.086Z",
+  "generatedAt": "2026-08-15T11:14:27.878Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "de-brandenburg-police-overregional-rss",
-      "provider": "Brandenburg Police - Overregional RSS",
-      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
+      "message": "Blocked by blocked access page",
+      "status": 0,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
