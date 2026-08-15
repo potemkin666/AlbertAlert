@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-15T09:48:40.172Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-15T10:10:14.489Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "paris-prefecture-police-press-releases",
+      "provider": "Paris Prefecture of Police - Press Releases",
+      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/actualites-et-presse/communiques-de-presse/communiques-de-presse",
       "finalUrl": "",
       "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
@@ -15,25 +15,8 @@
       "rankScore": 2,
       "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
