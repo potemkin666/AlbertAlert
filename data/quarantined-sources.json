@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-15T02:57:25.088Z",
+  "generatedAt": "2026-08-15T03:20:35.871Z",
   "count": 261,
   "metrics": {
     "total": 261,
@@ -73,16 +73,11 @@
       "quarantinedAt": "2026-08-11T02:55:30.915Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 7,
+      "consecutiveFailures": 8,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-04T23:53:50.215Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -102,12 +97,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-08-13T03:06:16.155Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-15T03:20:35.871Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T03:06:16.155Z",
-      "lastFailureAt": "2026-08-13T03:06:16.155Z",
-      "lastCheckedAt": "2026-08-13T03:06:16.155Z"
+      "reviewBy": "2026-08-22T03:20:35.871Z",
+      "lastFailureAt": "2026-08-15T03:20:35.871Z",
+      "lastCheckedAt": "2026-08-15T03:20:35.871Z"
     },
     {
       "id": "gov-uk-parliament-jcnss",
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-08-11T02:55:30.915Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 7,
+      "consecutiveFailures": 8,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-04T23:53:50.215Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -151,12 +146,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-08-13T03:06:16.155Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-08-15T03:20:35.871Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T03:06:16.155Z",
-      "lastFailureAt": "2026-08-13T03:06:16.155Z",
-      "lastCheckedAt": "2026-08-13T03:06:16.155Z"
+      "reviewBy": "2026-08-22T03:20:35.871Z",
+      "lastFailureAt": "2026-08-15T03:20:35.871Z",
+      "lastCheckedAt": "2026-08-15T03:20:35.871Z"
     },
     {
       "id": "uk-parliament-justice-committee",
@@ -906,16 +906,11 @@
       "quarantinedAt": "2026-07-23T20:55:59.252Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 16,
+      "consecutiveFailures": 17,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-04T23:28:33.229Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -935,12 +930,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-13T03:06:16.155Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T03:20:35.871Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T03:06:16.155Z",
-      "lastFailureAt": "2026-08-13T03:06:16.155Z",
-      "lastCheckedAt": "2026-08-13T03:06:16.155Z"
+      "reviewBy": "2026-08-22T03:20:35.871Z",
+      "lastFailureAt": "2026-08-15T03:20:35.871Z",
+      "lastCheckedAt": "2026-08-15T03:20:35.871Z"
     },
     {
       "id": "institute-global-home",
@@ -1886,16 +1886,11 @@
       "quarantinedAt": "2026-06-17T09:19:30.948Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 34,
+      "consecutiveFailures": 35,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-04T23:28:33.229Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1915,12 +1910,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-13T03:06:16.155Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T03:20:35.871Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-20T03:06:16.155Z",
-      "lastFailureAt": "2026-08-13T03:06:16.155Z",
-      "lastCheckedAt": "2026-08-13T03:06:16.155Z"
+      "reviewBy": "2026-08-22T03:20:35.871Z",
+      "lastFailureAt": "2026-08-15T03:20:35.871Z",
+      "lastCheckedAt": "2026-08-15T03:20:35.871Z"
     },
     {
       "id": "mi5-news-rss-direct",
