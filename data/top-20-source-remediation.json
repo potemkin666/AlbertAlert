@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-15T10:10:14.489Z",
+  "generatedAt": "2026-08-15T10:42:51.086Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "paris-prefecture-police-press-releases",
-      "provider": "Paris Prefecture of Police - Press Releases",
-      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/actualites-et-presse/communiques-de-presse/communiques-de-presse",
+      "id": "de-brandenburg-police-overregional-rss",
+      "provider": "Brandenburg Police - Overregional RSS",
+      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
       "finalUrl": "",
       "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
@@ -15,10 +15,10 @@
       "rankScore": 2,
       "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
