@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-16T04:18:29.200Z",
+  "generatedAt": "2026-08-16T04:53:04.169Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "zerohedge-feed",
-      "provider": "Zero. Hedge",
-      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "id": "de-berlin-police-rss",
+      "provider": "Berlin Police - Press RSS",
+      "endpoint": "https://www.berlin.de/polizei/polizeimeldungen/index.php/rss",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": true
     }
