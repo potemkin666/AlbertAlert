@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-16T05:44:20.248Z",
+  "generatedAt": "2026-08-16T06:19:27.025Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "joint-committee-human-rights-html",
-      "provider": "Joint Committee on Human Rights",
-      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "joint-committee-human-rights-html",
-      "provider": "Joint Committee on Human Rights",
-      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
