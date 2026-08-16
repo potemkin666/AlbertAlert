@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-16T21:40:37.671Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-16T22:14:42.357Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "londonist-rss",
+      "provider": "Londonist",
+      "endpoint": "https://londonist.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "ncsc-nl-rss",
+      "provider": "NCSC Netherlands - RSS",
+      "endpoint": "https://feeds.ncsc.nl/nieuws.rss",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
