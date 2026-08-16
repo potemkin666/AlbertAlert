@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-16T08:11:58.151Z",
-  "count": 261,
+  "generatedAt": "2026-08-16T08:46:24.384Z",
+  "count": 262,
   "metrics": {
-    "total": 261,
-    "newThisWeek": 8,
-    "avgTimeInQuarantineHours": 2249,
+    "total": 262,
+    "newThisWeek": 9,
+    "avgTimeInQuarantineHours": 2241,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "manchester-evening-news",
+      "provider": "Manchester Evening News",
+      "endpoint": "https://www.manchestereveningnews.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-16T08:46:24.384Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-08T06:22:07.854Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-10T06:45:20.995Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-12T07:37:28.098Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-14T08:41:15.239Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-16T08:46:24.384Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-23T08:46:24.384Z",
+      "lastFailureAt": "2026-08-16T08:46:24.384Z",
+      "lastCheckedAt": "2026-08-16T08:46:24.384Z"
+    },
     {
       "id": "aymennaltamimi-substack-feed",
       "provider": "Aymenn's Monstrous Publications",
