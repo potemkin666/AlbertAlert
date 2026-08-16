@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-16T15:41:50.283Z",
+  "generatedAt": "2026-08-16T16:15:27.212Z",
   "count": 262,
   "metrics": {
     "total": 262,
@@ -367,16 +367,11 @@
       "quarantinedAt": "2026-08-10T15:02:45.609Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-06T14:25:37.992Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -396,12 +391,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-08-14T15:56:40.137Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-08-16T16:15:27.212Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-21T15:56:40.137Z",
-      "lastFailureAt": "2026-08-14T15:56:40.137Z",
-      "lastCheckedAt": "2026-08-14T15:56:40.137Z"
+      "reviewBy": "2026-08-23T16:15:27.212Z",
+      "lastFailureAt": "2026-08-16T16:15:27.212Z",
+      "lastCheckedAt": "2026-08-16T16:15:27.212Z"
     },
     {
       "id": "guys-st-thomas-news",
@@ -1347,16 +1347,11 @@
       "quarantinedAt": "2026-07-19T10:07:39.939Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 19,
+      "consecutiveFailures": 20,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 19,
+      "consecutiveBlockedFailures": 20,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-06T14:25:37.992Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1376,12 +1371,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-14T15:56:40.137Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-16T16:15:27.212Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-21T15:56:40.137Z",
-      "lastFailureAt": "2026-08-14T15:56:40.137Z",
-      "lastCheckedAt": "2026-08-14T15:56:40.137Z"
+      "reviewBy": "2026-08-23T16:15:27.212Z",
+      "lastFailureAt": "2026-08-16T16:15:27.212Z",
+      "lastCheckedAt": "2026-08-16T16:15:27.212Z"
     },
     {
       "id": "ealing-council-news",
