@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-16T13:23:07.475Z",
+  "generatedAt": "2026-08-16T13:45:04.433Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
     "html": 1
@@ -12,13 +12,13 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -31,13 +31,13 @@
   ],
   "sources": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
