@@ -1,87 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-17T09:55:26.158Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-17T10:15:54.413Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "brittle-selectors-or-js-rendering": 1,
-    "timeout": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "rss": 1,
-    "html": 1
+    "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "silverspoon-london",
+      "provider": "Silver. Spoon London",
+      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "uclh-news",
-      "provider": "University College London Hospitals a News",
-      "endpoint": "https://www.uclh.nhs.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
+      "id": "silverspoon-london",
+      "provider": "Silver. Spoon London",
+      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "uclh-news",
-      "provider": "University College London Hospitals a News",
-      "endpoint": "https://www.uclh.nhs.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
