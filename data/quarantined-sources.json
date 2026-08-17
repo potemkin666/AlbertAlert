@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-17T15:49:57.809Z",
-  "count": 269,
+  "generatedAt": "2026-08-17T16:11:37.646Z",
+  "count": 270,
   "metrics": {
-    "total": 269,
-    "newThisWeek": 14,
-    "avgTimeInQuarantineHours": 2212,
+    "total": 270,
+    "newThisWeek": 15,
+    "avgTimeInQuarantineHours": 2204,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "belfast-live",
+      "provider": "Belfast Live",
+      "endpoint": "https://www.belfastlive.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T16:11:37.646Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:56:17.056Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T13:41:08.949Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T15:32:31.366Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T15:47:09.365Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T16:11:37.646Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T16:11:37.646Z",
+      "lastFailureAt": "2026-08-17T16:11:37.646Z",
+      "lastCheckedAt": "2026-08-17T16:11:37.646Z"
+    },
     {
       "id": "birmingham-mail",
       "provider": "Birmingham Mail",
@@ -759,16 +808,11 @@
       "quarantinedAt": "2026-08-09T12:56:17.056Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 9,
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 9,
+      "consecutiveBlockedFailures": 10,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-08-07T12:24:03.245Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -788,12 +832,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-08-15T15:47:09.365Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-17T16:11:37.646Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-22T15:47:09.365Z",
-      "lastFailureAt": "2026-08-15T15:47:09.365Z",
-      "lastCheckedAt": "2026-08-15T15:47:09.365Z"
+      "reviewBy": "2026-08-24T16:11:37.646Z",
+      "lastFailureAt": "2026-08-17T16:11:37.646Z",
+      "lastCheckedAt": "2026-08-17T16:11:37.646Z"
     },
     {
       "id": "dni-press-releases",
@@ -3650,16 +3699,11 @@
       "quarantinedAt": "2026-05-03T10:40:27.179Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 57,
+      "consecutiveFailures": 58,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 57,
+      "consecutiveBlockedFailures": 58,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-07T12:24:03.245Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3679,12 +3723,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-15T15:47:09.365Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T16:11:37.646Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-22T15:47:09.365Z",
-      "lastFailureAt": "2026-08-15T15:47:09.365Z",
-      "lastCheckedAt": "2026-08-15T15:47:09.365Z"
+      "reviewBy": "2026-08-24T16:11:37.646Z",
+      "lastFailureAt": "2026-08-17T16:11:37.646Z",
+      "lastCheckedAt": "2026-08-17T16:11:37.646Z"
     },
     {
       "id": "me-ministry-defence",
