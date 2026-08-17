@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-17T18:55:24.189Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-17T19:16:48.059Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
