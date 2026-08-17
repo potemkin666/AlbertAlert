@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-16T23:45:51.590Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-17T00:22:21.314Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "west-yorkshire-police-coroner-appeals-rss",
-      "provider": "West Yorkshire Police - Coroner Appeals Feed",
-      "endpoint": "https://www.westyorkshire.police.uk/news/coroner-appeals/feed",
+      "id": "arcticdry",
+      "provider": "Arctic. Dry",
+      "endpoint": "https://www.arcticdry.co.uk/feed/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
