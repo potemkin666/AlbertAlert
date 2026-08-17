@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-17T16:11:37.646Z",
-  "count": 270,
+  "generatedAt": "2026-08-17T16:45:34.983Z",
+  "count": 271,
   "metrics": {
-    "total": 270,
-    "newThisWeek": 15,
-    "avgTimeInQuarantineHours": 2204,
+    "total": 271,
+    "newThisWeek": 16,
+    "avgTimeInQuarantineHours": 2196,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "daily-record",
+      "provider": "Daily Record",
+      "endpoint": "https://www.dailyrecord.co.uk/news/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T16:45:34.983Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T15:51:19.766Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T15:53:51.113Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T16:24:14.402Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T16:43:53.433Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T16:45:34.983Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T16:45:34.983Z",
+      "lastFailureAt": "2026-08-17T16:45:34.983Z",
+      "lastCheckedAt": "2026-08-17T16:45:34.983Z"
+    },
     {
       "id": "belfast-live",
       "provider": "Belfast Live",
