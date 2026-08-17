@@ -1,16 +1,310 @@
 {
-  "generatedAt": "2026-08-17T12:56:26.623Z",
-  "count": 263,
+  "generatedAt": "2026-08-17T13:22:12.373Z",
+  "count": 269,
   "metrics": {
-    "total": 263,
-    "newThisWeek": 9,
-    "avgTimeInQuarantineHours": 2260,
+    "total": 269,
+    "newThisWeek": 15,
+    "avgTimeInQuarantineHours": 2210,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "birmingham-mail",
+      "provider": "Birmingham Mail",
+      "endpoint": "https://www.birminghammail.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:15:27.796Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
+    {
+      "id": "cambridge-news",
+      "provider": "Cambridge News",
+      "endpoint": "https://www.cambridge-news.co.uk/news/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:15:27.796Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
+    {
+      "id": "daily-mirror",
+      "provider": "Daily Mirror",
+      "endpoint": "https://www.mirror.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:15:27.796Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
+    {
+      "id": "wales-online",
+      "provider": "Wales. Online",
+      "endpoint": "https://www.walesonline.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:15:27.796Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
+    {
+      "id": "my-london-rss",
+      "provider": "My. London",
+      "endpoint": "https://www.mylondon.news/?service=rss",
+      "kind": "rss",
+      "lane": "context",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T11:49:46.690Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
+    {
+      "id": "cambridgeshire-police-news-search",
+      "provider": "Cambridgeshire Live - News RSS",
+      "endpoint": "https://www.cambridge-news.co.uk/?service=rss",
+      "kind": "rss",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "HTML structure changed — selectors no longer match; needs parser update",
+      "quarantinedAt": "2026-08-17T13:22:12.373Z",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-09T12:15:27.796Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-11T12:27:16.431Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-13T12:58:16.890Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-15T13:16:30.543Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-17T13:22:12.373Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-24T13:22:12.373Z",
+      "lastFailureAt": "2026-08-17T13:22:12.373Z",
+      "lastCheckedAt": "2026-08-17T13:22:12.373Z"
+    },
     {
       "id": "jamestown-terrorism-monitor",
       "provider": "Jamestown Foundation - Terrorism Monitor",
