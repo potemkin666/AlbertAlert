@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-17T05:35:19.899Z",
+  "generatedAt": "2026-08-17T05:47:39.320Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "office-breaks",
+      "provider": "Office Breaks",
+      "endpoint": "https://office-breaks.com/feed/",
       "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
