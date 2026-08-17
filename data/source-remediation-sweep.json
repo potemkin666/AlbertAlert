@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-17T08:27:06.885Z",
+  "generatedAt": "2026-08-17T08:50:15.829Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "timeout": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
     "rss": 1
@@ -12,16 +12,16 @@
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "england-naturally",
-      "provider": "England, Naturally",
-      "endpoint": "https://englandnaturally.com/feed/",
+      "id": "disneyrollergirl",
+      "provider": "Disneyrollergirl",
+      "endpoint": "https://www.disneyrollergirl.net/feed/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
@@ -31,16 +31,16 @@
   ],
   "sources": [
     {
-      "id": "england-naturally",
-      "provider": "England, Naturally",
-      "endpoint": "https://englandnaturally.com/feed/",
+      "id": "disneyrollergirl",
+      "provider": "Disneyrollergirl",
+      "endpoint": "https://www.disneyrollergirl.net/feed/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
       "sourceLane": "context",
