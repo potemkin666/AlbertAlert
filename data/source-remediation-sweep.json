@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-18T16:18:32.462Z",
+  "generatedAt": "2026-08-18T16:47:54.394Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
+      "id": "uk-iopc-news",
+      "provider": "Independent Office for Police Conduct a News",
+      "endpoint": "https://www.policeconduct.gov.uk/news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }

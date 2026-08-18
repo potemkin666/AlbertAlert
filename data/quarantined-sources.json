@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-18T16:18:32.462Z",
-  "count": 272,
+  "generatedAt": "2026-08-18T16:47:54.394Z",
+  "count": 271,
   "metrics": {
-    "total": 272,
+    "total": 271,
     "newThisWeek": 12,
-    "avgTimeInQuarantineHours": 2212,
+    "avgTimeInQuarantineHours": 2220,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -843,55 +843,6 @@
       "reviewBy": "2026-08-24T01:36:34.539Z",
       "lastFailureAt": "2026-08-17T01:36:34.539Z",
       "lastCheckedAt": "2026-08-17T01:36:34.539Z"
-    },
-    {
-      "id": "gov-uk-counter-extremism-commissioner",
-      "provider": "Counter Extremism Commissioner a GOV.UK",
-      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
-      "kind": "rss",
-      "lane": "prevention",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
-      "quarantinedAt": "2026-08-10T15:02:45.609Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 9,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-08T14:46:53.072Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-10T15:02:45.609Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-12T15:26:27.122Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-14T15:56:40.137Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-16T16:15:27.212Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-08-23T16:15:27.212Z",
-      "lastFailureAt": "2026-08-16T16:15:27.212Z",
-      "lastCheckedAt": "2026-08-16T16:15:27.212Z"
     },
     {
       "id": "guys-st-thomas-news",
@@ -1837,16 +1788,11 @@
       "quarantinedAt": "2026-07-19T10:07:39.939Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 20,
+      "consecutiveFailures": 21,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 20,
+      "consecutiveBlockedFailures": 21,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-08T14:46:53.072Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1866,12 +1812,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-16T16:15:27.212Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-18T16:47:54.394Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-23T16:15:27.212Z",
-      "lastFailureAt": "2026-08-16T16:15:27.212Z",
-      "lastCheckedAt": "2026-08-16T16:15:27.212Z"
+      "reviewBy": "2026-08-25T16:47:54.394Z",
+      "lastFailureAt": "2026-08-18T16:47:54.394Z",
+      "lastCheckedAt": "2026-08-18T16:47:54.394Z"
     },
     {
       "id": "ealing-council-news",
