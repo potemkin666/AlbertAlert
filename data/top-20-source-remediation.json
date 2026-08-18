@@ -1,41 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-18T12:57:54.240Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-18T13:23:41.846Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "id": "guardian-uk-top-stories",
+      "provider": "The Guardian - UK Top Stories",
+      "endpoint": "https://www.theguardian.com/uk/rss",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
       "message": "Blocked by blocked access page",
-      "status": 0,
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "sapo-se-english",
-      "provider": "Swedish Security Service English news",
-      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 247,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
