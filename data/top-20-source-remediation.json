@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-18T12:15:30.978Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-18T12:57:54.240Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "evening-standard",
-      "provider": "Evening Standard",
-      "endpoint": "https://www.standard.co.uk/rss",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "message": "Blocked by blocked access page",
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
+    },
+    {
+      "id": "sapo-se-english",
+      "provider": "Swedish Security Service English news",
+      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 247,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
