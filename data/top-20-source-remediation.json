@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-18T13:23:41.846Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-18T13:50:24.024Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
       "id": "guardian-uk-top-stories",
@@ -19,6 +19,23 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "uk-parliament-defence-committee",
+      "provider": "UK Parliament a Defence Select Committee",
+      "endpoint": "https://committees.parliament.uk/committee/24/defence-committee/news/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
