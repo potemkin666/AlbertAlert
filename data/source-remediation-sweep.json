@@ -1,27 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-18T11:49:51.460Z",
-  "totalSourceErrors": 3,
+  "generatedAt": "2026-08-18T12:15:30.978Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "blocked-or-auth": 2,
-    "http-status-error": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 2,
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 2,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "clingendael-publications",
-      "provider": "European Council on Foreign Relations (ECFR)",
-      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
+      "id": "evening-standard",
+      "provider": "Evening Standard",
+      "endpoint": "https://www.standard.co.uk/rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -29,52 +27,18 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "consett-magazine",
-      "provider": "Consett Magazine",
-      "endpoint": "https://consettmagazine.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "clingendael-publications",
-      "provider": "European Council on Foreign Relations (ECFR)",
-      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
+      "id": "evening-standard",
+      "provider": "Evening Standard",
+      "endpoint": "https://www.standard.co.uk/rss",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -82,40 +46,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "consett-magazine",
-      "provider": "Consett Magazine",
-      "endpoint": "https://consettmagazine.com/feed/",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
