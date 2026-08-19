@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-19T02:33:44.293Z",
-  "count": 268,
+  "generatedAt": "2026-08-19T03:32:22.820Z",
+  "count": 267,
   "metrics": {
-    "total": 268,
+    "total": 267,
     "newThisWeek": 12,
-    "avgTimeInQuarantineHours": 2253,
+    "avgTimeInQuarantineHours": 2261,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -610,18 +610,13 @@
       "status": "auto-quarantined",
       "reason": "Health score degraded to 0 after repeated failures",
       "quarantinedAt": "2026-08-11T02:55:30.915Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 9,
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 1,
+      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-09T01:44:13.201Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -641,61 +636,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-17T03:25:31.372Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-19T03:32:22.820Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-24T03:25:31.372Z",
-      "lastFailureAt": "2026-08-17T03:25:31.372Z",
-      "lastCheckedAt": "2026-08-17T03:25:31.372Z"
-    },
-    {
-      "id": "gov-uk-parliament-jcnss",
-      "provider": "Gov. Wire - Home Office",
-      "endpoint": "https://www.govwire.co.uk/rss/home-office",
-      "kind": "rss",
-      "lane": "oversight",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
-      "quarantinedAt": "2026-08-11T02:55:30.915Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 9,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-09T01:44:13.201Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-11T02:55:30.915Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-13T03:06:16.155Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-15T03:20:35.871Z"
-        },
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-08-17T03:25:31.372Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-08-24T03:25:31.372Z",
-      "lastFailureAt": "2026-08-17T03:25:31.372Z",
-      "lastCheckedAt": "2026-08-17T03:25:31.372Z"
+      "reviewBy": "2026-08-26T03:32:22.820Z",
+      "lastFailureAt": "2026-08-19T03:32:22.820Z",
+      "lastCheckedAt": "2026-08-19T03:32:22.820Z"
     },
     {
       "id": "guys-st-thomas-news",
@@ -1249,16 +1200,11 @@
       "quarantinedAt": "2026-07-23T20:55:59.252Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 18,
+      "consecutiveFailures": 19,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-09T01:44:13.201Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1278,12 +1224,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-17T03:25:31.372Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-19T03:32:22.820Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-24T03:25:31.372Z",
-      "lastFailureAt": "2026-08-17T03:25:31.372Z",
-      "lastCheckedAt": "2026-08-17T03:25:31.372Z"
+      "reviewBy": "2026-08-26T03:32:22.820Z",
+      "lastFailureAt": "2026-08-19T03:32:22.820Z",
+      "lastCheckedAt": "2026-08-19T03:32:22.820Z"
     },
     {
       "id": "institute-global-home",
@@ -2229,16 +2180,11 @@
       "quarantinedAt": "2026-06-17T09:19:30.948Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 36,
+      "consecutiveFailures": 37,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-09T01:44:13.201Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2258,12 +2204,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-17T03:25:31.372Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-19T03:32:22.820Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-24T03:25:31.372Z",
-      "lastFailureAt": "2026-08-17T03:25:31.372Z",
-      "lastCheckedAt": "2026-08-17T03:25:31.372Z"
+      "reviewBy": "2026-08-26T03:32:22.820Z",
+      "lastFailureAt": "2026-08-19T03:32:22.820Z",
+      "lastCheckedAt": "2026-08-19T03:32:22.820Z"
     },
     {
       "id": "mi5-news-rss-direct",
