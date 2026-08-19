@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-19T23:10:47.240Z",
+  "generatedAt": "2026-08-19T23:48:16.681Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "daily-mail-online",
-      "provider": "Daily Mail Online - Popular Stories",
-      "endpoint": "https://www.dailymail.co.uk/home/index.rss",
-      "finalUrl": "https://www.dailymail.com/home/index.rss",
-      "category": "moved-temporarily",
+      "id": "fra-rss",
+      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
+      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
       "statusKind": "",
       "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.dailymail.com/home/index.rss",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
