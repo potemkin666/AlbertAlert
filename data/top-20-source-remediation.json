@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-19T19:24:00.622Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "dni-press-releases",
-      "provider": "Office of the Director of National Intelligence - Press Releases",
-      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "fra-rss",
-      "provider": "Human Rights Watch - Terrorism and Counterterrorism",
-      "endpoint": "https://www.hrw.org/topic/terrorism-counterterrorism",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "de-bundespolizei-presseportal",
-      "provider": "Bundespolizei via Presseportal",
-      "endpoint": "https://www.presseportal.de/blaulicht/d/bundespolizei",
-      "finalUrl": "",
-      "category": "unknown",
-      "statusKind": "",
-      "message": "terminated",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-08-19T19:44:44.151Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
