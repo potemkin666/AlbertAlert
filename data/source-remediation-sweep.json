@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-19T21:47:40.920Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-08-19T22:17:31.569Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "timeout": 1
+  },
+  "byKind": {
+    "rss": 1
+  },
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "coe-counter-terrorism",
+      "provider": "Eurojust - Press Releases",
+      "endpoint": "https://www.eurojust.europa.eu/rss/press-releases.xml?source=coe-counter-terrorism",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "coe-counter-terrorism",
+      "provider": "Eurojust - Press Releases",
+      "endpoint": "https://www.eurojust.europa.eu/rss/press-releases.xml?source=coe-counter-terrorism",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
