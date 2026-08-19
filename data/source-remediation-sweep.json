@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-19T10:13:10.788Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "brittle-selectors-or-js-rendering": 1,
-    "timeout": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uclh-news",
-      "provider": "University College London Hospitals a News",
-      "endpoint": "https://www.uclh.nhs.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "church-of-england-newspaper",
-      "provider": "Church of England Newspaper",
-      "endpoint": "https://www.churchnewspaper.com/feed",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uclh-news",
-      "provider": "University College London Hospitals a News",
-      "endpoint": "https://www.uclh.nhs.uk/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-08-19T11:02:42.202Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
