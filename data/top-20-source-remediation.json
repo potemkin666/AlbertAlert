@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-20T12:15:43.863Z",
+  "generatedAt": "2026-08-20T12:57:34.118Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "id": "me-vijesti-black-chronicle",
+      "provider": "Vijesti - Black Chronicle",
+      "endpoint": "https://en.vijesti.me/news-b/black-chronicle",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "timeout",
       "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
+      "message": "This operation was aborted",
+      "status": 0,
       "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
