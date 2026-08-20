@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-20T08:23:54.844Z",
+  "generatedAt": "2026-08-20T08:50:10.911Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "timeout": 1
+    "network-failure": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "parliament-public-bills-rss",
-      "provider": "Parliament - Public Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/publicbills.rss",
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "This operation was aborted",
+      "message": "fetch failed",
       "status": 0,
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "parliament-public-bills-rss",
-      "provider": "Parliament - Public Bills RSS",
-      "endpoint": "https://bills.parliament.uk/rss/publicbills.rss",
+      "id": "german-bka-press-releases-de",
+      "provider": "BKA Germany - Press Releases",
+      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/Pressemeldungen/pressemitteilungen_node.html",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "This operation was aborted",
+      "message": "fetch failed",
       "status": 0,
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
