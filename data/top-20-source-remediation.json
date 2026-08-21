@@ -1,8 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-21T05:34:57.007Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-21T05:47:16.614Z",
+  "totalSourceErrors": 2,
   "top20": [
+    {
+      "id": "jamestown-terrorism-monitor",
+      "provider": "Jamestown Foundation - Terrorism Monitor",
+      "endpoint": "https://jamestown.org/publications/tm/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "institute-global-home",
       "provider": "Institute for Global Change",
