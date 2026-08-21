@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-21T05:22:14.639Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-21T05:34:57.007Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "institute-global-home",
+      "provider": "Institute for Global Change",
+      "endpoint": "https://institute.global/insights",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
