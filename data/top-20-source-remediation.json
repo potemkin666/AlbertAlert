@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-22T13:18:11.045Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-22T13:45:53.833Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
       "id": "gb-news-uk-politics-rss",
@@ -19,6 +19,23 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "sapo-se-english",
+      "provider": "Swedish Security Service English news",
+      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 247,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
