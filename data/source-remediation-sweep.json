@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-22T05:49:08.161Z",
+  "generatedAt": "2026-08-22T06:14:11.241Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "timeout": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
     "html": 1
@@ -12,38 +12,38 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "This operation was aborted",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
       "finalUrl": "",
-      "category": "timeout",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "This operation was aborted",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
