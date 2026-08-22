@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-22T14:15:16.767Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "blocked-or-auth": 1
-  },
-  "byKind": {
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
+  "generatedAt": "2026-08-22T14:43:11.500Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "gb-news-uk-politics-rss",
-      "provider": "GB News - UK Politics",
-      "endpoint": "https://www.gbnews.com/feeds/politics/uk.rss",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "gb-news-uk-politics-rss",
-      "provider": "GB News - UK Politics",
-      "endpoint": "https://www.gbnews.com/feeds/politics/uk.rss",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
