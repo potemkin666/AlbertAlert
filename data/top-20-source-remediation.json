@@ -1,12 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-22T12:12:00.659Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-08-22T12:56:48.262Z",
+  "totalSourceErrors": 3,
   "top20": [
     {
-      "id": "guardian-uk-top-stories",
-      "provider": "The Guardian - UK Top Stories",
-      "endpoint": "https://www.theguardian.com/uk/rss",
+      "id": "gb-news-uk-politics-rss",
+      "provider": "GB News - UK Politics",
+      "endpoint": "https://www.gbnews.com/feeds/politics/uk.rss",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
@@ -19,6 +19,40 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "independent-top-stories",
+      "provider": "The Independent - Top Stories",
+      "endpoint": "https://www.independent.co.uk/rss",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 500",
+      "status": 500,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
