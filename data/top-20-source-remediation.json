@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-22T23:41:34.950Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-23T00:28:59.334Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "londonist-rss",
+      "provider": "Londonist",
+      "endpoint": "https://londonist.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
