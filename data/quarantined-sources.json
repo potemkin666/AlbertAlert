@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-23T17:09:55.056Z",
+  "generatedAt": "2026-08-23T17:46:51.460Z",
   "count": 268,
   "metrics": {
     "total": 268,
     "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 2362,
+    "avgTimeInQuarantineHours": 2363,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -73,16 +73,11 @@
       "quarantinedAt": "2026-08-21T17:18:56.099Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-13T16:24:14.402Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -102,12 +97,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-21T17:18:56.099Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T17:46:51.460Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-28T17:18:56.099Z",
-      "lastFailureAt": "2026-08-21T17:18:56.099Z",
-      "lastCheckedAt": "2026-08-21T17:18:56.099Z"
+      "reviewBy": "2026-08-30T17:46:51.460Z",
+      "lastFailureAt": "2026-08-23T17:46:51.460Z",
+      "lastCheckedAt": "2026-08-23T17:46:51.460Z"
     },
     {
       "id": "daily-record",
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-08-17T16:45:34.983Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-13T16:24:14.402Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -151,12 +146,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-21T17:18:56.099Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-23T17:46:51.460Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-28T17:18:56.099Z",
-      "lastFailureAt": "2026-08-21T17:18:56.099Z",
-      "lastCheckedAt": "2026-08-21T17:18:56.099Z"
+      "reviewBy": "2026-08-30T17:46:51.460Z",
+      "lastFailureAt": "2026-08-23T17:46:51.460Z",
+      "lastCheckedAt": "2026-08-23T17:46:51.460Z"
     },
     {
       "id": "belfast-live",
