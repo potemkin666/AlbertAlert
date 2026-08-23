@@ -1,16 +1,261 @@
 {
-  "generatedAt": "2026-08-23T18:10:56.870Z",
-  "count": 268,
+  "generatedAt": "2026-08-23T18:52:52.565Z",
+  "count": 273,
   "metrics": {
-    "total": 268,
-    "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 2363,
+    "total": 273,
+    "newThisWeek": 16,
+    "avgTimeInQuarantineHours": 2320,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "met-police-the-met-tag",
+      "provider": "Metropolitan Police - The Met Tag",
+      "endpoint": "https://news.met.police.uk/news/tag/the-met",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T18:52:52.565Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T17:15:34.397Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T17:45:17.369Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:12:33.510Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T18:14:34.101Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T18:52:52.565Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T18:52:52.565Z",
+      "lastFailureAt": "2026-08-23T18:52:52.565Z",
+      "lastCheckedAt": "2026-08-23T18:52:52.565Z"
+    },
+    {
+      "id": "met-police-latest-news",
+      "provider": "Metropolitan Police - Latest News",
+      "endpoint": "https://news.met.police.uk/latest_news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T18:52:52.565Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T17:15:34.397Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T17:45:17.369Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:12:33.510Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T18:14:34.101Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T18:52:52.565Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T18:52:52.565Z",
+      "lastFailureAt": "2026-08-23T18:52:52.565Z",
+      "lastCheckedAt": "2026-08-23T18:52:52.565Z"
+    },
+    {
+      "id": "met-police-news",
+      "provider": "Metropolitan Police Service a News",
+      "endpoint": "https://news.met.police.uk/news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T18:52:52.565Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T17:15:34.397Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T17:45:17.369Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:12:33.510Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T18:14:34.101Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T18:52:52.565Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T18:52:52.565Z",
+      "lastFailureAt": "2026-08-23T18:52:52.565Z",
+      "lastCheckedAt": "2026-08-23T18:52:52.565Z"
+    },
+    {
+      "id": "gmp-news",
+      "provider": "Metropolitan Police Service - Latest News",
+      "endpoint": "https://news.met.police.uk/latest_news?source=gmp-news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T18:52:52.565Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T17:15:34.397Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T17:45:17.369Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:12:33.510Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T18:14:34.101Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T18:52:52.565Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T18:52:52.565Z",
+      "lastFailureAt": "2026-08-23T18:52:52.565Z",
+      "lastCheckedAt": "2026-08-23T18:52:52.565Z"
+    },
+    {
+      "id": "greater-manchester-police-news",
+      "provider": "Metropolitan Police Service - Latest News",
+      "endpoint": "https://news.met.police.uk/latest_news?source=greater-manchester-police-news",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T18:52:52.565Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T17:15:34.397Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T17:45:17.369Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:12:33.510Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T18:14:34.101Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T18:52:52.565Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T18:52:52.565Z",
+      "lastFailureAt": "2026-08-23T18:52:52.565Z",
+      "lastCheckedAt": "2026-08-23T18:52:52.565Z"
+    },
     {
       "id": "waltham-forest-council-news",
       "provider": "Waltham Forest Council a News",
