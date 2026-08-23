@@ -1,16 +1,114 @@
 {
-  "generatedAt": "2026-08-23T19:12:12.268Z",
-  "count": 273,
+  "generatedAt": "2026-08-23T19:41:13.529Z",
+  "count": 275,
   "metrics": {
-    "total": 273,
-    "newThisWeek": 16,
-    "avgTimeInQuarantineHours": 2320,
+    "total": 275,
+    "newThisWeek": 18,
+    "avgTimeInQuarantineHours": 2304,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "haringey-council-news",
+      "provider": "Metropolitan Police - Haringey Tag",
+      "endpoint": "https://news.met.police.uk/news/tag/haringey",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T19:41:13.529Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T18:09:16.362Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T18:14:36.075Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:49:34.676Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T19:15:51.519Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T19:41:13.529Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T19:41:13.529Z",
+      "lastFailureAt": "2026-08-23T19:41:13.529Z",
+      "lastCheckedAt": "2026-08-23T19:41:13.529Z"
+    },
+    {
+      "id": "lewisham-council-news",
+      "provider": "Metropolitan Police - Lewisham Tag",
+      "endpoint": "https://news.met.police.uk/news/tag/lewisham",
+      "kind": "html",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-08-23T19:41:13.529Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 6,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-15T18:09:16.362Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-17T18:14:36.075Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-19T18:49:34.676Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-21T19:15:51.519Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-23T19:41:13.529Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-30T19:41:13.529Z",
+      "lastFailureAt": "2026-08-23T19:41:13.529Z",
+      "lastCheckedAt": "2026-08-23T19:41:13.529Z"
+    },
     {
       "id": "met-police-the-met-tag",
       "provider": "Metropolitan Police - The Met Tag",
