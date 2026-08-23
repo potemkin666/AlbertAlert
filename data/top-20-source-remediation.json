@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-23T21:47:42.150Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "cheshire-police-news",
-      "provider": "North West Bylines - Cheshire",
-      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-08-23T22:09:43.220Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
