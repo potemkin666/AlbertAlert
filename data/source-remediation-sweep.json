@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-23T11:42:17.895Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-23T12:16:42.845Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "moved-temporarily": 1
+  },
+  "byKind": {
+    "html": 1
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "ec-wola-ecuador-bukele-model",
+      "provider": "WOLA - Ecuador security analysis",
+      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
+      "finalUrl": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/?__cf_chl_rt_tk=Ptp4no6. Iz3q. FjbbMQDyeiokbQL3. Gll_Ygkv0qa28OKM-1787487392-1.0.1.1-Y2_2. FomKCtE_qRAC5fFGOf. MeznVUb. Bn. Eant. GnOTHsuk",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/?__cf_chl_rt_tk=Ptp4no6. Iz3q. FjbbMQDyeiokbQL3. Gll_Ygkv0qa28OKM-1787487392-1.0.1.1-Y2_2. FomKCtE_qRAC5fFGOf. MeznVUb. Bn. Eant. GnOTHsuk",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "ec-wola-ecuador-bukele-model",
+      "provider": "WOLA - Ecuador security analysis",
+      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
+      "finalUrl": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/?__cf_chl_rt_tk=Ptp4no6. Iz3q. FjbbMQDyeiokbQL3. Gll_Ygkv0qa28OKM-1787487392-1.0.1.1-Y2_2. FomKCtE_qRAC5fFGOf. MeznVUb. Bn. Eant. GnOTHsuk",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/?__cf_chl_rt_tk=Ptp4no6. Iz3q. FjbbMQDyeiokbQL3. Gll_Ygkv0qa28OKM-1787487392-1.0.1.1-Y2_2. FomKCtE_qRAC5fFGOf. MeznVUb. Bn. Eant. GnOTHsuk",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
