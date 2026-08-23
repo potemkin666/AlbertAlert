@@ -1,41 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-23T19:41:13.529Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-08-23T20:14:57.193Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 2
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "html": 2
+    "html": 1
   },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "haringey-council-news",
-      "provider": "Metropolitan Police - Haringey Tag",
-      "endpoint": "https://news.met.police.uk/news/tag/haringey",
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "lewisham-council-news",
-      "provider": "Metropolitan Police - Lewisham Tag",
-      "endpoint": "https://news.met.police.uk/news/tag/lewisham",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "Blocked by blocked access page",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
@@ -48,30 +31,13 @@
   ],
   "sources": [
     {
-      "id": "haringey-council-news",
-      "provider": "Metropolitan Police - Haringey Tag",
-      "endpoint": "https://news.met.police.uk/news/tag/haringey",
+      "id": "dni-press-releases",
+      "provider": "Office of the Director of National Intelligence - Press Releases",
+      "endpoint": "https://www.dni.gov/index.php/who-we-are/348-newsroom/press-releases",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "lewisham-council-news",
-      "provider": "Metropolitan Police - Lewisham Tag",
-      "endpoint": "https://news.met.police.uk/news/tag/lewisham",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "Blocked by blocked access page",
       "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
