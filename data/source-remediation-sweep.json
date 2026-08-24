@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-24T13:27:24.411Z",
+  "generatedAt": "2026-08-24T13:52:45.849Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "http-status-error": 1
+    "brittle-selectors-or-js-rendering": 1
   },
   "byKind": {
     "html": 1
@@ -12,38 +12,38 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "id": "sapo-se-english",
+      "provider": "Swedish Security Service English news",
+      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "No items parsed from source payload",
+      "status": 247,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "rewards-for-justice",
-      "provider": "U.S. Department of State - Rewards for Justice",
-      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "id": "sapo-se-english",
+      "provider": "Swedish Security Service English news",
+      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
-      "message": "HTTP 500",
-      "status": 500,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "message": "No items parsed from source payload",
+      "status": 247,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "context",
+      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     }
