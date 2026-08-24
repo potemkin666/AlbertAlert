@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-08-24T09:24:33.833Z",
-  "count": 275,
+  "generatedAt": "2026-08-24T09:51:38.384Z",
+  "count": 276,
   "metrics": {
-    "total": 275,
-    "newThisWeek": 17,
-    "avgTimeInQuarantineHours": 2317,
+    "total": 276,
+    "newThisWeek": 18,
+    "avgTimeInQuarantineHours": 2309,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "guardia-civil-rss-list",
+      "provider": "Guardia Civil - RSS List",
+      "endpoint": "https://web.guardiacivil.es/va/tramites/rss_list/",
+      "kind": "html",
+      "lane": "context",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Endpoint likely removed — all recent errors are HTTP 404",
+      "quarantinedAt": "2026-08-24T09:51:38.384Z",
+      "lastErrorCategory": "not-found-404",
+      "lastErrorMessage": "HTTP 404",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-16T08:46:24.384Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-18T08:56:43.687Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-20T09:17:11.768Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-22T09:49:03.112Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-24T09:51:38.384Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-08-31T09:51:38.384Z",
+      "lastFailureAt": "2026-08-24T09:51:38.384Z",
+      "lastCheckedAt": "2026-08-24T09:51:38.384Z"
+    },
     {
       "id": "haringey-council-news",
       "provider": "Metropolitan Police - Haringey Tag",
@@ -906,16 +955,11 @@
       "quarantinedAt": "2026-08-16T08:46:24.384Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 9,
+      "consecutiveFailures": 10,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-14T08:41:15.239Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -935,12 +979,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-22T09:49:03.112Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-24T09:51:38.384Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-08-29T09:49:03.112Z",
-      "lastFailureAt": "2026-08-22T09:49:03.112Z",
-      "lastCheckedAt": "2026-08-22T09:49:03.112Z"
+      "reviewBy": "2026-08-31T09:51:38.384Z",
+      "lastFailureAt": "2026-08-24T09:51:38.384Z",
+      "lastCheckedAt": "2026-08-24T09:51:38.384Z"
     },
     {
       "id": "aymennaltamimi-substack-feed",
