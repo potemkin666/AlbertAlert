@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-24T13:52:45.849Z",
+  "generatedAt": "2026-08-24T14:26:44.469Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "sapo-se-english",
-      "provider": "Swedish Security Service English news",
-      "endpoint": "https://www.sakerhetspolisen.se/ovriga-sidor/other-languages/english-engelska/press-room/news.html",
+      "id": "de-brandenburg-police-overregional-rss",
+      "provider": "Brandenburg Police - Overregional RSS",
+      "endpoint": "https://polizei.brandenburg.de/pressemeldungen/rss/region/57581",
       "finalUrl": "",
       "category": "brittle-selectors-or-js-rendering",
       "statusKind": "",
       "message": "No items parsed from source payload",
-      "status": 247,
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
+      "sourceKind": "rss",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
