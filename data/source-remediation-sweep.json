@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-25T10:20:57.596Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "html": 1
-  },
+  "generatedAt": "2026-08-25T10:48:45.443Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "cheshire-police-alert",
-      "provider": "Cheshire Police Alert",
-      "endpoint": "https://www.cheshirepolicealert.co.uk/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "cheshire-police-alert",
-      "provider": "Cheshire Police Alert",
-      "endpoint": "https://www.cheshirepolicealert.co.uk/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
