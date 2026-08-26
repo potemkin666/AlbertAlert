@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-26T00:24:50.886Z",
+  "generatedAt": "2026-08-26T00:59:58.646Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "huffpost-uk",
-      "provider": "Huff. Post UK",
-      "endpoint": "https://www.huffingtonpost.co.uk/feeds/index.xml",
+      "id": "cheshire-police-news",
+      "provider": "North West Bylines - Cheshire",
+      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "anti-bot-protection",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "Blocked by anti-bot protection",
+      "status": 202,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": true
     }
