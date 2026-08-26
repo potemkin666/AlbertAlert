@@ -1,58 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-26T04:00:32.050Z",
-  "totalSourceErrors": 3,
-  "top20": [
-    {
-      "id": "daily-mail-online",
-      "provider": "Daily Mail Online - Popular Stories",
-      "endpoint": "https://www.dailymail.co.uk/home/index.rss",
-      "finalUrl": "https://www.dailymail.com/home/index.rss",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.dailymail.com/home/index.rss",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "de-cemas-digital-seismograph",
-      "provider": "CeMAS - Digital Seismograph",
-      "endpoint": "https://cemas.io/en/projects/digital-seismograph/",
-      "finalUrl": "https://cemas.io/en/projects/digital-seismograph-monitoring-terrorism",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 0,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://cemas.io/en/projects/digital-seismograph-monitoring-terrorism",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "rand-terrorism-topic",
-      "provider": "RAND - Terrorism Topic",
-      "endpoint": "https://www.rand.org/topics/terrorism.html?source=rand-terrorism-topic",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-08-26T04:22:05.542Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
