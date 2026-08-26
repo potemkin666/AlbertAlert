@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-26T08:52:46.500Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-26T09:23:39.167Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "anti-bot-protection": 1
+  },
+  "byKind": {
+    "html": 1
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "financial-times-world",
+      "provider": "Reuters - World News",
+      "endpoint": "https://www.reuters.com/world/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
