@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-26T12:59:19.763Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-26T13:29:49.602Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "http-status-error": 1
+  },
+  "byKind": {
+    "html": 1
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 500",
+      "status": 500,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "rewards-for-justice",
+      "provider": "U.S. Department of State - Rewards for Justice",
+      "endpoint": "https://rewardsforjustice.net/rewards/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 500",
+      "status": 500,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
