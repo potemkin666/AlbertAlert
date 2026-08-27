@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-27T06:25:39.003Z",
-  "count": 277,
+  "generatedAt": "2026-08-27T08:12:33.438Z",
+  "count": 276,
   "metrics": {
-    "total": 277,
+    "total": 276,
     "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 2369,
+    "avgTimeInQuarantineHours": 2379,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -943,55 +943,6 @@
       "lastCheckedAt": "2026-08-25T14:23:33.791Z"
     },
     {
-      "id": "jamestown-terrorism-monitor",
-      "provider": "Jamestown Foundation - Terrorism Monitor",
-      "endpoint": "https://jamestown.org/publications/tm/feed/",
-      "kind": "rss",
-      "lane": "context",
-      "region": "international",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "HTML structure changed — selectors no longer match; needs parser update",
-      "quarantinedAt": "2026-08-17T05:24:37.872Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T05:24:37.872Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-19T05:46:26.076Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-21T05:47:16.614Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-23T06:20:15.343Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-25T06:52:38.121Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T06:52:38.121Z",
-      "lastFailureAt": "2026-08-25T06:52:38.121Z",
-      "lastCheckedAt": "2026-08-25T06:52:38.121Z"
-    },
-    {
       "id": "manchester-evening-news",
       "provider": "Manchester Evening News",
       "endpoint": "https://www.manchestereveningnews.co.uk/?service=rss",
@@ -1739,16 +1690,11 @@
       "quarantinedAt": "2026-07-23T19:35:48.452Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 429",
-      "consecutiveFailures": 22,
+      "consecutiveFailures": 23,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "http-status-error",
-          "message": "HTTP 429",
-          "at": "2026-08-17T04:21:23.594Z"
-        },
         {
           "category": "http-status-error",
           "message": "HTTP 429",
@@ -1768,12 +1714,17 @@
           "category": "http-status-error",
           "message": "HTTP 429",
           "at": "2026-08-25T06:52:38.121Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 429",
+          "at": "2026-08-27T08:12:33.438Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T06:52:38.121Z",
-      "lastFailureAt": "2026-08-25T06:52:38.121Z",
-      "lastCheckedAt": "2026-08-25T06:52:38.121Z"
+      "reviewBy": "2026-09-03T08:12:33.438Z",
+      "lastFailureAt": "2026-08-27T08:12:33.438Z",
+      "lastCheckedAt": "2026-08-27T08:12:33.438Z"
     },
     {
       "id": "west-yorkshire-police-news-appeals",
