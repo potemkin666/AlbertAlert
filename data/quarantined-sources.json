@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-27T13:47:43.210Z",
+  "generatedAt": "2026-08-27T18:01:05.126Z",
   "count": 276,
   "metrics": {
     "total": 276,
     "newThisWeek": 11,
-    "avgTimeInQuarantineHours": 2384,
+    "avgTimeInQuarantineHours": 2389,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -512,18 +512,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-08-21T17:18:56.099Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 8,
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-17T16:45:34.983Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -543,12 +538,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-25T17:53:34.710Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T17:53:34.710Z",
-      "lastFailureAt": "2026-08-25T17:53:34.710Z",
-      "lastCheckedAt": "2026-08-25T17:53:34.710Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "daily-record",
@@ -563,16 +563,11 @@
       "quarantinedAt": "2026-08-17T16:45:34.983Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T16:45:34.983Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -592,12 +587,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T17:53:34.710Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T17:53:34.710Z",
-      "lastFailureAt": "2026-08-25T17:53:34.710Z",
-      "lastCheckedAt": "2026-08-25T17:53:34.710Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "belfast-live",
@@ -612,16 +612,11 @@
       "quarantinedAt": "2026-08-17T16:11:37.646Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T16:11:37.646Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -641,12 +636,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T17:17:30.248Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T17:17:30.248Z",
-      "lastFailureAt": "2026-08-25T17:17:30.248Z",
-      "lastCheckedAt": "2026-08-25T17:17:30.248Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "birmingham-mail",
@@ -661,16 +661,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -690,12 +685,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "cambridge-news",
@@ -710,16 +710,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -739,12 +734,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "daily-mirror",
@@ -759,16 +759,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -788,12 +783,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "wales-online",
@@ -808,16 +808,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -837,12 +832,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "my-london-rss",
@@ -857,16 +857,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -886,12 +881,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "cambridgeshire-police-news-search",
@@ -906,16 +906,11 @@
       "quarantinedAt": "2026-08-17T13:22:12.373Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-17T13:22:12.373Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -935,12 +930,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-25T14:23:33.791Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T14:23:33.791Z",
-      "lastFailureAt": "2026-08-25T14:23:33.791Z",
-      "lastCheckedAt": "2026-08-25T14:23:33.791Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "manchester-evening-news",
@@ -1102,16 +1102,11 @@
       "quarantinedAt": "2026-08-09T12:56:17.056Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 14,
+      "consecutiveBlockedFailures": 15,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-08-17T16:11:37.646Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -1131,12 +1126,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-08-25T17:17:30.248Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T17:17:30.248Z",
-      "lastFailureAt": "2026-08-25T17:17:30.248Z",
-      "lastCheckedAt": "2026-08-25T17:17:30.248Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "dni-press-releases",
@@ -3993,16 +3993,11 @@
       "quarantinedAt": "2026-05-03T10:40:27.179Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 62,
+      "consecutiveFailures": 63,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 62,
+      "consecutiveBlockedFailures": 63,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-17T16:11:37.646Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4022,12 +4017,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-08-25T17:17:30.248Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-08-27T18:01:05.126Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-01T17:17:30.248Z",
-      "lastFailureAt": "2026-08-25T17:17:30.248Z",
-      "lastCheckedAt": "2026-08-25T17:17:30.248Z"
+      "reviewBy": "2026-09-03T18:01:05.126Z",
+      "lastFailureAt": "2026-08-27T18:01:05.126Z",
+      "lastCheckedAt": "2026-08-27T18:01:05.126Z"
     },
     {
       "id": "me-ministry-defence",
