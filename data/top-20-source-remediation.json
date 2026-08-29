@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-29T20:39:49.962Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-29T21:22:19.906Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "usgs-earthquakes-all-hour",
+      "provider": "USGS - Earthquakes (All Hour)",
+      "endpoint": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
