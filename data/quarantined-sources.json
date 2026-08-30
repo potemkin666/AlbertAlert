@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-30T10:45:08.975Z",
+  "generatedAt": "2026-08-30T11:16:55.994Z",
   "count": 276,
   "metrics": {
     "total": 276,
     "newThisWeek": 10,
-    "avgTimeInQuarantineHours": 2450,
+    "avgTimeInQuarantineHours": 2451,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -122,16 +122,11 @@
       "quarantinedAt": "2026-08-24T09:51:38.384Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 8,
+      "consecutiveFailures": 9,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-20T09:17:11.768Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -151,12 +146,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-08-28T10:49:52.929Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-08-30T11:16:55.994Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-04T10:49:52.929Z",
-      "lastFailureAt": "2026-08-28T10:49:52.929Z",
-      "lastCheckedAt": "2026-08-28T10:49:52.929Z"
+      "reviewBy": "2026-09-06T11:16:55.994Z",
+      "lastFailureAt": "2026-08-30T11:16:55.994Z",
+      "lastCheckedAt": "2026-08-30T11:16:55.994Z"
     },
     {
       "id": "haringey-council-news",
@@ -1004,16 +1004,11 @@
       "quarantinedAt": "2026-08-16T08:46:24.384Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 12,
+      "consecutiveFailures": 13,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-20T09:17:11.768Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1033,12 +1028,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-08-28T10:49:52.929Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-08-30T11:16:55.994Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-04T10:49:52.929Z",
-      "lastFailureAt": "2026-08-28T10:49:52.929Z",
-      "lastCheckedAt": "2026-08-28T10:49:52.929Z"
+      "reviewBy": "2026-09-06T11:16:55.994Z",
+      "lastFailureAt": "2026-08-30T11:16:55.994Z",
+      "lastCheckedAt": "2026-08-30T11:16:55.994Z"
     },
     {
       "id": "aymennaltamimi-substack-feed",
