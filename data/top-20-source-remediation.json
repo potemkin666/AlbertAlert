@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-30T04:42:53.326Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-08-30T05:23:29.674Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "eu-commission-presscorner-home",
+      "provider": "Council of the EU - Press Releases (RSS)",
+      "endpoint": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx?source=eu-commission-presscorner-home",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
