@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-31T02:47:28.622Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-08-31T03:24:32.277Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "blocked-or-auth": 1
+  },
+  "byKind": {
+    "html": 1
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 1,
+  "top20": [
+    {
+      "id": "ec-wola-ecuador-bukele-model",
+      "provider": "WOLA - Ecuador security analysis",
+      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "ec-wola-ecuador-bukele-model",
+      "provider": "WOLA - Ecuador security analysis",
+      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
