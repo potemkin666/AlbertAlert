@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-31T05:25:44.089Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "blocked-or-auth": 1
-  },
-  "byKind": {
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
+  "generatedAt": "2026-08-31T05:41:28.413Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "curia-press-rss-en",
-      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
-      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "curia-press-rss-en",
-      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
-      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
