@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-08-31T16:21:02.123Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-08-31T16:46:51.329Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "timeout": 1
+  },
+  "byKind": {
+    "json": 1
+  },
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "police-uk-all-crime-leicester",
+      "provider": "Police.uk - Street Crime Around Leicester",
+      "endpoint": "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "json",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "police-uk-all-crime-leicester",
+      "provider": "Police.uk - Street Crime Around Leicester",
+      "endpoint": "https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "json",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
