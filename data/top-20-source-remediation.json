@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-01T13:20:12.759Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-01T13:46:40.639Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "joint-committee-human-rights-html",
+      "provider": "Joint Committee on Human Rights",
+      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "oversight",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
