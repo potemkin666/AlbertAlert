@@ -1,87 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-01T05:25:40.353Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-09-01T05:42:02.190Z",
+  "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1,
-    "network-failure": 1
+    "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1,
-    "html": 1
+    "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "sans-isc-full",
-      "provider": "SANS Internet Storm Center (Full Feed)",
-      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
+      "id": "cheshire-police-news",
+      "provider": "North West Bylines - Cheshire",
+      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 202,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "german-bfv-news",
-      "provider": "German BfV - Press",
-      "endpoint": "https://www.verfassungsschutz.de/EN/service/press/press_node.html",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "sans-isc-full",
-      "provider": "SANS Internet Storm Center (Full Feed)",
-      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
+      "id": "cheshire-police-news",
+      "provider": "North West Bylines - Cheshire",
+      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 202,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
       "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "german-bfv-news",
-      "provider": "German BfV - Press",
-      "endpoint": "https://www.verfassungsschutz.de/EN/service/press/press_node.html",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
     }
   ]
 }
