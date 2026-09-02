@@ -1,6 +1,75 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-02T17:40:13.843Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-02T18:29:51.517Z",
+  "totalSourceErrors": 4,
+  "top20": [
+    {
+      "id": "brent-council-news",
+      "provider": "Brent Council a News",
+      "endpoint": "https://www.brent.gov.uk/news",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "cheshire-police-alert",
+      "provider": "Cheshire Police Alert",
+      "endpoint": "https://www.cheshirepolicealert.co.uk/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-csirt",
+      "provider": "Government CSIRT Slovakia",
+      "endpoint": "https://www.csirt.gov.sk/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-justice-press",
+      "provider": "Slovak Ministry of Justice - Press",
+      "endpoint": "https://www.justice.gov.sk/tlacovespravy/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
