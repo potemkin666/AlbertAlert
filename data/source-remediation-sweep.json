@@ -1,11 +1,85 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-02T02:45:23.155Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
+  "generatedAt": "2026-09-02T03:27:06.297Z",
+  "totalSourceErrors": 2,
+  "byCategory": {
+    "network-failure": 2
+  },
+  "byKind": {
+    "html": 2
+  },
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "htmlErrorCount": 2,
+  "top20": [
+    {
+      "id": "nhs-london-nel-news",
+      "provider": "NHS North East London a News",
+      "endpoint": "https://northeastlondon.icb.nhs.uk/news/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-minv-press",
+      "provider": "Slovak Ministry of Interior - Press",
+      "endpoint": "https://www.minv.sk/?tlacove-spravy-2=",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ],
+  "sources": [
+    {
+      "id": "nhs-london-nel-news",
+      "provider": "NHS North East London a News",
+      "endpoint": "https://northeastlondon.icb.nhs.uk/news/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-minv-press",
+      "provider": "Slovak Ministry of Interior - Press",
+      "endpoint": "https://www.minv.sk/?tlacove-spravy-2=",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
