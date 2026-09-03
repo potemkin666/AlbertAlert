@@ -1,86 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-03T08:32:01.223Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "anti-bot-protection": 1,
-    "http-status-error": 1
-  },
-  "byKind": {
-    "rss": 2
-  },
-  "machineReadableErrorCount": 2,
+  "generatedAt": "2026-09-03T08:48:02.329Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "ian-visits-rss",
-      "provider": "Ian. Visits",
-      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "ertzaintza-news",
-      "provider": "Ertzaintza - RSS",
-      "endpoint": "https://www.ertzaintza.euskadi.eus/lfr/en/web/ertzaintza/ultimas-noticias/-/asset_publisher/Hq. Atd. Hx7jB7q/rss",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 503",
-      "status": 503,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "ian-visits-rss",
-      "provider": "Ian. Visits",
-      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "ertzaintza-news",
-      "provider": "Ertzaintza - RSS",
-      "endpoint": "https://www.ertzaintza.euskadi.eus/lfr/en/web/ertzaintza/ultimas-noticias/-/asset_publisher/Hq. Atd. Hx7jB7q/rss",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 503",
-      "status": 503,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
