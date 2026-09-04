@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-04T07:21:21.879Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-04T07:47:38.941Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "finalUrl": "https://www.policia.es/_es/cookies.php",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "west-yorkshire-police-missing-rss",
+      "provider": "West Yorkshire Police - Missing",
+      "endpoint": "https://www.westyorkshire.police.uk/news-appeals/missing",
+      "finalUrl": "https://www.westyorkshire.police.uk/news-appeals/missing?__cf_chl_rt_tk=P8q0P35xyAZN2xB9bm.w8mUBy5j. JzG_ji5iecv. TsK0M-1788507815-1.0.1.1-pbramU2W0z. ZytD6c. NjAFaWXjum71.xK2. Bgh6a2. SxgrI",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.westyorkshire.police.uk/news-appeals/missing?__cf_chl_rt_tk=P8q0P35xyAZN2xB9bm.w8mUBy5j. JzG_ji5iecv. TsK0M-1788507815-1.0.1.1-pbramU2W0z. ZytD6c. NjAFaWXjum71.xK2. Bgh6a2. SxgrI",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "secret-london-rss",
+      "provider": "Secret London",
+      "endpoint": "https://secretldn.com/feed/",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
