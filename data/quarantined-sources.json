@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-05T07:19:16.910Z",
+  "generatedAt": "2026-09-05T07:44:10.761Z",
   "count": 274,
   "metrics": {
     "total": 274,
@@ -2180,16 +2180,11 @@
       "quarantinedAt": "2026-07-04T17:54:27.705Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 36,
+      "consecutiveFailures": 37,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -2209,12 +2204,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "eppo-news-node-7",
@@ -2474,16 +2474,11 @@
       "quarantinedAt": "2026-06-18T13:51:30.830Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 44,
+      "consecutiveFailures": 45,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2503,12 +2498,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "policia-nacional-news",
@@ -2619,18 +2619,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-06-08T05:21:27.942Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 49,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 50,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2650,12 +2645,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "quadrant2design-exhibiting-guides",
@@ -2817,16 +2817,11 @@
       "quarantinedAt": "2026-05-10T12:18:47.514Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 63,
+      "consecutiveFailures": 64,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 62,
+      "consecutiveBlockedFailures": 63,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2846,12 +2841,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "ec-ministry-interior-open-data",
@@ -3013,16 +3013,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 66,
+      "consecutiveFailures": 67,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -3042,12 +3037,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "netherlands-om-terrorismefinanciering-nieuws",
@@ -3062,16 +3062,11 @@
       "quarantinedAt": "2026-05-04T06:52:36.217Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 66,
+      "consecutiveFailures": 67,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -3091,12 +3086,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "hedayah-news",
@@ -4287,16 +4287,11 @@
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 67,
+      "consecutiveFailures": 68,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 67,
+      "consecutiveBlockedFailures": 68,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-26T04:00:32.050Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4316,12 +4311,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "ecfr-feeds-index",
@@ -4679,16 +4679,11 @@
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 67,
+      "consecutiveFailures": 68,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 67,
+      "consecutiveBlockedFailures": 68,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-08-26T04:00:32.050Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -4708,12 +4703,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "ecfr-publications",
@@ -4726,18 +4726,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T17:13:17.765Z",
-      "lastErrorCategory": "unknown",
-      "lastErrorMessage": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "consecutiveFailures": 67,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 68,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-08-26T05:23:58.978Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -4757,12 +4752,17 @@
           "category": "unknown",
           "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
           "at": "2026-09-03T07:21:52.989Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-05T07:44:10.761Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T07:21:52.989Z",
-      "lastFailureAt": "2026-09-03T07:21:52.989Z",
-      "lastCheckedAt": "2026-09-03T07:21:52.989Z"
+      "reviewBy": "2026-09-12T07:44:10.761Z",
+      "lastFailureAt": "2026-09-05T07:44:10.761Z",
+      "lastCheckedAt": "2026-09-05T07:44:10.761Z"
     },
     {
       "id": "politico-europe",
