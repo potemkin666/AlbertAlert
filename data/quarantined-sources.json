@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-05T11:40:00.957Z",
-  "count": 274,
+  "generatedAt": "2026-09-05T12:29:23.097Z",
+  "count": 275,
   "metrics": {
-    "total": 274,
-    "newThisWeek": 0,
-    "avgTimeInQuarantineHours": 2607,
+    "total": 275,
+    "newThisWeek": 1,
+    "avgTimeInQuarantineHours": 2598,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "eu-ejustice-news-rss",
+      "provider": "European e-Justice - News RSS",
+      "endpoint": "https://e-justice.europa.eu/rss/news_en",
+      "kind": "rss",
+      "lane": "oversight",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-09-05T12:29:23.097Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-08-28T10:49:52.929Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-08-30T11:16:55.994Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-09-01T11:19:29.357Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-09-03T11:40:34.373Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-09-05T12:29:23.097Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-09-12T12:29:23.097Z",
+      "lastFailureAt": "2026-09-05T12:29:23.097Z",
+      "lastCheckedAt": "2026-09-05T12:29:23.097Z"
+    },
     {
       "id": "sapo-se-english",
       "provider": "Swedish Security Service English news",
@@ -122,16 +171,11 @@
       "quarantinedAt": "2026-08-24T09:51:38.384Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-08-26T09:57:21.605Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -151,12 +195,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-09-03T11:40:34.373Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-09-05T12:29:23.097Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T11:40:34.373Z",
-      "lastFailureAt": "2026-09-03T11:40:34.373Z",
-      "lastCheckedAt": "2026-09-03T11:40:34.373Z"
+      "reviewBy": "2026-09-12T12:29:23.097Z",
+      "lastFailureAt": "2026-09-05T12:29:23.097Z",
+      "lastCheckedAt": "2026-09-05T12:29:23.097Z"
     },
     {
       "id": "haringey-council-news",
@@ -1004,16 +1053,11 @@
       "quarantinedAt": "2026-08-16T08:46:24.384Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 15,
+      "consecutiveFailures": 16,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-26T09:57:21.605Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1033,12 +1077,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-09-03T11:40:34.373Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-09-05T12:29:23.097Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-10T11:40:34.373Z",
-      "lastFailureAt": "2026-09-03T11:40:34.373Z",
-      "lastCheckedAt": "2026-09-03T11:40:34.373Z"
+      "reviewBy": "2026-09-12T12:29:23.097Z",
+      "lastFailureAt": "2026-09-05T12:29:23.097Z",
+      "lastCheckedAt": "2026-09-05T12:29:23.097Z"
     },
     {
       "id": "aymennaltamimi-substack-feed",
