@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-06T09:39:48.036Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-06T10:17:37.915Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "northern-echo-news",
+      "provider": "The Northern Echo - News",
+      "endpoint": "https://www.thenorthernecho.co.uk/news/rss/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
