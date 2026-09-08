@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-08T10:22:06.470Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "anti-bot-protection": 1,
-    "unknown": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "hacker-news-rss",
-      "provider": "Hacker News",
-      "endpoint": "https://news.ycombinator.com/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-cifas-newsroom",
-      "provider": "Cifas - Newsroom",
-      "endpoint": "https://www.cifas.org.uk/newsroom",
-      "finalUrl": "",
-      "category": "unknown",
-      "statusKind": "",
-      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "hacker-news-rss",
-      "provider": "Hacker News",
-      "endpoint": "https://news.ycombinator.com/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "uk-cifas-newsroom",
-      "provider": "Cifas - Newsroom",
-      "endpoint": "https://www.cifas.org.uk/newsroom",
-      "finalUrl": "",
-      "category": "unknown",
-      "statusKind": "",
-      "message": "page.content: Unable to retrieve content because the page is navigating and changing the content.",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-09-08T10:46:52.466Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
