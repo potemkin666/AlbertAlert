@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-08T17:40:58.886Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-08T18:29:55.858Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "lifestylelinked",
+      "provider": "Life. Style. Linked",
+      "endpoint": "https://lifestylelinked.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
