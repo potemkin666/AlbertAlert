@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-09T13:47:41.727Z",
+  "generatedAt": "2026-09-09T14:20:25.028Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "timeout": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "timeout",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "This operation was aborted",
       "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "timeout",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
+      "message": "This operation was aborted",
       "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
