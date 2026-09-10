@@ -1,41 +1,6 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-10T12:34:19.318Z",
-  "totalSourceErrors": 2,
-  "top20": [
-    {
-      "id": "financial-times-world",
-      "provider": "Reuters - World News",
-      "endpoint": "https://www.reuters.com/world/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "eu-home-affairs-news",
-      "provider": "European Commission - Home Affairs News",
-      "endpoint": "https://home-affairs.ec.europa.eu/news_en?source=eu-home-affairs-news",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-09-10T12:50:46.723Z",
+  "totalSourceErrors": 0,
+  "top20": []
 }
