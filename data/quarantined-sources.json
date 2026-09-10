@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-10T08:26:10.077Z",
+  "generatedAt": "2026-09-10T08:45:57.758Z",
   "count": 281,
   "metrics": {
     "total": 281,
     "newThisWeek": 9,
-    "avgTimeInQuarantineHours": 2635,
+    "avgTimeInQuarantineHours": 2636,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -1541,18 +1541,13 @@
       "status": "auto-quarantined",
       "reason": "Health score degraded to 0 after repeated failures",
       "quarantinedAt": "2026-08-11T02:55:30.915Z",
-      "lastErrorCategory": "not-found-404",
-      "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 20,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 21,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 1,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-31T06:44:34.631Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -1572,12 +1567,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-09-08T08:28:00.081Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-10T08:45:57.758Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-15T08:28:00.081Z",
-      "lastFailureAt": "2026-09-08T08:28:00.081Z",
-      "lastCheckedAt": "2026-09-08T08:28:00.081Z"
+      "reviewBy": "2026-09-17T08:45:57.758Z",
+      "lastFailureAt": "2026-09-10T08:45:57.758Z",
+      "lastCheckedAt": "2026-09-10T08:45:57.758Z"
     },
     {
       "id": "guys-st-thomas-news",
@@ -2033,16 +2033,11 @@
       "quarantinedAt": "2026-07-23T20:55:59.252Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 29,
+      "consecutiveFailures": 30,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-31T06:44:34.631Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2062,12 +2057,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-09-08T08:28:00.081Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-09-10T08:45:57.758Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-15T08:28:00.081Z",
-      "lastFailureAt": "2026-09-08T08:28:00.081Z",
-      "lastCheckedAt": "2026-09-08T08:28:00.081Z"
+      "reviewBy": "2026-09-17T08:45:57.758Z",
+      "lastFailureAt": "2026-09-10T08:45:57.758Z",
+      "lastCheckedAt": "2026-09-10T08:45:57.758Z"
     },
     {
       "id": "institute-global-home",
@@ -2964,16 +2964,11 @@
       "quarantinedAt": "2026-06-17T09:19:30.948Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 47,
+      "consecutiveFailures": 48,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-08-31T06:44:34.631Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2993,12 +2988,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-09-08T08:28:00.081Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-09-10T08:45:57.758Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-15T08:28:00.081Z",
-      "lastFailureAt": "2026-09-08T08:28:00.081Z",
-      "lastCheckedAt": "2026-09-08T08:28:00.081Z"
+      "reviewBy": "2026-09-17T08:45:57.758Z",
+      "lastFailureAt": "2026-09-10T08:45:57.758Z",
+      "lastCheckedAt": "2026-09-10T08:45:57.758Z"
     },
     {
       "id": "mi5-news-rss-direct",
