@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-10T22:19:22.685Z",
+  "generatedAt": "2026-09-10T22:46:56.082Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "strategic-intelligence-terrorism-war-feed",
-      "provider": "Strategic Intelligence Service - Terrorism and War Updates",
-      "endpoint": "https://intelligencebriefs.com/category/terrorism-war/feed/",
+      "id": "portugal-pj-news",
+      "provider": "Policia Judiciaria Portugal - News",
+      "endpoint": "https://www.policiajudiciaria.pt/noticias/",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
+      "message": "fetch failed",
+      "status": 0,
       "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
