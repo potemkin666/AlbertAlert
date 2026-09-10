@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-10T10:19:27.799Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-10T10:46:45.373Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "gov-uk-counter-extremism-commissioner",
+      "provider": "Counter Extremism Commissioner a GOV.UK",
+      "endpoint": "https://www.govwire.co.uk/rss/commission-for-countering-extremism",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
