@@ -1,6 +1,58 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-10T03:23:39.013Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-10T03:51:03.418Z",
+  "totalSourceErrors": 3,
+  "top20": [
+    {
+      "id": "me-osce-montenegro-security",
+      "provider": "OSCE Mission to Montenegro",
+      "endpoint": "https://montenegro.osce.org/mission-to-montenegro/what-we-do",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 429",
+      "status": 429,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "osce-press-releases",
+      "provider": "OSCE a Press Releases",
+      "endpoint": "https://news.osce.org/news/list?item_type=press-release&lang=en&page=1",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
