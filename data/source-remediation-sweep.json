@@ -1,16 +1,35 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-10T14:42:52.862Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-09-10T15:25:27.503Z",
+  "totalSourceErrors": 3,
   "byCategory": {
-    "anti-bot-protection": 1
+    "anti-bot-protection": 2,
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "rss": 1
+    "rss": 2,
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 2,
+  "htmlErrorCount": 1,
   "top20": [
+    {
+      "id": "byline-times-feed",
+      "provider": "Byline Times",
+      "endpoint": "https://bylinetimes.com/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "gnet-research",
       "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
@@ -27,10 +46,44 @@
       "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "romanian-police-news",
+      "provider": "Romanian Police - News",
+      "endpoint": "https://politiaromana.ro/en",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
+      "id": "byline-times-feed",
+      "provider": "Byline Times",
+      "endpoint": "https://bylinetimes.com/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
       "id": "gnet-research",
       "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
       "endpoint": "https://gnet-research.org/feed/",
@@ -46,6 +99,23 @@
       "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": true
+    },
+    {
+      "id": "romanian-police-news",
+      "provider": "Romanian Police - News",
+      "endpoint": "https://politiaromana.ro/en",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
     }
   ]
 }
