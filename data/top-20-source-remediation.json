@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-11T19:46:15.725Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-11T20:20:20.076Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
