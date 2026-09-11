@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-11T13:41:40.377Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-11T14:26:49.440Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "stay-in-the-know-home",
+      "provider": "Stay In The Know - Community Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "stay-in-the-know-latest-alerts",
+      "provider": "Stay In The Know - Latest Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
