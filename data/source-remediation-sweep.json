@@ -1,11 +1,119 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-11T01:28:20.639Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-09-11T01:51:00.434Z",
+  "totalSourceErrors": 3,
+  "byCategory": {
+    "blocked-or-auth": 3
+  },
+  "byKind": {
+    "rss": 3
+  },
+  "machineReadableErrorCount": 3,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "lifestylelinked",
+      "provider": "Life. Style. Linked",
+      "endpoint": "https://lifestylelinked.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "silverspoon-london",
+      "provider": "Silver. Spoon London",
+      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "lifestylelinked",
+      "provider": "Life. Style. Linked",
+      "endpoint": "https://lifestylelinked.com/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "silverspoon-london",
+      "provider": "Silver. Spoon London",
+      "endpoint": "https://www.silverspoonlondon.co.uk/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
