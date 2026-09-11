@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-11T03:23:07.828Z",
+  "generatedAt": "2026-09-11T03:50:35.586Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "zerohedge-feed",
-      "provider": "Zero. Hedge",
-      "endpoint": "https://feeds.feedburner.com/zerohedge/feed",
+      "id": "nhs-london-nel-news",
+      "provider": "NHS North East London a News",
+      "endpoint": "https://northeastlondon.icb.nhs.uk/news/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "http-status-error",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "HTTP 500",
+      "status": 500,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
