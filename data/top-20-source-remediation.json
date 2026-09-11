@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-11T09:42:44.057Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-11T10:26:40.190Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "the-bolton-news",
+      "provider": "The Bolton News - News",
+      "endpoint": "https://www.theboltonnews.co.uk/news/rss/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
