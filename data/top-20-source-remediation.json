@@ -1,22 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-12T04:23:19.040Z",
+  "generatedAt": "2026-09-12T04:43:13.334Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "north-wales-community-alert",
-      "provider": "North Wales Community Alert",
-      "endpoint": "https://www.northwalescommunityalert.co.uk/",
+      "id": "german-bka-press",
+      "provider": "German BKA - Press Releases (2026 archive)",
+      "endpoint": "https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/2026/2026_node.html",
       "finalUrl": "",
-      "category": "http-status-error",
+      "category": "network-failure",
       "statusKind": "",
-      "message": "HTTP 429",
-      "status": 429,
+      "message": "fetch failed",
+      "status": 0,
       "rankScore": 1,
-      "suggestedAction": "manual source review",
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
       "sourceKind": "html",
-      "sourceLane": "prevention",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     }
