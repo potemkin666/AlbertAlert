@@ -1,16 +1,35 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-13T14:17:22.217Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-09-13T14:40:48.826Z",
+  "totalSourceErrors": 2,
   "byCategory": {
+    "anti-bot-protection": 1,
     "blocked-or-auth": 1
   },
   "byKind": {
+    "html": 1,
     "rss": 1
   },
   "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
+    {
+      "id": "stay-in-the-know-latest-alerts",
+      "provider": "Stay In The Know - Latest Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
     {
       "id": "zerohedge-feed",
       "provider": "Zero. Hedge",
@@ -30,6 +49,23 @@
     }
   ],
   "sources": [
+    {
+      "id": "stay-in-the-know-latest-alerts",
+      "provider": "Stay In The Know - Latest Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
     {
       "id": "zerohedge-feed",
       "provider": "Zero. Hedge",
