@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-13T07:45:41.024Z",
-  "count": 280,
+  "generatedAt": "2026-09-13T08:23:20.527Z",
+  "count": 281,
   "metrics": {
-    "total": 280,
-    "newThisWeek": 7,
-    "avgTimeInQuarantineHours": 2705,
+    "total": 281,
+    "newThisWeek": 8,
+    "avgTimeInQuarantineHours": 2696,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "kind": "rss",
+      "lane": "prevention",
+      "region": "uk",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-09-13T08:23:20.527Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-10T15:25:27.503Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-10T15:42:04.057Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-10T16:46:34.820Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-11T20:20:20.076Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-13T08:23:20.527Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-09-20T08:23:20.527Z",
+      "lastFailureAt": "2026-09-13T08:23:20.527Z",
+      "lastCheckedAt": "2026-09-13T08:23:20.527Z"
+    },
     {
       "id": "mi5-news-rss",
       "provider": "MI5 - News and Updates (RSS)",
