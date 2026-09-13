@@ -1,65 +1,16 @@
 {
-  "generatedAt": "2026-09-13T07:19:29.748Z",
-  "count": 281,
+  "generatedAt": "2026-09-13T07:45:41.024Z",
+  "count": 280,
   "metrics": {
-    "total": 281,
-    "newThisWeek": 8,
-    "avgTimeInQuarantineHours": 2695,
+    "total": 280,
+    "newThisWeek": 7,
+    "avgTimeInQuarantineHours": 2705,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
-    {
-      "id": "cheshire-police-news",
-      "provider": "North West Bylines - Cheshire",
-      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
-      "kind": "rss",
-      "lane": "incidents",
-      "region": "uk",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-09-11T07:21:37.062Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-03T05:53:29.334Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-05T06:34:47.483Z"
-        },
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-09-07T06:46:11.782Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-09T06:55:44.512Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-11T07:21:37.062Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-09-18T07:21:37.062Z",
-      "lastFailureAt": "2026-09-11T07:21:37.062Z",
-      "lastCheckedAt": "2026-09-11T07:21:37.062Z"
-    },
     {
       "id": "mi5-news-rss",
       "provider": "MI5 - News and Updates (RSS)",
