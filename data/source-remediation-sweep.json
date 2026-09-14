@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-14T04:25:38.353Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "html": 1
-  },
+  "generatedAt": "2026-09-14T04:49:11.618Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "my-community-alert",
-      "provider": "My Community Alert",
-      "endpoint": "https://www.mycommunityalert.co.uk/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "my-community-alert",
-      "provider": "My Community Alert",
-      "endpoint": "https://www.mycommunityalert.co.uk/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
