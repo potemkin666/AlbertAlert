@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-15T18:45:57.850Z",
+  "generatedAt": "2026-09-15T19:17:31.043Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "ec-wola-ecuador-bukele-model",
-      "provider": "WOLA - Ecuador security analysis",
-      "endpoint": "https://www.wola.org/analysis/why-ecuador-should-not-replicate-the-bukele-model/",
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "status": 200,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
