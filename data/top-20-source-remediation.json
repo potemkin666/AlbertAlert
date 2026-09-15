@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-15T15:41:58.073Z",
+  "generatedAt": "2026-09-15T16:21:27.026Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "cheshire-police-news",
-      "provider": "North West Bylines - Cheshire",
-      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
+      "id": "stay-in-the-know-latest-alerts",
+      "provider": "Stay In The Know - Latest Alerts",
+      "endpoint": "https://www.stayintheknow.co.uk/Content/Pages/Latest-Alerts",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 202,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
