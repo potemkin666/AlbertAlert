@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-15T02:33:07.136Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-15T02:48:28.535Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "deadline-news",
+      "provider": "Deadline News",
+      "endpoint": "https://www.deadlinenews.co.uk/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
