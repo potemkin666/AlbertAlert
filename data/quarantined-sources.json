@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-15T07:50:41.994Z",
+  "generatedAt": "2026-09-15T08:27:05.206Z",
   "count": 281,
   "metrics": {
     "total": 281,
     "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 2741,
+    "avgTimeInQuarantineHours": 2742,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -71,18 +71,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-09-13T08:23:20.527Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 0,
+      "lastErrorCategory": "timeout",
+      "lastErrorMessage": "This operation was aborted",
+      "consecutiveFailures": 7,
+      "consecutiveTimeoutFailures": 1,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-10T15:25:27.503Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -102,12 +97,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-13T08:23:20.527Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-09-15T08:27:05.206Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-20T08:23:20.527Z",
-      "lastFailureAt": "2026-09-13T08:23:20.527Z",
-      "lastCheckedAt": "2026-09-13T08:23:20.527Z"
+      "reviewBy": "2026-09-22T08:27:05.206Z",
+      "lastFailureAt": "2026-09-15T08:27:05.206Z",
+      "lastCheckedAt": "2026-09-15T08:27:05.206Z"
     },
     {
       "id": "mi5-news-rss",

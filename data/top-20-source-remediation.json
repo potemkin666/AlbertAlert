@@ -1,24 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-15T07:50:41.994Z",
-  "totalSourceErrors": 1,
+  "generatedAt": "2026-09-15T08:27:05.206Z",
+  "totalSourceErrors": 2,
   "top20": [
     {
-      "id": "de-bka-current-alerts",
-      "provider": "BKA Germany - Current Notices",
-      "endpoint": "https://www.bka.de/DE/Aktuelle. Informationen/Aktuelle. Meldungen/aktuelle. Meldungen_node.html",
-      "finalUrl": "",
-      "category": "network-failure",
+      "id": "diamond-geezer-rss",
+      "provider": "Diamond Geezer",
+      "endpoint": "https://diamondgeezer.blogspot.com/feeds/posts/default",
+      "finalUrl": "http://feeds.feedburner.com/blogspot/Hc. Fb",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "http://feeds.feedburner.com/blogspot/Hc. Fb",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "gnet-research",
+      "provider": "Global Network on Extremism & Technology (GNET) a Main Feed",
+      "endpoint": "https://gnet-research.org/feed/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
       "status": 0,
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceKind": "rss",
+      "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
