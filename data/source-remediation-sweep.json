@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-15T02:48:28.535Z",
+  "generatedAt": "2026-09-15T03:24:24.403Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
     "rss": 1
@@ -12,14 +12,14 @@
   "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "deadline-news",
-      "provider": "Deadline News",
-      "endpoint": "https://www.deadlinenews.co.uk/feed/",
+      "id": "disneyrollergirl",
+      "provider": "Disneyrollergirl",
+      "endpoint": "https://www.disneyrollergirl.net/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -31,14 +31,14 @@
   ],
   "sources": [
     {
-      "id": "deadline-news",
-      "provider": "Deadline News",
-      "endpoint": "https://www.deadlinenews.co.uk/feed/",
+      "id": "disneyrollergirl",
+      "provider": "Disneyrollergirl",
+      "endpoint": "https://www.disneyrollergirl.net/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
