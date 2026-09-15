@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-09-15T17:17:57.139Z",
+  "generatedAt": "2026-09-15T17:41:43.805Z",
   "count": 281,
   "metrics": {
     "total": 281,
     "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 2750,
+    "avgTimeInQuarantineHours": 2751,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -465,16 +465,11 @@
       "quarantinedAt": "2026-09-05T16:17:59.300Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 401",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-09-05T16:17:59.300Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
@@ -494,12 +489,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 401",
           "at": "2026-09-13T17:40:24.636Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-09-15T17:41:43.805Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-20T17:40:24.636Z",
-      "lastFailureAt": "2026-09-13T17:40:24.636Z",
-      "lastCheckedAt": "2026-09-13T17:40:24.636Z"
+      "reviewBy": "2026-09-22T17:41:43.805Z",
+      "lastFailureAt": "2026-09-15T17:41:43.805Z",
+      "lastCheckedAt": "2026-09-15T17:41:43.805Z"
     },
     {
       "id": "eu-ejustice-news-rss",
@@ -563,16 +563,11 @@
       "quarantinedAt": "2026-08-28T15:16:57.777Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 14,
+      "consecutiveFailures": 15,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-09-05T16:17:59.300Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -592,12 +587,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-09-13T17:40:24.636Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-09-15T17:41:43.805Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-20T17:40:24.636Z",
-      "lastFailureAt": "2026-09-13T17:40:24.636Z",
-      "lastCheckedAt": "2026-09-13T17:40:24.636Z"
+      "reviewBy": "2026-09-22T17:41:43.805Z",
+      "lastFailureAt": "2026-09-15T17:41:43.805Z",
+      "lastCheckedAt": "2026-09-15T17:41:43.805Z"
     },
     {
       "id": "west-yorkshire-police-coroner-appeals-rss",
@@ -2523,16 +2523,11 @@
       "quarantinedAt": "2026-07-16T23:57:47.424Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 500",
-      "consecutiveFailures": 35,
+      "consecutiveFailures": 36,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "http-status-error",
-          "message": "HTTP 500",
-          "at": "2026-09-05T16:17:59.300Z"
-        },
         {
           "category": "http-status-error",
           "message": "HTTP 500",
@@ -2552,12 +2547,17 @@
           "category": "http-status-error",
           "message": "HTTP 500",
           "at": "2026-09-13T17:40:24.636Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 500",
+          "at": "2026-09-15T17:41:43.805Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-20T17:40:24.636Z",
-      "lastFailureAt": "2026-09-13T17:40:24.636Z",
-      "lastCheckedAt": "2026-09-13T17:40:24.636Z"
+      "reviewBy": "2026-09-22T17:41:43.805Z",
+      "lastFailureAt": "2026-09-15T17:41:43.805Z",
+      "lastCheckedAt": "2026-09-15T17:41:43.805Z"
     },
     {
       "id": "church-of-england-newspaper",
