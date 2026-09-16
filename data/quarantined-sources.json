@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-16T12:52:25.611Z",
+  "generatedAt": "2026-09-16T13:20:21.253Z",
   "count": 280,
   "metrics": {
     "total": 280,
@@ -416,16 +416,11 @@
       "quarantinedAt": "2026-09-06T11:39:38.820Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 401",
-      "consecutiveFailures": 10,
+      "consecutiveFailures": 11,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-09-06T11:39:38.820Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
@@ -445,12 +440,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 401",
           "at": "2026-09-14T12:53:13.287Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-09-16T13:20:21.253Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-21T12:53:13.287Z",
-      "lastFailureAt": "2026-09-14T12:53:13.287Z",
-      "lastCheckedAt": "2026-09-14T12:53:13.287Z"
+      "reviewBy": "2026-09-23T13:20:21.253Z",
+      "lastFailureAt": "2026-09-16T13:20:21.253Z",
+      "lastCheckedAt": "2026-09-16T13:20:21.253Z"
     },
     {
       "id": "thank-you-for-the-days",
@@ -2131,16 +2131,11 @@
       "quarantinedAt": "2026-07-23T19:35:48.452Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 429",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "http-status-error",
-          "message": "HTTP 429",
-          "at": "2026-09-06T11:39:38.820Z"
-        },
         {
           "category": "http-status-error",
           "message": "HTTP 429",
@@ -2160,12 +2155,17 @@
           "category": "http-status-error",
           "message": "HTTP 429",
           "at": "2026-09-14T12:53:13.287Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 429",
+          "at": "2026-09-16T13:20:21.253Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-21T12:53:13.287Z",
-      "lastFailureAt": "2026-09-14T12:53:13.287Z",
-      "lastCheckedAt": "2026-09-14T12:53:13.287Z"
+      "reviewBy": "2026-09-23T13:20:21.253Z",
+      "lastFailureAt": "2026-09-16T13:20:21.253Z",
+      "lastCheckedAt": "2026-09-16T13:20:21.253Z"
     },
     {
       "id": "west-yorkshire-police-news-rss",
@@ -2572,16 +2572,11 @@
       "quarantinedAt": "2026-07-05T18:59:31.071Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 41,
+      "consecutiveFailures": 42,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-09-06T11:39:38.820Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2601,12 +2596,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-14T12:53:13.287Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-16T13:20:21.253Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-21T12:53:13.287Z",
-      "lastFailureAt": "2026-09-14T12:53:13.287Z",
-      "lastCheckedAt": "2026-09-14T12:53:13.287Z"
+      "reviewBy": "2026-09-23T13:20:21.253Z",
+      "lastFailureAt": "2026-09-16T13:20:21.253Z",
+      "lastCheckedAt": "2026-09-16T13:20:21.253Z"
     },
     {
       "id": "tenura",
@@ -10902,16 +10902,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 73,
+      "consecutiveFailures": 74,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-09-06T11:39:38.820Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -10931,12 +10926,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-09-14T12:53:13.287Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-16T13:20:21.253Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-21T12:53:13.287Z",
-      "lastFailureAt": "2026-09-14T12:53:13.287Z",
-      "lastCheckedAt": "2026-09-14T12:53:13.287Z"
+      "reviewBy": "2026-09-23T13:20:21.253Z",
+      "lastFailureAt": "2026-09-16T13:20:21.253Z",
+      "lastCheckedAt": "2026-09-16T13:20:21.253Z"
     },
     {
       "id": "ec-cancilleria-security",
@@ -10951,16 +10951,11 @@
       "quarantinedAt": "2026-05-01T04:19:52.575Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 73,
+      "consecutiveFailures": 74,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-09-06T11:39:38.820Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -10980,12 +10975,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-09-14T12:53:13.287Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-16T13:20:21.253Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-21T12:53:13.287Z",
-      "lastFailureAt": "2026-09-14T12:53:13.287Z",
-      "lastCheckedAt": "2026-09-14T12:53:13.287Z"
+      "reviewBy": "2026-09-23T13:20:21.253Z",
+      "lastFailureAt": "2026-09-16T13:20:21.253Z",
+      "lastCheckedAt": "2026-09-16T13:20:21.253Z"
     },
     {
       "id": "finland-police-news",
