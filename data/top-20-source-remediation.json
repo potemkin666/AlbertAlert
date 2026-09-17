@@ -1,6 +1,75 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-17T04:23:54.265Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-17T04:51:39.053Z",
+  "totalSourceErrors": 4,
+  "top20": [
+    {
+      "id": "romanian-police-news",
+      "provider": "Romanian Police - News",
+      "endpoint": "https://politiaromana.ro/en",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "belgium-crisis-centre-news",
+      "provider": "Centre de Crise - Newsroom",
+      "endpoint": "https://centredecrise.be/fr/newsroom",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-csirt",
+      "provider": "Government CSIRT Slovakia",
+      "endpoint": "https://www.csirt.gov.sk/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "sk-general-prosecutor-news",
+      "provider": "Slovak General Prosecutor - News",
+      "endpoint": "https://www.genpro.gov.sk/informacie/spravy/",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
