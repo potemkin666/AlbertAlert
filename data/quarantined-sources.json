@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-20T13:18:14.051Z",
-  "count": 278,
+  "generatedAt": "2026-09-20T13:44:11.053Z",
+  "count": 279,
   "metrics": {
-    "total": 278,
-    "newThisWeek": 2,
-    "avgTimeInQuarantineHours": 2881,
+    "total": 279,
+    "newThisWeek": 3,
+    "avgTimeInQuarantineHours": 2871,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "de-cemas-right-terror-database",
+      "provider": "CeMAS - Right-Wing Terrorism Database",
+      "endpoint": "https://report.cemas.io/terror/de/analysis",
+      "kind": "html",
+      "lane": "prevention",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Persistent network failures — DNS/connection issues; infrastructure may be down",
+      "quarantinedAt": "2026-09-20T13:44:11.053Z",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-12T11:41:26.424Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-14T12:35:04.945Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-16T12:52:25.611Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-18T13:19:48.357Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-20T13:44:11.053Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-09-27T13:44:11.053Z",
+      "lastFailureAt": "2026-09-20T13:44:11.053Z",
+      "lastCheckedAt": "2026-09-20T13:44:11.053Z"
+    },
     {
       "id": "psni-news",
       "provider": "Police Service of Northern Ireland a News",
