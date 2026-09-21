@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-21T19:47:29.585Z",
-  "count": 281,
+  "generatedAt": "2026-09-21T20:20:38.561Z",
+  "count": 282,
   "metrics": {
-    "total": 281,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 2880,
+    "total": 282,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 2870,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "sans-isc-full",
+      "provider": "SANS Internet Storm Center (Full Feed)",
+      "endpoint": "https://isc.sans.edu/rssfeed_full.xml",
+      "kind": "rss",
+      "lane": "context",
+      "region": "international",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-09-21T20:20:38.561Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-13T19:15:03.021Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-15T19:17:31.043Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-17T19:18:03.025Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-19T19:45:26.169Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-21T20:20:38.561Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-09-28T20:20:38.561Z",
+      "lastFailureAt": "2026-09-21T20:20:38.561Z",
+      "lastCheckedAt": "2026-09-21T20:20:38.561Z"
+    },
     {
       "id": "guardia-civil-news",
       "provider": "El Pais English - Guardia Civil",
