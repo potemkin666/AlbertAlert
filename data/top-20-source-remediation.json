@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-21T12:33:27.567Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-21T12:50:33.221Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "west-yorkshire-police-news",
+      "provider": "West Yorkshire Police a News",
+      "endpoint": "https://www.westyorkshire.police.uk/news",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 0,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
