@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T13:21:02.548Z",
+  "generatedAt": "2026-09-23T13:50:19.505Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "consett-magazine",
-      "provider": "Consett Magazine",
-      "endpoint": "https://consettmagazine.com/feed/",
+      "id": "imperial-healthcare-news",
+      "provider": "Imperial College Healthcare NHS Trust a News",
+      "endpoint": "https://www.imperial.nhs.uk/about-us/news",
       "finalUrl": "",
-      "category": "blocked-or-auth",
+      "category": "timeout",
       "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
+      "sourceKind": "html",
       "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
