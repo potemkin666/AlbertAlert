@@ -1,17 +1,17 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T04:25:11.092Z",
+  "generatedAt": "2026-09-23T04:46:26.465Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "gb-news-uk-politics-rss",
-      "provider": "GB News - UK Politics",
-      "endpoint": "https://www.gbnews.com/feeds/politics/uk.rss",
+      "id": "clingendael-publications",
+      "provider": "European Council on Foreign Relations (ECFR)",
+      "endpoint": "https://ecfr.eu/feed/?source=clingendael-publications",
       "finalUrl": "",
       "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by blocked access page",
-      "status": 200,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
