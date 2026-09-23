@@ -1,85 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T10:49:26.807Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "timeout": 2
-  },
-  "byKind": {
-    "rss": 2
-  },
-  "machineReadableErrorCount": 2,
+  "generatedAt": "2026-09-23T11:20:37.816Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "bedfordshire-police-news",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "bedfordshire-police-news-search",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news?source=bedfordshire-police-news-search",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "bedfordshire-police-news",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "bedfordshire-police-news-search",
-      "provider": "Central Bedfordshire Council - News",
-      "endpoint": "https://www.centralbedfordshire.gov.uk/rss/news?source=bedfordshire-police-news-search",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
