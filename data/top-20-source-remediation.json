@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T12:52:54.178Z",
+  "generatedAt": "2026-09-23T13:21:02.548Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "west-yorkshire-police-news",
-      "provider": "West Yorkshire Police a News",
-      "endpoint": "https://www.westyorkshire.police.uk/news",
+      "id": "consett-magazine",
+      "provider": "Consett Magazine",
+      "endpoint": "https://consettmagazine.com/feed/",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceKind": "rss",
+      "sourceLane": "context",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
