@@ -1,9 +1,9 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T14:22:37.059Z",
+  "generatedAt": "2026-09-23T14:45:46.955Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "network-failure": 1
+    "moved-temporarily": 1
   },
   "byKind": {
     "html": 1
@@ -12,38 +12,38 @@
   "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "de-bka-press",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/listenseite_Pressemitteilungen_node.html",
-      "finalUrl": "",
-      "category": "network-failure",
+      "id": "joint-committee-human-rights-html",
+      "provider": "Joint Committee on Human Rights",
+      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
+      "finalUrl": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/?__cf_chl_rt_tk=3. VauwSOa. MoC5pfiYJthico. Kn. Qc. Hg. Sej4vF2HWIFz. ZaI-1790174739-1.0.1.1-0. LonXYsbaTDzJ41JQvn. IbQLc18lRRGZjhoQTQ9E95K4",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/?__cf_chl_rt_tk=3. VauwSOa. MoC5pfiYJthico. Kn. Qc. Hg. Sej4vF2HWIFz. ZaI-1790174739-1.0.1.1-0. LonXYsbaTDzJ41JQvn. IbQLc18lRRGZjhoQTQ9E95K4",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "de-bka-press",
-      "provider": "BKA Germany - Press Releases",
-      "endpoint": "https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/listenseite_Pressemitteilungen_node.html",
-      "finalUrl": "",
-      "category": "network-failure",
+      "id": "joint-committee-human-rights-html",
+      "provider": "Joint Committee on Human Rights",
+      "endpoint": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/",
+      "finalUrl": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/?__cf_chl_rt_tk=3. VauwSOa. MoC5pfiYJthico. Kn. Qc. Hg. Sej4vF2HWIFz. ZaI-1790174739-1.0.1.1-0. LonXYsbaTDzJ41JQvn. IbQLc18lRRGZjhoQTQ9E95K4",
+      "category": "moved-temporarily",
       "statusKind": "",
-      "message": "fetch failed",
+      "message": "Blocked by anti-bot protection",
       "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://committees.parliament.uk/committee/93/human-rights-joint-committee/?__cf_chl_rt_tk=3. VauwSOa. MoC5pfiYJthico. Kn. Qc. Hg. Sej4vF2HWIFz. ZaI-1790174739-1.0.1.1-0. LonXYsbaTDzJ41JQvn. IbQLc18lRRGZjhoQTQ9E95K4",
       "sourceKind": "html",
-      "sourceLane": "incidents",
+      "sourceLane": "oversight",
       "sourceRegion": "",
       "isMachineReadable": false
     }
