@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-23T23:42:42.987Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-24T00:53:47.363Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "cheshire-police-news",
+      "provider": "North West Bylines - Cheshire",
+      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 202,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "hacker-news-rss",
+      "provider": "Hacker News",
+      "endpoint": "https://news.ycombinator.com/rss",
+      "finalUrl": "",
+      "category": "anti-bot-protection",
+      "statusKind": "",
+      "message": "Blocked by anti-bot protection",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
