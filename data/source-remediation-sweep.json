@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-24T07:26:31.355Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
+  "generatedAt": "2026-09-24T07:51:35.095Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "lobsters-rss",
-      "provider": "Lobsters",
-      "endpoint": "https://lobste.rs/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "lobsters-rss",
-      "provider": "Lobsters",
-      "endpoint": "https://lobste.rs/rss",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
