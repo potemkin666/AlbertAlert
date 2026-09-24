@@ -1,6 +1,41 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-24T13:19:22.550Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-24T13:50:20.505Z",
+  "totalSourceErrors": 2,
+  "top20": [
+    {
+      "id": "ian-visits-rss",
+      "provider": "Ian. Visits",
+      "endpoint": "https://www.ianvisits.co.uk/articles/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
+    {
+      "id": "ealing-council-news",
+      "provider": "Ealing Council a News",
+      "endpoint": "https://www.ealing.gov.uk/news",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
