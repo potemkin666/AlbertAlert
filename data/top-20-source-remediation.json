@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-24T18:30:55.169Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-24T18:48:57.502Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "icct-perspectives-on-terrorism",
+      "provider": "Perspectives on Terrorism (ICCT) a Journal",
+      "endpoint": "https://pt.icct.nl/",
+      "finalUrl": "",
+      "category": "timeout",
+      "statusKind": "",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    }
+  ]
 }
