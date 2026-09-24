@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-24T02:01:51.953Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "timeout": 1
-  },
-  "byKind": {
-    "html": 1
-  },
+  "generatedAt": "2026-09-24T02:29:29.060Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "extremism-commission-blog",
-      "provider": "Commission for Countering Extremism - Blog",
-      "endpoint": "https://extremismcommission.blog.gov.uk/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "extremism-commission-blog",
-      "provider": "Commission for Countering Extremism - Blog",
-      "endpoint": "https://extremismcommission.blog.gov.uk/",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
