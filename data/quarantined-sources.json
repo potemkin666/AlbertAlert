@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-25T09:27:24.324Z",
-  "count": 278,
+  "generatedAt": "2026-09-25T09:46:33.628Z",
+  "count": 279,
   "metrics": {
-    "total": 278,
-    "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 2981,
+    "total": 279,
+    "newThisWeek": 5,
+    "avgTimeInQuarantineHours": 2970,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "diamond-geezer-rss",
+      "provider": "Diamond Geezer",
+      "endpoint": "https://diamondgeezer.blogspot.com/feeds/posts/default",
+      "kind": "rss",
+      "lane": "context",
+      "region": "london",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
+      "quarantinedAt": "2026-09-25T09:46:33.628Z",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "Blocked by blocked access page",
+      "consecutiveFailures": 6,
+      "consecutiveTimeoutFailures": 0,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-17T08:29:13.175Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-19T08:44:52.689Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-21T08:52:56.551Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-23T09:28:41.922Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-09-25T09:46:33.628Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-10-02T09:46:33.628Z",
+      "lastFailureAt": "2026-09-25T09:46:33.628Z",
+      "lastCheckedAt": "2026-09-25T09:46:33.628Z"
+    },
     {
       "id": "german-bka-press",
       "provider": "German BKA - Press Releases (2026 archive)",
@@ -269,16 +318,11 @@
       "quarantinedAt": "2026-09-13T08:23:20.527Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 11,
+      "consecutiveFailures": 12,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-09-15T08:27:05.206Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -298,12 +342,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-23T09:28:41.922Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-09-25T09:46:33.628Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-09-30T09:28:41.922Z",
-      "lastFailureAt": "2026-09-23T09:28:41.922Z",
-      "lastCheckedAt": "2026-09-23T09:28:41.922Z"
+      "reviewBy": "2026-10-02T09:46:33.628Z",
+      "lastFailureAt": "2026-09-25T09:46:33.628Z",
+      "lastCheckedAt": "2026-09-25T09:46:33.628Z"
     },
     {
       "id": "mi5-news-rss",
