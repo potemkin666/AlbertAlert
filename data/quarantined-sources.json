@@ -1,16 +1,65 @@
 {
-  "generatedAt": "2026-09-25T00:54:16.658Z",
-  "count": 277,
+  "generatedAt": "2026-09-25T01:33:04.927Z",
+  "count": 278,
   "metrics": {
-    "total": 277,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 2983,
+    "total": 278,
+    "newThisWeek": 4,
+    "avgTimeInQuarantineHours": 2973,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
+    {
+      "id": "german-bka-press",
+      "provider": "German BKA - Press Releases (2026 archive)",
+      "endpoint": "https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/2026/2026_node.html",
+      "kind": "html",
+      "lane": "incidents",
+      "region": "eu",
+      "healthScore": 0,
+      "status": "auto-quarantined",
+      "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
+      "quarantinedAt": "2026-09-25T01:33:04.927Z",
+      "lastErrorCategory": "timeout",
+      "lastErrorMessage": "This operation was aborted",
+      "consecutiveFailures": 4,
+      "consecutiveTimeoutFailures": 4,
+      "consecutiveBlockedFailures": 0,
+      "consecutiveDeadUrlFailures": 0,
+      "recentErrors": [
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-09-16T22:45:22.174Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-09-19T00:51:52.246Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-09-21T00:58:29.368Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-09-23T01:31:48.209Z"
+        },
+        {
+          "category": "timeout",
+          "message": "This operation was aborted",
+          "at": "2026-09-25T01:33:04.927Z"
+        }
+      ],
+      "replacementSuggestion": "",
+      "reviewBy": "2026-10-02T01:33:04.927Z",
+      "lastFailureAt": "2026-09-25T01:33:04.927Z",
+      "lastCheckedAt": "2026-09-25T01:33:04.927Z"
+    },
     {
       "id": "sans-isc-full",
       "provider": "SANS Internet Storm Center (Full Feed)",
