@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-25T10:50:37.246Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "timeout": 1,
-    "http-status-error": 1
-  },
-  "byKind": {
-    "html": 1,
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "me-vijesti-black-chronicle",
-      "provider": "Vijesti - Black Chronicle",
-      "endpoint": "https://en.vijesti.me/news-b/black-chronicle",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "west-yorkshire-police-coroner-appeals-rss",
-      "provider": "West Yorkshire Police - Coroner Appeals Feed",
-      "endpoint": "https://www.westyorkshire.police.uk/news/coroner-appeals/feed",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 503",
-      "status": 503,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "me-vijesti-black-chronicle",
-      "provider": "Vijesti - Black Chronicle",
-      "endpoint": "https://en.vijesti.me/news-b/black-chronicle",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "west-yorkshire-police-coroner-appeals-rss",
-      "provider": "West Yorkshire Police - Coroner Appeals Feed",
-      "endpoint": "https://www.westyorkshire.police.uk/news/coroner-appeals/feed",
-      "finalUrl": "",
-      "category": "http-status-error",
-      "statusKind": "",
-      "message": "HTTP 503",
-      "status": 503,
-      "rankScore": 1,
-      "suggestedAction": "manual source review",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "generatedAt": "2026-09-25T11:20:50.590Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
