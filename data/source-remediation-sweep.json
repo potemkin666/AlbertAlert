@@ -1,86 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-28T21:44:17.328Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "moved-temporarily": 1,
-    "anti-bot-protection": 1
-  },
-  "byKind": {
-    "html": 2
-  },
+  "generatedAt": "2026-09-28T22:21:57.938Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
   "machineReadableErrorCount": 0,
-  "htmlErrorCount": 2,
-  "top20": [
-    {
-      "id": "london-gov-home",
-      "provider": "London.gov.uk",
-      "endpoint": "https://www.london.gov.uk",
-      "finalUrl": "https://www.london.gov.uk/?__cf_chl_rt_tk=fG4P6. Ut4V..ee76LPqabwlq4MQJpnH6s5a. Xo. DafGJvU-1790631828-1.0.1.1-76vjMLlUHoc8yFZg. Sy. Pc. Cf49mS_4mi. NwsKE19rp. Tdow",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.london.gov.uk/?__cf_chl_rt_tk=fG4P6. Ut4V..ee76LPqabwlq4MQJpnH6s5a. Xo. DafGJvU-1790631828-1.0.1.1-76vjMLlUHoc8yFZg. Sy. Pc. Cf49mS_4mi. NwsKE19rp. Tdow",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "mopac-html",
-      "provider": "London.gov.uk - Media Centre",
-      "endpoint": "https://www.london.gov.uk/media-centre",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "london-gov-home",
-      "provider": "London.gov.uk",
-      "endpoint": "https://www.london.gov.uk",
-      "finalUrl": "https://www.london.gov.uk/?__cf_chl_rt_tk=fG4P6. Ut4V..ee76LPqabwlq4MQJpnH6s5a. Xo. DafGJvU-1790631828-1.0.1.1-76vjMLlUHoc8yFZg. Sy. Pc. Cf49mS_4mi. NwsKE19rp. Tdow",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://www.london.gov.uk/?__cf_chl_rt_tk=fG4P6. Ut4V..ee76LPqabwlq4MQJpnH6s5a. Xo. DafGJvU-1790631828-1.0.1.1-76vjMLlUHoc8yFZg. Sy. Pc. Cf49mS_4mi. NwsKE19rp. Tdow",
-      "sourceKind": "html",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "mopac-html",
-      "provider": "London.gov.uk - Media Centre",
-      "endpoint": "https://www.london.gov.uk/media-centre",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
