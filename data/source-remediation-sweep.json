@@ -1,87 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-28T06:52:37.513Z",
-  "totalSourceErrors": 2,
-  "byCategory": {
-    "timeout": 1,
-    "network-failure": 1
-  },
-  "byKind": {
-    "rss": 1,
-    "html": 1
-  },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 1,
-  "top20": [
-    {
-      "id": "curia-press-rss-en",
-      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
-      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "czech-police-news",
-      "provider": "Police of the Czech Republic - News",
-      "endpoint": "https://policie.gov.cz/clanek/Police-of-the-Czech-Republic.aspx",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ],
-  "sources": [
-    {
-      "id": "curia-press-rss-en",
-      "provider": "Court of Justice of the European Union - RSS (EN/FR)",
-      "endpoint": "https://curia.europa.eu/site/rss.jsp?lang=en&second. Lang=fr",
-      "finalUrl": "",
-      "category": "timeout",
-      "statusKind": "",
-      "message": "This operation was aborted",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "czech-police-news",
-      "provider": "Police of the Czech Republic - News",
-      "endpoint": "https://policie.gov.cz/clanek/Police-of-the-Czech-Republic.aspx",
-      "finalUrl": "",
-      "category": "network-failure",
-      "statusKind": "",
-      "message": "fetch failed",
-      "status": 0,
-      "rankScore": 1,
-      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    }
-  ]
+  "generatedAt": "2026-09-28T07:39:56.346Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 0,
+  "top20": [],
+  "sources": []
 }
