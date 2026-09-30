@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-29T23:42:43.774Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-09-30T00:58:24.554Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "evening-standard",
+      "provider": "Evening Standard",
+      "endpoint": "https://www.standard.co.uk/rss",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
