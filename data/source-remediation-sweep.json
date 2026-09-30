@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-09-30T11:20:24.323Z",
+  "generatedAt": "2026-09-30T11:45:16.994Z",
   "totalSourceErrors": 1,
   "byCategory": {
     "anti-bot-protection": 1
   },
   "byKind": {
-    "rss": 1
+    "html": 1
   },
-  "machineReadableErrorCount": 1,
-  "htmlErrorCount": 0,
+  "machineReadableErrorCount": 0,
+  "htmlErrorCount": 1,
   "top20": [
     {
-      "id": "independent-top-stories",
-      "provider": "The Independent - Top Stories",
-      "endpoint": "https://www.independent.co.uk/rss",
+      "id": "west-yorkshire-police-news-rss",
+      "provider": "West Yorkshire Police - News",
+      "endpoint": "https://www.westyorkshire.police.uk/news-stories-all?source=west-yorkshire-police-news-rss",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ],
   "sources": [
     {
-      "id": "independent-top-stories",
-      "provider": "The Independent - Top Stories",
-      "endpoint": "https://www.independent.co.uk/rss",
+      "id": "west-yorkshire-police-news-rss",
+      "provider": "West Yorkshire Police - News",
+      "endpoint": "https://www.westyorkshire.police.uk/news-stories-all?source=west-yorkshire-police-news-rss",
       "finalUrl": "",
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
