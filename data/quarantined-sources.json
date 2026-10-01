@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-01T01:49:52.949Z",
+  "generatedAt": "2026-10-01T05:45:39.470Z",
   "count": 283,
   "metrics": {
     "total": 283,
     "newThisWeek": 9,
-    "avgTimeInQuarantineHours": 3036,
+    "avgTimeInQuarantineHours": 3040,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -171,16 +171,11 @@
       "quarantinedAt": "2026-09-29T04:50:22.248Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 6,
+      "consecutiveFailures": 7,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-09-21T04:26:27.146Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -200,12 +195,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-09-29T04:50:22.248Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T04:50:22.248Z",
-      "lastFailureAt": "2026-09-29T04:50:22.248Z",
-      "lastCheckedAt": "2026-09-29T04:50:22.248Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "crisis-group-europe",
@@ -367,16 +367,11 @@
       "quarantinedAt": "2026-09-27T01:39:02.840Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 7,
+      "consecutiveFailures": 8,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T00:58:29.368Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -396,12 +391,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T02:35:30.275Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T02:35:30.275Z",
-      "lastFailureAt": "2026-09-29T02:35:30.275Z",
-      "lastCheckedAt": "2026-09-29T02:35:30.275Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "diamond-geezer-rss",
@@ -1102,16 +1102,11 @@
       "quarantinedAt": "2026-08-23T19:41:13.529Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1131,12 +1126,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "lewisham-council-news",
@@ -1151,16 +1151,11 @@
       "quarantinedAt": "2026-08-23T19:41:13.529Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1180,12 +1175,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "met-police-the-met-tag",
@@ -1200,16 +1200,11 @@
       "quarantinedAt": "2026-08-23T18:52:52.565Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1229,12 +1224,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "met-police-latest-news",
@@ -1247,18 +1247,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-08-23T18:52:52.565Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1278,12 +1273,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "met-police-news",
@@ -1298,16 +1298,11 @@
       "quarantinedAt": "2026-08-23T18:52:52.565Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1327,12 +1322,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "gmp-news",
@@ -1347,16 +1347,11 @@
       "quarantinedAt": "2026-08-23T18:52:52.565Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1376,12 +1371,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "greater-manchester-police-news",
@@ -1396,16 +1396,11 @@
       "quarantinedAt": "2026-08-23T18:52:52.565Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 24,
+      "consecutiveFailures": 25,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 24,
+      "consecutiveBlockedFailures": 25,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -1425,12 +1420,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "waltham-forest-council-news",
@@ -2082,16 +2082,11 @@
       "quarantinedAt": "2026-08-07T17:22:29.627Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 32,
+      "consecutiveFailures": 33,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 32,
+      "consecutiveBlockedFailures": 33,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-09-21T02:38:47.535Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -2111,12 +2106,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-09-29T03:57:25.896Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-10-01T05:45:39.470Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-06T03:57:25.896Z",
-      "lastFailureAt": "2026-09-29T03:57:25.896Z",
-      "lastCheckedAt": "2026-09-29T03:57:25.896Z"
+      "reviewBy": "2026-10-08T05:45:39.470Z",
+      "lastFailureAt": "2026-10-01T05:45:39.470Z",
+      "lastCheckedAt": "2026-10-01T05:45:39.470Z"
     },
     {
       "id": "europarl-committee-libe",
