@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-02T11:20:52.849Z",
-  "totalSourceErrors": 42,
+  "generatedAt": "2026-10-02T14:14:06.125Z",
+  "totalSourceErrors": 46,
   "top20": [
     {
       "id": "eppo-news-node-7",
@@ -55,23 +55,6 @@
       "isMachineReadable": true
     },
     {
-      "id": "devon-cornwall-alerts",
-      "provider": "Devon and Cornwall Alerts",
-      "endpoint": "https://alerts.dc.police.uk/",
-      "finalUrl": "https://community-messaging.dc.police.uk/",
-      "category": "moved-temporarily",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 4,
-      "suggestedAction": "update source endpoint to redirected final URL",
-      "replacementCandidate": "https://community-messaging.dc.police.uk/",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
       "id": "ec-nctc-los-lobos",
       "provider": "US NCTC - Los Lobos",
       "endpoint": "https://www.dni.gov/nctc/terrorist_groups/los_lobos.html",
@@ -89,6 +72,23 @@
       "isMachineReadable": false
     },
     {
+      "id": "policia-nacional-news",
+      "provider": "Policia Nacional - Press",
+      "endpoint": "https://www.policia.es/_es/comunicacion_salaprensa.php",
+      "finalUrl": "https://www.policia.es/_es/cookies.php",
+      "category": "moved-temporarily",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 4,
+      "suggestedAction": "update source endpoint to redirected final URL",
+      "replacementCandidate": "https://www.policia.es/_es/cookies.php",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
       "id": "barking-dagenham-council-news",
       "provider": "Barking and Dagenham Council a News",
       "endpoint": "https://www.lbbd.gov.uk/news",
@@ -102,23 +102,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "dc-police-community-messaging",
-      "provider": "Dorset and Cornwall Police - Community Messaging",
-      "endpoint": "https://community-messaging.dc.police.uk/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "prevention",
       "sourceRegion": "",
       "isMachineReadable": false
     },
@@ -242,6 +225,23 @@
       "isMachineReadable": false
     },
     {
+      "id": "guardia-civil-news",
+      "provider": "El Pais English - Guardia Civil",
+      "endpoint": "https://english.elpais.com/news/guardia-civil/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "HTTP 403",
+      "status": 403,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
       "id": "guido-fawkes-feed",
       "provider": "Guido Fawkes",
       "endpoint": "https://order-order.com/feed/",
@@ -274,6 +274,23 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
+    },
+    {
+      "id": "londonist-rss",
+      "provider": "Londonist",
+      "endpoint": "https://londonist.com/feed",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
     },
     {
       "id": "mi5-terrorism-news-category",
@@ -323,23 +340,6 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": false
-    },
-    {
-      "id": "royal-free-london-news",
-      "provider": "Royal Free London NHS Foundation Trust a News",
-      "endpoint": "https://www.royalfree.nhs.uk/news",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": false
     }
