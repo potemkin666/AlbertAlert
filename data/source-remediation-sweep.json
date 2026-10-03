@@ -1,21 +1,22 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-03T10:36:33.827Z",
-  "totalSourceErrors": 79,
+  "generatedAt": "2026-10-03T13:52:10.098Z",
+  "totalSourceErrors": 80,
   "byCategory": {
     "not-found-404": 15,
     "moved-temporarily": 9,
     "anti-bot-protection": 36,
     "blocked-or-auth": 16,
     "brittle-selectors-or-js-rendering": 2,
+    "network-failure": 1,
     "http-status-error": 1
   },
   "byKind": {
     "rss": 16,
-    "html": 63
+    "html": 64
   },
   "machineReadableErrorCount": 16,
-  "htmlErrorCount": 63,
+  "htmlErrorCount": 64,
   "top20": [
     {
       "id": "aviation-herald-rss",
@@ -1132,7 +1133,7 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -1166,7 +1167,7 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -1217,7 +1218,7 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -1234,7 +1235,7 @@
       "category": "anti-bot-protection",
       "statusKind": "",
       "message": "Blocked by anti-bot protection",
-      "status": 200,
+      "status": 0,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
@@ -1682,6 +1683,23 @@
       "replacementCandidate": "",
       "sourceKind": "html",
       "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
+      "id": "german-bka-press",
+      "provider": "German BKA - Press Releases (2026 archive)",
+      "endpoint": "https://www.bka.de/DE/Presse/Listenseite_Pressemitteilungen/2026/2026_node.html",
+      "finalUrl": "",
+      "category": "network-failure",
+      "statusKind": "",
+      "message": "fetch failed",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
       "isMachineReadable": false
     },
