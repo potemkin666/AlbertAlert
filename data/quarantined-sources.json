@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-04T11:20:48.148Z",
+  "generatedAt": "2026-10-04T11:25:37.105Z",
   "count": 281,
   "metrics": {
     "total": 281,
@@ -199,13 +199,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "west-yorkshire-police-news",
@@ -640,13 +640,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "really-ree",
@@ -2619,11 +2619,11 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-07-19T10:07:39.939Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 44,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 44,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -2647,15 +2647,15 @@
           "at": "2026-10-02T07:37:30.281Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-10-04T11:20:48.148Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "rewards-for-justice",
@@ -12204,13 +12204,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "de-bdk-bka-rss",
@@ -12253,13 +12253,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "de-bayern-police-press",
@@ -12302,13 +12302,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "tech-against-terrorism-podcast",
@@ -12351,13 +12351,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "volcano-discovery-rss",
@@ -12400,13 +12400,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "ec-eluniverso-rss",
@@ -12449,13 +12449,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "southfront-feed",
@@ -12498,13 +12498,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "inteltechniques-blog-feed",
@@ -12547,13 +12547,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-sun-all-english",
@@ -12596,13 +12596,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-sun-homepage",
@@ -12645,13 +12645,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-sun-news-english",
@@ -12694,13 +12694,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-scottish-sun",
@@ -12743,13 +12743,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "nitter-uk-incident-keywords",
@@ -12792,13 +12792,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "uk-parliament-foreign-affairs-committee",
@@ -12811,10 +12811,10 @@
       "status": "auto-quarantined",
       "reason": "HTML structure changed — selectors no longer match; needs parser update",
       "quarantinedAt": "2026-04-30T15:47:12.538Z",
-      "lastErrorCategory": "timeout",
-      "lastErrorMessage": "This operation was aborted",
+      "lastErrorCategory": "brittle-selectors-or-js-rendering",
+      "lastErrorMessage": "No items parsed from source payload",
       "consecutiveFailures": 83,
-      "consecutiveTimeoutFailures": 1,
+      "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
@@ -12839,15 +12839,15 @@
           "at": "2026-10-02T07:37:30.281Z"
         },
         {
-          "category": "timeout",
-          "message": "This operation was aborted",
-          "at": "2026-10-04T11:20:48.148Z"
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "requested-rss-feed-48d28e8f4091",
@@ -12890,13 +12890,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "requested-rss-feed-c34c5c93b43b",
@@ -12939,13 +12939,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "requested-rss-feed-3f8b8535297b",
@@ -12988,13 +12988,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "austria-interior-ministry-rss-index",
@@ -13037,13 +13037,13 @@
         {
           "category": "unknown",
           "message": "Cannot read properties of undefined (reading 'tagName')",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "bdk-rss",
@@ -13086,13 +13086,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "de-bmj-press-rss",
@@ -13135,13 +13135,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "dw-europe-rss",
@@ -13184,13 +13184,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-sun-all",
@@ -13233,13 +13233,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "the-sun",
@@ -13282,13 +13282,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "act-campaign-feed",
@@ -13331,13 +13331,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "cumbria-police-news",
@@ -13380,13 +13380,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "ctc-sentinel",
@@ -13429,13 +13429,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "fbi-national-press-releases",
@@ -13478,13 +13478,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "fbi-stories",
@@ -13527,13 +13527,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "fbi-top-stories",
@@ -13576,13 +13576,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-04T11:20:48.148Z"
+          "at": "2026-10-04T11:25:37.105Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-11T11:20:48.148Z",
-      "lastFailureAt": "2026-10-04T11:20:48.148Z",
-      "lastCheckedAt": "2026-10-04T11:20:48.148Z"
+      "reviewBy": "2026-10-11T11:25:37.105Z",
+      "lastFailureAt": "2026-10-04T11:25:37.105Z",
+      "lastCheckedAt": "2026-10-04T11:25:37.105Z"
     },
     {
       "id": "above-top-secret-rss",
