@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-08T01:02:40.963Z",
+  "generatedAt": "2026-10-08T07:22:05.706Z",
   "count": 277,
   "metrics": {
     "total": 277,
     "newThisWeek": 1,
-    "avgTimeInQuarantineHours": 3261,
+    "avgTimeInQuarantineHours": 3267,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -24,16 +24,11 @@
       "quarantinedAt": "2026-10-03T23:49:54.390Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 401",
-      "consecutiveFailures": 7,
+      "consecutiveFailures": 8,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 7,
+      "consecutiveBlockedFailures": 8,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-09-27T20:46:01.746Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -53,12 +48,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 401",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "west-yorkshire-police-news-rss",
@@ -661,16 +661,11 @@
       "quarantinedAt": "2026-09-05T16:17:59.300Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 401",
-      "consecutiveFailures": 21,
+      "consecutiveFailures": 22,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 401",
-          "at": "2026-09-27T20:21:52.418Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
@@ -690,12 +685,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 401",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 401",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "eu-ejustice-news-rss",
@@ -710,16 +710,11 @@
       "quarantinedAt": "2026-09-05T12:29:23.097Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 21,
+      "consecutiveFailures": 22,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-09-27T16:21:56.616Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -739,12 +734,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "sapo-se-english",
@@ -759,16 +759,11 @@
       "quarantinedAt": "2026-08-28T15:16:57.777Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 25,
+      "consecutiveFailures": 26,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-09-27T20:21:52.418Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -788,12 +783,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "guardia-civil-rss-list",
@@ -808,16 +808,11 @@
       "quarantinedAt": "2026-08-24T09:51:38.384Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 27,
+      "consecutiveFailures": 28,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-09-27T16:21:56.616Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -837,12 +832,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "haringey-council-news",
@@ -1641,16 +1641,11 @@
       "quarantinedAt": "2026-08-16T08:46:24.384Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 31,
+      "consecutiveFailures": 32,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-09-27T16:21:56.616Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -1670,12 +1665,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "west-yorkshire-police-missing-rss",
@@ -2474,16 +2474,11 @@
       "quarantinedAt": "2026-07-16T23:57:47.424Z",
       "lastErrorCategory": "http-status-error",
       "lastErrorMessage": "HTTP 500",
-      "consecutiveFailures": 46,
+      "consecutiveFailures": 47,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "http-status-error",
-          "message": "HTTP 500",
-          "at": "2026-09-27T20:21:52.418Z"
-        },
         {
           "category": "http-status-error",
           "message": "HTTP 500",
@@ -2503,12 +2498,17 @@
           "category": "http-status-error",
           "message": "HTTP 500",
           "at": "2026-10-06T03:26:25.339Z"
+        },
+        {
+          "category": "http-status-error",
+          "message": "HTTP 500",
+          "at": "2026-10-08T07:22:05.706Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-13T03:26:25.339Z",
-      "lastFailureAt": "2026-10-06T03:26:25.339Z",
-      "lastCheckedAt": "2026-10-06T03:26:25.339Z"
+      "reviewBy": "2026-10-15T07:22:05.706Z",
+      "lastFailureAt": "2026-10-08T07:22:05.706Z",
+      "lastCheckedAt": "2026-10-08T07:22:05.706Z"
     },
     {
       "id": "church-of-england-newspaper",
