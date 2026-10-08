@@ -1,8 +1,25 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-08T12:18:20.465Z",
+  "generatedAt": "2026-10-08T15:02:18.969Z",
   "totalSourceErrors": 4,
   "top20": [
+    {
+      "id": "france24-europe-rss",
+      "provider": "France 24 a Europe (RSS)",
+      "endpoint": "https://www.france24.com/en/europe/rss",
+      "finalUrl": "",
+      "category": "brittle-selectors-or-js-rendering",
+      "statusKind": "",
+      "message": "No items parsed from source payload",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    },
     {
       "id": "guido-fawkes-feed",
       "provider": "Guido Fawkes",
@@ -19,23 +36,6 @@
       "sourceLane": "context",
       "sourceRegion": "",
       "isMachineReadable": true
-    },
-    {
-      "id": "paris-prefecture-police-press-releases",
-      "provider": "Paris Prefecture of Police - Press Releases",
-      "endpoint": "https://www.prefecturedepolice.interieur.gouv.fr/actualites-et-presse/communiques-de-presse/communiques-de-presse",
-      "finalUrl": "",
-      "category": "brittle-selectors-or-js-rendering",
-      "statusKind": "",
-      "message": "No items parsed from source payload",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "switch to known stable RSS/Atom if available or adjust parser selector",
-      "replacementCandidate": "",
-      "sourceKind": "html",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": false
     },
     {
       "id": "clubwise-blog",
