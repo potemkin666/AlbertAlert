@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-12T13:25:42.155Z",
+  "generatedAt": "2026-10-12T19:02:11.897Z",
   "count": 282,
   "metrics": {
     "total": 282,
     "newThisWeek": 5,
-    "avgTimeInQuarantineHours": 3310,
+    "avgTimeInQuarantineHours": 3315,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -20,10 +20,10 @@
       "region": "uk",
       "healthScore": 0,
       "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-10-12T13:25:42.155Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
+      "quarantinedAt": "2026-10-12T19:02:11.897Z",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 6,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 6,
@@ -50,15 +50,15 @@
           "at": "2026-10-10T13:06:42.178Z"
         },
         {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-12T13:25:42.155Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "euronews-europe",
@@ -101,13 +101,13 @@
         {
           "category": "http-status-error",
           "message": "HTTP 406",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "hacker-news-rss",
@@ -297,13 +297,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "west-yorkshire-police-news-rss",
@@ -934,13 +934,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "eu-ejustice-news-rss",
@@ -983,13 +983,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "sapo-se-english",
@@ -1032,13 +1032,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "guardia-civil-rss-list",
@@ -1081,13 +1081,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "haringey-council-news",
@@ -1914,13 +1914,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "west-yorkshire-police-missing-rss",
@@ -2747,13 +2747,13 @@
         {
           "category": "http-status-error",
           "message": "HTTP 500",
-          "at": "2026-10-12T13:25:42.155Z"
+          "at": "2026-10-12T19:02:11.897Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-19T13:25:42.155Z",
-      "lastFailureAt": "2026-10-12T13:25:42.155Z",
-      "lastCheckedAt": "2026-10-12T13:25:42.155Z"
+      "reviewBy": "2026-10-19T19:02:11.897Z",
+      "lastFailureAt": "2026-10-12T19:02:11.897Z",
+      "lastCheckedAt": "2026-10-12T19:02:11.897Z"
     },
     {
       "id": "church-of-england-newspaper",
