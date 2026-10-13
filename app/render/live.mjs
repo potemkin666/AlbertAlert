@@ -38,7 +38,10 @@ function alertTimeMs(alert) {
 }
 
 function supportingItems(view) {
-  return [...view.context, ...view.quarantine].sort((left, right) => alertTimeMs(right) - alertTimeMs(left));
+  const priorityId = view.topPriority?.id;
+  return [...view.context, ...view.quarantine]
+    .filter((alert) => !priorityId || alert?.id !== priorityId)
+    .sort((left, right) => alertTimeMs(right) - alertTimeMs(left));
 }
 
 function formatStatusTime(value) {

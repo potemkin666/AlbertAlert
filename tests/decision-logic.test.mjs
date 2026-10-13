@@ -1719,6 +1719,37 @@ test('renderSupporting merges context and quarantine into one progressive list',
   assert.equal(supportingLoadMore.hasClass('hidden'), false);
 });
 
+test('renderSupporting excludes the top priority story to avoid duplication', () => {
+  const priority = makeAlert({ id: 'c1', lane: 'context', title: 'Priority Context Story', publishedAt: '2026-04-04T10:03:00.000Z' });
+  const other = makeAlert({ id: 'c2', lane: 'context', title: 'Other Context Story', publishedAt: '2026-04-04T10:02:00.000Z' });
+  const state = {
+    supportingVisibleCount: 10,
+    alerts: [priority, other]
+  };
+  const view = {
+    context: [priority, other],
+    quarantine: [],
+    topPriority: priority
+  };
+  const elements = {
+    supportingCount: { textContent: '' },
+    supportingList: {
+      innerHTML: '',
+      querySelectorAll() {
+        return [];
+      }
+    },
+    supportingLoadMore: null
+  };
+  const modalController = { openDetail() {} };
+
+  renderSupporting({ elements, view, state, modalController });
+
+  assert.equal(elements.supportingCount.textContent, '1/1 items');
+  assert.doesNotMatch(elements.supportingList.innerHTML, /Priority Context Story/);
+  assert.match(elements.supportingList.innerHTML, /Other Context Story/);
+});
+
 test('sortAlertsByFreshness prioritises newer stories inside the same freshness bucket', () => {
   const newerButLowerSignal = makeAlert({
     id: 'newer',
