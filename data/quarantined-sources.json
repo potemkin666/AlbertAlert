@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-14T10:29:42.300Z",
+  "generatedAt": "2026-10-14T11:52:23.496Z",
   "count": 283,
   "metrics": {
     "total": 283,
     "newThisWeek": 6,
-    "avgTimeInQuarantineHours": 3343,
+    "avgTimeInQuarantineHours": 3344,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -463,11 +463,11 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-09-29T13:26:35.373Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 13,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 13,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -491,15 +491,15 @@
           "at": "2026-10-12T09:03:29.834Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-10-14T10:29:42.300Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "clingendael-publications",
@@ -738,13 +738,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "mi5-news-rss",
@@ -2943,13 +2943,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "eppo-news-node-7",
@@ -3237,13 +3237,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "policia-nacional-news",
@@ -3354,8 +3354,8 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-06-08T05:21:27.942Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 69,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
@@ -3382,15 +3382,15 @@
           "at": "2026-10-12T09:03:29.834Z"
         },
         {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-14T10:29:42.300Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "quadrant2design-exhibiting-guides",
@@ -3580,13 +3580,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ec-ministry-interior-open-data",
@@ -3776,13 +3776,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "netherlands-om-terrorismefinanciering-nieuws",
@@ -3825,13 +3825,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "hedayah-news",
@@ -3874,13 +3874,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "eurojust-press-releases",
@@ -4726,8 +4726,8 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-05-01T20:16:16.792Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
       "consecutiveFailures": 87,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 87,
@@ -4754,15 +4754,15 @@
           "at": "2026-10-12T09:03:29.834Z"
         },
         {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ec-guardian-ecuador",
@@ -4805,13 +4805,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "unsc-counter-terrorism-committee",
@@ -4903,13 +4903,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "london-city-airport-media-centre",
@@ -5001,13 +5001,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "rand-terrorism-topic",
@@ -5050,13 +5050,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ecfr-feeds-index",
@@ -5099,13 +5099,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "me-police-administration",
@@ -5442,13 +5442,13 @@
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ecfr-publications",
@@ -5491,13 +5491,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "politico-europe",
@@ -5540,13 +5540,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "acled-updates",
@@ -5589,13 +5589,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "counter-extremism-project-news",
@@ -5638,13 +5638,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "just-security",
@@ -5687,13 +5687,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "lawfare-blog",
@@ -5736,13 +5736,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "occrp-news",
@@ -5785,13 +5785,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "resolve-network-research",
@@ -5834,13 +5834,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "reuters-uk",
@@ -5883,13 +5883,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "soufan-center-intelbrief",
@@ -5932,13 +5932,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ec-primicias-seguridad",
@@ -5981,13 +5981,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ec-planv-crimen-organizado",
@@ -6030,13 +6030,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ec-cfr-ecuador-narco-state",
@@ -6079,13 +6079,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "gnet-radicalisation-rss",
@@ -6128,13 +6128,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "gnet-youth-rss",
@@ -6177,13 +6177,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "london-resilience",
@@ -6226,13 +6226,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "chatham-house-home",
@@ -6275,13 +6275,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "wiltshire-999s",
@@ -6324,13 +6324,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "uk-ukfinance-fraud-news",
@@ -6373,13 +6373,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T10:29:42.300Z"
+          "at": "2026-10-14T11:52:23.496Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-21T10:29:42.300Z",
-      "lastFailureAt": "2026-10-14T10:29:42.300Z",
-      "lastCheckedAt": "2026-10-14T10:29:42.300Z"
+      "reviewBy": "2026-10-21T11:52:23.496Z",
+      "lastFailureAt": "2026-10-14T11:52:23.496Z",
+      "lastCheckedAt": "2026-10-14T11:52:23.496Z"
     },
     {
       "id": "ct-policing-prevent-programme",
