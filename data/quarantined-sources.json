@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-15T04:12:52.547Z",
+  "generatedAt": "2026-10-15T09:17:35.073Z",
   "count": 281,
   "metrics": {
     "total": 281,
     "newThisWeek": 4,
-    "avgTimeInQuarantineHours": 3385,
+    "avgTimeInQuarantineHours": 3390,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -267,18 +267,13 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-09-30T11:45:16.994Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 12,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 13,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 12,
+      "consecutiveBlockedFailures": 13,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -298,12 +293,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "romanian-police-news",
@@ -2033,16 +2033,11 @@
       "quarantinedAt": "2026-08-04T22:30:04.592Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 40,
+      "consecutiveFailures": 41,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2062,12 +2057,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "europarl-committee-sede",
@@ -2082,16 +2082,11 @@
       "quarantinedAt": "2026-08-04T22:30:04.592Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 40,
+      "consecutiveFailures": 41,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2111,12 +2106,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "hammersmith-fulham-news",
@@ -2131,16 +2131,11 @@
       "quarantinedAt": "2026-08-04T22:30:04.592Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 40,
+      "consecutiveFailures": 41,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -2160,12 +2155,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "europarl-pressreleases-committees",
@@ -2474,16 +2474,11 @@
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 47,
+      "consecutiveFailures": 48,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 47,
+      "consecutiveBlockedFailures": 48,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2503,12 +2498,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "royal-greenwich-news",
@@ -2523,16 +2523,11 @@
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 47,
+      "consecutiveFailures": 48,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 47,
+      "consecutiveBlockedFailures": 48,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2552,12 +2547,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "uk-parliament-isc",
@@ -2572,16 +2572,11 @@
       "quarantinedAt": "2026-07-21T13:09:10.875Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 47,
+      "consecutiveFailures": 48,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 25,
+      "consecutiveBlockedFailures": 26,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2601,12 +2596,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "uk-iopc-news",
@@ -2621,16 +2621,11 @@
       "quarantinedAt": "2026-07-19T10:07:39.939Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 48,
+      "consecutiveFailures": 49,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 48,
+      "consecutiveBlockedFailures": 49,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T11:25:37.105Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -2650,12 +2645,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "rewards-for-justice",
@@ -2915,16 +2915,11 @@
       "quarantinedAt": "2026-07-03T12:24:05.360Z",
       "lastErrorCategory": "not-found-404",
       "lastErrorMessage": "HTTP 404",
-      "consecutiveFailures": 56,
+      "consecutiveFailures": 57,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "not-found-404",
-          "message": "HTTP 404",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "not-found-404",
           "message": "HTTP 404",
@@ -2944,12 +2939,17 @@
           "category": "not-found-404",
           "message": "HTTP 404",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "not-found-404",
+          "message": "HTTP 404",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "police-ombudsman-current-investigations",
@@ -2964,16 +2964,11 @@
       "quarantinedAt": "2026-06-27T09:27:57.516Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 59,
+      "consecutiveFailures": 60,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 59,
+      "consecutiveBlockedFailures": 60,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -2993,12 +2988,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "royal-free-london-news",
@@ -3013,16 +3013,11 @@
       "quarantinedAt": "2026-06-23T07:01:15.035Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 61,
+      "consecutiveFailures": 62,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 61,
+      "consecutiveBlockedFailures": 62,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -3042,12 +3037,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "fmcg-gurus",
@@ -3062,16 +3062,11 @@
       "quarantinedAt": "2026-06-23T07:01:15.035Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 61,
+      "consecutiveFailures": 62,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 44,
+      "consecutiveBlockedFailures": 45,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -3091,12 +3086,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "requested-neighbourhood-alerts-feed-8ad5321239de",
@@ -3601,16 +3601,11 @@
       "quarantinedAt": "2026-05-09T04:58:58.302Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 83,
+      "consecutiveFailures": 84,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -3630,12 +3625,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "germany-federal-prosecutor-current-press-en",
@@ -11096,18 +11096,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
-      "consecutiveFailures": 87,
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 87,
+      "consecutiveBlockedFailures": 88,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -11127,12 +11122,17 @@
           "category": "blocked-or-auth",
           "message": "HTTP 403",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "south-yorkshire-police-news",
@@ -11147,16 +11147,11 @@
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
       "lastErrorCategory": "anti-bot-protection",
       "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 87,
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 87,
+      "consecutiveBlockedFailures": 88,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -11176,12 +11171,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "staffordshire-police-news",
@@ -11194,18 +11194,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 87,
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 87,
+      "consecutiveBlockedFailures": 88,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -11225,12 +11220,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "staffordshire-police-staffordshire-news",
@@ -11243,18 +11243,13 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 87,
+      "lastErrorCategory": "blocked-or-auth",
+      "lastErrorMessage": "HTTP 403",
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 87,
+      "consecutiveBlockedFailures": 88,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
@@ -11274,12 +11269,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "HTTP 403",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "suffolk-constabulary-news",
@@ -11980,16 +11980,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "network-failure",
       "lastErrorMessage": "fetch failed",
-      "consecutiveFailures": 87,
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "network-failure",
-          "message": "fetch failed",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "network-failure",
           "message": "fetch failed",
@@ -12009,12 +12004,17 @@
           "category": "network-failure",
           "message": "fetch failed",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "ec-uafe-aml-cft",
@@ -12027,18 +12027,13 @@
       "status": "auto-quarantined",
       "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
-      "consecutiveFailures": 87,
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 2,
+      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
@@ -12058,12 +12053,17 @@
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "ec-nctc-los-lobos",
@@ -12078,16 +12078,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "blocked-or-auth",
       "lastErrorMessage": "Blocked by blocked access page",
-      "consecutiveFailures": 87,
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 38,
+      "consecutiveBlockedFailures": 39,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "blocked-or-auth",
-          "message": "Blocked by blocked access page",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
@@ -12107,12 +12102,17 @@
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "blocked-or-auth",
+          "message": "Blocked by blocked access page",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "uk-sanctions-list",
@@ -12127,16 +12127,11 @@
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
       "lastErrorCategory": "brittle-selectors-or-js-rendering",
       "lastErrorMessage": "No items parsed from source payload",
-      "consecutiveFailures": 87,
+      "consecutiveFailures": 88,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "No items parsed from source payload",
-          "at": "2026-10-04T16:09:42.679Z"
-        },
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
@@ -12156,12 +12151,17 @@
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
           "at": "2026-10-13T01:23:29.569Z"
+        },
+        {
+          "category": "brittle-selectors-or-js-rendering",
+          "message": "No items parsed from source payload",
+          "at": "2026-10-15T09:17:35.073Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-20T01:23:29.569Z",
-      "lastFailureAt": "2026-10-13T01:23:29.569Z",
-      "lastCheckedAt": "2026-10-13T01:23:29.569Z"
+      "reviewBy": "2026-10-22T09:17:35.073Z",
+      "lastFailureAt": "2026-10-15T09:17:35.073Z",
+      "lastCheckedAt": "2026-10-15T09:17:35.073Z"
     },
     {
       "id": "statewatch-news",
