@@ -1,29 +1,12 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-15T22:12:47.827Z",
-  "totalSourceErrors": 2,
+  "generatedAt": "2026-10-16T00:49:06.597Z",
+  "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "cheshire-police-news",
-      "provider": "North West Bylines - Cheshire",
-      "endpoint": "https://northwestbylines.co.uk/category/region/cheshire/feed/",
-      "finalUrl": "",
-      "category": "anti-bot-protection",
-      "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 202,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "incidents",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "england-naturally",
-      "provider": "England, Naturally",
-      "endpoint": "https://englandnaturally.com/feed/",
+      "id": "north-wales-community-alert",
+      "provider": "North Wales Community Alert",
+      "endpoint": "https://www.northwalescommunityalert.co.uk/",
       "finalUrl": "",
       "category": "network-failure",
       "statusKind": "",
@@ -32,10 +15,10 @@
       "rankScore": 1,
       "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
