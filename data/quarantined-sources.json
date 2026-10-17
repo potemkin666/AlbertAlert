@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-10-17T09:31:13.610Z",
+  "generatedAt": "2026-10-17T13:19:58.305Z",
   "count": 280,
   "metrics": {
     "total": 280,
-    "newThisWeek": 1,
-    "avgTimeInQuarantineHours": 3448,
+    "newThisWeek": 0,
+    "avgTimeInQuarantineHours": 3452,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
@@ -267,8 +267,8 @@
       "status": "auto-quarantined",
       "reason": "Anti-bot protection active — consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-09-30T11:45:16.994Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 14,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 14,
@@ -295,15 +295,15 @@
           "at": "2026-10-15T09:17:35.073Z"
         },
         {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "romanian-police-news",
@@ -2012,13 +2012,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "europarl-committee-sede",
@@ -2061,13 +2061,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "hammersmith-fulham-news",
@@ -2110,13 +2110,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "europarl-pressreleases-committees",
@@ -2453,13 +2453,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "royal-greenwich-news",
@@ -2502,13 +2502,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "uk-parliament-isc",
@@ -2551,13 +2551,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "uk-iopc-news",
@@ -2600,13 +2600,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "rewards-for-justice",
@@ -2894,13 +2894,13 @@
         {
           "category": "not-found-404",
           "message": "HTTP 404",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "police-ombudsman-current-investigations",
@@ -2943,13 +2943,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "royal-free-london-news",
@@ -2992,13 +2992,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "fmcg-gurus",
@@ -3041,13 +3041,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "requested-neighbourhood-alerts-feed-8ad5321239de",
@@ -3580,13 +3580,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "germany-federal-prosecutor-current-press-en",
@@ -11047,8 +11047,8 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
-      "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 89,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 89,
@@ -11075,15 +11075,15 @@
           "at": "2026-10-15T09:17:35.073Z"
         },
         {
-          "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "south-yorkshire-police-news",
@@ -11096,11 +11096,11 @@
       "status": "auto-quarantined",
       "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
       "quarantinedAt": "2026-04-30T23:05:08.470Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
+      "lastErrorCategory": "anti-bot-protection",
+      "lastErrorMessage": "Blocked by anti-bot protection",
       "consecutiveFailures": 89,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
+      "consecutiveBlockedFailures": 89,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -11124,15 +11124,15 @@
           "at": "2026-10-15T09:17:35.073Z"
         },
         {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-10-17T09:31:13.610Z"
+          "category": "anti-bot-protection",
+          "message": "Blocked by anti-bot protection",
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "staffordshire-police-news",
@@ -11175,13 +11175,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "staffordshire-police-staffordshire-news",
@@ -11224,13 +11224,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "suffolk-constabulary-news",
@@ -11959,13 +11959,13 @@
         {
           "category": "network-failure",
           "message": "fetch failed",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "ec-uafe-aml-cft",
@@ -11978,11 +11978,11 @@
       "status": "auto-quarantined",
       "reason": "Infrastructure instability — mixed timeout and network errors; auto-retry likely to recover",
       "quarantinedAt": "2026-04-30T19:01:21.418Z",
-      "lastErrorCategory": "anti-bot-protection",
-      "lastErrorMessage": "Blocked by anti-bot protection",
+      "lastErrorCategory": "network-failure",
+      "lastErrorMessage": "fetch failed",
       "consecutiveFailures": 89,
       "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 1,
+      "consecutiveBlockedFailures": 0,
       "consecutiveDeadUrlFailures": 0,
       "recentErrors": [
         {
@@ -12006,15 +12006,15 @@
           "at": "2026-10-15T09:17:35.073Z"
         },
         {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-17T09:31:13.610Z"
+          "category": "network-failure",
+          "message": "fetch failed",
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "ec-nctc-los-lobos",
@@ -12057,13 +12057,13 @@
         {
           "category": "blocked-or-auth",
           "message": "Blocked by blocked access page",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "uk-sanctions-list",
@@ -12106,13 +12106,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-17T09:31:13.610Z"
+          "at": "2026-10-17T13:19:58.305Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-24T09:31:13.610Z",
-      "lastFailureAt": "2026-10-17T09:31:13.610Z",
-      "lastCheckedAt": "2026-10-17T09:31:13.610Z"
+      "reviewBy": "2026-10-24T13:19:58.305Z",
+      "lastFailureAt": "2026-10-17T13:19:58.305Z",
+      "lastCheckedAt": "2026-10-17T13:19:58.305Z"
     },
     {
       "id": "statewatch-news",
