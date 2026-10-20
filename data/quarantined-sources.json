@@ -1,65 +1,16 @@
 {
-  "generatedAt": "2026-10-20T10:18:31.303Z",
-  "count": 281,
+  "generatedAt": "2026-10-20T12:10:06.429Z",
+  "count": 280,
   "metrics": {
-    "total": 281,
-    "newThisWeek": 3,
-    "avgTimeInQuarantineHours": 3492,
+    "total": 280,
+    "newThisWeek": 2,
+    "avgTimeInQuarantineHours": 3507,
     "avgHealthScore": 1,
     "reQuarantineRate": 0,
     "reQuarantined": 0,
     "restoredTotal": 0
   },
   "sources": [
-    {
-      "id": "guardia-civil-news",
-      "provider": "El Pais English - Guardia Civil",
-      "endpoint": "https://english.elpais.com/news/guardia-civil/",
-      "kind": "html",
-      "lane": "incidents",
-      "region": "eu",
-      "healthScore": 0,
-      "status": "auto-quarantined",
-      "reason": "Access protection added — errors alternate between auth blocks and anti-bot; consider Playwright fallback or new endpoint",
-      "quarantinedAt": "2026-10-20T10:18:31.303Z",
-      "lastErrorCategory": "brittle-selectors-or-js-rendering",
-      "lastErrorMessage": "Playwright browser not installed: browser. Type.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the following command to download new browsers: ║ ║ ║ ║ npx playwright install ║ ║ ║ ║ <3 Playwright Team ║ ╚════════════════════════════════════════════════════════════╝",
-      "consecutiveFailures": 6,
-      "consecutiveTimeoutFailures": 0,
-      "consecutiveBlockedFailures": 0,
-      "consecutiveDeadUrlFailures": 0,
-      "recentErrors": [
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-11T22:32:56.585Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-14T00:44:14.566Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-16T05:52:05.024Z"
-        },
-        {
-          "category": "anti-bot-protection",
-          "message": "Blocked by anti-bot protection",
-          "at": "2026-10-18T08:54:59.631Z"
-        },
-        {
-          "category": "brittle-selectors-or-js-rendering",
-          "message": "Playwright browser not installed: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1217/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
-          "at": "2026-10-20T10:18:31.303Z"
-        }
-      ],
-      "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
-    },
     {
       "id": "england-naturally",
       "provider": "England, Naturally",
@@ -591,13 +542,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 403",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "west-yorkshire-police-news-appeals",
@@ -787,13 +738,13 @@
         {
           "category": "blocked-or-auth",
           "message": "HTTP 401",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "ocam-be-english",
@@ -1522,13 +1473,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "belfast-live",
@@ -1571,13 +1522,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "birmingham-mail",
@@ -1620,13 +1571,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "cambridge-news",
@@ -1669,13 +1620,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "daily-mirror",
@@ -1718,13 +1669,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "wales-online",
@@ -1767,13 +1718,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "my-london-rss",
@@ -1816,13 +1767,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "cambridgeshire-police-news-search",
@@ -1865,13 +1816,13 @@
         {
           "category": "brittle-selectors-or-js-rendering",
           "message": "No items parsed from source payload",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "manchester-evening-news",
@@ -1983,7 +1934,7 @@
       "reason": "Access protection added — consistent 401/403 blocks; consider new endpoint",
       "quarantinedAt": "2026-08-09T12:56:17.056Z",
       "lastErrorCategory": "blocked-or-auth",
-      "lastErrorMessage": "HTTP 403",
+      "lastErrorMessage": "Blocked by blocked access page",
       "consecutiveFailures": 41,
       "consecutiveTimeoutFailures": 0,
       "consecutiveBlockedFailures": 41,
@@ -2011,14 +1962,14 @@
         },
         {
           "category": "blocked-or-auth",
-          "message": "HTTP 403",
-          "at": "2026-10-20T10:18:31.303Z"
+          "message": "Blocked by blocked access page",
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "dni-press-releases",
@@ -4609,13 +4560,13 @@
         {
           "category": "anti-bot-protection",
           "message": "Blocked by anti-bot protection",
-          "at": "2026-10-20T10:18:31.303Z"
+          "at": "2026-10-20T12:10:06.429Z"
         }
       ],
       "replacementSuggestion": "",
-      "reviewBy": "2026-10-27T10:18:31.303Z",
-      "lastFailureAt": "2026-10-20T10:18:31.303Z",
-      "lastCheckedAt": "2026-10-20T10:18:31.303Z"
+      "reviewBy": "2026-10-27T12:10:06.429Z",
+      "lastFailureAt": "2026-10-20T12:10:06.429Z",
+      "lastCheckedAt": "2026-10-20T12:10:06.429Z"
     },
     {
       "id": "me-ministry-defence",
