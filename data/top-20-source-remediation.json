@@ -1,6 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-26T21:35:23.754Z",
-  "totalSourceErrors": 0,
-  "top20": []
+  "generatedAt": "2026-10-26T21:46:34.363Z",
+  "totalSourceErrors": 1,
+  "top20": [
+    {
+      "id": "disneyrollergirl",
+      "provider": "Disneyrollergirl",
+      "endpoint": "https://www.disneyrollergirl.net/feed/",
+      "finalUrl": "",
+      "category": "http-status-error",
+      "statusKind": "",
+      "message": "HTTP 520",
+      "status": 520,
+      "rankScore": 1,
+      "suggestedAction": "manual source review",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
