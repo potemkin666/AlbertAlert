@@ -1,51 +1,11 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-26T15:15:21.870Z",
-  "totalSourceErrors": 1,
-  "byCategory": {
-    "blocked-or-auth": 1
-  },
-  "byKind": {
-    "rss": 1
-  },
-  "machineReadableErrorCount": 1,
+  "generatedAt": "2026-10-26T15:58:31.592Z",
+  "totalSourceErrors": 0,
+  "byCategory": {},
+  "byKind": {},
+  "machineReadableErrorCount": 0,
   "htmlErrorCount": 0,
-  "top20": [
-    {
-      "id": "eu-council-press-releases",
-      "provider": "Council of the European Union a Press Releases (RSS)",
-      "endpoint": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ],
-  "sources": [
-    {
-      "id": "eu-council-press-releases",
-      "provider": "Council of the European Union a Press Releases (RSS)",
-      "endpoint": "https://www.consilium.europa.eu/en/rss/pressreleases.ashx",
-      "finalUrl": "",
-      "category": "blocked-or-auth",
-      "statusKind": "",
-      "message": "HTTP 403",
-      "status": 403,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "oversight",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    }
-  ]
+  "top20": [],
+  "sources": []
 }
