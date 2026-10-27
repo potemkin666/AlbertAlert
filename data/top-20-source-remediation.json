@@ -1,24 +1,24 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-27T14:53:16.826Z",
+  "generatedAt": "2026-10-27T15:28:45.773Z",
   "totalSourceErrors": 1,
   "top20": [
     {
-      "id": "huffpost-uk",
-      "provider": "Huff. Post UK",
-      "endpoint": "https://www.huffingtonpost.co.uk/feeds/index.xml",
+      "id": "portugal-psp-news",
+      "provider": "The Portugal News - Crime",
+      "endpoint": "https://www.theportugalnews.com/news/crime",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "timeout",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 200,
-      "rankScore": 2,
-      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "message": "This operation was aborted",
+      "status": 0,
+      "rankScore": 1,
+      "suggestedAction": "retry later and monitor domain circuit-breaker/failure trend",
       "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
+      "sourceKind": "html",
+      "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": true
+      "isMachineReadable": false
     }
   ]
 }
