@@ -1,51 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-31T16:17:05.636Z",
+  "generatedAt": "2026-10-31T16:46:21.934Z",
   "totalSourceErrors": 1,
   "byCategory": {
-    "anti-bot-protection": 1
+    "blocked-or-auth": 1
   },
   "byKind": {
-    "html": 1
+    "rss": 1
   },
-  "machineReadableErrorCount": 0,
-  "htmlErrorCount": 1,
+  "machineReadableErrorCount": 1,
+  "htmlErrorCount": 0,
   "top20": [
     {
-      "id": "warwickshire-police-news",
-      "provider": "Warwickshire Connected - Latest Alerts",
-      "endpoint": "https://www.warwickshireconnected.com/Content/Pages/Latest-Alerts",
+      "id": "paris-police-prefecture-news",
+      "provider": "France24 - France (RSS)",
+      "endpoint": "https://www.france24.com/en/france/rss",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ],
   "sources": [
     {
-      "id": "warwickshire-police-news",
-      "provider": "Warwickshire Connected - Latest Alerts",
-      "endpoint": "https://www.warwickshireconnected.com/Content/Pages/Latest-Alerts",
+      "id": "paris-police-prefecture-news",
+      "provider": "France24 - France (RSS)",
+      "endpoint": "https://www.france24.com/en/france/rss",
       "finalUrl": "",
-      "category": "anti-bot-protection",
+      "category": "blocked-or-auth",
       "statusKind": "",
-      "message": "Blocked by anti-bot protection",
-      "status": 0,
+      "message": "HTTP 403",
+      "status": 403,
       "rankScore": 2,
       "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
       "replacementCandidate": "",
-      "sourceKind": "html",
+      "sourceKind": "rss",
       "sourceLane": "incidents",
       "sourceRegion": "",
-      "isMachineReadable": false
+      "isMachineReadable": true
     }
   ]
 }
