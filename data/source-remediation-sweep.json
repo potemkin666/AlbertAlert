@@ -1,11 +1,51 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-10-31T01:49:37.843Z",
-  "totalSourceErrors": 0,
-  "byCategory": {},
-  "byKind": {},
-  "machineReadableErrorCount": 0,
+  "generatedAt": "2026-10-31T02:21:06.845Z",
+  "totalSourceErrors": 1,
+  "byCategory": {
+    "blocked-or-auth": 1
+  },
+  "byKind": {
+    "rss": 1
+  },
+  "machineReadableErrorCount": 1,
   "htmlErrorCount": 0,
-  "top20": [],
-  "sources": []
+  "top20": [
+    {
+      "id": "jamestown-foundation-feed",
+      "provider": "Jamestown Foundation - Main Feed",
+      "endpoint": "https://jamestown.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ],
+  "sources": [
+    {
+      "id": "jamestown-foundation-feed",
+      "provider": "Jamestown Foundation - Main Feed",
+      "endpoint": "https://jamestown.org/feed/",
+      "finalUrl": "",
+      "category": "blocked-or-auth",
+      "statusKind": "",
+      "message": "Blocked by blocked access page",
+      "status": 200,
+      "rankScore": 2,
+      "suggestedAction": "downgrade to non-bot-protected endpoint or quarantine if no public feed",
+      "replacementCandidate": "",
+      "sourceKind": "rss",
+      "sourceLane": "context",
+      "sourceRegion": "",
+      "isMachineReadable": true
+    }
+  ]
 }
