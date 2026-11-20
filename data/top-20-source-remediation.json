@@ -1,7 +1,7 @@
 {
   "generatedFrom": "live-alerts.json",
-  "generatedAt": "2026-11-19T05:43:15.956Z",
-  "totalSourceErrors": 275,
+  "generatedAt": "2026-11-20T05:42:10.287Z",
+  "totalSourceErrors": 279,
   "top20": [
     {
       "id": "aviation-herald-rss",
@@ -191,6 +191,23 @@
       "isMachineReadable": false
     },
     {
+      "id": "hedayah-news",
+      "provider": "Hedayah - News",
+      "endpoint": "https://hedayah.com/news/",
+      "finalUrl": "",
+      "category": "not-found-404",
+      "statusKind": "",
+      "message": "HTTP 404",
+      "status": 404,
+      "rankScore": 5,
+      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
+      "replacementCandidate": "",
+      "sourceKind": "html",
+      "sourceLane": "prevention",
+      "sourceRegion": "",
+      "isMachineReadable": false
+    },
+    {
       "id": "homerton-healthcare-news",
       "provider": "Homerton Healthcare NHS Foundation Trust a News",
       "endpoint": "https://www.homerton.nhs.uk/trust-news/",
@@ -313,23 +330,6 @@
       "id": "tenura",
       "provider": "Tenura",
       "endpoint": "https://www.tenura.co.uk/rss.xml",
-      "finalUrl": "",
-      "category": "not-found-404",
-      "statusKind": "",
-      "message": "HTTP 404",
-      "status": 404,
-      "rankScore": 5,
-      "suggestedAction": "move source to quarantine and replace endpoint with current live URL",
-      "replacementCandidate": "",
-      "sourceKind": "rss",
-      "sourceLane": "context",
-      "sourceRegion": "",
-      "isMachineReadable": true
-    },
-    {
-      "id": "time-out-london-rss",
-      "provider": "Time Out London",
-      "endpoint": "https://www.timeout.com/london/rss",
       "finalUrl": "",
       "category": "not-found-404",
       "statusKind": "",
